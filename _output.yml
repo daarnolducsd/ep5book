@@ -1,0 +1,24 @@
+bookdown::bs4_book:
+  css: bs4_style.css
+  theme: 
+    primary: "#096B72"
+    base_font: 
+      google: Sen
+    heading_font:
+      google:
+        family: Bitter
+        wght: 200
+    code_font:
+      google: 
+        # arguments to sass::font_google() 
+        family: DM Mono
+        local: false
+    #primary: "#0000b3" /* blue */
+  repo: https://github.com/rstudio/bookdown-demo
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default

@@ -1,0 +1,24 @@
+h1:intergenerational-mobility-and-higher-education-stata Intergenerational Mobility and Higher Education (Stata)
+h2:opportunity-insights Opportunity Insights
+fig:oi New York Times Graphic on Opportunity Insights
+h2:quantiles Quantiles
+h2:intergenerational-mobility-definition Intergenerational Mobility Definition
+h2:the-stata-gui The Stata GUI
+fig:gui Stata Graphical User Interface
+fig:main Variables Window Example
+fig:helpdisplay Variables Window Example
+fig:helloerror Forgetting Quotation Marks When Referencing Strings
+h2:do-files Do-files
+fig:maincopy Opening a New Do-File in Stata
+fig:dofileicon Do-File Icon
+fig:dofile1 Blank Do-File
+fig:dofile2 Display 2+2 in a Do-File
+fig:dofile7 Executing Lines 1 and 2
+fig:dofile8 Executing Lines 2 and 3
+fig:dofile5 Saving A Do-File
+h2:the-working-directory The Working Directory
+fig:hierarchy Example Structure of a Folder Hierarchy for this Course
+h2:use-describe-and-browse Use, Describe, and Browse
+fig:describe Describe Command
+h2:references References
+

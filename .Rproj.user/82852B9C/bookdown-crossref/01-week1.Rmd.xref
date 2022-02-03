@@ -1,0 +1,62 @@
+h1:financial-incentives-and-student-performance-excel Financial Incentives and Student Performance (Excel)
+h2:introduction-to-experiments Introduction to Experiments
+fig:chocolate Chocolate Consumption and Nobel Prizes
+fig:spurious Example of a Spurious Correlation from tylervigen.com
+h2:data-from-brownback-and-sadoff-2020 Data from Brownback and Sadoff (2020)
+fig:bsdata Data From Brownstone and Sadoff (2020)
+fig:student Unit of Observation Example 1
+fig:studentterm Unit of Observation Example 2
+fig:freeze Freezing the First Row
+h2:statistical-functions Statistical Functions
+fig:gdp2020 GDP in 2020
+fig:japan How to Reference a Cell
+fig:cells Referencing a Range of Cells
+fig:average1 Computing Average GDP in 2020 (Before Pressing Enter)
+fig:average2 Computing Average GDP in 2020 (After Pressing Enter)
+fig:gdpsumstats Summary Statistics Table
+h2:logical-functions Logical Functions
+fig:tf1 Is GDP Greater than 10 in the U.S. Part 1
+fig:tf2 Is GDP Greater than 10 in the U.S. Part 2
+fig:fill Filling in the Formula
+fig:ifex1 Using the IF function (Before Pressing Enter)
+fig:ifex2 Using the IF function (After Pressing Enter)
+h2:summary-statistics Summary Statistics
+fig:passed1 Generating a Passed Variable (Steps 1 and 2)
+fig:passed2 Generating a Passed Variable (Step 3)
+fig:sumstats1 Blank Summary Statistics Table
+fig:sumstats2 Average Age
+fig:sumstats3 Average Test Score
+fig:fracpassed Computing the Fraction Passed
+fig:count Computing Total Observations
+h2:S:pivottables Pivot Tables
+fig:pivotfinal Pivot Table: Pass Rates by Department
+fig:pivot1 Inserting a Pivot Table
+fig:pivot3 Selecting a Range for the Pivot Table
+fig:pivot4 A Blank Pivot Table
+fig:pivot5 Adding DepartmentCode to the Pivot Table
+fig:pivot6 Adding DepartmentCode to the Pivot Table
+fig:pivot7 Adding Passed to the Pivot Table
+fig:pivot8 Average Pass Rates
+h2:balance-tables Balance Tables
+fig:balance Average Age by Treatment Group
+h2:S:impact Impact of Financial Incentives
+fig:firstresult Impact of Financial Incentives on Pass Rates
+fig:pivotfield Pivot Fields
+fig:hetresults Pivot Fields
+h2:S:pivotbasic Pivot Charts (Basic)
+fig:pivotchart1 Inserting a Pivot Chart
+fig:pivotchart2 Pivot Chart Fields
+fig:pivotchart3 Pivot Chart Fields
+fig:pivotchart4 Filtering Out Blank
+fig:pivotchart5 Filtering Out Blank
+fig:pivotchart8 Adding a Title
+fig:pivotchart9 Adding Axes Titles
+fig:pivotchart11 Average Pass Rates by Treatment Arm
+h2:S:pivotadvanced Pivot Charts (Advanced)
+fig:advpivot2 Average Pass Rates by Treatment Arm and Department
+fig:advpivot3 Average Pass Rates by Treatment Arm and Department
+fig:advpivot4 Average Pass Rates by Treatment Arm and Department
+fig:advpivot5 Pivot Chart Fields
+fig:advpivot7 Average Pass Rates by Treatment Arm and Department
+h2:S:Conclusion Conclusion
+
