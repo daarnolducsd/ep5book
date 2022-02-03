@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Intergenerational Mobility and Higher Education (Stata) | Econ5/Poli5D</title>
+<meta name="author" content="David Arnold">
+<meta name="description" content="2.1 Opportunity Insights In this section, we will be discussing the relationship between intergenerational mobility and the higher education system in the United Stata. Before we start exploring...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Intergenerational Mobility and Higher Education (Stata) | Econ5/Poli5D">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 Opportunity Insights In this section, we will be discussing the relationship between intergenerational mobility and the higher education system in the United Stata. Before we start exploring...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Intergenerational Mobility and Higher Education (Stata) | Econ5/Poli5D">
+<meta name="twitter:description" content="2.1 Opportunity Insights In this section, we will be discussing the relationship between intergenerational mobility and the higher education system in the United Stata. Before we start exploring...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Sen-0.4.0/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/_Bitter-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Econ5/Poli5D</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="financial-incentives-and-student-performance-excel.html"><span class="header-section-number">1</span> Financial Incentives and Student Performance (Excel)</a></li>
+<li><a class="active" href="intergenerational-mobility-and-higher-education-stata.html"><span class="header-section-number">2</span> Intergenerational Mobility and Higher Education (Stata)</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intergenerational-mobility-and-higher-education-stata" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Intergenerational Mobility and Higher Education (Stata)<a class="anchor" aria-label="anchor" href="#intergenerational-mobility-and-higher-education-stata"><i class="fas fa-link"></i></a>
+</h1>
+<div id="opportunity-insights" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Opportunity Insights<a class="anchor" aria-label="anchor" href="#opportunity-insights"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section, we will be discussing the relationship between <strong>intergenerational mobility</strong> and the higher education system in the United Stata. Before we start exploring this relationship, we first need to understand the concept of intergenerational mobility. This concept asks a simple question: if you are born from low-income parents, what is the chance you move up the income distribution?</p>
+<p>Generally, we think of societies with high rates of intergenerational mobility as more equal. If a society has high rates of intergenerational mobility, then that means individuals from low-income backgrounds have opportunities to move up the income distribution. One common path to upward mobility is the higher education system.</p>
+<p>However, there are a few reasons why the higher education system may or may not lead to higher rates of intergenerational mobility. First, some colleges may not be particularly effective in increasing incomes. For example, for-profit colleges are often criticized as costly and low quality (See <a href="https://www.nytimes.com/2020/06/17/business/coronavirus-for-profit-colleges.html">NYT Article</a>). If a college accepts a large fraction of students from low-income backgrounds, it may still not promote intergenerational mobility if its students don’t actually benefit from attending. Second, individuals from lower-income backgrounds may have lower access to the higher education system. Rising cost of college may be making this worse over time.</p>
+<p>So how do we go about studying this question? We are going to use a dataset made publicly available by the researchers at <strong>Opportunity Insights</strong>. This data has made a big splash, both in academia and in policy circles.Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:oi">2.1</a> shows a headline from an Upshot article about the dataset. In this article, the authors discuss how this dataset has led us to new insights about how access varies dramatically at some schools. The headline reads, “Some Colleges Have More Students From the Top 1 Percent Than the Bottom 60. Find Yours.” If a school has more students from the top 1 percent than the bottom 60, then it probably does not promote intergenerational mobility. Most of the students are already from relatively well-off backgrounds. This is our first hint that colleges may vary dramatically in the extent that they promote intergenerational mobility.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:oi"></span>
+<img src="images/02_oi.png" alt="New York Times Graphic on Opportunity Insights" width="100%"><p class="caption">
+Figure 2.1: New York Times Graphic on Opportunity Insights
+</p>
+</div>
+<p>Let’s get a little bit more into the details on what data we will be using in this empirical application. The data comes from federal income tax returns. Researchers at Opportunity Insights have linked to federal tax returns to tax records of universities and data from Pell grants. The result is a dataset with (1) Children linked to their parents (children are reported as dependents) (2) Income data for both children and parents and (3) children linked to the universities they attended.</p>
+<p>This will give us everything we need to know to understand how a given college promotes intergenerational mobility. It will allow us to know both the know both the background of students attending a given college as well as their eventual earnings. It is important to emphasize that this was a huge data task that gives us a new way to study an important question. This comprehensive data has only recently become available.</p>
+<p>We have discussed at a high level the concept of intergenerational mobility. But when we turn to the data, we will need to compute a metric of intergenerational mobility that allows us to compare across colleges. Before introducing this measure, we will introduce a statistical concept that will be important throughout the course, and in particular, in understanding our measure of intergenerational mobility: <strong>quantiles</strong>.</p>
+</div>
+<div id="quantiles" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Quantiles<a class="anchor" aria-label="anchor" href="#quantiles"><i class="fas fa-link"></i></a>
+</h2>
+<p>To begin our discussion of quantiles, let’s imagine we have a small dataset of only 10 individuals. Each individual reports an income (in the thousands) and we sort the ten individuals based on their income.</p>
+<p>Imagine we have 10 individuals and we sort them based on income (in the thousands per year) </p>
+<p><span class="math display">\[          
+\{5,6,20,29,38,42,55,62,80,88\} \nonumber
+\]</span></p>
+<p>We can break up the data into equal-sized groups based on income. Each equal sized group is a <strong>quantile</strong>. For example, imagine we break the 10 individuals into 5 groups (or 5 quantiles).</p>
+<p><span class="math display">\[
+            \{\underbrace{5,6}_{Q1},\underbrace{20,29}_{Q2},\underbrace{38,42}_{Q3},\underbrace{55,62}_{Q4},\underbrace{80,88}_{Q5}\} \nonumber
+\]</span></p>
+<p>When we break up the observations into 5 equal-sized groups, this is referred to as breaking the data into <strong>quintiles</strong>. Q1 is referred to as the first quintile (or lowest quintile). Q5 is referred to as the fifth quintile (or highest quintile). Quintiles will be important for us because we will use them to define intergenerational mobility. In particular, we have conceptualized intergenerational mobility as the movement from a low-income background to high income. But low income and high income do not have any exact definition. The researchers at Opportunity insights use quintiles to define thse terms.</p>
+<p>In particular, an individual is defined as coming from low-income parents if the individual’s parents are in the bottom quintile (Q1) of the income distribution. The bottom quintile implies the parents are in the bottom 20 percent of the income distribution.</p>
+<p>An individual is defined as high income individual is in the top quintile (Q5) of the income distribution, or equivalently, the top 20 percent of the income distribution.</p>
+<p>Quintiles are just one way to break up the data. If we break the data into four equal-sized groups, then we have broken the data into quartiles. If we break the data into a hundred equal-sized groups, we have broken the data into percentiles. In general, if we break the data into <span class="math inline">\(q\)</span> groups, we have created <span class="math inline">\(q\)</span> quantiles</p>
+<p>Certain percentiles are often reported as descriptive statistics. For example, the median (50<span class="math inline">\(^{th}\)</span> percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was $68,703. This implies 50 percent of households had income less than $68,703, while 50 percent had income more than $68,703.</p>
+</div>
+<div id="intergenerational-mobility-definition" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Intergenerational Mobility Definition<a class="anchor" aria-label="anchor" href="#intergenerational-mobility-definition"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that we understand quantiles, we will define a college’s intergenerational mobility rate. Intuitively, a college will promote intergenerational mobility if it (1) admits students from low-income backgrounds and (2) these students become high earners later in life. Again, we have defined low income as the bottom quintile of earnings, while high income is the top quintile of earnings. We will define the <strong>mobility rate</strong> as the fraction of low-income students, multiplied by the probability these low-income students go on to become high earners:</p>
+<div class="rmdnote">
+<p><span class="math display">\[
+\text{mobility rate}= \underbrace{\text{(frac. of students from Q1)}}_{\text{Acess}} \; \cdot \; \underbrace{\text{(frac. of Q1 that reach Q5)}}_{\text{Success}} \nonumber
+\]</span></p>
+</div>
+<p>Let’s talk about each of these terms independently. “Access” depends on the fraction of students enrolled in a school that come from low-income backgrounds, or Q1. There is potential for schools with high access to have large impacts on intergenerational mobility. But this might not necessarily be true. For example, some work has found while for profit colleges tend to admit disadvantaged individuals, the outcomes for these individuals tend to be poor.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;David Deming, Claudia Goldin, and Lawrence Katz, &lt;span&gt;“For-Profit Colleges,”&lt;/span&gt; &lt;em&gt;The Future of Children&lt;/em&gt;, 2013, 137–63.&lt;/p&gt;"><sup>1</sup></a></span> Therefore, even though the Access rate might be high, these schools will not tend to promote intergenerational mobility. The reason is due to the second term: Success. This measures the fraction of students from low-income backgrounds that reach the top quintile of earnings.</p>
+<p>Intuitively, we can interpret the mobility rate as the fraction of students that are from low-income backgrounds that reach high income at a school. For example, if 10 percent of a school’s enrollment comes from a low-income background, and half of these students end up in the top quintile of earnings, then that means 5 percent (overall) of the student body came from low-income backgrounds and achieved high income. This number is equal to the school’s mobility rate (<span class="math inline">\(\text{mobility rate}=0.10 \cdot 0.50 =0.05\)</span>).</p>
+<p>But now let’s get into the specifics of the data. How do we (exactly) determine if a students comes from a low-income background? Here are the steps:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Take all parents that have a child in the same year (e.g. 1985)</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Compute average income for these parents when children are 15-19 (i.e. from 2000-2004)</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>If parents’ income is in bottom 20 percent over this period (i.e. in Q1), then classify students as coming from low-income background</li>
+</ol></li>
+</ul>
+<p>Now that we have low-income background, how (exactly) do we determine if a student becomes a high earner?</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Take all individuals that are the same age and calculate earnings in 2014</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>If individual’s income is in the top 20 percent relative to individuals the same age (i.e. in Q5), then classify student as a high earner</li>
+</ol></li>
+</ul>
+<p>A general lesson here is to understand the details before you proceed with the analysis. In this example, low income and high income have very specific definitions. We need to understand our variables and how they are measured before we can dive into our analysis.</p>
+</div>
+<div id="the-stata-gui" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> The Stata GUI<a class="anchor" aria-label="anchor" href="#the-stata-gui"><i class="fas fa-link"></i></a>
+</h2>
+<p>Before digging into the Opportunity Insights dataset, we first need to learn how to use Stata. Every time you launch Stata, you will be greeted by the Graphical User Interface (GUI) you see in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:gui">2.2</a></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:gui"></span>
+<img src="images/02_main%20copy.png" alt="Stata Graphical User Interface" width="100%"><p class="caption">
+</p>
+<p>Figure 2.2: Stata Gra
+</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:helloerror"></span>
+<img src="images/02_hello_error.png" alt="Forgetting Quotation Marks When Referencing Strings" width="50%"><p class="caption">
+Figure 2.3: Forgetting Quotation Marks When Referencing Strings
+</p>
+</div>
+<p><code>Hello</code> was not found because Stata looked for a command or variable named <code>Hello</code>, but could not find one, and therefore reported an error. The command did not realize it was just meant to display text, because the text was not in quotation marks.</p>
+</div>
+<div id="do-files" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Do-files<a class="anchor" aria-label="anchor" href="#do-files"><i class="fas fa-link"></i></a>
+</h2>
+<p>So far, we have discussed how to execute code by typing it into the command window. In practice, we will seldom use the command window to execute code. Instead, we will use a <strong>do-file</strong>.</p>
+<p>To understand the importance of a do-file, let’s imagine you have a project that has a large number of steps. Maybe you need to clean the data (usually a necessity) and then run a large number of results. A single project could end up being thousands of lines of code. What would it entail to complete this project if you were to use the command line?</p>
+<p>You would need to type in the lines of code one at a time. But what if you make a mistake at the beginning of your project. For example, you accidently deleted some observations relevant to your analysis. This is a disaster! You now need to remember what you did, type all of the code again, and then execute it.</p>
+<p>A better way to approach any project is to use a do-file. A do-file allows you to run multiple lines of code sequentially. You can save your progress periodically, just as you save your progress when writing a report in Word. Then, if you realize you made a mistake early in the project, you can just alter that one line of code and then re-run the entire project.</p>
+<p>To begin, we need to learn how to open a do-file. At the top of the GUI there is an icon that looks like a piece of paper and pencil above it (see Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:maincopy">2.4</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:maincopy"></span>
+<img src="images/02_main%20copy.png" alt="Opening a New Do-File in Stata" width="100%"><p class="caption">
+Figure 2.4: Opening a New Do-File in Stata
+</p>
+</div>
+<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofileicon">2.5</a> shows a larger version of the do-file icon.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dofileicon"></span>
+<img src="images/02_icon.png" alt="Do-File Icon" width="100%"><p class="caption">
+Figure 2.5: Do-File Icon
+</p>
+</div>
+<p>To open a new do-file we can simply click the icon. When you do, you will see a blank file. This is where we are going to type code into (see Figure <a href="#fig:blankdofile"><strong>??</strong></a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dofile1"></span>
+<img src="images/02_dofile1.png" alt="Blank Do-File" width="100%"><p class="caption">
+Figure 2.6: Blank Do-File
+</p>
+</div>
+<p>For example, if we want Stata to compute the sum of 2+2, we would type <code>display 2+2</code> into the dofile, as seen in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile2">2.7</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dofile2"></span>
+<img src="images/02_dofile2.png" alt="Display 2+2 in a Do-File" width="100%"><p class="caption">
+Figure 2.7: Display 2+2 in a Do-File
+</p>
+</div>
+<p>So now that we have our code written, how do we execute it? There are actually a couple of different ways. The first is pressing the “Do” button, which is the icon on the top right of the do-file that looks like a piece of paper with an arrow.</p>
+<p>If you press this button without highlighting any text, it will execute every single line of code in the file in the sequence they appear. Depending on your goal, you may want to only run select portions of your code. For example, we often need to “debug” our code, and it is more efficient to run a few lines at a time. In this case, we can highlight the lines we would like to be executed, and when we press “Do,” only the highlighted lines of code will be executed.</p>
+<p>For example, in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile7">2.8</a>, hitting “Do” will execute the first two lines of code. In Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile8">2.9</a>, hitting “Do” will execute the second and third line of code.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dofile7"></span>
+<img src="images/02_dofile7.png" alt="Executing Lines 1 and 2" width="100%"><p class="caption">
+Figure 2.8: Executing Lines 1 and 2
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dofile8"></span>
+<img src="images/02_dofile8.png" alt="Executing Lines 2 and 3" width="100%"><p class="caption">
+Figure 2.9: Executing Lines 2 and 3
+</p>
+</div>
+<p>We don’t actually have to hit “Do” to execute the entries of a dofile. Stata does have built-in shortcuts that you can use. A shortcut is a set of keys that you can press in order to perform the same operation as pressing a button. For example, in a Mac, if you press “Cmd + Shift + D” when highlighting sections of code, the highlighted sections will be executed. On a PC, the shortcut is “Ctrl + D.”</p>
+<p>Lastly, the key aspect of do-file is that you can save your progress. For example, if you do a homework assignment in multiple sittings, you better have a way to start where you left off! To save a do-file press the “Save” button in the top left corner of the page, as seen in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile5">2.10</a></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dofile5"></span>
+<img src="images/02_dofile5.png" alt="Saving A Do-File" width="100%"><p class="caption">
+Figure 2.10: Saving A Do-File
+</p>
+</div>
+<p>You should save the do-file somewhere convenient on your computer, so that you can quickly find it next time you need it.</p>
+</div>
+<div id="the-working-directory" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> The Working Directory<a class="anchor" aria-label="anchor" href="#the-working-directory"><i class="fas fa-link"></i></a>
+</h2>
+<p>Next we are going to discuss the working directory. To understand the working directory, you first need to understand that every file and folder on your computer has an “address” associated with it. Most of us are used to navigating through either Finder in Mac or through File Explorer in a PC to open a file we need.</p>
+<p>But this is not the only way to open files. And in fact, originally, there was no convenient user interface in computers to access files in this way. Instead, you needed to direct your computer to the location of the file by typing in the files’ “address.” The “address” of a file or folder is know as the path name. It is a string of text that tells your computer where the file or folder is located.</p>
+<p>The <strong>working directory</strong> is the default path in Stata. This is where Stata looks for files by default. For example, imagine I have a dataset named, “interesting_data.dta” and I want to load it into Stata. The command to load data in Stata is the <code>use</code> command. Therefore, I might want to type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> interesting_data.dta, <span class="kw">clear</span></span></code></pre></div>
+<p>The <code>, clear</code> tells Stata to clear out any data that is currently loaded into memory. Where will Stata look for the file “interesting_data.dta?” In the working directory!</p>
+<p>Therefore, before you start loading in data, you need to learn what your working directory is currently set to. To check this in Stata, we use the <code>pwd</code> command, which is short for “print working directory.” To check your working directory in Stata, just type <code>pwd</code> into the command window. When I typed this into my command window, this is the path name that came out:</p>
+<p>This will not be a convenient folder for our working directory. We want the working directory to be set to the place where we put the data after downloading it. For me, this folder is “/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data.”</p>
+<p>For this course, I would suggest creating a folder dedicated to this course. For me, this Folder is on my Dropbox and located within the “Teaching” folder. I named my folder for this course “EP5,” but you can name yours whatever you like.</p>
+<p>Additionally, given the large number of datasets we will be using, it will be convenient to separate them somehow. I have divided the course into weeks. Given this application corresponds to the second week, I have named the folder “02_week.” Lastly, inside this folder I want to quickly understand where my data is, therefore, I have a dedicated data folder that holds all the datasets we will explore this week.</p>
+<p>The structure described above is displayed below in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:hierarchy">2.11</a></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:hierarchy"></span>
+<img src="images/02_hierarchy.png" alt="Example Structure of a Folder Hierarchy for this Course" width="100%"><p class="caption">
+Figure 2.11: Example Structure of a Folder Hierarchy for this Course
+</p>
+</div>
+<p>One brief aside before we continue with understanding the working directory. The best time to organize the folders on your computer is now! What does this mean? It means do not place everything you download in one place. Do not have your desktop cluttered with numerous files. Create folders on your computer that neatly divide up your work. For me this means different folders for Research and Teaching. Within Teaching, I need different folders for every course I teach. Within each course, I need different folders for every week of the course. Therefore, if I need to access a dataset or set of notes for a given week of the course, I can do so quickly and easily. Doing this organization now will save you a lot of time in the future, not just in this course, but even more generally.</p>
+<p>Returning to the working directory, now that we know where the data is, we need to change our directory to the location of the data. To do this we can use the <code>cd</code> command which is short for “change directory.”</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb2-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span></code></pre></div>
+<p>This is the path for me, but it will be different depending on where you put the downloaded data for the week. One issue that commonly confuses students is that even though they can navigate to a file, they don’t actually know the full path to that file.</p>
+<p>In a PC, retrieving the full path is relatively simple. In the file explorer there will be a panel at the top that shows the different subfolders. Clicking on the arrow next to this path will convert it to the full path name. You can simply copy and paste this pathname into Stata to change your working directory.</p>
+<p>On a Mac, it is slightly more complicated. If you right click a folder and then press the “option” key, there will be an option to “copy as pathname.” Pressing this option will copy the path name for you (i.e. you can press Cmd+v to paste it, or right click and then select paste.)</p>
+</div>
+<div id="use-describe-and-browse" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Use, Describe, and Browse<a class="anchor" aria-label="anchor" href="#use-describe-and-browse"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section we are going to learn a few basics of loading data into Stata. To get started, let’s load in the main data for this chapter, which contains data from Opportunity Insights that will allow us how colleges vary in the extent that they promote intergenerational mobility. To load in the data type:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
+<span id="cb3-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> college_mobility.dta, <span class="kw">clear</span></span></code></pre></div>
+<p>Again, the first part of this code (the part following “cd”) will look different for you depending on the path to data in your computer. Now the data has been loaded into memory, but don’t yet understand what is actually in the data. The first command that can be used to start exploring the data is the <code>describe</code> command. The <code>describe</code> command allows us to quickly review the variables in a dataset.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
+<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:describe">2.12</a> displays the results of this command, which is a table of variables, as well as the format of the variable and the label associated with the variable.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:describe"></span>
+<img src="images/02_describe_ex.png" alt="Describe Command" width="100%"><p class="caption">
+Figure 2.12: Describe Command
+</p>
+</div>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+</h2>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-deming2013profit" class="csl-entry">
+Deming, David, Claudia Goldin, and Lawrence Katz. <span>“For-Profit Colleges.”</span> <em>The Future of Children</em>, 2013, 137–63.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+  
+
+  
+
+</div>
+<div class="chapter-nav">
+<div class="prev"><a href="financial-incentives-and-student-performance-excel.html"><span class="header-section-number">1</span> Financial Incentives and Student Performance (Excel)</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intergenerational-mobility-and-higher-education-stata"><span class="header-section-number">2</span> Intergenerational Mobility and Higher Education (Stata)</a></li>
+<li><a class="nav-link" href="#opportunity-insights"><span class="header-section-number">2.1</span> Opportunity Insights</a></li>
+<li><a class="nav-link" href="#quantiles"><span class="header-section-number">2.2</span> Quantiles</a></li>
+<li><a class="nav-link" href="#intergenerational-mobility-definition"><span class="header-section-number">2.3</span> Intergenerational Mobility Definition</a></li>
+<li><a class="nav-link" href="#the-stata-gui"><span class="header-section-number">2.4</span> The Stata GUI</a></li>
+<li><a class="nav-link" href="#do-files"><span class="header-section-number">2.5</span> Do-files</a></li>
+<li><a class="nav-link" href="#the-working-directory"><span class="header-section-number">2.6</span> The Working Directory</a></li>
+<li><a class="nav-link" href="#use-describe-and-browse"><span class="header-section-number">2.7</span> Use, Describe, and Browse</a></li>
+<li><a class="nav-link" href="#references">References</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/02-week2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/02-week2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2022-02-03.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</div>
+</body>
+</html>
