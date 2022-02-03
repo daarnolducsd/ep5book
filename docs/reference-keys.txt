@@ -49,6 +49,8 @@ fig:advpivot5
 fig:advpivot7
 fig:oi
 fig:gui
+fig:main
+fig:helpdisplay
 fig:helloerror
 fig:maincopy
 fig:dofileicon

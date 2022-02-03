@@ -196,7 +196,7 @@ Figure \@ref(fig:dofileicon) shows a larger version of the do-file icon.
 <p class="caption">(\#fig:dofileicon)Do-File Icon</p>
 </div>
 
-To open a new do-file we can simply click the icon. When you do, you will see a blank file. This is where we are going to type code into (see Figure \@ref(fig:blankdofile)).
+To open a new do-file we can simply click the icon. When you do, you will see a blank file. This is where we are going to type code into (see Figure \@ref(fig:dofile1)).
 
 <div class="figure" style="text-align: center">
 <img src="images/02_dofile1.png" alt="Blank Do-File" width="100%" />

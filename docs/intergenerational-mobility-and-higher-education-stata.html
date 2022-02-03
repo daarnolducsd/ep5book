@@ -136,13 +136,55 @@ Figure 2.1: New York Times Graphic on Opportunity Insights
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:gui"></span>
 <img src="images/02_main%20copy.png" alt="Stata Graphical User Interface" width="100%"><p class="caption">
+Figure 2.2: Stata Graphical User Interface
 </p>
-<p>Figure 2.2: Stata Gra
+</div>
+<p>There are 4 main panels here. Let’s start in the bottom left: the Command window. This is where you can type code. When you press enter, the code will executed. When we learn how to. When we learn how to use Stata as a calculator, this is where we will type the code</p>
+<p>When we execute code, any resulting output will be displayed in the Results window. When we learn how to use Stata as a calculator, this is where the results will be displayed.</p>
+<p>When we load data, the name of the variables in the dataset will appear in the first column. Many times, datasets come with labels, that give us more description about the variable. For example, in the figure below there is one variable named <code>income</code> with the label <code>Total Annual Income</code>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:main"></span>
+<img src="images/02_example_income.png" alt="Variables Window Example" width="75%"><p class="caption">
+Figure 2.3: Variables Window Example
 </p>
+</div>
+<p>The Properties window gives us more information about the variables and data loaded in memory. For example, in addition to the name and label of a variable, the type (i.e. numeric or string) and format of the variable (i.e. how the variable will be displayed). Additionally there is information about the size of the data (number of variables, observations, etc.)</p>
+<p>Now that we have learned about the various windows, we are going to execute our first line of code. In particular, we are going to use Stata as a calculater by typing <code>display</code> followed by a mathematical expression.</p>
+<p>For example, to compute <code>2+2</code> type</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> 2+2</span>
+<span id="cb1-3"><a href="intergenerational-mobility-and-higher-education-stata.html#cb1-3" aria-hidden="true" tabindex="-1"></a>4</span></code></pre></div>
+<p>The result will be visible in the Results window. <code>display</code> is called a command in Stata. Stata comes with many commands that will be useful to explore and analyze our data. Whenever you learn a new command in Stata it is helpful to look at the help file that comes along with this file. To access the help file for the display command type <code>help display</code> into the command window. This will open up a file that has instructions on how to use the given command</p>
+<p>The first thing you will generally see in any help file is the syntax of the command. Syntax refers to the format of the code. It is similar to the “grammar” of the software language. If you use incorrect grammar in language, you may not be expressing the right meaning. Similarly, if you use the wrong syntax in software language, you may not get the correct output, and more than likely, an error will be reported</p>
+<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:helpdisplay">2.4</a> shows the Syntax from the help file for the display command.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:helpdisplay"></span>
+<img src="images/02_display_help_file.png" alt="Variables Window Example" width="100%"><p class="caption">
+Figure 2.4: Variables Window Example
+</p>
+</div>
+<p>The fact that <code>di</code> is underlined means to use the display command you only need to type <code>di</code> as a shortcut. Many commands in Stata have shortcuts associated with them. To figure out those shortcuts, you just need to open the help file. We will fill in the <code>[display_directive]</code> in a couple of ways</p>
+<p>We can use Stata to perform calculations just like you would in a calculator. For example, for subtraction, type:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 6-4</span>
+<span id="cb2-3"><a href="intergenerational-mobility-and-higher-education-stata.html#cb2-3" aria-hidden="true" tabindex="-1"></a>2</span></code></pre></div>
+<p>For multiplication type:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 2*4</span>
+<span id="cb3-3"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-3" aria-hidden="true" tabindex="-1"></a>8</span></code></pre></div>
+<p>For division type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 12/2</span>
+<span id="cb4-3"><a href="intergenerational-mobility-and-higher-education-stata.html#cb4-3" aria-hidden="true" tabindex="-1"></a>6</span></code></pre></div>
+<p>We can also use <code>display</code> to print text. This can be very helpful when writing programs. For example, if something goes wrong in a program, you, might want to display an error code. To display the words in Stata, you just need to put the words you would like to display in quotation marks. For example, to display “Hello World” type:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="st">"Hello World"</span></span>
+<span id="cb5-3"><a href="intergenerational-mobility-and-higher-education-stata.html#cb5-3" aria-hidden="true" tabindex="-1"></a>Hello World</span></code></pre></div>
+<p>Words are referred to as strings in Stata (later we will have string variables and numeric variables). When you reference a string, need to put in quotation marks. For example, if we were to type <code>display Hello World</code> into Stata, we would get the error depicted in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:helloerror">2.5</a> If you forget you will get an error, as is displayed below:</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:helloerror"></span>
 <img src="images/02_hello_error.png" alt="Forgetting Quotation Marks When Referencing Strings" width="50%"><p class="caption">
-Figure 2.3: Forgetting Quotation Marks When Referencing Strings
+Figure 2.5: Forgetting Quotation Marks When Referencing Strings
 </p>
 </div>
 <p><code>Hello</code> was not found because Stata looked for a command or variable named <code>Hello</code>, but could not find one, and therefore reported an error. The command did not realize it was just meant to display text, because the text was not in quotation marks.</p>
@@ -155,55 +197,55 @@ Figure 2.3: Forgetting Quotation Marks When Referencing Strings
 <p>To understand the importance of a do-file, let’s imagine you have a project that has a large number of steps. Maybe you need to clean the data (usually a necessity) and then run a large number of results. A single project could end up being thousands of lines of code. What would it entail to complete this project if you were to use the command line?</p>
 <p>You would need to type in the lines of code one at a time. But what if you make a mistake at the beginning of your project. For example, you accidently deleted some observations relevant to your analysis. This is a disaster! You now need to remember what you did, type all of the code again, and then execute it.</p>
 <p>A better way to approach any project is to use a do-file. A do-file allows you to run multiple lines of code sequentially. You can save your progress periodically, just as you save your progress when writing a report in Word. Then, if you realize you made a mistake early in the project, you can just alter that one line of code and then re-run the entire project.</p>
-<p>To begin, we need to learn how to open a do-file. At the top of the GUI there is an icon that looks like a piece of paper and pencil above it (see Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:maincopy">2.4</a>).</p>
+<p>To begin, we need to learn how to open a do-file. At the top of the GUI there is an icon that looks like a piece of paper and pencil above it (see Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:maincopy">2.6</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:maincopy"></span>
 <img src="images/02_main%20copy.png" alt="Opening a New Do-File in Stata" width="100%"><p class="caption">
-Figure 2.4: Opening a New Do-File in Stata
+Figure 2.6: Opening a New Do-File in Stata
 </p>
 </div>
-<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofileicon">2.5</a> shows a larger version of the do-file icon.</p>
+<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofileicon">2.7</a> shows a larger version of the do-file icon.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:dofileicon"></span>
 <img src="images/02_icon.png" alt="Do-File Icon" width="100%"><p class="caption">
-Figure 2.5: Do-File Icon
+Figure 2.7: Do-File Icon
 </p>
 </div>
-<p>To open a new do-file we can simply click the icon. When you do, you will see a blank file. This is where we are going to type code into (see Figure <a href="#fig:blankdofile"><strong>??</strong></a>).</p>
+<p>To open a new do-file we can simply click the icon. When you do, you will see a blank file. This is where we are going to type code into (see Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile1">2.8</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:dofile1"></span>
 <img src="images/02_dofile1.png" alt="Blank Do-File" width="100%"><p class="caption">
-Figure 2.6: Blank Do-File
+Figure 2.8: Blank Do-File
 </p>
 </div>
-<p>For example, if we want Stata to compute the sum of 2+2, we would type <code>display 2+2</code> into the dofile, as seen in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile2">2.7</a>.</p>
+<p>For example, if we want Stata to compute the sum of 2+2, we would type <code>display 2+2</code> into the dofile, as seen in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile2">2.9</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:dofile2"></span>
 <img src="images/02_dofile2.png" alt="Display 2+2 in a Do-File" width="100%"><p class="caption">
-Figure 2.7: Display 2+2 in a Do-File
+Figure 2.9: Display 2+2 in a Do-File
 </p>
 </div>
 <p>So now that we have our code written, how do we execute it? There are actually a couple of different ways. The first is pressing the “Do” button, which is the icon on the top right of the do-file that looks like a piece of paper with an arrow.</p>
 <p>If you press this button without highlighting any text, it will execute every single line of code in the file in the sequence they appear. Depending on your goal, you may want to only run select portions of your code. For example, we often need to “debug” our code, and it is more efficient to run a few lines at a time. In this case, we can highlight the lines we would like to be executed, and when we press “Do,” only the highlighted lines of code will be executed.</p>
-<p>For example, in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile7">2.8</a>, hitting “Do” will execute the first two lines of code. In Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile8">2.9</a>, hitting “Do” will execute the second and third line of code.</p>
+<p>For example, in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile7">2.10</a>, hitting “Do” will execute the first two lines of code. In Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile8">2.11</a>, hitting “Do” will execute the second and third line of code.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:dofile7"></span>
 <img src="images/02_dofile7.png" alt="Executing Lines 1 and 2" width="100%"><p class="caption">
-Figure 2.8: Executing Lines 1 and 2
+Figure 2.10: Executing Lines 1 and 2
 </p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:dofile8"></span>
 <img src="images/02_dofile8.png" alt="Executing Lines 2 and 3" width="100%"><p class="caption">
-Figure 2.9: Executing Lines 2 and 3
+Figure 2.11: Executing Lines 2 and 3
 </p>
 </div>
 <p>We don’t actually have to hit “Do” to execute the entries of a dofile. Stata does have built-in shortcuts that you can use. A shortcut is a set of keys that you can press in order to perform the same operation as pressing a button. For example, in a Mac, if you press “Cmd + Shift + D” when highlighting sections of code, the highlighted sections will be executed. On a PC, the shortcut is “Ctrl + D.”</p>
-<p>Lastly, the key aspect of do-file is that you can save your progress. For example, if you do a homework assignment in multiple sittings, you better have a way to start where you left off! To save a do-file press the “Save” button in the top left corner of the page, as seen in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile5">2.10</a></p>
+<p>Lastly, the key aspect of do-file is that you can save your progress. For example, if you do a homework assignment in multiple sittings, you better have a way to start where you left off! To save a do-file press the “Save” button in the top left corner of the page, as seen in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:dofile5">2.12</a></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:dofile5"></span>
 <img src="images/02_dofile5.png" alt="Saving A Do-File" width="100%"><p class="caption">
-Figure 2.10: Saving A Do-File
+Figure 2.12: Saving A Do-File
 </p>
 </div>
 <p>You should save the do-file somewhere convenient on your computer, so that you can quickly find it next time you need it.</p>
@@ -215,22 +257,22 @@ Figure 2.10: Saving A Do-File
 <p>Next we are going to discuss the working directory. To understand the working directory, you first need to understand that every file and folder on your computer has an “address” associated with it. Most of us are used to navigating through either Finder in Mac or through File Explorer in a PC to open a file we need.</p>
 <p>But this is not the only way to open files. And in fact, originally, there was no convenient user interface in computers to access files in this way. Instead, you needed to direct your computer to the location of the file by typing in the files’ “address.” The “address” of a file or folder is know as the path name. It is a string of text that tells your computer where the file or folder is located.</p>
 <p>The <strong>working directory</strong> is the default path in Stata. This is where Stata looks for files by default. For example, imagine I have a dataset named, “interesting_data.dta” and I want to load it into Stata. The command to load data in Stata is the <code>use</code> command. Therefore, I might want to type:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> interesting_data.dta, <span class="kw">clear</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> interesting_data.dta, <span class="kw">clear</span></span></code></pre></div>
 <p>The <code>, clear</code> tells Stata to clear out any data that is currently loaded into memory. Where will Stata look for the file “interesting_data.dta?” In the working directory!</p>
 <p>Therefore, before you start loading in data, you need to learn what your working directory is currently set to. To check this in Stata, we use the <code>pwd</code> command, which is short for “print working directory.” To check your working directory in Stata, just type <code>pwd</code> into the command window. When I typed this into my command window, this is the path name that came out:</p>
 <p>This will not be a convenient folder for our working directory. We want the working directory to be set to the place where we put the data after downloading it. For me, this folder is “/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data.”</p>
 <p>For this course, I would suggest creating a folder dedicated to this course. For me, this Folder is on my Dropbox and located within the “Teaching” folder. I named my folder for this course “EP5,” but you can name yours whatever you like.</p>
 <p>Additionally, given the large number of datasets we will be using, it will be convenient to separate them somehow. I have divided the course into weeks. Given this application corresponds to the second week, I have named the folder “02_week.” Lastly, inside this folder I want to quickly understand where my data is, therefore, I have a dedicated data folder that holds all the datasets we will explore this week.</p>
-<p>The structure described above is displayed below in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:hierarchy">2.11</a></p>
+<p>The structure described above is displayed below in Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:hierarchy">2.13</a></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:hierarchy"></span>
 <img src="images/02_hierarchy.png" alt="Example Structure of a Folder Hierarchy for this Course" width="100%"><p class="caption">
-Figure 2.11: Example Structure of a Folder Hierarchy for this Course
+Figure 2.13: Example Structure of a Folder Hierarchy for this Course
 </p>
 </div>
 <p>One brief aside before we continue with understanding the working directory. The best time to organize the folders on your computer is now! What does this mean? It means do not place everything you download in one place. Do not have your desktop cluttered with numerous files. Create folders on your computer that neatly divide up your work. For me this means different folders for Research and Teaching. Within Teaching, I need different folders for every course I teach. Within each course, I need different folders for every week of the course. Therefore, if I need to access a dataset or set of notes for a given week of the course, I can do so quickly and easily. Doing this organization now will save you a lot of time in the future, not just in this course, but even more generally.</p>
 <p>Returning to the working directory, now that we know where the data is, we need to change our directory to the location of the data. To do this we can use the <code>cd</code> command which is short for “change directory.”</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb2-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb7-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span></code></pre></div>
 <p>This is the path for me, but it will be different depending on where you put the downloaded data for the week. One issue that commonly confuses students is that even though they can navigate to a file, they don’t actually know the full path to that file.</p>
 <p>In a PC, retrieving the full path is relatively simple. In the file explorer there will be a panel at the top that shows the different subfolders. Clicking on the arrow next to this path will convert it to the full path name. You can simply copy and paste this pathname into Stata to change your working directory.</p>
 <p>On a Mac, it is slightly more complicated. If you right click a folder and then press the “option” key, there will be an option to “copy as pathname.” Pressing this option will copy the path name for you (i.e. you can press Cmd+v to paste it, or right click and then select paste.)</p>
@@ -240,15 +282,15 @@ Figure 2.11: Example Structure of a Folder Hierarchy for this Course
 <span class="header-section-number">2.7</span> Use, Describe, and Browse<a class="anchor" aria-label="anchor" href="#use-describe-and-browse"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this section we are going to learn a few basics of loading data into Stata. To get started, let’s load in the main data for this chapter, which contains data from Opportunity Insights that will allow us how colleges vary in the extent that they promote intergenerational mobility. To load in the data type:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
-<span id="cb3-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> college_mobility.dta, <span class="kw">clear</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb8-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
+<span id="cb8-2"><a href="intergenerational-mobility-and-higher-education-stata.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> college_mobility.dta, <span class="kw">clear</span></span></code></pre></div>
 <p>Again, the first part of this code (the part following “cd”) will look different for you depending on the path to data in your computer. Now the data has been loaded into memory, but don’t yet understand what is actually in the data. The first command that can be used to start exploring the data is the <code>describe</code> command. The <code>describe</code> command allows us to quickly review the variables in a dataset.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
-<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:describe">2.12</a> displays the results of this command, which is a table of variables, as well as the format of the variable and the label associated with the variable.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="intergenerational-mobility-and-higher-education-stata.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
+<p>Figure <a href="intergenerational-mobility-and-higher-education-stata.html#fig:describe">2.14</a> displays the results of this command, which is a table of variables, as well as the format of the variable and the label associated with the variable.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:describe"></span>
 <img src="images/02_describe_ex.png" alt="Describe Command" width="100%"><p class="caption">
-Figure 2.12: Describe Command
+Figure 2.14: Describe Command
 </p>
 </div>
 </div>
@@ -270,12 +312,7 @@ Deming, David, Claudia Goldin, and Lawrence Katz. <span>“For-Profit Colleges.�
 
 
 
-  
-
-  
-
-</div>
-<div class="chapter-nav">
+  <div class="chapter-nav">
 <div class="prev"><a href="financial-incentives-and-student-performance-excel.html"><span class="header-section-number">1</span> Financial Incentives and Student Performance (Excel)</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
@@ -299,6 +336,8 @@ Deming, David, Claudia Goldin, and Lawrence Katz. <span>“For-Profit Colleges.�
         </ul>
 </div>
     </nav>
+</div>
+
 </div>
 </div> <!-- .container -->
 
@@ -342,6 +381,5 @@ for (let popover of popovers) {
   }
 }
 </script>
-</div>
 </body>
 </html>
