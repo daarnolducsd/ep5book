@@ -1,0 +1,22 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx1872\clbrdrt\brdrs\cellx3312\clbrdrt\brdrs\cellx4896
+\ql \cell\qc (1)\cell\qc (2)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1872\cellx3312\cellx4896
+\ql \cell\qc reg_math\cell\qc reg_hindi\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1872\cellx3312\cellx4896
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx1872\clbrdrb\brdrs\cellx3312\clbrdrb\brdrs\cellx4896
+\ql VARIABLES\cell\qc per_math2\cell\qc per_hindi2\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1872\cellx3312\cellx4896
+\ql \cell\qc \cell\qc \cell\row
+\ql treat\cell\qc 0.0777***\cell\qc 0.0652***\cell\row
+\ql \cell\qc (0.0145)\cell\qc (0.0162)\cell\row
+\ql Constant\cell\qc 0.465***\cell\qc 0.520***\cell\row
+\ql \cell\qc (0.0102)\cell\qc (0.0114)\cell\row
+\ql \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 539\cell\qc 539\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx1872\clbrdrb\brdrs\cellx3312\clbrdrb\brdrs\cellx4896
+\ql R-squared\cell\qc 0.051\cell\qc 0.029\cell\row
+\pard\qc
+Standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

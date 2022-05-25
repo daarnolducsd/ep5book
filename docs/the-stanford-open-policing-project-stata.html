@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 The Stanford Open Policing Project (Stata) | Econ5/Poli5D</title>
+<meta name="author" content="David Arnold">
+<meta name="description" content="3.1 SOPP Intro The most common way civilians interact with police are through traffic stops (there are about 50,000 a day). Given the frequency of encounters, detecting and eliminating racial...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 3 The Stanford Open Policing Project (Stata) | Econ5/Poli5D">
+<meta property="og:type" content="book">
+<meta property="og:description" content="3.1 SOPP Intro The most common way civilians interact with police are through traffic stops (there are about 50,000 a day). Given the frequency of encounters, detecting and eliminating racial...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 The Stanford Open Policing Project (Stata) | Econ5/Poli5D">
+<meta name="twitter:description" content="3.1 SOPP Intro The most common way civilians interact with police are through traffic stops (there are about 50,000 a day). Given the frequency of encounters, detecting and eliminating racial...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Econ5/Poli5D</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li class="book-part">Excel</li>
+<li><a class="" href="financial-incentives-and-student-performance-excel.html"><span class="header-section-number">1</span> Financial Incentives and Student Performance (Excel)</a></li>
+<li class="book-part">Stata</li>
+<li><a class="" href="intergenerational-mobility-and-higher-education.html"><span class="header-section-number">2</span> Intergenerational Mobility and Higher Education</a></li>
+<li><a class="active" href="the-stanford-open-policing-project-stata.html"><span class="header-section-number">3</span> The Stanford Open Policing Project (Stata)</a></li>
+<li><a class="" href="references-1.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="the-stanford-open-policing-project-stata" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> The Stanford Open Policing Project (Stata)<a class="anchor" aria-label="anchor" href="#the-stanford-open-policing-project-stata"><i class="fas fa-link"></i></a>
+</h1>
+<div id="sopp-intro" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> SOPP Intro<a class="anchor" aria-label="anchor" href="#sopp-intro"><i class="fas fa-link"></i></a>
+</h2>
+<p>The most common way civilians interact with police are through traffic stops (there are about 50,000 a day). Given the frequency of encounters, detecting and eliminating racial discrimination in police behavior is an important policy goal. However, it can be difficult to detect without data. In this chapter, we will work with data from the Stanford Open Policing Project (SOPP). The SOPP is aggregating data on police stops across states and cities so that researchers, journalists and policymakers can improve interactions between police and the public. The data so far has information on about 200 million stops.</p>
+<p>This is some big data. Figure <a href="the-stanford-open-policing-project-stata.html#fig:soppsnap">3.1</a> shows a subset of all the cities in that data has been collected for.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:soppsnap"></span>
+<img src="images/03_data.png" alt="The Stanford Open Policing Project Data" width="75%"><p class="caption">
+Figure 3.1: The Stanford Open Policing Project Data
+</p>
+</div>
+<p>The data and research is starting to get notice by many news outlets, including CNN, the Economist, the Huffington Post, NBC News and the Daily Show (see Figure <a href="the-stanford-open-policing-project-stata.html#fig:dailyshow">3.2</a>)</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:dailyshow"></span>
+<img src="images/03_daily_show.png" alt="Trevor Noah Discussing Results from The Stanford Open Policing Project Data" width="90%"><p class="caption">
+Figure 3.2: Trevor Noah Discussing Results from The Stanford Open Policing Project Data
+</p>
+</div>
+<p>There are many different “decisions” that officers make that could be driven by discrimination</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>The decision to stop a vehicle or not</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Conditional on stop, whether to issue a citation or not</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Conditional on stop, whether to search the car or not</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Conditional on stop, whether to arrest the individual or not</li>
+</ol></li>
+</ul>
+<p>This data allows researchers to study all these potential margins for discrimination. Given the huge amount of data and the many margins that we could study, it will be helpful to narrow our focus. We will be studying <strong>disparities in traffic stop rates</strong> by the <strong>race</strong> of the motorists. Other possibilities would be to explore disparities in later stages of the traffic stops (citation/search/arrest) or other characteristics of the motorist (gender/age). Because the data is massive, we will focus on San Diego.</p>
+</div>
+<div id="sopp-data" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> SOPP Data<a class="anchor" aria-label="anchor" href="#sopp-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that we have narrowed our focus, let’s start exploring the data for San Diego, as always we will need to set our working directory to where the data is located and then use the <code>use</code> command to load the data.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="the-stanford-open-policing-project-stata.html#cb38-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"</span></span>
+<span id="cb38-2"><a href="the-stanford-open-policing-project-stata.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> san_diego_stops.dta, <span class="kw">replace</span> </span></code></pre></div>
+<p>To begin, let’s use <code>describe</code> to figure out what variables we have in this dataset</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="the-stanford-open-policing-project-stata.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sandiegostops"></span>
+<img src="images/03_describe.png" alt="San Diego Stops Data from Stanford Open Policing Project Data" width="90%"><p class="caption">
+Figure 3.3: San Diego Stops Data from Stanford Open Policing Project Data
+</p>
+</div>
+<p>Each observation in the dataset is a stop made by an officer somewhere in San Diego. <code>stop_time</code> contains the time of the stop. Remember this variable, we will return to it later. Our goal is to understand if there is discrimination in who is stopped. Therefore, we will be frequently using the <code>subject_race</code> variable in our dataset.</p>
+<p>Subject race is a <strong>categorical variable</strong>. Whenever you have a categorical variable as your variable of interest, it is helpful to understand the frequency of each category. For example, what fraction of stops are for Black drivers, White Drivers, Hispanic Drivers, etc. To do this in Stata, we will use the <code>tab</code> command.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a href="the-stanford-open-policing-project-stata.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> subject_race</span>
+<span id="cb40-2"><a href="the-stanford-open-policing-project-stata.html#cb40-2" aria-hidden="true" tabindex="-1"></a>          subject_race |      Freq.     Percent        Cum.</span>
+<span id="cb40-3"><a href="the-stanford-open-policing-project-stata.html#cb40-3" aria-hidden="true" tabindex="-1"></a>-----------------------+-----------------------------------</span>
+<span id="cb40-4"><a href="the-stanford-open-policing-project-stata.html#cb40-4" aria-hidden="true" tabindex="-1"></a>Asian/Pacific Islander |     32,482        8.52        8.52</span>
+<span id="cb40-5"><a href="the-stanford-open-policing-project-stata.html#cb40-5" aria-hidden="true" tabindex="-1"></a>                 Black |     42,631       11.18       19.71</span>
+<span id="cb40-6"><a href="the-stanford-open-policing-project-stata.html#cb40-6" aria-hidden="true" tabindex="-1"></a>              Hispanic |    116,912       30.67       50.38</span>
+<span id="cb40-7"><a href="the-stanford-open-policing-project-stata.html#cb40-7" aria-hidden="true" tabindex="-1"></a>                 Other |     27,170        7.13       57.51</span>
+<span id="cb40-8"><a href="the-stanford-open-policing-project-stata.html#cb40-8" aria-hidden="true" tabindex="-1"></a>                 White |    161,954       42.49      100.00</span>
+<span id="cb40-9"><a href="the-stanford-open-policing-project-stata.html#cb40-9" aria-hidden="true" tabindex="-1"></a>-----------------------+-----------------------------------</span>
+<span id="cb40-10"><a href="the-stanford-open-policing-project-stata.html#cb40-10" aria-hidden="true" tabindex="-1"></a>                 Total |    381,149      100.00</span></code></pre></div>
+<p>This gives us the fraction of stops for different races in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented </p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:population"></span>
+<img src="images/03_population.png" alt="Racial Composition of Traffic Stops and Population" width="60%"><p class="caption">
+Figure 3.4: Racial Composition of Traffic Stops and Population
+</p>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="intergenerational-mobility-and-higher-education.html"><span class="header-section-number">2</span> Intergenerational Mobility and Higher Education</a></div>
+<div class="next"><a href="references-1.html">References</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-stanford-open-policing-project-stata"><span class="header-section-number">3</span> The Stanford Open Policing Project (Stata)</a></li>
+<li><a class="nav-link" href="#sopp-intro"><span class="header-section-number">3.1</span> SOPP Intro</a></li>
+<li><a class="nav-link" href="#sopp-data"><span class="header-section-number">3.2</span> SOPP Data</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/03-week3.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/03-week3.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2022-03-15.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

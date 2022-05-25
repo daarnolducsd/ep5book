@@ -1,0 +1,16 @@
+{\rtf1\fs24
+\pard\qc
+Table 1: Summary Statistics\par
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx1440\clbrdrt\brdrs\cellx2016\clbrdrt\brdrs\cellx3456
+\ql \cell\qc (1)\cell\qc (2)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1440\cellx2016\cellx3456
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx1440\clbrdrb\brdrs\cellx2016\clbrdrb\brdrs\cellx3456
+\ql VARIABLES\cell\qc N\cell\qc mean\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1440\cellx2016\cellx3456
+\ql \cell\qc \cell\qc \cell\row
+\ql Age\cell\qc 461\cell\qc 12.54\cell\row
+\ql Female\cell\qc 619\cell\qc 0.759\cell\row
+\ql SES index\cell\qc 619\cell\qc -7.49e-09\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx1440\clbrdrb\brdrs\cellx2016\clbrdrb\brdrs\cellx3456
+\ql \cell\qc \cell\qc \cell\row
+}

@@ -1,9 +1,10 @@
-h1:intergenerational-mobility-and-higher-education-stata Intergenerational Mobility and Higher Education (Stata)
+h1:part-stata (PART) Stata
+h1:intergenerational-mobility-and-higher-education Intergenerational Mobility and Higher Education
 h2:opportunity-insights Opportunity Insights
 fig:oi New York Times Graphic on Opportunity Insights
 h2:quantiles Quantiles
-h2:intergenerational-mobility-definition Intergenerational Mobility Definition
-h2:the-stata-gui The Stata GUI
+h2:mobility-definition Mobility Definition
+h2:stata-gui Stata GUI
 fig:gui Stata Graphical User Interface
 fig:main Variables Window Example
 fig:helpdisplay Variables Window Example
@@ -16,9 +17,41 @@ fig:dofile2 Display 2+2 in a Do-File
 fig:dofile7 Executing Lines 1 and 2
 fig:dofile8 Executing Lines 2 and 3
 fig:dofile5 Saving A Do-File
-h2:the-working-directory The Working Directory
+h2:working-directory Working Directory
 fig:hierarchy Example Structure of a Folder Hierarchy for this Course
-h2:use-describe-and-browse Use, Describe, and Browse
+h2:describe-and-browse Describe and Browse
 fig:describe Describe Command
+fig:browseex Browse Command
+h2:summarize Summarize
+h2:generate Generate
+h2:binary-variables Binary Variables
+fig:brca Generating A Binary Indicator for California Colleges
+fig:forgotdoubleequals Forgetting Double Equals  When Testing Equality
+fig:forgotquotes Forgetting Quotation Marks When Referencing Strings
+h2:if-statements If Statements
+fig:sumhelp Help File for the Summarize Command
+h2:histogram-theoretical Histogram (Theoretical)
+fig:histtestscore Histogram of Test Scores
+fig:histmovies Histogram of Rotten Tomatoes Scores for Movies Released in 2015
+fig:athleteages Histogram of Olympic Athlete Ages
+fig:Chipotle Histogram of Calories of Chipotle Meals
+h2:histogram-data Histogram (Data)
+fig:mobilityhist1 Histogram of College Mobility Rates
+fig:mobilityhist2 Histogram of College Mobility Rates (Changing the Vertical Axis)
+fig:mobilityhist6 Histogram of College Mobility Rates (Changing the Number of Bins)
+fig:mobilityhist7 Histogram of College Mobility Rates (Changing the Width of the Bins)
+h2:histogram-aesthetics Histogram (Aesthetics)
+fig:histae2 Histogram of College Mobility Rates (Changing the Color of the Bars)
+fig:histae3 Histogram of College Mobility Rates (Adding a Title)
+fig:histae4 Histogram of College Mobility Rates (Changing Axis Labels)
+fig:histae5 Histogram of College Mobility Rates (Changing Background)
+fig:histae7 Histogram of College Mobility Rates (Adding Vertical Line with Text)
+h2:conclusion Conclusion
+fig:avss Access vs. Success Across Colleges
+fig:ucsdaccess Trends in Access at UCSD
+fig:ucsdsess Trends in Success at UCSD by Quintile
+fig:topmobility Schools with the Highest Mobility Rates
+fig:trendstopmobility Trends in Schools with the Highest Mobility Rates
+h2:command-descriptions Command Descriptions
 h2:references References
 

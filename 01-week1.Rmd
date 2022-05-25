@@ -1,10 +1,22 @@
-# Financial Incentives and Student Performance (Excel)
+# (PART) Excel {-}
 
-## Introduction to Experiments
+# Financial Incentives and Student Performance
+
+## Experiments
+
+<html>
+<head>
+<style>
+code {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
 
 Did you know that countries with higher consumption of chocolate per capita tend to win more Nobel prizes? 
 
-```{r, chocolate, echo=FALSE, out.width="75%", fig.cap="Chocolate Consumption and Nobel Prizes",fig.align='center'}
+```{r, chocolate, echo=FALSE, out.width="65%", fig.cap="Chocolate Consumption and Nobel Prizes",fig.align='center'}
 knitr::include_graphics("images/01_chocolate.png")
 ```
 
@@ -36,7 +48,7 @@ Brownback and Sadoff (2020) run the following experiment at a community college 
   
 The key in their design is that the instructors that are chosen to receive the incentives are randomly selected. Therefore, they are not, on average, better teachers than instructors in the control group. Therefore, if we observe any difference in student performance between the treatment and control, then it must be due to the financial incentives for instructors. 
 
-## Data from Brownback and Sadoff (2020)
+## Community College Data
 
 In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (See [replication crisis](https://en.wikipedia.org/wiki/Replication_crisis#In_economics)). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class. 
 

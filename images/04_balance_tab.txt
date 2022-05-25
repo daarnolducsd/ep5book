@@ -1,0 +1,9 @@
+Table 2: Characteristics of Treatment and Control Students					
+		(1)	(2)	(3)	(4)
+		treat 0		treat 1	
+VARIABLES	LABELS	N	mean	N	mean
+					
+st_age1	Age	231	12.41	230	12.67
+st_female1	Female	305	0.757	314	0.761
+ses_index	SES index	305	0.0355	314	-0.0345
+					

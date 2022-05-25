@@ -1,0 +1,8 @@
+Table 1: Summary Statistics			
+		(1)	(2)
+VARIABLES	LABELS	N	mean
+			
+st_age1	Age	461	12.54
+st_female1	Female	619	0.759
+ses_index	SES index	619	-7.49e-09
+			

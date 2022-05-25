@@ -1,0 +1,7 @@
+	(1)	(2)
+VARIABLES	N	mean
+		
+st_age1	461	12.54
+st_female1	619	0.759
+ses_index	619	-7.49e-09
+		

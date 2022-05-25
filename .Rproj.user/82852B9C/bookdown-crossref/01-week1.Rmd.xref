@@ -1,8 +1,9 @@
-h1:financial-incentives-and-student-performance-excel Financial Incentives and Student Performance (Excel)
-h2:introduction-to-experiments Introduction to Experiments
+h1:part-excel (PART) Excel
+h1:financial-incentives-and-student-performance Financial Incentives and Student Performance
+h2:experiments Experiments
 fig:chocolate Chocolate Consumption and Nobel Prizes
 fig:spurious Example of a Spurious Correlation from tylervigen.com
-h2:data-from-brownback-and-sadoff-2020 Data from Brownback and Sadoff (2020)
+h2:community-college-data Community College Data
 fig:bsdata Data From Brownstone and Sadoff (2020)
 fig:student Unit of Observation Example 1
 fig:studentterm Unit of Observation Example 2

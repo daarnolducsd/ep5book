@@ -53,6 +53,146 @@
             "type": "article-journal"
         },
         {
+            "URL": "https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html",
+            "accessed": {
+                "date-parts": [
+                    [
+                        2022,
+                        2,
+                        17
+                    ]
+                ]
+            },
+            "author": [
+                {
+                    "family": "Quealy",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Cox",
+                    "given": "Amanda"
+                },
+                {
+                    "family": "Katz",
+                    "given": "Josh"
+                }
+            ],
+            "container-title": "New York Times: The Upshot",
+            "id": "upshot",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015,
+                        2,
+                        17
+                    ]
+                ]
+            },
+            "title": "At chipotle, how many calories do people eat",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Kalinowski",
+                    "given": "Jesse"
+                },
+                {
+                    "family": "Ross",
+                    "given": "Stephen L"
+                },
+                {
+                    "family": "Ross",
+                    "given": "Matthew B"
+                },
+                {
+                    "literal": "others"
+                }
+            ],
+            "container-title": "Human capital and economic opportunity (HCEO) working paper",
+            "id": "kalinowski2017endogenous",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "title": "Endogenous driving behavior in veil of darkness tests for racial profiling",
+            "type": "article-journal",
+            "volume": "17"
+        },
+        {
+            "author": [
+                {
+                    "family": "Grogger",
+                    "given": "Jeffrey"
+                },
+                {
+                    "family": "Ridgeway",
+                    "given": "Greg"
+                }
+            ],
+            "container-title": "Journal of the American Statistical Association",
+            "id": "grogger2006testing",
+            "issue": "475",
+            "issued": {
+                "date-parts": [
+                    [
+                        2006
+                    ]
+                ]
+            },
+            "page": "878-887",
+            "publisher": "Taylor & Francis",
+            "title": "Testing for racial profiling in traffic stops from behind a veil of darkness",
+            "type": "article-journal",
+            "volume": "101"
+        },
+        {
+            "id": "pratham2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "New Delhi: Pratham",
+            "title": "Annual status of education report 2016",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Muralidharan",
+                    "given": "Karthik"
+                },
+                {
+                    "family": "Singh",
+                    "given": "Abhijeet"
+                },
+                {
+                    "family": "Ganimian",
+                    "given": "Alejandro J"
+                }
+            ],
+            "container-title": "American Economic Review",
+            "id": "msg2019disrupting",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "1426-60",
+            "title": "Disrupting education? Experimental evidence on technology-aided instruction in india",
+            "type": "article-journal",
+            "volume": "109"
+        },
+        {
             "URL": "https://www.R-project.org/",
             "author": [
                 {

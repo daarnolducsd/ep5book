@@ -1,0 +1,14 @@
+Table 3: Impact of Being Offered Mindspark on Test Scores		
+	(1)	(2)
+	reg_math	reg_hindi
+VARIABLES	per_math2	per_hindi2
+		
+treat	0.0777***	0.0652***
+	(0.0145)	(0.0162)
+Constant	0.465***	0.520***
+	(0.0102)	(0.0114)
+		
+Observations	539	539
+R-squared	0.051	0.029
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

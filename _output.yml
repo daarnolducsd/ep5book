@@ -1,24 +1,20 @@
 bookdown::bs4_book:
-  css: bs4_style.css
-  theme: 
-    primary: "#096B72"
-    base_font: 
-      google: Sen
-    heading_font:
-      google:
-        family: Bitter
-        wght: 200
-    code_font:
-      google: 
-        # arguments to sass::font_google() 
-        family: DM Mono
-        local: false
-    #primary: "#0000b3" /* blue */
+  theme:
+    primary: "#00629B"
   repo: https://github.com/rstudio/bookdown-demo
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc: 
+      before: |
+       <li class="toc-logo"><a href="./"><img src="images/logo.png"></a></li>
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
+    before_body: before_body.tex
+    after_body: after_body.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
+  quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
 bookdown::epub_book: default
