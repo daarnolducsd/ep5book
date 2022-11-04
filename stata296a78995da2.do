@@ -1,0 +1,1 @@
+reg life_expectancy average_income
