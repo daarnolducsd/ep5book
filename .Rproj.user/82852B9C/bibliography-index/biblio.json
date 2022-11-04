@@ -26,6 +26,57 @@
         {
             "author": [
                 {
+                    "family": "Berry",
+                    "given": "James"
+                },
+                {
+                    "family": "Mukherjee",
+                    "given": "Priya"
+                }
+            ],
+            "container-title": "Unpublished manuscript. Ithaca, NY: Cornell University",
+            "id": "berry2016pricing",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "title": "Pricing of private education in urban india: Demand, use and impact",
+            "title-short": "Pricing of private education in urban india",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Kline",
+                    "given": "Patrick M"
+                },
+                {
+                    "family": "Rose",
+                    "given": "Evan K"
+                },
+                {
+                    "family": "Walters",
+                    "given": "Christopher R"
+                }
+            ],
+            "container-title": "Quarterly Journal of Economics",
+            "id": "kline2021systemic",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "title": "Systemic discrimination among large US employers",
+            "type": "report"
+        },
+        {
+            "author": [
+                {
                     "family": "Deming",
                     "given": "David"
                 },
@@ -51,6 +102,40 @@
             "publisher": "JSTOR",
             "title": "For-profit colleges",
             "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Greenstone",
+                    "given": "Michael"
+                },
+                {
+                    "family": "He",
+                    "given": "Guojun"
+                },
+                {
+                    "family": "Jia",
+                    "given": "Ruixue"
+                },
+                {
+                    "family": "Liu",
+                    "given": "Tong"
+                }
+            ],
+            "container-title": "American Economic Review: Insights",
+            "id": "greenstone2022can",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "page": "54-70",
+            "title": "Can technology solve the principal-agent problem? Evidence from china’s war on air pollution",
+            "type": "article-journal",
+            "volume": "4"
         },
         {
             "URL": "https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html",
@@ -191,6 +276,32 @@
             "title": "Disrupting education? Experimental evidence on technology-aided instruction in india",
             "type": "article-journal",
             "volume": "109"
+        },
+        {
+            "author": [
+                {
+                    "family": "Bertrand",
+                    "given": "Marianne"
+                },
+                {
+                    "family": "Mullainathan",
+                    "given": "Sendhil"
+                }
+            ],
+            "container-title": "American economic review",
+            "id": "bertrand2004emily",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2004
+                    ]
+                ]
+            },
+            "page": "991-1013",
+            "title": "Are emily and greg more employable than lakisha and jamal? A field experiment on labor market discrimination",
+            "type": "article-journal",
+            "volume": "94"
         },
         {
             "URL": "https://www.R-project.org/",

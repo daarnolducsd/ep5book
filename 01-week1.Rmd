@@ -1,6 +1,6 @@
 # (PART) Excel {-}
 
-# Financial Incentives and Student Performance
+# College Instruction Experiments
 
 ## Experiments
 

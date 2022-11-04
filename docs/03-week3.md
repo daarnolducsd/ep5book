@@ -1,4 +1,4 @@
-# The Stanford Open Policing Project 
+# Discrimination in Police Stops
 
 ## SOPP Intro
 
@@ -52,7 +52,7 @@ Now that we have narrowed our focus, let's start exploring the data for San Dieg
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"
 use san_diego_stops.dta, replace 
-
+/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 ```
 
 To begin, let's use ``describe`` to figure out what variables we have in this dataset 
@@ -330,8 +330,10 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are matched -- must be of the same generic type in the master
-    and using datasets.  Same generic type means both numeric or both string.
+    Each key variable -- the variables on which observations are
+    matched -- must be of the same generic type in the master and
+    using datasets.  Same generic type means both numeric or both
+    string.
 r(106);
 
 end of do-file
@@ -499,9 +501,12 @@ To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07
+    Variable |        Obs        Mean    Std. dev.       Min        Ma
+> x
+-------------+--------------------------------------------------------
+> -
+   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+0
+> 7
 ```
 
 It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be $60\cdot 60 \cdot 1000 = 3,600,000$). So how many milliseconds to 6:30 PM?

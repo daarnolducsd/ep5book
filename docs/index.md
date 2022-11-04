@@ -1,11 +1,10 @@
 --- 
 title: "Econ5/Poli5D"
-author: "David Arnold"
-date: "2022-05-24"
+author: "David Arnold & Molly Roberts"
+date: "2022-10-30"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
 cover-image: images/geisel.jpg
 description: |
   This is a minimal example of using the bookdown package to write a book.

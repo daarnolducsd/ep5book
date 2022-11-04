@@ -1,10 +1,9 @@
-# The Stanford Open Policing Project 
+# Discrimination in Police Stops
 
 ## SOPP Intro
 
 ```{r setup, include=FALSE}
 library(Statamarkdown)
-library(shiny)
 ```
 
 <html>

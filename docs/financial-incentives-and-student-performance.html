@@ -48,6 +48,9 @@
 <li><a class="" href="intergenerational-mobility-and-higher-education.html"><span class="header-section-number">2</span> Intergenerational Mobility and Higher Education</a></li>
 <li><a class="" href="the-stanford-open-policing-project.html"><span class="header-section-number">3</span> The Stanford Open Policing Project</a></li>
 <li><a class="" href="disrupting-education-using-technology.html"><span class="header-section-number">4</span> Disrupting Education Using Technology</a></li>
+<li class="book-part">R</li>
+<li><a class="" href="resume-experiments.html"><span class="header-section-number">5</span> Resume Experiments</a></li>
+<li><a class="" href="the-rug-rat-race.html"><span class="header-section-number">6</span> The Rug Rat Race</a></li>
 <li><a class="" href="references-1.html">References</a></li>
 </ul>
 
@@ -163,14 +166,14 @@ Figure 1.7: GDP in 2020
 respectively</p></li>
 <li><p><code>MODE</code> – retrieves the mode of all numbers</p></li>
 </ul>
-<p>In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in <a href="financial-incentives-and-student-performance.html#fig:japan">1.8</a> I have clicked on the cell that holds the word “Japan.” This entry is in column A of row 4. Therefore, this is cell A4.</p>
+<p>In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in <a href="financial-incentives-and-student-performance.html#fig:japan">1.8</a> I have clicked on the cell that holds the word “Japan”. This entry is in column A of row 4. Therefore, this is cell A4.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:japan"></span>
 <img src="images/01_japan.png" alt="How to Reference a Cell" width="100%"><p class="caption">
 Figure 1.8: How to Reference a Cell
 </p>
 </div>
-<p>You can also reference a range of cells (this will be useful when taking averages). For example, to reference rows 2-6 of column C we could type <code>C2:C6</code> (See <a href="financial-incentives-and-student-performance.html#fig:cells">1.9</a>). Whenever you read a colon in Excel, you should read it as “through.” Therefore, the text <code>C2:C6</code> can be read as “cells C2 through C6.”</p>
+<p>You can also reference a range of cells (this will be useful when taking averages). For example, to reference rows 2-6 of column C we could type <code>C2:C6</code> (See <a href="financial-incentives-and-student-performance.html#fig:cells">1.9</a>). Whenever you read a colon in Excel, you should read it as “through”. Therefore, the text <code>C2:C6</code> can be read as “cells C2 through C6”.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:cells"></span>
 <img src="images/01_cells.png" alt="Referencing a Range of Cells" width="70%"><p class="caption">
@@ -237,7 +240,7 @@ Figure 1.14: Is GDP Greater than 10 in the U.S. Part 2
 Figure 1.15: Filling in the Formula
 </p>
 </div>
-<p>Oftentimes, instead of returning “TRUE” or “FALSE,” it is convenient to have Excel return the value in another form. For example, a common way to represent “TRUE” is with the number 1 and “FALSE” with the number 0. To accomplish this in Excel we will use the <code>IF</code> function.</p>
+<p>Oftentimes, instead of returning “TRUE” or “FALSE”, it is convenient to have Excel return the value in another form. For example, a common way to represent “TRUE” is with the number 1 and “FALSE” with the number 0. To accomplish this in Excel we will use the <code>IF</code> function.</p>
 <p>The basic format for the <code>IF</code> function is:</p>
 <p>For example, in our dataset, if we want to return the value of 1 if GDP is greater than 10 and 0 if otherwise, we can type:</p>
 <div class="figure" style="text-align: center">
@@ -303,11 +306,11 @@ Figure 1.22: Average Test Score
 <p>In order to compute fraction that passed the test, we are going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of Passed and this will be equal to the fraction that passed the test.</p>
 <p>To see why this is true, let’s first write out the equation for the average of a generic variable <span class="math inline">\(X\)</span></p>
 <p><span class="math display">\[
-  \bar{X} = \frac{X_1 + ... + X_N}{N} 
+  \bar{X} = \frac{X_1 + ... + X_N}{N}
 \]</span></p>
 <p>Where <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(X_1\)</span> is the first observation and <span class="math inline">\(X_N\)</span> is the <span class="math inline">\(N^{th}\)</span> observation. If <span class="math inline">\(X\)</span> is a binary variable that is equal to 1 or zero, then the average will be the fraction of individual’s with a 1
 <span class="math display">\[
-  \bar{X} = \frac{X_1 + ... + X_N}{N}=\frac{\text{Number of observations =1 }}{\text{Total Observations}} 
+  \bar{X} = \frac{X_1 + ... + X_N}{N}=\frac{\text{Number of observations =1 }}{\text{Total Observations}}
 \]</span>
 Since our variable “Passed” is equal to 1 if passed and zero otherwise, the fraction who passed is the average of our “Passed” variable. Therefore, in Excel we simply need to compute the average of the G column</p>
 <div class="figure" style="text-align: center">
@@ -336,7 +339,7 @@ Figure 1.24: Computing Total Observations
 Figure 1.25: Pivot Table: Pass Rates by Department
 </p>
 </div>
-<p>Now let’s go through how to construct Figure <a href="financial-incentives-and-student-performance.html#fig:pivotfinal">1.25</a>. To insert a pivot table, go to the Insert tab and click “Insert Pivot Table,” as seen in Figure <a href="financial-incentives-and-student-performance.html#fig:pivot1">1.26</a></p>
+<p>Now let’s go through how to construct Figure <a href="financial-incentives-and-student-performance.html#fig:pivotfinal">1.25</a>. To insert a pivot table, go to the Insert tab and click “Insert Pivot Table”, as seen in Figure <a href="financial-incentives-and-student-performance.html#fig:pivot1">1.26</a></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pivot1"></span>
 <img src="images/01_pivot1.png" alt="Inserting a Pivot Table" width="100%"><p class="caption">
@@ -379,7 +382,7 @@ Figure 1.30: Adding DepartmentCode to the Pivot Table
 Figure 1.31: Adding Passed to the Pivot Table
 </p>
 </div>
-<p>By default Excel is displaying the “SUM” by department (i.e. number of individuals that passed, not the fraction that passed). To change the displayed statistic click the “i” next to the “Values” label and then select “Average.”</p>
+<p>By default Excel is displaying the “SUM” by department (i.e. number of individuals that passed, not the fraction that passed). To change the displayed statistic click the “i” next to the “Values” label and then select “Average”.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pivot8"></span>
 <img src="images/01_pivot7.png" alt="Average Pass Rates" width="100%"><p class="caption">
@@ -498,7 +501,7 @@ Figure 1.41: Filtering Out Blank
 Figure 1.42: Adding a Title
 </p>
 </div>
-<p>We also need to add horizontal and vertical axes titles. To insert these go to “Design,” click “Insert Chart Element,” and select one of the Axes Titles to add in a text box that we can edit</p>
+<p>We also need to add horizontal and vertical axes titles. To insert these go to “Design”, click “Insert Chart Element”, and select one of the Axes Titles to add in a text box that we can edit</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pivotchart9"></span>
 <img src="images/01_pivot_chart9.png" alt="Adding Axes Titles" width="90%"><p class="caption">
@@ -527,7 +530,7 @@ Figure 1.45: Average Pass Rates by Treatment Arm and Department
 </p>
 </div>
 <p>Here would be a good time to check whether this figure is interpretable for someone that did not create it. Right now, it is unclear what the different bars represent. There is no legend that shows which color bar is associated with which department.</p>
-<p>To insert a Legend, go to “Design,” press “Add Chart Element” and navigate to “Legend”</p>
+<p>To insert a Legend, go to “Design”, press “Add Chart Element” and navigate to “Legend”</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:advpivot3"></span>
 <img src="images/01_adv_pivot3.png" alt="Average Pass Rates by Treatment Arm and Department" width="100%"><p class="caption">
@@ -609,7 +612,7 @@ Figure 1.49: Average Pass Rates by Treatment Arm and Department
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2022-05-24.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2022-08-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

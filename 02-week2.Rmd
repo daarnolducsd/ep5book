@@ -1,7 +1,7 @@
 # (PART) Stata {-}
 
 
-# Intergenerational Mobility and Higher Education 
+# Intergenerational Mobility 
 
 ## Opportunity Insights
 
@@ -74,7 +74,7 @@ $$
 $$
 :::
 
-Let's talk about each of these terms independently. "Access" depends on the fraction of students enrolled in a school that come from low-income backgrounds, or Q1. There is potential for schools with high access to have large impacts on intergenerational mobility. But this might not necessarily be true. For example, some work has found while for profit colleges tend to admit disadvantaged individuals, the outcomes for these individuals tend to be poor.[@deming2013profit] Therefore, even though the Access rate might be high, these schools will not tend to promote intergenerational mobility. The reason is due to the second term: Success. This measures the fraction of students from low-income backgrounds that reach the top quintile of earnings. 
+Let's talk about each of these terms independently. "Access" depends on the fraction of students enrolled in a school that come from low-income backgrounds, or Q1. There is potential for schools with high access to have large impacts on intergenerational mobility. But this might not necessarily be true. For example, some work has found while for profit colleges tend to admit disadvantaged individuals, the outcomes for these individuals tend to be poor (See Deming, Goldin and Katz 2013).[@deming2013profit] Therefore, even though the Access rate might be high, these schools will not tend to promote intergenerational mobility. The reason is due to the second term: Success. This measures the fraction of students from low-income backgrounds that reach the top quintile of earnings. 
 
 Intuitively, we can interpret the mobility rate as the fraction of students that are from low-income backgrounds that reach high income at a school. For example, if 10 percent of a school's enrollment comes from a low-income background, and half of these students end up in the top quintile of earnings, then that means 5 percent (overall) of the student body came from low-income backgrounds and achieved high income. This number is equal to the school's mobility rate ($\text{mobility rate}=0.10 \cdot 0.50 =0.05$).
 
@@ -138,7 +138,7 @@ The fact that ``di`` is underlined means to use the display command you only nee
 
 We can use Stata to perform calculations just like you would in a calculator. For example, for subtraction, type:
 
-```{stata,size="huge"}
+```{stata}
 
 di 6-4
 ```
