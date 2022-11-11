@@ -49,19 +49,13 @@ sum per_hindi1
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-   per_math1 |        619    .3177475    .1115478          0   .742857
-> 2
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   per_math1 |        619    .3177475    .1115478          0   .7428572
 
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-  per_hindi1 |        619    .4278406      .16484          0         .
-> 9
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  per_hindi1 |        619    .4278406      .16484          0         .9
 ```
 
 At the baseline, the average score on the math test was $0.318$. This indicates that on average across students, the average score was a 31.8 percent on the math test. For the Hindi test, the average was a bit higher at $0.428$. Now let's look at endline scores.
@@ -74,24 +68,28 @@ sum per_hindi2
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-   per_math1 |        619    .3177475    .1115478          0   .742857
-> 2
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   per_math1 |        619    .3177475    .1115478          0   .7428572
 
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-  per_hindi1 |        619    .4278406      .16484          0         .
-> 9
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  per_hindi1 |        619    .4278406      .16484          0         .9
 ```
 
 At endline, scores are higher. The average math score has increased to $0.503$ and the average Hindi score has increased to $0.552$. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``. Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
 
 
+
+```
+Error in question("Increasing test scores from 0.503 to 0.552 is a", answer("0.052 percent increase test scores"), : could not find function "question"
+```
+
+
+```r
+2+2
+[1] 4
+```
 ## Linear Regression (Theory) 
 
 Linear regression estimates a linear relationship between variables. Before getting to the estimation part, let's first review linear equations. A linear equation is any equation that can be written in the following form 
@@ -369,31 +367,19 @@ reg life_expectancy average_income
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =  
->      186
--------------+----------------------------------   F(1, 184)       =  
->   178.14
-       Model |  4150.14525         1  4150.14525   Prob > F        =  
->   0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =  
->   0.4919
--------------+----------------------------------   Adj R-squared   =  
->   0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =  
->   4.8267
+      Source |       SS           df       MS      Number of obs   =       186
+-------------+----------------------------------   F(1, 184)       =    178.14
+       Model |  4150.14525         1  4150.14525   Prob > F        =    0.0000
+    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
+-------------+----------------------------------   Adj R-squared   =    0.4891
+       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
 
-----------------------------------------------------------------------
-> --------
-life_expec~y | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-average_in~e |   .2363563   .0177087    13.35   0.000      .201418    
-> .2712945
-       _cons |   67.97336   .4874037   139.46   0.000     67.01174    
-> 68.93498
-----------------------------------------------------------------------
-> --------
+--------------------------------------------------------------------------------
+life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
+         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
+--------------------------------------------------------------------------------
 ```
 
 So there are a lot of numbers in the table above. The ones we will focus on are under the column "Coefficient." The first coefficient is in the row that begins with ``average_income``. This is the slope coefficient. This number tells you how a 1-unit change in ``average_income`` is predicted to change the Y-variable. In this case, the regression tells us that a 1-unit change in average income (which is denoted in the 1,000s) is associated with a 0.24 year increase in life expectancy. In simpler terms, a \$1,000 dollar increase in average income is associated with a 0.24 year increase in life expectancy.
@@ -466,31 +452,19 @@ reg life_expectancy average_income
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =  
->      186
--------------+----------------------------------   F(1, 184)       =  
->   178.14
-       Model |  4150.14525         1  4150.14525   Prob > F        =  
->   0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =  
->   0.4919
--------------+----------------------------------   Adj R-squared   =  
->   0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =  
->   4.8267
+      Source |       SS           df       MS      Number of obs   =       186
+-------------+----------------------------------   F(1, 184)       =    178.14
+       Model |  4150.14525         1  4150.14525   Prob > F        =    0.0000
+    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
+-------------+----------------------------------   Adj R-squared   =    0.4891
+       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
 
-----------------------------------------------------------------------
-> --------
-life_expec~y | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-average_in~e |   .2363563   .0177087    13.35   0.000      .201418    
-> .2712945
-       _cons |   67.97336   .4874037   139.46   0.000     67.01174    
-> 68.93498
-----------------------------------------------------------------------
-> --------
+--------------------------------------------------------------------------------
+life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
+         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
+--------------------------------------------------------------------------------
 ```
 
 Now that the regression has been estimated, we can form predictions 
@@ -506,9 +480,6 @@ Now a variable ``predicted_life_expectancy`` has been added to our dataset. Let'
 
 ```stata
 list country life_expectancy average_income predicted_life_expectancy if _n<=3
-> y if _n<=3
-
-     +----------------------------------------------+
      |     country   life_e~y   averag~e   predic~y |
      |----------------------------------------------|
   1. | Afghanistan       63.4       1.92   68.42716 |
@@ -532,12 +503,9 @@ Let's ``summarize`` our new ``error`` variable
 
 ```stata
 sum error
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-       error |        186   -2.05e-08     4.81365  -16.57843   8.36780
-> 5
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       error |        186   -2.05e-08     4.81365  -16.57843   8.367805
 ```
 
 The mean is about zero (which is by construction, the regression line is chosen so that on average the predictions are correct). There is a large variance though, for some countries the life expectancy is much lower than expected (negative error), while some it is much higher. 
@@ -582,12 +550,9 @@ To begin, let's summarize the ``life_expectancy`` variable:
 
 ```stata
 sum life_expectancy
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-life_expec~y |        186    72.44624    6.753106         52       84.
-> 9
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+life_expec~y |        186    72.44624    6.753106         52       84.9
 ```
 
 The mean life expectancy is equal to 72.45. Stata has automatically stored the mean in ``r(mean)``
@@ -608,31 +573,19 @@ For example, if we estimate:
 
 ```stata
 reg life_expectancy average_income 
-      Source |       SS           df       MS      Number of obs   =  
->      186
--------------+----------------------------------   F(1, 184)       =  
->   178.14
-       Model |  4150.14525         1  4150.14525   Prob > F        =  
->   0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =  
->   0.4919
--------------+----------------------------------   Adj R-squared   =  
->   0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =  
->   4.8267
+      Source |       SS           df       MS      Number of obs   =       186
+-------------+----------------------------------   F(1, 184)       =    178.14
+       Model |  4150.14525         1  4150.14525   Prob > F        =    0.0000
+    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
+-------------+----------------------------------   Adj R-squared   =    0.4891
+       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
 
-----------------------------------------------------------------------
-> --------
-life_expec~y | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-average_in~e |   .2363563   .0177087    13.35   0.000      .201418    
-> .2712945
-       _cons |   67.97336   .4874037   139.46   0.000     67.01174    
-> 68.93498
-----------------------------------------------------------------------
-> --------
+--------------------------------------------------------------------------------
+life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
+         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
+--------------------------------------------------------------------------------
 ```
 
 Then we can retrieve the coefficient on ``average_income`` by typing: 
@@ -673,14 +626,10 @@ Now whenever I type "\$vars" into Stata, Stata will interpret it as "average_inc
 
 ```stata
 sum $vars
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-average_in~e |        186    18.92431    20.03912       .673        11
-> 1
-life_expec~y |        186    72.44624    6.753106         52       84.
-> 9
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+average_in~e |        186    18.92431    20.03912       .673        111
+life_expec~y |        186    72.44624    6.753106         52       84.9
 ```
 
 One could do the same thing but with a "local" macro. 
@@ -689,14 +638,10 @@ One could do the same thing but with a "local" macro.
 ```stata
 local vars = "average_income life_expectancy"
 sum `vars'
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-average_in~e |        186    18.92431    20.03912       .673        11
-> 1
-life_expec~y |        186    72.44624    6.753106         52       84.
-> 9
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+average_in~e |        186    18.92431    20.03912       .673        111
+life_expec~y |        186    72.44624    6.753106         52       84.9
 ```
 
 So what is the difference between a local macro and a global macro. In practice, you reference a global macro with a dollar sign "``$``", a local with apostrophes "`macro'". Both can store the same information, but locals can only be accessed within a given Stata session. Many advise to only use local macros. Setting globals can conflict with other aspects of Stata. For our purposes, it is rare we will actually need to use macros, let alone global vs. local. This section introduces macros as an important programming tool to understand conceptually, but it is not required to fully understand the nuances between local and global macros in Stata to understand the rest of the course material.
@@ -767,31 +712,19 @@ reg mathlevel class
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =  
->      253
--------------+----------------------------------   F(1, 251)       =  
->    19.02
-       Model |  22.8033097         1  22.8033097   Prob > F        =  
->   0.0000
-    Residual |   300.87258       251  1.19869554   R-squared       =  
->   0.0705
--------------+----------------------------------   Adj R-squared   =  
->   0.0667
-       Total |  323.675889       252  1.28442813   Root MSE        =  
->   1.0948
+      Source |       SS           df       MS      Number of obs   =       253
+-------------+----------------------------------   F(1, 251)       =     19.02
+       Model |  22.8033097         1  22.8033097   Prob > F        =    0.0000
+    Residual |   300.87258       251  1.19869554   R-squared       =    0.0705
+-------------+----------------------------------   Adj R-squared   =    0.0667
+       Total |  323.675889       252  1.28442813   Root MSE        =    1.0948
 
-----------------------------------------------------------------------
-> --------
-   mathlevel | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       class |   .2926913   .0671066     4.36   0.000     .1605275    
->  .424855
-       _cons |   1.756712   .4928781     3.56   0.000      .786008    
-> 2.727416
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   mathlevel | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       class |   .2926913   .0671066     4.36   0.000     .1605275     .424855
+       _cons |   1.756712   .4928781     3.56   0.000      .786008    2.727416
+------------------------------------------------------------------------------
 ```
 
 Reading the table above, we find $\hat{\beta}=0.293$. This indicates that a 1-year increase in grade is associated with only a 0.293 year increased in assessed math level. In other words, students are learning over time, but at a much lower rate than is envisioned by the curriculum. Ideally, 1 year of schooling should be associated with an additional year of learning. 
@@ -972,31 +905,19 @@ reg per_math2 treat
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =  
->      539
--------------+----------------------------------   F(1, 537)       =  
->    28.72
-       Model |  .813404311         1  .813404311   Prob > F        =  
->   0.0000
-    Residual |    15.20668       537   .02831784   R-squared       =  
->   0.0508
--------------+----------------------------------   Adj R-squared   =  
->   0.0490
-       Total |  16.0200843       538  .029777108   Root MSE        =  
->   .16828
+      Source |       SS           df       MS      Number of obs   =       539
+-------------+----------------------------------   F(1, 537)       =     28.72
+       Model |  .813404311         1  .813404311   Prob > F        =    0.0000
+    Residual |    15.20668       537   .02831784   R-squared       =    0.0508
+-------------+----------------------------------   Adj R-squared   =    0.0490
+       Total |  16.0200843       538  .029777108   Root MSE        =    .16828
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0777008   .0144978     5.36   0.000     .0492214    
-> .1061802
-       _cons |   .4647551   .0101847    45.63   0.000     .4447484    
-> .4847619
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0777008   .0144978     5.36   0.000     .0492214    .1061802
+       _cons |   .4647551   .0101847    45.63   0.000     .4447484    .4847619
+------------------------------------------------------------------------------
 ```
 
 We found that the slope coefficient $\hat{\beta}=0.078$. Remember, our general formula for interpreting slope coefficients is a 1-unit change in ``treat`` is expected to increase ``per_math2`` by 0.078. However, when we actually report the results, we should make it clear what these units represent. We don't want a reader to have to understand that ``per_math2`` is the variable that contains the fraction correct on the math score in order to understand the interpretation. Therefore, in plain (interpretable) English, we find that students that were offered free Mindspark tuition saw a 7.8 percentage point increase in math scores relative to control students who were not offered Mindspark tuition.
@@ -1018,31 +939,19 @@ reg per_hindi2 treat
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =  
->      539
--------------+----------------------------------   F(1, 537)       =  
->    16.12
-       Model |  .572530953         1  .572530953   Prob > F        =  
->   0.0001
-    Residual |   19.076815       537  .035524795   R-squared       =  
->   0.0291
--------------+----------------------------------   Adj R-squared   =  
->   0.0273
-       Total |  19.6493459       538  .036522948   Root MSE        =  
->   .18848
+      Source |       SS           df       MS      Number of obs   =       539
+-------------+----------------------------------   F(1, 537)       =     16.12
+       Model |  .572530953         1  .572530953   Prob > F        =    0.0001
+    Residual |   19.076815       537  .035524795   R-squared       =    0.0291
+-------------+----------------------------------   Adj R-squared   =    0.0273
+       Total |  19.6493459       538  .036522948   Root MSE        =    .18848
 
-----------------------------------------------------------------------
-> --------
-  per_hindi2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0651886   .0162382     4.01   0.000     .0332904    
-> .0970868
-       _cons |   .5200244   .0114073    45.59   0.000     .4976159    
-> .5424329
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+  per_hindi2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0651886   .0162382     4.01   0.000     .0332904    .0970868
+       _cons |   .5200244   .0114073    45.59   0.000     .4976159    .5424329
+------------------------------------------------------------------------------
 ```
 
 This regression tells us that treated students that were offered free Mindspark tuition saw a 6.5 percentage point increase in Hindi test scores relative to control students. Overall, this program seems very effective in increasing both math and Hindi scores. 
@@ -1064,31 +973,19 @@ To present multiple regressions in a single table, we will take advantage of the
 
 ```stata
 reg per_math2 treat
-      Source |       SS           df       MS      Number of obs   =  
->      539
--------------+----------------------------------   F(1, 537)       =  
->    28.72
-       Model |  .813404311         1  .813404311   Prob > F        =  
->   0.0000
-    Residual |    15.20668       537   .02831784   R-squared       =  
->   0.0508
--------------+----------------------------------   Adj R-squared   =  
->   0.0490
-       Total |  16.0200843       538  .029777108   Root MSE        =  
->   .16828
+      Source |       SS           df       MS      Number of obs   =       539
+-------------+----------------------------------   F(1, 537)       =     28.72
+       Model |  .813404311         1  .813404311   Prob > F        =    0.0000
+    Residual |    15.20668       537   .02831784   R-squared       =    0.0508
+-------------+----------------------------------   Adj R-squared   =    0.0490
+       Total |  16.0200843       538  .029777108   Root MSE        =    .16828
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0777008   .0144978     5.36   0.000     .0492214    
-> .1061802
-       _cons |   .4647551   .0101847    45.63   0.000     .4447484    
-> .4847619
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0777008   .0144978     5.36   0.000     .0492214    .1061802
+       _cons |   .4647551   .0101847    45.63   0.000     .4447484    .4847619
+------------------------------------------------------------------------------
 ```
 
 Now if I want to save these estimates I can type
@@ -1165,31 +1062,19 @@ For example, if we want to estimate the treatment effect in a linear regression 
 
 ```stata
 reg per_math2 treat if st_female1==1
-      Source |       SS           df       MS      Number of obs   =  
->      414
--------------+----------------------------------   F(1, 412)       =  
->    17.78
-       Model |  .518287614         1  .518287614   Prob > F        =  
->   0.0000
-    Residual |  12.0091958       412  .029148533   R-squared       =  
->   0.0414
--------------+----------------------------------   Adj R-squared   =  
->   0.0390
-       Total |  12.5274834       413   .03033289   Root MSE        =  
->   .17073
+      Source |       SS           df       MS      Number of obs   =       414
+-------------+----------------------------------   F(1, 412)       =     17.78
+       Model |  .518287614         1  .518287614   Prob > F        =    0.0000
+    Residual |  12.0091958       412  .029148533   R-squared       =    0.0414
+-------------+----------------------------------   Adj R-squared   =    0.0390
+       Total |  12.5274834       413   .03033289   Root MSE        =    .17073
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0707653    .016782     4.22   0.000     .0377763    
-> .1037543
-       _cons |   .4636151    .011838    39.16   0.000     .4403447    
-> .4868854
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0707653    .016782     4.22   0.000     .0377763    .1037543
+       _cons |   .4636151    .011838    39.16   0.000     .4403447    .4868854
+------------------------------------------------------------------------------
 ```
 
 The part of the code ``st_female1==1`` implies the regression ``reg per_math2 treat`` should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate treatment effect, but restricted only to males:
@@ -1197,31 +1082,19 @@ The part of the code ``st_female1==1`` implies the regression ``reg per_math2 tr
 
 ```stata
 reg per_math2 treat if st_female1==0
-      Source |       SS           df       MS      Number of obs   =  
->      125
--------------+----------------------------------   F(1, 123)       =  
->    12.67
-       Model |  .323197879         1  .323197879   Prob > F        =  
->   0.0005
-    Residual |  3.13679016       123  .025502359   R-squared       =  
->   0.0934
--------------+----------------------------------   Adj R-squared   =  
->   0.0860
-       Total |  3.45998804       124  .027903129   Root MSE        =  
->   .15969
+      Source |       SS           df       MS      Number of obs   =       125
+-------------+----------------------------------   F(1, 123)       =     12.67
+       Model |  .323197879         1  .323197879   Prob > F        =    0.0005
+    Residual |  3.13679016       123  .025502359   R-squared       =    0.0934
+-------------+----------------------------------   Adj R-squared   =    0.0860
+       Total |  3.45998804       124  .027903129   Root MSE        =    .15969
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .1017787   .0285899     3.56   0.001     .0451867    
-> .1583707
-       _cons |   .4684034   .0198077    23.65   0.000     .4291953    
-> .5076114
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .1017787   .0285899     3.56   0.001     .0451867    .1583707
+       _cons |   .4684034   .0198077    23.65   0.000     .4291953    .5076114
+------------------------------------------------------------------------------
 ```
 
 Now, in our first regression, we find $\hat{\beta}^{female}$ = 0.071. This implies treatment increases percent score correct by 7.1 percentage points for females. In our second regression, we find $\hat{\beta}^{male}$ = 0.102. Treatment increases percent score correct by 10.2 percentage points for males. Therefore, overall, the treatment effect is slightly larger for males relative to females. However, in both cases, it appears that overall, the treatment is quite effective. 
@@ -1233,31 +1106,19 @@ Our first regression will be estimated on individuals with below-average SES ind
 
 ```stata
 reg per_math2 treat if ses_index<0
-      Source |       SS           df       MS      Number of obs   =  
->      268
--------------+----------------------------------   F(1, 266)       =  
->    20.29
-       Model |  .509060251         1  .509060251   Prob > F        =  
->   0.0000
-    Residual |  6.67313366       266  .025086969   R-squared       =  
->   0.0709
--------------+----------------------------------   Adj R-squared   =  
->   0.0674
-       Total |  7.18219391       267  .026899603   Root MSE        =  
->   .15839
+      Source |       SS           df       MS      Number of obs   =       268
+-------------+----------------------------------   F(1, 266)       =     20.29
+       Model |  .509060251         1  .509060251   Prob > F        =    0.0000
+    Residual |  6.67313366       266  .025086969   R-squared       =    0.0709
+-------------+----------------------------------   Adj R-squared   =    0.0674
+       Total |  7.18219391       267  .026899603   Root MSE        =    .15839
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0872535   .0193697     4.50   0.000     .0491161    
-> .1253909
-       _cons |   .4296612   .0139997    30.69   0.000     .4020969    
-> .4572256
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0872535   .0193697     4.50   0.000     .0491161    .1253909
+       _cons |   .4296612   .0139997    30.69   0.000     .4020969    .4572256
+------------------------------------------------------------------------------
 ```
 
 Our second regression will be estimated on individuals with above-average SES index. 
@@ -1266,31 +1127,19 @@ Our second regression will be estimated on individuals with above-average SES in
 
 ```stata
 reg per_math2 treat if ses_index<0
-      Source |       SS           df       MS      Number of obs   =  
->      268
--------------+----------------------------------   F(1, 266)       =  
->    20.29
-       Model |  .509060251         1  .509060251   Prob > F        =  
->   0.0000
-    Residual |  6.67313366       266  .025086969   R-squared       =  
->   0.0709
--------------+----------------------------------   Adj R-squared   =  
->   0.0674
-       Total |  7.18219391       267  .026899603   Root MSE        =  
->   .15839
+      Source |       SS           df       MS      Number of obs   =       268
+-------------+----------------------------------   F(1, 266)       =     20.29
+       Model |  .509060251         1  .509060251   Prob > F        =    0.0000
+    Residual |  6.67313366       266  .025086969   R-squared       =    0.0709
+-------------+----------------------------------   Adj R-squared   =    0.0674
+       Total |  7.18219391       267  .026899603   Root MSE        =    .15839
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0872535   .0193697     4.50   0.000     .0491161    
-> .1253909
-       _cons |   .4296612   .0139997    30.69   0.000     .4020969    
-> .4572256
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0872535   .0193697     4.50   0.000     .0491161    .1253909
+       _cons |   .4296612   .0139997    30.69   0.000     .4020969    .4572256
+------------------------------------------------------------------------------
 ```
 
 In regression 1, we find $\hat{\beta}^{lowSES}$ = 0.087. Treatment increases percent score correct by 8.7 percentage points for individuals with below-average SES. In regression 2, we find $\hat{\beta}^{highSES}$ = 0.075. Treatment increases percent score correct by 7.5 percentage points for individuals with above-average SES. Therefore, the treatment effect is slightly larger for low-SES, but quite similar overall.
@@ -1324,62 +1173,38 @@ Now that we have our indicator variable, we can now estimate two regressions: (1
 
 ```stata
 reg per_math2 treat if above_median==1
-      Source |       SS           df       MS      Number of obs   =  
->      239
--------------+----------------------------------   F(1, 237)       =  
->    19.25
-       Model |   .52552737         1   .52552737   Prob > F        =  
->   0.0000
-    Residual |   6.4715909       237  .027306291   R-squared       =  
->   0.0751
--------------+----------------------------------   Adj R-squared   =  
->   0.0712
-       Total |  6.99711827       238  .029399657   Root MSE        =  
->   .16525
+      Source |       SS           df       MS      Number of obs   =       239
+-------------+----------------------------------   F(1, 237)       =     19.25
+       Model |   .52552737         1   .52552737   Prob > F        =    0.0000
+    Residual |   6.4715909       237  .027306291   R-squared       =    0.0751
+-------------+----------------------------------   Adj R-squared   =    0.0712
+       Total |  6.99711827       238  .029399657   Root MSE        =    .16525
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0941481   .0214608     4.39   0.000     .0518699    
-> .1364264
-       _cons |   .5290498    .014493    36.50   0.000     .5004981    
-> .5576014
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0941481   .0214608     4.39   0.000     .0518699    .1364264
+       _cons |   .5290498    .014493    36.50   0.000     .5004981    .5576014
+------------------------------------------------------------------------------
 ```
 
 
 
 ```stata
 reg per_math2 treat if above_median==0
-      Source |       SS           df       MS      Number of obs   =  
->      300
--------------+----------------------------------   F(1, 298)       =  
->    21.99
-       Model |  .480080178         1  .480080178   Prob > F        =  
->   0.0000
-    Residual |  6.50520836       298  .021829558   R-squared       =  
->   0.0687
--------------+----------------------------------   Adj R-squared   =  
->   0.0656
-       Total |  6.98528854       299  .023362169   Root MSE        =  
->   .14775
+      Source |       SS           df       MS      Number of obs   =       300
+-------------+----------------------------------   F(1, 298)       =     21.99
+       Model |  .480080178         1  .480080178   Prob > F        =    0.0000
+    Residual |  6.50520836       298  .021829558   R-squared       =    0.0687
+-------------+----------------------------------   Adj R-squared   =    0.0656
+       Total |  6.98528854       299  .023362169   Root MSE        =    .14775
 
-----------------------------------------------------------------------
-> --------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. i
-> nterval]
--------------+--------------------------------------------------------
-> --------
-       treat |   .0800939   .0170791     4.69   0.000      .046483    
-> .1137049
-       _cons |   .4063055   .0123553    32.89   0.000     .3819907    
-> .4306202
-----------------------------------------------------------------------
-> --------
+------------------------------------------------------------------------------
+   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       treat |   .0800939   .0170791     4.69   0.000      .046483    .1137049
+       _cons |   .4063055   .0123553    32.89   0.000     .3819907    .4306202
+------------------------------------------------------------------------------
 ```
 
 We find that $\hat{\beta}^{above}$ = 0.095. Treatment increases percent score correct by 9.5 percentage points for above-median scoring students. We find $\hat{\beta}^{below}$ = 0.088. Treatment increases percent score correct by 8.8 percentage points for below-median scoring students. The treatment effect is slightly larger for above-median scoring students, but quite similar overall
@@ -1415,10 +1240,9 @@ So now are relatively certain Mindspark is succesful in increasing learning, but
 
 To do so, let's compare the cost of Mindspark to traditional government-run schools.  Government-run schools spend about 240 minutes per week on Math and Hindi. The cost per pupil is around INR 1500 (US \$22). Mindspark spends about 180 minutes per week on Math and Hindi. Cost per pupil is around INR 1000 (US \$15). Using the estimates from the paper, Mindspark led to more learning in less time than government-run schools, as well as utilizing less financial resources.
 
-To conclude, using technology to teach-at-the-right Llevel seems like a promising intervention in places in which there is tremendous heterogeneity in baselines levels of understanding. But, there is potential for even better educational design! Maybe the best intervention would blend Mindspark with standard teaching. Giving teachers more information about the level of their students could aid instruction in the classroom. This automated aspect of the software could free up teacher time for other activities that also improve student performance.
+To conclude, using technology to teach-at-the-right-level seems like a promising intervention in places in which there is tremendous heterogeneity in baselines levels of understanding. But, there is potential for even better educational design! Maybe the best intervention would blend Mindspark with standard teaching. Giving teachers more information about the level of their students could aid instruction in the classroom. This automated aspect of the software could free up teacher time for other activities that also improve student performance.
 
-## Interactive Exercises
-<iframe src="https://yihui.shinyapps.io/miniUI/" width="672" height="600px" data-external="1"></iframe>
+
 
 
 

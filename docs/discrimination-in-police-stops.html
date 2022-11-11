@@ -48,10 +48,12 @@
 <li><a class="" href="intergenerational-mobility.html"><span class="header-section-number">2</span> Intergenerational Mobility</a></li>
 <li><a class="active" href="discrimination-in-police-stops.html"><span class="header-section-number">3</span> Discrimination in Police Stops</a></li>
 <li><a class="" href="classroom-technology.html"><span class="header-section-number">4</span> Classroom Technology</a></li>
+<li><a class="" href="legacy-of-colonial-medicine.html"><span class="header-section-number">5</span> Legacy of Colonial Medicine</a></li>
 <li class="book-part">R</li>
-<li><a class="" href="resume-experiments.html"><span class="header-section-number">5</span> Resume Experiments</a></li>
-<li><a class="" href="the-rug-rat-race.html"><span class="header-section-number">6</span> The Rug Rat Race</a></li>
-<li><a class="" href="automated-pollution-monitoring.html"><span class="header-section-number">7</span> Automated Pollution Monitoring</a></li>
+<li><a class="" href="resume-experiments.html"><span class="header-section-number">6</span> Resume Experiments</a></li>
+<li><a class="" href="the-rug-rat-race.html"><span class="header-section-number">7</span> The Rug Rat Race</a></li>
+<li><a class="" href="automated-pollution-monitoring.html"><span class="header-section-number">8</span> Automated Pollution Monitoring</a></li>
+<li><a class="" href="voting.html"><span class="header-section-number">9</span> Voting</a></li>
 <li><a class="" href="references-1.html">References</a></li>
 </ul>
 
@@ -149,7 +151,7 @@ Figure 3.4: Racial Composition of Traffic Stops and Population
 <h2>
 <span class="header-section-number">3.3</span> Veil of Darkness (VOD)<a class="anchor" aria-label="anchor" href="#veil-of-darkness-vod"><i class="fas fa-link"></i></a>
 </h2>
-<p>Racial disparities refer to any differences between groups of different races. Many factors can cause racial disparities, but common focus is to try to understand if the disparity is driven by racial discrimination. In our example, we are interested in exploring racial discrimination on the part of police officers making traffic stops. There are many methods that have been proposed to prove racial discrimination. Today we focus on one: <strong>the veil of darkness test</strong>, a test developed by Grogger and Ridgeway (2006)<span class="citation"><a href="references-1.html#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></span>.</p>
+<p>Racial disparities refer to any differences between groups of different races. Many factors can cause racial disparities, but common focus is to try to understand if the disparity is driven by racial discrimination. In our example, we are interested in exploring racial discrimination on the part of police officers making traffic stops. There are many methods that have been proposed to prove racial discrimination. Today we focus on one: <strong>the veil of darkness test</strong>, a test developed by Grogger and Ridgeway (2006)<span class="citation">.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Jeffrey Grogger and Greg Ridgeway, &lt;span&gt;“Testing for Racial Profiling in Traffic Stops from Behind a Veil of Darkness,”&lt;/span&gt; &lt;em&gt;Journal of the American Statistical Association&lt;/em&gt; 101, no. 475 (2006): 878–87.&lt;/p&gt;"><sup>3</sup></a></span></p>
 <p>The basic idea behind the veil of darkness test is that it easier to observe the race of an individual driver during the day when there is sunlight. Therefore, if police officers are pulling over drivers based on race, this will be harder to accomplish at night. We can therefore compare the racial composition of traffic stops during daylight vs. nighttime to try to infer racial discrimination on the part of police officers.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:veil1"></span>
@@ -316,14 +318,13 @@ Figure 3.14: Example of Merge with Different Types for Matching Variable
 <div class="sourceCode" id="cb51"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb51-1"><a href="discrimination-in-police-stops.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
 <span id="cb51-2"><a href="discrimination-in-police-stops.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
 <span id="cb51-3"><a href="discrimination-in-police-stops.html#cb51-3" aria-hidden="true" tabindex="-1"></a>key <span class="kw">variable</span> student is str1 <span class="kw">in</span> master but <span class="kw">float</span> <span class="kw">in</span> <span class="kw">using</span> <span class="kw">data</span></span>
-<span id="cb51-4"><a href="discrimination-in-police-stops.html#cb51-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are</span>
-<span id="cb51-5"><a href="discrimination-in-police-stops.html#cb51-5" aria-hidden="true" tabindex="-1"></a>    matched -- must <span class="kw">be</span> <span class="kw">of</span> the same generic <span class="dv">type</span> <span class="kw">in</span> the master and</span>
-<span id="cb51-6"><a href="discrimination-in-police-stops.html#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both</span>
-<span id="cb51-7"><a href="discrimination-in-police-stops.html#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">string</span>.</span>
-<span id="cb51-8"><a href="discrimination-in-police-stops.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
-<span id="cb51-9"><a href="discrimination-in-police-stops.html#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-10"><a href="discrimination-in-police-stops.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb51-11"><a href="discrimination-in-police-stops.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
+<span id="cb51-4"><a href="discrimination-in-police-stops.html#cb51-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the same</span>
+<span id="cb51-5"><a href="discrimination-in-police-stops.html#cb51-5" aria-hidden="true" tabindex="-1"></a>    generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both</span>
+<span id="cb51-6"><a href="discrimination-in-police-stops.html#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">string</span>.</span>
+<span id="cb51-7"><a href="discrimination-in-police-stops.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
+<span id="cb51-8"><a href="discrimination-in-police-stops.html#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="discrimination-in-police-stops.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb51-10"><a href="discrimination-in-police-stops.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
 <p>This error code is describing how the format of the variables is different in our master vs. using dataset. To fix this issue, we need to convert one of the variable formats. For example, we could type <code>destring student, replace</code> to convert the student variable to a numeric variable in the <code>test_score3.dta</code> dataset.</p>
 <p>Lastly, we have discussed one-to-one merges, many-to-one merges and one-to-many merges, but what about many-to-many merges? The reason we have not discussed it is because <strong>you should never do many-to-many merges in Stata</strong>. In most cases, the right way to proceed if you find yourself faced with a many-to-many merge is to restructure your data. Usually you can use some data wrangling (like <code>collapse</code>) to transform your data into a one-to-one, many-to-one or one-to-many merge. There is a command <code>joinby</code> that does accomplish something like a many-to-many merge, but we will not discuss this command in this book.</p>
 </div>
@@ -395,12 +396,9 @@ Number of records is  1186</code></pre>
 <p>To see how Stata stores times, we can <code>summarize</code> our variable <code>stop_time</code>.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb67-1"><a href="discrimination-in-police-stops.html#cb67-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">use</span> sd_analysis_sample.dta, <span class="kw">replace</span></span></code></pre></div>
 <div class="sourceCode" id="cb68"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb68-1"><a href="discrimination-in-police-stops.html#cb68-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">sum</span> stop_time </span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Ma
-&gt; x
--------------+--------------------------------------------------------
-&gt; -
-   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+0
-&gt; 7</code></pre>
+<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07</code></pre>
 <p>It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be <span class="math inline">\(60\cdot 60 \cdot 1000 = 3,600,000\)</span>). So how many milliseconds to 6:30 PM?</p>
 <p><span class="math display">\[
 \underbrace{18}_{\text{hours}} \cdot \underbrace{3,600,000}_{\text{ms per hour}} + \underbrace{1,800,000}_{\text{ms per half hour}}=66,600,000
@@ -528,7 +526,7 @@ To practice with this command, consider the (fake) dataset below:
 Figure 3.19: Wages for Workers in Different States
 </p>
 </div>
-<p>Our goal now is to transform this dataset into a dataset with just two observations: one for “CA” and one for “AZ”. In terms of variables, we want two variables, one that contains the average weekly income and one that contains the average age. In other words, we are taking a dataset that is currently at the worker level and collapsing it to a dataset that is at the state level. To do this in Stata we type:</p>
+<p>Our goal now is to transform this dataset into a dataset with just two observations: one for “CA” and one for “AZ.” In terms of variables, we want two variables, one that contains the average weekly income and one that contains the average age. In other words, we are taking a dataset that is currently at the worker level and collapsing it to a dataset that is at the state level. To do this in Stata we type:</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb88-1"><a href="discrimination-in-police-stops.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> (<span class="kw">mean</span>) weekly_income age, <span class="kw">by</span>(state)</span></code></pre></div>
 <p>The collapsed dataset is depicted in Figure <a href="discrimination-in-police-stops.html#fig:collapsed">3.20</a></p>
 <div class="figure" style="text-align: center">
@@ -574,7 +572,7 @@ Figure 3.23: Collapsed Dataset
 </p>
 </div>
 <p>In our plot, however, we want to plot the fraction of stops for each race by light condition. This is a pretty small dataset, so we could do this manually. For example, what fraction of stops when it is light out are for Asian/Pacific Islanders. Based on <a href="discrimination-in-police-stops.html#fig:br1">3.23</a>, we know that this equal to:</p>
-<p><span class="math display">\[
+<p><span class="math display">\[ 
 \frac{\text{Stops for Asian/Pacific Islander When Light}}{\text{Stops When Light}} = \frac{375}{375+589+1528+319+1652} =  0.084
 \]</span>
 But what if we had more observations. Also, we need these values in our dataset. It will be easier if we can add a variable to the dataset that contains this information. We are going to do this in two steps. First, we are going to create a variable that contains the total stops within a given light condition. Then, we are going to generate the variable we want by dividing <code>obs_count</code> by this new variable.</p>
@@ -657,7 +655,7 @@ Figure 3.29: Fraction of Stops by Race and Light Condition
 <span class="header-section-number">3.15</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s discuss a few of the implicit assumptions in the veil of darkness test. First, we assumed driver race is unobservable after dusk. But what about artificial lighting, like street lamps? If in certain areas officers can detect race, then this method will underestimate level of discrimination. In other words, if driver race is observed in both sunlight and darkness, then the logic of the test as a method to identify discrimination no longer holds.</p>
-<p>Another assumption is that driving behavior is the same before and after dark. What if minority drivers adjust their driving behavior because of potential racial profiling in daylight? Kalinowski, Ross, and Ross (2021)<span class="citation"><a href="references-1.html#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></span> find evidence that this is true in certain areas.</p>
+<p>Another assumption is that driving behavior is the same before and after dark. What if minority drivers adjust their driving behavior because of potential racial profiling in daylight? Kalinowski, Ross, and Ross (2021)<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Jesse Kalinowski et al., &lt;span&gt;“Endogenous Driving Behavior in Veil of Darkness Tests for Racial Profiling,”&lt;/span&gt; &lt;em&gt;Human Capital and Economic Opportunity (HCEO) Working Paper&lt;/em&gt; 17 (2017).&lt;/p&gt;"><sup>4</sup></a></span> find evidence that this is true in certain areas.</p>
 <p>This data has a lot of possibilities and we have explored only a small portion of it. In this final section let’s think about a few more possible questions to explore.</p>
 <p>First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why? What factors predict high levels of discriminatory behavior. Are there policies that could be used to reduce discriminatory behavior?</p>
 <p>Second, we have focused on the initial decision to stop a driver. There could be discrimination at other stages of the stop. For example, are police officers more likely to search for contraband if the driver is a minority? This is something the researchers at the Stanford Open Policing Project have explored. Below is a figure from the SOPP website that shows search rates by race across different U.S.</p>
@@ -672,6 +670,7 @@ Figure 3.30: Disparities in Search Rates Across U.S. Cities
 
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="intergenerational-mobility.html"><span class="header-section-number">2</span> Intergenerational Mobility</a></div>
 <div class="next"><a href="classroom-technology.html"><span class="header-section-number">4</span> Classroom Technology</a></div>
@@ -711,7 +710,7 @@ Figure 3.30: Disparities in Search Rates Across U.S. Cities
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Molly Roberts. It was last built on 2022-10-30.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Molly Roberts. It was last built on 2022-11-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -65,6 +65,19 @@ sum per_hindi1
 At endline, scores are higher. The average math score has increased to $0.503$ and the average Hindi score has increased to $0.552$. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``. Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
 
 
+```{r letter-a, echo=FALSE}
+question("Increasing test scores from 0.503 to 0.552 is a",
+  answer("0.052 percent increase test scores"),
+  answer("5.2 percent increase test scores"),
+  answer("5.2 percentage point increase in test scores", correct = TRUE),
+  answer("0.052 percentage point increase in test scores")
+)
+```
+
+```{r}
+2+2
+
+```
 ## Linear Regression (Theory) 
 
 Linear regression estimates a linear relationship between variables. Before getting to the estimation part, let's first review linear equations. A linear equation is any equation that can be written in the following form 
@@ -938,13 +951,9 @@ So now are relatively certain Mindspark is succesful in increasing learning, but
 
 To do so, let's compare the cost of Mindspark to traditional government-run schools.  Government-run schools spend about 240 minutes per week on Math and Hindi. The cost per pupil is around INR 1500 (US \$22). Mindspark spends about 180 minutes per week on Math and Hindi. Cost per pupil is around INR 1000 (US \$15). Using the estimates from the paper, Mindspark led to more learning in less time than government-run schools, as well as utilizing less financial resources.
 
-To conclude, using technology to teach-at-the-right Llevel seems like a promising intervention in places in which there is tremendous heterogeneity in baselines levels of understanding. But, there is potential for even better educational design! Maybe the best intervention would blend Mindspark with standard teaching. Giving teachers more information about the level of their students could aid instruction in the classroom. This automated aspect of the software could free up teacher time for other activities that also improve student performance.
+To conclude, using technology to teach-at-the-right-level seems like a promising intervention in places in which there is tremendous heterogeneity in baselines levels of understanding. But, there is potential for even better educational design! Maybe the best intervention would blend Mindspark with standard teaching. Giving teachers more information about the level of their students could aid instruction in the classroom. This automated aspect of the software could free up teacher time for other activities that also improve student performance.
 
-## Interactive Exercises
-```{r, regdynamic, echo=FALSE}
-knitr::include_url("https://yihui.shinyapps.io/miniUI/",
-  height = "600px")
-``` 
+
 
 
 

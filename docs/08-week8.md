@@ -39,13 +39,14 @@ In order to load in a Stata data set we are going to make use of the ``haven`` p
 library(haven)
 library(tidyverse)
 ── Attaching packages ─────────────────── tidyverse 1.3.1 ──
-✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-✓ tibble  3.1.4     ✓ dplyr   1.0.7
-✓ tidyr   1.1.4     ✓ stringr 1.4.0
-✓ readr   2.0.1     ✓ forcats 0.5.1
+✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+✔ tibble  3.1.7     ✔ dplyr   1.0.7
+✔ tidyr   1.1.4     ✔ stringr 1.4.0
+✔ readr   2.0.2     ✔ forcats 0.5.1
+Warning: package 'tibble' was built under R version 4.1.2
 ── Conflicts ────────────────────── tidyverse_conflicts() ──
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
 ```
 
 The ``haven`` package comes with a function ``read_dta``, which will read in a ``.dta`` file as a tibble.
@@ -409,7 +410,7 @@ The following objects are masked from 'package:base':
 
 ```r
 today()
-[1] "2022-11-02"
+[1] "2022-11-11"
 ```
 
 Or even the exact time right now:
@@ -417,7 +418,7 @@ Or even the exact time right now:
 
 ```r
 now()
-[1] "2022-11-02 09:28:25 PDT"
+[1] "2022-11-11 13:51:00 PST"
 ```
 
 But most importantly, ``lubridate`` allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example. 
@@ -589,7 +590,7 @@ ggplot(data = pm_byday) +
   geom_point(mapping = aes(x = T, y = meanpm10))
 ```
 
-<img src="08-week8_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="08-week8_files/figure-html/unnamed-chunk-43-1.png" width="85%" />
 
 Again, there are many ways to customize our plot. In the next code, let's specify ``color=blue`` for the markers, as well as add axes labels and an overall title.
 
@@ -602,7 +603,7 @@ ggplot(data = pm_byday) +
   ggtitle("Time After Automation and PM10")
 ```
 
-<img src="08-week8_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="08-week8_files/figure-html/unnamed-chunk-44-1.png" width="85%" />
 
 Finally, we can even color the dots by a different variables. For example, for each day relative to automation, we can color the marker by how much rain there was. This way, we can see if the automation date occurred around a change in the rain season. If so, then variation in pollution may be driven by variation in rain. 
 
@@ -614,5 +615,335 @@ ggplot(data = pm_byday) +
   ggtitle("Time After Automation and PM10")
 ```
 
-<img src="08-week8_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="08-week8_files/figure-html/unnamed-chunk-45-1.png" width="85%" />
+
+In this graph, days in which there is a lot of rain are colored light blue, while days with less rain are colored dark blue. As you can see, around automation, the dots are mostly dark blue. This indicates this was a period in which there was relatively less rain. However, there doesn't seem to be a stark change just around the time of automation. In other words, the amount of rain seems relatively stable just before and just after automation of pollution monitoring. 
+
+Next, we are going to visualize the data in an alternative way: using a box plot. To do so we will use the ``geom_boxplot`` function.
+
+<!---
+Extra repetitive discussion of box plots
+To understand box plots theoretically, we are going to look at ages of Olympians for two different sports: Women's Gymnastics and Men's Curling. This box plot appears in Figure \@ref(fig:box1) below.
+
+<div class="figure" style="text-align: center">
+<img src="images/08_boxplot.png" alt="Boxplot of Ages for Different Olympic Sports" width="75%" />
+<p class="caption">(\#fig:box1)Boxplot of Ages for Different Olympic Sports</p>
+</div>
+
+But what is represented on this figure? First, let's talk about the box itself. The box itself will tell you the 75th percentile, median, and 25th percentile:
+
+
+<div class="figure" style="text-align: center">
+<img src="./images/08_boxplot_percentiles.png" alt="Understanding the Box" width="75%" />
+<p class="caption">(\#fig:box2)Understanding the Box</p>
+</div>
+
+For example, for men's curling, the median age is 31. The difference between the 75th percentile and 25th percentile is referred to as the interquartile range (IQR). A larger IQR implies there is more spread in ages in the sport. 
+
+Next, let's discuss the whiskers (i.e. the lines that extend from the boxes). The length of each whisker is $1.5 \times IQR$. 
+
+<div class="figure" style="text-align: center">
+<img src="./images/08_boxplot_whisker.png" alt="Understanding the Whiskers" width="75%" />
+<p class="caption">(\#fig:box3)Understanding the Whiskers</p>
+</div>
+
+However, sometimes there is absolutely no data at this point, so the whisker will stop early. For example, if we look at the Men's curling, the IQR is equal to 10. Therefore, if we extended down from the 25th percentile (which is equal to 27), then the whisker should reach $27-1.5 \times 10=12$. So why does it stop at 20? Well, the minimum age across all curlers is 20. the whisker will not extend past this minimum.
+
+In some cases, however, there are observations beyond the length of the whiskers. For example, for Women's Gymnastic, we see a number of dots above the top whisker. This indicates there are individuals that have ages beyond the whisker, up to the maximum of 37.
+
+Now that we understand theoretically what a box plot accomplishes, let's try one in our data.
+--->
+
+
+```r
+ggplot(data=pm_byday) + 
+  geom_boxplot(mapping=aes(y=meanpm10))
+```
+
+<img src="08-week8_files/figure-html/unnamed-chunk-46-1.png" width="75%" />
+
+This shows us the median level of pollution, the 25th percentile and 75th percentile overall, but our real goal here is to understand how these statistics change after automation. So let's split this graph up by the variable ``after`` which is equal to 1 if automation has already occurred, and zero if it hasn't occurred yet.
+
+
+
+```r
+ggplot(data=pm_byday) + 
+  geom_boxplot(mapping=aes(x=after,y=meanpm10))
+```
+
+<img src="08-week8_files/figure-html/unnamed-chunk-47-1.png" width="75%" />
+
+## Bar Plots 
+
+In this section we are going to discuss how to construct bar plots. We are going to focus on one aspect of Greenstone et al. (2022) that we haven't discussed in depth yet. In particular, we are going to study *how* automation was rolled out. 
+
+So far, we have discussed and automation date: the date after which pollution levels are automatically reported to the central government. Different cities, however, had different automated pollution dates. They implemented the policy first for a certain set of cities, and then second for another set of cities. In this section, we are going to try to figure out what the logic of that implementation was. In particular, did they target high-polluting cities as the first place to implement automated pollution monitoring. 
+
+The first thing we will do is again create a city-level dataset. This will be similar to the city-level datasets we have already created, but will also include a variable for the ``phase`` in which the city was included in automation. There are two possible values of ``phase``, 1 for the first automation wave and 2 for the second wave of automation.
+
+
+
+```r
+pm_bycity <- pm %>%
+  mutate(T = date - auto_date) %>%
+  filter(T < 0) %>%
+  group_by(code_city) %>%
+  summarize(meanpm10 = mean(pm10, na.rm=TRUE),
+            phase = unique(phase))
+```
+
+Note in the code below we have restricted to the period of time before automation (``filter(T<0)``). The function ``unique(phase)`` takes the unique value of the phase for each city (this value does not vary within a city). Let's look at our resulting data frame:
+
+
+```r
+head(pm_bycity)
+# A tibble: 6 × 3
+  code_city meanpm10 phase
+      <dbl>    <dbl> <dbl>
+1    110100    108.      1
+2    120100     93.3     1
+3    130100     92.5     1
+4    130200     84.8     1
+5    130300     66.4     1
+6    130400     94.7     1
+```
+
+Next, let's create a bar plot using ggplot that shows the number of cities that were in phase 1 vs. phase 2. To do so we will continue to use the same syntax that we have learned in ggplot. Before looking at the figure, let's look at the code that will generate the figure:
+
+
+```r
+ggplot(pm_bycity, aes(x=factor(phase))) + 
+  geom_bar(stat="count")
+```
+
+Because ``phase`` is either 1 or 2, we want R to understand that ``phase`` is a categorical variable. By default, R will interpret this as a continuous variable. This is common for bar plots. We need to tell R we are showing statistics across groups (in this case the groups are the unique values of the ``phase`` variable).
+
+We have specified ``stat="count"`` because in this example, we want to display the total number of cities for each value of ``phase``. In other words, we want to count the number of cities by phase. Now that we understand the code, let's look at the figure itself.
+
+<img src="08-week8_files/figure-html/badbar-1.png" width="75%" />
+
+As we can see in this figure, about half of the cities in the sample (60) were in phase 1 of automation, while slightly more than half were in phase 2. What we need to do next is improve the appearence of the graph. The label ``as.factor(phase)`` is not particularly helpful for a reader. So let's add some custom labels and axes.
+
+
+```r
+ggplot(pm_bycity, aes(x=factor(phase))) + 
+  geom_bar(stat="count", fill="darkblue") + 
+  xlab("Wave of Automation") + 
+  ylab("Number of Cities") + 
+  ggtitle("Number of Cities by Wave of Automation") + 
+  theme_minimal()
+```
+
+<img src="08-week8_files/figure-html/goodbar-1.png" width="75%" />
+
+We've introduced a few new things in the code above. First, we specified ``fill="darkblue"``. This tells ggplot that instead of gray bars, we want the bars to be dark blue. Next, we have also specified ``theme_minimal()``. The nice thing about ggplot is that it also comes with a number of themes which can change the overall look of the graph. The ``theme_minimual()`` makes the plot look more minimalistic, taking out the background.
+
+Next, we are going to study whether cities that were more polluted were more likely to be in the first wave. We will use a threshold of 80 to define whether a city is heavily polluted or not. So let's add a variable named ``above80`` to our data frame:
+
+
+```r
+pm_bycity$above80 <- pm_bycity$meanpm10 > 80
+```
+
+Now, we can use this variable to add another dimension to our bar plot. In particular, we can show what fraction of those in automation phase 1 had pollution levels above 80 vs. what fraction had pollution levels below 80. To do so, we will take out the code ``fill="darkblue"`` and add ``fill=above80`` inside ``aes()``.
+
+
+```r
+ggplot(pm_bycity, aes(x=factor(phase),fill=above80)) + 
+  geom_bar(stat="count") + 
+  xlab("Wave of Automation") + 
+  ylab("Number of Cities") + 
+  ggtitle("Number of Cities by Wave of Automation") + 
+  theme_minimal()
+```
+
+<img src="08-week8_files/figure-html/coloredbar-1.png" width="75%" />
+
+So there is some slight evidence that the high-polluting cities were more likely to be in wave 1. However, it is reasonably even split. There are a number of high-polluting cities in both waves of automation. 
+
+Next, we will explore a few more customizations. First, what we have plotted above is referred to as a stacked bar plot. We have divided cities into four groups: (phase 1 + high polluters), (phase 1 + low polluters), (phase 2 + high polluters), (phase 2 + low polluters). For each phase, the high and low polluters are stacked atop each other. We can instead specify to show the counts separately for these four groups. 
+
+To do so we will use the option ``position = position_dodge()`` inside ``geom_bar()``.
+
+```r
+ggplot(pm_bycity, aes(x=factor(phase),fill=above80)) + 
+  geom_bar(stat="count",position = position_dodge()) + 
+  xlab("Wave of Automation") + 
+  ylab("Number of Cities") + 
+  ggtitle("Number of Cities by Wave of Automation") + 
+  theme_minimal()
+```
+
+<img src="08-week8_files/figure-html/dodgebar-1.png" width="75%" />
+
+This way of displaying the data may be a little bit more easily to visualize in certain cases. The last customization we will make is to change the legend. We can change both the text of the legend, as well as its position in the graph. To change the position, we can use add ``theme(legend.position = "top")`` to our graph. To change the text of the legend, we can use the ``scale_fill_discrete()`` option. For example, imagine we want to title the legend "Mean PM10 Above 80" and we also want to flip the order so that "TRUE" appears before "FALSE". The code below accomplishes both of these goals by specifying the proper elements inside ``scale_fill_discrete()``.
+
+
+```r
+ggplot(pm_bycity, aes(x=factor(phase), fill=above80)) + 
+  geom_bar(stat="count", position = position_dodge()) + 
+  xlab("Wave of Automation") + 
+  ylab("Number of Cities") + 
+  ggtitle("Number of Cities by Wave of Automation") + 
+  theme_minimal() + theme(legend.position = "top") + 
+  scale_fill_discrete(name="Mean PM10 Above 80", 
+                      limits=c("TRUE", "FALSE"))
+```
+
+<img src="08-week8_files/figure-html/unnamed-chunk-52-1.png" width="75%" />
+
+## Conclusion
+
+In this section we learned how to make a variety of plots, starting in base R, then moving onto ggplot2. In this final section, we are going to put everything we learned together. To illustrate the concepts, we are going to create side-by-side histograms, first in base R and then in ggplot2. 
+
+So let's first review the data frame we began with. We started with a Stata dataset named ``station_day_1116.dta``. In order to load this data into R we used the ``haven`` package.
+
+
+```r
+library(haven)
+```
+
+
+```r
+pm <- read_dta("station_day_1116.dta")
+```
+
+Our main goal is to study how pollution measurements change in response to automatic pollution monitoring. In China, local officials had incentives to manipulate pollution reports. Automated system was implemented in order to get accurate measures of pollution that cannot be manipulated by local officials. If we see pollution measurements increase around the time of automation, then that's good evidence of manipulation before automated pollution monitoring took place. 
+
+To understand the distribution of pollution measurements we are going to plot the distribution of mean PM10 by day both before and after automated monitoring. To do so we are again going to convert our data frame to a day-level dataset that has average levels of pollution per day.
+
+
+```r
+pm_byday <- pm %>% 
+  mutate(
+    T=date-auto_date) %>%
+  filter(T>-364, T<364) %>%
+  group_by(T) %>%
+  summarize(meanpm10 = mean(pm10, na.rm=TRUE),
+    meanrain = mean(rain, na.rm=TRUE)) %>%
+  mutate(after=T>0)
+```
+
+Recall, ``T=date-auto_date`` will capture the days relative to automation. For example a value of -10 would indicate ten days **until** automation. A value of 10 will indicate ten days **since** automation. To create side-by-side histograms using base R we will first generate two additional data frames, one for before automation and one after automation:
+
+
+```r
+by_day_before <- pm_byday %>%
+  filter(after==FALSE) 
+by_day_after<- pm_byday %>%
+  filter(after==TRUE) 
+```
+
+Now, to generate side-by-side histograms in base R we need to use the ``par(mfrow=c(1,2))``, which indicates there will be one row of plots and 2 columns. 
+
+Additionally, when we construct the figure we will make sure to (1) include proper labels, (2) make sure the limits of the axes are the same for both histograms and (3) have each graph be a different color. 
+
+
+```r
+par(mfrow=c(1,2))
+hist(by_day_before$meanpm10, col="blue",
+  xlab="Mean PM10", 
+  main="Before Automation",
+  xlim=c(0,200))
+
+hist(by_day_after$meanpm10, col="red", 
+  xlab="Mean PM10", 
+  main="After Automation", 
+  xlim=c(0,200))
+```
+
+<img src="08-week8_files/figure-html/unnamed-chunk-57-1.png" width="75%" />
+
+Next, let's discuss how to make a similar plot in ggplot2. In order to do so, we actually have to load an external package ``gridExtra``. To install an external package we type ``install.packages("gridExtra")``. Then we need to load it into memory.
+
+
+```r
+library(gridExtra)
+```
+
+Now, the first thing we are going to do is create both the histograms. Instead of having the plot displayed immediately, we will save the plot under a name. This will allow us to combine both the plots together using ``gridExtra``. A convenient aspect of using ggplot for this problem will be that we don't actually have to create those intermediate data frame ``by_day_before`` and ``by_day_after``. We can directly use ``pm_byday``. Let's start by creating the histogram for before automation.
+
+
+```r
+plotbefore <- pm_byday %>%
+  filter(after==FALSE) %>%
+  ggplot(aes(x=meanpm10)) + 
+  geom_histogram(fill="blue", alpha=.2) + 
+  xlab("Mean PM10") + 
+  ggtitle("Before Automation") + 
+  xlim(0,200)
+```
+
+If you execute the code above, you will not see a plot appear in your Plots panel. That is because the plot has been stored under an object named ``plotbefore`` in your environment. If you type ``plotbefore`` and execute the code, then you will see the plot in the Plots window. 
+
+One aspect of the code we have not seen before is the option ``alpha=0.2``. This parameter will change the transparency of the histogram. In other words, while the figure will be blue, it will be slightly transparent. Values closer to zero will be more transparent. Adding transparency to graphs can sometimes help, particularly when you have overlapping features. 
+
+Next, let's create ``plotafter``. The only difference will be we will replace ``filter(after==FALSE)`` with ``filter(after==TRUE)``.
+
+
+```r
+plotafter <- pm_byday %>%
+  filter(after==TRUE) %>%
+  ggplot(aes(x=meanpm10)) + 
+  geom_histogram(fill="red", alpha=.2) + 
+  xlab("Mean PM10") + 
+  ggtitle("After Automation") + 
+  xlim(0,200)
+```
+
+Now we can combine these two into a single plot.
+
+
+```r
+grid.arrange(plotbefore, plotafter, ncol=2)
+Warning: Removed 2 rows containing missing values (geom_bar).
+Removed 2 rows containing missing values (geom_bar).
+```
+
+<img src="08-week8_files/figure-html/unnamed-chunk-61-1.png" width="75%" />
+
+As we can see in these graphs, the distribution of pollution seems shifted to the right after automation. It appears that local officials may have been misreporting pollution levels prior to the policy. This specific finding is an important general lesson. In many situations, the one's making decisions (the officials) may not have the same incentives as those trying to implement the policy (the central government). This principal-agent problem is pervasive in many settings, but this paper has shown that their is a solution in some cases: technology. If you are interested in this topic, make sure to check out Greenstone et al. (2022) for more results!
+
+
+## <u>Function Descriptions</u> {-}
+
+
+
+
+::: {.rmdnote}
+
+**<u>Packages Used</u>**
+
+- ``tidyverse`` -- Includes a suite of packages, including ``ggplot2`` which is used for graphics in this chapter.
+
+- ``haven`` -- Allows users to read in Stata files into R.
+
+- ``lubridate()`` -- A package useful for handling variables that contain dates in R.
+
+- ``gridExtra()`` -- Allows user to put ggplot2 plots side-by-side
+
+
+**<u>Base R plot functions</u>**
+
+- ``hist()`` -- Generates a histogram. 
+
+- ``boxplot()`` -- Generates a boxplot.
+
+- ``plot()`` -- Generates a scatterplot.
+
+- ``par(mfrow=c(r,c))`` -- Allows user to place base R plots in a grid. ``r`` is the number of rows and ``c`` is the number of columns. For example, ``par(mfrow=c(1,2))`` will imply that there will be 1 row and 2 columns of plots.
+
+**<u>ggplot2 Geometric functions</u>**
+
+- ``geom_histogram()`` -- Generates a histogram. 
+
+- ``geom_boxplot()`` -- Generates a boxplot.
+
+- ``geom_point()`` -- Generates a scatterplot
+
+- ``geom_bar()`` -- Generates a barplot.
+
+
+::: 
+
 

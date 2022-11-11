@@ -369,12 +369,9 @@ where ``varlist`` is a list of variables that you would like to see summary stat
 
 ```stata
 summarize count
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-       count |      2,199    946.5153    1508.825         50   26989.6
-> 7
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       count |      2,199    946.5153    1508.825         50   26989.67
 ```
 
 This table tells us a few things. First, it tells us that the average size of a cohort of students across all institutions in the dataset is about 946 students. Additionally, we can see the minimum is 50 and the maximum is 26989.67. The minimum being 50 is actually by construction. Institutions with less than 50 students per cohort were dropped from the dataset. Understanding descriptive statistics about your key variables is important before starting any data analysis. 
@@ -537,12 +534,9 @@ A general note about how syntax is presented in Stata is useful here. Words that
 
 ```stata
 sum mobility_rate if CA==1 
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-mobility_r~e |        168    .0275095    .0154819          0   .099184
-> 6
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+mobility_r~e |        168    .0275095    .0154819          0   .0991846
 ```
 
 Note that we did not put ``if`` in brackets, even though it was in brackets in the syntax. The brackets are there to tell you that you can use an if statement, but the brackets themselves are not actually part of the syntax. 
@@ -552,12 +546,9 @@ So mobility rates in California colleges are 0.028. Let's compare this number to
 
 ```stata
 sum mobility_rate if CA==0 
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-mobility_r~e |      2,031    .0175132     .012647          0   .163579
-> 7
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+mobility_r~e |      2,031    .0175132     .012647          0   .1635797
 ```
 
 The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be do to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately. 
@@ -565,14 +556,10 @@ The mobility rates in non-Californian colleges are 0.018, so mobility rates, on 
 
 ```stata
 sum par_q1 kq5_cond_parq1 if CA==1 
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-      par_q1 |        168    .1443805    .0889914   .0321324   .460696
-> 8
-kq5_cond_p~1 |        168    .2481358    .1638556          0   .849747
-> 3
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      par_q1 |        168    .1443805    .0889914   .0321324   .4606968
+kq5_cond_p~1 |        168    .2481358    .1638556          0   .8497473
 ```
 
 And now for non-Californian colleges:
@@ -580,14 +567,10 @@ And now for non-Californian colleges:
 
 ```stata
 sum par_q1 kq5_cond_parq1 if CA==0 
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-      par_q1 |      2,031    .1232655    .0878519   .0111896   .609774
-> 8
-kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .919293
-> 2
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      par_q1 |      2,031    .1232655    .0878519   .0111896   .6097748
+kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .9192932
 ```
 
 So let's first discuss the access results (i.e. the variable ``par_q1``). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fractions of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA. 
@@ -598,12 +581,9 @@ We can also use ``if`` statements to reference string variables. For example, le
 
 ```stata
 sum mobility_rate if name == "University Of California, San Diego"
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-mobility_r~e |          1    .0483275           .   .0483275   .048327
-> 5
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+mobility_r~e |          1    .0483275           .   .0483275   .0483275
 ```
 
 Here we have taken the average ``if name == "University Of California, San Diego"``. But only one observation meets this restriction, so the table is just showing us the mobility rate for UCSD, which is equal to 0.048, a bit higher than the average of 0.028 across all Californian institutions. 

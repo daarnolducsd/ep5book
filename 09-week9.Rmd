@@ -1,0 +1,34 @@
+# Voting 
+
+## Two Voting Applications
+
+```{r setup, include=FALSE}
+library(Statamarkdown)
+library(webexercises)
+```
+
+<html>
+<head>
+<style>
+code {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+
+
+We will discuss two different voting applications: First, a question
+
+**What is a p-value?**
+
+```{r, echo = FALSE}
+opts_p <- c(
+   "the probability that the null hypothesis is true",
+   answer = "the probability of the observed, or more extreme, data, under the assumption that the null-hypothesis is true",
+   "the probability of making an error in your conclusion"
+)
+```
+
+`r longmcq(opts_p)`

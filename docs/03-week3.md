@@ -330,9 +330,8 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are
-    matched -- must be of the same generic type in the master and
-    using datasets.  Same generic type means both numeric or both
+    Each key variable -- the variables on which observations are matched -- must be of the same
+    generic type in the master and using datasets.  Same generic type means both numeric or both
     string.
 r(106);
 
@@ -501,12 +500,9 @@ To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Ma
-> x
--------------+--------------------------------------------------------
-> -
-   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+0
-> 7
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07
 ```
 
 It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be $60\cdot 60 \cdot 1000 = 3,600,000$). So how many milliseconds to 6:30 PM?

@@ -84,7 +84,7 @@ Let's try another example. Say we take a random draw from three numbers: -1, 0, 
 ```r
 x <- sample(-1:1,1)
 x
-[1] 0
+[1] 1
 ```
 
 The part of the code ``-1:1`` controls what numbers will be drawn. If you type ``-1:1`` in R, you will see it prints out the numbers -1,0, and 1. The second part of the code ``,1`` tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.
@@ -405,6 +405,7 @@ Next, in order to use a package in a given R session, you need to load it into m
 
 ```r
 library(tidyverse)
+Warning: package 'tibble' was built under R version 4.1.2
 ```
 
 A common mistake for students is to forget to load a package for a given R session. If you do this, you might get an error such as "[function] not found". If you are using functions from an external package, you need to make sure to load that package in every session of R that you want to use it in. 
@@ -711,9 +712,12 @@ A nice thing about ``mutate()`` relative to base R is that you can generate a nu
 ```r
 rr <- mutate(rr, collegeprep=childtravel+childeduc,
              childnotcollegeprep=childtot-childcollegeprep)
-Error: Problem with `mutate()` column `childnotcollegeprep`.
+Error in `mutate_cols()`:
+! Problem with `mutate()` column `childnotcollegeprep`.
 ℹ `childnotcollegeprep = childtot - childcollegeprep`.
-x object 'childcollegeprep' not found
+✖ object 'childcollegeprep' not found
+Caused by error:
+! object 'childcollegeprep' not found
 ```
 
 If you have more variables to add or change, you can simply add a comma to the end of the last line, and add the new variable below. Note, we can even call variables that are created earlier in the function (i.e. ``childnotcollegeprep`` can only be created if ``childcollegeprep`` is created first).
@@ -861,7 +865,8 @@ If I type ``group_by(school,graduationdate)``, then any subsequent ``summarize()
 student.df %>% 
   group_by(school,graduationdate) %>%
   summarize(mean.gpa=mean(gpa))
-`summarise()` has grouped output by 'school'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'school'. You can
+override using the `.groups` argument.
 # A tibble: 4 × 3
 # Groups:   school [2]
   school graduationdate mean.gpa
@@ -981,7 +986,8 @@ Our goal is to compute the amount of time spent on ``collegeprep`` over time, by
 collegeprep <- mothers_collegeprep %>%
   group_by(dataset, college) %>%
   summarize(meancollegeprep=mean(collegeprep, na.rm=T))
-`summarise()` has grouped output by 'dataset'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'dataset'. You can
+override using the `.groups` argument.
 ```
 
 Now if we look at our resulting tibble, we can use it to understand trends in time spent on college prep over time:
@@ -993,7 +999,8 @@ collegeprep <- rr %>%
   mutate(collegeprep = childeduc + childtravel) %>%
   group_by(dataset, college) %>%
   summarize(meancollegeprep=mean(collegeprep, na.rm=T))
-`summarise()` has grouped output by 'dataset'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'dataset'. You can
+override using the `.groups` argument.
 ```
 
 Going forward in the book, the tools we have learned in this section will be very important. It is extremely common to need to perform some data wrangling steps before proceeding to your actual analysis. The tidyverse package has given us a convenient set of functions in order to perform this analysis. 
