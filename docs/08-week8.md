@@ -38,15 +38,14 @@ In order to load in a Stata data set we are going to make use of the ``haven`` p
 ```r
 library(haven)
 library(tidyverse)
-── Attaching packages ─────────────────── tidyverse 1.3.1 ──
-✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-✔ tibble  3.1.7     ✔ dplyr   1.0.7
-✔ tidyr   1.1.4     ✔ stringr 1.4.0
-✔ readr   2.0.2     ✔ forcats 0.5.1
-Warning: package 'tibble' was built under R version 4.1.2
-── Conflicts ────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
+#> ── Attaching packages ─────────────────── tidyverse 1.3.2 ──
+#> ✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+#> ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+#> ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+#> ✔ readr   2.1.3      ✔ forcats 0.5.2 
+#> ── Conflicts ────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
 ```
 
 The ``haven`` package comes with a function ``read_dta``, which will read in a ``.dta`` file as a tibble.
@@ -60,8 +59,21 @@ To first get a sense of our data, let's look at a few of the key variables in th
 
 
 ```r
-pm %>% head(pm10_n,code_city, date, pm10, auto_date)
-Error in checkHT(n, d <- dim(x)): object 'pm10_n' not found
+pm %>% select(pm10_n,code_city,date,pm10,auto_date)
+#> # A tibble: 1,433,568 × 5
+#>    pm10_n code_city  date  pm10 auto_date
+#>     <dbl>     <dbl> <dbl> <dbl>     <dbl>
+#>  1     46    440300 18628  NA       19060
+#>  2     46    440300 18629  NA       19060
+#>  3     46    440300 18630  NA       19060
+#>  4     46    440300 18631  NA       19060
+#>  5     46    440300 18632  NA       19060
+#>  6     46    440300 18633  NA       19060
+#>  7     46    440300 18634  70.1     19060
+#>  8     46    440300 18635 114.      19060
+#>  9     46    440300 18636  62.5     19060
+#> 10     46    440300 18637  90.8     19060
+#> # … with 1,433,558 more rows
 ```
 
 The first variable, ``pm10_n`` is the station number. This is the code of the station that took the pollution reading. The next variable ``code_city`` is the code of the city in which the pollution reading was taken. This dataset is a panel dataset, which means there are many observations over time. In this case, we will have readings from the same pollution center over time. The ``date`` variable stores information on the date the reading was taken. We will discuss a bit later what the number in this variable means. ``pm10`` is our measure of pollution. Lastly, ``auto_date`` is the date of automation. After this date, instead of local governments reporting pollution statistics, pollution statistics were directly reported to the central government.
@@ -89,7 +101,7 @@ hist(pm_bycity$meanpm10)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="08-week8_files/figure-html/hist1-1.png" alt="Histogram of Average Pollution Levels Across Cities Part 1" width="90%" />
+<img src="08-week8_files/figure-html/hist1-1.png" alt="Histogram of Average Pollution Levels Across Cities Part 1" width="80%" />
 <p class="caption">(\#fig:hist1)Histogram of Average Pollution Levels Across Cities Part 1</p>
 </div>
 
@@ -109,7 +121,7 @@ hist(pm_bycity$meanpm10,
 
 
 <div class="figure" style="text-align: center">
-<img src="08-week8_files/figure-html/hist2-1.png" alt="Histogram of Average Pollution Levels Across Cities Part 2" width="90%" />
+<img src="08-week8_files/figure-html/hist2-1.png" alt="Histogram of Average Pollution Levels Across Cities Part 2" width="80%" />
 <p class="caption">(\#fig:hist2)Histogram of Average Pollution Levels Across Cities Part 2</p>
 </div>
 
@@ -263,7 +275,7 @@ So in this example, ``T`` is again the days until automation. For this box plot,
 boxplot(pm_byday$meanpm10)
 ```
 
-<img src="08-week8_files/figure-html/unnamed-chunk-14-1.png" width="85%" />
+<img src="08-week8_files/figure-html/unnamed-chunk-14-1.png" width="80%" />
 
 The box plot has a few elements that we should discuss. First, the upper end of the box is the 75th percentile (also referred to as the third quartile). In this box plot, the 75th percentile is at about 112. The bottom of the box is the 25th percentile (also referred to as the 1st quartile). In this box plot, the 25th percentile is about 80. The length of the box is referred to as the interquartile range. This is the difference between the 75th percentile and the 25th percentile, so in this example the interquartile range is 112-80=32.
 
@@ -398,11 +410,12 @@ As ``lubridate()`` is a new package, you first need to install lubridate via ``i
 
 ```r
 library(lubridate)
-
-Attaching package: 'lubridate'
-The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union
+#> Loading required package: timechange
+#> 
+#> Attaching package: 'lubridate'
+#> The following objects are masked from 'package:base':
+#> 
+#>     date, intersect, setdiff, union
 ```
 
 ``lubridate()`` comes with a variety of functions. For example, there are functions to tell you what day it is today:
@@ -410,7 +423,7 @@ The following objects are masked from 'package:base':
 
 ```r
 today()
-[1] "2022-11-11"
+#> [1] "2022-11-29"
 ```
 
 Or even the exact time right now:
@@ -418,7 +431,7 @@ Or even the exact time right now:
 
 ```r
 now()
-[1] "2022-11-11 13:51:00 PST"
+#> [1] "2022-11-29 12:19:54 PST"
 ```
 
 But most importantly, ``lubridate`` allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example. 
@@ -428,7 +441,7 @@ Additionally, ``lubridate()`` can interpret dates that come in a variety of form
 
 ```r
 ymd("2012-01-22")
-[1] "2012-01-22"
+#> [1] "2012-01-22"
 ```
 
 There is also a month-day-year function:
@@ -436,7 +449,7 @@ There is also a month-day-year function:
 
 ```r
 mdy("January 22nd, 2012")
-[1] "2012-01-22"
+#> [1] "2012-01-22"
 ```
 
 Or a day-month-year function:
@@ -444,7 +457,7 @@ Or a day-month-year function:
 
 ```r
 dmy("22-Jan-2012")
-[1] "2012-01-22"
+#> [1] "2012-01-22"
 ```
 
 What is also important is that we can add days and times with ``lubridate`` functions. For example, 12 days after January 22nd 2012 is:
@@ -452,7 +465,7 @@ What is also important is that we can add days and times with ``lubridate`` func
 
 ```r
 ymd("2012-01-22") + days(12)
-[1] "2012-02-03"
+#> [1] "2012-02-03"
 ```
 
 In 15 months it will be:
@@ -460,7 +473,7 @@ In 15 months it will be:
 
 ```r
 ymd("2012-01-22") + months(15)
-[1] "2013-04-22"
+#> [1] "2013-04-22"
 ```
 
 In 5 years it will be:
@@ -468,7 +481,7 @@ In 5 years it will be:
 
 ```r
 ymd("2012-01-22") + years(5)
-[1] "2017-01-22"
+#> [1] "2017-01-22"
 ```
 
 Often the date is actually more narrow than we need for our analysis. For example, maybe we only need the year portion of the date variable. We can extract this portion using the ``year()`` function:
@@ -476,7 +489,7 @@ Often the date is actually more narrow than we need for our analysis. For exampl
 
 ```r
 year(ymd("2012-01-22"))
-[1] 2012
+#> [1] 2012
 ```
 
 There are similar functions for extracting the month(``month()``), day in the month (``mday()``), or day of the week ``wday()``.
@@ -486,7 +499,7 @@ Now that we have a sense of ``lubridate()`` let's load return to the pollution m
 
 ```r
 head(pm$date)
-[1] 18628 18629 18630 18631 18632 18633
+#> [1] 18628 18629 18630 18631 18632 18633
 ```
 
 So this doesn't look very intuitive. What does 18628. Well, this is actually an artifact of how Stata stores dates (recall we originally read the data frame into R via a Stata dataset). It stores dates as the number of days since January 1, 1960. 
@@ -496,7 +509,7 @@ In other words, ``18628`` represents that this observation was taken ``18628`` d
 
 ```r
 ymd("1960-01-01")+days(18628)
-[1] "2011-01-01"
+#> [1] "2011-01-01"
 ```
 
 So 18628 days from January 1, 1960 is January 1, 2011. 
@@ -697,15 +710,15 @@ Note in the code below we have restricted to the period of time before automatio
 
 ```r
 head(pm_bycity)
-# A tibble: 6 × 3
-  code_city meanpm10 phase
-      <dbl>    <dbl> <dbl>
-1    110100    108.      1
-2    120100     93.3     1
-3    130100     92.5     1
-4    130200     84.8     1
-5    130300     66.4     1
-6    130400     94.7     1
+#> # A tibble: 6 × 3
+#>   code_city meanpm10 phase
+#>       <dbl>    <dbl> <dbl>
+#> 1    110100    108.      1
+#> 2    120100     93.3     1
+#> 3    130100     92.5     1
+#> 4    130200     84.8     1
+#> 5    130300     66.4     1
+#> 6    130400     94.7     1
 ```
 
 Next, let's create a bar plot using ggplot that shows the number of cities that were in phase 1 vs. phase 2. To do so we will continue to use the same syntax that we have learned in ggplot. Before looking at the figure, let's look at the code that will generate the figure:
@@ -896,8 +909,8 @@ Now we can combine these two into a single plot.
 
 ```r
 grid.arrange(plotbefore, plotafter, ncol=2)
-Warning: Removed 2 rows containing missing values (geom_bar).
-Removed 2 rows containing missing values (geom_bar).
+#> Warning: Removed 2 rows containing missing values (`geom_bar()`).
+#> Removed 2 rows containing missing values (`geom_bar()`).
 ```
 
 <img src="08-week8_files/figure-html/unnamed-chunk-61-1.png" width="75%" />

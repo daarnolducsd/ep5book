@@ -7,6 +7,7 @@
 
 ```{r setup, include=FALSE}
 library(Statamarkdown)
+library(webexercises)
 ```
 
 <html>
@@ -63,6 +64,22 @@ Quintiles are just one way to break up the data. If we break the data into four 
 
 Certain percentiles are often reported as descriptive statistics. For example, the median (50$^{th}$ percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was \$68,703. This implies 50 percent of households had income less than \$68,703, while 50 percent had income more than \$68,703.
 
+
+::: {.rmdtip}
+
+**Question: If an individual is at the 33 percentile of earnings, then this individual has...**
+
+```{r, echo = FALSE}
+opts_p <- c(
+   "Lower earnings than 33 percent of individuals",
+   answer = "Lower earnings than 67 percent of individuals ",
+   "Higher earnings than 67 Percent of individuals"
+)
+```
+
+`r longmcq(opts_p)`
+
+:::
 
 ## Mobility Definition
 

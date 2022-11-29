@@ -50,6 +50,19 @@ Brownback and Sadoff (2020) run the following experiment at a community college 
   
 The key in their design is that the instructors that are chosen to receive the incentives are randomly selected. Therefore, they are not, on average, better teachers than instructors in the control group. Therefore, if we observe any difference in student performance between the treatment and control, then it must be due to the financial incentives for instructors. 
 
+
+::: {.rmdtip}
+
+**Question: The key aspect of an experiment that allows us to infer causation is...**
+
+
+
+<div class='webex-radiogroup' id='radio_EMNMKSBQPC'><label><input type="radio" autocomplete="off" name="radio_EMNMKSBQPC" value="answer"></input> <span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_EMNMKSBQPC" value=""></input> <span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_EMNMKSBQPC" value=""></input> <span>Ability to following individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_EMNMKSBQPC" value=""></input> <span>Ability to collect information about confounding variables</span></label></div>
+
+
+:::
+
+
 ## Community College Data
 
 In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (See [replication crisis](https://en.wikipedia.org/wiki/Replication_crisis#In_economics)). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class. 
@@ -95,6 +108,19 @@ To freeze the first row go to the **View** and then click **Freeze Top Row** (Se
 </div>
 
 Let's talk a little bit about our goal with this dataset. Our goal is to determine if providing financial incentives to teachers impacts student performance. The variable **Treatment Arm** details whether a student has an instructor that received incentives or is in the control group. Therefore, we can see if test scores improve based on the Treatment Arm of the student. To perform this analysis, we need to learn how to use **functions** in Excel. 
+
+::: {.rmdtip}
+
+**Question: Imagine we have a dataset where each row contains the average unemployment rate for a given state in a given year. The unit-of-observation in this dataset is**
+
+
+
+<div class='webex-radiogroup' id='radio_RYHPYDNFYC'><label><input type="radio" autocomplete="off" name="radio_RYHPYDNFYC" value=""></input> <span>State</span></label><label><input type="radio" autocomplete="off" name="radio_RYHPYDNFYC" value=""></input> <span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_RYHPYDNFYC" value=""></input> <span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_RYHPYDNFYC" value="answer"></input> <span>State-year</span></label></div>
+
+
+:::
+
+
 
 ## Statistical Functions
 
@@ -171,6 +197,18 @@ The rest of the summary statistics are completely analogous, replacing ``AVERAGE
 <img src="images/01_gdp_sum_stats.png" alt="Summary Statistics Table" width="80%" />
 <p class="caption">(\#fig:gdpsumstats)Summary Statistics Table</p>
 </div>
+
+::: {.rmdtip}
+
+**Question: I try to take the AVERAGE of a column by specifying ``AVERAGE(C:C)``. Yet, when I press enter, Excel does not compute the average. What has gone wrong**
+
+
+
+<div class='webex-radiogroup' id='radio_WOIDGGEONW'><label><input type="radio" autocomplete="off" name="radio_WOIDGGEONW" value=""></input> <span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_WOIDGGEONW" value=""></input> <span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_WOIDGGEONW" value="answer"></input> <span>Need to specify equals sign ``=`` before the function</span></label></div>
+
+
+:::
+
 
 ## Logical Functions
 

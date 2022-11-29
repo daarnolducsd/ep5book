@@ -1,6 +1,105 @@
 {
     "sources": [
         {
+            "author": [
+                {
+                    "family": "Wand",
+                    "given": "Jonathan N"
+                },
+                {
+                    "family": "Shotts",
+                    "given": "Kenneth W"
+                },
+                {
+                    "family": "Sekhon",
+                    "given": "Jasjeet S"
+                },
+                {
+                    "family": "Mebane",
+                    "given": "Walter R"
+                },
+                {
+                    "family": "Herron",
+                    "given": "Michael C"
+                },
+                {
+                    "family": "Brady",
+                    "given": "Henry E"
+                }
+            ],
+            "container-title": "American Political Science Review",
+            "id": "wand2001butterfly",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2001
+                    ]
+                ]
+            },
+            "page": "793-810",
+            "publisher": "Cambridge University Press",
+            "title": "The butterfly did it: The aberrant vote for buchanan in palm beach county, florida",
+            "title-short": "The butterfly did it",
+            "type": "article-journal",
+            "volume": "95"
+        },
+        {
+            "author": [
+                {
+                    "family": "Hill",
+                    "given": "Seth J"
+                },
+                {
+                    "family": "Kousser",
+                    "given": "Thad"
+                }
+            ],
+            "container-title": "Political Behavior",
+            "id": "hill2016turning",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "page": "413-432",
+            "publisher": "Springer",
+            "title": "Turning out unlikely voters? A field experiment in the top-two primary",
+            "type": "article-journal",
+            "volume": "38"
+        },
+        {
+            "author": [
+                {
+                    "family": "Haushofer",
+                    "given": "Johannes"
+                },
+                {
+                    "family": "Shapiro",
+                    "given": "Jeremy"
+                }
+            ],
+            "container-title": "The Quarterly Journal of Economics",
+            "id": "haushofer2016short",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "page": "1973-2042",
+            "publisher": "MIT Press",
+            "title": "The short-term impact of unconditional cash transfers to the poor: Experimental evidence from kenya",
+            "title-short": "The short-term impact of unconditional cash transfers to the poor",
+            "type": "article-journal",
+            "volume": "131"
+        },
+        {
             "URL": "http://yihui.org/knitr/",
             "author": [
                 {

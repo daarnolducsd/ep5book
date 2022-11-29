@@ -63,6 +63,17 @@ Quintiles are just one way to break up the data. If we break the data into four 
 Certain percentiles are often reported as descriptive statistics. For example, the median (50$^{th}$ percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was \$68,703. This implies 50 percent of households had income less than \$68,703, while 50 percent had income more than \$68,703.
 
 
+::: {.rmdtip}
+
+**Question: If an individual is at the 33 percentile of earnings, then this individual has...**
+
+
+
+<div class='webex-radiogroup' id='radio_JYAJHAWWCB'><label><input type="radio" autocomplete="off" name="radio_JYAJHAWWCB" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_JYAJHAWWCB" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_JYAJHAWWCB" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+
+
+:::
+
 ## Mobility Definition
 
 Now that we understand quantiles, we will define a college's intergenerational mobility rate. Intuitively, a college will promote intergenerational mobility if it (1) admits students from low-income backgrounds and (2) these students become high earners later in life. Again, we have  defined low income as the bottom quintile of earnings, while high income is the top quintile of earnings. We will define the **mobility rate** as the fraction of low-income students, multiplied by the probability these low-income students go on to become high earners:

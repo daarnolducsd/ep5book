@@ -405,7 +405,6 @@ Next, in order to use a package in a given R session, you need to load it into m
 
 ```r
 library(tidyverse)
-Warning: package 'tibble' was built under R version 4.1.2
 ```
 
 A common mistake for students is to forget to load a package for a given R session. If you do this, you might get an error such as "[function] not found". If you are using functions from an external package, you need to make sure to load that package in every session of R that you want to use it in. 
@@ -712,11 +711,10 @@ A nice thing about ``mutate()`` relative to base R is that you can generate a nu
 ```r
 rr <- mutate(rr, collegeprep=childtravel+childeduc,
              childnotcollegeprep=childtot-childcollegeprep)
-Error in `mutate_cols()`:
-! Problem with `mutate()` column `childnotcollegeprep`.
-ℹ `childnotcollegeprep = childtot - childcollegeprep`.
-✖ object 'childcollegeprep' not found
-Caused by error:
+Error in `mutate()`:
+! Problem while computing `childnotcollegeprep =
+  childtot - childcollegeprep`.
+Caused by error in `mask$eval_all_mutate()`:
 ! object 'childcollegeprep' not found
 ```
 

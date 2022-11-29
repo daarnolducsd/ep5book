@@ -1,13 +1,17 @@
 bookdown::bs4_book:
   theme:
-    primary: "#00629B"
+    primary: '#00629B'
   repo: https://github.com/rstudio/bookdown-demo
+  css: include/webex.css
+  includes:
+    after_body: include/webex.js
+  md_extensions: -smart
 bookdown::gitbook:
   css: style.css
   config:
-    toc: 
+    toc:
       before: |
-       <li class="toc-logo"><a href="./"><img src="images/logo.png"></a></li>
+        <li class="toc-logo"><a href="./"><img src="images/logo.png"></a></li>
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
@@ -16,5 +20,7 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-  quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
+  quote_footer:
+  - \begin{flushright}
+  - \end{flushright}
 bookdown::epub_book: default

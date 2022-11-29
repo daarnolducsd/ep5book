@@ -6,20 +6,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 9 Voting | Econ5/Poli5D</title>
 <meta name="author" content="David Arnold &amp; Molly Roberts">
-<meta name="description" content="9.1 Two Voting Applications   code {  background-color: #f1f1f1; } We will discuss two different voting applications: First, a question What is a p-value? the probability that the null hypothesis...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="description" content="code {  background-color: #f1f1f1; }  9.1 2000 U.S. Presidential Election In this chapter, we will discuss two different voting applications. The first empirical application will study the 2000...">
+<meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 9 Voting | Econ5/Poli5D">
 <meta property="og:type" content="book">
 <meta property="og:image" content="/images/geisel.jpg">
-<meta property="og:description" content="9.1 Two Voting Applications   code {  background-color: #f1f1f1; } We will discuss two different voting applications: First, a question What is a p-value? the probability that the null hypothesis...">
+<meta property="og:description" content="code {  background-color: #f1f1f1; }  9.1 2000 U.S. Presidential Election In this chapter, we will discuss two different voting applications. The first empirical application will study the 2000...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 9 Voting | Econ5/Poli5D">
-<meta name="twitter:description" content="9.1 Two Voting Applications   code {  background-color: #f1f1f1; } We will discuss two different voting applications: First, a question What is a p-value? the probability that the null hypothesis...">
+<meta name="twitter:description" content="code {  background-color: #f1f1f1; }  9.1 2000 U.S. Presidential Election In this chapter, we will discuss two different voting applications. The first empirical application will study the 2000...">
 <meta name="twitter:image" content="/images/geisel.jpg">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/webex.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -54,6 +80,7 @@
 <li><a class="" href="the-rug-rat-race.html"><span class="header-section-number">7</span> The Rug Rat Race</a></li>
 <li><a class="" href="automated-pollution-monitoring.html"><span class="header-section-number">8</span> Automated Pollution Monitoring</a></li>
 <li><a class="active" href="voting.html"><span class="header-section-number">9</span> Voting</a></li>
+<li><a class="" href="unconditional-cash-transfers.html"><span class="header-section-number">10</span> Unconditional Cash Transfers</a></li>
 <li><a class="" href="references-1.html">References</a></li>
 </ul>
 
@@ -66,10 +93,6 @@
 <h1>
 <span class="header-section-number">9</span> Voting<a class="anchor" aria-label="anchor" href="#voting"><i class="fas fa-link"></i></a>
 </h1>
-<div id="two-voting-applications" class="section level2" number="9.1">
-<h2>
-<span class="header-section-number">9.1</span> Two Voting Applications<a class="anchor" aria-label="anchor" href="#two-voting-applications"><i class="fas fa-link"></i></a>
-</h2>
 
 
 <style>
@@ -77,22 +100,555 @@ code {
   background-color: #f1f1f1;
 }
 </style>
-<p>We will discuss two different voting applications: First, a question</p>
-<p><strong>What is a p-value?</strong></p>
-<div id="radio_IIHDKQTQCH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IIHDKQTQCH" value=""><span>the probability that the null hypothesis is true</span></label><label><input type="radio" autocomplete="off" name="radio_IIHDKQTQCH" value="answer"><span>the probability of the observed, or more extreme, data, under the assumption that the null-hypothesis is true</span></label><label><input type="radio" autocomplete="off" name="radio_IIHDKQTQCH" value=""><span>the probability of making an error in your conclusion</span></label>
+<div id="u.s.-presidential-election" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> 2000 U.S. Presidential Election<a class="anchor" aria-label="anchor" href="#u.s.-presidential-election"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this chapter, we will discuss two different voting applications. The first empirical application will study the 2000 U.S. Presidential Election. This election was extremely close. In the end, George W. Bush won the election with 271 electoral votes against Al Gore's 266.</p>
+<p>In Florida, the election was particularly close. In the end, Bush won the Florida by just 537 votes, and thus secured Florida's 25 electoral votes and the election. However, in Florida, there was one county's results that became particularly controversial: Palm Beach County. Many voters in this county complained about a confusing ballot. They claimed that the layout made it so that they accidentally voted for Pat Buchanan (the Reform Party Candidate) rather than Al Gore.</p>
+<p>Figure <a href="voting.html#fig:butterfly">9.1</a> shows the Ballot that was used in Palm Beach County:</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:butterfly"></span>
+<img src="images/09_palmballot.png" alt="The Butterfly Ballot" width="80%"><p class="caption">
+Figure 9.1: The Butterfly Ballot
+</p>
+</div>
+<p>In the top left, you can see the first listed candidates are George W. Bush and Dick Cheney (the Republican Candidates). The next candidates are actually Pat Buchanan and Ezola Foster (the Reform Party Candidates). However, if you are filling this in quickly, you can see how someone might accidentally think the second selection corresponds to Al Gore and Joe Lieberman.</p>
+<p>If enough people made this mistake, this could actually have consequences for who wins the election. Remember, only 537 votes separated George W. Bush and Al Gore.</p>
+<p>To understand the scope of the problem, we are going to replicate analysis from Wand et al. (2001)<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Jonathan N Wand et al., &lt;span&gt;“The Butterfly Did It: The Aberrant Vote for Buchanan in Palm Beach County, Florida,”&lt;/span&gt; &lt;em&gt;American Political Science Review&lt;/em&gt; 95, no. 4 (2001): 793–810.&lt;/p&gt;"><sup>11</sup></a></span>. Specifically, if voters are confused by the ballot, we would expect an unusually high number of votes for the Reform party candidates in Palm Beach.
+But how do we define "an unsually high number of votes". To operationalize this idea we will use the number of votes in a county for the Reform party in 1996 (the prior election) to predict how many votes a county will cast for the Reform party in 2000. If Palm Beach County has many more votes than predicted, then maybe the Butterfly ballot is the reason why.</p>
+<p>To begin exploring this question, let's load up our data.</p>
+<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">florida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"florida.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 67 Columns: 7</span></span>
+<span><span class="co">#&gt; ── Column specification ────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Delimiter: ","</span></span>
+<span><span class="co">#&gt; chr (1): county</span></span>
+<span><span class="co">#&gt; dbl (6): Clinton96, Dole96, Perot96, Bush00, Gore00, Buc...</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">florida</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 7</span></span>
+<span><span class="co">#&gt;   county   Clinton96 Dole96 Perot96 Bush00 Gore00 Buchanan00</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Alachua      40144  25303    8072  34124  47365        263</span></span>
+<span><span class="co">#&gt; 2 Baker         2273   3684     667   5610   2392         73</span></span>
+<span><span class="co">#&gt; 3 Bay          17020  28290    5922  38637  18850        248</span></span>
+<span><span class="co">#&gt; 4 Bradford      3356   4038     819   5414   3075         65</span></span>
+<span><span class="co">#&gt; 5 Brevard      80416  87980   25249 115185  97318        570</span></span>
+<span><span class="co">#&gt; 6 Broward     320736 142834   38964 177323 386561        788</span></span></code></pre></div>
+<p>Each row of the data is a county in Florida. In each row, we have counts for different presidential candidates in both 1996 and 2000. For example, in 1996, 40,144 votes were cast in Alachua county for Bill Clinton. 25,303 were cast for Bob Dole.</p>
+<p>Our eventual goal will be to use the votes cast for Ross Perot (the Reform Party Candidate) in 1996, to predict how many votes a county will cast for Pat Buchanan in 2000 (the Reform Party Candidate).</p>
+<p>The logic behind this design is that we might think counties are relatively consistent in their voting patterns. Maybe Palm Beach County is a county that happens to heavily support the Reform Party Candidates. If this is true, we should see high number of votes for Reform Party Candidates in both 1996 and 2000.</p>
+<p>To begin our exploration, let's visualize the relationship between voting for Ross Perot in 1996 and Pat Buchanan in 2000. To do so we will construct a scatter plot with <code>Perot96</code> on the horizontal axis and <code>Buchanan00</code> on the vertical axis.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:butter1"></span>
+<img src="09-week9_files/figure-html/butter1-1.png" alt="Relationship Between Buchanan and Perot Votes" width="80%"><p class="caption">
+Figure 9.2: Relationship Between Buchanan and Perot Votes
+</p>
+</div>
+<p>We can see there is one point in the top right of this graph that seems to be a bit of an outlier. This county has much higher number of votes for Buchanan than any other county. In order to see which county this is, let's add the option <code>label=county</code> inside <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. This will label each marker with the county it represents. To adjust the location and size of the marker, we will also specify <code>geom_text(vjust=1.5,size=3)</code>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:butter2"></span>
+<img src="09-week9_files/figure-html/butter2-1.png" alt="Relationship Between Buchanan and Perot Votes" width="80%"><p class="caption">
+Figure 9.3: Relationship Between Buchanan and Perot Votes
+</p>
+</div>
+<p>We chose <code>(vjust=1.5,size=3)</code> to make the labels easily readable. You can play around with these parameters to see how it changes the appearance of the figure.</p>
+<p>Now with the markers labeled we can see that Palm Beach is indeed the outlier county. But an important next question is how big of an outlier is Palm Beach? Is this enough to potentially change the outcome of the election. To answer this question concretely, we will first learn how to estimate a linear regression in R.</p>
+</div>
+<div id="linear-regression" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Linear Regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section we are going to review linear regression, and then estimate a linear regression which will help us understand whether the butterfly ballot impacted the 2000 U.S. Presidential Election. If you would like a more thorough review of linear regression, look back to Chapter 4 which includes a longer introduction to linear regression.</p>
+<p>To review briefly, we can write a general linear regression equation as:</p>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1 cdot X_i + \varepsilon_i
+\]</span></p>
+<p>Where <span class="math inline">\(Y_i\)</span> is our dependent variable of interest, <span class="math inline">\(X_i\)</span> is our independent variable of interest, <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is the slope coefficient and <span class="math inline">\(\varepsilon_i\)</span> is the error term.</p>
+<p>In our data, we choose estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, which we denote, <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>, that minimize the sum of squared errors $_{i=1}<sup>N(Y_i-)</sup>2.</p>
+<p>What do <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> tell us? Let's talk about <span class="math inline">\(\hat{\beta}_1\)</span> first. This tells us how changes in <span class="math inline">\(X\)</span> are associated with changes in <span class="math inline">\(Y\)</span>. If this value is positive, then increases in <span class="math inline">\(X\)</span> are associated with increase in <span class="math inline">\(Y\)</span>. If it is negative, then increases in <span class="math inline">\(X\)</span> are associated with decreases in <span class="math inline">\(Y\)</span>. The interpretation of <span class="math inline">\(\hat{\beta}_1\)</span> is a 1-unit change in <span class="math inline">\(X\)</span> is associated with a <span class="math inline">\(\hat{\beta}_1\)</span>-unit change in <span class="math inline">\(Y\)</span>.</p>
+<p>Once we have our estimates of the intercept and slope, we can also use them to form predictions. For example, the predicted value of <span class="math inline">\(Y\)</span> for and individual with observable <span class="math inline">\(X_i=5\)</span> is equal to:</p>
+<p><span class="math display">\[
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 \cdot 5
+\]</span>
+This is a good place to re-introduce our empirical application. Our goal is to use the number of votes for Perot in 1996 to predict the number of votes for Buchanan in 2000. One way to do this is to estimate a linear regression of the following form:</p>
+<p><span class="math display">\[
+Buchanan00_i = \beta_0 + \beta_1 \cdot Perot96_i + \varepsilon_i
+\]</span></p>
+<p>Once we estimate this regression equation, we can use the estimates to predict the number of Buchanan votes in Palm Beach County and compare to the actual number of votes in Palm Beach County. For example, hypothetically, if we predict Buchanan would receive 1000 votes in Palm Beach, but actually received 2000, then there would be 1000 more votes in Palm Beach than expected.</p>
+<p>In R, the function we use to estimate linear regressions is the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function. The basic syntax of the command is:</p>
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">yvar</span> <span class="op">~</span> <span class="va">xvar</span>, data<span class="op">=</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li><p><code>lm.fit</code> stores the estimates of the linear regression as an object in R.</p></li>
+<li><p><code>yvar</code> should be replaced with your <strong>dependent variable</strong></p></li>
+<li><p><code>xvar</code> should be replaced with your <strong>independent variable</strong></p></li>
+<li><p><code>df</code> should be the dataframe that is in your environment.</p></li>
+</ul>
+<p>In our empirical application, the code below estimates a linear regression with <code>Buchanan00</code> as the dependent variable and <code>Perot96</code> as the independent variable:</p>
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.florida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Buchanan00</span> <span class="op">~</span> <span class="va">Perot96</span>, data<span class="op">=</span><span class="va">florida</span><span class="op">)</span></span></code></pre></div>
+<p>To view the basic estimates of the regression, we can type:</p>
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.florida</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = Buchanan00 ~ Perot96, data = florida)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt; (Intercept)      Perot96  </span></span>
+<span><span class="co">#&gt;     1.34575      0.03592</span></span></code></pre></div>
+<p>So this displays our estimate of the intercept (<span class="math inline">\(\hat{\beta}_0=1.346\)</span>) and slope coefficient (<span class="math inline">\(\hat{\beta}_1=0.036\)</span>). The intercept tells us where the best fitted line intersects the vertical axis at <span class="math inline">\(X=0\)</span>. In terms of our example, the best fitted line is equal to 1.346 at <span class="math inline">\(Perot96_i=0\)</span>. Another way to interpret this is, hypothetically, if we had a county that cast zero votes for Perot in 1996, we would expect this county to cast 1.346 votes for Buchanan in 2000.</p>
+<p>To interpret <span class="math inline">\(\hat{\beta}_1\)</span>, we say: a 1-unit increase in X predicts a <span class="math inline">\(\hat{\beta}_1\)</span> unit increase in Y. So in terms of our variables, 1 additional vote for Perot in 1996, predicts 0.035 more votes for Buchanan in 2000.</p>
+<p>In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results.</p>
+</div>
+<div id="plotting-regression-lines" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Plotting Regression Lines<a class="anchor" aria-label="anchor" href="#plotting-regression-lines"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the prior section, we estimated</p>
+<p><span class="math display">\[
+Buchanan00_i = \beta_0 + \beta_1 \cdot Perot96_i + \varepsilon_i
+\]</span>
+And found <span class="math inline">\(\hat{\beta}_0=1.346\)</span> and <span class="math inline">\(\hat{\beta}_1=0.036\)</span>. These coefficients tells us the intercept and slope of the line that best fits our data. In this section we will show how to plot this best fit line in both base R and ggplot.</p>
+<p>To begin, let's create a scatter plot with <code>Buchanan00</code> on the vertical axis and <code>Perot96</code> on the horizontal axis. We are also going to specify <code>pch=16</code> in this code to change the style of the markers. <code>pch</code> stands for plot character in R and can be used to change the shape or appearance of the points in a scatterplot.</p>
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">florida</span><span class="op">$</span><span class="va">Perot96</span>, <span class="va">florida</span><span class="op">$</span><span class="va">Buchanan00</span>, </span>
+<span>     pch<span class="op">=</span><span class="fl">16</span>,</span>
+<span>     xlab<span class="op">=</span><span class="st">"Votes for Perot in 1996"</span>, </span>
+<span>     ylab<span class="op">=</span><span class="st">"Votes for Buchanan in 2000"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:basescatter1"></span>
+<img src="09-week9_files/figure-html/basescatter1-1.png" alt="Relationship Between Buchanan and Perot Votes" width="80%"><p class="caption">
+Figure 9.4: Relationship Between Buchanan and Perot Votes
+</p>
+</div>
+<p>Now our goal is to add the linear regression line to this plot. To do so, we will use the <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code> function. <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code> can be used to add lines to plots. If you pass the outcome of a linear regression to <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code>, then the fitted line from that regression will be added to the plot. In other words, if we add <code>abline(lm.florida)</code>, then the best-fitted line from this regression will be added to the plot:</p>
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">florida</span><span class="op">$</span><span class="va">Perot96</span>, <span class="va">florida</span><span class="op">$</span><span class="va">Buchanan00</span>, </span>
+<span>     pch<span class="op">=</span><span class="fl">16</span>,</span>
+<span>     xlab<span class="op">=</span><span class="st">"Votes for Perot in 1996"</span>, </span>
+<span>     ylab<span class="op">=</span><span class="st">"Votes for Buchanan in 2000"</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">lm.florida</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:basescatter2"></span>
+<img src="09-week9_files/figure-html/basescatter2-1.png" alt="Relationship Between Buchanan and Perot Votes" width="80%"><p class="caption">
+Figure 9.5: Relationship Between Buchanan and Perot Votes
+</p>
+</div>
+<p>We can also customize the appearance of the line in a few ways. For example, <code>lty=2</code> will make the line dashed instead of solid. <code>lty</code> stands for line type and you can use a variety (see help file for <code>plot</code> and search for <code>lty</code> to see the different options). <code>col="red"</code> will turn the line red.</p>
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">florida</span><span class="op">$</span><span class="va">Perot96</span>, <span class="va">florida</span><span class="op">$</span><span class="va">Buchanan00</span>, </span>
+<span>     pch<span class="op">=</span><span class="fl">16</span>,</span>
+<span>     xlab<span class="op">=</span><span class="st">"Votes for Perot in 1996"</span>, </span>
+<span>     ylab<span class="op">=</span><span class="st">"Votes for Buchanan in 2000"</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">lm.florida</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:basescatter3"></span>
+<img src="09-week9_files/figure-html/basescatter3-1.png" alt="Relationship Between Buchanan and Perot Votes" width="80%"><p class="caption">
+Figure 9.6: Relationship Between Buchanan and Perot Votes
+</p>
+</div>
+<p>Now let's learn how to plot the regression line in ggplot. In ggplot, the plot command can actually estimate the regression itself. In order to do so we will add to our plot the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function. In general <code>geom_smooth</code> adds fitted lines or curves to a plot. If we want a linear regression line, we can specify <code>geom_smooth(method="lm")</code>. The option <code>lm</code> stands for linear model.</p>
+<p>Further, we will want to specify <code>se=FALSE</code>. By default <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> adds measures of uncertainty to our regression line, which we won't cover in this book. Lastly, we will use additional options to change the type and color of the line, as we did before. The full code to generate our scatter plot with a linear regression line appears below:</p>
+<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">florida</span>, mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Perot96</span>, y<span class="op">=</span><span class="va">Buchanan00</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Votes for Perot in 1996"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Votes for Buchanan in 2000"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, se<span class="op">=</span><span class="cn">FALSE</span>, linetype<span class="op">=</span><span class="st">"dashed"</span>,color<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:geomscatter"></span>
+<img src="09-week9_files/figure-html/geomscatter-1.png" alt="Relationship Between Buchanan and Perot Votes" width="80%"><p class="caption">
+Figure 9.7: Relationship Between Buchanan and Perot Votes
+</p>
+</div>
+</div>
+<div id="predicted-values-and-residuals" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Predicted Values and Residuals<a class="anchor" aria-label="anchor" href="#predicted-values-and-residuals"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that we have estimated and plotted our linear regression line, let's review how to form predicted values and residuals.</p>
+<p>In general, the predicted value is given by:</p>
+<p><span class="math display">\[
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 \cdot X_i
+\]</span></p>
+<p>This gives us our best guess for a value of <span class="math inline">\(Y_i\)</span> given a value of <span class="math inline">\(X_i\)</span>, based on the linear regression estimates. This is the best fit line we plotted in the prior section. We can use this equation to form predicted values. For example, imagine I tell you a Alachua county in 1996 cast 8,072 votes for Ross Perot. Based on this number and the linear regression, what do you expect to be the number of Pat Buchanan votes cast?</p>
+<p><span class="math display">\[
+\hat{Buchanan00_i}= 1.346 + 0.036 \cdot 8072 \approx 292
+\]</span></p>
+<p>In other words, we expect Alachua county to cast 292 votes for Pat Buchanan. Now, this is just a prediction. We are using a single variable (Ross Perot votes) to predict the number of Buchanan votes. In reality, the number of Buchanan votes likely depends on a variety of factors. Therefore, our model will have error associated with, which we refer to as the residual.</p>
+<p>The residual is given by the difference between the actual value and the predicted value. For example, Alachua county cast 263 votes for Buchanan. The residual is therefore given by:</p>
+<p><span class="math display">\[
+\hat{residual}_i = Y_i - \hat{Y}_i=263-292 = -29
+\]</span></p>
+<p>Now, we could do this manually for every single observation, but it will be much easier to do this automatically in R. This will allow us to construct the residual for every county in the data. We are particularly interested in the residual for Palm Beach county. This residual will tell us how many more votes were cast in Palm Beach for Buchanan relative to what we would have expected based on the county's voting patterns for Perot.</p>
+<p>To do so we will again estimate a linear regression with <code>Buchanan00</code> as the dependent variable and <code>Perot96</code> as the independent variable.</p>
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.florida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Buchanan00</span> <span class="op">~</span> <span class="va">Perot96</span>, data<span class="op">=</span><span class="va">florida</span><span class="op">)</span></span></code></pre></div>
+<p><code>lm.florida</code> is known as a list object. It contains a lot of information from our linear regression. We can use the <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> function to figure out what <code>lm.florida</code> contains:</p>
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lm.florida</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "coefficients"  "residuals"     "effects"      </span></span>
+<span><span class="co">#&gt;  [4] "rank"          "fitted.values" "assign"       </span></span>
+<span><span class="co">#&gt;  [7] "qr"            "df.residual"   "xlevels"      </span></span>
+<span><span class="co">#&gt; [10] "call"          "terms"         "model"</span></span></code></pre></div>
+<p>So many of the information stored here we won't use in this course. But there are two elements that will be useful for us. You can see one of the names is <code>fitted.values</code> and another is <code>residual</code>. Fitted values is another name for predicted values.</p>
+<p>We can extract the information from <code>lm.florida</code> by using the dollar sign operator. For example, if we want to add a new variable to the dataset that is the fitted value for each observation, we type:</p>
+<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">florida</span><span class="op">$</span><span class="va">predBuchanan00</span> <span class="op">&lt;-</span> <span class="va">lm.florida</span><span class="op">$</span><span class="va">fitted.values</span></span></code></pre></div>
+<p><code>predBuchanan00</code> is the name of the new variable and it is equal to the fitted values from the regression estimation. We can similarly extract the residual from our <code>lm.florida</code> object and add to the data frame <code>florida</code>.</p>
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">florida</span><span class="op">$</span><span class="va">residuals</span> <span class="op">&lt;-</span> <span class="va">lm.florida</span><span class="op">$</span><span class="va">residuals</span></span></code></pre></div>
+<p>Now, let's look at the data to try and understand our process so far.</p>
+<pre><code>#&gt; # A tibble: 67 × 4
+#&gt;    county    Buchanan00 predBuchanan00 residuals
+#&gt;    &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 Alachua          263          291.     -28.3 
+#&gt;  2 Baker             73           25.3     47.7 
+#&gt;  3 Bay              248          214.      34.0 
+#&gt;  4 Bradford          65           30.8     34.2 
+#&gt;  5 Brevard          570          908.    -338.  
+#&gt;  6 Broward          788         1401.    -613.  
+#&gt;  7 Calhoun           90           24.0     66.0 
+#&gt;  8 Charlotte        182          281.     -98.9 
+#&gt;  9 Citrus           270          262.       8.49
+#&gt; 10 Clay             186          119.      66.8 
+#&gt; # … with 57 more rows</code></pre>
+<p>So for Alachua county the number of Buchanan votes in 2000 was 263. The predicted Buchanan votes was 291.251 (if you view your data frame you will be able to see more decimal places). Therefore the residual is -28.3. The reason this is slightly different than what we had above is because when we formed this manually we rounded the coefficients in the regression. When R does the computation, it is much more precise than we were, which explains why predicted values and residuals are slightly different than the manual computation.</p>
+<p>Now let's order the dataset by the magnitude of the residual. Observations with large residuals will be those in which are predictions is very different than our predicted value. To sort data based on the value of a variable, we can use the <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> function.</p>
+<p>For our purposes we want to sort based on the absolute value of the residual. Therefore, we will specify <code>arrange(abs(residuals))</code>. However, in addition, we want the largest residuals to be at the top. By default, <code>arrange</code> sorts the data from lowest to highest. To change this, we can ask for the data to be presented in descending order, by specifying <code>arrange(desc(abs(residuals)))</code>.</p>
+<p>Additionally, we can combine <code>arrange</code> with other functions using the pipe operator. In this example, we are really only interested in a few variables at the moment. So let's first select those variables, and then display the data from largest residual (in absolute value) to lowest residual.</p>
+<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">florida</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">county</span>,<span class="va">Buchanan00</span>,<span class="va">predBuchanan00</span>,<span class="va">residuals</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 67 × 4
+#&gt;    county     Buchanan00 predBuchanan00 residuals
+#&gt;    &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 PalmBeach        3407          1105.     2302.
+#&gt;  2 Broward           788          1401.     -613.
+#&gt;  3 Lee               305           662.     -357.
+#&gt;  4 Brevard           570           908.     -338.
+#&gt;  5 Miami-Dade        560           889.     -329.
+#&gt;  6 Pinellas         1013          1330.     -317.
+#&gt;  7 Sarasota          305           538.     -233.
+#&gt;  8 Orange            446           655.     -209.
+#&gt;  9 Escambia          502           310.      192.
+#&gt; 10 St.Lucie          124           306.     -182.
+#&gt; # … with 57 more rows</code></pre>
+<p>So Palm Beach county cast 3407 votes for Buchanan. Based on the linear regression, we would have expected 1105 votes for Buchanan. Therefore, there were 2302 more votes than expected.</p>
+<p>Now recall the George Bush won Florida by 537 votes. Now, if the excess votes in Palm Beach were driven by the design of the butterfly ballots, then we are seeing this excess voting for Buchanan because individuals were confused about the design and were accidentally selecting Buchanan instead of Gore.</p>
+<p>If this is true, then Al Gore would have actually received approximately 2,000 more votes. This would have been enough to make him the winner in Florida, and given the closeness of the election, the winner overall. In other words, using some simple data analysis techniques, we've found convincing evidence that a poorly designed ballot in a single Florida county was enough to flip the 2000 presidential election!</p>
+</div>
+<div id="get-out-to-vote-experiments" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Get Out to Vote Experiments<a class="anchor" aria-label="anchor" href="#get-out-to-vote-experiments"><i class="fas fa-link"></i></a>
+</h2>
+<p>Next, we are going to shift gears to another voting application. One notorious issue in politics is getting people to vote. In particular, it is notoriously difficult to get voters to turn out to vote in primary elections. Primaries are incredibly important. They select the candidates who will run in the general election. Yet voter turnout for these is pretty low.</p>
+<p>For example, in California, voter turnout in general elections between 2000-2012 was about 65.5 percent among registered voters. In contrast, voter turnout in primary elections during this period was around 40.8 percent.</p>
+<p>One reason for lack of voting may be due to a lack of mobilization. Maybe some simple information and encouragement to voting in primaries will incentivize individuals to vote. In Hill and Kousser (2016)<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Seth J Hill and Thad Kousser, &lt;span&gt;“Turning Out Unlikely Voters? A Field Experiment in the Top-Two Primary,”&lt;/span&gt; &lt;em&gt;Political Behavior&lt;/em&gt; 38, no. 2 (2016): 413–32.&lt;/p&gt;"><sup>12</sup></a></span>, the authors test this idea by implementing a large-scale experiment in the 2014 congressional primary elections in California.</p>
+<p>In their study, Hill and Koussser were particularly interested in targeting those individuals who vote in general elections, but not in primaries. These are perhaps the individuals for which a treatment will be most successful. They are engaged in politics on big occasions (general elections), but not engaged in other occasions (primary elections).</p>
+<p>To be specific, Hill and Kousser sent three types of letters to individuals in advance of the 2014 primary election</p>
+<ul>
+<li>Letter 1: Basic information about the election</li>
+<li>Letter 2: Basic information plus information about California top two primaries</li>
+<li>Letter 3: Basic information plus information about turnout for the respondent's party</li>
+</ul>
+<p>The letters were aimed at testing different reasons why people may or may not vote. Letter 1 tests whether basic information about when the election is occurring helps promote turnout. Letter 2 is aimed to providing information about one particularly confusing element of Congressional campaigns in California. In 2012, a law in California was passed that made it a "top-two" primary state. This means that any individual in California can vote for any candidate in a primary, regardless of party affiliation. The top two candidates with the most votes then continue to the general election in November. Under this system it is possible that the top two candidates come from the same party. Hill and Kousser wanted to test whether lack of understanding about the new system prevented some from voting.</p>
+<p>The last letter also included information about voter turnout among the respondents party. The authors hypothesize that seeing low voter turnout among your party may be especially effective in incentivizing an individual to vote. In other words, individuals registered as Republican were provided the Republican voter turnout in the prior election, while individuals registered as Democrats were provided the voter turnout for Democrats in the prior election.</p>
+<p>One impressive aspect of this experiment is its scale. In total, Hill and Kousser (2016) sent around 150,000 letters to Californians before the election. This will allow us to get very precise answers to how informational interventions impact voter turnout. Additionally, given voting records are public data, we also have a very large control group in this experiment: individuals who did not receive one of the three letters.</p>
+</div>
+<div id="regression-binary-variables" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Regression (Binary Variables)<a class="anchor" aria-label="anchor" href="#regression-binary-variables"><i class="fas fa-link"></i></a>
+</h2>
+<p>To study the impacts of receiving a mailer on voter turnout, we are again going to turn to linear regression. For our purposes, we will study the impact of receiving any mailer. Therefore, conceptually, you should think of individuals who received any letter as the treatment group, and individuals who did not receive a letter as the control group. To estimate the impact of receiving a mailer we will estimate a linear regression of the following form:</p>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1 \cdot X_i + \varepsilon_i
+\]</span></p>
+<p>Where <span class="math inline">\(Y_i\)</span> is equal to 1 if the individual voted and zero otherwise, and <span class="math inline">\(X_i\)</span> is equal to one if the individual received a mailer and zero otherwise. This is a bit different than most of examples so far, because in this example both <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(X_i\)</span> are binary, meaning they take on only two values.</p>
+<p>What is the interpretation of <span class="math inline">\(\beta_1\)</span> in this example. Our general rule is: when <span class="math inline">\(X_i\)</span> increases by 1, this is associated with a <span class="math inline">\(\beta_1\)</span>-unit change in <span class="math inline">\(Y_i\)</span>. Because <span class="math inline">\(X_i=0\)</span> if in the control and 1 if in the treatment, a 1-unit increase in <span class="math inline">\(X_i\)</span> is going from control to treatment. In other words, moving an individual from the control to receiving a letter is associated with a <span class="math inline">\(\beta_1\)</span> unit change in <span class="math inline">\(Y_i\)</span>. But <span class="math inline">\(Y_i\)</span> is also binary. So imagine for a moment <span class="math inline">\(\beta_1=0.01\)</span>. What does a <span class="math inline">\(0.01\)</span> change in <span class="math inline">\(Y_i\)</span> imply? Well, this is a <span class="math inline">\(\beta_1 \cdot 100=0.01 \cdot 100 = 1\)</span> percentage point increase in <span class="math inline">\(Y_i\)</span>.</p>
+<p>Another way to think through this interpretation is through predicted values. Imagine now <span class="math inline">\(\beta_0=0.5\)</span> and <span class="math inline">\(\beta_1=0.01\)</span>. Next, I ask what is the predicted value of <span class="math inline">\(Y_i\)</span> for an individual in the control (i.e. <span class="math inline">\(X_i=0\)</span>):</p>
+<p><span class="math display">\[
+\hat{Y}_i = \beta_0 + \beta_1 \cdot X_i = 0.5 + 0.01 \cdot 0 = 0.50
+\]</span></p>
+<p>In simpler terms, we expect 50 percent of individuals in the control to vote. Recall that when you take the average of a binary variable that takes on values of zero or one, this average is equal to the fraction of individuals with a 1. Therefore, in this case, a value of 0.5 indicates half the individuals have a value of <span class="math inline">\(Y_i=1\)</span>. Put even more simply, half of all individuals voted. Next, I ask what is the predicted value of <span class="math inline">\(Y_i\)</span> for an individual in the treatment:</p>
+<p><span class="math display">\[
+\hat{Y}_i = \beta_0 + \beta_1 \cdot X_i = 0.5 + 0.01 \cdot 1 = 0.51
+\]</span>
+Therefore, we expect 51 percent of individuals to vote in the treatment. Therefore, the impact of going to control to treatment is a 1 percentage point increase in the probability of voting. If you need a review on the difference between percent and percentage point, check out Chapter 1.8. Now that we understand the interpretation of linear regression with binary variables, let's go implement this regression in R to assess how receiving a mailer impacted voter turnout.</p>
+<p>The data for this application comes from a csv file named <code>turnout.csv</code>. Let's load this into R as a tibble.</p>
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">turnout</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"turnout.csv"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 3872268 Columns: 5</span></span>
+<span><span class="co">#&gt; ── Column specification ────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Delimiter: ","</span></span>
+<span><span class="co">#&gt; chr (2): Party, treatment.assign</span></span>
+<span><span class="co">#&gt; dbl (3): LocalityCode, yvar, mailer</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
+<p>This is a very large dataset. The data includes information on over 3.8 million individuals in California. Let's take a look at a small slice of the data:</p>
+<pre><code>#&gt; # A tibble: 3,872,268 × 5
+#&gt;    LocalityCode Party  yvar treatment.assign mailer
+#&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
+#&gt;  1            1 REP       0 Control               0
+#&gt;  2            1 NPP       0 Control               0
+#&gt;  3            1 DEM       1 Control               0
+#&gt;  4            1 REP       0 Control               0
+#&gt;  5            1 DEM       0 Control               0
+#&gt;  6            1 NPP       0 Control               0
+#&gt;  7            1 DEM       0 Control               0
+#&gt;  8            1 DEM       0 Control               0
+#&gt;  9            1 REP       0 Control               0
+#&gt; 10            1 NPP       0 Control               0
+#&gt; # … with 3,872,258 more rows</code></pre>
+<p>The first variable <code>LocalityCode</code> indicates the county the individual is voting in. <code>Party</code> is the registered party of the individual. <code>yvar</code> is our main dependent variable. This variable is equal to 1 if the individual voted in the 2014 primary election and zero if the individual did not vote. <code>treatment.assign</code> indicates whether this individual is in the control group (i.e. did not receive a letter) or one of the treatment arms. The last variable <code>mailer</code> is equal to 1 if the individual received any mailer, and zero if the individual is in the control group.</p>
+<p>For our application, we want to test whether receiving a mailer impacts the probability an individual votes. Therefore, we will regress the variable <code>yvar</code> on the variable <code>mailer</code>. Just as before, we need to save our estimates as a new object.</p>
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.turnout</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">yvar</span> <span class="op">~</span> <span class="va">mailer</span>, data<span class="op">=</span><span class="va">turnout</span><span class="op">)</span></span></code></pre></div>
+<p>Now let's look at the results:</p>
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.turnout</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = yvar ~ mailer, data = turnout)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt; (Intercept)       mailer  </span></span>
+<span><span class="co">#&gt;    0.093125     0.004899</span></span></code></pre></div>
+<p>So let's interpret this regression. To do so, let's compute what the regression predicts regarding voting for an individual in the control:</p>
+<p><span class="math display">\[
+\hat{Y}_i = 0.093 + 0.005 \cdot 0 = 0.093
+\]</span></p>
+<p>In simple terms, 9.3 percent of individuals in the control group voted in the election. For individuals in the treatment, we get:</p>
+<p><span class="math display">\[
+\hat{Y}_i = 0.093 + 0.005 \cdot 0 = 0.093+ 0.005 = 0.098
+\]</span></p>
+<p>Therefore, in the treatment group, about 9.8 percent of individuals turned out to vote. Therefore, our treatment is expected to increase voting rates by 0.5 percentage points.</p>
+</div>
+<div id="conclusion-7" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion-7"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this chapter, we have introduced two voting examples. In the first application, we showed that a poorly designed ballot may have changed the 2000 U.S. Presidential election. In the second, we showed that a massive campaign that sent mailers to over 150,000 Californians increased voter turnout in primary elections.
+In both of these applications, we used regression to analyze the data. In our first application, regression gave us a way to form predictions. In particular, we need to form a prediction for Palm Beach County regarding how many votes Pat Buchanan (the Reform Party Candidate) would receive. This was important because after the election, individuals claimed that the ballot was confusing, and led people to mistakenly vote for Pat Buchanan rather than Al Gore (check out Figure (fig:butterfly) to see if you agree).</p>
+<p>However, we still needed a way in the data to see whether it appears that "too many" individuals voted for Pat Buchanan. To do this, we predicted county-level votes for Pat Buchanan using the number of votes cast for Ross Perot in 1996. This is likely a good predictor because Ross Perot and Pat Buchanan were both from the same party (the Reform Party).</p>
+<p>Using the regression estimates, we predicted that Palm Beach county would cast 1105 votes for Buchanan. In actuality, Palm Beach cast 3407 votes for Buchanan. In other words, Palm Beach had over 2000 more votes for Buchanan than expected. This discrepancy is large enough to potentially swing the election. George Bush won Florida by only 537 votes. Had those 2000 votes for Buchanan been cast for Al Gore, then Al Gore would have won Florida and the election overall.</p>
+<p>In the second application, we used regression to estimate a treatment effect: the effect of receiving a mailer on voter turnout. It is notoriously difficult to get individuals to vote in primary elections. In Hill and Kousser (2016), the authors sent an astounding 150,000 letters to Californians, providing them with different forms of information about the election. The scope of the project allowed the authors to detect even small changes in voting behavior. In the end, they found the mailer increased voting by about 0.5 percentage points. This may seem small, but if applied to the population of California, this implies thousands of additional voters.</p>
+</div>
+<div id="function-descriptions-2" class="section level2 unnumbered">
+<h2>
+<u>Function Descriptions</u><a class="anchor" aria-label="anchor" href="#function-descriptions-2"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p><strong><u>Functions Used</u></strong></p>
+<ul>
+<li>
+<p><code>lm</code> -- Estimates linear regression in R. General syntax is given by <code>lm.fit &lt;- lm(yvar ~ xvar, data=df)</code>. <code>lm.fit</code> is an object that is created and contains results of the linear regression.</p>
+<ul>
+<li>
+<code>lm</code> stores many important results from linear regression, including <code>coefficients</code>, <code>fitted.values</code>, and <code>residuals</code>. To extract an element type <code>lm.fit$coefficients</code>.</li>
+</ul>
+</li>
+<li><p><code>abline</code> -- adds linear regression line to plots in Base R.</p></li>
+<li><p><code>geom_smooth(method="lm",se=FALSE)</code> -- adds linear regression line to plots in ggplot2.</p></li>
+</ul>
 </div>
 
 </div>
 </div>
-  <div class="chapter-nav">
+
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script><div class="chapter-nav">
 <div class="prev"><a href="automated-pollution-monitoring.html"><span class="header-section-number">8</span> Automated Pollution Monitoring</a></div>
-<div class="next"><a href="references-1.html">References</a></div>
+<div class="next"><a href="unconditional-cash-transfers.html"><span class="header-section-number">10</span> Unconditional Cash Transfers</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#voting"><span class="header-section-number">9</span> Voting</a></li>
-<li><a class="nav-link" href="#two-voting-applications"><span class="header-section-number">9.1</span> Two Voting Applications</a></li>
+<li><a class="nav-link" href="#u.s.-presidential-election"><span class="header-section-number">9.1</span> 2000 U.S. Presidential Election</a></li>
+<li><a class="nav-link" href="#linear-regression"><span class="header-section-number">9.2</span> Linear Regression</a></li>
+<li><a class="nav-link" href="#plotting-regression-lines"><span class="header-section-number">9.3</span> Plotting Regression Lines</a></li>
+<li><a class="nav-link" href="#predicted-values-and-residuals"><span class="header-section-number">9.4</span> Predicted Values and Residuals</a></li>
+<li><a class="nav-link" href="#get-out-to-vote-experiments"><span class="header-section-number">9.5</span> Get Out to Vote Experiments</a></li>
+<li><a class="nav-link" href="#regression-binary-variables"><span class="header-section-number">9.6</span> Regression (Binary Variables)</a></li>
+<li><a class="nav-link" href="#conclusion-7"><span class="header-section-number">9.7</span> Conclusion</a></li>
+<li><a class="nav-link" href="#function-descriptions-2">Function Descriptions</a></li>
 </ul>
 
       <div class="book-extra">
@@ -110,7 +666,7 @@ code {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Molly Roberts. It was last built on 2022-11-11.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Molly Roberts. It was last built on 2022-11-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -123,7 +679,7 @@ code {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

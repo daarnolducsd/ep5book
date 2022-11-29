@@ -3,7 +3,6 @@
 ## Principal Agent Problem
 
 ```{r setup, include=FALSE}
-library(Statamarkdown)
 ```
 
 <html>
@@ -50,7 +49,7 @@ pm <- read_dta("station_day_1116.dta")
 To first get a sense of our data, let's look at a few of the key variables in this dataset. 
 
 ```{r, echo=TRUE}
-pm %>% head(pm10_n,code_city, date, pm10, auto_date)
+pm %>% select(pm10_n,code_city,date,pm10,auto_date)
 ```
 
 The first variable, ``pm10_n`` is the station number. This is the code of the station that took the pollution reading. The next variable ``code_city`` is the code of the city in which the pollution reading was taken. This dataset is a panel dataset, which means there are many observations over time. In this case, we will have readings from the same pollution center over time. The ``date`` variable stores information on the date the reading was taken. We will discuss a bit later what the number in this variable means. ``pm10`` is our measure of pollution. Lastly, ``auto_date`` is the date of automation. After this date, instead of local governments reporting pollution statistics, pollution statistics were directly reported to the central government.
@@ -75,7 +74,7 @@ To generate histograms in base R, we can use the ``hist()`` function. For exampl
 hist(pm_bycity$meanpm10)
 ```
 
-```{r, hist1, echo=F, eval=T, out.width="90%", fig.cap="Histogram of Average Pollution Levels Across Cities Part 1",fig.align='center'}
+```{r, hist1, echo=F, eval=T, out.width="80%", fig.cap="Histogram of Average Pollution Levels Across Cities Part 1",fig.align='center'}
 hist(pm_bycity$meanpm10)
 ```
 
@@ -93,7 +92,7 @@ hist(pm_bycity$meanpm10,
 ```
 
 
-```{r, hist2, echo=F, eval=T, out.width="90%", fig.cap="Histogram of Average Pollution Levels Across Cities Part 2",fig.align='center'}
+```{r, hist2, echo=F, eval=T, out.width="80%", fig.cap="Histogram of Average Pollution Levels Across Cities Part 2",fig.align='center'}
 hist(pm_bycity$meanpm10, 
      xlab="Mean PM10", 
      ylab="Frequency", 
@@ -241,7 +240,7 @@ pm_byday <- pm %>%
 
 So in this example, ``T`` is again the days until automation. For this box plot, we are restricting to within a year of the automation date ``filter(T>-364, T<364)``. Because we have grouped by ``T``, our resulting dataset will have a single observation per day, with the corresponding variable being the average level of pollution on that day. To construct a box plot we can use the ``boxplot()`` function:
 
-```{r, echo = TRUE, out.width="85%"}
+```{r, echo = TRUE, out.width="80%"}
 boxplot(pm_byday$meanpm10)
 ```
 
