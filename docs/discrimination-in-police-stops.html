@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 Discrimination in Police Stops | Econ5/Poli5D</title>
-<meta name="author" content="David Arnold &amp; Molly Roberts">
+<meta name="author" content="David Arnold &amp; Margaret E. Roberts">
 <meta name="description" content="3.1 SOPP Intro   code {  background-color: #f1f1f1; } The most common way civilians interact with police are through traffic stops (there are about 50,000 a day). Given the frequency of...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Discrimination in Police Stops | Econ5/Poli5D">
@@ -345,8 +345,8 @@ Figure 3.14: Example of Merge with Different Types for Matching Variable
 <div class="sourceCode" id="cb51"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb51-1"><a href="discrimination-in-police-stops.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
 <span id="cb51-2"><a href="discrimination-in-police-stops.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
 <span id="cb51-3"><a href="discrimination-in-police-stops.html#cb51-3" aria-hidden="true" tabindex="-1"></a>key <span class="kw">variable</span> student is str1 <span class="kw">in</span> master but <span class="kw">float</span> <span class="kw">in</span> <span class="kw">using</span> <span class="kw">data</span></span>
-<span id="cb51-4"><a href="discrimination-in-police-stops.html#cb51-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the same generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span></span>
-<span id="cb51-5"><a href="discrimination-in-police-stops.html#cb51-5" aria-hidden="true" tabindex="-1"></a>    both <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
+<span id="cb51-4"><a href="discrimination-in-police-stops.html#cb51-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the same generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same</span>
+<span id="cb51-5"><a href="discrimination-in-police-stops.html#cb51-5" aria-hidden="true" tabindex="-1"></a>    generic <span class="dv">type</span> <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
 <span id="cb51-6"><a href="discrimination-in-police-stops.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
 <span id="cb51-7"><a href="discrimination-in-police-stops.html#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-8"><a href="discrimination-in-police-stops.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
@@ -906,7 +906,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Molly Roberts. It was last built on 2022-11-29.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-11-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

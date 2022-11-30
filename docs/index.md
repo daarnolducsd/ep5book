@@ -1,7 +1,7 @@
 --- 
 title: "Econ5/Poli5D"
-author: "David Arnold & Molly Roberts"
-date: "2022-11-29"
+author: "David Arnold & Margaret E. Roberts"
+date: "2022-11-30"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -20,7 +20,7 @@ csl: chicago-fullnote-bibliography.csl
 
 <style> 
   img {  
-    width: 200px; 
+    width: 300px; 
     float: right; 
     margin-right: 15px; 
   } 

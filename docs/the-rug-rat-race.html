@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 7 The Rug Rat Race | Econ5/Poli5D</title>
-<meta name="author" content="David Arnold &amp; Molly Roberts">
+<meta name="author" content="David Arnold &amp; Margaret E. Roberts">
 <meta name="description" content="7.1 Time Diaries   code {  background-color: #f1f1f1; } Figure 7.1 plots a somewhat puzzling finding from Ramey and Ramey (2010). The figure shows the amount of hours per week mothers spend on...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 7 The Rug Rat Race | Econ5/Poli5D">
@@ -150,13 +150,13 @@ Figure 7.1: Time Spent on Childcare by Parents, by Educational Attainment, 1965-
 <p>Let's try another example. Say we take a random draw from three numbers: -1, 0, and 1. We can take a random draw from this list of numbers by using the sample function:</p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="the-rug-rat-race.html#cb277-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb277-2"><a href="the-rug-rat-race.html#cb277-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb277-3"><a href="the-rug-rat-race.html#cb277-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
+<span id="cb277-3"><a href="the-rug-rat-race.html#cb277-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="dv">1</span></span></code></pre></div>
 <p>The part of the code <code>-1:1</code> controls what numbers will be drawn. If you type <code>-1:1</code> in R, you will see it prints out the numbers -1,0, and 1. The second part of the code <code>,1</code> tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.</p>
 <p>So now let's write a conditional statement that depends on the outcome of x. Let's write some code that returns the absolute value of x, but only if x is less than zero.</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="the-rug-rat-race.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&lt;</span><span class="dv">0</span>){</span>
+<span id="cb278-2"><a href="the-rug-rat-race.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abs</span>(x)</span>
+<span id="cb278-3"><a href="the-rug-rat-race.html#cb278-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb278-4"><a href="the-rug-rat-race.html#cb278-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
 <p>Next, let's discuss <code>else</code> statements. Sometimes, we want to execute certain code if the statement is TRUE, but some other code if it is FALSE. For example, in our first example, imagine if the <code>door</code> object is not equal to <code>locked</code> then we want R to print out the message <code>Please Come in!</code>. The way we can do this in R is with an <code>else</code> statement:</p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="the-rug-rat-race.html#cb279-1" aria-hidden="true" tabindex="-1"></a>door <span class="ot">&lt;-</span> <span class="st">"locked"</span></span>
 <span id="cb279-2"><a href="the-rug-rat-race.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (door<span class="sc">==</span><span class="st">"locked"</span>){</span>
@@ -948,7 +948,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Molly Roberts. It was last built on 2022-11-29.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-11-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
