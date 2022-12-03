@@ -1,6 +1,6 @@
 --- 
 title: "Econ5/Poli5D"
-author: "David Arnold & Margaret E. Roberts"
+author: "David Arnold"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -28,9 +28,9 @@ csl: chicago-fullnote-bibliography.csl
  
 <img src="./images/geisel.jpg" /> 
 <div> 
-This is an online book for ECON 5/ POLI 5D: Introduction to Social Data Analytics.
+This is an online book for ECON 5/ POLI 5D: Introduction to Social Data Analytics at UC San Diego.
 
-This course has three main goals. The first goal is introduce you to interesting and important social science questions. Each chapter will highlight a different application, often highlighting research from faculty at UCSD. We will cover a wide range of topics, including how colleges promote intergenerational mobility, what motivates people to vote, how do we identify discrimination in labor markets, among others. 
+This course has three main goals. The first goal is to introduce you to interesting and important social science questions. Each chapter will highlight a different application, often highlighting research from faculty at UC San Diego. We will cover a wide range of topics, including how colleges promote intergenerational mobility, what motivates people to vote, how do we identify discrimination in labor markets, among others. 
 
 The second goal is to show you how data can be used to inform our discussion of these topics. We will be using a lot of different datasets in this course. Some come from experiments that have been run by researchers. Others come from administrative datasets collected by governments. For many of the datasets, we will only have time to scratch the surface of what is possible with this data.
 

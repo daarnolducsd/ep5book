@@ -118,7 +118,7 @@ code {
 </h2>
 <p>In this section, we are going to learn how to construct histograms in base R. To begin, we first need to load the data frame. However, the data we will be using <code>station_day_1116.dta</code> is a Stata dataset. In the past, we have only loaded in either RData or csv files.</p>
 <p>In order to load in a Stata data set we are going to make use of the <code>haven</code> package. In order to install the haven package, you need to execute <code>install.packages("haven")</code>. Then, in your current R session you need to load the package using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. Since we will again be utilizing the tidyverse in this section, we will also load the tidyverse package.</p>
-<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.2 ──</span></span>
@@ -130,10 +130,10 @@ code {
 <span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
 <span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 <p>The <code>haven</code> package comes with a function <code>read_dta</code>, which will read in a <code>.dta</code> file as a tibble.</p>
-<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"station_day_1116.dta"</span><span class="op">)</span></span></code></pre></div>
 <p>To first get a sense of our data, let's look at a few of the key variables in this dataset.</p>
-<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">pm10_n</span>,<span class="va">code_city</span>,<span class="va">date</span>,<span class="va">pm10</span>,<span class="va">auto_date</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1,433,568 × 5</span></span>
 <span><span class="co">#&gt;    pm10_n code_city  date  pm10 auto_date</span></span>
@@ -152,14 +152,14 @@ code {
 <p>The first variable, <code>pm10_n</code> is the station number. This is the code of the station that took the pollution reading. The next variable <code>code_city</code> is the code of the city in which the pollution reading was taken. This dataset is a panel dataset, which means there are many observations over time. In this case, we will have readings from the same pollution center over time. The <code>date</code> variable stores information on the date the reading was taken. We will discuss a bit later what the number in this variable means. <code>pm10</code> is our measure of pollution. Lastly, <code>auto_date</code> is the date of automation. After this date, instead of local governments reporting pollution statistics, pollution statistics were directly reported to the central government.</p>
 <p>So for this section our goal is to create a histogram that shows the distribution of <code>pm10</code> across cities. Right now, we have a dataset that is at the station-date level. Each row corresponds to a pollution level at a particular station. We want to transform our data into a dataset that has for every city, the average level of pollution in that city.</p>
 <p>The way we can do this is to use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, as we did in the prior chapter. If you recall, when you want to create a tibble of summary statistics by a group, we use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> in combination with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>. In this example, the group variable is the <code>code_city</code> and the summary statistic is the average level of <code>pm10</code>.</p>
-<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_bycity</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">code_city</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanpm10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm10</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>We have included <code>na.rm=T</code>, because looking through the <code>pm10</code> variable, it appears there is some missing data. Adding <code>na.rm=T</code> indicates we are taking the average over the non-missing values.</p>
 <p>So now, for each unique value of <code>code_city</code>, we have the average of the PM10 level in that city. This is the dataset that we will use in order to generate our histogram.</p>
 <p>To generate histograms in base R, we can use the <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function. For example, let's generate a histogram of <code>pm10</code>:</p>
-<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">pm_bycity</span><span class="op">$</span><span class="va">meanpm10</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:hist1"></span>
@@ -170,7 +170,7 @@ Figure 8.1: Histogram of Average Pollution Levels Across Cities Part 1
 <p>First, let's review a histogram. On the horizontal axis, we have our numeric variable <code>meanpm10</code>, which is the average level of <code>pm10</code>. The histogram has binned this variable into discrete intervals. R automatically creates these bins when you use the <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function. Then, in the vertical axis, the number of cities that fall within that interval is presented. So, for example, if we look at the tallest bin, which is about 80-100, we can see there are about 35 cities with average pollution in that range.</p>
 <p>While this presents our information, there is a lot we can do in order to improve this figure. For example, the title right now is not clear. A reader may not know what <code>pm_bycity$meanpm10</code> means. As usual, we will want to improve these labels.</p>
 <p>To change the axis labels, we can use <code>xlab="Horizontal Axis Name"</code> and <code>ylab="Vertical Axis Name"</code>. To add a title, we can use <code>main="Title Name"</code>. <code>main</code> is perhaps not the most intuitive name for the options that generates a title, but you can think of it is "What is the main subject for this plot". So let's try to re-create our plot with better axes labels and titles.</p>
-<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">pm_bycity</span><span class="op">$</span><span class="va">meanpm10</span>, </span>
 <span>     xlab<span class="op">=</span><span class="st">"Mean PM10"</span>, </span>
 <span>     ylab<span class="op">=</span><span class="st">"Frequency"</span>, </span>
@@ -185,7 +185,7 @@ Figure 8.2: Histogram of Average Pollution Levels Across Cities Part 2
 <p>Next, let's discuss ways in which we can customize the look of our plot. For example, with histograms, one common way to customize the plot is to change the number of bins that are created. R chooses a default number of bins, but you can manually change this by using the <code>breaks</code> option. If you specify a higher number for <code>breaks</code>, that means you want more bins. If you specify a lower number, that means you want fewer bins.</p>
 <p>To illustrate this, we are going to put two plots side-by-side. Learning how to put two plots side-by-side is a generally useful technique as well. Often in academic articles, you might see multiple panels in a figure if the information between the panels is closely related. In our example, we are going to create two plots, one with many bins and another with few bins.</p>
 <p>The way to tell R to create multiple plots is to use the function called <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code>. Within <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> you can use an argument called <code>mfrow=</code>. <code>mfrow=</code> tells R how many rows and how many columns you want in your plot. For example, in our example, we want on a single row, two separate figures. You can think of this as a row of figures, but two columns of figures. To specify this in R, you can type <code>mfrow=c(1,2)</code>.</p>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Smaller bins</span></span>
@@ -212,21 +212,21 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 </h2>
 <p>In this section we will discuss how to compare two histograms. In particular, we will plot this distribution of pollution levels (PM10) both before and after the implementation of automatic monitory.</p>
 <p>Before we construct these histograms, we need to compute a data frame that contains average pollution levels by city, both before and after automation. We can accomplish this by first constructing a variable <code>T</code> that contains days until automation. Then we can filter to days before automation (<code>T&lt;0</code>). Similarly, we can create a post-automation data frame by filtering to observations such that <code>T&gt;0</code>. We can accomplish all of this in one step by using the pipe operator:</p>
-<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_bycitybefore</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>T<span class="op">=</span><span class="va">date</span><span class="op">-</span><span class="va">auto_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="cn">T</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">code_city</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanpm10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm10</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>So let's make sure we understand each line of code. <code>pm %&gt;%</code> pipes in the data frame <code>pm</code>. <code>mutate(T=date-auto_date)</code> creates a new variable and its it to the data frame. The name of this new variable is <code>T</code>. If <code>T</code> is negative, that means <code>date</code> is less than <code>auto_date</code>. Next <code>filter(T&lt;0)</code> implies we are restricting to observations before the automation date. Lastly, <code>group_by(code_city) %&gt;% summarize(meanpm10=mean(pm10, na.rm=T))</code> implies we are taking averages of <code>pm10</code> by city. In the end, we will have a dataset where each observation is a separate city, and we have the average level of <code>pm10</code> in that city before automation. We can use analogous code to construct a city-level dataset that has the average level of <code>pm10</code> after automation.</p>
-<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_bycityafter</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>T<span class="op">=</span><span class="va">date</span><span class="op">-</span><span class="va">auto_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="cn">T</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">code_city</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanpm10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm10</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Next, we will create two plots that lie side-by-side. In order to do this, we will again specify <code>par(mfrow=c(1,2))</code> before generating the plots.</p>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Plot histogram for before</span></span>
@@ -240,7 +240,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span>  main<span class="op">=</span><span class="st">"After Automation"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-10-1.png" width="90%"></div>
 <p>In these plots it is not so easy to compare the two distributions. One reason is that they are not on the same scale. As you can see, the x-axis in the After Automation plot goes up to 200, while in the Before Automation plot it goes up to 150. In order for the two to be directly comparable, we should ensure that both the x-axis and the y-axis have the same scale. We can do this using the <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code> functions.</p>
-<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Create two panes for plots</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#Plot histogram for before</span></span>
@@ -256,7 +256,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-11-1.png" width="90%"></div>
 <p>Now we can more clearly compare the two plots. Before automation, many of the pm10 averages seem to be clustered just below 100. After automation, the distribution is more sspread out, with many observations above 100, and even some above 200. Before automation, no city had an average level of pm10 above 200. Therefore, it appears as if the distribution of <strong>reported</strong> pm10 has shifted to the right after automation.</p>
 <p>Lastly, we can also add additional information to the plot. For example, it might be helpful to quickly be able to understand how the average level of pm10 varies before and after automation. We can add these numbers to the plots by using the <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code> function. The way the lines function works is that you specify <span class="math inline">\((x_1, x_2)\)</span> and <span class="math inline">\((y_1,y_2)\)</span>. The line starts at the point <span class="math inline">\((x_1,y_1)\)</span> and ends at <span class="math inline">\((x_2,y_2)\)</span>. Therefore, if we want to have a vertical line at the mean we can specify <code>lines(c(mean,mean),c(-10,100))</code>. We have specified <code>c(-10,100)</code> because these numbers are beyond the limits of the graph. Therefore, the vertical line will appear along the entire graph output. To understand how to build lines on graphs, it is helpful to change the numbers in the code below and see how the results change.</p>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">meanbefore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm_bycitybefore</span><span class="op">$</span><span class="va">meanpm10</span><span class="op">)</span></span>
 <span><span class="va">meanafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm_bycityafter</span><span class="op">$</span><span class="va">meanpm10</span><span class="op">)</span></span>
 <span><span class="co">#Create two panes for plots</span></span>
@@ -283,7 +283,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 </h2>
 <p>A box plot is a figure we have not yet seen in this course. Like a histogram, it is informative about the distribution of a variable. In particular, a box plot shows a few key statistics of interest, including the median, the 25th precentile and 75th percentile. It is often helpful when you want to show how the distribution of a variable varies across different groups. For example, maybe you are interested in variation in test scores across different classes in a school. Maybe you are interested in how the distribution of wages across different regions of the U.S. In these types of instances, box plots might be an effective way to present your information.</p>
 <p>In our example, we are going to construct a box plot that shows the average daily pm10 levels both before and after automation. To begin, we are again going to use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> to construct a relevant dataset.</p>
-<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Group by day</span></span>
 <span><span class="va">pm_byday</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -292,14 +292,14 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="cn">T</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanpm10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm10</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>So in this example, <code>T</code> is again the days until automation. For this box plot, we are restricting to within a year of the automation date <code>filter(T&gt;-364, T&lt;364)</code>. Because we have grouped by <code>T</code>, our resulting dataset will have a single observation per day, with the corresponding variable being the average level of pollution on that day. To construct a box plot we can use the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> function:</p>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-14-1.png" width="80%"></div>
 <p>The box plot has a few elements that we should discuss. First, the upper end of the box is the 75th percentile (also referred to as the third quartile). In this box plot, the 75th percentile is at about 112. The bottom of the box is the 25th percentile (also referred to as the 1st quartile). In this box plot, the 25th percentile is about 80. The length of the box is referred to as the interquartile range. This is the difference between the 75th percentile and the 25th percentile, so in this example the interquartile range is 112-80=32.</p>
 <p>The dashed lines that extend from the box are referred to as whiskers. The length of the whiskers is equal to <span class="math inline">\(1.5 \cdot IQR\)</span>. So in this example, the whiskers extend for about <span class="math inline">\(32 \cdot 1.5 = 48\)</span>. However, the whiskers only extend this length as long as there is data in that range. For example, theoretically, the bottom whisker should extend to <span class="math inline">\(80-48=32\)</span>. The reason it does not in the figure is because there is no data at this point. Instead, the whisker extends to the minimum, which is about 53 in this figure.</p>
 <p>As you can see, the upper whisker is longer and extends to <span class="math inline">\(112+48=160\)</span>. Further, we can see there are dots beyond the whisker. This signifies that there is data beyond the values reached by the whisker. These dots give us a sense of how many outliers there are in the data.</p>
 <p>Just as in other figures, we can also improve the aesthetics of the box plot in various ways. For example, the box plot below adds appropriate labels, changes teh colors of the box plot, as well as changes the orientation of the box plot.</p>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span>, xlab<span class="op">=</span><span class="st">"Mean PM10"</span>, </span>
 <span>main<span class="op">=</span><span class="st">"Mean PM 10 by city"</span>,</span>
 <span>  col<span class="op">=</span><span class="st">"blue"</span>, border<span class="op">=</span><span class="st">"darkblue"</span>, </span>
@@ -307,10 +307,10 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-15-1.png" width="75%"></div>
 <p>It is actually relatively uncommon to see a single box plot. What is often useful, however, is to display box plots across different groups. Therefore, in the next figure we will have separate box plots for before and after automation.</p>
 <p>First, we need to add a variable that indicates whether the time is before or after automation.</p>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_byday</span><span class="op">$</span><span class="va">after</span> <span class="op">&lt;-</span> <span class="va">pm_byday</span><span class="op">$</span><span class="cn">T</span><span class="op">&gt;</span><span class="fl">0</span></span></code></pre></div>
 <p>To plot separate box plots by the value of <code>after</code>, we specify <code>pm_byday$meanpm10 ~ pm_byday$after</code> inside the boxplot function, rather than just <code>pm_byday$meanpm10</code>.</p>
-<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span> <span class="op">~</span> <span class="va">pm_byday</span><span class="op">$</span><span class="va">after</span>, </span>
 <span>        xlab<span class="op">=</span><span class="st">"Mean PM10"</span>, ylab<span class="op">=</span><span class="st">"After Automation"</span>,</span>
 <span>        main<span class="op">=</span><span class="st">"Mean PM 10 by Day Before and After Automation"</span>, </span>
@@ -325,17 +325,17 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 </h2>
 <p>In this section we will analyze how pollution changes day-to-day around automation. In order to do this, we will plot daily pollution levels around the time of automation. Therefore, we will continue to use the data set <code>pm_byday</code> which includes average pollution levels across cities every day within a year of automated pollution monitoring</p>
 <p>The general syntax for a scatterplot is:</p>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">xvar</span>, <span class="va">df</span><span class="op">$</span><span class="va">yvar</span><span class="op">)</span></span></code></pre></div>
 <p>We want a plot in which the x-axis depicts the day relative to automation while y-axis depicts average pollution levels. Therefore, we will replace <code>df$xvar</code> with <code>pm_bydat$T</code> and <code>df$yvar</code> with <code>pm_byday$meanpm10</code>. As in other plots we will add labels to clarify the plot.</p>
-<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="cn">T</span>, <span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span>,</span>
 <span>    xlab<span class="op">=</span><span class="st">"Days Relative to Automation"</span>,</span>
 <span>    ylab<span class="op">=</span><span class="st">"Mean PM10"</span>, </span>
 <span>    main<span class="op">=</span><span class="st">"Automation and Mean PM10"</span>,<span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-19-1.png" width="80%"></div>
 <p>There are many further ways we can customize the plot. For example, we could change what the markers appear as. <code>pch</code> stands for plot character. To make the circles solid instead of hollow, we can specify <code>pch=16</code>.</p>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="cn">T</span>, <span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span>,</span>
 <span>    xlab<span class="op">=</span><span class="st">"Days Relative to Automation"</span>,</span>
 <span>    ylab<span class="op">=</span><span class="st">"Mean PM10"</span>, </span>
@@ -343,7 +343,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span>    pch<span class="op">=</span><span class="fl">16</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-20-1.png" width="80%"></div>
 <p>What would be particularly helpful is to have the reader understand when automation is occurring. Therefore, let's add a dashed line at 0 (the time automation occurs) and add additional text in order to label this line. We can again add lines through the <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code> function. To add text we need to specify (1) where to place the text and (2) what text should appear. For example, to place text at <code>(x=0,y=260)</code>, we would type <code>text(0,260, "Text Here")</code>. Let's try this in our scatter plot and additionally show how to change the color of the text.</p>
-<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="cn">T</span>, <span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span>, </span>
 <span>     xlab<span class="op">=</span><span class="st">"Days After Automation"</span>,</span>
 <span>     ylab<span class="op">=</span><span class="st">"Mean PM10"</span>, main<span class="op">=</span><span class="st">"Automation and Mean PM10"</span>,</span>
@@ -356,10 +356,10 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 2. Run the code to create the plot
 3. Type <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code> to tell R you are done creating plots.</p>
 <p>For example, let's say we want to save a PDF of our plot and we want it named <code>Automation.pdf</code>. Our first step is to execute the code:</p>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span><span class="op">(</span><span class="st">"Automation.pdf"</span><span class="op">)</span></span></code></pre></div>
 <p>This will create a file named <code>Automation.pdf</code> in your current working directory. This will eventually hold our plot. Next, we need to re-run the code to create our plot:</p>
-<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pm_byday</span><span class="op">$</span><span class="cn">T</span>, <span class="va">pm_byday</span><span class="op">$</span><span class="va">meanpm10</span>, </span>
 <span>     xlab<span class="op">=</span><span class="st">"Days After Automation"</span>,</span>
 <span>     ylab<span class="op">=</span><span class="st">"Mean PM10"</span>, main<span class="op">=</span><span class="st">"Automation and Mean PM10"</span>,</span>
@@ -367,7 +367,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>,<span class="fl">250</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">260</span>, <span class="st">"Automation"</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <p>Now that the plot has been generated, we need to execute:</p>
-<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>If you forget to execute <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code> then the next plot you execute will also be written to <code>Automation.pdf</code>.</p>
 </div>
@@ -377,7 +377,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 </h2>
 <p>Dates can often be difficult to work when performing data analysis. In this section we are going to study a package called <code>lubridate</code> that can be very helpful when working with dates in R.</p>
 <p>As <code>lubridate()</code> is a new package, you first need to install lubridate via <code>install.packages("lubridate")</code> and then load into memory using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function:</p>
-<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: timechange</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -386,63 +386,63 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     date, intersect, setdiff, union</span></span></code></pre></div>
 <p><code>lubridate()</code> comes with a variety of functions. For example, there are functions to tell you what day it is today:</p>
-<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2022-11-30"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2022-12-03"</span></span></code></pre></div>
 <p>Or even the exact time right now:</p>
-<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2022-11-30 11:42:53 PST"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2022-12-03 14:13:25 PST"</span></span></code></pre></div>
 <p>But most importantly, <code>lubridate</code> allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example.</p>
 <p>Additionally, <code>lubridate()</code> can interpret dates that come in a variety of formats. For example, we can use the <code><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd()</a></code> function to convert a string of text that holds the date as <code>"year-month-day"</code> into a date object.</p>
-<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"2012-01-22"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2012-01-22"</span></span></code></pre></div>
 <p>There is also a month-day-year function:</p>
-<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">mdy</a></span><span class="op">(</span><span class="st">"January 22nd, 2012"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2012-01-22"</span></span></code></pre></div>
 <p>Or a day-month-year function:</p>
-<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="st">"22-Jan-2012"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2012-01-22"</span></span></code></pre></div>
 <p>What is also important is that we can add days and times with <code>lubridate</code> functions. For example, 12 days after January 22nd 2012 is:</p>
-<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"2012-01-22"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html">days</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2012-02-03"</span></span></code></pre></div>
 <p>In 15 months it will be:</p>
-<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"2012-01-22"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/weekday.POSIXt.html">months</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2013-04-22"</span></span></code></pre></div>
 <p>In 5 years it will be:</p>
-<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"2012-01-22"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html">years</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2017-01-22"</span></span></code></pre></div>
 <p>Often the date is actually more narrow than we need for our analysis. For example, maybe we only need the year portion of the date variable. We can extract this portion using the <code><a href="https://lubridate.tidyverse.org/reference/year.html">year()</a></code> function:</p>
-<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"2012-01-22"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2012</span></span></code></pre></div>
 <p>There are similar functions for extracting the month(<code><a href="https://lubridate.tidyverse.org/reference/month.html">month()</a></code>), day in the month (<code><a href="https://lubridate.tidyverse.org/reference/day.html">mday()</a></code>), or day of the week <code><a href="https://lubridate.tidyverse.org/reference/day.html">wday()</a></code>.</p>
 <p>Now that we have a sense of <code>lubridate()</code> let's load return to the pollution monitoring data frame <code>pm</code>. In this data frame, let's look at the variable <code>date</code>.</p>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pm</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 18628 18629 18630 18631 18632 18633</span></span></code></pre></div>
 <p>So this doesn't look very intuitive. What does 18628. Well, this is actually an artifact of how Stata stores dates (recall we originally read the data frame into R via a Stata dataset). It stores dates as the number of days since January 1, 1960.</p>
 <p>In other words, <code>18628</code> represents that this observation was taken <code>18628</code> days after January 1, 1960. We can figure out what day this is exactly by using functions from lubridate:</p>
-<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"1960-01-01"</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html">days</a></span><span class="op">(</span><span class="fl">18628</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2011-01-01"</span></span></code></pre></div>
 <p>So 18628 days from January 1, 1960 is January 1, 2011.</p>
 <p>Next, we are going to study rainfall over time. Rain may actually reduce the amount of pollution in the air. When rain falls, it attracts particles in the air before hitting the ground., in turn reducing the amount of pollution in the air. Therefore, we may expect to see natural changes in pollution throughout the year due to changes in the amount of rain. To understand seasonality of rainfall in China, we are going to make plots that show how rainfall varies over time.</p>
 <p>First, let's get a sense of how rainfall varies by the month. Let's create a data frame that has for each month of the year, the average level of rain. The variable <code>rain</code> in our data frame is the Daily Rain in mm. To create this data frame we are again going to utilize <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
-<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_bymonth</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rdate <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"1960-01-01"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html">days</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,</span>
 <span>    month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">rdate</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanrain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rain</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The first part of the code <code>rdate = ymd("1960-01-01") + days(date)</code> creates a new variable that is named <code>rdate</code> which captures the date of the observation. The next <code>month=month(rdate)</code> extracts the month the observation was taken. The rest of the code then summarizes the amount of rainfall by month. In the end, we have a data frame with 12 observations, with each month associated with an average value of rain fall. Let's now plot those values over time.</p>
-<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pm_bymonth</span><span class="op">$</span><span class="va">month</span>, <span class="va">pm_bymonth</span><span class="op">$</span><span class="va">meanrain</span>, </span>
 <span>     col<span class="op">=</span><span class="st">"blue"</span>,</span>
 <span>     pch<span class="op">=</span><span class="fl">16</span>, </span>
@@ -450,13 +450,13 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span>     ylab<span class="op">=</span><span class="st">"Mean Daily Rain (mm)"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-38-1.png" width="75%"></div>
 <p>China experiences much more rainfall May through September (i.e. months 5 through 9). Therefore, we might expect less pollution in these months. We can also see how this varies day-to-day. Instead of aggregating by month, let's generate a data frame that shows the amount of Daily Rain across China by day.</p>
-<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_byrdate</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rdate <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"1960-01-01"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html">days</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">rdate</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanrain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rain</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Now let's plot rainfall over time:</p>
-<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pm_byrdate</span><span class="op">$</span><span class="va">rdate</span>, <span class="va">pm_byrdate</span><span class="op">$</span><span class="va">meanrain</span>, </span>
 <span>     col<span class="op">=</span><span class="st">"blue"</span>,</span>
 <span>     pch<span class="op">=</span><span class="fl">16</span>, </span>
@@ -471,11 +471,11 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 </h2>
 <p>ggplot2 is a very popular graphics package in R. It has two major strengths. First, you can use ggplot2 to create a variety of figures. Second, the syntax to create different types of figures is very similar. Therefore, once you learn how to generate a few figures, you will be able to quickly learn how to create many different types of figures. The "gg" in ggplot2 stands for the grammar of graphics, and that is the goal of ggplot2: to have a consistent language through which to build figures.</p>
 <p>The philosophy to ggplot2 is that you want to build your graph in layers. The first layer is always the data, you always need to specify what data is going to be plotted. Then you will specify the aesthetics, which for our purposes you can think of as the variables that will be on your plot. Which variable will be on the horizontal axis? Which variables will be on the vertical axis. Then, we specify the type of plot. Is this a bar graph? Is it a line plot. In ggplot2, the type of graph is determined by the geometric function that you use. The basic syntax of a ggplot2 command that has all these components is shown below:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="automated-pollution-monitoring.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb391-2"><a href="automated-pollution-monitoring.html#cb391-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
-<span id="cb391-3"><a href="automated-pollution-monitoring.html#cb391-3" aria-hidden="true" tabindex="-1"></a> <span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="automated-pollution-monitoring.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
+<span id="cb389-2"><a href="automated-pollution-monitoring.html#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
+<span id="cb389-3"><a href="automated-pollution-monitoring.html#cb389-3" aria-hidden="true" tabindex="-1"></a> <span class="er">}</span></span></code></pre></div>
 <p>We will replace the section <code>&lt;DATA&gt;</code> with whatever data we are using. In this next example, let's recreate the scatterplot that shows the average daily pollution levels relative to the automation date. If you recall, we already constructed a dataframe named <code>pm_byday</code> which contains for every day relative to automation (within a year), the average levels of pollution, as measured by PM10. However, for an example later in the section, we will also utilize a variable that captures mean rain by day. Therefore, let's construct a day-level dataset that contains for each day relative to automation, the average levels of PM10 and rain:</p>
-<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_byday</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>T<span class="op">=</span><span class="va">date</span><span class="op">-</span><span class="va">auto_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="cn">T</span><span class="op">&gt;</span><span class="op">-</span><span class="fl">364</span>, <span class="cn">T</span><span class="op">&lt;</span><span class="fl">364</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -486,12 +486,12 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <p>For this example, we will replace <code>&lt;DATA&gt;</code> with <code>pm_byday</code>.</p>
 <p><code>&lt;GEOM_FUNCTION&gt;</code> will be determine what type of plot appears. For example, <code>geom_point</code> is the geometric function to create a scatterplot. In this section, we will also discuss <code>geom_boxplot</code> and <code>geom_histogram</code>.</p>
 <p><code>mapping = aes(&lt;MAPPINGS&gt;)</code> tells R what variables will appear in the graph. In our case, we want the x-axis to show the variable <code>T</code>. If you recall, <code>T</code> represents the day relative to automation. A negative number indicates automation has not yet occurred, while a positive indicates it has already occurred. On the y-axis we want to display the mean PM10 level, which is stored in the variable <code>meanpm10</code>. Therefore, the way we will specify the aesthetics will be <code>mapping=aes(x=T,y=meanpm10)</code>.</p>
-<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pm_byday</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">T</span>, y <span class="op">=</span> <span class="va">meanpm10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-43-1.png" width="85%"></div>
 <p>Again, there are many ways to customize our plot. In the next code, let's specify <code>color=blue</code> for the markers, as well as add axes labels and an overall title.</p>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pm_byday</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">T</span>, y <span class="op">=</span> <span class="va">meanpm10</span><span class="op">)</span>, color<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Time After Automation"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -499,7 +499,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Time After Automation and PM10"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-44-1.png" width="85%"></div>
 <p>Finally, we can even color the dots by a different variables. For example, for each day relative to automation, we can color the marker by how much rain there was. This way, we can see if the automation date occurred around a change in the rain season. If so, then variation in pollution may be driven by variation in rain.</p>
-<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pm_byday</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">T</span>, y <span class="op">=</span> <span class="va">meanpm10</span>,color<span class="op">=</span><span class="va">meanrain</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Time After Automation"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Mean PM10"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -539,12 +539,12 @@ In some cases, however, there are observations beyond the length of the whiskers
 
 Now that we understand theoretically what a box plot accomplishes, let's try one in our data.
 --->
-<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pm_byday</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">meanpm10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-46-1.png" width="75%"></div>
 <p>This shows us the median level of pollution, the 25th percentile and 75th percentile overall, but our real goal here is to understand how these statistics change after automation. So let's split this graph up by the variable <code>after</code> which is equal to 1 if automation has already occurred, and zero if it hasn't occurred yet.</p>
-<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pm_byday</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">after</span>,y<span class="op">=</span><span class="va">meanpm10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-47-1.png" width="75%"></div>
@@ -556,7 +556,7 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <p>In this section we are going to discuss how to construct bar plots. We are going to focus on one aspect of Greenstone et al. (2022) that we haven't discussed in depth yet. In particular, we are going to study <em>how</em> automation was rolled out.</p>
 <p>So far, we have discussed and automation date: the date after which pollution levels are automatically reported to the central government. Different cities, however, had different automated pollution dates. They implemented the policy first for a certain set of cities, and then second for another set of cities. In this section, we are going to try to figure out what the logic of that implementation was. In particular, did they target high-polluting cities as the first place to implement automated pollution monitoring.</p>
 <p>The first thing we will do is again create a city-level dataset. This will be similar to the city-level datasets we have already created, but will also include a variable for the <code>phase</code> in which the city was included in automation. There are two possible values of <code>phase</code>, 1 for the first automation wave and 2 for the second wave of automation.</p>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_bycity</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>T <span class="op">=</span> <span class="va">date</span> <span class="op">-</span> <span class="va">auto_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="cn">T</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -564,7 +564,7 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>meanpm10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pm10</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>            phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Note in the code below we have restricted to the period of time before automation (<code>filter(T&lt;0)</code>). The function <code>unique(phase)</code> takes the unique value of the phase for each city (this value does not vary within a city). Let's look at our resulting data frame:</p>
-<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pm_bycity</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
 <span><span class="co">#&gt;   code_city meanpm10 phase</span></span>
@@ -576,14 +576,14 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <span><span class="co">#&gt; 5    130300     66.4     1</span></span>
 <span><span class="co">#&gt; 6    130400     94.7     1</span></span></code></pre></div>
 <p>Next, let's create a bar plot using ggplot that shows the number of cities that were in phase 1 vs. phase 2. To do so we will continue to use the same syntax that we have learned in ggplot. Before looking at the figure, let's look at the code that will generate the figure:</p>
-<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pm_bycity</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
 <p>Because <code>phase</code> is either 1 or 2, we want R to understand that <code>phase</code> is a categorical variable. By default, R will interpret this as a continuous variable. This is common for bar plots. We need to tell R we are showing statistics across groups (in this case the groups are the unique values of the <code>phase</code> variable).</p>
 <p>We have specified <code>stat="count"</code> because in this example, we want to display the total number of cities for each value of <code>phase</code>. In other words, we want to count the number of cities by phase. Now that we understand the code, let's look at the figure itself.</p>
 <div class="inline-figure"><img src="08-week8_files/figure-html/badbar-1.png" width="75%"></div>
 <p>As we can see in this figure, about half of the cities in the sample (60) were in phase 1 of automation, while slightly more than half were in phase 2. What we need to do next is improve the appearence of the graph. The label <code>as.factor(phase)</code> is not particularly helpful for a reader. So let's add some custom labels and axes.</p>
-<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pm_bycity</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"count"</span>, fill<span class="op">=</span><span class="st">"darkblue"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Wave of Automation"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -593,10 +593,10 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <div class="inline-figure"><img src="08-week8_files/figure-html/goodbar-1.png" width="75%"></div>
 <p>We've introduced a few new things in the code above. First, we specified <code>fill="darkblue"</code>. This tells ggplot that instead of gray bars, we want the bars to be dark blue. Next, we have also specified <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code>. The nice thing about ggplot is that it also comes with a number of themes which can change the overall look of the graph. The <code>theme_minimual()</code> makes the plot look more minimalistic, taking out the background.</p>
 <p>Next, we are going to study whether cities that were more polluted were more likely to be in the first wave. We will use a threshold of 80 to define whether a city is heavily polluted or not. So let's add a variable named <code>above80</code> to our data frame:</p>
-<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_bycity</span><span class="op">$</span><span class="va">above80</span> <span class="op">&lt;-</span> <span class="va">pm_bycity</span><span class="op">$</span><span class="va">meanpm10</span> <span class="op">&gt;</span> <span class="fl">80</span></span></code></pre></div>
 <p>Now, we can use this variable to add another dimension to our bar plot. In particular, we can show what fraction of those in automation phase 1 had pollution levels above 80 vs. what fraction had pollution levels below 80. To do so, we will take out the code <code>fill="darkblue"</code> and add <code>fill=above80</code> inside <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
-<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pm_bycity</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span>,fill<span class="op">=</span><span class="va">above80</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"count"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Wave of Automation"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -607,7 +607,7 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <p>So there is some slight evidence that the high-polluting cities were more likely to be in wave 1. However, it is reasonably even split. There are a number of high-polluting cities in both waves of automation.</p>
 <p>Next, we will explore a few more customizations. First, what we have plotted above is referred to as a stacked bar plot. We have divided cities into four groups: (phase 1 + high polluters), (phase 1 + low polluters), (phase 2 + high polluters), (phase 2 + low polluters). For each phase, the high and low polluters are stacked atop each other. We can instead specify to show the counts separately for these four groups.</p>
 <p>To do so we will use the option <code>position = position_dodge()</code> inside <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>.</p>
-<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pm_bycity</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span>,fill<span class="op">=</span><span class="va">above80</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"count"</span>,position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Wave of Automation"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -616,7 +616,7 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/dodgebar-1.png" width="75%"></div>
 <p>This way of displaying the data may be a little bit more easily to visualize in certain cases. The last customization we will make is to change the legend. We can change both the text of the legend, as well as its position in the graph. To change the position, we can use add <code>theme(legend.position = "top")</code> to our graph. To change the text of the legend, we can use the <code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete()</a></code> option. For example, imagine we want to title the legend "Mean PM10 Above 80" and we also want to flip the order so that "TRUE" appears before "FALSE". The code below accomplishes both of these goals by specifying the proper elements inside <code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete()</a></code>.</p>
-<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pm_bycity</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">phase</span><span class="op">)</span>, fill<span class="op">=</span><span class="va">above80</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"count"</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Wave of Automation"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -633,13 +633,13 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 </h2>
 <p>In this section we learned how to make a variety of plots, starting in base R, then moving onto ggplot2. In this final section, we are going to put everything we learned together. To illustrate the concepts, we are going to create side-by-side histograms, first in base R and then in ggplot2.</p>
 <p>So let's first review the data frame we began with. We started with a Stata dataset named <code>station_day_1116.dta</code>. In order to load this data into R we used the <code>haven</code> package.</p>
-<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"station_day_1116.dta"</span><span class="op">)</span></span></code></pre></div>
 <p>Our main goal is to study how pollution measurements change in response to automatic pollution monitoring. In China, local officials had incentives to manipulate pollution reports. Automated system was implemented in order to get accurate measures of pollution that cannot be manipulated by local officials. If we see pollution measurements increase around the time of automation, then that's good evidence of manipulation before automated pollution monitoring took place.</p>
 <p>To understand the distribution of pollution measurements we are going to plot the distribution of mean PM10 by day both before and after automated monitoring. To do so we are again going to convert our data frame to a day-level dataset that has average levels of pollution per day.</p>
-<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_byday</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    T<span class="op">=</span><span class="va">date</span><span class="op">-</span><span class="va">auto_date</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -649,14 +649,14 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <span>    meanrain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rain</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>after<span class="op">=</span><span class="cn">T</span><span class="op">&gt;</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>Recall, <code>T=date-auto_date</code> will capture the days relative to automation. For example a value of -10 would indicate ten days <strong>until</strong> automation. A value of 10 will indicate ten days <strong>since</strong> automation. To create side-by-side histograms using base R we will first generate two additional data frames, one for before automation and one after automation:</p>
-<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">by_day_before</span> <span class="op">&lt;-</span> <span class="va">pm_byday</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">after</span><span class="op">==</span><span class="cn">FALSE</span><span class="op">)</span> </span>
 <span><span class="va">by_day_after</span><span class="op">&lt;-</span> <span class="va">pm_byday</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">after</span><span class="op">==</span><span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
 <p>Now, to generate side-by-side histograms in base R we need to use the <code>par(mfrow=c(1,2))</code>, which indicates there will be one row of plots and 2 columns.</p>
 <p>Additionally, when we construct the figure we will make sure to (1) include proper labels, (2) make sure the limits of the axes are the same for both histograms and (3) have each graph be a different color.</p>
-<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">by_day_before</span><span class="op">$</span><span class="va">meanpm10</span>, col<span class="op">=</span><span class="st">"blue"</span>,</span>
 <span>  xlab<span class="op">=</span><span class="st">"Mean PM10"</span>, </span>
@@ -669,10 +669,10 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <span>  xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">200</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-week8_files/figure-html/unnamed-chunk-57-1.png" width="75%"></div>
 <p>Next, let's discuss how to make a similar plot in ggplot2. In order to do so, we actually have to load an external package <code>gridExtra</code>. To install an external package we type <code>install.packages("gridExtra")</code>. Then we need to load it into memory.</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span></code></pre></div>
 <p>Now, the first thing we are going to do is create both the histograms. Instead of having the plot displayed immediately, we will save the plot under a name. This will allow us to combine both the plots together using <code>gridExtra</code>. A convenient aspect of using ggplot for this problem will be that we don't actually have to create those intermediate data frame <code>by_day_before</code> and <code>by_day_after</code>. We can directly use <code>pm_byday</code>. Let's start by creating the histogram for before automation.</p>
-<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plotbefore</span> <span class="op">&lt;-</span> <span class="va">pm_byday</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">after</span><span class="op">==</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">meanpm10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -683,7 +683,7 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <p>If you execute the code above, you will not see a plot appear in your Plots panel. That is because the plot has been stored under an object named <code>plotbefore</code> in your environment. If you type <code>plotbefore</code> and execute the code, then you will see the plot in the Plots window.</p>
 <p>One aspect of the code we have not seen before is the option <code>alpha=0.2</code>. This parameter will change the transparency of the histogram. In other words, while the figure will be blue, it will be slightly transparent. Values closer to zero will be more transparent. Adding transparency to graphs can sometimes help, particularly when you have overlapping features.</p>
 <p>Next, let's create <code>plotafter</code>. The only difference will be we will replace <code>filter(after==FALSE)</code> with <code>filter(after==TRUE)</code>.</p>
-<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plotafter</span> <span class="op">&lt;-</span> <span class="va">pm_byday</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">after</span><span class="op">==</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">meanpm10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -692,7 +692,7 @@ Now that we understand theoretically what a box plot accomplishes, let's try one
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"After Automation"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">200</span><span class="op">)</span></span></code></pre></div>
 <p>Now we can combine these two into a single plot.</p>
-<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">plotbefore</span>, <span class="va">plotafter</span>, ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 2 rows containing missing values (`geom_bar()`).</span></span>
 <span><span class="co">#&gt; Removed 2 rows containing missing values (`geom_bar()`).</span></span></code></pre></div>
@@ -934,7 +934,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-11-30.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-12-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

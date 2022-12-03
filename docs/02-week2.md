@@ -69,7 +69,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_FSWLPPSGDR'><label><input type="radio" autocomplete="off" name="radio_FSWLPPSGDR" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_FSWLPPSGDR" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_FSWLPPSGDR" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_HXJDGYRRJR'><label><input type="radio" autocomplete="off" name="radio_HXJDGYRRJR" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_HXJDGYRRJR" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_HXJDGYRRJR" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::

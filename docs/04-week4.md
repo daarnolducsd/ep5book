@@ -80,16 +80,6 @@ sum per_hindi2
 At endline, scores are higher. The average math score has increased to $0.503$ and the average Hindi score has increased to $0.552$. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``. Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
 
 
-
-```
-Error in question("Increasing test scores from 0.503 to 0.552 is a", answer("0.052 percent increase test scores"), : could not find function "question"
-```
-
-
-```r
-2+2
-[1] 4
-```
 ## Linear Regression (Theory) 
 
 Linear regression estimates a linear relationship between variables. Before getting to the estimation part, let's first review linear equations. A linear equation is any equation that can be written in the following form 
@@ -1243,7 +1233,9 @@ To do so, let's compare the cost of Mindspark to traditional government-run scho
 To conclude, using technology to teach-at-the-right-level seems like a promising intervention in places in which there is tremendous heterogeneity in baselines levels of understanding. But, there is potential for even better educational design! Maybe the best intervention would blend Mindspark with standard teaching. Giving teachers more information about the level of their students could aid instruction in the classroom. This automated aspect of the software could free up teacher time for other activities that also improve student performance.
 
 
+## <u>Animated Concepts</u> {-}
 
 
+![](https://www.youtube.com/watch?v=MBSsegVVqlk)
 
 

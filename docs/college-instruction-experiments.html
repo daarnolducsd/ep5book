@@ -111,31 +111,32 @@ code {
 Figure 1.1: Chocolate Consumption and Nobel Prizes
 </p>
 </div>
-<p>In Figure <a href="college-instruction-experiments.html#fig:chocolate">1.1</a>, the number of Nobel laureates per 10 million of the population (vertical axis) is plotted against the chocolate consumption in kilograms per capita in a given year (horizontal axis). As is clear in this graph, countries with higher rates of chocolate consumption also tend to have higher rates of Nobel laureates is an example of a <strong>correlation</strong>. A correlation is any statistical is any relationship between two variables.</p>
+<p>In Figure <a href="college-instruction-experiments.html#fig:chocolate">1.1</a>, the number of Nobel laureates per 10 million of the population (vertical axis) is plotted against the chocolate consumption in kilograms per capita in a given year (horizontal axis). As is clear in this graph, countries with higher rates of chocolate consumption also tend to have higher rates of Nobel laureates. This is an example of a <strong>correlation</strong>. A correlation is any statistical relationship between two variables.</p>
 <p>Correlations can be very interesting. In many cases they can lead to new research questions. But they don't often answer the questions social scientists are actually interested in. We are generally interested in understanding <strong>causal relationships</strong> between variables.</p>
-<p>To understand causal relationships, let's again consider the relationship between chocolate consumption and Nobel prizes. Do you think that if the U.S. wanted to increase the number of Nobel laureates, they should invest in chocolate and include chocolate in lunch meals for students? Probably not! It's unlikely that increased chocolate consumption <strong>causes</strong> an individual to win a Nobel prize. In this case, it is more likely that this correlation in the data just arose due to chance. Therefore, we have uncovered a <strong>spurious correlation</strong>, or a correlation that arose due to chance. There are many interesting spurious correlations. If you are interested in looking through some fun spurious correlations, just follow this <a href="https://www.tylervigen.com/spurious-correlations">link</a>. For example, you probably would not guess that consumption of mozzarella cheese is correlated with civil engineering doctorates awarded, but see Figure <a href="college-instruction-experiments.html#fig:spurious">1.2</a> for this surprising correlation.</p>
+<p>To understand causal relationships, let's again consider the relationship between chocolate consumption and Nobel prizes. Do you think that if the U.S. wanted to increase the number of Nobel laureates, they should invest in chocolate and include chocolate in lunch meals for students? Probably not! It's unlikely that increased chocolate consumption <strong>causes</strong> an individual to win a Nobel prize. In this case, it is more likely that this correlation in the data just arose due to chance. Therefore, we have uncovered a <strong>spurious correlation</strong>, which is defined as a correlation that arose due to chance. There are many interesting spurious correlations (See <a href="https://www.tylervigen.com/spurious-correlations">spurious-correlations</a>). For example, you probably would not guess that consumption of mozzarella cheese is correlated with civil engineering doctorates awarded, but see Figure <a href="college-instruction-experiments.html#fig:spurious">1.2</a> for this surprising correlation.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:spurious"></span>
 <img src="images/01_spurious.png" alt="Example of a Spurious Correlation from tylervigen.com" width="100%"><p class="caption">
 Figure 1.2: Example of a Spurious Correlation from tylervigen.com
 </p>
 </div>
-<p>If we need to decide whether a given policy is worth it or not, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with SAT prep. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of the program, the school decides to use data on past students to see if those who attended SAT prep programs outperformed students that did not.</p>
-<p>The school finds those who attended SAT test prep programs score much higher on the SAT than those who did not. Does this mean the SAT test prep program works and the school should invest in one? Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on the SAT. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into SAT programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in SAT scores.</p>
-<p>With only <strong>observational data</strong> it is difficult to tell which story is true. However, there is along-established way to identify causal relationship in medicine: the randomized control trial (RCT). To understand RCTs, imagine we are testing whether a given drug reduces blood pressure. To study the effectiveness we recruit a group of participants. Half of the participants are randomly placed into the <strong>treatment</strong> group and given the drug. The other half are placed into the <strong>control</strong> or <strong>placebo</strong> group and given a placebo drug. Now we can just compare outcomes for the two groups over time to understand the impact of the drug.</p>
-<p>The key to a well-done experiment is <strong>randomization</strong>. If who receives the treatment is completely random, then on average, the two groups will be very similar. For example, in our test prep example, if we could randomly split students into two groups: test prep vs. no test prep, then we could evaluate the impacts of the program. Since students are no longer self-selecting into the program, there should be little difference in the two groups in terms of academic ability, college interest, parental background.</p>
+<p>While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with SAT prep. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of such a program program, the school decides to use data to see if those who attended SAT prep programs outperformed students that did not.</p>
+<p>The school finds those who attended SAT test prep programs score much higher on the SAT than those who didn't. Does this mean the SAT test prep program works and the school should invest in one?</p>
+<p>Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on the SAT. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into SAT programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in SAT scores.</p>
+<p>With only <strong>observational data</strong> it is difficult to tell which story is true. However, there is a long-established way to identify causal relationship in medicine: the randomized control trial (RCT). To understand RCTs, imagine we are testing whether a given drug reduces blood pressure. To study the effectiveness we recruit a group of participants. Half of the participants are randomly placed into the <strong>treatment</strong> group and given the drug. The other half are placed into the <strong>control</strong> or <strong>placebo</strong> group and given a placebo drug. Now we can just compare outcomes for the two groups over time to understand the impact of the drug.</p>
+<p>The key to a well-done experiment is <strong>randomization</strong>. If who receives the treatment is completely random, then on average, the two groups will be very similar. For example, in our test prep example, if we could randomly split students into two groups: test prep vs. no test prep, then we could evaluate the impacts of the program. Since students are no longer self-selecting into the program, there should be little difference in the two groups in terms of academic ability, college interest, parental background. Why would there be? We randomized the students into the program.</p>
 <p>Not all questions in social science can be answered with an experiment. In certain cases it may be prohibitively expensive or unethical to run an experiment. However, if an experiment can be done, it is hard to find more convincing evidence. Experiments have been widely influential in many social sciences. For example, in the field of development economics, a large number of experiments have been undertaken in order to develop policies aimed at alleviating global povery. In 2019, Abhijit Banerjee, Esther Duflo, and Michael Kremer won the Nobel Prize in Economics "for their experimental approach to alleviating global poverty."</p>
-<p>In this course, we will be studying a number of social science experiments. Our first experiment comes from Brownback and Sadoff (2020). The motivation for this experiment is a startling statistic. Only 40 percent of community college students earn a college degree within 6 years (Shapiro et al. 2017). Given these poor outcomes, it is important to consider tools to improve performance. In Brownback and Sadoff (2020) the researchers explore one potential tool that has been previously unexplored: financial incentives to instructors. This is often referred to as a pay-for-performance model. Instructors are paid for how well their students perform. While prior experiments have studied this model in some settings, no prior work has explored how this would function in the community college setting.</p>
-<p>Brownback and Sadoff (2020) run the following experiment at a community college in Indiana (Ivy Tech):</p>
+<p>In this course, we will be studying a number of social science experiments. Our first experiment comes from Brownback and Sadoff (2020). The motivation for this experiment is a startling statistic. Only 40 percent of community college students earn a college degree within 6 years (Shapiro et al. 2017). Given these poor outcomes, it is important to consider tools to improve performance. In Brownback and Sadoff (2020) the researchers explore one potential tool that has been previously unexplored: financial incentives to instructors. This is often referred to as a pay-for-performance model. Instructors are paid for how well their students perform.</p>
+<p>To get specific, Brownback and Sadoff (2020) run the following experiment at a community college in Indiana (Ivy Tech):</p>
 <ul>
 <li>Some instructors (the treatment group) received $50 for each student that passes an externally-administered test</li>
 <li>Other instructors (the control group) did not receive such an incentive.</li>
 </ul>
-<p>The key in their design is that the instructors that are chosen to receive the incentives are randomly selected. Therefore, they are not, on average, better teachers than instructors in the control group. Therefore, if we observe any difference in student performance between the treatment and control, then it must be due to the financial incentives for instructors.</p>
+<p>The key in their design is that the instructors that are chosen to receive the incentives are randomly selected. Therefore, they are not, on average, better teachers than instructors in the control group. Therefore, if we observe any difference in student performance between the treatment and control, then it must be due to the financial incentives for instructors!</p>
 <div class="rmdtip">
 <p><strong>Question: The key aspect of an experiment that allows us to infer causation is...</strong></p>
-<div id="radio_KSRWOSJFUV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KSRWOSJFUV" value="answer"><span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_KSRWOSJFUV" value=""><span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_KSRWOSJFUV" value=""><span>Ability to following individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_KSRWOSJFUV" value=""><span>Ability to collect information about confounding variables</span></label>
+<div id="radio_BCSDERTYQT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value="answer"><span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value=""><span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value=""><span>Ability to following individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value=""><span>Ability to collect information about confounding variables</span></label>
 </div>
 </div>
 </div>
@@ -143,16 +144,16 @@ Figure 1.2: Example of a Spurious Correlation from tylervigen.com
 <h2>
 <span class="header-section-number">1.2</span> Community College Data<a class="anchor" aria-label="anchor" href="#community-college-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (See <a href="https://en.wikipedia.org/wiki/Replication_crisis#In_economics">replication crisis</a>). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class.</p>
-<p>Table <a href="college-instruction-experiments.html#fig:bsdata">1.3</a> shows a selection of the data from Brownstone and Sadoff (2020). The actual data is much larger, but only a subset of the variables will be relevant for our analysis. This is referred to as a <strong>data table</strong>. Each <strong>row</strong> in a data table is an , while each <strong>column</strong> is a variable.</p>
+<p>In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (See <a href="https://en.wikipedia.org/wiki/Replication_crisis#In_economics">here</a>). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class.</p>
+<p>Table <a href="college-instruction-experiments.html#fig:bsdata">1.3</a> shows a selection of the data from Brownstone and Sadoff (2020). The actual data is much larger, but only a subset of the variables will be relevant for our analysis. This is referred to as a <strong>data table</strong>. Each <strong>row</strong> in a data table is an <strong>observation</strong>, while each <strong>column</strong> is a <strong>variable</strong>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bsdata"></span>
 <img src="images/01_data.png" alt="Data From Brownstone and Sadoff (2020)" width="75%"><p class="caption">
 Figure 1.3: Data From Brownstone and Sadoff (2020)
 </p>
 </div>
-<p>It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the <strong>unit of observation</strong>. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represent. Is each row an individual, a neighborhood, a country, a state? To practice, let's go through a few examples.</p>
-<p>What is the unit of observation in Table <a href="college-instruction-experiments.html#fig:student">1.4</a>?</p>
+<p>It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the <strong>unit of observation</strong>. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a country, a state? To practice, let's go through a few examples.</p>
+<p>What is the unit of observation in Figure <a href="college-instruction-experiments.html#fig:student">1.4</a>?</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:student"></span>
 <img src="images/01_student.png" alt="Unit of Observation Example 1" width="50%"><p class="caption">
@@ -160,7 +161,7 @@ Figure 1.4: Unit of Observation Example 1
 </p>
 </div>
 <p>To answer this question, we need to decide what a row represents. In this case, each row corresponds to a different student. Therefore the observation level is a student.</p>
-<p>What is the unit of observation in Table <a href="college-instruction-experiments.html#fig:studentterm">1.5</a>?</p>
+<p>What is the unit of observation in Figure <a href="college-instruction-experiments.html#fig:studentterm">1.5</a>?</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:studentterm"></span>
 <img src="images/01_student_term.png" alt="Unit of Observation Example 2" width="55%"><p class="caption">
@@ -170,7 +171,7 @@ Figure 1.5: Unit of Observation Example 2
 <p>Again, we need to decide what a row represents. In this case, each row corresponds to a different student in a different term. Therefore the observation level is a student-term.</p>
 <p>Now let's think about what the unit of observation is in the Brownstone and Sadoff (2020) data. The variable <strong>AnonID</strong> is the identifier for a student. The variable <strong>CourseNumber</strong> is the identifier for a course. This dataset seems to be giving us the information for a student in a given course. Therefore the observation level is a student-course.</p>
 <p>Before we get to analyzing the data, let's actually learn about our first feature in Excel. When browsing an excel file, it is often convenient to <strong>freeze</strong> the first row so that it is always visible. In our case, the first row holds variable names. Therefore, if we freeze the first row we can scroll through the data without having to remember what each column corresponds to.</p>
-<p>To freeze the first row go to the <strong>View</strong> and then click <strong>Freeze Top Row</strong> (See <a href="college-instruction-experiments.html#fig:freeze">1.6</a>).</p>
+<p>To freeze the first row go to the <strong>View</strong> and then click <strong>Freeze Top Row</strong>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:freeze"></span>
 <img src="images/01_freeze.png" alt="Freezing the First Row" width="100%"><p class="caption">
@@ -180,8 +181,8 @@ Figure 1.6: Freezing the First Row
 <p>Let's talk a little bit about our goal with this dataset. Our goal is to determine if providing financial incentives to teachers impacts student performance. The variable <strong>Treatment Arm</strong> details whether a student has an instructor that received incentives or is in the control group. Therefore, we can see if test scores improve based on the Treatment Arm of the student. To perform this analysis, we need to learn how to use <strong>functions</strong> in Excel.</p>
 <div class="rmdtip">
 <p><strong>Question: Imagine we have a dataset where each row contains the average unemployment rate for a given state in a given year. The unit-of-observation in this dataset is</strong></p>
-<div id="radio_CBMTSXATTQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CBMTSXATTQ" value=""><span>State</span></label><label><input type="radio" autocomplete="off" name="radio_CBMTSXATTQ" value=""><span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_CBMTSXATTQ" value=""><span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_CBMTSXATTQ" value="answer"><span>State-year</span></label>
+<div id="radio_OHTYBRZPNJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value=""><span>State</span></label><label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value=""><span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value=""><span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value="answer"><span>State-year</span></label>
 </div>
 </div>
 </div>
@@ -189,8 +190,8 @@ Figure 1.6: Freezing the First Row
 <h2>
 <span class="header-section-number">1.3</span> Statistical Functions<a class="anchor" aria-label="anchor" href="#statistical-functions"><i class="fas fa-link"></i></a>
 </h2>
-<p>A function is something that takes in an input and produces an output. For example, you can think of taking the average as a function. The input is a list of numbers, and the output is the average of that list of numbers. When the inputs and outputs of a function are numbers (as it is in this example), then it is a <strong>statistical function</strong>.</p>
-<p>In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in business, it might be important to know some summary statistics about your products, sales, costs, etc. To create summary statistics these summary statistics, we use statistical functions.</p>
+<p>A function is something that takes in an input and produces an output. For example, you can think of taking the average as a function. The input is a list of numbers, and the output is the average of that list of numbers. When the inputs and outputs of a function are numbers, then it is a <strong>statistical function</strong>.</p>
+<p>In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in business, it might be important to know some summary statistics about your products, sales, costs, etc. To create these summary statistics we use statistical functions.</p>
 <p>In order to illustrate the use of statistical functions, let's consider the following dataset that has information on Gross Domestic Product (GDP) for ten countries</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:gdp2020"></span>
@@ -208,14 +209,14 @@ Figure 1.7: GDP in 2020
 respectively</p></li>
 <li><p><code>MODE</code> -- retrieves the mode of all numbers</p></li>
 </ul>
-<p>In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in <a href="college-instruction-experiments.html#fig:japan">1.8</a> I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4.</p>
+<p>In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure <a href="college-instruction-experiments.html#fig:japan">1.8</a> I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:japan"></span>
 <img src="images/01_japan.png" alt="How to Reference a Cell" width="100%"><p class="caption">
 Figure 1.8: How to Reference a Cell
 </p>
 </div>
-<p>You can also reference a range of cells (this will be useful when taking averages). For example, to reference rows 2-6 of column C we could type <code>C2:C6</code> (See <a href="college-instruction-experiments.html#fig:cells">1.9</a>). Whenever you read a colon in Excel, you should read it as "through". Therefore, the text <code>C2:C6</code> can be read as "cells C2 through C6".</p>
+<p>You can also reference a range of cells (this will be useful when taking averages). For example, to reference rows 2-6 of column C we could type <code>C2:C6</code> (See Figure <a href="college-instruction-experiments.html#fig:cells">1.9</a>). Whenever you read a colon in Excel, you should read it as "through". Therefore, the text <code>C2:C6</code> can be read as "cells C2 through C6".</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:cells"></span>
 <img src="images/01_cells.png" alt="Referencing a Range of Cells" width="70%"><p class="caption">
@@ -248,8 +249,8 @@ Figure 1.12: Summary Statistics Table
 </div>
 <div class="rmdtip">
 <p><strong>Question: I try to take the AVERAGE of a column by specifying <code>AVERAGE(C:C)</code>. Yet, when I press enter, Excel does not compute the average. What has gone wrong</strong></p>
-<div id="radio_KBHSPFFQNH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KBHSPFFQNH" value=""><span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_KBHSPFFQNH" value=""><span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_KBHSPFFQNH" value="answer"><span>Need to specify equals sign <code>=</code> before the function</span></label>
+<div id="radio_HIMASBKURL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HIMASBKURL" value=""><span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_HIMASBKURL" value=""><span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_HIMASBKURL" value="answer"><span>Need to specify equals sign <code>=</code> before the function</span></label>
 </div>
 </div>
 </div>
@@ -830,7 +831,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-11-30.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-12-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
