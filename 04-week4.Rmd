@@ -943,7 +943,9 @@ To conclude, using technology to teach-at-the-right-level seems like a promising
 
 ## <u>Animated Concepts</u> {-}
 
+```{r, echo=FALSE,eval=TRUE}
+knitr::include_url("https://www.youtube.com/embed/MBSsegVVqlk")
+```
 
-![](https://www.youtube.com/watch?v=MBSsegVVqlk)
 
 

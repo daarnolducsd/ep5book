@@ -1235,7 +1235,7 @@ To conclude, using technology to teach-at-the-right-level seems like a promising
 
 ## <u>Animated Concepts</u> {-}
 
+<iframe src="https://www.youtube.com/embed/MBSsegVVqlk" width="672" height="400px" data-external="1"></iframe>
 
-![](https://www.youtube.com/watch?v=MBSsegVVqlk)
 
 
