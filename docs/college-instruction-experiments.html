@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 1 College Instruction Experiments | Econ5/Poli5D</title>
-<meta name="author" content="David Arnold &amp; Margaret E. Roberts">
+<meta name="author" content="David Arnold">
 <meta name="description" content="1.1 Experiments   code {  background-color: #f1f1f1; } Did you know that countries with higher consumption of chocolate per capita tend to win more Nobel prizes?  Figure 1.1: Chocolate Consumption...">
 <meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 1 College Instruction Experiments | Econ5/Poli5D">
@@ -85,7 +85,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+          
         </div>
       </nav>
 </div>
@@ -120,9 +120,9 @@ Figure 1.1: Chocolate Consumption and Nobel Prizes
 Figure 1.2: Example of a Spurious Correlation from tylervigen.com
 </p>
 </div>
-<p>While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with SAT prep. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of such a program program, the school decides to use data to see if those who attended SAT prep programs outperformed students that did not.</p>
-<p>The school finds those who attended SAT test prep programs score much higher on the SAT than those who didn't. Does this mean the SAT test prep program works and the school should invest in one?</p>
-<p>Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on the SAT. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into SAT programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in SAT scores.</p>
+<p>While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with standardized tests. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of such a program program, the school decides to use data to see if those who attended standardized test prep programs outperformed students that did not.</p>
+<p>The school finds those who attended the test prep programs score much higher on standardized tests than those who didn't. Does this mean the test prep program works and the school should invest in one?</p>
+<p>Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on standardized tests. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into test prep programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in standardized test scores.</p>
 <p>With only <strong>observational data</strong> it is difficult to tell which story is true. However, there is a long-established way to identify causal relationship in medicine: the randomized control trial (RCT). To understand RCTs, imagine we are testing whether a given drug reduces blood pressure. To study the effectiveness we recruit a group of participants. Half of the participants are randomly placed into the <strong>treatment</strong> group and given the drug. The other half are placed into the <strong>control</strong> or <strong>placebo</strong> group and given a placebo drug. Now we can just compare outcomes for the two groups over time to understand the impact of the drug.</p>
 <p>The key to a well-done experiment is <strong>randomization</strong>. If who receives the treatment is completely random, then on average, the two groups will be very similar. For example, in our test prep example, if we could randomly split students into two groups: test prep vs. no test prep, then we could evaluate the impacts of the program. Since students are no longer self-selecting into the program, there should be little difference in the two groups in terms of academic ability, college interest, parental background. Why would there be? We randomized the students into the program.</p>
 <p>Not all questions in social science can be answered with an experiment. In certain cases it may be prohibitively expensive or unethical to run an experiment. However, if an experiment can be done, it is hard to find more convincing evidence. Experiments have been widely influential in many social sciences. For example, in the field of development economics, a large number of experiments have been undertaken in order to develop policies aimed at alleviating global povery. In 2019, Abhijit Banerjee, Esther Duflo, and Michael Kremer won the Nobel Prize in Economics "for their experimental approach to alleviating global poverty."</p>
@@ -135,8 +135,8 @@ Figure 1.2: Example of a Spurious Correlation from tylervigen.com
 <p>The key in their design is that the instructors that are chosen to receive the incentives are randomly selected. Therefore, they are not, on average, better teachers than instructors in the control group. Therefore, if we observe any difference in student performance between the treatment and control, then it must be due to the financial incentives for instructors!</p>
 <div class="rmdtip">
 <p><strong>Question: The key aspect of an experiment that allows us to infer causation is...</strong></p>
-<div id="radio_BCSDERTYQT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value="answer"><span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value=""><span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value=""><span>Ability to following individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_BCSDERTYQT" value=""><span>Ability to collect information about confounding variables</span></label>
+<div id="radio_MAYDHPAMQM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MAYDHPAMQM" value="answer"><span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_MAYDHPAMQM" value=""><span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_MAYDHPAMQM" value=""><span>Ability to following individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_MAYDHPAMQM" value=""><span>Ability to collect information about confounding variables</span></label>
 </div>
 </div>
 </div>
@@ -144,7 +144,7 @@ Figure 1.2: Example of a Spurious Correlation from tylervigen.com
 <h2>
 <span class="header-section-number">1.2</span> Community College Data<a class="anchor" aria-label="anchor" href="#community-college-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (See <a href="https://en.wikipedia.org/wiki/Replication_crisis#In_economics">here</a>). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class.</p>
+<p>In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (see <a href="https://en.wikipedia.org/wiki/Replication_crisis#In_economics">here</a>). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class.</p>
 <p>Table <a href="college-instruction-experiments.html#fig:bsdata">1.3</a> shows a selection of the data from Brownstone and Sadoff (2020). The actual data is much larger, but only a subset of the variables will be relevant for our analysis. This is referred to as a <strong>data table</strong>. Each <strong>row</strong> in a data table is an <strong>observation</strong>, while each <strong>column</strong> is a <strong>variable</strong>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bsdata"></span>
@@ -152,8 +152,8 @@ Figure 1.2: Example of a Spurious Correlation from tylervigen.com
 Figure 1.3: Data From Brownstone and Sadoff (2020)
 </p>
 </div>
-<p>It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the <strong>unit of observation</strong>. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a country, a state? To practice, let's go through a few examples.</p>
-<p>What is the unit of observation in Figure <a href="college-instruction-experiments.html#fig:student">1.4</a>?</p>
+<p>It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the <strong>unit of observation</strong>. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a state, a country? To practice, let's go through a few examples.</p>
+<p>What is the unit of observation in Figure <a href="college-instruction-experiments.html#fig:student">1.4</a>, which displays a data table for just two observations.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:student"></span>
 <img src="images/01_student.png" alt="Unit of Observation Example 1" width="50%"><p class="caption">
@@ -168,7 +168,7 @@ Figure 1.4: Unit of Observation Example 1
 Figure 1.5: Unit of Observation Example 2
 </p>
 </div>
-<p>Again, we need to decide what a row represents. In this case, each row corresponds to a different student in a different term. Therefore the observation level is a student-term.</p>
+<p>Again, we need to decide what a row represents. In this case, each row corresponds to a particular student in a particular term. Therefore the observation level is a student-term.</p>
 <p>Now let's think about what the unit of observation is in the Brownstone and Sadoff (2020) data. The variable <strong>AnonID</strong> is the identifier for a student. The variable <strong>CourseNumber</strong> is the identifier for a course. This dataset seems to be giving us the information for a student in a given course. Therefore the observation level is a student-course.</p>
 <p>Before we get to analyzing the data, let's actually learn about our first feature in Excel. When browsing an excel file, it is often convenient to <strong>freeze</strong> the first row so that it is always visible. In our case, the first row holds variable names. Therefore, if we freeze the first row we can scroll through the data without having to remember what each column corresponds to.</p>
 <p>To freeze the first row go to the <strong>View</strong> and then click <strong>Freeze Top Row</strong>.</p>
@@ -181,8 +181,8 @@ Figure 1.6: Freezing the First Row
 <p>Let's talk a little bit about our goal with this dataset. Our goal is to determine if providing financial incentives to teachers impacts student performance. The variable <strong>Treatment Arm</strong> details whether a student has an instructor that received incentives or is in the control group. Therefore, we can see if test scores improve based on the Treatment Arm of the student. To perform this analysis, we need to learn how to use <strong>functions</strong> in Excel.</p>
 <div class="rmdtip">
 <p><strong>Question: Imagine we have a dataset where each row contains the average unemployment rate for a given state in a given year. The unit-of-observation in this dataset is</strong></p>
-<div id="radio_OHTYBRZPNJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value=""><span>State</span></label><label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value=""><span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value=""><span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_OHTYBRZPNJ" value="answer"><span>State-year</span></label>
+<div id="radio_WMNEAVCLGX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WMNEAVCLGX" value=""><span>State</span></label><label><input type="radio" autocomplete="off" name="radio_WMNEAVCLGX" value=""><span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_WMNEAVCLGX" value=""><span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_WMNEAVCLGX" value="answer"><span>State-year</span></label>
 </div>
 </div>
 </div>
@@ -191,7 +191,7 @@ Figure 1.6: Freezing the First Row
 <span class="header-section-number">1.3</span> Statistical Functions<a class="anchor" aria-label="anchor" href="#statistical-functions"><i class="fas fa-link"></i></a>
 </h2>
 <p>A function is something that takes in an input and produces an output. For example, you can think of taking the average as a function. The input is a list of numbers, and the output is the average of that list of numbers. When the inputs and outputs of a function are numbers, then it is a <strong>statistical function</strong>.</p>
-<p>In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in business, it might be important to know some summary statistics about your products, sales, costs, etc. To create these summary statistics we use statistical functions.</p>
+<p>In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in a business, it might be important to know some summary statistics about your products. To create these summary statistics we use statistical functions.</p>
 <p>In order to illustrate the use of statistical functions, let's consider the following dataset that has information on Gross Domestic Product (GDP) for ten countries</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:gdp2020"></span>
@@ -203,13 +203,12 @@ Figure 1.7: GDP in 2020
 <ul>
 <li><p><code>COUNT</code> -- counts the number of numbers</p></li>
 <li><p><code>SUM</code> -- adds up the numbers</p></li>
-<li><p><code>AVERAGE</code> -- averages the numbers</p></li>
 <li><p><code>MEDIAN</code> -- retrieves the median of all numbers</p></li>
 <li><p><code>MAX</code>, <code>MIN</code> -- retrieves the maximum and minimum of all numbers
 respectively</p></li>
 <li><p><code>MODE</code> -- retrieves the mode of all numbers</p></li>
 </ul>
-<p>In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure <a href="college-instruction-experiments.html#fig:japan">1.8</a> I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4.</p>
+<p>In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure <a href="college-instruction-experiments.html#fig:japan">1.8</a>, I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:japan"></span>
 <img src="images/01_japan.png" alt="How to Reference a Cell" width="100%"><p class="caption">
@@ -223,8 +222,8 @@ Figure 1.8: How to Reference a Cell
 Figure 1.9: Referencing a Range of Cells
 </p>
 </div>
-<p>Sometimes, it is helpful to reference an entire column. For example, later we will open an Excel spreadsheet that has thousands of students. In some cases, it will be helpful to reference an entire column when using statistical functions. For example, if we are interested in the average of a variable in column C, we can type <code>C:C</code> to reference the entire column.</p>
-<p>Now that we understand how to reference cells, we can begin to apply functions. We will begin with the <code>AVERAGE</code> functions which can compute an average of a list of numbers. In our spreadsheet, we are interested in computing the average GDP across these ten countries. To do so, we can first click in an unpopulated cell and type:</p>
+<p>Sometimes, it is helpful to reference an entire column. For example, later we will open an Excel spreadsheet that has thousands of students, which might make it difficult to reference the exact row at which the data ends. We can still very compactly take the average of this variable without referencing all the observations. For example, if the variable is in column C, we can type <code>C:C</code> to reference the entire column.</p>
+<p>Now that we understand how to reference cells, we can begin to apply functions. We will begin with the <code>AVERAGE</code> functions which can compute an average of a list of numbers. In our spreadsheet, we are interested in computing the average GDP across these ten countries. To do so, we can first click in an unpopulated cell (i.e. a cell without any values in it yet) and type:</p>
 <p>Note the <code>=</code> sign in the text above. This tells Excel to evaluate the function. If you omit the <code>=</code> you will find that the cell is just populated with the text <code>AVERAGE(C:C)</code> and not the average value of column C.</p>
 <p>Figure <a href="college-instruction-experiments.html#fig:average1">1.10</a> depicts an example where we have set up a Summary Statistics table for this dataset. In cell F3, we have written the function that calculates the average GDP across these ten countries.</p>
 <div class="figure" style="text-align: center">
@@ -249,8 +248,8 @@ Figure 1.12: Summary Statistics Table
 </div>
 <div class="rmdtip">
 <p><strong>Question: I try to take the AVERAGE of a column by specifying <code>AVERAGE(C:C)</code>. Yet, when I press enter, Excel does not compute the average. What has gone wrong</strong></p>
-<div id="radio_HIMASBKURL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HIMASBKURL" value=""><span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_HIMASBKURL" value=""><span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_HIMASBKURL" value="answer"><span>Need to specify equals sign <code>=</code> before the function</span></label>
+<div id="radio_JVMPOQGAML" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JVMPOQGAML" value=""><span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_JVMPOQGAML" value=""><span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_JVMPOQGAML" value="answer"><span>Need to specify equals sign <code>=</code> before the function</span></label>
 </div>
 </div>
 </div>
@@ -266,7 +265,7 @@ Figure 1.12: Summary Statistics Table
 </ul>
 <p>These statements are all either true or false. This type of binary logic is incredibly important in certain areas of mathematics as well as the development of computers. An entire branch of mathematics, termed <strong>Boolean algebra</strong>, deals with variables that take on binary values.</p>
 <p>In Excel, we can type logical statements and Excel will evaluate whether the statement is True or False. The key is you need to type the statement in the correct format so that Excel understands what you are trying to ask.</p>
-<p>For example, in our dataset on GDP in 2020, one example of a logical statement is: "GDP is greater than 10 trillion dollars." But how do we type the statement "GDP is greater than 10 trillion dollars."</p>
+<p>For example, in our dataset on GDP in 2020, a logical statement is: "GDP is greater than 10 trillion dollars." This is True for some countries and False for others. But how do we type the statement "GDP is greater than 10 trillion dollars" in Excel?</p>
 <p>Figure <a href="college-instruction-experiments.html#fig:tf1">1.13</a> depicts how we would type this statement for the first observation in the dataset (the U.S.). To evaluate whether GDP is greater than 10 trillion for the U.S. we type <code>=(C2&gt;10)</code>. The equals sign tells Excel to evaluate the logical statement that follows. The logical statement that follows <code>C2&gt;10</code> is simply asking whether the value in cell C2 (i.e. U.S.'s GDP) is greater than 10.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:tf1"></span>
@@ -274,7 +273,7 @@ Figure 1.12: Summary Statistics Table
 Figure 1.13: Is GDP Greater than 10 in the U.S. Part 1
 </p>
 </div>
-<p>Once we press enter, we will get the result. In this case, we can see GDP in the U.S. is indeed greater than 10 trillion dollars. Therefore, when the function in cell D2 is evaluated it returns the answer <code>TRUE</code> as can be seen in Figure <a href="college-instruction-experiments.html#fig:tf2">1.14</a>.</p>
+<p>Once we press enter, we will get the result. In this case, we can see GDP in the U.S. is indeed greater than 10 trillion dollars. Therefore, when the function in cell D2 is evaluated it returns the answer <code>TRUE</code>, as can be seen in Figure <a href="college-instruction-experiments.html#fig:tf2">1.14</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:tf2"></span>
 <img src="images/01_tf2.png" alt="Is GDP Greater than 10 in the U.S. Part 2" width="100%"><p class="caption">
@@ -291,7 +290,9 @@ Figure 1.15: Filling in the Formula
 </div>
 <p>Oftentimes, instead of returning "TRUE" or "FALSE", it is convenient to have Excel return the value in another form. For example, a common way to represent "TRUE" is with the number 1 and "FALSE" with the number 0. To accomplish this in Excel we will use the <code>IF</code> function.</p>
 <p>The basic format for the <code>IF</code> function is:</p>
+<p><code>=IF(logical test,value if TRUE, value if FALSE)</code></p>
 <p>For example, in our dataset, if we want to return the value of 1 if GDP is greater than 10 and 0 if otherwise, we can type:</p>
+<p><code>=IF(C2&gt;10,1,0)</code></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ifex1"></span>
 <img src="images/01_if1.png" alt="Using the IF function (Before Pressing Enter)" width="100%"><p class="caption">
@@ -310,7 +311,7 @@ Figure 1.17: Using the IF function (After Pressing Enter)
 <h2>
 <span class="header-section-number">1.5</span> Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"><i class="fas fa-link"></i></a>
 </h2>
-<p>Now let's return to our data from Brownback and Sadoff (2020). Our goal is to create a table of basic summary statistics. However, a key variable in the Brownback and Sadoff (2020) experiment is whether a given student passed the test or not. This financial compensation of an instructor (in the treatment group) directly depends on how many students pass the test. This currently does not appear in our dataset, so we will have to create it.</p>
+<p>Now let's return to our data from Brownback and Sadoff (2020). Our goal is to create a table of basic summary statistics. However, a key variable in the Brownback and Sadoff (2020) experiment is whether a given student passed the test or not. In this setting, a score of 70 or higher indicates that the student passed the test. Therefore we need to create a new variable that is equal to 1 if the individual received a <code>TestScore</code> greater than or equal to 70 and zero otherwise. We will show later that storing this information as a 1 or zero will be particularly convenient for our analysis.</p>
 <p>To create this variable we need to take three steps:</p>
 <ul>
 <li><p><strong>First Step:</strong> Title the column with the variable name "Passed"</p></li>
@@ -352,12 +353,12 @@ Figure 1.21: Average Age
 Figure 1.22: Average Test Score
 </p>
 </div>
-<p>In order to compute fraction that passed the test, we are going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of Passed and this will be equal to the fraction that passed the test.</p>
-<p>To see why this is true, let's first write out the equation for the average of a generic variable <span class="math inline">\(X\)</span></p>
+<p>In order to compute fraction that passed the test, we are first going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of <code>Passed</code> and this will be equal to the fraction that passed the test.</p>
+<p>To see why this is true, let's first write out the equation for the average of a generic variable <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[
   \bar{X} = \frac{X_1 + ... + X_N}{N}
 \]</span></p>
-<p>Where <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(X_1\)</span> is the first observation and <span class="math inline">\(X_N\)</span> is the <span class="math inline">\(N^{th}\)</span> observation. If <span class="math inline">\(X\)</span> is a binary variable that is equal to 1 or zero, then the average will be the fraction of individual's with a 1
+<p>Where <span class="math inline">\(\bar{X}\)</span> is the average, <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(X_1\)</span> is the first observation and <span class="math inline">\(X_N\)</span> is the <span class="math inline">\(N^{th}\)</span> observation. If <span class="math inline">\(X\)</span> is a binary variable that is equal to 1 or zero, then the average will be the fraction of individual's with a 1
 <span class="math display">\[
   \bar{X} = \frac{X_1 + ... + X_N}{N}=\frac{\text{Number of observations =1 }}{\text{Total Observations}}
 \]</span>
@@ -368,6 +369,7 @@ Since our variable "Passed" is equal to 1 if passed and zero otherwise, the frac
 Figure 1.23: Computing the Fraction Passed
 </p>
 </div>
+<p>We will take a lot of averages of binary variables in this book. It will be beneficial down the road to convince yourself that the average of <code>Passed</code> is equal to the fraction that passed. If you are still confused about this concept, try to convince yourself in datatsets with only a few observations why this fact is true.</p>
 <p>Finally, to finish our summary statistics table, we need to fill in the total number of observations. To do this, we can use the <code>COUNT</code> function, which will count the total number of numbers in a column. While Figure <a href="college-instruction-experiments.html#fig:count">1.24</a> uses Column G to compute total observations, this could be replaced with any column that has non-missing numeric data.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:count"></span>
@@ -381,7 +383,7 @@ Figure 1.24: Computing Total Observations
 <span class="header-section-number">1.6</span> Pivot Tables<a class="anchor" aria-label="anchor" href="#S:pivottables"><i class="fas fa-link"></i></a>
 </h2>
 <p>So far, we have learned to retrieve summary statistics using functions. This works very well for retrieving summary statistics for the entire dataset. Sometimes however we want more complicated summary statistics. For example, in our empirical application, we might be interested in passing rates for different departments. While it is possible to retrieve these using functions, an easier way is through a <strong>pivot table</strong>. The name "pivot" comes from "pivoting" the data into a way the provides useful information.</p>
-<p>To understand what we are trying to accomplish with our pivot table, let's start by looking at our end goal in Figure <a href="college-instruction-experiments.html#fig:pivotfinal">1.25</a>. In the Pivot Table, each <strong>row</strong> is a separate department, with the fraction passed displayed.</p>
+<p>To understand what we are trying to accomplish with our pivot table, let's start by looking at our end goal in Figure <a href="college-instruction-experiments.html#fig:pivotfinal">1.25</a>. In the Pivot Table, each <strong>row</strong> is a separate department. Next to each department, we have the fraction of students that passed the standardized test in that department. The departments give different tests based on the material taught in the course, but a score of 70 or greater counts as a pass in all departments.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pivotfinal"></span>
 <img src="images/01_pivot_final.png" alt="Pivot Table: Pass Rates by Department" width="38%"><p class="caption">
@@ -403,7 +405,7 @@ Figure 1.27: Selecting a Range for the Pivot Table
 </p>
 </div>
 <p>You can also choose where you would like your pivot table to appear. By default, the table will be placed in whichever cell you clicked last (in my case this is cell <code>I10</code>). Therefore, before you insert a pivot table, you should click the cell where you would like it to appear.</p>
-<p>As can be seen in Figure <a href="college-instruction-experiments.html#fig:pivot4">1.28</a>, Excel has drawn a blank Pivot table. On the right we can see the new panel "PivotTable Fields" which we will use to build our Pivot table</p>
+<p>As can be seen in Figure <a href="college-instruction-experiments.html#fig:pivot4">1.28</a>, Excel has drawn a blank Pivot table. On the right we can see the new panel "PivotTable Fields" which we will use to build our Pivot table.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pivot4"></span>
 <img src="images/01_pivot4.png" alt="A Blank Pivot Table" width="100%"><p class="caption">
@@ -438,7 +440,7 @@ Figure 1.31: Adding Passed to the Pivot Table
 Figure 1.32: Average Pass Rates
 </p>
 </div>
-<p>Now we've reached our goal! A table that shows average pass rates by department (Figure <a href="college-instruction-experiments.html#fig:pivotfinal">1.25</a>).</p>
+<p>Now we've reached our goal! If you've followed these steps, the next table you see should be identical to Figure <a href="college-instruction-experiments.html#fig:pivotfinal">1.25</a>. If you found this discussion difficult to follow, I urge you to play around with pivot tables. Move variables to different panels to see how the table will change.</p>
 </div>
 <div id="balance-tables" class="section level2" number="1.7">
 <h2>
@@ -446,7 +448,7 @@ Figure 1.32: Average Pass Rates
 </h2>
 <p>The key aspect of a randomized control trial that allows us to infer causality is randomization. If randomization is successful, then individuals selected for the treatment should be similar (on average) to those selected for the control. Therefore, a key component of any analysis of experimental data is to show that the treatment and control are similar based on observable characteristics.</p>
 <p>To understand how a balance test might fail, let's imagine researchers are testing whether a given drug reduces cholesterol. The experimenters receive a list of 200 participants for the trial and decide the first 100 names on the list will receive the treatment and the second 100 will receive the placebo. What they fail to realize is that the list of applicants is sorted from youngest to oldest. Therefore, only the youngest participants receive the treatment. But younger applicants, on average, probably have lower cholesterol to begin with, so differences between treatment and control may be due to age, not due to the treatment.</p>
-<p>If we perform a balance test (i.e. calculate average age by treatment and control) we would immediately detect our error. Now, no "real" experiment would ever be run in such a way. To do so would be ignoring standard protocol for well-run experiments! Still, it is important to understand whether there are differences between treated and control units before proceeding with the main analysis.Finding persistent differences with respect to observables could be evidence that randomization somehow failed. In our empirical application, we have information on the age of the student, so let's see if age varies between the treatment and control.</p>
+<p>If we perform a balance test (i.e. calculate average age by treatment and control) we would immediately detect our error. Now, no "real" experiment would ever be run in such a way. To do so would be ignoring standard protocol for well-run experiments! Still, it is important to understand whether there are differences between treated and control units before proceeding with the main analysis. Finding persistent differences with respect to observables could be evidence that randomization somehow failed. In our empirical application, we have information on the age of the student, so let's see if age varies between the treatment and control.</p>
 <p>We want to retrieve the average age by Treatment Arm. To do so we can use a pivot table! The <strong>Rows</strong> will be the Treatment Arm, while the <strong>Values</strong> will be age. We can follow the exact same steps as in Section <a href="college-instruction-experiments.html#S:pivottables">1.6</a> to build the balance table displayed in Figure <a href="college-instruction-experiments.html#fig:balance">1.33</a></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:balance"></span>
@@ -454,7 +456,7 @@ Figure 1.32: Average Pass Rates
 Figure 1.33: Average Age by Treatment Group
 </p>
 </div>
-<p>As can be seen in Figure (fig:balance), the average age in the treatment group (i.e. the Instructor Incentives group) and the control group is roughly the same, at 24.5 years of age. While we are keeping this illustrative example simple, generally papers will show a balance table for many observables. While there may occasionally be differences between certain characteristics, on average, the two groups will tend to be similar if randomization was implemented successfully. In particular, researchers use statistics to determine whether differences between treatment and control units are <strong>statistically significant</strong>. We will learn more about statistical significance later in this book.</p>
+<p>As can be seen in Figure <a href="college-instruction-experiments.html#fig:balance">1.33</a>, the average age in the treatment group (i.e. the Instructor Incentives group) and the control group is roughly the same, at 24.5 years of age. While we are keeping this illustrative example simple, generally papers will show a balance table for many observables. While there may occasionally be differences between certain characteristics, on average, the two groups will tend to be similar if randomization was implemented successfully.</p>
 </div>
 <div id="S:impact" class="section level2" number="1.8">
 <h2>
@@ -468,15 +470,15 @@ Figure 1.33: Average Age by Treatment Group
 Figure 1.34: Impact of Financial Incentives on Pass Rates
 </p>
 </div>
-<p>Giving instructors' incentives increases pass rates by 7 percentage points! That is a big impact! Before exploring this result further, now is a good time to discuss how we accurately discuss this result. One common mistake (for both students and journalists) is to mix up the terms percentage point and percent.</p>
-<p>In our example, 40 percent of control students pass the test, while 47 percent of treated students pass the test. Therefore, treatment increased pass rates by 7 <strong>percentage points</strong>. This is not the same as saying the treatment increased pass rates by 7 percent.</p>
-<p>The percent increase in pass rates can be computed, but it is not equal to 7 percent. To calculate the percent increase in pass rates for the treatment relative to the control we can compute:</p>
+<p>Giving instructors' incentives increases pass rates by 7 percentage points. That is a big impact! Before exploring this result further, now is a good time to discuss how we accurately discuss this result. One common mistake (for both students and journalists) is to mix up the terms percentage point and percent.</p>
+<p>In our example, 40 percent of control students pass the test, while 47 percent of treated students pass the test. Therefore, treatment increased pass rates by 7 <strong>percentage points</strong>. We use the term percentage points when we are comparing two percents or two rates. The terms percentage point and percent are not interchangeable.</p>
+<p>How would we accurately use the term percent here to compare 40 and 47 percent? To calculate the percent increase in pass rates for the treatment relative to the control we can compute:</p>
 <p><span class="math display">\[
 \frac{\text{Pass Rate Treatment}-\text{Pass Rate Control}}{\text{Pass Rate Control}}= \frac{0.471-0.400}{0.400}=0.1775
 \]</span></p>
 <p>So the treatment pass rate is 17.75 percent higher relative to the control. This mistake can be misleading! For example, let's imagine the probability of dying during a given procedure is 2 percent. However, a doctor tries a new surgical technique and finds the probability of dying under the alternative procedure is 1 percent.</p>
 <p>This is a 1 percentage point decrease in the probability of dying during the procedure. However, it is a 50 percent decrease in the probability of dying during the procedure. Now, if a journalist wrote an article and incorrectly stated that the new procedure decreases death rates by 1 percent, then it sounds as if the new technique is not that much better than the old technique. However, that is the wrong conclusion. The correct conclusion is that a 1 percentage point decrease in the probability of dying implies a 50 percent reduction in the probability of dying, a huge advance!</p>
-<p>So let's take stock of what we have learned. Providing financial incentives to community college instructors seems to increase pass rates on average. This is an important finding. Prior work on "pay-for-performance" in the United States has shown limited effectiveness in K-12 schools (See Neal (2011)). But this is the first study to show financial incentives can be an effective tool in the Community College setting. This is an important general lesson: the context of the treatment matters! Just because a treatment is effective in one setting doesn't mean it will be effective in another (or vice-versa).</p>
+<p>So let's take stock of what we have learned. Providing financial incentives to community college instructors seems to increase pass rates on average. This is an important finding. Prior work on "pay-for-performance" in the United States has shown limited effectiveness in K-12 schools (See Neal (2011)). But this is the first study to show financial incentives can be an effective tool in the Community College setting. This is an important general lesson: the context of the treatment matters. Just because a treatment is effective in one setting doesn't mean it will be effective in another (or vice-versa).</p>
 <p>Next, let's talk about what else we can learn from this experiment. Well, this study was done across many different subjects. Maybe the effect of finacnial incentives differs depending on the department. It may be easier to get students over the pass threshold in some disciplines, making the incentives potentially more effective.</p>
 <p>To explore this question we can adjust our pivot table a bit. We will proceed in two steps:</p>
 <ul>
@@ -493,8 +495,8 @@ Figure 1.35: Pivot Fields
 <p>Figure <a href="college-instruction-experiments.html#fig:hetresults">1.36</a> displays the results.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:hetresults"></span>
-<img src="images/01_pivot_het_blank.png" alt="Pivot Fields" width="75%"><p class="caption">
-Figure 1.36: Pivot Fields
+<img src="images/01_pivot_het_blank.png" alt="Pivot Table Showing Pass Rates by Treatment and Control Across Departments" width="75%"><p class="caption">
+Figure 1.36: Pivot Table Showing Pass Rates by Treatment and Control Across Departments
 </p>
 </div>
 <p>In some departments, the instructor incentives were incredibly effective. For example, in the communications department (<code>COMM</code>), the instructor incentives led to a dramatic increase in pass rates. In the control group, the pass rates were only 14 percent, while they were 60 percent in the treatment group. This is a 46 percentage point increase in pass rates, or equivalently, a 329 percent increase in pass rates in the treatment relative to the control</p>
@@ -614,8 +616,8 @@ Figure 1.49: Average Pass Rates by Treatment Arm and Department
 <h2>
 <span class="header-section-number">1.11</span> Conclusion<a class="anchor" aria-label="anchor" href="#S:Conclusion"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this module, we studied whether instructor incentives are effective in improving student performance. Using experimental data from Brownback and Sadoff (2020), we found that instructors that receive financial bonuses for each student that passes a course leads to significant increases in passing rates. However, the effects varied dramatically by department, with some departments showing enormous effects and others negligible effects. This is only part of the analysis in Brownstone and Sadoff (2020). In this concluding section, let's talk about a few other results from their work</p>
-<p>So far, we have found performance increases in the course that is incentivized by financial incentives. But is there a cost to this increase in performance. For example, maybe instructors respond to the incentives by increasing the workload in their course. This may improve students performance in the course, but it may come at the cost of neglecting other courses. Therefore, it could be that the treatment does not actually increase performance overall, but simply forces students to spend more time in one class relative to another.</p>
+<p>In this module, we studied whether instructor incentives are effective in improving student performance. Using experimental data from Brownback and Sadoff (2020), we found that instructors that receive financial bonuses for each student that passes a course leads to significant increases in passing rates. However, the effects varied dramatically by department, with some departments showing enormous effects and others negligible effects. This is only part of the analysis in Brownstone and Sadoff (2020). In this concluding section, let's talk about a few other results from their work.</p>
+<p>So far, we have found performance increases in the course that is incentivized by financial incentives. But is there a cost to this increase in performance? For example, maybe instructors respond to the incentives by increasing the workload in their course. This may improve students performance in the course, but it may come at the cost of neglecting other courses. Therefore, it could be that the treatment does not actually increase performance overall, but simply forces students to spend more time in one class relative to another.</p>
 <p>However, Brownback and Sadoff (2020) collect grades for all courses a student is enrolled in, not just the courses in the experiment. In contrast to the hypothesis above, the authors find student outcomes in the treatment improve <strong>in all courses</strong>. This suggests positive spillovers of the treatment. Improved performance in one course leads to improved performance in others. If students feel overwhelmed by poor grades in one course they may "give up" on the rest of their courses. Therefore, a treatment that increases performance in a single course has the scope to increase performance in all courses.</p>
 <p>This analysis shows evidence of positive effects, but only in the short-term. Our real goal is to improve graduate rates. Again, the richness of the data in Brownback and Sadoff (2020) will come in handy here. The authors find that students in the treatment are about 2.8 percentage points more likely to transfer to a 4-year university than control students. This represents a 28 percent increase in the probability of transferring. Overall, this suggests financial incentives to instructors may be a particularly cost effective way for community colleges to achieve a number of important goals</p>
 <p>We have focused on financial incentives for instructors, but maybe providing bonuses for students is even more effective. During the experiment, the authors offered free tuition for one summer course (face value of $400) if they passed the test. Interestingly, the authors find this intervention had no impact on student performance</p>
@@ -818,8 +820,7 @@ window.onload = function() {
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/01-week1.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/01-week1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>
@@ -831,7 +832,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold &amp; Margaret E. Roberts. It was last built on 2022-12-03.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2022-12-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

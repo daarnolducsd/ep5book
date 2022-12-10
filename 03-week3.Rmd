@@ -21,7 +21,7 @@ The most common way civilians interact with police are through traffic stops (th
 
 This is some big data. Figure \@ref(fig:soppsnap) shows a subset of all the cities in that data has been collected for. 
 
-```{r, soppsnap, echo=FALSE, out.width="75%", fig.cap="The Stanford Open Policing Project Data",fig.align='center'}
+```{r, soppsnap, echo=FALSE, out.width="90%", fig.cap="The Stanford Open Policing Project Data",fig.align='center'}
 knitr::include_graphics("images/03_data.png")
 ```
 
@@ -32,7 +32,7 @@ The data and research is starting to get notice by many news outlets, including 
 knitr::include_graphics("images/03_daily_show.png")
 ```
 
-There are many different "decisions" that officers make that could be driven by discrimination
+There are many different "decisions" that officers make that could be driven by discrimination:
 
   - 1. The decision to stop a vehicle or not
   
@@ -67,13 +67,16 @@ Each observation in the dataset is a stop made by an officer somewhere in San Di
 
 Subject race is a **categorical variable**. Whenever you have a categorical variable as your variable of interest, it is helpful to understand the frequency of each category. For example, what fraction of stops are for Black drivers, White Drivers, Hispanic Drivers, etc. To do this in Stata, we will use the ``tab`` command.
 
-```{stata}
+```{stata,echo=T,eval=F}
 tab subject_race
 ```
 
-This gives us the fraction of stops for different races in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented \medskip
+```{stata,echo=F,eval=T}
+tab subject_race
+```
+This gives us the fraction of stops by race in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented \medskip
 
-```{r, population, echo=FALSE, out.width="60%", fig.cap="Racial Composition of Traffic Stops and Population",fig.align='center'}
+```{r, population, echo=FALSE, out.width="80%", fig.cap="Racial Composition of Traffic Stops and Population",fig.align='center'}
 knitr::include_graphics("images/03_population.png")
 ```
 

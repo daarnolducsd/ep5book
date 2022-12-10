@@ -30,11 +30,11 @@ To understand causal relationships, let's again consider the relationship betwee
 knitr::include_graphics("images/01_spurious.png")
 ```
 
-While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with SAT prep. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of such a program program, the school decides to use data to see if those who attended SAT prep programs outperformed students that did not.
+While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with standardized tests. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of such a program program, the school decides to use data to see if those who attended standardized test prep programs outperformed students that did not.
 
-The school finds those who attended SAT test prep programs score much higher on the SAT than those who didn't. Does this mean the SAT test prep program works and the school should invest in one? 
+The school finds those who attended the test prep programs score much higher on standardized tests than those who didn't. Does this mean the test prep program works and the school should invest in one? 
 
-Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on the SAT. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into SAT programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in SAT scores. 
+Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on standardized tests. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into test prep programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in standardized test scores. 
 
 With only **observational data** it is difficult to tell which story is true. However, there is a long-established way to identify causal relationship in medicine: the randomized control trial (RCT). To understand RCTs, imagine we are testing whether a given drug reduces blood pressure. To study the effectiveness we recruit a group of participants. Half of the participants are randomly placed into the **treatment** group and given the drug. The other half are placed into the **control** or **placebo** group and given a placebo drug. Now we can just compare outcomes for the two groups over time to understand the impact of the drug. 
 
@@ -72,7 +72,7 @@ opts <- c(
 
 ## Community College Data
 
-In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (See [here](https://en.wikipedia.org/wiki/Replication_crisis#In_economics)). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class. 
+In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (see [here](https://en.wikipedia.org/wiki/Replication_crisis#In_economics)). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class. 
 
 Table \@ref(fig:bsdata) shows a selection of the data from Brownstone and Sadoff (2020). The actual data is much larger, but only a subset of the variables will be relevant for our analysis. This is referred to as a **data table**. Each **row** in a data table is an **observation**, while each **column** is a **variable**. 
 
@@ -80,10 +80,10 @@ Table \@ref(fig:bsdata) shows a selection of the data from Brownstone and Sadoff
 knitr::include_graphics("images/01_data.png")
 ```
 
-It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the **unit of observation**. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a country, a state? To practice, let's go through a few examples.
+It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the **unit of observation**. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a state, a country? To practice, let's go through a few examples.
 
  
-What is the unit of observation in Figure \@ref(fig:student)?
+What is the unit of observation in Figure \@ref(fig:student), which displays a data table for just two observations.
 
 ```{r, student, echo=FALSE, out.width="50%", fig.cap="Unit of Observation Example 1",fig.align='center'}
 knitr::include_graphics("images/01_student.png")
@@ -98,7 +98,7 @@ What is the unit of observation in Figure \@ref(fig:studentterm)?
 knitr::include_graphics("images/01_student_term.png")
 ```
 
-Again, we need to decide what a row represents. In this case, each row corresponds to a different student in a different term. Therefore the observation level is a student-term.
+Again, we need to decide what a row represents. In this case, each row corresponds to a particular student in a particular term. Therefore the observation level is a student-term.
 
 Now let's think about what the unit of observation is in the Brownstone and Sadoff (2020) data. The variable **AnonID** is the identifier for a student. The variable **CourseNumber** is the identifier for a course. This dataset seems to be giving us the information for a student in a given course. Therefore the observation level is a student-course. 
 
@@ -135,7 +135,7 @@ opts <- c(
 
 A function is something that takes in an input and produces an output. For example, you can think of taking the average as a function. The input is a list of numbers, and the output is the average of that list of numbers.  When the inputs and outputs of a function are numbers, then it is a **statistical function**. 
 
-In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in business, it might be important to know some summary statistics about your products, sales, costs, etc. To create these summary statistics we use statistical functions. 
+In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in a business, it might be important to know some summary statistics about your products. To create these summary statistics we use statistical functions. 
 
 In order to illustrate the use of statistical functions, let's consider the following dataset that has information on Gross Domestic Product (GDP) for ten countries
 
@@ -150,8 +150,6 @@ Let's introduce our first statistical function: the ``AVERAGE`` function. This f
   
   - ``SUM`` -- adds up the numbers
   
-  - ``AVERAGE`` -- averages the numbers 
-  
   - ``MEDIAN`` -- retrieves the median of all numbers
   
   - ``MAX``, ``MIN`` -- retrieves the maximum and minimum of all numbers
@@ -160,7 +158,7 @@ Let's introduce our first statistical function: the ``AVERAGE`` function. This f
   - ``MODE`` -- retrieves the mode of all numbers
 
 
-In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure \@ref(fig:japan) I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4. 
+In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure \@ref(fig:japan), I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4. 
 
 ```{r, japan, echo=FALSE, out.width="100%", fig.cap="How to Reference a Cell",fig.align='center'}
 knitr::include_graphics("images/01_japan.png")
@@ -172,9 +170,9 @@ You can also reference a range of cells (this will be useful when taking average
 knitr::include_graphics("images/01_cells.png")
 ```
 
-Sometimes, it is helpful to reference an entire column. For example, later we will open an Excel spreadsheet that has thousands of students. In some cases, it will be helpful to reference an entire column when using statistical functions. For example, if we are interested in the average of a variable in column C, we can type ``C:C`` to reference the entire column. 
+Sometimes, it is helpful to reference an entire column. For example, later we will open an Excel spreadsheet that has thousands of students, which might make it difficult to reference the exact row at which the data ends. We can still very compactly take the average of this variable without referencing all the observations. For example, if the variable is in column C, we can type ``C:C`` to reference the entire column. 
 
-Now that we understand how to reference cells, we can begin to apply functions. We will begin with the ``AVERAGE`` functions which can compute an average of a list of numbers. In our spreadsheet, we are interested in computing the average GDP across these ten countries. To do so, we can first click in an unpopulated cell and type:
+Now that we understand how to reference cells, we can begin to apply functions. We will begin with the ``AVERAGE`` functions which can compute an average of a list of numbers. In our spreadsheet, we are interested in computing the average GDP across these ten countries. To do so, we can first click in an unpopulated cell (i.e. a cell without any values in it yet) and type:
 
 \begin{center}
 \colorbox{gray!20}{\texttt{=AVERAGE(C:C)}}
@@ -232,7 +230,7 @@ These statements are all either true or false. This type of binary logic is incr
 
 In Excel, we can type logical statements and Excel will evaluate whether the statement is True or False. The key is you need to type the statement in the correct format so that Excel understands what you are trying to ask. 
 
-For example, in our dataset on GDP in 2020, one example of a logical statement is: "GDP is greater than 10 trillion dollars." But how do we type the statement "GDP is greater than 10 trillion dollars." 
+For example, in our dataset on GDP in 2020, a logical statement is: "GDP is greater than 10 trillion dollars." This is True for some countries and False for others. But how do we type the statement "GDP is greater than 10 trillion dollars" in Excel? 
 
 Figure \@ref(fig:tf1) depicts how we would type this statement for the first observation in the dataset (the U.S.). To evaluate whether GDP is greater than 10 trillion for the U.S. we type ``=(C2>10)``. The equals sign tells Excel to evaluate the logical statement that follows. The logical statement that follows ``C2>10`` is simply asking whether the value in cell C2 (i.e. U.S.'s GDP) is greater than 10. 
 
@@ -240,7 +238,7 @@ Figure \@ref(fig:tf1) depicts how we would type this statement for the first obs
 knitr::include_graphics("images/01_tf1.png")
 ```
 
-Once we press enter, we will get the result. In this case, we can see GDP in the U.S. is indeed greater than 10 trillion dollars. Therefore, when the function in cell D2 is evaluated it returns the answer ``TRUE`` as can be seen in Figure \@ref(fig:tf2).
+Once we press enter, we will get the result. In this case, we can see GDP in the U.S. is indeed greater than 10 trillion dollars. Therefore, when the function in cell D2 is evaluated it returns the answer ``TRUE``, as can be seen in Figure \@ref(fig:tf2).
 
 ```{r, tf2, echo=FALSE, out.width="100%", fig.cap="Is GDP Greater than 10 in the U.S. Part 2",fig.align='center'}
 knitr::include_graphics("images/01_tf2.png")
@@ -258,15 +256,11 @@ Oftentimes, instead of returning "TRUE" or "FALSE", it is convenient to have Exc
 
 The basic format for the ``IF`` function is: 
 
-\begin{center}
-\colorbox{gray!20}{\texttt{=IF(logical test,value if TRUE, value if FALSE)}}
-\end{center}
+``=IF(logical test,value if TRUE, value if FALSE)``
 
 For example, in our dataset, if we want to return the value of 1 if GDP is greater than 10 and 0 if otherwise, we can type:
 
-\begin{center}
-\colorbox{gray!20}{\texttt{=IF(C2>10,1,0)}}
-\end{center}
+``=IF(C2>10,1,0)``
 
 ```{r, ifex1, echo=FALSE, out.width="100%", fig.cap="Using the IF function (Before Pressing Enter)",fig.align='center'}
 knitr::include_graphics("images/01_if1.png")
@@ -280,14 +274,13 @@ knitr::include_graphics("images/01_if2.png")
 
 ## Summary Statistics 
 
-Now let's return to our data from Brownback and Sadoff (2020). Our goal is to create a table of basic summary statistics. However, a key variable in the Brownback and Sadoff (2020) experiment is whether a given student passed the test or not. This financial compensation of an instructor (in the treatment group) directly depends on how many students pass the test. This currently does not appear in our dataset, so we will have to create it. 
+Now let's return to our data from Brownback and Sadoff (2020). Our goal is to create a table of basic summary statistics. However, a key variable in the Brownback and Sadoff (2020) experiment is whether a given student passed the test or not. In this setting, a score of 70 or higher indicates that the student passed the test. Therefore we need to create a new variable that is equal to 1 if the individual received a ``TestScore`` greater than or equal to 70 and zero otherwise. We will show later that storing this information as a 1 or zero will be particularly convenient for our analysis.  
 
 To create this variable we need to take three steps:
 
 - **First Step:** Title the column with the variable name "Passed" 
 
 - **Second Step:** Use the ``IF`` function to fill in this variable for the first observation 
-
 - **Third Step:** Double click bottom right of cell in step 2 to fill in the variable for all observations
 
 Figure \@ref(fig:passed1) presents steps 1 and 2 in Excel.
@@ -320,15 +313,15 @@ Average test score is completely analogous to age, but we now reference column F
 knitr::include_graphics("images/01_sumstats3.png")
 ```
 
-In order to compute fraction that passed the test, we are going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of Passed and this will be equal to the fraction that passed the test. 
+In order to compute fraction that passed the test, we are first going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of ``Passed`` and this will be equal to the fraction that passed the test. 
 
-To see why this is true, let's first write out the equation for the average of a generic variable $X$  
+To see why this is true, let's first write out the equation for the average of a generic variable $X$: 
 
 $$
   \bar{X} = \frac{X_1 + ... + X_N}{N} 
 $$
 
-Where $N$ is the number of observations, $X_1$ is the first observation and $X_N$ is the $N^{th}$ observation. If $X$ is a binary variable that is equal to 1 or zero, then the average will be the fraction of individual's with a 1
+Where $\bar{X}$ is the average, $N$ is the number of observations, $X_1$ is the first observation and $X_N$ is the $N^{th}$ observation. If $X$ is a binary variable that is equal to 1 or zero, then the average will be the fraction of individual's with a 1
 $$
   \bar{X} = \frac{X_1 + ... + X_N}{N}=\frac{\text{Number of observations =1 }}{\text{Total Observations}} 
 $$
@@ -337,6 +330,8 @@ Since our variable "Passed" is equal to 1 if passed and zero otherwise, the frac
 ```{r, fracpassed, echo=FALSE, out.width="100%", fig.cap="Computing the Fraction Passed",fig.align='center'}
 knitr::include_graphics("images/01_frac_passed.png")
 ```
+
+We will take a lot of averages of binary variables in this book. It will be beneficial down the road to convince yourself that the average of ``Passed`` is equal to the fraction that passed. If you are still confused about this concept, try to convince yourself in datatsets with only a few observations why this fact is true.
 
 Finally, to finish our summary statistics table, we need to fill in the total number of observations. To do this, we can use the ``COUNT`` function, which will count the total number of numbers in a column. While Figure \@ref(fig:count) uses Column G to compute total observations, this could be replaced with any column that has non-missing numeric data. 
 
@@ -348,7 +343,7 @@ knitr::include_graphics("images/01_count.png")
 
 So far, we have learned to retrieve summary statistics using functions. This works very well for retrieving summary statistics for the entire dataset. Sometimes however we want more complicated summary statistics. For example, in our empirical application, we might be interested in passing rates for different departments. While it is possible to retrieve these using functions, an easier way is through a **pivot table**. The name "pivot" comes from "pivoting" the data into a way the provides useful information. 
 
-To understand what we are trying to accomplish with our pivot table, let's start by looking at our end goal in Figure \@ref(fig:pivotfinal). In the Pivot Table, each **row** is a separate department, with the fraction passed displayed.  
+To understand what we are trying to accomplish with our pivot table, let's start by looking at our end goal in Figure \@ref(fig:pivotfinal). In the Pivot Table, each **row** is a separate department. Next to each department, we have the fraction of students that passed the standardized test in that department. The departments give different tests based on the material taught in the course, but a score of 70 or greater counts as a pass in all departments.  
 
 ```{r, pivotfinal, echo=FALSE, out.width="38%", fig.cap="Pivot Table: Pass Rates by Department",fig.align='center'}
 knitr::include_graphics("images/01_pivot_final.png")
@@ -369,7 +364,7 @@ knitr::include_graphics("images/01_pivot3.png")
 
 You can also choose where you would like your pivot table to appear. By default, the table will be placed in whichever cell you clicked last (in my case this is cell ``I10``). Therefore, before you insert a pivot table, you should click the cell where you would like it to appear.
 
-As can be seen in Figure \@ref(fig:pivot4), Excel has drawn a blank Pivot table. On the right we can see the new panel "PivotTable Fields" which we will use to build our Pivot table
+As can be seen in Figure \@ref(fig:pivot4), Excel has drawn a blank Pivot table. On the right we can see the new panel "PivotTable Fields" which we will use to build our Pivot table.
 
 ```{r, pivot4, echo=FALSE, out.width="100%", fig.cap="A Blank Pivot Table",fig.align='center'}
 knitr::include_graphics("images/01_pivot4.png")
@@ -399,7 +394,7 @@ By default Excel is displaying the "SUM" by department (i.e. number of individua
 knitr::include_graphics("images/01_pivot7.png")
 ```
 
-Now we've reached our goal! A table that shows average pass rates by department (Figure \@ref(fig:pivotfinal)).
+Now we've reached our goal! If you've followed these steps, the next table you see should be identical to Figure \@ref(fig:pivotfinal). If you found this discussion difficult to follow, I urge you to play around with pivot tables. Move variables to different panels to see how the table will change.
 
 ## Balance Tables
 
@@ -407,7 +402,7 @@ The key aspect of a randomized control trial that allows us to infer causality i
 
 To understand how a balance test might fail, let's imagine researchers are testing whether a given drug reduces cholesterol. The experimenters receive a list of 200 participants for the trial and decide the first 100 names on the list will receive the treatment and the second 100 will receive the placebo. What they fail to realize is that the list of applicants is sorted from youngest to oldest. Therefore, only the youngest participants receive the treatment. But younger applicants, on average, probably have lower cholesterol to begin with, so differences between treatment and control may be due to age, not due to the treatment. 
 
-If we perform a balance test (i.e. calculate average age by treatment and control) we would immediately detect our error. Now, no "real" experiment would ever be run in such a way. To do so would be ignoring standard protocol for well-run experiments! Still, it is important to understand whether there are differences between treated and control units before proceeding with the main analysis.Finding persistent differences with respect to observables could be evidence that randomization somehow failed. In our empirical application, we have information on the age of the student, so let's see if age varies between the treatment and control.
+If we perform a balance test (i.e. calculate average age by treatment and control) we would immediately detect our error. Now, no "real" experiment would ever be run in such a way. To do so would be ignoring standard protocol for well-run experiments! Still, it is important to understand whether there are differences between treated and control units before proceeding with the main analysis. Finding persistent differences with respect to observables could be evidence that randomization somehow failed. In our empirical application, we have information on the age of the student, so let's see if age varies between the treatment and control.
 
 We want to retrieve the average age by Treatment Arm. To do so we can use a pivot table! The **Rows** will be the Treatment Arm, while the **Values** will be age. We can follow the exact same steps as in Section \@ref(S:pivottables) to build the balance table displayed in Figure \@ref(fig:balance)
 
@@ -415,7 +410,7 @@ We want to retrieve the average age by Treatment Arm. To do so we can use a pivo
 knitr::include_graphics("images/01_age.png")
 ```
 
-As can be seen in Figure \ref(fig:balance), the average age in the treatment group (i.e. the Instructor Incentives group) and the control group is roughly the same, at 24.5 years of age. While we are keeping this illustrative example simple, generally papers will show a balance table for many observables. While there may occasionally be differences between certain characteristics, on average, the two groups will tend to be similar if randomization was implemented successfully. In particular, researchers use statistics to determine whether differences between treatment and control units are **statistically significant**. We will learn more about statistical significance later in this book.
+As can be seen in Figure \@ref(fig:balance), the average age in the treatment group (i.e. the Instructor Incentives group) and the control group is roughly the same, at 24.5 years of age. While we are keeping this illustrative example simple, generally papers will show a balance table for many observables. While there may occasionally be differences between certain characteristics, on average, the two groups will tend to be similar if randomization was implemented successfully. 
 
 ## Impact of Financial Incentives {#S:impact}
 
@@ -428,11 +423,11 @@ We want to compute the average pass rate for individuals in the treatment vs. in
 knitr::include_graphics("images/01_result1.png")
 ```
 
-Giving instructors' incentives increases pass rates by 7 percentage points! That is a big impact! Before exploring this result further, now is a good time to discuss how we accurately discuss this result. One common mistake (for both students and journalists) is to mix up the terms percentage point and percent. 
+Giving instructors' incentives increases pass rates by 7 percentage points. That is a big impact! Before exploring this result further, now is a good time to discuss how we accurately discuss this result. One common mistake (for both students and journalists) is to mix up the terms percentage point and percent. 
 
-In our example, 40 percent of control students pass the test, while 47 percent of treated students pass the test. Therefore, treatment increased pass rates by 7 **percentage points**. This is not the same as saying the treatment increased pass rates by 7 percent. 
+In our example, 40 percent of control students pass the test, while 47 percent of treated students pass the test. Therefore, treatment increased pass rates by 7 **percentage points**. We use the term percentage points when we are comparing two percents or two rates. The terms percentage point and percent are not interchangeable. 
 
-The percent increase in pass rates can be computed, but it is not equal to 7 percent. To calculate the percent increase in pass rates for the treatment relative to the control we can compute:
+How would we accurately use the term percent here to compare 40 and 47 percent? To calculate the percent increase in pass rates for the treatment relative to the control we can compute:
 
 
 $$
@@ -443,7 +438,7 @@ So the treatment pass rate is 17.75 percent higher relative to the control. This
 
 This is a 1 percentage point decrease in the probability of dying during the procedure. However, it is a 50 percent decrease in the probability of dying during the procedure. Now, if a journalist wrote an article and incorrectly stated that the new procedure decreases death rates by 1 percent, then it sounds as if the new technique is not that much better than the old technique. However, that is the wrong conclusion. The correct conclusion is that a 1 percentage point decrease in the probability of dying implies a 50 percent reduction in the probability of dying, a huge advance!
 
-So let's take stock of what we have learned. Providing financial incentives to community college instructors seems to increase pass rates on average. This is an important finding. Prior work on "pay-for-performance" in the United States has shown limited effectiveness in K-12 schools (See Neal (2011)). But this is the first study to show financial incentives can be an effective tool in the Community College setting. This is an important general lesson:  the context of the treatment matters! Just because a treatment is effective in one setting doesn't mean it will be effective in another (or vice-versa).
+So let's take stock of what we have learned. Providing financial incentives to community college instructors seems to increase pass rates on average. This is an important finding. Prior work on "pay-for-performance" in the United States has shown limited effectiveness in K-12 schools (See Neal (2011)). But this is the first study to show financial incentives can be an effective tool in the Community College setting. This is an important general lesson:  the context of the treatment matters. Just because a treatment is effective in one setting doesn't mean it will be effective in another (or vice-versa).
 
 Next, let's talk about what else we can learn from this experiment. Well, this study was done across many different subjects. Maybe the effect of finacnial incentives differs depending on the department. It may be easier to get students over the pass threshold in some disciplines, making the incentives potentially more effective.
 
@@ -461,7 +456,7 @@ knitr::include_graphics("images/01_pivot_field.png")
 
 Figure \@ref(fig:hetresults) displays the results.
 
-```{r, hetresults, echo=FALSE, out.width="75%", fig.cap="Pivot Fields",fig.align='center'}
+```{r, hetresults, echo=FALSE, out.width="75%", fig.cap="Pivot Table Showing Pass Rates by Treatment and Control Across Departments",fig.align='center'}
 knitr::include_graphics("images/01_pivot_het_blank.png")
 ```
 
@@ -572,9 +567,9 @@ Now it is easy for a reader to discern the treatment effect for every department
 
 ## Conclusion {#S:Conclusion}
 
-In this module, we studied whether instructor incentives are effective in improving student performance. Using experimental data from Brownback and Sadoff (2020), we found that instructors that receive financial bonuses for each student that passes a course leads to significant increases in passing rates. However, the effects varied dramatically by department, with some departments showing enormous effects and others negligible effects. This is only part of the analysis in Brownstone and Sadoff (2020). In this concluding section, let's talk about a few other results from their work
+In this module, we studied whether instructor incentives are effective in improving student performance. Using experimental data from Brownback and Sadoff (2020), we found that instructors that receive financial bonuses for each student that passes a course leads to significant increases in passing rates. However, the effects varied dramatically by department, with some departments showing enormous effects and others negligible effects. This is only part of the analysis in Brownstone and Sadoff (2020). In this concluding section, let's talk about a few other results from their work.
 
-So far, we have found performance increases in the course that is incentivized by financial incentives. But is there a cost to this increase in performance. For example, maybe instructors respond to the incentives by increasing the workload in their course. This may improve students performance in the course, but it may come at the cost of neglecting other courses. Therefore, it could be that the treatment does not actually increase performance overall, but simply forces students to spend more time in one class relative to another.
+So far, we have found performance increases in the course that is incentivized by financial incentives. But is there a cost to this increase in performance? For example, maybe instructors respond to the incentives by increasing the workload in their course. This may improve students performance in the course, but it may come at the cost of neglecting other courses. Therefore, it could be that the treatment does not actually increase performance overall, but simply forces students to spend more time in one class relative to another.
 
 However, Brownback and Sadoff (2020) collect grades for all courses a student is enrolled in, not just the courses in the experiment. In contrast to the hypothesis above, the authors find student outcomes in the treatment improve **in all courses**. This suggests positive spillovers of the treatment. Improved performance in one course leads to improved performance in others. If students feel overwhelmed by poor grades in one course they may "give up" on the rest of their courses. Therefore, a treatment that increases performance in a single course has the scope to increase performance in all courses. 
 

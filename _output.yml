@@ -1,7 +1,7 @@
 bookdown::bs4_book:
   theme:
     primary: '#00629B'
-  repo: https://github.com/rstudio/bookdown-demo
+  repo: 
   css: include/webex.css
   includes:
     after_body: include/webex.js

@@ -1,7 +1,7 @@
 --- 
 title: "Econ5/Poli5D"
-author: "David Arnold & Margaret E. Roberts"
-date: "2022-12-03"
+author: "David Arnold"
+date: "2022-12-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

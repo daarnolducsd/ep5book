@@ -20,7 +20,7 @@ The most common way civilians interact with police are through traffic stops (th
 This is some big data. Figure \@ref(fig:soppsnap) shows a subset of all the cities in that data has been collected for. 
 
 <div class="figure" style="text-align: center">
-<img src="images/03_data.png" alt="The Stanford Open Policing Project Data" width="75%" />
+<img src="images/03_data.png" alt="The Stanford Open Policing Project Data" width="90%" />
 <p class="caption">(\#fig:soppsnap)The Stanford Open Policing Project Data</p>
 </div>
 
@@ -32,7 +32,7 @@ The data and research is starting to get notice by many news outlets, including 
 <p class="caption">(\#fig:dailyshow)Trevor Noah Discussing Results from The Stanford Open Policing Project Data</p>
 </div>
 
-There are many different "decisions" that officers make that could be driven by discrimination
+There are many different "decisions" that officers make that could be driven by discrimination:
 
   - 1. The decision to stop a vehicle or not
   
@@ -74,6 +74,10 @@ Subject race is a **categorical variable**. Whenever you have a categorical vari
 
 ```stata
 tab subject_race
+```
+
+
+```
           subject_race |      Freq.     Percent        Cum.
 -----------------------+-----------------------------------
 Asian/Pacific Islander |     32,482        8.52        8.52
@@ -84,11 +88,10 @@ Asian/Pacific Islander |     32,482        8.52        8.52
 -----------------------+-----------------------------------
                  Total |    381,149      100.00
 ```
-
-This gives us the fraction of stops for different races in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented \medskip
+This gives us the fraction of stops by race in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented \medskip
 
 <div class="figure" style="text-align: center">
-<img src="images/03_population.png" alt="Racial Composition of Traffic Stops and Population" width="60%" />
+<img src="images/03_population.png" alt="Racial Composition of Traffic Stops and Population" width="80%" />
 <p class="caption">(\#fig:population)Racial Composition of Traffic Stops and Population</p>
 </div>
 
@@ -330,8 +333,9 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are matched -- must be of the same generic type in the master and using datasets.  Same
-    generic type means both numeric or both string.
+    Each key variable -- the variables on which observations are matched -- must
+    be of the same generic type in the master and using datasets.  Same generic
+    type means both numeric or both string.
 r(106);
 
 end of do-file
