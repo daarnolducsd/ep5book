@@ -42,7 +42,8 @@ florida <- read_csv("florida.csv")
 head(florida)
 ```
 
-Each row of the data is a county in Florida. In each row, we have counts for different presidential candidates in both 1996 and 2000. For example, in 1996, 40,144 votes were cast in Alachua county for Bill Clinton. 25,303 were cast for Bob Dole. 
+Each row of the data is a county in Florida. In each row, we have counts for different presidential candidates in both 1996 and 2000. For example, in 1996, 40,144 votes were cast in Alachua county for Bill Clinton. 25,303 were cast for Bob Dole. We should note that this application and data is drawn from Kosuke Imai's Textbook: Quantitative Social Science: An Introduction.[@imai2018quantitative] 
+
 
 Our eventual goal will be to use the votes cast for Ross Perot (the Reform Party Candidate) in 1996, to predict how many votes a county will cast for Pat Buchanan in 2000 (the Reform Party Candidate).
 

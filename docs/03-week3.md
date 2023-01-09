@@ -95,22 +95,22 @@ This gives us the fraction of stops by race in San Diego. To begin to understand
 <p class="caption">(\#fig:population)Racial Composition of Traffic Stops and Population</p>
 </div>
 
-As can  be seen in Figure \@ref(fig:population), Black drivers over-represented in police stops. 11.1 percent of all stops are Black drivers while 6.7 percent of the population is Black. Asian/Pacific Islander are underrepresented in traffic stops (8.5 percent of stops vs. 15.9 percent of population). Hispanic drivers are slightly overrepresented in traffic stops (30.7 percent of stops vs. 28.8 percent of population) while White drivers are slightly underrepresented (42.5 percent of stops vs. 45.1 percent of population). One important caveat is that demographic information is from 2010 Census, while traffic stop data is from 2014-2017. Therefore, these numbers may not be directly comparable if demographics are changing over time in San Diego. 
+As can  be seen in Figure \@ref(fig:population), Black drivers over-represented in police stops. 11.2 percent of all stops are Black drivers while 6.7 percent of the population is Black. Asian/Pacific Islander are underrepresented in traffic stops (8.5 percent of stops vs. 15.9 percent of population). Hispanic drivers are slightly overrepresented in traffic stops (30.7 percent of stops vs. 28.8 percent of population) while White drivers are slightly underrepresented (42.5 percent of stops vs. 45.1 percent of population). One important caveat is that demographic information is from 2010 Census, while traffic stop data is from 2014-2017. Therefore, these numbers may not be directly comparable if demographics are changing over time in San Diego. 
 
 However, this analysis does present some striking disparities in traffic stops. These disparities will be the focus of our analysis in this section. In particular, we will learn one test that can be used to understand whether these disparities are driven by racial discrimination on the part of police officers. 
 
 ## Veil of Darkness (VOD)
 
-Racial disparities refer to any differences between groups of different races. Many factors can cause racial disparities, but common focus is to try to understand if the disparity is driven by racial discrimination. In our example, we are interested in exploring racial discrimination on the part of police officers making traffic stops. There are many methods that have been proposed to prove racial discrimination. Today we focus on one: **the veil of darkness test**, a test developed by Grogger and Ridgeway (2006)[@grogger2006testing].
+Racial disparities refer to any differences between groups of different races. Many factors can cause racial disparities, but a common focus is to try to understand if the disparity is driven by racial discrimination. In our example, we are interested in exploring racial discrimination on the part of police officers making traffic stops. There are many methods that have been proposed to prove racial discrimination. Today we focus on one: **the veil of darkness test**, a test developed by Grogger and Ridgeway (2006)[@grogger2006testing].
 
-The basic idea behind the veil of darkness test is that it easier to observe the race of an individual driver during the day when there is sunlight. Therefore, if police officers are pulling over drivers based on race, this will be harder to accomplish at night. We can therefore compare the racial composition of traffic stops during daylight vs. nighttime to try to infer racial discrimination on the part of police officers.
+The basic idea behind the veil of darkness test is that it easier to observe the race of an individual driver during the day when there is sunlight relative to the night when it is dark. Therefore, if police officers are targeting minority drivers, then it will be more difficult to perform this targeting at night. We can therefore compare the racial composition of traffic stops during daylight vs. nighttime to try to infer racial discrimination on the part of police officers.
+
+In Figure \@ref(fig:veil1) the basic assumptions behind the veil of darkness test are presented. Before sunset, it is light out, and officers can observe the race of drivers. After sunset (but before dusk), it is unclear whether race is observed or not. After dusk, however, we assume officers can no longer observe race before making the decision to stop a given driver. 
 
 <div class="figure" style="text-align: center">
 <img src="images/03_veil1.png" alt="Assumptions Behind Veil of Darkness Test" width="75%" />
 <p class="caption">(\#fig:veil1)Assumptions Behind Veil of Darkness Test</p>
 </div>
-
-In Figure \@ref(fig:veil1) the basic assumptions behind the veil of darkness test is presented. Before sunset, it is light out, and officers can observe the race of drivers. After sunset (but before dusk), it is unclear whether race is observed or not. After dusk, however, we assume officers can no longer observe race before making the decision to stop a given driver. 
 
 In the data, imagine we see stops for a given type of drive fall dramatically after dusk. This might suggest that officers were targeting these individuals before dusk. But before we make any firm conclusions, we need to think carefully about comparing across different times in the day. 
 
@@ -118,31 +118,26 @@ For example, at 12 noon it is light out. At 12 midnight it is dark out. However,
 
 To get around this issue, Grogger and Ridgeway (2006) focus on the intertwilight period, which are times in which it is sometimes light out and sometimes dark.
 
-<div class="figure" style="text-align: center">
-<img src="images/03_veil2.png" alt="The Intertwilight Period" width="75%" />
-<p class="caption">(\#fig:veil2)The Intertwilight Period</p>
-</div>
-
-For example, 6:30 PM is sometimes light out in San Diego (in the summer). However, 6:30 PM is sometimes dark in San Diego (in the winter). Therefore, maybe we can compare the composition of traffic stops around 6:30 PM and see if stops are more common for minority drivers when it is light out.
+For example, at 6:30 PM it is sometimes light out in San Diego (in the summer). However, at different times of year (in the winter) it is dark out at 6:30 PM. Therefore, maybe we can compare the composition of traffic stops around 6:30 PM in the summer and the winter to understand whether police officers are more likely to stop minority drivers when it is light out.
 
 For example, imagine 40 percent of drivers stopped are Black when it is light out (at 6:30 PM), but 35 percent of drivers stopped are Black when it is dark out (still 6:30 PM, but a different part of the year). In this hypothetical example, the decrease in stops for Black drivers must be due to officers inability to racial profile when it is dark.
 
-To implement this test in our data, we need a few more things. We have information on the time the traffic stop occurs, but we need to know if it is light or dark out when the traffic stop is made in order to implement the test. To add this to our dataset we will need to **merge** in external data on sunset times. This will introduce us to **data wrangling** in Stata
+If you recall, in our data we have information on the time a given traffic stop occurred, as well as the race of the driver. However, we also need to have information on whether it was light or dark at the time of that given stop. To add this to our dataset we will need to **merge** in external data on sunset times. This will introduce us to **data wrangling** in Stata
 
 ## Data Wrangling 
-When you start an empirical research project in the social sciences, you must ask the question: what data can I use to answer this question? Once you have identified the data, it rarely comes in a format that is ready for data analysis. Generally, there are a number of steps that must be taken to prepare the data before analysis. These steps are often referred to as **data wrangling**
+When you start an empirical research project in the social sciences, you must ask the question: what data can I use to answer this question? Once you have identified the data, it rarely comes in a format that is ready for data analysis. Generally, there are a number of steps that must be taken to prepare the data. These steps are often referred to as **data wrangling**
 
 For example, the Census has confidential income data that is available only to researchers that go through an application process. The data, however, is stored separately for every state. To create a master dataset, you would need to combine all these individual datasets together. This is a form of data wrangling. In Stata, this is accomplished with the **append** command
 
-Next, imagine you are interested in the relationship between economic conditions and the opioid crisis in the United States. The Bureau of Labor Statistics provides county-level information on unemployment. The Centers for Disease Control and Prevention (CDC) provides county-level opioid prescription data. To study this question, we would need to combine these two datasets together at the county level. This is another example of data wrangling, and in Stata, this is accomplished with the **merge** command
+Next, imagine you are interested in the relationship between economic conditions and the opioid crisis in the United States. The Bureau of Labor Statistics provides county-level information on unemployment. The Centers for Disease Control and Prevention (CDC) provides county-level opioid prescription data. To study this question, we would need to combine these two datasets together at the county level. This is another example of data wrangling, and in Stata, this is accomplished with the **merge** command.
 
-Lastly, imagine you have individual-level data on voting rates, but you are interested in comparing voting rates across county. In other words, it would be more convenient for your analysis to have a dataset at the county level, rather than at the individual level. This is another example of data wrangling, and in Stata, this can be accomplished with the **collapse** command. 
+Lastly, imagine you have individual-level data on voting rates, but you are interested in comparing voting rates across counties. In other words, it would be more convenient for your analysis to have a dataset at the county level, rather than at the individual level. This is another example of data wrangling, and in Stata, this can be accomplished with the **collapse** command. 
 
-In this section, we will learn about all three of these commands: append, merge, and collapse, with a particular focus on (1) when is each appropriate and (2) how do we, in practice, implement them. 
+In this section, we will learn about all three of these commands: append, merge, and collapse, with a particular focus on (1) when each is appropriate and (2) how do we implement them in Stata. 
 
 ## Append 
 
-The ``append`` command is used when you want to **add rows** to a dataset. This is common in many situations. For example, it is common that datasets are stored separately for each year, but you want to analyze data across years. It is also common for datasets that are stored separately for each region by you want to analyze data for the entire country. 
+The ``append`` command is used when you want to **add rows** to a dataset. This is common in many situations. For example, it is common that datasets are stored separately for each year, but you want to analyze data across years. It is also common for datasets that are stored separately for each region but you want to analyze data for the entire country. 
 
 To understand how to use the append command we will consider a simple hypothetical example depicted in Figure \@ref(fig:appendhyp).
 
@@ -152,9 +147,9 @@ To understand how to use the append command we will consider a simple hypothetic
 <p class="caption">(\#fig:appendhyp)Hypothetical Data We Want to Append Together</p>
 </div>
   
-In this example, we have two classes: A and B, each with two students. In each dataset, we have the same variables. Our goal with append is to create a new dataset with 4 observations, 2 for each school. 
+In this example, we have two classes: A and B, each with two students. In each dataset, we have the same variables. Our goal with ``append`` is to create a new dataset with 4 observations, 2 for each school. 
 
-How do we accomplish thos in Stata? If class A data is stored in ``classA.dta`` and class B data is stored in ``classB.dta`` we can combine them by typing:
+How do we accomplish this in Stata? If class A data is stored in ``classA.dta`` and class B data is stored in ``classB.dta`` we can combine them by typing:
 
 
 ```stata
@@ -162,7 +157,7 @@ use classA.dta, clear
 append using classB.dta 
 ```
 
-What we have done is first load in the class A data by typing ``classA.dta``. Then we have ``appended`` the class B data by typing ``append using classB.dta``. In order for this code to work, both ``classA.dta`` and ``classB.dta`` need to be in the working directory for this command to work 
+What we have done is first load in the class A data by typing ``use classA.dta, clear``. Then we have appended the class B data by typing ``append using classB.dta``. In order for this code to work, both ``classA.dta`` and ``classB.dta`` need to be in the working directory. Additionally, the variable names in both classA and classB need to be the same. For example, if one of the datasets had the student id variable named ``sid``, then you would need to make the names consistent across datasets before merging. You can rename a variable with the ``rename`` command. For example, to rename a variable ``sid`` to ``student`` you would type ``rename sid student``.
 
 In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on.You can continue to ``append`` more datasets by typing, for example, ``append using classC.dta`` followed by ``append using classD.dta`` and so on.
 
@@ -170,9 +165,9 @@ In this example, we had two datasets to combine. Imagine we had more, for exampl
 
 The ``merge`` command is used when you want to **add columns** to a dataset. For example, we are often interested in relationships between different variables. But if the variables are not in the same dataset, we need a way to combine datasets. A lot of cutting-edge research in social sciences stems from merging together previously unlinked datasets to observe new relationships.
   
-Whenever you merge two datasets in Stata, you first need to identify two things. First, what variable can the data merged on? For example, if you have two individual-level datasets, you need a unique identifier to merge individuals. If you were trying to merge two datasets on students, the a unique student identifier would be a good option. Before merging, you need to identify this variable to merge on and verify it is stored in the same format in both datasets. In many cases, there are many ways to hold the same information. For example, if you are matching two datasets at the state level, the information could be stored as abbreviations (e.g. CA), full state name (e.g. California), or a numeric state code (e.g. the value 6 is equal to California for the Federal Information Processing System: FIPS). To merge datasets the information in both datasets must be stored in the same way.
+Whenever you merge two datasets in Stata, you need to identify two things. First, what variable can the data merged on? For example, if you have two individual-level datasets, you need a unique identifier to merge individuals. If you were trying to merge two datasets on students, then a unique student identifier would be a good option. Before merging, you need to identify this variable to merge on and verify it is stored in the same format in both datasets. In many cases, there are many ways to hold the same information. For example, if you are matching two datasets at the state level, the information could be stored as abbreviations (e.g. CA), full state name (e.g. California), or a numeric state code (e.g. the value 6 is equal to California for the Federal Information Processing System: FIPS). To merge datasets the information in both datasets must be stored in the same way.
 
-The second task is to identify the type of merge. There are three types of merges in Stata: one-to-one, many-to-one and one-to-many. To understand the differences between these types of merges we will go through a few simple examples.
+The second task is to identify the type of merge. There are three types of merges in Stata: one-to-one, many-to-one and one-to-many. To understand the differences between these types of merges we will go through a few simple examples. Let's first go through a one-to-one merge, which is depicted in Figure \@ref(fig:merge1to1).
 
 <div class="figure" style="text-align: center">
 <img src="images/03_merge_one.png" alt="Example of a one-to-one Merge" width="60%" />
@@ -181,12 +176,14 @@ The second task is to identify the type of merge. There are three types of merge
 
 In each dataset, there is a unique value for ``student`` for every  observation. This is referred to as a one-to-one merge because we are matching each student in the school dataset to a single student in the gpa dataset. 
 
-A many-to-one merge or one-to-many merge is when the variable that is being merged on has multiple observations for some values. For example, in Figure \ref(fig:mergemto1). In this merge, we are merging on the variable ``school.`` But in the student-level dataset, there are multiple observations per school. In particular, students 1 and 2 attend school A, while students 3 and 4 attend school B. In the school-level dataset there is a single observation per school. This is why this is referred to as a many-to-one merge. There are many observations per school in the first dataset, but one observation per school in the second.
+A many-to-one merge or one-to-many merge is when the variable that is being merged on has multiple observations for some values in one of teh two dataset. For example, in Figure \@ref(fig:mergemto1), we are merging the two datasets based on the variable ``school.`` But in the student-level dataset, there are multiple observations per school. In particular, students 1 and 2 attend school A, while students 3 and 4 attend school B. In the school-level dataset there is a single observation per school. 
 
 <div class="figure" style="text-align: center">
 <img src="images/03_merge_many.png" alt="Example of a many-to-one Merge" width="60%" />
 <p class="caption">(\#fig:mergemto1)Example of a many-to-one Merge</p>
 </div>
+
+Whether a merge is many-to-one or one-to-many depends on the order you load the datasets. But at a conceptual level, these two types of merges are the same. To understand this more clearly, we are now going to learn how to merge datasets in Stata. We will begin with a simple one-to-one merge, before proceeding to the many-to-one or one-to-many merge.
 
 To merge two datasets in Stata, the process takes a few steps. First, you must load one of the two datasets into memory. Whichever dataset you load first is referred to as the **master dataset**. Next, you use the ``merge`` command to combine the master dataset with the second of the two datasets. The dataset you are merging to is called the **using dataset**.
 
@@ -215,7 +212,7 @@ When using the ``merge`` command we always need to make sure of a few components
 
 Now let's try a many-to-one merge. Imagine we have the two datasets below (``school.dta`` and ``pop.dta``) and we want to combine them.
 <div class="figure" style="text-align: center">
-<img src="images/03_merge1to1.png" alt="Merging Student-Level Dataset to School-level Dataset" width="60%" />
+<img src="images/03_mergemto1.png" alt="Merging Student-Level Dataset to School-level Dataset" width="60%" />
 <p class="caption">(\#fig:mergemto1stata)Merging Student-Level Dataset to School-level Dataset</p>
 </div>
 
@@ -235,11 +232,17 @@ use pop.dta, clear
 merge 1:m school using school.dta
 ```
 
-The reason we switched to ``1:m`` is because there is a single observation per school in the master dataset and multiple in the using dataset now that ``pop.dta`` is the master dataset and ``school.dta`` is the using dataset.
+The reason we switched to ``1:m`` is because there is a single observation per school in the master dataset and multiple in the using dataset now that ``pop.dta`` is the master dataset and ``school.dta`` is the using dataset. Therefore, a one-to-many merge vs. a many-to-one merge is entirely dependent on which dataset you load first.
+
+::: {.rmdcaution}
+
+There is also an option to perform a many-to-many merge ``m:m``, however, **you should not use this option**. Your data will be transformed in ways that you probably did not intend. The usual solution to this problem is to transform your data in a way so that you can perform a one-to-many or many-to-one merge instead
+
+:::
 
 ## Merge Advanced
 
-Sometimes, two datasets won't merge completely. For example, consider the two datasets in Figure \ref(fig:impmerge).
+Sometimes, two datasets won't merge completely. For example, consider the two datasets in Figure \@ref(fig:impmerge).
 
 <div class="figure" style="text-align: center">
 <img src="images/03_imp_merge.png" alt="Example of Merge with Unmatched Observations" width="60%" />
@@ -249,7 +252,9 @@ Sometimes, two datasets won't merge completely. For example, consider the two da
 In this example, student 1 has a test score, but no homework score, while student 6 has a homework score but no test score. Let's see what happens if we merge these two datasets in Stata.
 
 
-```
+```stata
+/* change working directory */
+cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 ```
 
@@ -297,7 +302,7 @@ As you can see, the generated table has only 4 observations now, all of which ar
 
 Now that we understand how to use the ``merge`` command, let's go through a few common mistakes. The first has to deal with the matching variable. The matching variables need to be named in the exact same way.
 
-In the example below (Figure \ref(fig:samename)), the two datasets are the same as the previous example, but the student variable is named ``student_id`` in one and ``student`` in the other
+In the example below (Figure \@ref(fig:samename)), the two datasets are the same as the previous example, but the student variable is named ``student_id`` in one and ``student`` in the other
 
 <div class="figure" style="text-align: center">
 <img src="images/03_samename.png" alt="Example of Merge with Different Names for Matching Varaibles" width="60%" />
@@ -333,9 +338,8 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are matched -- must
-    be of the same generic type in the master and using datasets.  Same generic
-    type means both numeric or both string.
+    Each key variable -- the variables on which observations are matched -- must be of the same generic type in the master and using datasets.  Same
+    generic type means both numeric or both string.
 r(106);
 
 end of do-file
@@ -348,16 +352,11 @@ Lastly, we have discussed one-to-one merges, many-to-one merges and one-to-many 
 
 ## Build Data 
 
-Now that we understand the merge command, let's use it to merge traffic stop data to data on sunset times so that we can implement the veil of darkness test. To remind you, to apply the veil of darkness test we are going to look at the time period 6:30-7:00 PM.Sometimes it is dark out at 6:30-7:00 PM, sometimes it is light. We need to identify whether it was light or dark for every stop in our data. 
+Now that we understand the merge command, let's use it to merge traffic stop data to data on sunset times so that we can implement the veil of darkness test. To begin, we need to choose a period of time in San Diego in which it is sometimes light and sometimes dark, depending on the time of the year. Let's choose the time period 6:30-7:00 PM. Sometimes it is dark out at 6:30-7:00 PM (in winter for example), while sometimes it is light out (in summer for example). We need to identify whether it was light or dark for every stop in our data. 
 
 The problem, however, is that our data for stops currently comes in two separate files, one for the years 2014-2015 and one for the years 2016-2017. Additionally, our sunset data comes in a separate file. Therefore, we have three separate files that we need to combine to create one final dataset.
 
 To create a dataset of all stops between 2014-2017, we need to ``append`` the stop-level data.
-
-
-```
-/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
-```
 
 
 ```stata
@@ -387,9 +386,9 @@ tab year
 
 Now we have verified that the current data in memory has stops between 2014-2017. Our next task is to ``merge`` in the data on sunset times. To do this, we need to make sure of two things. First, is there a variable that we can merge on? In general, you would need to load both datasets and check if there are any variables that store the same information. In our case, there is a single variable that meets this criteria: ``date``. Second, is this a one-to-one or many-to-one merge? Third, is the ``date`` variable in both datasets stored in the same format?
 
-To get started, we need to figure out how many observations there are for a given ``date`` in each dataset. Intuitively, we expect there are multiple observations per ``date`` in the traffic stop date. In other words, officers stop more than one individual per day. In the sunset data, well there is only a single sunset time for every day, so we expect a single observation per ``date``. But data is not always stored how we expect, so it is always good to check this. The way were are going to check is through the ``unique`` command. 
+To get started, we need to figure out how many observations there are for a given ``date`` in each dataset. Intuitively, we expect there are multiple observations per ``date`` in the traffic stop data. In other words, officers stop more than one individual per day. In the sunset data, well there is only a single sunset time for every day, so we expect a single observation per ``date``. But data is not always stored how we expect, so it is always good to check this. The way were are going to check is through the ``unique`` command. 
 
-The ``unique`` command does not come installed in Stata. You need to install it into your version of Stata by typing ``ssc install unique`` into the Command window. In general, you might find a command online that will help you perform some data analysis. Many commands can be installed by typing ``ssc install commandname``. 
+The ``unique`` command does not come installed in Stata. You need to install it into your version of Stata by typing ``ssc install unique`` into the Command window. In general, you might find a command online that will help you perform some data analysis. Many commands can be installed by typing ``ssc install commandname``. Therefore, before running the line of code below, you should type ``ssc install unique`` into the Command window and press enter.
 
 
 ```stata
@@ -469,7 +468,7 @@ merge m:1 date using sd_sunset.dta, keep(3) nogen
     -----------------------------------------
 ```
 
-We are going to want to use this data for our analysis later, so we can save the combined dataset under a new name: ``sd_analysis_sample.dta`` by typing:
+Because we specified ``keep(3) nogen``, we are only keeping observations that correspond to dates in both dataset. Now, we are going to want to use this data for our analysis later, so let's save the combined dataset under a new name: ``sd_analysis_sample.dta`` by typing:
 
 
 ```stata
@@ -508,12 +507,12 @@ To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
    stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07
 ```
 
-It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be $60\cdot 60 \cdot 1000 = 3,600,000$). So how many milliseconds to 6:30 PM?
+It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be $60\cdot 60 \cdot 1000 = 3,600,000$, because there are 60 minutes in an hour, 60 seconds in a minute, and a 1000 milliseconds in a second). So how many milliseconds to 6:30 PM?
 
 $$
 \underbrace{18}_{\text{hours}} \cdot \underbrace{3,600,000}_{\text{ms per hour}} + \underbrace{1,800,000}_{\text{ms per half hour}}=66,600,000
 $$
-So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops with values of ``stop_time`` between 66,600,000 and So we should restrict to stops that happen in the range 68,400,000.
+So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops with values of ``stop_time`` between 66,600,000 (6:30 PM) and 68,400,000 (7:00 PM).
 
 While this procedure will get you the right answer, typing some large numbers can sometimes lead to transcription errors if you are not careful. A better way to do this is to use Stata commands that do this math for you. The ``clock()`` command automatically translates time as we usually interpret it (i.e. 9:00 AM) into milliseconds from midnight automatically.
 
@@ -525,11 +524,13 @@ For example, to see how many milliseconds from midnight 6:00 PM is type:
 66600000
 ```
 
-Where ``18:30:00"`` is 6:30 PM on a 24-hour clock. ``"hms"`` tells Stata that time should be interpreted as hours, minutes, seconds. Now that we understand how to use the ``clock`` command, we can use it to restrict to stops that occurred between 6:30 PM and 7:00 PM:
+Where ``"18:30:00"`` is 6:30 PM on a 24-hour clock. ``"hms"`` tells Stata that time should be interpreted as hours, minutes, seconds. Now that we understand how to use the ``clock`` command, we can use it to restrict to stops that occurred between 6:30 PM and 7:00 PM:
 
 
 ```stata
+/* drop if before 6:30 PM */
 drop if stop_time<clock("18:30:00","hms")
+/* drop if after 7:00 PM */
 drop if stop_time>clock("19:00:00","hms") 
 (296,355 observations deleted)
 
@@ -544,7 +545,7 @@ gen light = (stop_time<sunset)
 
 ```
 
-We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable ``dusk`` in the data contains the time of dusk, which we can compare to the ``stop_time`` to generate an indicator for ``dark``:
+In words, we are creating a variable that is equal to 1 if the time of the stop occured before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable ``dusk`` in the data contains the time of dusk, which we can compare to the ``stop_time`` to generate an indicator for ``dark``:
 
 
 ```stata
@@ -552,7 +553,7 @@ gen dark = (stop_time>dusk)
 
 ```
 
-Now, there are some stops that occur between sunset and dusk. For these stops, we aren't sure if driver race is observed. It is neither light or dark at these times (i.e. ``dark==0 & light==0``). We are going to drop these stops from the analysis:
+Now, there are some stops that occur between sunset and dusk. For these stops, we aren't sure if driver race is observed. It is neither fully light nor fully dark at these times (i.e. ``dark==0 & light==0``). We are going to drop these stops from the analysis:
 
 
 ```stata
@@ -564,7 +565,7 @@ Now we are ready to start our analysis to implement the veil of darkness.
 
 ## Implement VOD
 
-We need to compare the composition of traffic stops in times of sunlight vs. darkness to implement the veil of darkness test. If stop rates for minorities drop after dark, that indicates they were being targeted in the sunlight. To retrieve the composition of traffic stops by race, we can use the ``tab`` command:
+We need to compare the composition of traffic stops in times of sunlight vs. darkness to implement the veil of darkness test. If stop rates for minorities drop in the dark, that indicates they were being targeted in the sunlight. To retrieve the composition of traffic stops by race, we can use the ``tab`` command:
 
 ```stata
 tab subject_race 
@@ -628,7 +629,7 @@ In these tables, we are trying to see if certain races are much less likely to b
 
 ## Bar Graphs
 
-Eventually, we are going to use a bar graph to visualize the veil of darkness test for discrimination. In this chapter, we are going to learn how to construct bar graphs in Stata generally. To begin, we are going to set up a hypothetical example. Imagine we are trying to construct a bar graph that shows average GPA across different schools, based on the data below:
+Eventually, we are going to use a bar graph to visualize the veil of darkness test for discrimination. In this section, we are going to learn how to construct bar graphs in Stata generally. To begin, we are going to set up a hypothetical example. Imagine we are trying to construct a bar graph that shows average GPA across different schools, based on the data below:
 
 <div class="figure" style="text-align: center">
 <img src="images/03_school_gpa.png" alt="Dataset on Schools and GPA" width="65%" />
@@ -700,11 +701,11 @@ graph bar (mean) gpa, over(school) ///
 <p class="caption">(\#fig:barex3)Simple Bar Graph with Titles/Labels</p>
 </div>
 
-There are many further options when constructing bar graphs. Sometimes, the option you are looking for isn't available, but there are still ways to construct the required bar graph. In other words, you may need to use some **data wrangling** to get your data in the right format to construct a bar graph. In the next section we will learn another data wrangling technique that is generally useful, but will be particularly useful for generating the bar graph to visualize the veil of darkness test.
+There are many further options when constructing bar graphs. Sometimes, the option you are looking for isn't available, but there are still ways to construct the required bar graph. In other words, you may need to use some **data wrangling** to get your data in the right format to construct a bar graph. In the next section we will learn another data wrangling technique that is generally useful, but will be particularly useful for generating the bar graph we need in order to visualize the veil of darkness test.
 
 ## Collapse
 
-``Collapse`` transforms your data to a different unit of analysis. Why is this useful? Imagine you have individual-level data on income, but you only care about average income by state for your analysis. The ``collapse`` command will allow you to quickly transform your data to the state level. Imagine you want to understand averages of a variable over the years. Collapsing the data to the year level can be a quick way to understand how the variable is changing over time.
+The ``collapse`` command transforms your data to a different unit of analysis. Why is this useful? Imagine you have individual-level data on income, but you only care about average income by state for your analysis. The ``collapse`` command will allow you to quickly transform your data to the state level. Imagine you want to understand averages of a variable over the years. Collapsing the data to the year level can be a quick way to understand how the variable is changing over time. When you have a lot of data, collapsing the data first may make your code much more efficient.
 
 The basic syntax of the ``collapse`` command is 
 
@@ -746,20 +747,20 @@ In this section, we want to construct a data visualization that will allow us to
 <p class="caption">(\#fig:veilhyp1)Veil of Darkness Test Finds Discriminatory Policy Behavior</p>
 </div>
 
-Is this evidence of discriminatory behavior or not? In this case, the answer is yes. When it is light out, 60 percent of stopped drivers are Black. When it is dark out, this falls to 50 percent. The fall in fraction of stops for Black drivers in the darkness could be explained by discriminatory officers being unable to observe race in the dark, and thus, unable to target minority drivers for stops. 
+Is this evidence of discriminatory behavior or not? In this case, the answer is yes. When it is light out, 60 percent of stopped drivers are Black. When it is dark out, this falls to 50 percent. The fall in fraction of stops for Black drivers in the darkness could be explained by discriminatory officers being unable to observe race in the dark, and thus, unable to target minority drivers for stops. Before continuing, make sure you understand what data is being presented in Figure \@ref(fig:veilhyp1) above.
 
-Figure \@ref(fig:veilhyp2) presents a different hypothetical example of what our results could look like.
+Figure \@ref(fig:veilhyp2) presents a different hypothetical example of what the bar graph might look like.
 
 <div class="figure" style="text-align: center">
-<img src="images/03_ill_ex1.png" alt="Veil of Darkness Test Finds No Evidence of Discriminatory Policy Behavior" width="65%" />
+<img src="images/03_ill_ex2.png" alt="Veil of Darkness Test Finds No Evidence of Discriminatory Policy Behavior" width="65%" />
 <p class="caption">(\#fig:veilhyp2)Veil of Darkness Test Finds No Evidence of Discriminatory Policy Behavior</p>
 </div>
 
-Is this evidence of discriminatory behavior or not? In this case, the answer is no. When it is light out, 50 percent of stopped drivers are Black. When it is dark out, this remains steady at 50 percent. It does not appear in this data that officers are targeting minority drivers.
+Is this evidence of discriminatory behavior or not? In this case, the answer is no. When it is light out, 50 percent of stopped drivers are Black. When it is dark out, this remains steady at 50 percent. It does not appear in this data that officers are targeting minority drivers during the day.
 
 Starting where we left off, we have now constructed a dataset with (1) traffic stops that occur between 6:30-7:00 PM, and (2) indicators for whether there was sunlight (``dark==0``) or darkness (``dark==1``). We can use this data to generate a similar visualization as the graphs above.
 
-We need to compare the composition of traffic stops in times of sunlight vs. darkness. We can use the ``collapse`` command to create a dataset of these statistics. To start, let's create a dataset that has the number of stops by race, for both daylight and darkness
+We need to compare the composition of traffic stops in times of sunlight vs. darkness. We can use the ``collapse`` command to create a dataset of these statistics. To start, let's create a dataset that has the number of stops by race, in both daylight and darkness.
 
 To count the number of observations per race for both daylight and darkness, we can use the ``count`` option of the collapse command. This option will count the number of observations with non-missing values of a variable. To begin, let's create a variable (that will eventually store our counts) that is non-missing for all observations. 
 
@@ -768,7 +769,7 @@ To count the number of observations per race for both daylight and darkness, we 
 gen obs_count = 1
 ```
 
-Now we can collapse the data to the subject-race-by-dark condition level: 
+Now it might not be immediately clear why we have created this variable. Right now it is just a variable that is equal to 1 for every observation. However, once we collapse the data, this variable will hold information we need to construct our bar graph. To collapse the data to the subject-race-by-dark condition level: 
 
 
 ```stata
@@ -787,27 +788,27 @@ Figure \@ref(fig:br1) displays the resulting collapsed dataset. As you can see, 
 In our plot, however, we want to plot the fraction of stops for each race by light condition. This is a pretty small dataset, so we could do this manually. For example, what fraction of stops when it is light out are for Asian/Pacific Islanders. Based on \@ref(fig:br1), we know that this equal to:
 
 $$ 
-\frac{\text{Stops for Asian/Pacific Islander When Light}}{\text{Stops When Light}} = \frac{375}{375+589+1528+319+1652} =  0.084
+\frac{\text{Stops for Asian/Pacific Islander When Light}}{\text{Stops When Light}} = \\ \frac{375}{375+589+1528+319+1652} =  0.084
 $$
 But what if we had more observations. Also, we need these values in our dataset. It will be easier if we can add a variable to the dataset that contains this information. We are going to do this in two steps. First, we are going to create a variable that contains the total stops within a given light condition. Then, we are going to generate the variable we want by dividing ``obs_count`` by this new variable. 
 
-To create this new variable we are going to use the ``egen`` command. ``egen`` stands for extensions to generate, and is very useful when trying to create more variables. If you ever want to create a variable, but can't figure out exactly how, type ``help egen`` to see if it is possible with the egen command.
+To create this new variable we are going to use the ``egen`` command. ``egen`` stands for extensions to generate, and is very useful when trying to create new variables. If you ever want to create a variable, but can't figure out exactly how, type ``help egen`` to see if it is possible with the egen command.
 
-First, let's present the code for calculating total stops by light condition:
+First, let's present the code for calculating total stops by light condition, before explaining how it works:
 
 
 ```stata
 bysort dark: egen total_stops = total(obs_count)
 ```
 
-``bysort dark:`` tells Stata that any code that comes after the ``:`` should be done separately for values of the ``dark`` variable. ``egen total_stops = total(obs_count)`` will create a new variable that is equal to the sum total of the variable ``obs_count``. In simple terms, the total number of stops in daylight and darkness.
+``bysort dark:`` tells Stata that any code that comes after the ``:`` should be done separately for values of the ``dark`` variable. ``egen total_stops = total(obs_count)`` will create a new variable that is equal to the sum total of the variable ``obs_count``. In simple terms, the total number of stops in daylight and darkness. Let's look at the resulting dataset. Make sure you understand what ``total_stops`` represents before moving on to the next section.
   
 <div class="figure" style="text-align: center">
 <img src="images/03_br1p5.png" alt="Collapsed Dataset with Total Stops by Light Condition" width="65%" />
 <p class="caption">(\#fig:br1p5)Collapsed Dataset with Total Stops by Light Condition</p>
 </div>
 
-Now that we have (1) total stops by race in daylight vs. darkness and (2) total stops overall in daylight vs. darkness we can create our required variables
+Now that we have (1) total stops by race in daylight vs. darkness and (2) total stops overall in daylight vs. darkness we can create our required variables:
 
 
 ```stata
@@ -826,7 +827,7 @@ graph bar fraction_stops, over(dark) over(subject_race)
 <p class="caption">(\#fig:bar1)Fraction of Stops by Race and Light Condition</p>
 </div>
 
-This is a good start. It has all the information we need. The next section will introduce a few things to improve the data visualization of this information.
+This is a good start. It has all the information we need. However, it would be next to impossible for an external reader to understand what the information presented means. What is a 0 and a 1? What is the bar graph actually showing? The next section will introduce a few things to improve our data visualization so that it is interpretable to a reader.
 
 ## Improving Aesthetics
 

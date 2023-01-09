@@ -89,7 +89,6 @@ fig:dailyshow
 fig:sandiegostops
 fig:population
 fig:veil1
-fig:veil2
 fig:appendhyp
 fig:merge1to1
 fig:mergemto1

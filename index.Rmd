@@ -35,6 +35,9 @@ This course has three main goals. The first goal is to introduce you to interest
 The second goal is to show you how data can be used to inform our discussion of these topics. We will be using a lot of different datasets in this course. Some come from experiments that have been run by researchers. Others come from administrative datasets collected by governments. For many of the datasets, we will only have time to scratch the surface of what is possible with this data.
 
 The third goal is to give you the tools to perform data analysis. We will focus on three popular software: Excel (1 chapter), Stata (4 chapters) and R (5 chapters). While learning coding fundamentals in each of these programs, we will shed light on big social science questions.
+
+Note on authorship: This book was written by [David Arnold](https://sites.google.com/site/davidhallarnold/home). The R sections (Chapters 6-10) are based on examples and slides from [Margaret Roberts](http://www.margaretroberts.net/) lectures for Econ 5/Poli 5D. 
+
 </div> 
 
 

@@ -117,9 +117,9 @@ Figure 5.1: Sleeping Sickness Visits Between 1921-1956
 <p>Figure <a href="legacy-of-colonial-medicine.html#fig:map">5.1</a> shows the variation in sleeping sickness across areas in Cameroon and French Equatorial Africa (present-day Central African Republic, Chad, Republic of Congo, and Gabon). As can be seen in the figure, there is large variation across areas. Some places (in blue), had no medical campaign visits related to sleeping sickness during this period. Other areas (red), were visited as many as 24 times in the years between 1921-1956. We will study how variation in these visit rates correlates to measures of trust in medicine today.</p>
 <p>In Lowes and Montero (2021), the authors study two key outcomes, both which come from Demographic and Health Surveys (DHS). The first is a vaccination index that captures what fraction of possible vaccines children have received. The second studies whether individuals refuse a free, non-invasive blood test. Consent to the blood test is high in these samples, as the blood test is taken by finger prick and free to the individuals in the survey. Refusal of this blood test might then signal distrust in medicine generally.</p>
 <p>To begin, let's load the dataset <code>colonial_medicine.dta</code></p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb163-1"><a href="legacy-of-colonial-medicine.html#cb163-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"</span></span>
-<span id="cb163-2"><a href="legacy-of-colonial-medicine.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> colonial_medicine.dta, <span class="kw">replace</span></span>
-<span id="cb163-3"><a href="legacy-of-colonial-medicine.html#cb163-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb162-1"><a href="legacy-of-colonial-medicine.html#cb162-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"</span></span>
+<span id="cb162-2"><a href="legacy-of-colonial-medicine.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> colonial_medicine.dta, <span class="kw">replace</span></span>
+<span id="cb162-3"><a href="legacy-of-colonial-medicine.html#cb162-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span></code></pre></div>
 <p>As usual, let's describe the data to learn more about the variables.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:meddescribe"></span>
@@ -129,12 +129,12 @@ Figure 5.2: Describing the Colonial Medicine Data Set
 </div>
 <p>So we have 75,881 survey participants, some demographics of the individual, as well as a key outcome variable (<code>refused_any_blood_test</code>) as well as a key explanatory variable (<code>Times_Prospected</code>). To understand our key variables, let's first summarize our outcome variable.</p>
 <p>This data is at the individual level and includes some basic demographics (age, sex, etc.) as well as our key outcome: <code>refused_any_blood_test</code></p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb164-1"><a href="legacy-of-colonial-medicine.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> refused_any_blood_test</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb163-1"><a href="legacy-of-colonial-medicine.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> refused_any_blood_test</span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 refused_an~t |     11,993    .1110648    .3142255          0          1</code></pre>
 <p>So around 11 percent overall refuse a blood test. Our goal will be to understand if this refusal rate depends on how often an individual's area was visited during sleeping sickness campaigns in the past. The variable that captures this is <code>Times_Prospected</code>:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb166-1"><a href="legacy-of-colonial-medicine.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> Times_Prospected</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb165-1"><a href="legacy-of-colonial-medicine.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> Times_Prospected</span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 Times_Pros~d |     67,036    .2941624    .1943945          0         .8</code></pre>
@@ -148,7 +148,7 @@ Figure 5.3: Value Labels for Wealth Index
 </p>
 </div>
 <p>If we take the average of <code>wealth_index</code>, we do get a number out</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb168-1"><a href="legacy-of-colonial-medicine.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> wealth_index</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb167-1"><a href="legacy-of-colonial-medicine.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> wealth_index</span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 wealth_index |     75,881    3.212319     1.43691          1          5</code></pre>
@@ -168,8 +168,8 @@ Figure 5.4: Missing Values
 <p>A value label associates a description with a particular numeric value of a variable. Sometimes it is convenient to store variables as numeric, for example, if we would like to apply some mathematical operations. However, it might be hard to remember what each value of the data represents. Value labels allow you to store the information as numeric, while still able to quickly reference what each number represents.</p>
 <p>In order to discuss value labels, we are going to look at the American National Election Survey. The American National Election Survey (ANES) is a survey on elections in the U.S. It has a large range of questions that come in the survey. To make it easier for users of the dataset, many of the variables have value labels attached.</p>
 <p>We are going to load a very small subset of the dataset which has information on just a few questions:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb170-1"><a href="legacy-of-colonial-medicine.html#cb170-1" aria-hidden="true" tabindex="-1"></a>cd /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span>
-<span id="cb170-2"><a href="legacy-of-colonial-medicine.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> anes_subset.dta, <span class="kw">clear</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb169-1"><a href="legacy-of-colonial-medicine.html#cb169-1" aria-hidden="true" tabindex="-1"></a>cd /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span>
+<span id="cb169-2"><a href="legacy-of-colonial-medicine.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> anes_subset.dta, <span class="kw">clear</span></span></code></pre></div>
 <p>If we browse the data, we can see some of the variables have value labels.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:br1value"></span>
@@ -185,25 +185,25 @@ Figure 5.6: Browsing the ANES
 </p>
 </div>
 <p>The <strong>value label</strong> is the text highlighted in blue ("2. No, didn't vote"). If we use <code>tab</code> we can see the difference values labels for a given variable. Let's try this for <code>vote</code>:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb171-1"><a href="legacy-of-colonial-medicine.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> vote </span>
-<span id="cb171-2"><a href="legacy-of-colonial-medicine.html#cb171-2" aria-hidden="true" tabindex="-1"></a>      PRE: Did R vote <span class="kw">for</span> |</span>
-<span id="cb171-3"><a href="legacy-of-colonial-medicine.html#cb171-3" aria-hidden="true" tabindex="-1"></a>        President <span class="kw">in</span> 2012 |      Freq.     Percent        Cum.</span>
-<span id="cb171-4"><a href="legacy-of-colonial-medicine.html#cb171-4" aria-hidden="true" tabindex="-1"></a>--------------------------+-----------------------------------</span>
-<span id="cb171-5"><a href="legacy-of-colonial-medicine.html#cb171-5" aria-hidden="true" tabindex="-1"></a>              -9. Refused |          2        0.05        0.05</span>
-<span id="cb171-6"><a href="legacy-of-colonial-medicine.html#cb171-6" aria-hidden="true" tabindex="-1"></a>-8. Don't know (FTF only) |         14        0.33        0.37</span>
-<span id="cb171-7"><a href="legacy-of-colonial-medicine.html#cb171-7" aria-hidden="true" tabindex="-1"></a>            1. Yes, voted |      3,117       73.00       73.37</span>
-<span id="cb171-8"><a href="legacy-of-colonial-medicine.html#cb171-8" aria-hidden="true" tabindex="-1"></a>       2. No, didn't vote |      1,137       26.63      100.00</span>
-<span id="cb171-9"><a href="legacy-of-colonial-medicine.html#cb171-9" aria-hidden="true" tabindex="-1"></a>--------------------------+-----------------------------------</span>
-<span id="cb171-10"><a href="legacy-of-colonial-medicine.html#cb171-10" aria-hidden="true" tabindex="-1"></a>                    Total |      4,270      100.00</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb170-1"><a href="legacy-of-colonial-medicine.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> vote </span>
+<span id="cb170-2"><a href="legacy-of-colonial-medicine.html#cb170-2" aria-hidden="true" tabindex="-1"></a>      PRE: Did R vote <span class="kw">for</span> |</span>
+<span id="cb170-3"><a href="legacy-of-colonial-medicine.html#cb170-3" aria-hidden="true" tabindex="-1"></a>        President <span class="kw">in</span> 2012 |      Freq.     Percent        Cum.</span>
+<span id="cb170-4"><a href="legacy-of-colonial-medicine.html#cb170-4" aria-hidden="true" tabindex="-1"></a>--------------------------+-----------------------------------</span>
+<span id="cb170-5"><a href="legacy-of-colonial-medicine.html#cb170-5" aria-hidden="true" tabindex="-1"></a>              -9. Refused |          2        0.05        0.05</span>
+<span id="cb170-6"><a href="legacy-of-colonial-medicine.html#cb170-6" aria-hidden="true" tabindex="-1"></a>-8. Don't know (FTF only) |         14        0.33        0.37</span>
+<span id="cb170-7"><a href="legacy-of-colonial-medicine.html#cb170-7" aria-hidden="true" tabindex="-1"></a>            1. Yes, voted |      3,117       73.00       73.37</span>
+<span id="cb170-8"><a href="legacy-of-colonial-medicine.html#cb170-8" aria-hidden="true" tabindex="-1"></a>       2. No, didn't vote |      1,137       26.63      100.00</span>
+<span id="cb170-9"><a href="legacy-of-colonial-medicine.html#cb170-9" aria-hidden="true" tabindex="-1"></a>--------------------------+-----------------------------------</span>
+<span id="cb170-10"><a href="legacy-of-colonial-medicine.html#cb170-10" aria-hidden="true" tabindex="-1"></a>                    Total |      4,270      100.00</span></code></pre></div>
 <p>So there are 4 different value labels. If you need to references values of these variables, you need to use the actual numeric values, not the labels themselves. The labels are just there so we don't forget what the numbers mean. For example, if I wanted to see how many individuals refused the question, I can type:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb172-1"><a href="legacy-of-colonial-medicine.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> vote==-9</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb171-1"><a href="legacy-of-colonial-medicine.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> vote==-9</span></code></pre></div>
 <p>If I try to do the same thing, but referencing the value label, I will get an error:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb173-1"><a href="legacy-of-colonial-medicine.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> vote == <span class="st">"-9. Refused"</span></span>
-<span id="cb173-2"><a href="legacy-of-colonial-medicine.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="dv">type</span> mismatch</span>
-<span id="cb173-3"><a href="legacy-of-colonial-medicine.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span>
-<span id="cb173-4"><a href="legacy-of-colonial-medicine.html#cb173-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-5"><a href="legacy-of-colonial-medicine.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb173-6"><a href="legacy-of-colonial-medicine.html#cb173-6" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb172-1"><a href="legacy-of-colonial-medicine.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> vote == <span class="st">"-9. Refused"</span></span>
+<span id="cb172-2"><a href="legacy-of-colonial-medicine.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="dv">type</span> mismatch</span>
+<span id="cb172-3"><a href="legacy-of-colonial-medicine.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span>
+<span id="cb172-4"><a href="legacy-of-colonial-medicine.html#cb172-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-5"><a href="legacy-of-colonial-medicine.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb172-6"><a href="legacy-of-colonial-medicine.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
 <p>It states <code>type mismatch</code> because vote is a numeric variable, not a string variable. The</p>
 </div>
 <div id="missing-values" class="section level2" number="5.3">
@@ -211,7 +211,7 @@ Figure 5.6: Browsing the ANES
 <span class="header-section-number">5.3</span> Missing Values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
 </h2>
 <p>Continuing our exploration of the ANES dataset, we will now discuss missing values. For numeric variables, Stata stores missing values as a period. If your numeric variable does not code missing information as a period, then you should change this before continuing the analysis. To see why, let's consider the variable <code>better_or_worse</code>, which asks the respondent on a scale of 1 to 5 how much worse off are you relative to a year ago?</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb174-1"><a href="legacy-of-colonial-medicine.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> better_or_worse</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb173-1"><a href="legacy-of-colonial-medicine.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> better_or_worse</span></code></pre></div>
 <pre><code>   PRE: R how much better |
 worse off than 1 year ago |      Freq.     Percent        Cum.
 --------------------------+-----------------------------------
@@ -225,29 +225,29 @@ worse off than 1 year ago |      Freq.     Percent        Cum.
 --------------------------+-----------------------------------
                     Total |      4,270      100.00</code></pre>
 <p>You can see that -8 and -9 are actually missing values, but right now they are stored as numbers. If I take the average of <code>better_or_worse</code>, I get:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb176-1"><a href="legacy-of-colonial-medicine.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> better_or_worse</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb175-1"><a href="legacy-of-colonial-medicine.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> better_or_worse</span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 better_or_~e |      4,270    2.937002    1.176809         -9          5</code></pre>
 <p>But this average incorporates those values of -9 and -8. In terms of the scale of the variable, this will lower the overall average, which could lead to some pretty misleading results. For example, imagine instead of storing the missing values as -9, they were stored as -1000. Then, even though there are a few individuals with missing data, our average value of <code>better_or_worse</code> might be very low, as low as 1. If we naively took this as the average, then we might conclude that on average, people report they are much better off. But this is the wrong conclusion, we need the average response among individuals that actually answered the question.</p>
 <p>What we need to do is replace individuals that have either a value of -8 or -9 to missing. To do this we can make use of the or operator, which is given by the symbol <code>|</code>. The code below will replace the value of <code>better_or_worse</code> to missing if the current value is either -8 <strong>or</strong> -9.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb178-1"><a href="legacy-of-colonial-medicine.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> better_or_worse=. <span class="kw">if</span> better_or_worse==-8 | better_or_worse==-9</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb177-1"><a href="legacy-of-colonial-medicine.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> better_or_worse=. <span class="kw">if</span> better_or_worse==-8 | better_or_worse==-9</span></code></pre></div>
 <p>Now when we take the average, the missing values are not incorporated</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb179-1"><a href="legacy-of-colonial-medicine.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> better_or_worse</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb178-1"><a href="legacy-of-colonial-medicine.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> better_or_worse</span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 better_or_~e |      4,257    2.972986    .9814891          1          5</code></pre>
 <p>When you compute summary statistics or run regressions, observations with missing values will be dropped automatically from this calculation. However, you need to be very careful when constructing new variables from observations with missing values. For logical statements in Stata (such as when creating indicator variables), the missing value is interpreted as infinity. The reason why it was chosen to have missing values be interpreted as infinity is a little complicated, but it can lead to some confusing errors!</p>
 <p>To see how, Imagine we want to create an indicator that is equal to 1 if an individual thinks their life has gotten worse relative to 1 year ago. An individual that responded 4 or 5 believes their life has gotten worse relative to 1 year ago. So one potential way to code this new variable would be to type:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb181-1"><a href="legacy-of-colonial-medicine.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> worse_off = (better_or_worse&gt;=4)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb180-1"><a href="legacy-of-colonial-medicine.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> worse_off = (better_or_worse&gt;=4)</span></code></pre></div>
 <p>Let's see what <code>worse_off</code> is equal to for individuals that had missing values for <code>better_or_worse</code>.</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb182-1"><a href="legacy-of-colonial-medicine.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> worse_off <span class="kw">if</span> better_or_worse==.</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb181-1"><a href="legacy-of-colonial-medicine.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> worse_off <span class="kw">if</span> better_or_worse==.</span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
    worse_off |         13           1           0          1          1</code></pre>
 <p>It is equal to 1 for all of these individuals, but why? The reason is missing values are interpreted as infinity in logical statements. Because infinity is greater than 4, then everyone with missing values of this is coded as <code>worse_off=1</code>.</p>
 <p>To avoid this problem, we need to change code so that it takes into account possibility of missing values. For example, we might want to replace <code>worse_off</code> equal to missing if <code>better_or_worse</code> is equal to missing.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb184-1"><a href="legacy-of-colonial-medicine.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> worse_off = . <span class="kw">if</span> better_or_worse==.</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb183-1"><a href="legacy-of-colonial-medicine.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> worse_off = . <span class="kw">if</span> better_or_worse==.</span></code></pre></div>
 </div>
 <div id="binned-scatterplots-theory" class="section level2" number="5.4">
 <h2>
@@ -284,24 +284,24 @@ Figure 5.9: An Example of a Binned Scatterplot
 <p>In this section we will use the data from Lowes and Montero (2021) to implement a binned scatterplot to study the legacy of colonial medicine in Africa. In order to construct the binned scatterplot we will make use of the <code>binscatter</code> command.</p>
 <p>As a reminder, between 1921-1956, French colonies in Africa were visited by many medical campaigns often forcing medical care with questionable efficacy and severe side effects. Some places were visited only a small fraction of years. Other places were visited often in these years. Are people who lived in places with many medical campaigns more likely to distrust medicine today?</p>
 <p>To begin let's load the dataset:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb185-1"><a href="legacy-of-colonial-medicine.html#cb185-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"</span></span>
-<span id="cb185-2"><a href="legacy-of-colonial-medicine.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> colonial_medicine.dta, <span class="kw">replace</span></span>
-<span id="cb185-3"><a href="legacy-of-colonial-medicine.html#cb185-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb184-1"><a href="legacy-of-colonial-medicine.html#cb184-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"</span></span>
+<span id="cb184-2"><a href="legacy-of-colonial-medicine.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> colonial_medicine.dta, <span class="kw">replace</span></span>
+<span id="cb184-3"><a href="legacy-of-colonial-medicine.html#cb184-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span></code></pre></div>
 <p>First, we need to drop values that either have missing information for <code>refused_any_blood_test</code> or <code>Times_Prospected</code>. <code>refused_any_blood_test</code> is our key outcome and is equal to 1 if the individual refused the free blood test and zero otherwise. <code>Times_Prospected</code> is our key explanatory variables and captures what fraction of years between 1921-1956 was the individual's region visited for sleeping sickness campaigns. If either of these values are missing for an observation, then they should not be included in the analysis.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb186-1"><a href="legacy-of-colonial-medicine.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> refused_any_blood_test==. | Times_Prospected==. </span>
-<span id="cb186-2"><a href="legacy-of-colonial-medicine.html#cb186-2" aria-hidden="true" tabindex="-1"></a>(65,951 observations deleted)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb185-1"><a href="legacy-of-colonial-medicine.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> refused_any_blood_test==. | Times_Prospected==. </span>
+<span id="cb185-2"><a href="legacy-of-colonial-medicine.html#cb185-2" aria-hidden="true" tabindex="-1"></a>(65,951 observations deleted)</span></code></pre></div>
 <p>The parallel line <code>|</code> indicates "or". So put simply, this line says, drop any observations in which either <code>refused_any_blood_test</code> or <code>Times_Prospected</code> is missing</p>
 <p>Next, we will use an external command named <code>binscatter</code> can be used to produced binned scatterplots. To install on your version of Stata, you first need to type.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb187-1"><a href="legacy-of-colonial-medicine.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install binscatter</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb186-1"><a href="legacy-of-colonial-medicine.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install binscatter</span></code></pre></div>
 <p>Once you execute the code above once, then you will be able to use the <code>binscatter</code> command. The basic syntax of the <code>binscatter</code> command is:</p>
 <p>The basic syntax of <code>binscatter</code> is:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb188-1"><a href="legacy-of-colonial-medicine.html#cb188-1" aria-hidden="true" tabindex="-1"></a>binscatter yvar xvar, nquantiles(#)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb187-1"><a href="legacy-of-colonial-medicine.html#cb187-1" aria-hidden="true" tabindex="-1"></a>binscatter yvar xvar, nquantiles(#)</span></code></pre></div>
 <p>In this syntax, you will replace <code>yvar</code> with whatever variable you want to plot on the vertical axis and <code>xvar</code> with whatever variable you want to plot on the horizontal axis. You will replace <code>#</code> with however many bins you want to create.</p>
 <p>In our example, we want to understand the relationship between refusing to take a blood test (y-axis) and share of years visited by medical campaigns between 1921-1956 (x-axis). For illustrative purposes, let's specify <code>nquantiles(10)</code> which implies we will have 10 bins in our scatterplot. One nice thing about the <code>binscatter</code> command is that we can utilize everything that we've learned from creating graphs generally. In other words, let's make sure our graph has appropriate titles and axes labels.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb189-1"><a href="legacy-of-colonial-medicine.html#cb189-1" aria-hidden="true" tabindex="-1"></a>binscatter refused_any_blood_test Times_Prospected, nq(10)  <span class="co">///</span></span>
-<span id="cb189-2"><a href="legacy-of-colonial-medicine.html#cb189-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Binscatter: Refusing Blood Test vs. Share of Years Visited"</span>) <span class="co">///</span></span>
-<span id="cb189-3"><a href="legacy-of-colonial-medicine.html#cb189-3" aria-hidden="true" tabindex="-1"></a>    <span class="bn">xtitle</span>(<span class="st">"Share of years visited, 1921-1956"</span>) <span class="co">///</span></span>
-<span id="cb189-4"><a href="legacy-of-colonial-medicine.html#cb189-4" aria-hidden="true" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Refused any blood test"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb188-1"><a href="legacy-of-colonial-medicine.html#cb188-1" aria-hidden="true" tabindex="-1"></a>binscatter refused_any_blood_test Times_Prospected, nq(10)  <span class="co">///</span></span>
+<span id="cb188-2"><a href="legacy-of-colonial-medicine.html#cb188-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Binscatter: Refusing Blood Test vs. Share of Years Visited"</span>) <span class="co">///</span></span>
+<span id="cb188-3"><a href="legacy-of-colonial-medicine.html#cb188-3" aria-hidden="true" tabindex="-1"></a>    <span class="bn">xtitle</span>(<span class="st">"Share of years visited, 1921-1956"</span>) <span class="co">///</span></span>
+<span id="cb188-4"><a href="legacy-of-colonial-medicine.html#cb188-4" aria-hidden="true" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Refused any blood test"</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:binscatter1"></span>
 <img src="images/05_binscatter2.png" alt="Binscatter: Refusing Blood Test vs. Share of Years Visited" width="65%"><p class="caption">
@@ -310,7 +310,7 @@ Figure 5.10: Binscatter: Refusing Blood Test vs. Share of Years Visited
 </div>
 <p>As we can see from the graph, as the share of years visited increases, the fraction of individuals that refuse a blood test also increases. This provides supporting evidence for the initial hypothesis: areas that have a history of colonial medicine still distrust medicine today. The line depicted in the binned scatterplot is a regression line that shows the strength of this relationship.</p>
 <p>It is also helpful for interpretation to retrieve the slope of this regression line. We can get this parameter by specifying <code>reportreg</code> as an option for our binscatter command.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb190-1"><a href="legacy-of-colonial-medicine.html#cb190-1" aria-hidden="true" tabindex="-1"></a>binscatter refused_any_blood_test Times_Prospected, nq(10) reportreg </span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb189-1"><a href="legacy-of-colonial-medicine.html#cb189-1" aria-hidden="true" tabindex="-1"></a>binscatter refused_any_blood_test Times_Prospected, nq(10) reportreg </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:reglinebin"></span>
 <img src="images/05_binreg.png" alt="Regression Line: Refusing Blood Test vs. Share of Years Visited" width="65%"><p class="caption">
@@ -549,7 +549,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2022-12-09.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -29,7 +29,7 @@ All other characteristics of the applicant (experience, education, job history) 
 
 Why is this design so clever? Well, all factors relevant for a job are held fixed by construction. Disparities in callback rates between races can no longer be "explained away" by other factors. The researchers themselves have generated these resumes. All factors are observed and similar between white and Black applicants by construction. Therefore, if you do find a disparity now, then this is very strong evidence for discrimination in the labor market. 
   
-Before getting to the data though, we need to learn how to use the program we will be studying for the rest of the book: R.
+Before getting to the data though, we need to learn how to use the program we will be studying for the rest of the book: R. At this point, we would also like to credit Kosuke Imai's Textbook: Quantitative Social Science: An Introduction, which this example is drawn from.[@imai2018quantitative] 
 
 ## Installing R/RStudio
 
