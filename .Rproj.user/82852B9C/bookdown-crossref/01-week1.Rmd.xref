@@ -43,7 +43,7 @@ fig:balance Average Age by Treatment Group
 h2:S:impact Impact of Financial Incentives
 fig:firstresult Impact of Financial Incentives on Pass Rates
 fig:pivotfield Pivot Fields
-fig:hetresults Pivot Fields
+fig:hetresults Pivot Table Showing Pass Rates by Treatment and Control Across Departments
 h2:S:pivotbasic Pivot Charts (Basic)
 fig:pivotchart1 Inserting a Pivot Chart
 fig:pivotchart2 Pivot Chart Fields

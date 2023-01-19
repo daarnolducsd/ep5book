@@ -802,7 +802,7 @@ At the same time, many schools with very high access rates have been trending to
 **<u>Setup Commands</u>**
 
 - `cd filepath` – this changes the working directory in Stata You should replace
-``filepath`` with a file path of your choosing. If you have spaces in your file path, you need to put it into quotation marks. For example the code: ``cd /Users/David Arnold/Desktop``, will not work, while the code: ``cd “/Users/David Arnold/Desktop"`` will work.
+``filepath`` with a file path of your choosing. If you have spaces in your file path, you need to put it into quotation marks.
 
 
 - ``clear all`` -- clears data from Stata

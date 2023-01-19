@@ -115,7 +115,6 @@ fig:bar5
 fig:searchrates
 fig:msdescribe
 fig:ctof
-fig:hypreg1
 fig:hypreg2
 fig:hypreg3
 fig:hypreg4
@@ -129,6 +128,7 @@ fig:msgtab
 fig:tab1basic
 fig:tab1balance
 fig:tab2balance
+fig:regtabbasic
 fig:regcoefs
 fig:regfinal
 fig:dynamic

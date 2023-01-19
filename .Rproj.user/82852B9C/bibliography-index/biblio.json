@@ -3,6 +3,26 @@
         {
             "author": [
                 {
+                    "family": "Imai",
+                    "given": "Kosuke"
+                }
+            ],
+            "id": "imai2018quantitative",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "Princeton University Press",
+            "title": "Quantitative social science: An introduction",
+            "title-short": "Quantitative social science",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
                     "family": "Wand",
                     "given": "Jonathan N"
                 },

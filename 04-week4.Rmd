@@ -19,11 +19,11 @@ code {
 
 Many developing countries have rapidly expanded access to education. However, not all places see measurable gains in learning. For example, in India, over 50 percent of students in grade 5 cannot read at a grade 2 level, despite enrollment rates around 95 percent (Pratham 2017)[@pratham2017].
 
-One hypothesis behind this puzzling fact is termed the mismatch hypothesis. If curriculum is beyond a student's level of understanding, they may learn very little, even if attendance is high. In other words, there is a mismatch between the level of understanding and the curriculum being taught. In Muralidharan, Singh and Ganimiam (2019)[@msg2019disrupting], the authors study whether a technology that aims to "Teach at the Right Level" be used to improve learning outcomes. This is an important question: we need to find interventions that work! It is not necessarily true that more investment in education results better outcomes if we are investing in the wrong things.
+One hypothesis behind this puzzling fact is termed the mismatch hypothesis. If curriculum is beyond a student's level of understanding, they may learn very little, even if attendance is high. In other words, there is a mismatch between the level of understanding and the curriculum being taught. In Muralidharan, Singh and Ganimiam (2019)[@msg2019disrupting], the authors study whether a technology that aims to "Teach at the Right Level" can be used to improve learning outcomes. This is an important question: we need to find interventions that work! It is not necessarily true that more investment in education results better outcomes if we are investing in the wrong things.
 
-The technology the authors study is called Mindspark. Mindspark is a computer software that provides learning materials that are appropriate for a student's understanding level. It does this by using information on what questions a student gets right vs. wrong. The level of material only increases in difficulty once the student has learned the previous concepts. Mindspark centers provide 6-day-a-week instruction for 90 minutes (45 minutes with Mindspark, 45 minutes from teaching assistants). THe question in Muralidharan, Singh and Ganimiam (2019) is: does this program improve learning outcomes?
+The technology the authors study is called Mindspark. Mindspark is a computer software that provides learning materials that are appropriate for a student's understanding level. It does this by using information on what questions a student gets right vs. wrong. The level of material only increases in difficulty once the student has learned the previous concepts. Mindspark centers provide 6-day-a-week instruction for 90 minutes (45 minutes with Mindspark, 45 minutes from teaching assistants). The question in Muralidharan, Singh and Ganimiam (2019) is: does this program improve learning outcomes?
 
-To answer this question, the authors recruited participants from low-income neighborhoods in Delhi. At demonstration sessions for Mindspark, parents were introduced to the program. All participants interested in participating needed to fill out a baseline assessment. Then, parents were told that about $\frac{1}{2}$ of participants would receive a voucher that waived tuition for the Mindspark program (participants were chosen by lottery). Students not chosen by lottery were told they would obtain free access to the centers after February 2016 (after the experiment had concluded). The result is 619 participants, 305 in the control (i.e. no access to Mindspark) and 314 in the treatment (access to Mindspark)
+To answer this question, the authors recruited participants from low-income neighborhoods in Delhi. At demonstration sessions for Mindspark, parents were introduced to the program. All participants interested in participating needed to fill out a baseline assessment. Then, parents were told that about half of the participants would receive a voucher that waived tuition for the Mindspark program (participants were chosen by lottery). Students not chosen by lottery were told they would obtain free access to the centers after February 2016 (after the experiment had concluded). The result is 619 participants, 305 in the control (i.e. no access to Mindspark) and 314 in the treatment (access to Mindspark)
 
 To begin, let's load the dataset ``mindspark_data.dta``
 
@@ -38,7 +38,7 @@ As usual, let's begin with describing the dataset
 knitr::include_graphics("images/04_describe.png")
 ```
 
-This is a subset of all variables in Muralidharan, Singh, and Ganimian (2019). We are interested in how being treated impacts learning outcomes. We have information about Math and Hindi tests at both the baseline and endline. Baseline: before any student has been offered free Mindspark. Endline: the treated students have been offered free Mindspark. To start, let's summarize these variables to get a sense of average test scores as well as the variation in test scores at baseline.
+This is a subset of all variables in Muralidharan, Singh, and Ganimian (2019). We are interested in how being treated impacts learning outcomes. We have information about Math and Hindi tests at both the baseline and endline. Baseline means the test was taken before any student has been offered free Mindspark. Endline means the test was taken after the treated students had received Mindspark and been using the software for several months. To start, let's summarize these variables to get a sense of average test scores as well as the variation in test scores at baseline.
 
 ```{stata, echo=T, eval=F}
 sum per_math1
@@ -50,7 +50,7 @@ sum per_math1
 sum per_hindi1
 ```
 
-At the baseline, the average score on the math test was $0.318$. This indicates that on average across students, the average score was a 31.8 percent on the math test. For the Hindi test, the average was a bit higher at $0.428$. Now let's look at endline scores.
+At the baseline, the average score on the math test was 0.318. This indicates that on average across students, the average score was a 31.8 percent on the math test. For the Hindi test, the average was a bit higher at 0.428. Now let's look at endline scores.
 
 ```{stata, echo=T, eval=F}
 sum per_math2
@@ -62,7 +62,7 @@ sum per_math1
 sum per_hindi1
 ```
 
-At endline, scores are higher. The average math score has increased to $0.503$ and the average Hindi score has increased to $0.552$. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``. Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
+At endline, scores are higher. The average math score has increased to 0.503 and the average Hindi score has increased to 0.552. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``? Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
 
 
 ## Linear Regression (Theory) 
@@ -83,9 +83,9 @@ $$
 knitr::include_graphics("images/04_ctof.png")
 ```
 
-In this example, there is a direct linear relationship between these two variables, Celsius and Fahrenheit. Often in the social sciences, we are interested in **estimating** the relationship between two variables. How much does education increase income? Does precipitation impact voting participation? One way to understand how two variables are related is through estimating linear relationships. **Linear Regression** is a way to estimate linear relationships between one or more variables
+In this example, there is a direct linear relationship between these two variables, Celsius and Fahrenheit. Often in the social sciences, we are interested in **estimating** the relationship between two variables. How much does education increase income? Does precipitation impact voter participation? One way to understand how two variables are related is through estimating linear relationships. **Linear Regression** is a way to estimate linear relationships between one or more variables
 
-We want to model some outcome of individuals $Y_i$ as a function of some explanatory variable of the individual $X_i$ ($Y_i=f(X_i)$). $Y_i$ is often referred to as the dependent variable (or outcome variable). $X_i$ is often referred to as the independent variable (or explanatory variable). If we assume the function $f(X_i)$ is linear, then we can write this model as 
+We want to model some outcome of individuals $Y_i$ as a function of some explanatory variable of the individual $X_i$ (in math: $Y_i=f(X_i)$). $Y_i$ is often referred to as the dependent variable (or outcome variable). $X_i$ is often referred to as the independent variable (or explanatory variable). If we assume the function $f(X_i)$ is linear, then we can write this model as 
 
 $$
 Y_i = \beta_0 + \beta_1 \cdot X_i + \varepsilon_i \nonumber
@@ -96,22 +96,13 @@ Imagine we hypothesize that students who watch too much TV the night before a te
 $$
 \text{Test Score}_i = \beta_0 + \beta_1 \cdot \text{Hours Watched TV}_i + \varepsilon_i 
 $$
-```{r, hypreg1, echo=FALSE, out.width="90%", fig.cap="Hypothetical Regression",fig.align='center'}
-knitr::include_graphics("images/04_reg1.png")
-```
 
-The parameters of the model are the parameters we are estimating. In a linear regression model 
-
-$$
-Y_i = \beta_0 + \beta_1 \cdot X_i + \varepsilon_i \nonumber
-$$
-
-We refer to $\beta_0$ and $\beta_1$ as the parameters of the model. We use "hats" to denote the estimates of these parameters. $\hat{\beta}_0$ is the estimate of the intercept. $\hat{\beta}_1$ is the estimate of the slope coefficient. We choose $\hat{\beta}_0$ and $\hat{\beta}_1$ to construct a regression line that best fits our data.
+The parameters of the model are the parameters we are estimating. In a linear regression model, there are two parameters we need to estimate: $\beta_0$ and $\beta_1$ as the parameters of the model. We use "hats" to denote the estimates of these parameters. $\hat{\beta}_0$ is the estimate of the intercept. $\hat{\beta}_1$ is the estimate of the slope coefficient. We choose $\hat{\beta}_0$ and $\hat{\beta}_1$ to construct a regression line that best fits our data.
 
 But what does best fit actually mean? We choose $\hat{\beta}_0$ and $\hat{\beta}_1$ to minimize the sum of squared errors ($\sum \varepsilon_i^2$). Choosing the parameters to minimize the sum of squared errors is referred to as **Ordinary Least Squares** and commonly simply referred to as linear regression.
 
  
-How do we go about finding the best fit? Let's consider estimating the relationship between the two variables below in Figure \@ref(fig:reg2).
+How do we go about finding the best fit? Let's consider estimating the relationship between the two variables below in Figure \@ref(fig:reg2). On the horizontal axis we have hours spent watching TV, while on the vertical axis we have how the student performed on the test. In this example, we have only four data points.
 
 ```{r, hypreg2, echo=FALSE, out.width="90%", fig.cap="Hypothetical Dataset: Finding the Best Fit Line",fig.align='center'}
 knitr::include_graphics("images/04_reg2.png")
@@ -156,7 +147,7 @@ $$
 \text{Life Expectancy}_i = \beta_0 + \beta_1 \cdot \text{Average Income in 1000s}_i + \varepsilon_i
 $$
 
-Figure \@ref(fig:scatter1) plots the life expectancy in a country vs the average income, which is stored in \$1,000 US dollars. For exampe, a value of \$50,000 would indicate that the average income in that country is 50,000 U.S. dollars per year. 
+Figure \@ref(fig:scatter1) plots the life expectancy in a country vs the average income, which is stored in \$1,000 US dollars. For exampe, a value of 50 indicates that the average income in that country is 50,000 U.S. dollars per year. 
 
 ```{r, scatter1, echo=FALSE, out.width="90%", fig.cap="Life Expectancy vs. Average Income (1000s) Across Countries",fig.align='center'}
 knitr::include_graphics("images/04_scatter1.png")
@@ -164,7 +155,7 @@ knitr::include_graphics("images/04_scatter1.png")
 
 Imagine now we use linear regression to fit a line to the data in Figure \@ref(fig:scatter1). Imagine we find $\hat{\beta_0}=67.97$ and $\hat{\beta_1}=0.24$. These values define a line with an intercept equal to 67.97 and a slope equal to 0.24. Our question now is, what can we do with this information?
 
-Well, one thing we can do is form predictions for life expectancy given a value of average income. In other words, if I tell you a country's average income, you could use the linear regression estimates to predict what the life expectancy in that country is. In social sciences, there is sometimes less emphasis on prediction. However, in many settings, one might be interested in forming predictions. For example, imagine you work for a company that is trying to predict who will buy their good based on characteristics of individuals. In policy settings, decisions often depend on predictions. For example, a policymaker may want to predict whether a given defendant will recidivate if released on parole. Linear regression is one (powerful) way to form predictions. It is likely the first tool you will learn in most machine learning classes which focuses primarily on prediction. 
+Well, one thing we can do is form predictions for life expectancy given a value of average income. In other words, if I tell you a country's average income, you could use the linear regression estimates to predict what the life expectancy in that country is. In social sciences, there is sometimes less emphasis on prediction. However, in many settings, one might be interested in forming predictions. For example, imagine you work for a company that is trying to predict who will buy their good based on characteristics of individuals. You could use linear regression for this prediction problem. In policy settings, decisions often depend on predictions. For example, a policymaker may want to predict whether a given defendant will recidivate if released on parole. Linear regression is one (powerful) way to form predictions. It is likely the first tool you will learn in most machine learning classes which focuses primarily on prediction. 
 
 Imagine I tell you a country has an average income of \$50k. How do we use the regression results to form our best guess for the life expectancy in this country? Well, to begin, let's plot the line that best fits the data. The orange line in Figure \@ref(fig:bestfit1) is the line of best fit. It is a line with a intercept equal to 67.97 and a slope coefficient equal to 0.24.
 
@@ -172,7 +163,7 @@ Imagine I tell you a country has an average income of \$50k. How do we use the r
 knitr::include_graphics("images/04_scatter1p5.png")
 ```
 
-One way to interpret this line is that this is our best (linear) prediction of life expectancy given average income. In other words, if we want to predict the life expectancy for a country with an average income of \$50k, we can just find what our line would predict for this country. In Figure \ref(fig:bestfit1), we have added a dashed line at an average income \$50k. At an average income of \$50k, it appears as if the value of the line is around 80. But we don't need to just eyeball this graph to figure this information out. We have the exact parameters of this line from our regression estimates. We know the intercept is 67.97 and the slope coefficient is 0.24. Therefore, we can use the linear equation to form the predicted life expectancy of a country with income equal to \$50k:
+One way to interpret this line is that this is our best (linear) prediction of life expectancy given average income. In other words, if we want to predict the life expectancy for a country with an average income of \$50k, we can just find what our line would predict for this country. In Figure \@ref(fig:bestfit1), we have added a dashed line at an average income \$50k. At an average income of \$50k, it appears as if the value of the line is around 80. But we don't need to just eyeball this graph to figure this information out. We have the exact parameters of this line from our regression estimates. We know the intercept is 67.97 and the slope coefficient is 0.24. Therefore, we can use the linear equation to form the predicted life expectancy of a country with income equal to \$50k:
 
 
 $$
@@ -224,7 +215,7 @@ There are different bases for logarithmic function. We will always use the natur
 
 :::
 
-Let's look at how "logging" changes our scatterplot. Figure \@ref(fig:scatter3) plots life expectancy agains the natural logarithm of average income. As you can see, the points appear more linear now. Taking the natural logarithm shrunk the values of income for countries with high incomes more than countries with low incomes. The result in this setting is that relationship between life expectancy and log average income appears more linear than the relationship between life expectancy and average income.
+Let's look at how "logging" changes our scatterplot. Figure \@ref(fig:scatter3) plots life expectancy agains the natural logarithm of average income. As you can see, the relationship appears more linear now. Taking the natural logarithm shrunk the values of income for countries with high incomes more than countries with low incomes. The result in this setting is that relationship between life expectancy and log average income appears more linear than the relationship between life expectancy and average income.
 
 ```{r, scatter3, echo=FALSE, out.width="90%", fig.cap="Life Expectancy vs. Log Average Income Across Countries",fig.align='center'}
 knitr::include_graphics("images/04_scatter3.png")
@@ -255,7 +246,7 @@ $$
 \text{Predicted Life Expectancy}_i = 67.97 + 0.24 \cdot \text{Average Income 1000s}_i 
 $$
 
-The slope coefficient captures how changes in Average Income (1000s) are associated with changes in Predicted Life Expectancy.
+The slope coefficient captures how changes in Average Income (1000s) is associated with changes in Predicted Life Expectancy.
 
 To understand the interpretation of the slope coefficient (0.24), let's go through a simple example. Imagine I tell you I have two countries, Country A and Country B. Country A has an Average Income of \$50k. Country B has an Average Income of \$51k. What is the expected difference in Life Expectancy between these two countries?
 
@@ -334,7 +325,7 @@ reg life_expectancy average_income
 
 So there are a lot of numbers in the table above. The ones we will focus on are under the column "Coefficient." The first coefficient is in the row that begins with ``average_income``. This is the slope coefficient. This number tells you how a 1-unit change in ``average_income`` is predicted to change the Y-variable. In this case, the regression tells us that a 1-unit change in average income (which is denoted in the 1,000s) is associated with a 0.24 year increase in life expectancy. In simpler terms, a \$1,000 dollar increase in average income is associated with a 0.24 year increase in life expectancy.
 
-The intercept of the linear regression model appears in the next row, next to the label ``_cons``. The label ``_cons`` stands for constant. The terms intercept and constant are often used interchangeable in linear regression models. 
+The intercept of the linear regression model appears in the next row, next to the label ``_cons``. The label ``_cons`` stands for constant. The terms intercept and constant are often used interchangeably in linear regression models. 
 
 From this output, you should be able to draw the linear regression line. A good exercise is to try and draw this with pen and paper, instead of using Stata. If you can draw it correctly, then that indicates you are understanding the various components of this output. 
 
@@ -388,7 +379,7 @@ predict newvar
 
 You just need to replace the word ``newvar`` to whatever you want the variable that holds predictions to be named. 
 
-Our first step when forming predictions is first to estimate the regression (predict uses the results from the most recently executed regression estimation). In other words, the predict command won't work if you don't estimate a regression first. We are going to estimate the regression from the prior chapter:
+Our first step when forming predictions is first to estimate the regression (predict uses the results from the most recently executed regression estimation). In other words, the predict command won't work if you don't estimate a regression first. We are going to estimate the regression from the prior section:
 
 ```{stata, eval=F, echo=T}
 reg life_expectancy average_income
@@ -401,7 +392,7 @@ reg life_expectancy average_income
 Now that the regression has been estimated, we can form predictions 
 
 ```{stata, collectcode=TRUE}
-predict predicted_life_expectancy, xb
+predict predicted_life_expectancy
 ```
 
 Now a variable ``predicted_life_expectancy`` has been added to our dataset. Let's look at the value of predictions for the first three countries in our dataset.. 
@@ -473,30 +464,30 @@ reg life_expectancy average_income
 Then we can retrieve the coefficient on ``average_income`` by typing: 
 
 ```{stata}
-di _b[average_income]
+di `_b[average_income]'
 ```
 
 You can retrieve the intercept by typing:
 
 ```{stata}
-di _b[_cons]
+di `_b[_cons]'
 ```
 
 Using macros can be helpful when generating new variables. For example, we can form the predicted value of each observation by forming: 
 
 ```{stata, eval=FALSE}
-gen predicted_value = _b[_cons] + _b[average_income]*average_income 
+gen predicted_value = `_b[_cons]' + `_b[average_income]'*average_income 
 ```
 
 We could also do this "manually" by copying the values of the intercept and slope coefficient from our output, but using macros ensures we will not make any transcription errors.
 
-Not only does Stata store useful macros for you, but you can also construct your own macros in Stata. This can be useful when you are typing something over and over that is very long. Instead of repeatedly typing, you can store the information in a macro. For example, one common way to use macros is to store a list of variable. In the next example, we will create a global macro that stores a list of variables. 
+Not only does Stata store useful macros for you, but you can also construct your own macros in Stata. This can be useful when you are typing something over and over that is very long. Instead of repeatedly typing, you can store the information in a macro. For example, one common way to use macros is to store a list of variable. In the next example, we will create a **global macro** that stores a list of variables. 
 
 ```{stata, collectcode=TRUE}
 global vars = "average_income life_expectancy"
 ```
 
-Now whenever I type "\$vars" into Stata, Stata will interpret it as "average_income life_expectancy". Let's see what happens if I type: 
+Now whenever I type ``\$vars`` into Stata, Stata will interpret it as "average_income life_expectancy". Let's see what happens if I type: 
 
 ```{stata}
 sum $vars
@@ -509,7 +500,7 @@ local vars = "average_income life_expectancy"
 sum `vars'
 ```
 
-So what is the difference between a local macro and a global macro. In practice, you reference a global macro with a dollar sign "``$``", a local with apostrophes "`macro'". Both can store the same information, but locals can only be accessed within a given Stata session. Many advise to only use local macros. Setting globals can conflict with other aspects of Stata. For our purposes, it is rare we will actually need to use macros, let alone global vs. local. This section introduces macros as an important programming tool to understand conceptually, but it is not required to fully understand the nuances between local and global macros in Stata to understand the rest of the course material.
+So what is the difference between a local macro and a global macro. In practice, you reference a global macro with a dollar sign ``$``, a local with apostrophes ```macro'``. Both can store the same information, but locals can only be accessed within a given Stata session. Many advise to only use local macros. Setting globals can conflict with other aspects of Stata. For our purposes, it is rare we will actually need to use macros, let alone global vs. local. This section introduces macros as an important programming tool to understand conceptually, but it is not required to fully understand the nuances between local and global macros in Stata to understand the rest of the course material.
 
 ## Explore Data
 
@@ -535,7 +526,7 @@ twoway scatter mathlevel class
 knitr::include_graphics("images/04_basic.png")
 ```
 
-Figure \@ref(fig:basicscatter) doesn't't seem particularly informative. The reason is because so many points are overlapping. We know that there are over 600 participants in the experiment, but we only see a handful of dots in the graph. There reason is that many individuals have the same values for these variables. In other words, there are many people, for example, with an assessed math level equal 4 and an actual grade level equal to 6. From this figure, however, we can't tell how many. One way we can improve the graph is to use the ``jitter()`` option.
+Figure \@ref(fig:basicscatter) doesn't't seem particularly informative. The reason is because so many points are overlapping. We know that there are over 600 participants in the experiment, but we only see a handful of dots in the graph. The reason is that many individuals have the same values for these variables. In other words, there are many people, for example, with an assessed math level equal 4 and an actual grade level equal to 6. From this figure, however, we can't tell how many. One way we can improve the graph is to use the ``jitter()`` option.
 
 Scatter plots give us a transparent way to view our data, but when variables are categorical (like ``grade`` and ``mathlevel`` in our example), they can be less informative because so many observations overlap. ``jitter()`` adds a small amount of noise (small perturbations) to the data so that the points no longer overlap on the graph. The way it works is that in parentheses you place a number that determines how much noise is added. ``(5)`` is a common choice. A value of ``(100)`` would make it so that the graph is completely dominated by noise.
 
@@ -578,9 +569,9 @@ All of these results highlight a need for an intervention. We have documented (1
 
 ## Summary Statistics
 
-Before getting to the experimental data, we need to first make sure that the randomization was implemented correctly. To remind you, the experiment gave free Mindspark tuition to a random subset of students. But what if randomization failed for some reason? What if students that received Mindspark tuition already had better test scores than students that did not. Then we don't have a valid experiment. To check if we have a valid experiment, we should confirm that the treated and control students are similar based on observables. In order to present our results, we are going to learn a new command ``outreg2``, which is useful for building publication-ready tables in Stata. 
+Before getting to the experimental data, we need to first make sure that the randomization was implemented correctly. To remind you, the experiment gave free Mindspark tuition to a random subset of students. But what if randomization failed for some reason? What if students that received Mindspark tuition already had better test scores than students that did not? Then we don't have a valid experiment. To check if we have a valid experiment, we should confirm that the treated and control students are similar based on observables. In order to present our results, we are going to learn a new command ``outreg2``, which is useful for building publication-ready tables in Stata. 
 
-In most cases, ``outreg2`` is  used to export regression estimates to different formats (hence the name). However, in this section we are going to learn how to use it to create summary statistics. Summary statistics are incredibly to present in research. If you open any social science article, there is a good chance the first table will be a table of summary statistics.
+In most cases, ``outreg2`` is  used to export regression estimates to different formats (hence the name). However, in this section we are going to learn how to use it to create summary statistics. Summary statistics are incredibly important to present in research. If you open any social science article, there is a good chance the first table will be a table of summary statistics.
 
 One type of summary statistic table we have already discussed is a balance table. In an experiment, we need to check that treatment and control individuals are "balanced" based on observable characteristics. In the Mindspark experiment, we have a few demographic characteristics we can check balance with respect to. To understand our eventual goal, Figure \@ref(fig:msgtab) is the (beginning) of the Table 1 from Muralidharan, Singh and Ganimian (2019). We don't need to replicate this format exactly, but hopefully we can get something that looks professional.
 
@@ -635,23 +626,25 @@ The code above generates Figure \@ref(fig:tab1balance):
 knitr::include_graphics("images/04_balance_tab.png")
 ``` 
 
-One limitation of our current table is that treat 0 and treat 1 is not the most descriptive. However, given we now have this table in Word format, we can manually make any necessary changes. For example, Figure \@ref(fig:tab2balance) edits the labels to provide a table that is ready for publication. 
+One limitation of our current table is that treat 0 and treat 1 is not the most descriptive way to describe the data. However, given we now have this table in Word format, we can manually make any necessary changes. For example, Figure \@ref(fig:tab2balance) edits the labels to provide a table that is ready for publication. 
 
 ```{r, tab2balance, echo=FALSE, out.width="80%", fig.cap="Final Balance Table",fig.align='center'}
 knitr::include_graphics("images/04_balance_tab_fin.png")
 ``` 
 
+In this case, the average age, fraction female, and socioeconomic status index (ses) are all relatively similar between the treated students and control students. Looks like randomization was succesful!
+
 ## Binary Regression
 
 So far, the regression examples have been examples with continuous variables. Life expectancy and average income, for example, can take on any value within certain ranges. Therefore, these are examples of continuous variables. In this section, we are going to discuss the interpretation of regression estimates when either the dependent (Y-variable) and/or the independent (X-variable) is binary.
 
-To start, let's consider a hypothetical example. imagine we are interested in whether temperature impacts voting. We have an individual-level dataset that indicates whether an individual voted ($\text{Vote}_i=1$ if voted and zero otherwise), as well as the temperature in Fahrenheit in the location they voted . We propose modeling this via a linear regression framework:
+To start, let's consider a hypothetical example. Imagine we are interested in whether temperature impacts voting. We have an individual-level dataset that indicates whether an individual voted ($\text{Vote}_i=1$ if voted and zero otherwise), as well as the temperature in Fahrenheit in the location they voted. We propose modeling this via a linear regression framework:
 
 $$
 \text{Vote}_i = \alpha + \beta \text{Temperature}_i + \varepsilon_i
 $$
 
-Imagine we find $\hat{\alpha}=0.1$ and $\hat{\beta}=0.01$. How do we interpret these numbers? Before we said the interpretation of the slope coefficient is "the expected increase in $Y$ for a 1-unit change in $X$". If we use this interpretation, then we expect our variable $Vote$ to increase by 0.01 if Temperature increases by a degree. A 0.01 increase in a binary indicator implies a 1 percentage point increase in the probability the value of the variable is equal to 1.
+Imagine we find $\hat{\alpha}=0.1$ and $\hat{\beta}=0.01$. How do we interpret these numbers? Before we said the interpretation of the slope coefficient is "the expected increase in $Y$ for a 1-unit change in $X$". If we use this interpretation, then we expect our variable $Vote$ to increase by 0.01 if Temperature increases by a degree. A 0.01 increase in a binary indicator implies a 1 percentage point increase in the probability the value of the variable is equal to 1. This seems a little abstract, so let's consider another way to interpret this coefficient.
 
 One way to understand this interpretation is to return to thinking about predicted values. What is the predicted value of $Vote$ if the temperature is 50 degrees.
 
@@ -661,7 +654,7 @@ $$
 
 Recall in earlier sections we would often take the average of binary variables. For example, in Chapter 1, we had an outcome variable that was equal to 1 if the individual passed a test and zero otherwise. We showed that the average of this variable is equal to the fraction of individuals who passed the test.
 
-Here, what does it mean for the predicted value of vote to be equal to 0.6. It means that if the temperature is 50 degrees, we expect 60 percent of individuals to vote.
+Here, what does it mean for the predicted value of vote to be equal to 0.6? It means that if the temperature is 50 degrees, we expect 60 percent of individuals to vote.
 
 We can similarly form the predicted value of vote if it is 1 degree hotter (i.e. 51 degrees).
 
@@ -671,9 +664,9 @@ $$
 
 Therefore, we expect 61 percent of individuals to vote if it is 51 degrees. Therefore, a 1-degree increase in temperature is associated with a 1 percentage point increase in the fraction voting. In this example, the dependent variable is binary and the independent variable is still continuous. In this next example, let's flip this, so the independent variable is continuous and the dependent variable is binary. 
 
-Let's next imagine that  we are interested in the effect of a Universal Basic Income (UBI) payment on total earnings of individuals. The answer to this question has important policy implications. It might at first seem obvious that earnings will increase if an individual receives a UBI payment. But it is also possible that individuals who receive a UBI payment will respond by working less, or in extreme cases, quit working altogether. If these responses are common, it is not clear that UBI payments will actually increase the earnings of recipients overall. 
+Let's next imagine that  we are interested in the effect of a Universal Basic Income (UBI) payment on total earnings of individuals. UBI is a policy in which every individual receives a payment every month, regardless of their current income. The answer to this question has important policy implications. It might at first seem obvious that earnings will increase if an individual receives a UBI payment. But it is also possible that individuals who receive a UBI payment will respond by working less, or in extreme cases, quit working altogether. If these responses are common, it is not clear that UBI payments will actually increase the earnings of recipients overall. 
 
-There are now a few experiments on UBI that are either complete or in progress. Imagine we have access to the data of one of these experiments and propose modeling earnings as a function of whether you are given access to the UBI payment (i.e. UBI is binary)
+There are now a few experiments on UBI that are either complete or in progress. In these experiments, some individuals receive UBI payments, while others do not. Imagine we have access to the data of one of these experiments and propose modeling earnings as a function of whether you are given access to the UBI payment (i.e. UBI is a binary variable that is equal to 1 if the individual receives the UBI payment and zero otherwise):
 
 $$
 \text{Total Earnings}_i = \alpha + \beta \cdot \text{UBI} + \varepsilon_i
@@ -689,9 +682,9 @@ What is the predicted earnings for someone who does receive UBI?
 $$ 
 \text{Predicted Earnings} = \alpha + \beta \cdot 1 =\alpha + \beta
 $$
-So $\alpha$ is the predicted earnings for individuals who don't receive the UBI payment. In other words, this is the expected earnings for control workers. $\beta$ is the difference in earnings for participants that receive UBI, relative to those that do not. In other words, if we predict control workers will have earnings of 50,000, and UBI recipients have earnings of 60,000, then $\hat{\beta}=10,000$.
+So $\alpha$ is the predicted earnings for individuals who don't receive the UBI payment. In other words, this is the expected earnings for control workers. $\beta$ is the difference in earnings for participants that receive UBI, relative to those that do not. In other words, if we predict control workers will have earnings of 50,000, and UBI recipients have earnings of 60,000, then $\hat{\alpha}=50,000$ and $\hat{\beta}=10,000$.
 
-Finally, let's change the prior example slightly so that both the dependent and independent variable are binary. Instead of studying the impact of UBI on earnings, let's study the impact on employment 
+Finally, let's change the prior example slightly so that both the dependent and independent variable are binary. Instead of studying the impact of UBI on earnings, let's study the impact on employment: 
 
 $$
 \text{Employment}_i = \alpha + \beta \cdot \text{UBI} + \varepsilon_i
@@ -712,7 +705,7 @@ $$
 
 In other words, of those who do receive UBI, $\alpha + \beta$ percent are employed. $\beta$ is the percentage point difference in employment rates between those who receive UBI vs. those that do not. For example, imagine 80 percent of control workers are employed, while 75 percent of UBI recipients are employed. In this case $\hat{\alpha}=0.80$, while $\hat{\beta}=-0.05$. In this case, we would conclude that received UBI decreases the probability of being employed by 5 percentage points.
 
-There are a few lessons from this chapter that you should internalize for the rest of this book. In order to write clearly about your results, important to understand if your variables are continuous or binary. If the $Y$ variable is binary, you can interpret the $\beta$ coefficients as changes in the probability of having $Y=1$. For example, a 1-unit increase in temperature is associated with a $\beta$ percentage point change in the probability of voting. If the $X$ variable is binary indicator, then $\alpha$ is average of $Y$ if $X=0$, while $\alpha+\beta$ is average of $Y$ if $X=1$. 
+There are a few lessons from this chapter that you should internalize for the rest of this book. In order to write clearly about your results, it is important to understand if your variables are continuous or binary. If the $Y$ variable is binary, you can interpret the $\beta$ coefficients as changes in the probability of having $Y=1$. For example, a 1-unit increase in temperature is associated with a $\beta$ percentage point change in the probability of voting. If the $X$ variable is binary indicator, then $\alpha$ is average of $Y$ if $X=0$, while $\alpha+\beta$ is average of $Y$ if $X=1$. 
 
 ## Mindspark Results
 
@@ -787,7 +780,7 @@ Now if I want to save these estimates I can type
 est store reg_math
 ```
 
-The part of the code that reads ``reg1`` is giving the estimates a name that you will use later. You can change this name depending on your application. For example, I could have replaced ``reg_math`` with ``reg_math_scores`` in the code above and the code would have executed without error. Next, let's estimate the impact of treatment on Hindi scores and store the estimates as ``reg2``. To save, space, I will suppress the output of the regression:
+The part of the code that reads ``reg_math`` is giving the estimates a name that you will use later. You can change this name depending on your application. For example, I could have replaced ``reg_math`` with ``reg_math_scores`` in the code above and the code would have executed without error. Next, let's estimate the impact of treatment on Hindi scores and store the estimates as ``reg_hindi``. To save, space, I will suppress the output of the regression:
 
 ```{stata, eval=F}
 reg per_hindi2 treat
@@ -802,7 +795,7 @@ outreg2 [reg_math reg_hindi] using reg_table.doc, word replace
 
 Let's go through each step of the code
 
-  - ``outreg2 [reg_math reg_hindi]`` -- tells Stata to use ``outreg2`` to creat a regression table. The table will have two columns: one that displays the math regression results and one that displays the Hindi results.
+  - ``outreg2 [reg_math reg_hindi]`` -- tells Stata to use ``outreg2`` to create a regression table. The table will have two columns: one that displays the math regression results and one that displays the Hindi results.
   
   - ``using reg_table.doc`` -- tells Stata to create a new file named ``reg_table.doc`` in the working directory that contains the regression table.
   
@@ -811,14 +804,14 @@ Let's go through each step of the code
 Now let's see what this command generates.
 
 ```{r, regtabbasic, echo=FALSE, out.width="80%", fig.cap="Regression Table",fig.align='center'}
-knitr::include_graphics("images/04_basic_reg_table.png")
+knitr::include_graphics("images/04_reg_table_basic.png")
 ``` 
 
-There are certainly some aesthetic changes that are needed in this table. But before we get to these, let's discuss the actual elements of the table. Many regression tables in academic articles have similar format as the one seen here:
+There are certainly some aesthetic changes that are needed in this table. But before we get to these, let's discuss the actual elements of the table. Many regression tables in academic articles have similar format as the one seen here.
 
 First, we should clarify that the numbers in each column correspond to a given regression estimate. Column 1 estimates the impact of Mindspark on math test scores, while column 2 estimates the impact of Mindspark on Hindi test scores. Generally, the column is titled with the dependent variable. Therefore, in this case, we can see that the dependent variable in column 1 is ``per_math2`` and the dependent variable in column 2 is ``per_hindi2``. 
 
-Then, in each row, we have independent variables. In this case, our regressions have the same independent variable: ``treat``. In addition to any independent variables, regression estimates (generally) display the constant or intercept as well. 
+Then, in each row, we have independent variables. In this case, our regressions have the same independent variable: ``treat``. In addition to any independent variables, regression estimates (generally) display the constant (also known as the intercept) as well. 
 
 The coefficient estimates are then given by the numbers that are not in parentheses. See Figure \@ref(fig:regcoefs), which highlights the coefficient estimates in the table. If you are confused what the numbers correspond to, you should go back to your original regression output in Stata, and see how the estimates from those regressions map to this table.
 
@@ -826,9 +819,9 @@ The coefficient estimates are then given by the numbers that are not in parenthe
 knitr::include_graphics("images/04_reg_table_coefs.png")
 ``` 
 
-Now, there are a lot of elements in this table that we haven't explain yet. Standard errors (in parentheses) and p-values (indicated by the stars) are concepts we will not discuss in this course. In research, generally, it is important to not understand the magnitude of a treatment effect, but also whether it is statistically significant. There is a lot more work we would need to do to understand statistical significance, but a basic intuition is that we are more confident in results that are statistically significant. If a result is statistically significant, then we don't think any treatment effect we estimate is due to chance. The "***" in the table and the standard errors are informative of the statistical significance of the results, but we will not discuss these further in this course.
+Now, there are a lot of elements in this table that we haven't explain yet. Standard errors (in parentheses) and p-values (indicated by the stars) are concepts we will not discuss in this course. In research, generally, it is important to not understand the magnitude of a treatment effect, but also whether it is statistically significant. We have not defined the concept of statistical significance. You will learn about this in other statistics or econometrics courses. Both standard errors and p-values (indicated by the stars) are related to statistical significance of the results.
 
-Finally, the R-squared is a measure of how much variation we can explain using our explanatory variables. The concept of R-squared is something you will learn in future statistics or econometrics courses, and will not be a subject we cover in this course.
+Finally, the R-squared is a measure of how much variation we can explain using our explanatory variables. The concept of R-squared is something you will learn in future statistics or econometrics courses as well and will not be a subject we cover in this course.
 
 Now that we understand the format of the table, let's edit the table in order to make it more easily interpretable for a reader. First, we should add a descriptive title. You can do this by using the ``title()`` option of ``outreg2``. Second, we can delete a few superfluous items, such as "VARIABLES", "reg_math" and "reg_hindi". You can do this by directly editing the table in Word. Lastly, it is better to use full phrases that describe your variables, not the variable names we have in the code. Again you can make these edits in Word. After making these changes, we finally have a nice, publication-ready regression table:
 
@@ -838,39 +831,55 @@ knitr::include_graphics("images/04_reg_table_improved.png")
 
 ## Conditional Regressions
 
-To summarize our results so far, we have found that Mindspark is effective in increasing test scores in both math and Hindi. But maybe it is more effective for some students relative to others. In this section, we are going to explore treatment effect heterogeneity. Often it is important to understand treatment effect heterogeneity if you are trying to understand how this treatment will work in other settings. For example, would we find different results if this were implemented in an all-girls or all-boys school? Would we find different results if this were implemented in wealthier neighborhoods? Would it be a less useful treatment in areas in which achievement was already high to begin with? We can use our existing experiment to see if the treatment effect varies by different characteristics, such as gender, socioeconomic status, and baseline achievement. 
+So far we have found that Mindspark is effective in increasing test scores in both math and Hindi on average. But maybe it is more effective for some students relative to others? In this section, we are going to explore treatment effect heterogeneity. Often it is important to understand treatment effect heterogeneity if you are trying to understand how this treatment will work in other settings. For example, would we find different results if this were implemented in an all-girls or all-boys school? Would we find different results if this were implemented in wealthier neighborhoods? Would it be a less useful treatment in areas in which achievement was already high to begin with? We can use our existing experiment to see if the treatment effect varies by different characteristics, such as gender, socioeconomic status, and baseline achievement. 
 
-So how do we estimate treatment effect heterogeneity? Well, it is pretty simple. If we want to estimate the treatment effect for females only, then we should restrict our sample to females. Then, among this smaller sample of participants, we can estimate the treatment effect. 
+So how do we estimate treatment effect heterogeneity? Well, if we want to estimate the treatment effect for females only, for example, then we should restrict our sample to females. Then, among this smaller sample of participants, we can estimate the treatment effect. 
 
 The easiest way to implement this idea in Stata is through the use of conditional regressions. In this case, the word conditional implies on individuals that meet some certain condition are included in the estimation. 
 
 For example, if we want to estimate the treatment effect in a linear regression framework, but restricted only to females, we can type:
 
-```{stata}
+```{stata, echo=TRUE, eval=FALSE}
+reg per_math2 treat if st_female1==1
+```
+
+```{stata, echo=FALSE, eval=TRUE}
 reg per_math2 treat if st_female1==1
 ```
 
 The part of the code ``st_female1==1`` implies the regression ``reg per_math2 treat`` should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate treatment effect, but restricted only to males:
 
-```{stata}
+```{stata, echo=FALSE, eval=TRUE}
+reg per_math2 treat if st_female1==0
+```
+
+```{stata, echo=TRUE, eval=FALSE}
 reg per_math2 treat if st_female1==0
 ```
 
 Now, in our first regression, we find $\hat{\beta}^{female}$ = 0.071. This implies treatment increases percent score correct by 7.1 percentage points for females. In our second regression, we find $\hat{\beta}^{male}$ = 0.102. Treatment increases percent score correct by 10.2 percentage points for males. Therefore, overall, the treatment effect is slightly larger for males relative to females. However, in both cases, it appears that overall, the treatment is quite effective. 
 
-Next, let's consider if the treatment effects vary by socieconomic status. In the data, we have a variable named ``ses_index``. An **index** is a variable that aggregates infomration from many different variables. For example, in our setting, SES index captures different aspects of household wealth. It is constructed from variables that capture ownership of various consumer goods and services. A higher SES index indicates higher wealth.  Our SES index is scaled so that it is on average equal to zero in our sample. Therefore, individuals with postive values of SES index are wealthier than the average student in the experiment, individuals with negative values of SES index are poorer than the average student in the experiment. Let's test whether the treatment effect is different for students with above-average socioeconomic status vs. below-average socieconomic status. 
+Next, let's consider if the treatment effects vary by socieconomic status. In the data, we have a variable named ``ses_index``. An **index** is a variable that aggregates information from many different variables. For example, in our setting, SES index captures different aspects of household wealth. It is constructed from variables that capture ownership of various consumer goods and services. A higher SES index indicates higher wealth.  Our SES index is scaled so that it is on average equal to zero in our sample. Therefore, individuals with positive values of SES index are wealthier than the average student in the experiment, individuals with negative values of SES index are poorer than the average student in the experiment. Let's test whether the treatment effect is different for students with above-average socioeconomic status vs. below-average socieconomic status. 
 
 Our first regression will be estimated on individuals with below-average SES index. 
 
-```{stata}
+```{stata,echo=TRUE,eval=FALSE}
+reg per_math2 treat if ses_index<0
+```
+
+```{stata,echo=FALSE,eval=TRUE}
 reg per_math2 treat if ses_index<0
 ```
 
 Our second regression will be estimated on individuals with above-average SES index. 
 
 
-```{stata}
-reg per_math2 treat if ses_index<0
+```{stata,echo=TRUE,eval=FALSE}
+reg per_math2 treat if ses_index>0
+```
+
+```{stata,echo=FALSE,eval=TRUE}
+reg per_math2 treat if ses_index>0
 ```
 
 In regression 1, we find $\hat{\beta}^{lowSES}$ = 0.087. Treatment increases percent score correct by 8.7 percentage points for individuals with below-average SES. In regression 2, we find $\hat{\beta}^{highSES}$ = 0.075. Treatment increases percent score correct by 7.5 percentage points for individuals with above-average SES. Therefore, the treatment effect is slightly larger for low-SES, but quite similar overall.
@@ -897,22 +906,31 @@ gen above_median = (per_math1 > median_test_score)
 
 Now that we have our indicator variable, we can now estimate two regressions: (1) a regression restricted to above-median performers and (2) a regression restricted to below-median performers.
 
-```{stata}
+```{stata,echo=TRUE,eval=FALSE}
+reg per_math2 treat if above_median==1
+```
+
+```{stata,echo=FALSE,eval=TRUE}
 reg per_math2 treat if above_median==1
 ```
 
 
-```{stata}
+```{stata,echo=TRUE,eval=FALSE}
 reg per_math2 treat if above_median==0
 ```
 
-We find that $\hat{\beta}^{above}$ = 0.095. Treatment increases percent score correct by 9.5 percentage points for above-median scoring students. We find $\hat{\beta}^{below}$ = 0.088. Treatment increases percent score correct by 8.8 percentage points for below-median scoring students. The treatment effect is slightly larger for above-median scoring students, but quite similar overall
+```{stata,echo=FALSE,eval=TRUE}
+reg per_math2 treat if above_median==0
+```
+
+
+We find that $\hat{\beta}^{above}$ = 0.095. Treatment increases percent score correct by 9.5 percentage points for above-median scoring students. We find $\hat{\beta}^{below}$ = 0.088. Treatment increases percent score correct by 8.8 percentage points for below-median scoring students. The treatment effect is slightly larger for above-median scoring students, but quite similar overall.
 
 To summarize our results in this chapter, we tested for heterogeneity in treatment effects by (1) gender, (2) SES status and (3) baseline achievement. While we found some evidence of heterogeneity, impacts were large and positive for all groups. This provides evidence on the **external validity** of the treatment. If we expand this program to more students, perhaps with different baseline characteristics, we might predict that it will still be effective given its ability to raise test scores for different types of students.
 
 ## Conclusion
 
-In this final section we will summarize what we have learned so far and then present additional results from Muralidharan, Singh, and Ganimian (2019). The motivation for Muralidharan, Singh, and Ganimian (2019) is that in certain settings, their may be a mismatch between students' level of understanding and the curriculum they are being taught. One potential tool that can be used to alleviate this probelm is technology. In Muralidharan, Singh, and Ganimian (2019), the authors test if Mindspark, a software that aims to teach-at-the-right level is successful in increasing test scores. In this chapter, we used the data from this experiment and found large test score gains.
+In this final section we will summarize what we have learned so far and then present additional results from Muralidharan, Singh, and Ganimian (2019). The motivation for Muralidharan, Singh, and Ganimian (2019) is that in certain settings, there may be a mismatch between students' level of understanding and the curriculum they are being taught. One potential tool that can be used to alleviate this problem is technology. In Muralidharan, Singh, and Ganimian (2019), the authors test if Mindspark, a software that aims to teach-at-the-right level is successful in increasing test scores. In this chapter, we used the data from this experiment and found large test score gains.
 
 Whenever you find some experimental result, you might want to think carefully about what is driving the result. For example, the treatment in this setting is really a combination of a few things.  
 
@@ -924,7 +942,7 @@ Although we did not focus on this second component, every Mindspark center inclu
 
 Well, Berry and Mukherjee (2016)[@berry2016pricing] studies the impact of private tutoring in Delhi. This is a very similar intervention, but without the software to teach-at-the-right level. Instead teaching was focused on the current grade level of the student (not the assessed level). Berry and Mukherjee (2016) find no impact of this intervention. This suggests that the individual targeting aspect of the software was essential for the results.
 
-The key difficulty that Mindspark software attempts to overcome is the huge heterogeneity in understanding in a classroom. As an instructor, teaching effectively when learning levels vary widely is difficult.Once Mindspark is programmed, it can do this automatically. We can actually look in the data and see how Mindspark updates material over time for different students.
+The key difficulty that Mindspark software attempts to overcome is the huge heterogeneity in understanding in a classroom. As an instructor, teaching effectively when learning levels vary widely is difficult. Once Mindspark is programmed, it can do this automatically. We can actually look in the data and see how Mindspark updates material over time for different students.
 
 ```{r, dynamic, echo=FALSE, out.width="80%", fig.cap="Dynamic Updating of Mindspark",fig.align='center'}
 knitr::include_graphics("images/04_fig.png")
@@ -932,9 +950,9 @@ knitr::include_graphics("images/04_fig.png")
 
 Panel A of Figure \@ref(fig:dynamic) plots the grade level that of questions that are proposed by Mindspark over time, for different grade levels. As you can see, individuals (on average) are starting well-below grade level. For example, the solid black line is grade 9, and the questions being posed to these students are between grades 4 and 5. But over time, the assessed level increases. About 5 months later, the difficulty of the questions have increased by almost an entire year. This figure is plotting how individuals are learning over time. 
 
-Panel B, instead, plots the grade level that of questions that are proposed by Mindspark over time, for different levels of baseline achievement. The key takeaway from this graph is that regardless of baseline achievement, Mindspark is succesful in improving updating over time. The rates of learning are actually quite similar for different levels of baseline achievement. 
+Panel B, instead, plots the grade level of questions that are proposed by Mindspark over time for different levels of baseline achievement. The key takeaway from this graph is that regardless of baseline achievement, Mindspark is succesful in improving updating over time. The rates of learning are actually quite similar for different levels of baseline achievement. 
 
-So now are relatively certain Mindspark is succesful in increasing learning, but does that imply we should invest in it as a resource for students? Whenever there is a proposed policy, there is bound to be a cost-benefit analysis. Policymakers generally have a number of different tools at their disposal, so you want to invest in the right tool. In order to do this, you need both the cost and benefits of the proposed policy. Running an experiment is a great way to estimate the benefits of a proposed intervention. Now that we know the benefits of Mindspark from our experiment, it is time to turn to the costs. 
+So now we are relatively certain Mindspark is succesful in increasing learning, but does that imply we should invest in it as a resource for students? Whenever there is a proposed policy, there is bound to be a cost-benefit analysis. Policymakers generally have a number of different potential policies they may pursue, so you want to invest in the right policy. In order to do this, you need both the cost and benefits of the proposed policy. Running an experiment is a great way to estimate the benefits of a proposed intervention. Now that we know the benefits of Mindspark from our experiment, it is time to turn to the costs. 
 
 To do so, let's compare the cost of Mindspark to traditional government-run schools.  Government-run schools spend about 240 minutes per week on Math and Hindi. The cost per pupil is around INR 1500 (US \$22). Mindspark spends about 180 minutes per week on Math and Hindi. Cost per pupil is around INR 1000 (US \$15). Using the estimates from the paper, Mindspark led to more learning in less time than government-run schools, as well as utilizing less financial resources.
 

@@ -324,7 +324,7 @@ r(111);
 
 The variable ``student_id`` was not found because the variable ``student_id`` does not exist in the using dataset. In order to merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the ``rename`` command to ensure the names are the same. 
 
-Similarly, matching variables not only have to have the same name, but they must be the same type of variable. For example, in Figure \@ref(fig:sametype), the student variable is stored as a string in the first dataset (which is why it is highlighted in red), while it is stored as a numeric variable in the second dataset (which is why it is highlighted in black).
+Similarly, matching variables must be the same type of variable. For example, in Figure \@ref(fig:sametype), the student variable is stored as a string in the first dataset (which is why it is highlighted in red), while it is stored as a numeric variable in the second dataset (which is why it is highlighted in black).
 
 <div class="figure" style="text-align: center">
 <img src="images/03_sameformat.png" alt="Example of Merge with Different Types for Matching Variable" width="60%" />
@@ -338,8 +338,9 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are matched -- must be of the same generic type in the master and using datasets.  Same
-    generic type means both numeric or both string.
+    Each key variable -- the variables on which observations are matched -- must be of the
+    same generic type in the master and using datasets.  Same generic type means both
+    numeric or both string.
 r(106);
 
 end of do-file
@@ -421,7 +422,7 @@ Number of unique values of date is  1186
 Number of records is  1186
 ```
 
-In this dataset, there are 1186 unique values of date, and 1186 records. Therefore, each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a ``many-to-one`` merge. There are many observations per value of ``date`` in the stops data, but one observation per value of ``date`` in the sunset data. 
+In this dataset, there are 1186 unique values of date and 1186 records. Each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a ``many-to-one`` merge. There are many observations per value of ``date`` in the stops data, but one observation per value of ``date`` in the sunset data. 
 
 The last thing we need to do is to check that the format of the date variable is the same in both datasets. Let's look at the first observation in the ``sd_sunset.dta``
 
@@ -860,7 +861,7 @@ graph bar fraction, ///
 <p class="caption">(\#fig:bar3)Fraction of Stops by Race and Light Condition</p>
 </div>
 
-I don't expect you will need this next option too often. The option ``asyvars`` treats the first ``over()`` groups as a y-variable. In our case this will make the ``Light`` and ``Dark`` labels will appear in a legend instead of on the x-axis. This will make the graph look a little cleaner and easier to interpret quickly:
+Next, let's try to make our graph even easier to read. In practice, I don't expect you will need this next option too often, but it helps in our case. The option is ``asyvars``, which treats the first ``over()`` group as a y-variable. What does this do in our case? Basically, it makes the ``Light`` and ``Dark`` labels appear in a legend instead of on the x-axis. This will make the graph look a little cleaner and easier to interpret quickly:
 
 
 ```stata
@@ -875,7 +876,7 @@ graph bar fraction, asyvars ///
 <p class="caption">(\#fig:bar4)Fraction of Stops by Race and Light Condition</p>
 </div>
 
-The last step is we can change the colors of the bars:
+The last step is we can change the colors of the bars. In the code below, ``bar(1, fcolor(sky))`` changes the ``Light`` bars to a sky blue. ``bar(2,color(vermillion))`` changes the ``Dark`` bars to vermillion.
 
 
 ```stata
@@ -904,7 +905,7 @@ Another assumption is that driving behavior is the same before and after dark. W
   
 This data has a lot of possibilities and we have explored only a small portion of it. In this final section let's think about a few more possible questions to explore.
 
-First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why? What factors predict high levels of discriminatory behavior. Are there policies that could be used to reduce discriminatory behavior?
+First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why? What factors predict high levels of discriminatory behavior? Are there policies that could be used to reduce discriminatory behavior?
   
 Second, we have focused on the initial decision to stop a driver. There could be discrimination at other stages of the stop. For example, are police officers more likely to search for contraband if the driver is a minority? This is something the researchers at the Stanford Open Policing Project have explored. Below is a figure from the SOPP website that shows search rates by race across different U.S. 
 

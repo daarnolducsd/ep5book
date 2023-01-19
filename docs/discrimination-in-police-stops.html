@@ -334,7 +334,7 @@ Figure 3.12: Example of Merge with Different Names for Matching Varaibles
 <span id="cb58-6"><a href="discrimination-in-police-stops.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
 <span id="cb58-7"><a href="discrimination-in-police-stops.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
 <p>The variable <code>student_id</code> was not found because the variable <code>student_id</code> does not exist in the using dataset. In order to merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the <code>rename</code> command to ensure the names are the same.</p>
-<p>Similarly, matching variables not only have to have the same name, but they must be the same type of variable. For example, in Figure <a href="discrimination-in-police-stops.html#fig:sametype">3.13</a>, the student variable is stored as a string in the first dataset (which is why it is highlighted in red), while it is stored as a numeric variable in the second dataset (which is why it is highlighted in black).</p>
+<p>Similarly, matching variables must be the same type of variable. For example, in Figure <a href="discrimination-in-police-stops.html#fig:sametype">3.13</a>, the student variable is stored as a string in the first dataset (which is why it is highlighted in red), while it is stored as a numeric variable in the second dataset (which is why it is highlighted in black).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:sametype"></span>
 <img src="images/03_sameformat.png" alt="Example of Merge with Different Types for Matching Variable" width="60%"><p class="caption">
@@ -345,12 +345,13 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 <div class="sourceCode" id="cb59"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb59-1"><a href="discrimination-in-police-stops.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
 <span id="cb59-2"><a href="discrimination-in-police-stops.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
 <span id="cb59-3"><a href="discrimination-in-police-stops.html#cb59-3" aria-hidden="true" tabindex="-1"></a>key <span class="kw">variable</span> student is str1 <span class="kw">in</span> master but <span class="kw">float</span> <span class="kw">in</span> <span class="kw">using</span> <span class="kw">data</span></span>
-<span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the same generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same</span>
-<span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    generic <span class="dv">type</span> <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
-<span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
-<span id="cb59-7"><a href="discrimination-in-police-stops.html#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-8"><a href="discrimination-in-police-stops.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb59-9"><a href="discrimination-in-police-stops.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
+<span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the</span>
+<span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    same generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span> both</span>
+<span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
+<span id="cb59-7"><a href="discrimination-in-police-stops.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
+<span id="cb59-8"><a href="discrimination-in-police-stops.html#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="discrimination-in-police-stops.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb59-10"><a href="discrimination-in-police-stops.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
 <p>This error code is describing how the format of the variables is different in our master vs. using dataset. To fix this issue, we need to convert one of the variable formats. For example, we could type <code>destring student, replace</code> to convert the student variable to a numeric variable in the <code>test_score3.dta</code> dataset.</p>
 <p>Lastly, we have discussed one-to-one merges, many-to-one merges and one-to-many merges, but what about many-to-many merges? The reason we have not discussed it is because <strong>you should never do many-to-many merges in Stata</strong>. In most cases, the right way to proceed if you find yourself faced with a many-to-many merge is to restructure your data. Usually you can use some data wrangling (like <code>collapse</code>) to transform your data into a one-to-one, many-to-one or one-to-many merge. There is a command <code>joinby</code> that does accomplish something like a many-to-many merge, but we will not discuss this command in this book.</p>
 </div>
@@ -384,7 +385,7 @@ Number of records is  381149</code></pre>
 <div class="sourceCode" id="cb66"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb66-1"><a href="discrimination-in-police-stops.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
 <pre><code>Number of unique values of date is  1186
 Number of records is  1186</code></pre>
-<p>In this dataset, there are 1186 unique values of date, and 1186 records. Therefore, each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a <code>many-to-one</code> merge. There are many observations per value of <code>date</code> in the stops data, but one observation per value of <code>date</code> in the sunset data.</p>
+<p>In this dataset, there are 1186 unique values of date and 1186 records. Each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a <code>many-to-one</code> merge. There are many observations per value of <code>date</code> in the stops data, but one observation per value of <code>date</code> in the sunset data.</p>
 <p>The last thing we need to do is to check that the format of the date variable is the same in both datasets. Let's look at the first observation in the <code>sd_sunset.dta</code></p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb68-1"><a href="discrimination-in-police-stops.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
 <span id="cb68-2"><a href="discrimination-in-police-stops.html#cb68-2" aria-hidden="true" tabindex="-1"></a>      |      <span class="fu">date</span> |</span>
@@ -650,7 +651,7 @@ Figure 3.25: Fraction of Stops by Race and Light Condition
 Figure 3.26: Fraction of Stops by Race and Light Condition
 </p>
 </div>
-<p>I don't expect you will need this next option too often. The option <code>asyvars</code> treats the first <code>over()</code> groups as a y-variable. In our case this will make the <code>Light</code> and <code>Dark</code> labels will appear in a legend instead of on the x-axis. This will make the graph look a little cleaner and easier to interpret quickly:</p>
+<p>Next, let's try to make our graph even easier to read. In practice, I don't expect you will need this next option too often, but it helps in our case. The option is <code>asyvars</code>, which treats the first <code>over()</code> group as a y-variable. What does this do in our case? Basically, it makes the <code>Light</code> and <code>Dark</code> labels appear in a legend instead of on the x-axis. This will make the graph look a little cleaner and easier to interpret quickly:</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb103-1"><a href="discrimination-in-police-stops.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, asyvars <span class="co">///</span></span>
 <span id="cb103-2"><a href="discrimination-in-police-stops.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
 <span id="cb103-3"><a href="discrimination-in-police-stops.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
@@ -661,7 +662,7 @@ Figure 3.26: Fraction of Stops by Race and Light Condition
 Figure 3.27: Fraction of Stops by Race and Light Condition
 </p>
 </div>
-<p>The last step is we can change the colors of the bars:</p>
+<p>The last step is we can change the colors of the bars. In the code below, <code>bar(1, fcolor(sky))</code> changes the <code>Light</code> bars to a sky blue. <code>bar(2,color(vermillion))</code> changes the <code>Dark</code> bars to vermillion.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb104-1"><a href="discrimination-in-police-stops.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, asyvars <span class="co">///</span></span>
 <span id="cb104-2"><a href="discrimination-in-police-stops.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
 <span id="cb104-3"><a href="discrimination-in-police-stops.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
@@ -684,7 +685,7 @@ Figure 3.28: Fraction of Stops by Race and Light Condition
 <p>Let's discuss a few of the implicit assumptions in the veil of darkness test. First, we assumed driver race is unobservable after dusk. But what about artificial lighting, like street lamps? If in certain areas officers can detect race, then this method will underestimate level of discrimination. In other words, if driver race is observed in both sunlight and darkness, then the logic of the test as a method to identify discrimination no longer holds.</p>
 <p>Another assumption is that driving behavior is the same before and after dark. What if minority drivers adjust their driving behavior because of potential racial profiling in daylight? Kalinowski, Ross, and Ross (2021)<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Jesse Kalinowski et al., &lt;span&gt;“Endogenous Driving Behavior in Veil of Darkness Tests for Racial Profiling,”&lt;/span&gt; &lt;em&gt;Human Capital and Economic Opportunity (HCEO) Working Paper&lt;/em&gt; 17 (2017).&lt;/p&gt;"><sup>4</sup></a></span> find evidence that this is true in certain areas.</p>
 <p>This data has a lot of possibilities and we have explored only a small portion of it. In this final section let's think about a few more possible questions to explore.</p>
-<p>First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why? What factors predict high levels of discriminatory behavior. Are there policies that could be used to reduce discriminatory behavior?</p>
+<p>First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why? What factors predict high levels of discriminatory behavior? Are there policies that could be used to reduce discriminatory behavior?</p>
 <p>Second, we have focused on the initial decision to stop a driver. There could be discrimination at other stages of the stop. For example, are police officers more likely to search for contraband if the driver is a minority? This is something the researchers at the Stanford Open Policing Project have explored. Below is a figure from the SOPP website that shows search rates by race across different U.S.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:searchrates"></span>
@@ -906,7 +907,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-08.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

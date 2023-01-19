@@ -65,7 +65,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_YJJJDZQKQO'><label><input type="radio" autocomplete="off" name="radio_YJJJDZQKQO" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_YJJJDZQKQO" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_YJJJDZQKQO" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_YGNOMJWXJJ'><label><input type="radio" autocomplete="off" name="radio_YGNOMJWXJJ" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_YGNOMJWXJJ" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_YGNOMJWXJJ" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_HLLYENSTVF'><label><input type="radio" autocomplete="off" name="radio_HLLYENSTVF" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_HLLYENSTVF" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_HLLYENSTVF" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_HLLYENSTVF" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_IXOKCHQRBS'><label><input type="radio" autocomplete="off" name="radio_IXOKCHQRBS" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_IXOKCHQRBS" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_IXOKCHQRBS" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_IXOKCHQRBS" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::
@@ -894,7 +894,7 @@ At the same time, many schools with very high access rates have been trending to
 **<u>Setup Commands</u>**
 
 - `cd filepath` – this changes the working directory in Stata You should replace
-``filepath`` with a file path of your choosing. If you have spaces in your file path, you need to put it into quotation marks. For example the code: ``cd /Users/David Arnold/Desktop``, will not work, while the code: ``cd “/Users/David Arnold/Desktop"`` will work.
+``filepath`` with a file path of your choosing. If you have spaces in your file path, you need to put it into quotation marks.
 
 
 - ``clear all`` -- clears data from Stata
