@@ -849,11 +849,11 @@ reg per_math2 treat if st_female1==1
 
 The part of the code ``st_female1==1`` implies the regression ``reg per_math2 treat`` should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate treatment effect, but restricted only to males:
 
-```{stata, echo=FALSE, eval=TRUE}
+```{stata, echo=TRUE, eval=FALSE}
 reg per_math2 treat if st_female1==0
 ```
 
-```{stata, echo=TRUE, eval=FALSE}
+```{stata, echo=FALSE, eval=TRUE}
 reg per_math2 treat if st_female1==0
 ```
 

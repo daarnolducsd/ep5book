@@ -150,13 +150,13 @@ Figure 7.1: Time Spent on Childcare by Parents, by Educational Attainment, 1965-
 <p>Let's try another example. Say we take a random draw from three numbers: -1, 0, and 1. We can take a random draw from this list of numbers by using the sample function:</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="the-rug-rat-race.html#cb287-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb287-2"><a href="the-rug-rat-race.html#cb287-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb287-3"><a href="the-rug-rat-race.html#cb287-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span></span></code></pre></div>
+<span id="cb287-3"><a href="the-rug-rat-race.html#cb287-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="dv">1</span></span></code></pre></div>
 <p>The part of the code <code>-1:1</code> controls what numbers will be drawn. If you type <code>-1:1</code> in R, you will see it prints out the numbers -1,0, and 1. The second part of the code <code>,1</code> tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.</p>
 <p>So now let's write a conditional statement that depends on the outcome of x. Let's write some code that returns the absolute value of x, but only if x is less than zero.</p>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="the-rug-rat-race.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&lt;</span><span class="dv">0</span>){</span>
+<span id="cb288-2"><a href="the-rug-rat-race.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abs</span>(x)</span>
+<span id="cb288-3"><a href="the-rug-rat-race.html#cb288-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb288-4"><a href="the-rug-rat-race.html#cb288-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
 <p>Next, let's discuss <code>else</code> statements. Sometimes, we want to execute certain code if the statement is TRUE, but some other code if it is FALSE. For example, in our first example, imagine if the <code>door</code> object is not equal to <code>locked</code> then we want R to print out the message <code>Please Come in!</code>. The way we can do this in R is with an <code>else</code> statement:</p>
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="the-rug-rat-race.html#cb289-1" aria-hidden="true" tabindex="-1"></a>door <span class="ot">&lt;-</span> <span class="st">"locked"</span></span>
 <span id="cb289-2"><a href="the-rug-rat-race.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (door<span class="sc">==</span><span class="st">"locked"</span>){</span>
@@ -947,7 +947,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-18.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

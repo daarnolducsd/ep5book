@@ -1066,6 +1066,11 @@ reg per_math2 treat if st_female1==1
 The part of the code ``st_female1==1`` implies the regression ``reg per_math2 treat`` should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate treatment effect, but restricted only to males:
 
 
+```stata
+reg per_math2 treat if st_female1==0
+```
+
+
 ```
       Source |       SS           df       MS      Number of obs   =       125
 -------------+----------------------------------   F(1, 123)       =     12.67
@@ -1080,11 +1085,6 @@ The part of the code ``st_female1==1`` implies the regression ``reg per_math2 tr
        treat |   .1017787   .0285899     3.56   0.001     .0451867    .1583707
        _cons |   .4684034   .0198077    23.65   0.000     .4291953    .5076114
 ------------------------------------------------------------------------------
-```
-
-
-```stata
-reg per_math2 treat if st_female1==0
 ```
 
 Now, in our first regression, we find $\hat{\beta}^{female}$ = 0.071. This implies treatment increases percent score correct by 7.1 percentage points for females. In our second regression, we find $\hat{\beta}^{male}$ = 0.102. Treatment increases percent score correct by 10.2 percentage points for males. Therefore, overall, the treatment effect is slightly larger for males relative to females. However, in both cases, it appears that overall, the treatment is quite effective. 

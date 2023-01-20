@@ -792,6 +792,7 @@ Figure 4.18: Final Regression Table
        _cons |   .4636151    .011838    39.16   0.000     .4403447    .4868854
 ------------------------------------------------------------------------------</code></pre>
 <p>The part of the code <code>st_female1==1</code> implies the regression <code>reg per_math2 treat</code> should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate treatment effect, but restricted only to males:</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb155-1"><a href="classroom-technology.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> st_female1==0</span></code></pre></div>
 <pre><code>      Source |       SS           df       MS      Number of obs   =       125
 -------------+----------------------------------   F(1, 123)       =     12.67
        Model |  .323197879         1  .323197879   Prob &gt; F        =    0.0005
@@ -805,7 +806,6 @@ Figure 4.18: Final Regression Table
        treat |   .1017787   .0285899     3.56   0.001     .0451867    .1583707
        _cons |   .4684034   .0198077    23.65   0.000     .4291953    .5076114
 ------------------------------------------------------------------------------</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb156-1"><a href="classroom-technology.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> st_female1==0</span></code></pre></div>
 <p>Now, in our first regression, we find <span class="math inline">\(\hat{\beta}^{female}\)</span> = 0.071. This implies treatment increases percent score correct by 7.1 percentage points for females. In our second regression, we find <span class="math inline">\(\hat{\beta}^{male}\)</span> = 0.102. Treatment increases percent score correct by 10.2 percentage points for males. Therefore, overall, the treatment effect is slightly larger for males relative to females. However, in both cases, it appears that overall, the treatment is quite effective.</p>
 <p>Next, let's consider if the treatment effects vary by socieconomic status. In the data, we have a variable named <code>ses_index</code>. An <strong>index</strong> is a variable that aggregates information from many different variables. For example, in our setting, SES index captures different aspects of household wealth. It is constructed from variables that capture ownership of various consumer goods and services. A higher SES index indicates higher wealth. Our SES index is scaled so that it is on average equal to zero in our sample. Therefore, individuals with positive values of SES index are wealthier than the average student in the experiment, individuals with negative values of SES index are poorer than the average student in the experiment. Let's test whether the treatment effect is different for students with above-average socioeconomic status vs. below-average socieconomic status.</p>
 <p>Our first regression will be estimated on individuals with below-average SES index.</p>
@@ -1124,7 +1124,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-18.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
