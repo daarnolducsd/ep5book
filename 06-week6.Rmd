@@ -21,7 +21,7 @@ code {
 
 The motivation for this week's empirical application is the pervasive evidence of inequality in the labor market. For example, Black workers are about twice as likely as white workers to be unemployed (Council of Economic Advisors, 1998). However, it is often difficult to isolate discrimination from employers as source of a given disparity. For example, some argue researchers do not have all factors that go into an employer's decision to hire a worker, therefore differences in hiring rates across different races could be due to these other factors that are unobserved. 
 
-This week we will be studying an extremely clever method for identifying discrimination in the labor market: resume audit studies, also known as correspondence studies. The paper will be studying is Bertrand and Mullainathan (2004)[@bertrand2004emily] send fictitious resumes to help-wanted ads in Boston and Chicago. Their unique angle is that they manipulate the perception of race by altering the name on the resume: 
+This week we will be studying an extremely clever method for identifying discrimination in the labor market: resume audit studies, also known as correspondence studies. The paper we will be studying is Bertrand and Mullainathan (2004)[@bertrand2004emily] send fictitious resumes to help-wanted ads in Boston and Chicago. Their unique angle is that they manipulate the perception of race by altering the name on the resume: 
 
   - Examples of white-sounding names from the paper: Emily Walsh and Greg Baker 
   
@@ -31,7 +31,7 @@ All other characteristics of the applicant (experience, education, job history) 
 
 Why is this design so clever? Well, all factors relevant for a job are held fixed by construction. Disparities in callback rates between races can no longer be "explained away" by other factors. The researchers themselves have generated these resumes. All factors are observed and similar between white and Black applicants by construction. Therefore, if you do find a disparity now, then this is very strong evidence for discrimination in the labor market. 
   
-Before getting to the data though, we need to learn how to use the program we will be studying for the rest of the book: R. At this point, we would also like to credit Kosuke Imai's Textbook: Quantitative Social Science: An Introduction, which this example is drawn from.[@imai2018quantitative] 
+Before getting to the data though, we need to learn how to use the program we will be studying for the rest of the book: R. At this point, we would also like to credit Kosuke Imai's Textbook: Quantitative Social Science: An Introduction, where this example is drawn from.[@imai2018quantitative] 
 
 ## Installing R/RStudio
 
@@ -49,11 +49,11 @@ When you open RStudio, you will be greeted by the RStudio Interface depicted bel
 knitr::include_graphics("images/06_rstudio.png")
 ``` 
 
-So Let's discuss these 4 windows in turn. In the top left is the Editor Window. This is where you will write an R script that holds all of your code. You may not see this window initially if you have not yet opened an R script (which is the equivalent to a do-file in Stata). To open up a new R script you can go to ``File > New File > R Script``.
+Let's discuss these 4 windows in turn. In the top left is the Editor Window. This is where you will write an R script that holds all of your code. You may not see this window initially if you have not yet opened an R script (which is the equivalent to a do-file in Stata). To open up a new R script you can go to ``File > New File > R Script``.
 
 Below the Editor Window is the the Console. This is where all your code will be executed and run. For example, if you write code to take the average of a variable in the Editor Window, when you execute that code, the result will be displayed in the Console. 
 
-In the top right we have the Environment, which is going to store objects, variables, datasets in the environment. We will get more into what an object is further into the chapter. 
+In the top right we have the Environment, which is going to store objects, variables, and datasets. We will get more into what an object is further into the chapter. 
 
 Lastly, the bottom right window has a host of tabs that will be helpful. One that we will use frequently is the Plots tab. This is where figures that we create in R will be displayed. Another important tab is the Packages tab. Further in this chapter we will discuss the importance of packages in R. Lastly, we will also use the Help tab frequently. In this tab you can search for documentation on how to use certain functions in R. This is similar to help files that we often used in the Stata chapters. 
 
@@ -103,7 +103,7 @@ If we are ever unsure what a function does, we can utilize the help files. For e
 ?log
 ```
 
-Reading the help file will inform us that by default, the base of the log function is equal to e, which implies the default is to take the natural logarithm. Additionally, the help file tells you how to compute logarithms for different bases, such as base 10. 
+Reading the help file will inform us that by default, the base of the log function is equal to $e$, which implies the default is to take the natural logarithm. Additionally, the help file tells you how to compute logarithms for different bases, such as base 10. 
 
 As in Stata, it will be helpful to document your code. When doing empirical projects, you want to be able to go back to the code at a later date and quickly understand what the code is doing. Comments are essential for this. Again, comments are lines within a script that are not meant to be run. They are there to describe what the code is doing. 
 
@@ -135,7 +135,7 @@ It reports an error because ``Calculate`` is not executable code in R. By placin
 
   - A number, called ``numeric'' in R (e.g. $5.23$)
   - A text string, called ``character'' in R (e.g. "UCSD is awesome")
-  - A dataset (e.g. resume)
+  - A dataset (e.g. we will look at a resume dataset soon)
   - Many more!
 
 R can store objects with a name of our choice. In order to create an object, you can use the assignment operator ```<-```. For example, if I want to create an object named ``graduationdate``, which is equal to 2010, I would type 
@@ -144,10 +144,10 @@ R can store objects with a name of our choice. In order to create an object, you
 graduationdate <- 2010
 ```
 
-This will add to the Environment (top right window) a new object called graduation date, which is equal to 2010. Instead of the assignment operator ``<-``, we can also use ``=``. 
+This will add to the Environment (top right window) a new object called graduation date, which is equal to 2010. Instead of the assignment operator ``<-``, we can also use ``=``. While it is generally suggested to use the assignment operator in R when creating objects, the equals sign will also work, as below/ 
 
 ```{r, echo = TRUE}
-graduationdate <- 2010
+graduationdate = 2010
 ```
 
 Now that we have this object stored in memory, every time we type the word ``graduationdate``, R interprets the value of 2010. This means we can use our object in calculations. For example, to calculate the number of years between 2022 and the graduation date, we can type:
@@ -173,7 +173,7 @@ class(graduationdate)
 class(school)
 ```
 
-So far, every object we have created has a single value associated with it. Next, we will discuss vectors. A *vector* represents a collection of information of the same type stored in a specific order. For example, instead of the graduation date of a single individual, maybe we have information on the graduation date of four individuals. This collection of information constitutes a vector. We can create a vector in R by using the function ``c()``, which stands for "concatenate"/ For example, let's create a vector fo graduation dates:
+So far, every object we have created has a single value associated with it. Next, we will discuss vectors. A *vector* represents a collection of information of the same type stored in a specific order. For example, instead of the graduation date of a single individual, maybe we have information on the graduation date of four individuals. This collection of information constitutes a vector. We can create a vector in R by using the function ``c()``, which stands for "concatenate". For example, let's create a vector fo graduation dates:
 
 ```{r, echo = TRUE}
 #Create a vector of graduation dates
@@ -218,7 +218,7 @@ raise <- c(5, 10, 3, 20)
 income + raise
 ```
 
-In terms of data analaysis, we can really think of vectors as a variable. Our first variable was graduation date, our second variable was the school. Often, in data analysis, we want to compute some summary statistics of our variables. In R, there are a host of functions that are helpful in summarizing numeric vectors:
+In terms of data analysis, we can really think of vectors as a variable. Our first variable was graduation date, our second variable was the school. Often, in data analysis, we want to compute some summary statistics of our variables. In R, there are a host of functions that are helpful in summarizing numeric vectors:
 
   - ```length()```: length of a vector (number of elements)
   - ```min()```: minimum value
@@ -306,7 +306,7 @@ knitr::include_graphics("images/06_bluearrow.png")
 
 If you click on the name of the data frame, RStudio will open up a spreadsheet of all the data. This is similar to how we would use the ``browse`` command when using Stata. This allows you to look through the raw data and understand what the various variables are and what values they may take. 
 
-There are also a few ways to summarize information about the data frame. For example ``ncol()``, retrieves the number of columns. ``nrow()`` retrieves the number of columns. In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,780 rows. One thing we can do to quickly get a sense of the data is to type ``summary(resume)``. This provides some simple summary statistics for each variable in the data frame. 
+There are also a few ways to summarize information about the data frame. For example ``ncol()``, retrieves the number of columns. ``nrow()`` retrieves the number of rows In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,780 rows. One thing we can do to quickly get a sense of the data is to type ``summary(resume)``. This provides some simple summary statistics for each variable in the data frame. 
 
 ```{r, echo=T, eval=F}
 summary(resume)
@@ -372,7 +372,7 @@ write.csv(resume, file="resume1.csv")
 
 This will save the data frame ``resume`` which is currently in memory as a csv file named ``resume1.csv``. This file will be saved in your working directory. 
 
-There is also another format for data that is common in R: "RData". You can save your file as an RData file by using the ``save()`` function.
+There is also another format for data that is common in R: "RData". You can save your file as and RData file by using the ``save()`` function.
 
 ```{r,echo=T,eval=T}
 save(resume, file="resume1.RData")

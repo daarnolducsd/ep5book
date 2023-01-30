@@ -345,13 +345,12 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 <div class="sourceCode" id="cb59"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb59-1"><a href="discrimination-in-police-stops.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
 <span id="cb59-2"><a href="discrimination-in-police-stops.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
 <span id="cb59-3"><a href="discrimination-in-police-stops.html#cb59-3" aria-hidden="true" tabindex="-1"></a>key <span class="kw">variable</span> student is str1 <span class="kw">in</span> master but <span class="kw">float</span> <span class="kw">in</span> <span class="kw">using</span> <span class="kw">data</span></span>
-<span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the</span>
-<span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    same generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span> both</span>
-<span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
-<span id="cb59-7"><a href="discrimination-in-police-stops.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
-<span id="cb59-8"><a href="discrimination-in-police-stops.html#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-9"><a href="discrimination-in-police-stops.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb59-10"><a href="discrimination-in-police-stops.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
+<span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the same generic <span class="dv">type</span> <span class="kw">in</span></span>
+<span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
+<span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
+<span id="cb59-7"><a href="discrimination-in-police-stops.html#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-8"><a href="discrimination-in-police-stops.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb59-9"><a href="discrimination-in-police-stops.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
 <p>This error code is describing how the format of the variables is different in our master vs. using dataset. To fix this issue, we need to convert one of the variable formats. For example, we could type <code>destring student, replace</code> to convert the student variable to a numeric variable in the <code>test_score3.dta</code> dataset.</p>
 <p>Lastly, we have discussed one-to-one merges, many-to-one merges and one-to-many merges, but what about many-to-many merges? The reason we have not discussed it is because <strong>you should never do many-to-many merges in Stata</strong>. In most cases, the right way to proceed if you find yourself faced with a many-to-many merge is to restructure your data. Usually you can use some data wrangling (like <code>collapse</code>) to transform your data into a one-to-one, many-to-one or one-to-many merge. There is a command <code>joinby</code> that does accomplish something like a many-to-many merge, but we will not discuss this command in this book.</p>
 </div>
@@ -907,7 +906,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-19.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

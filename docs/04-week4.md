@@ -572,23 +572,23 @@ Then we can retrieve the coefficient on ``average_income`` by typing:
 
 
 ```stata
-di `_b[average_income]'
-
+di _b[average_income]
+.23635625
 ```
 
 You can retrieve the intercept by typing:
 
 
 ```stata
-di `_b[_cons]'
-
+di _b[_cons]
+67.973358
 ```
 
 Using macros can be helpful when generating new variables. For example, we can form the predicted value of each observation by forming: 
 
 
 ```stata
-gen predicted_value = `_b[_cons]' + `_b[average_income]'*average_income 
+gen predicted_value = _b[_cons] + _b[average_income]*average_income 
 ```
 
 We could also do this "manually" by copying the values of the intercept and slope coefficient from our output, but using macros ensures we will not make any transcription errors.

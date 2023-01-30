@@ -46,7 +46,7 @@ As usual, let's describe the data to learn more about the variables.
 <p class="caption">(\#fig:meddescribe)Describing the Colonial Medicine Data Set</p>
 </div>
 
-So we have 75,881 survey participants, some demographics of the individual, as well as a key outcome variable (``refused_any_blood_test``) as well as a key explanatory variable (``Times_Prospected``). To understand our key variables, let's first summarize our outcome variable.
+So we have 75,881 survey participants, some demographics of the individual, a key outcome variable (``refused_any_blood_test``), as well as a key explanatory variable (``Times_Prospected``). To understand our key variables, let's first summarize our outcome variable.
 
 This data is at the individual level and includes some basic demographics (age, sex, etc.) as well as our key outcome: ``refused_any_blood_test``
 
@@ -80,7 +80,7 @@ Times_Pros~d |     67,036    .2941624    .1943945          0         .8
 
 So a value of 0.2 indicates on average, an individuals location was visited 20 percent of the years between 1921-1956 (35 years total). In simpler terms, a value of 0.2 indicates 7 years, because 7 is 20 percent of 35.
 
-So we now have the data to answer our initial **question**: are people who live in places in which historical medical campaigns were more prevalent more likely to refuse blood tests today? But first, let's highlight a few new aspects of the data that we will need to understand.
+So we now have the data to answer our initial question: are people who live in places in which historical medical campaigns were more prevalent more likely to refuse blood tests today? But first, let's highlight a few new aspects of the data that we will need to understand.
 
 First, if I browse the data, you will see the variable ``wealth_index`` looks like it is a string variable, yet it is highlighted in blue, not red
 
@@ -103,7 +103,7 @@ sum wealth_index
 wealth_index |     75,881    3.212319     1.43691          1          5
 ```
 
-We will discuss this behavior in a future chapter about **value labels**.Next, If I browse the data, you will see the variable ``refused_any_blood_test`` has some missing values (the period indicates the value is missing).
+We will discuss this behavior in a future chapter about **value labels**. Next, If I browse the data, you will see the variable ``refused_any_blood_test`` has some missing values (the period indicates the value is missing).
 
 <div class="figure" style="text-align: center">
 <img src="images/05_missing.png" alt="Missing Values" width="25%" />
@@ -141,7 +141,7 @@ For ``vote`` and ``better_or_worse`` the values look like characters, but they a
 <p class="caption">(\#fig:br2value)Browsing the ANES</p>
 </div>
 
-The **value label** is the text highlighted in blue ("2. No, didn't vote"). If we use ``tab`` we can see the difference values labels for a given variable. Let's try this for ``vote``:
+The **value label** is the text highlighted in blue ("2. No, didn't vote"). If we use ``tab`` we can see the different values labels for a given variable. Let's try this for ``vote``:
 
 
 ```stata
@@ -162,6 +162,7 @@ So there are 4 different value labels. If you need to references values of these
 
 ```stata
 count if vote==-9
+  2
 ```
 
 If I try to do the same thing, but referencing the value label, I will get an error:
@@ -176,7 +177,23 @@ end of do-file
 r(109);
 ```
 
-It states ``type mismatch`` because vote is a numeric variable, not a string variable. The 
+It states ``type mismatch`` because vote is a numeric variable, not a string variable. A quick way to see the numeric values associated with the labels is to type:
+
+
+```stata
+tab vote, sum(vote)
+ PRE: Did R |
+   vote for |   Summary of PRE: Did R vote for
+  President |          President in 2012
+    in 2012 |        Mean   Std. dev.       Freq.
+------------+------------------------------------
+  -9. Refus |          -9           0           2
+  -8. Don't |          -8           0          14
+  1. Yes, v |           1           0       3,117
+  2. No, di |           2           0       1,137
+------------+------------------------------------
+      Total |   1.2320843   .72453319       4,270
+```
 
 ## Missing Values
 
@@ -283,7 +300,7 @@ In this chapter we will discuss a new data visualization technique known as **bi
 <p class="caption">(\#fig:barill)Relationship Between Earnings and Test Scores</p>
 </div>
 
-In this example, we have plotted all the data and can clearly see that there is a positive relationship between test scores and earnings. Individuals with higher test scores tend to also have higher earnings. But what if there were 1000 people in this dataset, or 10,000, or a million? The graph would soon get pretty crowded.Not only would a graph with a million observations be difficult to interpret, it would also likely crash your computer! 
+In this example, we have plotted all the data and can clearly see that there is a positive relationship between test scores and earnings. Individuals with higher test scores tend to also have higher earnings. But what if there were 1,000 people in this dataset, or 10,000, or a million? The graph would soon get pretty crowded.Not only would a graph with a million observations be difficult to interpret, it would also likely crash your computer! 
 
 However, instead of plotting all the data, imagine we bin the data into intervals. For example, in Figure \@ref(fig:barill2) we have binned the data into intervals by dividing the x-axis into three bins. In bin 1 there are observations with scores below 80. Bin 2 has observations with scores between 80 and 90. Bin 3 has scores above 90. 
 
@@ -292,11 +309,11 @@ However, instead of plotting all the data, imagine we bin the data into interval
 <p class="caption">(\#fig:barill2)Binning the Data</p>
 </div>
 
-Now instead of plotting all the data, let's just plot the averages within each bin, as depicted in Figure \ref(fig:barill3)
+Now instead of plotting all the data, let's just plot the averages within each bin, as depicted in Figure \@ref(fig:barill3)
 
 
 <div class="figure" style="text-align: center">
-<img src="images/05_bin3.png" alt="An Example of a Binned Scatterplot" width="65%" />
+<img src="images/05_bin4.png" alt="An Example of a Binned Scatterplot" width="65%" />
 <p class="caption">(\#fig:barill3)An Example of a Binned Scatterplot</p>
 </div>
 
@@ -325,7 +342,7 @@ drop if refused_any_blood_test==. | Times_Prospected==.
 (65,951 observations deleted)
 ```
 
-The parallel line ``|`` indicates "or". So put simply, this line says, drop any observations in which either ``refused_any_blood_test`` or ``Times_Prospected`` is missing
+The parallel line ``|`` indicates "or". So put simply, this line says, drop any observations in which either ``refused_any_blood_test`` or ``Times_Prospected`` is missing.
 
 Next, we will use an external command named ``binscatter`` can be used to produced binned scatterplots. To install on your version of Stata, you first need to type. 
 
@@ -335,8 +352,6 @@ ssc install binscatter
 ```
 
 Once you execute the code above once, then you will be able to use the ``binscatter`` command. The basic syntax of the ``binscatter`` command is:
-
-The basic syntax of ``binscatter`` is:
 
 
 ```stata
@@ -370,7 +385,7 @@ binscatter refused_any_blood_test Times_Prospected, nq(10) reportreg
 ```
 
 <div class="figure" style="text-align: center">
-<img src="images/05_binreg.png" alt="Regression Line: Refusing Blood Test vs. Share of Years Visited" width="65%" />
+<img src="images/05_binreg.png" alt="Regression Line: Refusing Blood Test vs. Share of Years Visited" width="85%" />
 <p class="caption">(\#fig:reglinebin)Regression Line: Refusing Blood Test vs. Share of Years Visited</p>
 </div>
 
@@ -387,7 +402,7 @@ Hint: Remember that a 1-unit change in the X-variable is associated with a $\bet
 
 ## Conclusion 
 
-In this final section we will summarize what we have learned so far and then present additional results from Lowes and Montero (2021). The goal of Lowes and Montero (2021) is to understand how medical campaigns in Africa between 1921-1956 impact perceptions of medicine today Colonial medical campaigns undertaken to prevent sleeping sickness often forced medical treatment. The treatments both had questionable efficacy and came with severe side effects.  Lowes and Montero (2021) utilize newly digitized French military records in order to measure the exposure of a region to medical campaigns in the past, and combine this information with health surveys to understand the impact of past campaigns on health behaviors today. 
+In this final section we will summarize what we have learned so far and then present additional results from Lowes and Montero (2021). The goal of Lowes and Montero (2021) is to understand how medical campaigns in Africa between 1921-1956 impact perceptions of medicine today. Colonial medical campaigns undertaken to prevent sleeping sickness often forced medical treatment. The treatments both had questionable efficacy and came with severe side effects.  Lowes and Montero (2021) utilize newly digitized French military records in order to measure the exposure of a region to medical campaigns in the past, and combine this information with health surveys to understand the impact of past campaigns on health behaviors today. 
 
 What we have explored is how exposure to these campaigns impacted the choice to refuse a blood test. While this blood test was free to survey participants, and had overall high takeup, some individuals rejected the blood test. This could be one proxy for trust in modern medicine. We found in the prior section that areas with more exposure to medical campaigns were more likely to refuse the blood test. 
 

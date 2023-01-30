@@ -471,11 +471,13 @@ To access the value within this macro, type:</p>
 <span id="cb128-13"><a href="classroom-technology.html#cb128-13" aria-hidden="true" tabindex="-1"></a>         <span class="dt">_cons</span> |   67.97336   .4874037   139.46   0.000     67.01174    68.93498</span>
 <span id="cb128-14"><a href="classroom-technology.html#cb128-14" aria-hidden="true" tabindex="-1"></a>--------------------------------------------------------------------------------</span></code></pre></div>
 <p>Then we can retrieve the coefficient on <code>average_income</code> by typing:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb129-1"><a href="classroom-technology.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> <span class="ot">`_b[average_income]'</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb129-1"><a href="classroom-technology.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> _b[average_income]</span>
+<span id="cb129-2"><a href="classroom-technology.html#cb129-2" aria-hidden="true" tabindex="-1"></a>.23635625</span></code></pre></div>
 <p>You can retrieve the intercept by typing:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb130-1"><a href="classroom-technology.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> <span class="ot">`_b[_cons]'</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb130-1"><a href="classroom-technology.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> _b[<span class="dt">_cons</span>]</span>
+<span id="cb130-2"><a href="classroom-technology.html#cb130-2" aria-hidden="true" tabindex="-1"></a>67.973358</span></code></pre></div>
 <p>Using macros can be helpful when generating new variables. For example, we can form the predicted value of each observation by forming:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb131-1"><a href="classroom-technology.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> predicted_value = <span class="ot">`_b[_cons]'</span> + <span class="ot">`_b[average_income]'</span>*average_income </span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb131-1"><a href="classroom-technology.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> predicted_value = _b[<span class="dt">_cons</span>] + _b[average_income]*average_income </span></code></pre></div>
 <p>We could also do this "manually" by copying the values of the intercept and slope coefficient from our output, but using macros ensures we will not make any transcription errors.</p>
 <p>Not only does Stata store useful macros for you, but you can also construct your own macros in Stata. This can be useful when you are typing something over and over that is very long. Instead of repeatedly typing, you can store the information in a macro. For example, one common way to use macros is to store a list of variable. In the next example, we will create a <strong>global macro</strong> that stores a list of variables.</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb132-1"><a href="classroom-technology.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> vars = <span class="st">"average_income life_expectancy"</span></span></code></pre></div>
@@ -1124,7 +1126,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-19.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

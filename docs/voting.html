@@ -118,7 +118,7 @@ Figure 9.1: The Butterfly Ballot
 <p>To understand the scope of the problem, we are going to replicate analysis from Wand et al. (2001)<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Jonathan N Wand et al., &lt;span&gt;“The Butterfly Did It: The Aberrant Vote for Buchanan in Palm Beach County, Florida,”&lt;/span&gt; &lt;em&gt;American Political Science Review&lt;/em&gt; 95, no. 4 (2001): 793–810.&lt;/p&gt;"><sup>12</sup></a></span>. Specifically, if voters are confused by the ballot, we would expect an unusually high number of votes for the Reform party candidates in Palm Beach.
 But how do we define "an unsually high number of votes". To operationalize this idea we will use the number of votes in a county for the Reform party in 1996 (the prior election) to predict how many votes a county will cast for the Reform party in 2000. If Palm Beach County has many more votes than predicted, then maybe the Butterfly ballot is the reason why.</p>
 <p>To begin exploring this question, let's load up our data.</p>
-<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">florida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"florida.csv"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 67 Columns: 7</span></span>
 <span><span class="co">#&gt; ── Column specification ────────────────────────────────────</span></span>
@@ -180,7 +180,7 @@ Buchanan00_i = \beta_0 + \beta_1 \cdot Perot96_i + \varepsilon_i
 \]</span></p>
 <p>Once we estimate this regression equation, we can use the estimates to predict the number of Buchanan votes in Palm Beach County and compare to the actual number of votes in Palm Beach County. For example, hypothetically, if we predict Buchanan would receive 1000 votes in Palm Beach, but actually received 2000, then there would be 1000 more votes in Palm Beach than expected.</p>
 <p>In R, the function we use to estimate linear regressions is the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function. The basic syntax of the command is:</p>
-<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm.fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">yvar</span> <span class="op">~</span> <span class="va">xvar</span>, data<span class="op">=</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li><p><code>lm.fit</code> stores the estimates of the linear regression as an object in R.</p></li>
@@ -189,10 +189,10 @@ Buchanan00_i = \beta_0 + \beta_1 \cdot Perot96_i + \varepsilon_i
 <li><p><code>df</code> should be the dataframe that is in your environment.</p></li>
 </ul>
 <p>In our empirical application, the code below estimates a linear regression with <code>Buchanan00</code> as the dependent variable and <code>Perot96</code> as the independent variable:</p>
-<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm.florida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Buchanan00</span> <span class="op">~</span> <span class="va">Perot96</span>, data<span class="op">=</span><span class="va">florida</span><span class="op">)</span></span></code></pre></div>
 <p>To view the basic estimates of the regression, we can type:</p>
-<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm.florida</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Call:</span></span>
@@ -215,7 +215,7 @@ Buchanan00_i = \beta_0 + \beta_1 \cdot Perot96_i + \varepsilon_i
 \]</span>
 And found <span class="math inline">\(\hat{\beta}_0=1.346\)</span> and <span class="math inline">\(\hat{\beta}_1=0.036\)</span>. These coefficients tells us the intercept and slope of the line that best fits our data. In this section we will show how to plot this best fit line in both base R and ggplot.</p>
 <p>To begin, let's create a scatter plot with <code>Buchanan00</code> on the vertical axis and <code>Perot96</code> on the horizontal axis. We are also going to specify <code>pch=16</code> in this code to change the style of the markers. <code>pch</code> stands for plot character in R and can be used to change the shape or appearance of the points in a scatterplot.</p>
-<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">florida</span><span class="op">$</span><span class="va">Perot96</span>, <span class="va">florida</span><span class="op">$</span><span class="va">Buchanan00</span>, </span>
 <span>     pch<span class="op">=</span><span class="fl">16</span>,</span>
 <span>     xlab<span class="op">=</span><span class="st">"Votes for Perot in 1996"</span>, </span>
@@ -227,7 +227,7 @@ Figure 9.4: Relationship Between Buchanan and Perot Votes
 </p>
 </div>
 <p>Now our goal is to add the linear regression line to this plot. To do so, we will use the <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code> function. <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code> can be used to add lines to plots. If you pass the outcome of a linear regression to <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code>, then the fitted line from that regression will be added to the plot. In other words, if we add <code>abline(lm.florida)</code>, then the best-fitted line from this regression will be added to the plot:</p>
-<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">florida</span><span class="op">$</span><span class="va">Perot96</span>, <span class="va">florida</span><span class="op">$</span><span class="va">Buchanan00</span>, </span>
 <span>     pch<span class="op">=</span><span class="fl">16</span>,</span>
 <span>     xlab<span class="op">=</span><span class="st">"Votes for Perot in 1996"</span>, </span>
@@ -240,7 +240,7 @@ Figure 9.5: Relationship Between Buchanan and Perot Votes
 </p>
 </div>
 <p>We can also customize the appearance of the line in a few ways. For example, <code>lty=2</code> will make the line dashed instead of solid. <code>lty</code> stands for line type and you can use a variety (see help file for <code>plot</code> and search for <code>lty</code> to see the different options). <code>col="red"</code> will turn the line red.</p>
-<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">florida</span><span class="op">$</span><span class="va">Perot96</span>, <span class="va">florida</span><span class="op">$</span><span class="va">Buchanan00</span>, </span>
 <span>     pch<span class="op">=</span><span class="fl">16</span>,</span>
 <span>     xlab<span class="op">=</span><span class="st">"Votes for Perot in 1996"</span>, </span>
@@ -254,7 +254,7 @@ Figure 9.6: Relationship Between Buchanan and Perot Votes
 </div>
 <p>Now let's learn how to plot the regression line in ggplot. In ggplot, the plot command can actually estimate the regression itself. In order to do so we will add to our plot the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function. In general <code>geom_smooth</code> adds fitted lines or curves to a plot. If we want a linear regression line, we can specify <code>geom_smooth(method="lm")</code>. The option <code>lm</code> stands for linear model.</p>
 <p>Further, we will want to specify <code>se=FALSE</code>. By default <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> adds measures of uncertainty to our regression line, which we won't cover in this book. Lastly, we will use additional options to change the type and color of the line, as we did before. The full code to generate our scatter plot with a linear regression line appears below:</p>
-<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">florida</span>, mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Perot96</span>, y<span class="op">=</span><span class="va">Buchanan00</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Votes for Perot in 1996"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -288,10 +288,10 @@ Figure 9.7: Relationship Between Buchanan and Perot Votes
 \]</span></p>
 <p>Now, we could do this manually for every single observation, but it will be much easier to do this automatically in R. This will allow us to construct the residual for every county in the data. We are particularly interested in the residual for Palm Beach county. This residual will tell us how many more votes were cast in Palm Beach for Buchanan relative to what we would have expected based on the county's voting patterns for Perot.</p>
 <p>To do so we will again estimate a linear regression with <code>Buchanan00</code> as the dependent variable and <code>Perot96</code> as the independent variable.</p>
-<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm.florida</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Buchanan00</span> <span class="op">~</span> <span class="va">Perot96</span>, data<span class="op">=</span><span class="va">florida</span><span class="op">)</span></span></code></pre></div>
 <p><code>lm.florida</code> is known as a list object. It contains a lot of information from our linear regression. We can use the <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> function to figure out what <code>lm.florida</code> contains:</p>
-<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lm.florida</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "coefficients"  "residuals"     "effects"      </span></span>
 <span><span class="co">#&gt;  [4] "rank"          "fitted.values" "assign"       </span></span>
@@ -299,10 +299,10 @@ Figure 9.7: Relationship Between Buchanan and Perot Votes
 <span><span class="co">#&gt; [10] "call"          "terms"         "model"</span></span></code></pre></div>
 <p>So many of the information stored here we won't use in this course. But there are two elements that will be useful for us. You can see one of the names is <code>fitted.values</code> and another is <code>residual</code>. Fitted values is another name for predicted values.</p>
 <p>We can extract the information from <code>lm.florida</code> by using the dollar sign operator. For example, if we want to add a new variable to the dataset that is the fitted value for each observation, we type:</p>
-<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">florida</span><span class="op">$</span><span class="va">predBuchanan00</span> <span class="op">&lt;-</span> <span class="va">lm.florida</span><span class="op">$</span><span class="va">fitted.values</span></span></code></pre></div>
 <p><code>predBuchanan00</code> is the name of the new variable and it is equal to the fitted values from the regression estimation. We can similarly extract the residual from our <code>lm.florida</code> object and add to the data frame <code>florida</code>.</p>
-<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">florida</span><span class="op">$</span><span class="va">residuals</span> <span class="op">&lt;-</span> <span class="va">lm.florida</span><span class="op">$</span><span class="va">residuals</span></span></code></pre></div>
 <p>Now, let's look at the data to try and understand our process so far.</p>
 <pre><code>#&gt; # A tibble: 67 × 4
@@ -323,7 +323,7 @@ Figure 9.7: Relationship Between Buchanan and Perot Votes
 <p>Now let's order the dataset by the magnitude of the residual. Observations with large residuals will be those in which are predictions is very different than our predicted value. To sort data based on the value of a variable, we can use the <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> function.</p>
 <p>For our purposes we want to sort based on the absolute value of the residual. Therefore, we will specify <code>arrange(abs(residuals))</code>. However, in addition, we want the largest residuals to be at the top. By default, <code>arrange</code> sorts the data from lowest to highest. To change this, we can ask for the data to be presented in descending order, by specifying <code>arrange(desc(abs(residuals)))</code>.</p>
 <p>Additionally, we can combine <code>arrange</code> with other functions using the pipe operator. In this example, we are really only interested in a few variables at the moment. So let's first select those variables, and then display the data from largest residual (in absolute value) to lowest residual.</p>
-<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">florida</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">county</span>,<span class="va">Buchanan00</span>,<span class="va">predBuchanan00</span>,<span class="va">residuals</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">residuals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -383,7 +383,7 @@ Y_i = \beta_0 + \beta_1 \cdot X_i + \varepsilon_i
 \]</span>
 Therefore, we expect 51 percent of individuals to vote in the treatment. Therefore, the impact of going to control to treatment is a 1 percentage point increase in the probability of voting. If you need a review on the difference between percent and percentage point, check out Chapter 1.8. Now that we understand the interpretation of linear regression with binary variables, let's go implement this regression in R to assess how receiving a mailer impacted voter turnout.</p>
 <p>The data for this application comes from a csv file named <code>turnout.csv</code>. Let's load this into R as a tibble.</p>
-<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">turnout</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"turnout.csv"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 3872268 Columns: 5</span></span>
 <span><span class="co">#&gt; ── Column specification ────────────────────────────────────</span></span>
@@ -410,10 +410,10 @@ Therefore, we expect 51 percent of individuals to vote in the treatment. Therefo
 #&gt; # … with 3,872,258 more rows</code></pre>
 <p>The first variable <code>LocalityCode</code> indicates the county the individual is voting in. <code>Party</code> is the registered party of the individual. <code>yvar</code> is our main dependent variable. This variable is equal to 1 if the individual voted in the 2014 primary election and zero if the individual did not vote. <code>treatment.assign</code> indicates whether this individual is in the control group (i.e. did not receive a letter) or one of the treatment arms. The last variable <code>mailer</code> is equal to 1 if the individual received any mailer, and zero if the individual is in the control group.</p>
 <p>For our application, we want to test whether receiving a mailer impacts the probability an individual votes. Therefore, we will regress the variable <code>yvar</code> on the variable <code>mailer</code>. Just as before, we need to save our estimates as a new object.</p>
-<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm.turnout</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">yvar</span> <span class="op">~</span> <span class="va">mailer</span>, data<span class="op">=</span><span class="va">turnout</span><span class="op">)</span></span></code></pre></div>
 <p>Now let's look at the results:</p>
-<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm.turnout</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Call:</span></span>
@@ -665,7 +665,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-19.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
