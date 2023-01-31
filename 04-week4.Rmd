@@ -58,8 +58,8 @@ sum per_hindi2
 ```
 
 ```{stata, echo=F, eval=T}
-sum per_math1
-sum per_hindi1
+sum per_math2
+sum per_hindi2
 ```
 
 At endline, scores are higher. The average math score has increased to 0.503 and the average Hindi score has increased to 0.552. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``? Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.

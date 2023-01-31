@@ -70,11 +70,11 @@ sum per_hindi2
 ```
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
-   per_math1 |        619    .3177475    .1115478          0   .7428572
+   per_math2 |        539     .503101    .1725604          0   .9411765
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
-  per_hindi1 |        619    .4278406      .16484          0         .9
+  per_hindi2 |        539    .5521954    .1911098          0   .9666666
 ```
 
 At endline, scores are higher. The average math score has increased to 0.503 and the average Hindi score has increased to 0.552. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``? Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.

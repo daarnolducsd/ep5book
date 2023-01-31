@@ -84,7 +84,7 @@ Let's try another example. Say we take a random draw from three numbers: -1, 0, 
 ```r
 x <- sample(-1:1,1)
 x
-[1] -1
+[1] 0
 ```
 
 The part of the code ``-1:1`` controls what numbers will be drawn. If you type ``-1:1`` in R, you will see it prints out the numbers -1,0, and 1. The second part of the code ``,1`` tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.
@@ -96,7 +96,6 @@ So now let's write a conditional statement that depends on the outcome of x. Let
 if (x<0){
   abs(x)
 }
-[1] 1
 ```
 
 Next, let's discuss ``else`` statements. Sometimes, we want to execute certain code if the statement is TRUE, but some other code if it is FALSE. For example, in our first example, imagine if the ``door`` object is not equal to ``locked`` then we want R to print out the message ``Please Come in!``. The way we can do this in R is with an ``else`` statement:
