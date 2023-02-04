@@ -518,8 +518,8 @@ Now let's write out "5 is not equal to 6", by using the ``!`` operator.
 
 
 ```r
-5==6
-[1] FALSE
+5!=6
+[1] TRUE
 ```
 
 But "6 not equal to 6" is of course ``FALSE``:
@@ -546,7 +546,7 @@ In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true.
 [1] TRUE
 ```
 
-This is true because both statements are true. For an or statement, if either statement is true, then the entire statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either ``5==5 | 5==6``
+This is true because both statements are true. For an or statement, we are instead testing whether either statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either ``5==5 | 5==6``
 
 
 ```r
@@ -758,7 +758,7 @@ students
 3   UCSD           2015
 ```
 
-This data frame has two variables: ``school`` and ``graduationdate``. The first column o f the data frame corresponds to ``school`` and the second corresponds to ``graduationdate``. The data frame has three total observations. To extract a specific value of the data frame, we can again use indexing. When using indexing with a vector, we could specify a single number, and that would pluck out that element. Now, with a data frame, we need to specify two numbers. First, we will specify the row we would like to extract and then we will specify the column. For example, to extract the value in the 3rd row, 1st column, we would type:
+This data frame has two variables: ``school`` and ``graduationdate``. The first column of the data frame corresponds to ``school`` and the second corresponds to ``graduationdate``. The data frame has three total observations. To extract a specific value of the data frame, we can again use indexing. When using indexing with a vector, we could specify a single number, and that would pluck out that element. Now, with a data frame, we need to specify two numbers. First, we will specify the row we would like to extract and then we will specify the column. For example, to extract the value in the 3rd row, 1st column, we would type:
 
 
 ```r
@@ -873,7 +873,7 @@ head(resume)
 6 6       Jay   male white    0
 ```
 
-Our main outcome of interest is whether an individual received a callback for an interview. In the data frame, a 0 represents the resume did not get a callback. A 1 represents the resume to get a callback. Because the data is stored in this way, we can simply take the average of the variable call in order to retrieve the overall callback rate:
+Our main outcome of interest is whether an individual received a callback for an interview. In the data frame, a 0 represents the resume did not get a callback. A 1 represents the resume did get a callback. Because the data is stored in this way, we can simply take the average of the variable call in order to retrieve the overall callback rate:
 
 
 ```r
@@ -895,7 +895,7 @@ black white
 
 There are 2435 resumes with white-sounding names and 2435 resumes with Black-sounding names. Remember, these are fictitious resumes, and the experimenters designed the study so that there would be an equal number of applications for white and Black applicants. 
 
-Note, we could retrieve the same information using logic. When we type a logical statement, R will return a logical object that is composed of ``TRUE`` and ``FALSE``. Whenever R sees ``TRUE`` it interprets a 1, and whenever R sees ``FALSE`` it interprets a ``TRUE``. For example, if we type:
+Note, we could retrieve the same information using logic. When we type a logical statement, R will return a logical object that is composed of ``TRUE`` and ``FALSE``. Whenever R sees ``TRUE`` it interprets a 1, and whenever R sees ``FALSE`` it interprets a 0. For example, if we type:
 
 
 ```r
@@ -923,7 +923,7 @@ mean(resume$call[resume$race=="white"])
 [1] 0.09650924
 ```
 
-There are a couple of different ways we could have performed the same analysis. For example, sometimes it is helpful to generate different data frames for subsets of your data. We could have done this through indexing or through the ``subset`` function:
+Before interpreting these findings, it is helpful to point out that there are a couple of different ways we could have performed the analysis. For example, sometimes it is helpful to generate different data frames for subsets of your data. We could have done this through indexing or through the ``subset`` function:
 
 For example, to create a data frame restricted to Black applicants we could type:
 
@@ -944,10 +944,10 @@ mean(resume_whitenames$call)
 ```
 
 
-Now that we have performed the main analysis, let's summarize our findings. Around 9.7 percent of white applicants receive a callback. Therefore, there is a 3.3 percentage point disparity in callback rates. This is a substantial disparity. The baseline callback rates are quite low in this setting. A 3.3 percentage point disparity implies white applicants are more than 50 percent more likely to receive a callback relative to Black applicants:
+Now that we have performed the main analysis, let's summarize our findings. Around 9.7 percent of white applicants receive a callback, while only 6.4 percent of Black applicants receive a callback. Therefore, there is a 3.3 percentage point disparity in callback rates. This is a substantial disparity. The baseline callback rates are quite low in this setting. A 3.3 percentage point disparity implies white applicants are more than 50 percent more likely to receive a callback relative to Black applicants:
 
 $$
-\text{Percent Increase in Callback Rate for White Applicants}=\frac{9.7-6.4}{6.4}=0.516
+\text{Percent Increase in Callbacks for White Apps}=\frac{9.7-6.4}{6.4}=0.516
 $$
 This highlights a stark disparity in labor-market outcomes. And given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employees take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race. 
 

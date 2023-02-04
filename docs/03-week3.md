@@ -338,9 +338,8 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are matched -- must be of the
-    same generic type in the master and using datasets.  Same generic type means both numeric
-    or both string.
+    Each key variable -- the variables on which observations are matched -- must be of the same generic type in the
+    master and using datasets.  Same generic type means both numeric or both string.
 r(106);
 
 end of do-file

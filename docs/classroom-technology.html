@@ -259,6 +259,7 @@ Therefore, the actual life expectancy in the U.S. is 5.37 years lower than the l
 <p>The key difference is that we now have <strong>Ln(Average Income)</strong> as our explanatory variable. <strong>Ln()</strong> stands for natural logarithm. You have probably seen a graph with one of the variables "logged". This can be done for a few reasons. First, it can reduce the influence of outliers. The natural logarithm is a concave function, which in simple terms, means it shrinks large numbers more than it shrinks small numbers. A second reason that you often see logged graphs is that the relationship between two variables Y and X may be nonlinear, but relationship between Y and ln(X) may be linear.</p>
 <div class="rmdnote">
 <p>There are different bases for logarithmic function. We will always use the natural logarithm. This is by far the most widely used and interpretable. If you ever hear or read "log" in this class, always interpret is as "the natural logarithm".</p>
+<p>In Stata, if you want to take the natural logarithm of a variable, you can use either <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> or <code>ln()</code>. For example, to create a variable that is equal to natural logarithm of income, you could type either <code>gen log_income = log(income)</code> or <code>gen log_income = ln(income)</code></p>
 </div>
 <p>Let's look at how "logging" changes our scatterplot. Figure <a href="classroom-technology.html#fig:scatter3">4.8</a> plots life expectancy agains the natural logarithm of average income. As you can see, the relationship appears more linear now. Taking the natural logarithm shrunk the values of income for countries with high incomes more than countries with low incomes. The result in this setting is that relationship between life expectancy and log average income appears more linear than the relationship between life expectancy and average income.</p>
 <div class="figure" style="text-align: center">
@@ -1126,7 +1127,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-01-31.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

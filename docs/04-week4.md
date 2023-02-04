@@ -234,6 +234,8 @@ The key difference is that we now have **Ln(Average Income)** as our explanatory
 
 There are different bases for logarithmic function. We will always use the natural logarithm. This is by far the most widely used and interpretable. If you ever hear or read "log" in this class, always interpret is as "the natural logarithm".
 
+In Stata, if you want to take the natural logarithm of a variable, you can use either ``log()`` or ``ln()``. For example, to create a variable that is equal to natural logarithm of income, you could type either ``gen log_income = log(income)`` or ``gen log_income = ln(income)``
+
 :::
 
 Let's look at how "logging" changes our scatterplot. Figure \@ref(fig:scatter3) plots life expectancy agains the natural logarithm of average income. As you can see, the relationship appears more linear now. Taking the natural logarithm shrunk the values of income for countries with high incomes more than countries with low incomes. The result in this setting is that relationship between life expectancy and log average income appears more linear than the relationship between life expectancy and average income.

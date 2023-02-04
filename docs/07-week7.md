@@ -21,7 +21,7 @@ Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey 
 <p class="caption">(\#fig:rugrat)Time Spent on Childcare by Parents, by Educational Attainment, 1965-2008</p>
 </div>
 
-However, the rise is especially dramatic for college-educated mothers. Why is this puzzling? Well, this is a time period in which the returns to education was increasing a lot. In other words, these college-educated mothers had a lot to gain from working in the labor market, but in the data, we find they are spending more time on childcare. In this section of the course, we will explore why. 
+This rise occurs for both college-educated and less-educated mothers, but the rise is especially dramatic for college-educated mothers. Why is this puzzling? Well, this is a time period in which the returns to education was increasing a lot. In other words, these college-educated mothers had a lot to gain from working in the labor market, but in the data, we find they are spending more time on childcare. In this section of the course, we will explore why. 
 
 In order to explore this question we will use data from the American Time Use Survey (ATUS). This is a survey administered by the Bureau of Labor Statistics, and agency that collects many important statistics concerning the U.S. economy. 
 
@@ -84,7 +84,7 @@ Let's try another example. Say we take a random draw from three numbers: -1, 0, 
 ```r
 x <- sample(-1:1,1)
 x
-[1] 0
+[1] 1
 ```
 
 The part of the code ``-1:1`` controls what numbers will be drawn. If you type ``-1:1`` in R, you will see it prints out the numbers -1,0, and 1. The second part of the code ``,1`` tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.
