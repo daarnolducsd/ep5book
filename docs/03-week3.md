@@ -338,8 +338,9 @@ Let's see what happens if we try to merge these two together
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
 key variable student is str1 in master but float in using data
-    Each key variable -- the variables on which observations are matched -- must be of the same generic type in the
-    master and using datasets.  Same generic type means both numeric or both string.
+    Each key variable -- the variables on which observations are matched -- must be
+    of the same generic type in the master and using datasets.  Same generic type
+    means both numeric or both string.
 r(106);
 
 end of do-file
@@ -798,10 +799,10 @@ First, let's present the code for calculating total stops by light condition, be
 
 
 ```stata
-bysort dark: egen total_stops = total(obs_count)
+bysort dark: egen total_obs = total(obs_count)
 ```
 
-``bysort dark:`` tells Stata that any code that comes after the ``:`` should be done separately for values of the ``dark`` variable. ``egen total_stops = total(obs_count)`` will create a new variable that is equal to the sum total of the variable ``obs_count``. In simple terms, the total number of stops in daylight and darkness. Let's look at the resulting dataset. Make sure you understand what ``total_stops`` represents before moving on to the next section.
+``bysort dark:`` tells Stata that any code that comes after the ``:`` should be done separately for values of the ``dark`` variable. ``egen total_obs = total(obs_count)`` will create a new variable that is equal to the sum total of the variable ``obs_count``. In simple terms, the total number of stops in daylight and darkness. Let's look at the resulting dataset. Make sure you understand what ``total_obs`` represents before moving on to the next section.
   
 <div class="figure" style="text-align: center">
 <img src="images/03_br1p5.png" alt="Collapsed Dataset with Total Stops by Light Condition" width="65%" />
@@ -812,7 +813,7 @@ Now that we have (1) total stops by race in daylight vs. darkness and (2) total 
 
 
 ```stata
-  gen fraction_stops = obs_count/total_stops
+  gen fraction_stops = obs_count/total_obs
 ```
 
 Now we can use this variable to show the composition of traffic stops (by race) both in the daylight and darkness:
