@@ -306,7 +306,7 @@ knitr::include_graphics("images/06_bluearrow.png")
 
 If you click on the name of the data frame, RStudio will open up a spreadsheet of all the data. This is similar to how we would use the ``browse`` command when using Stata. This allows you to look through the raw data and understand what the various variables are and what values they may take. 
 
-There are also a few ways to summarize information about the data frame. For example ``ncol()``, retrieves the number of columns. ``nrow()`` retrieves the number of rows In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,780 rows. One thing we can do to quickly get a sense of the data is to type ``summary(resume)``. This provides some simple summary statistics for each variable in the data frame. 
+There are also a few ways to summarize information about the data frame. For example ``ncol()``, retrieves the number of columns. ``nrow()`` retrieves the number of rows In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,870 rows. One thing we can do to quickly get a sense of the data is to type ``summary(resume)``. This provides some simple summary statistics for each variable in the data frame. 
 
 ```{r, echo=T, eval=F}
 summary(resume)
@@ -406,7 +406,7 @@ So how do we create these objects that are either true or false? We use logical 
   
   - ``<=`` -- less than or equal to 
   
-Now that we've written out the different logical operators, let's see how to ask logical statements in R, and save logical objects. To begin, let's start with a simple logical statement: "5 is equal to 6". The way we type this in R is we type ``5==6``. This statement is of course false, so if we type this into R it should yield ``FALSE``.
+Now that we've written out the different logical operators, let's see how to use these in R. To begin, let's start with a simple logical statement: "5 is equal to 6". The way we type this in R is we type ``5==6``. This statement is of course false, so if we type this into R it should yield ``FALSE``.
 
 ```{r, echo=T, eval=T}
 5==6
@@ -430,19 +430,19 @@ But "6 not equal to 6" is of course ``FALSE``:
 6!=6
 ```
 
-Now let's try to understand the ``&`` operator. We use the ``&`` operator when we want to test if two statements are **both** true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is ``age==18 & state=="CA"``. We can do the same with testing numbers, as we have done before. For example, the statement "5 is equal to 5 and 5 is equal to 6" should be false.
+Now let's try to understand the ``&`` operator. We use the ``&`` operator when we want to test if two statements are **both** true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is ``age==18 & state=="CA"``. Now let's do an example in R. Imagine we want to retrieve the answer to "5 is equal to 5 and 5 is equal to 6". In R we would type ``5==5 & 5==6``. This statement is false because 5 is not equal to 6. If one of the statements is fales (``5==6``) then the whole statement is false (``5==5 & 5==6``).
 
 ```{r, echo=T}
 5==5 & 5==6
 ```
 
-In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true.
+In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true because both of the statements indiviudallt are true. 
 
 ```{r, echo=T}
 5==5 & 5>4
 ```
 
-This is true because both statements are true. For an or statement, we are instead testing whether either statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either ``5==5 | 5==6``
+Now let's discuss or statements. For an or statement, we are instead testing whether either statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either ``5==5 | 5==6``.
 
 ```{r, echo=T}
 5==5 | 5==6
@@ -590,7 +590,7 @@ We can subset one variable using a logical statement built from another variable
 mean(resume$call[resume$race=="black"])
 ```
 
-It is easiest to interpret this line of code by starting at the indexing step. ``[resume$race=="black"]`` restricts to observations for which the applicant is Black. ``resume$call[resume$race=="black"]`` is the vector ``call``, but only restricted to the observations for which the applicant is Black. Finally, by placing the entire block ``mean()``, we are computing the average of ``resume$call`` for applicants such that ``resume$race=="black"``. If we want to compare to white applicants, we can simply type:
+It is easiest to interpret this line of code by starting at the indexing step. ``[resume$race=="black"]`` restricts to observations for which the applicant is Black. ``resume$call[resume$race=="black"]`` is the vector ``call``, but only restricted to the observations for which the applicant is Black. Finally, by placing the entire block inside the ``mean()`` function, we are computing the average of ``resume$call`` for applicants such that ``resume$race=="black"``. If we want to compare to white applicants, we can simply type:
 
 ```{r, echo=T}
 mean(resume$call[resume$race=="white"])
@@ -617,7 +617,7 @@ This data frame has two variables: ``school`` and ``graduationdate``. The first 
 students[3,1]
 ```
 
-It output "UCSD", because the the third student in the data frame went to UCSD and the 1st column in the data frame corresponds to the variable school.
+It output "UCSD", because the the third student in the data frame went to UCSD and the 1st column in the data frame corresponds to the variable ``school``.
 
 Instead of extracting specific elements of a data frame, you can also extract entire columns and rows. For example, to extract the first row type:
 
@@ -678,7 +678,7 @@ ucsd_students <- subset(students,students$school=="UCSD")
 
 ## Conclusion 
 
-Now, let's put everything that we've learned in this chapter together to study discrimination in hiring practices. To get started, let's load in the resume data 
+Now, let's put everything that we've learned in this chapter together to study discrimination in hiring practices. To get started, let's load in the resume data. 
 
 ```{r, echo=T}
 resume <- read.csv("resume.csv")
@@ -720,7 +720,7 @@ Now, let's get to the main analysis, which studies whether callback rates vary b
 mean(resume$call[resume$race=="black"])
 ```
 
-Here we have using indexing. ``[resume$race="black"]`` subsets to Black applicants. Because we have put this inside ``mean(resume$call[])``, then R will retrieve the average of the ``resume$call`` vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback. 
+Here we are using indexing. ``[resume$race="black"]`` subsets to Black applicants. Because we have put this inside ``mean(resume$call[])``, then R will retrieve the average of the ``resume$call`` vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback. 
 
 Let's now compare this to white applicants:
 
@@ -750,6 +750,45 @@ Now that we have performed the main analysis, let's summarize our findings. Arou
 $$
 \text{Percent Increase in Callbacks for White Apps}=\frac{9.7-6.4}{6.4}=0.516
 $$
-This highlights a stark disparity in labor-market outcomes. And given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employees take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race. 
+This highlights a stark disparity in labor-market outcomes. And given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employers take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race. 
 
 This empirical design has become widely popular. It has been used to study discrimination across other demographics, for example, gender, sexual orientation, and disability status. It has also increased in scope, with recent experiments sending out thousands and thousands of fictitious resumes in order to understand discrimination at some of the largest employers in the U.S (see Kline, Rose, and Walters 2022).[@kline2021systemic]
+
+
+
+## <u>Function Descriptions</u> {-}
+
+
+
+
+::: {.rmdnote}
+
+
+
+**<u>Setup Functions</u>**
+
+- ``getwd()`` –- retrieves the current working directory
+
+- ``setwd("pathname")`` -- sets the working directory to whatever is contained in pathname. For example, if I type ``setwd("Users/davidarnold/Desktop")``, then my working directory will be set to my desktop.
+
+- ``<-`` -- this is called the assignment operator. It assigns some value to an object. This can be used to create numeric objects, character objects, vectors, as well as dataframes.
+
+- ``read.csv(csvfile.csv)`` -- reads in a csv file into R. To save the csv file as a dataframe, assign it a name. ``df <- read.csv("csvfile.csv")``
+
+
+**<u>Data Exploration Commands</u>** 
+
+- ``nrow()`` -- retrieves number of rows in a data frame.
+
+- ``ncol()`` -- retrieves number of columns in a dataframe
+
+- ``summary(dataframe)`` - lists all variables in the dataframe. For numeric variables, computes some key quantiles.
+
+- ``names(dataframe)`` - retrieves names of all columns in the dataframe
+
+- ``mean(dataframe$varname)`` -- retrives the mean value of ``varname`` which is a variable inside the data frame ``dataframe``.
+
+- ``table(dataframe$varname)`` -- retrieves a table of frequencies for the variable ``varname`` within the data frame ``dataframe``. This can be used for string variables as well as categorical variables. 
+
+
+:::

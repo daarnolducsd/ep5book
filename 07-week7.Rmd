@@ -22,7 +22,7 @@ Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey 
 knitr::include_graphics("images/07_RugRatMothers.png")
 ```
 
-This rise occurs for both college-educated and less-educated mothers, but the rise is especially dramatic for college-educated mothers. Why is this puzzling? Well, this is a time period in which the returns to education was increasing a lot. In other words, these college-educated mothers had a lot to gain from working in the labor market, but in the data, we find they are spending more time on childcare. In this section of the course, we will explore why. 
+This rise occurs for both college-educated and less-educated mothers, but the rise is especially dramatic for college-educated mothers. Why is this puzzling? Well, this is a time period in which the returns to education were increasing a lot. In other words, these college-educated mothers had a lot to gain from working in the labor market, but in the data, we find they are spending more time on childcare. In this section of the course, we will explore why. 
 
 In order to explore this question we will use data from the American Time Use Survey (ATUS). This is a survey administered by the Bureau of Labor Statistics, and agency that collects many important statistics concerning the U.S. economy. 
 
@@ -60,7 +60,7 @@ if (door=="locked") {
 }
 ```
 
-What is R doing here. Well, because we have set assigned the value ``locked`` to the object door, the logical statement in parentheses ``door=="locked"`` is TRUE. Therefore, if we run this section of code, the code inside the curly brackets ``{}`` will be executed. In this case, the code just prints a message. 
+What is R doing here? Well, because we have assigned the value ``locked`` to the object door, the logical statement in parentheses ``door=="locked"`` is TRUE. Therefore, if we run this section of code, the code inside the curly brackets ``{}`` will be executed. In this case, the code just prints a message. 
 
 What happens if we change the value of door to ``unlocked``. Well, in that case ``door=="locked"`` is no longer TRUE. Therefore, the code inside the brackets will **not** be executed.
 
@@ -118,7 +118,7 @@ So now the first statement ``door=="locked"`` is FALSE. Therefore, R executes th
 
 There are a few important notes about conditional statements before we move on. First, the ``else`` must appear on the same line as the end curly bracket ``}``. If it doesn't, then R doesn't know what logical statement to connect the ``else`` to. Second, R will execute the code after the ``else`` brackets if ``door=="locked"`` is FALSE for any reason. 
 
-For example, imagine I set ``door <- Locked"``. While it might look like the first logical statement ``door=="locked"`` is true, R is case sensitive. Therefore, in this case, the statement ``door=="locked"`` is FALSE. This implies that R will print out the words ``Please Come in!``.
+For example, imagine I set ``door <- "Locked"``. While it might look like the first logical statement ``door=="locked"`` is true, R is case sensitive. Therefore, in this case, the statement ``door=="locked"`` is FALSE. This implies that R will print out the words ``Please Come in!``.
 
 ## For Loops
 
@@ -145,9 +145,7 @@ i <-1
 print(2*i)
 ```
 
-So why did we code this in such a roundabout way? Why not directly type ``2*1``. Well, once we go through the loop it will become clear why we are coding this in a somewhat roundabout way. What you need to understand now is exactly what the code is doing. 
-
-First, it is creating an object named ``i`` that is equal to ``1``. Then, it is multiplying that object by 2 and printing out the result. Now, we have to do this for the number 2. 
+So why did we code this in such a roundabout way? Why not directly type ``2*1``. Well, once we go through the loop it will become clear why we are coding this in a somewhat roundabout way. What you need to understand now is exactly what the code is doing. First, it is creating an object named ``i`` that is equal to ``1``. Then, it is multiplying that object by 2 and printing out the result. Now, we have to do this for the number 2. 
 
 ```{r, echo=T}
 i <- 2 
@@ -210,9 +208,9 @@ for (i in homework) {
 
 We introduced a few new things here, so let's go through the code slowly. First, instead of looping over numbers here, we are looping over words. In the first iteration ``i`` is equal to the first entry of the vector ``homework``. Therefore, ``i`` is equal to ``math`` in the first iteration. 
 
-Next, we have used a knew function ``cat()``. This function concatenates and prints. Therefore, if we type ``cat("Do",i)`` what you should interpret (in the first) iteration is that we are forming the sentence ``Do Math``. The last part ``,"\n"`` is telling R to display the next text  a line down. When you want to skip a line in a word document, you just press Enter. In R, you can type ``"\n"``. If you are still unsure what ``"\n"`` is doing, you should try to take it out of the code and see how the result looks. 
+Next, we have used a knew function ``cat()``. This function concatenates and prints. Therefore, if we type ``cat("Do",i)`` what you should interpret (in the first) iteration is that we are forming the sentence ``Do Math``. The last part ``,"\n"`` is telling R to display the next text  a line down.. When you want to skip a line in a word document, you just press Enter. In R, you can type ``"\n"``. If you are still unsure what ``"\n"`` is doing, you should try to take it out of the code and see how the result looks. 
 
-In this example, we are looping over the words in ``homework``. An alternative way to write this loop out will take advantage of indexing. The following code performs the exact same process as a way, it is just coded in a slightly different way.
+In this example, we are looping over the words in ``homework``. An alternative way to write this loop out will take advantage of indexing. The following code performs the exact same process as above, it is just coded in a slightly different way.
 
 ```{r, echo=T}
 for (i in 1:length(homework)) {
@@ -233,15 +231,9 @@ rr <- read.csv("rugratrace.csv")
 dim(rr)
 ```
   
-As you can see, this is a pretty large datasets. There are 106020 observations and 54 variables. Because this data is so large, we are first going to look at the data for just a subset of variables that we will be focusing on:
+As you can see, this is a pretty large dataset. There are 106,020 observations and 54 variables. Because this data is so large, we are first going to explain a subset of variables that we will be focusing on. Our goal is to compute time spent on childcare over time for mothers. The variable ``mother2`` is an indicator variable that is equal to one if the individual is a mother with a child currently living in the household. ``age`` is holds the age of the individual. ``childtot`` is the total hours spent on childcare in a week. ``dataset`` actually holds the year the data was collected. Different years come from datasets. This will be important to keep in mind going forward with the analysis. 
 
-```{r, echo=T}
-head(rr$mother2,rr$age,rr$childtot,rr$dataset)
-```
-
-Our goal is to compute time spent on childcare over time for mothers. The variable ``mother2`` is an indicator variable that is equal to one if the individual is a mother with a child currently living in the household. ``age`` is holds the age of the individual. ``childtot`` is the total hours spent on childcare in a week. ``dataset`` actually holds the year the data was collected. Different years come from datasets. This will be important to keep in mind going forward with the analysis. 
-
-Our goal is to follow the Ramey and Ramey (2010) analysis as closely as possible. In order to do this, we are going to make a number of restrictions in our data so that we have the same sample of individuals studied by Ramey and Ramey (2010). This will involve restricting to mothers between ages 25 and 34 with a child in the houshold. In terms of the variables in the data frame, these are individuals such that ``age>=25 & age<=34 & mother2==1``. This is a logical statement composed of three statements, strung together by ``&`` operators. Therefore, in order to be ``TRUE``, every individual statement must be ``TRUE``. You should be able to convince yourself that this statement is only ``TRUE`` for mothers between the ages of 25-34.
+Our goal is to follow the Ramey and Ramey (2010) analysis as closely as possible. In order to do this, we are going to make a number of restrictions in our data so that we have the same sample of individuals studied by Ramey and Ramey (2010). This will involve restricting to mothers between ages 25 and 34 with a child in the household. In terms of the variables in the data frame, these are individuals such that ``age>=25 & age<=34 & mother2==1``. This is a logical statement composed of three statements, strung together by ``&`` operators. Therefore, in order to be ``TRUE``, every individual statement must be ``TRUE``. You should be able to convince yourself that this statement is only ``TRUE`` for mothers between the ages of 25-34.
 
 The way we can subset to these individuals is through the ``subset`` command.
 
@@ -276,7 +268,7 @@ Since the data frame ``sub`` only contains observations from 1965, we can simply
 mean(sub$childtot)
 ```
 
-When we actually go to iterating over a loop, we will want to keep track of what each number printed out corresponds to. Therefore, let's use the ``cat()`` function to clarify exactly what is being printed out:
+When we actually go to iterating over a loop, we will want to keep track of what each number printed out corresponds to. Therefore, let's use the ``cat()`` function to clarify exactly what is being printed out. We are actually going to print out two things. First, we are going to print out the year we are studying. Then, we are going to print out the average childcare in that year.
 
 ```{r, echo=T}
 # prints out year
@@ -323,7 +315,7 @@ As we can see in this table, this replicates one of the main findings in Ramey a
 
 So far we have been using what is referred to as base R. We have only utilized functions that come standard in R. However, one of the main strengths of R is its very active user community. Because R is open-source, users can write their own packages in R and make them widely available. This means the functionality of R is essentially growing every day. 
 
-One of the most useful collection of packages for data analysis is the tidyverse package. This collection of packages can do many things. We will cover a small portion of what the package is capable of. If you want to get a more thorough understanding of the tidyverse, you can go to the [R for Data Science](https://r4ds.had.co.nz/).
+One of the most useful collection of packages for data analysis is the tidyverse package. This collection of packages can do many things. We will cover a small portion of what the package is capable of. If you want to get a more thorough understanding of the tidyverse, you can go to [R for Data Science](https://r4ds.had.co.nz/) and read more.
 
 But before using the tidyverse, we actually have to install it into our version of R. In order to install a package, you can use the ``install.packages()`` function. For example, to install tidyverse, type:
 
@@ -340,7 +332,7 @@ library(tidyverse)
 
 A common mistake for students is to forget to load a package for a given R session. If you do this, you might get an error such as "[function] not found". If you are using functions from an external package, you need to make sure to load that package in every session of R that you want to use it in. 
 
-The first concept we will learn from R is the concept of a tibble. A tibble is very similar to what we have been calling a data frame. For our purposes, you can think of a tibble as synonymous with data frame. The main difference is in how the data is stored and presented. For us, this won't matter too much. For larger datasets, sometimes loading as a tibble can make a big difference in terms of how long computations take. 
+The first concept we will learn from tidyverse is the concept of a tibble. A tibble is very similar to what we have been calling a data frame. For our purposes, you can think of a tibble as synonymous with data frame. The main difference is in how the data is stored and presented. For us, this won't matter too much. For larger datasets, sometimes loading as a tibble can make a big difference in terms of how long computations take. 
 
 To start, let's load ``rugratrace.csv`` as a data frame.
 
@@ -389,7 +381,7 @@ filter(mothers2534, dataset%in%2003:2008)
 
 This code is saying restrict to ``mothers2534`` only for observations such that dataset is in the range of 2003 through 2008. One important note here is that in the code above we did not overwrite ``mothers2534``. That is why we can see the tibble being printed out. If you want to save the result of the ``filter()`` you need to assign the resulting tibble a name. Otherwise it will simply be printed to the console but not actually saved.
 
-Next, let's discuss ``select()``. This function choose which variables you want to remain in your tibble. For example, in our current tibble we have many variables, but we really only need a subset of them for our analysis. So we can select the variables we really need:
+Next, let's discuss ``select()``. This function chooses which variables you want to remain in your tibble. For example, in our current tibble we have many variables, but we really only need a subset of them for our analysis. So we can select the variables we really need:
 
 ```{r, echo=TRUE}
 mothers2534 <- select(mothers2534, dataset, mother2, age, childtot)
@@ -419,7 +411,7 @@ And the oldest are last.
 tail(mothers2534$age)
 ```
 
-If you instead want to sort from the oldest to youngest, you can use the function ``desc()``, which stands for descending. In other words to dataset will be sorted from the highest value to the lowest value. 
+If you instead want to sort from the oldest to youngest, you can use the function ``desc()``, which stands for descending. In other words, the dataset will be sorted from the highest value to the lowest value. 
 
 ```{r, echo=TRUE}
 mothers2534 <- arrange(mothers2534,desc(age))
@@ -430,9 +422,9 @@ To finish off this chapter, let's summarize all of the new functions in tidyvers
 
 ## The Pipe Operator
 
-In this section we are going to be going over the pipe operator: ``%>%``. The pipe operator is a very useful tool to use when working with the tidyverse. For our purposes, we can use it to string along a number of commands. Eventually, we will see that this greatly improves the efficiency of our code. First, however, we simply need to learn mechanically what the pipe operator does. 
+In this section we are going to be going over the pipe operator: ``%>%``. The pipe operator is a very useful tool to use when working with the tidyverse. For our purposes, we can use it to string along a number of commands. Eventually, we will see that this greatly improves the efficiency of our code. First, however, we simply need to learn mechanically what the pipe operator does (although why we are using it might not be immediately clear). 
 
-So far, in R, we have been applying functions to objects. For example, imagine we have a vector ``x`` and we want to take the mean. We would apply the ``mean()`` function to ``x`` by typing ``mean(x)``. The pipe operator gives us an alternative way to write this. We can type: ``x %>% mean()``. In general, when we have a function ``f()``, we can either write ``f(x)`` or ``x %>% f(x)``.
+So far, in R, we have been applying functions to objects. For example, imagine we have a vector ``x`` and we want to take the mean. We would apply the ``mean()`` function to ``x`` by typing ``mean(x)``. The pipe operator gives us an alternative way to write this. We can type: ``x %>% mean()``. In general, when we have a function ``f()``, we can either write ``f(x)`` or ``x %>% f()``.
 
 So what is the benefit of the pipe operator. Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an objects in sequency. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
 
@@ -449,7 +441,7 @@ x %>%
       h
 ```
 
-This is a little easier to digest. What are we doing? We are taking in an object f, and then applying f, and then applying g, and then applying h. When you read a pipe operator, you can think to yourself **and then**. This will be a helpful tool to remember what a pipe operator is doing. 
+What are we doing here? We are taking in an object x, and then applying f, and then applying g, and then applying h. When you read a pipe operator, you can think to yourself **and then**. This will be a helpful tool to remember what a pipe operator is doing. It is stringing together a number of different functions in R. 
 
 So far, this has been a relatively abstract discussion of pipe operators. Let's load some real data so we can see how this works in practice. 
 

@@ -318,7 +318,7 @@ Figure 6.3: Loading a Data Frame
 </p>
 </div>
 <p>If you click on the name of the data frame, RStudio will open up a spreadsheet of all the data. This is similar to how we would use the <code>browse</code> command when using Stata. This allows you to look through the raw data and understand what the various variables are and what values they may take.</p>
-<p>There are also a few ways to summarize information about the data frame. For example <code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code>, retrieves the number of columns. <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> retrieves the number of rows In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,780 rows. One thing we can do to quickly get a sense of the data is to type <code>summary(resume)</code>. This provides some simple summary statistics for each variable in the data frame.</p>
+<p>There are also a few ways to summarize information about the data frame. For example <code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code>, retrieves the number of columns. <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> retrieves the number of rows In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,870 rows. One thing we can do to quickly get a sense of the data is to type <code>summary(resume)</code>. This provides some simple summary statistics for each variable in the data frame.</p>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">resume</span><span class="op">)</span></span></code></pre></div>
 <pre><code>       X         firstname             sex           
@@ -392,7 +392,7 @@ Figure 6.3: Loading a Data Frame
 <li><p><code>&gt;=</code> -- greater than or equal to</p></li>
 <li><p><code>&lt;=</code> -- less than or equal to</p></li>
 </ul>
-<p>Now that we've written out the different logical operators, let's see how to ask logical statements in R, and save logical objects. To begin, let's start with a simple logical statement: "5 is equal to 6". The way we type this in R is we type <code>5==6</code>. This statement is of course false, so if we type this into R it should yield <code>FALSE</code>.</p>
+<p>Now that we've written out the different logical operators, let's see how to use these in R. To begin, let's start with a simple logical statement: "5 is equal to 6". The way we type this in R is we type <code>5==6</code>. This statement is of course false, so if we type this into R it should yield <code>FALSE</code>.</p>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="resume-experiments.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">==</span><span class="dv">6</span></span>
 <span id="cb235-2"><a href="resume-experiments.html#cb235-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
 <p>If instead, our logical statement is "5 is equal to 5", then this statement should yield <code>TRUE</code>.</p>
@@ -404,13 +404,13 @@ Figure 6.3: Loading a Data Frame
 <p>But "6 not equal to 6" is of course <code>FALSE</code>:</p>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="resume-experiments.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span><span class="sc">!=</span><span class="dv">6</span></span>
 <span id="cb238-2"><a href="resume-experiments.html#cb238-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
-<p>Now let's try to understand the <code>&amp;</code> operator. We use the <code>&amp;</code> operator when we want to test if two statements are <strong>both</strong> true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is <code>age==18 &amp; state=="CA"</code>. We can do the same with testing numbers, as we have done before. For example, the statement "5 is equal to 5 and 5 is equal to 6" should be false.</p>
+<p>Now let's try to understand the <code>&amp;</code> operator. We use the <code>&amp;</code> operator when we want to test if two statements are <strong>both</strong> true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is <code>age==18 &amp; state=="CA"</code>. Now let's do an example in R. Imagine we want to retrieve the answer to "5 is equal to 5 and 5 is equal to 6". In R we would type <code>5==5 &amp; 5==6</code>. This statement is false because 5 is not equal to 6. If one of the statements is fales (<code>5==6</code>) then the whole statement is false (<code>5==5 &amp; 5==6</code>).</p>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="resume-experiments.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">==</span><span class="dv">5</span> <span class="sc">&amp;</span> <span class="dv">5</span><span class="sc">==</span><span class="dv">6</span></span>
 <span id="cb239-2"><a href="resume-experiments.html#cb239-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
-<p>In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true.</p>
+<p>In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true because both of the statements indiviudallt are true.</p>
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="resume-experiments.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">==</span><span class="dv">5</span> <span class="sc">&amp;</span> <span class="dv">5</span><span class="sc">&gt;</span><span class="dv">4</span></span>
 <span id="cb240-2"><a href="resume-experiments.html#cb240-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span></code></pre></div>
-<p>This is true because both statements are true. For an or statement, we are instead testing whether either statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either <code>5==5 | 5==6</code></p>
+<p>Now let's discuss or statements. For an or statement, we are instead testing whether either statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either <code>5==5 | 5==6</code>.</p>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="resume-experiments.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">==</span><span class="dv">5</span> <span class="sc">|</span> <span class="dv">5</span><span class="sc">==</span><span class="dv">6</span></span>
 <span id="cb241-2"><a href="resume-experiments.html#cb241-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span></code></pre></div>
 <p>So far we have only applied logic to numbers in R. However, we can also apply this to vectors in R. This will be particularly important when we turn to data. We will often want to apply logical statements to variables in our data.</p>
@@ -488,7 +488,7 @@ Figure 6.3: Loading a Data Frame
 <p>We can subset one variable using a logical statement built from another variable. For example, imagine we want to compute the callback rate for Black applicants. Therefore, we want to compute the average of <code>call</code> only for individuals such that <code>race=="black"</code>. In R, we can write out this statement as following:</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="resume-experiments.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resume<span class="sc">$</span>call[resume<span class="sc">$</span>race<span class="sc">==</span><span class="st">"black"</span>])</span>
 <span id="cb261-2"><a href="resume-experiments.html#cb261-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.06447639</span></span></code></pre></div>
-<p>It is easiest to interpret this line of code by starting at the indexing step. <code>[resume$race=="black"]</code> restricts to observations for which the applicant is Black. <code>resume$call[resume$race=="black"]</code> is the vector <code>call</code>, but only restricted to the observations for which the applicant is Black. Finally, by placing the entire block <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, we are computing the average of <code>resume$call</code> for applicants such that <code>resume$race=="black"</code>. If we want to compare to white applicants, we can simply type:</p>
+<p>It is easiest to interpret this line of code by starting at the indexing step. <code>[resume$race=="black"]</code> restricts to observations for which the applicant is Black. <code>resume$call[resume$race=="black"]</code> is the vector <code>call</code>, but only restricted to the observations for which the applicant is Black. Finally, by placing the entire block inside the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function, we are computing the average of <code>resume$call</code> for applicants such that <code>resume$race=="black"</code>. If we want to compare to white applicants, we can simply type:</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="resume-experiments.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resume<span class="sc">$</span>call[resume<span class="sc">$</span>race<span class="sc">==</span><span class="st">"white"</span>])</span>
 <span id="cb262-2"><a href="resume-experiments.html#cb262-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.09650924</span></span></code></pre></div>
 </div>
@@ -509,7 +509,7 @@ Figure 6.3: Loading a Data Frame
 <p>This data frame has two variables: <code>school</code> and <code>graduationdate</code>. The first column of the data frame corresponds to <code>school</code> and the second corresponds to <code>graduationdate</code>. The data frame has three total observations. To extract a specific value of the data frame, we can again use indexing. When using indexing with a vector, we could specify a single number, and that would pluck out that element. Now, with a data frame, we need to specify two numbers. First, we will specify the row we would like to extract and then we will specify the column. For example, to extract the value in the 3rd row, 1st column, we would type:</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="resume-experiments.html#cb265-1" aria-hidden="true" tabindex="-1"></a>students[<span class="dv">3</span>,<span class="dv">1</span>]</span>
 <span id="cb265-2"><a href="resume-experiments.html#cb265-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"UCSD"</span></span></code></pre></div>
-<p>It output "UCSD", because the the third student in the data frame went to UCSD and the 1st column in the data frame corresponds to the variable school.</p>
+<p>It output "UCSD", because the the third student in the data frame went to UCSD and the 1st column in the data frame corresponds to the variable <code>school</code>.</p>
 <p>Instead of extracting specific elements of a data frame, you can also extract entire columns and rows. For example, to extract the first row type:</p>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="resume-experiments.html#cb266-1" aria-hidden="true" tabindex="-1"></a>students[<span class="dv">1</span>,]</span>
 <span id="cb266-2"><a href="resume-experiments.html#cb266-2" aria-hidden="true" tabindex="-1"></a>  school graduationdate</span>
@@ -552,7 +552,7 @@ You can also use a vector to specify what observations or columns you would like
 <h2>
 <span class="header-section-number">6.10</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion-4"><i class="fas fa-link"></i></a>
 </h2>
-<p>Now, let's put everything that we've learned in this chapter together to study discrimination in hiring practices. To get started, let's load in the resume data</p>
+<p>Now, let's put everything that we've learned in this chapter together to study discrimination in hiring practices. To get started, let's load in the resume data.</p>
 <div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">resume</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"resume.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>When we are exploring a new data frame, it is often helpful to get a sense of the variables and the values they take. Let's look at the first few observations in the data in order to remind ourselves what is in the data:</p>
@@ -581,7 +581,7 @@ You can also use a vector to specify what observations or columns you would like
 <p>Now, let's get to the main analysis, which studies whether callback rates vary by race. To do so, let's first find the callback rate for applicants with Black-sounding names. To do this, we will again utilize logic:</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="resume-experiments.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resume<span class="sc">$</span>call[resume<span class="sc">$</span>race<span class="sc">==</span><span class="st">"black"</span>])</span>
 <span id="cb280-2"><a href="resume-experiments.html#cb280-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.06447639</span></span></code></pre></div>
-<p>Here we have using indexing. <code>[resume$race="black"]</code> subsets to Black applicants. Because we have put this inside <code>mean(resume$call[])</code>, then R will retrieve the average of the <code>resume$call</code> vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback.</p>
+<p>Here we are using indexing. <code>[resume$race="black"]</code> subsets to Black applicants. Because we have put this inside <code>mean(resume$call[])</code>, then R will retrieve the average of the <code>resume$call</code> vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback.</p>
 <p>Let's now compare this to white applicants:</p>
 <div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="resume-experiments.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resume<span class="sc">$</span>call[resume<span class="sc">$</span>race<span class="sc">==</span><span class="st">"white"</span>])</span>
 <span id="cb281-2"><a href="resume-experiments.html#cb281-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.09650924</span></span></code></pre></div>
@@ -599,8 +599,31 @@ You can also use a vector to specify what observations or columns you would like
 <p><span class="math display">\[
 \text{Percent Increase in Callbacks for White Apps}=\frac{9.7-6.4}{6.4}=0.516
 \]</span>
-This highlights a stark disparity in labor-market outcomes. And given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employees take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race.</p>
+This highlights a stark disparity in labor-market outcomes. And given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employers take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race.</p>
 <p>This empirical design has become widely popular. It has been used to study discrimination across other demographics, for example, gender, sexual orientation, and disability status. It has also increased in scope, with recent experiments sending out thousands and thousands of fictitious resumes in order to understand discrimination at some of the largest employers in the U.S (see Kline, Rose, and Walters 2022).<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Patrick M Kline, Evan K Rose, and Christopher R Walters, &lt;span&gt;“Systemic Discrimination Among Large US Employers,”&lt;/span&gt; &lt;em&gt;Quarterly Journal of Economics&lt;/em&gt;, 2022.&lt;/p&gt;"><sup>10</sup></a></span></p>
+</div>
+<div id="function-descriptions" class="section level2 unnumbered">
+<h2>
+<u>Function Descriptions</u><a class="anchor" aria-label="anchor" href="#function-descriptions"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p><strong><u>Setup Functions</u></strong></p>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> –- retrieves the current working directory</p></li>
+<li><p><code>setwd("pathname")</code> -- sets the working directory to whatever is contained in pathname. For example, if I type <code>setwd("Users/davidarnold/Desktop")</code>, then my working directory will be set to my desktop.</p></li>
+<li><p><code>&lt;-</code> -- this is called the assignment operator. It assigns some value to an object. This can be used to create numeric objects, character objects, vectors, as well as dataframes.</p></li>
+<li><p><code>read.csv(csvfile.csv)</code> -- reads in a csv file into R. To save the csv file as a dataframe, assign it a name. <code>df &lt;- read.csv("csvfile.csv")</code></p></li>
+</ul>
+<p><strong><u>Data Exploration Commands</u></strong></p>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> -- retrieves number of rows in a data frame.</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code> -- retrieves number of columns in a dataframe</p></li>
+<li><p><code>summary(dataframe)</code> - lists all variables in the dataframe. For numeric variables, computes some key quantiles.</p></li>
+<li><p><code>names(dataframe)</code> - retrieves names of all columns in the dataframe</p></li>
+<li><p><code>mean(dataframe$varname)</code> -- retrives the mean value of <code>varname</code> which is a variable inside the data frame <code>dataframe</code>.</p></li>
+<li><p><code>table(dataframe$varname)</code> -- retrieves a table of frequencies for the variable <code>varname</code> within the data frame <code>dataframe</code>. This can be used for string variables as well as categorical variables.</p></li>
+</ul>
+</div>
 
 </div>
 </div>
@@ -792,6 +815,7 @@ window.onload = function() {
 <li><a class="nav-link" href="#subsetting-vectors"><span class="header-section-number">6.8</span> Subsetting Vectors</a></li>
 <li><a class="nav-link" href="#subsetting-data-frames"><span class="header-section-number">6.9</span> Subsetting Data Frames</a></li>
 <li><a class="nav-link" href="#conclusion-4"><span class="header-section-number">6.10</span> Conclusion</a></li>
+<li><a class="nav-link" href="#function-descriptions">Function Descriptions</a></li>
 </ul>
 
       <div class="book-extra">
@@ -808,7 +832,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-02-10.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-02-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
