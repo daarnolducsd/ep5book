@@ -672,7 +672,7 @@ We could have also accomplished this by looping over values of dataset and colle
 
 ## Conclusion 
 
-In this final section we will put all the various functions we've learned together into one analysis. As a reminder, our goal is to compute the average time spent on childcare for mothers over time, separately by college-education status. In other words, replicate Figure \@ref(fig:rugratrace) from Ramey and Ramey (2010) which shows increased time spent on childcare beginning in the 1990s, especially for college-educated mothers. 
+In this final section we will put all the various functions we've learned together into one analysis. As a reminder, our goal is to compute the average time spent on childcare for mothers over time, separately by college-education status. In other words, replicate Figure \@ref(fig:rugrat) from Ramey and Ramey (2010) which shows increased time spent on childcare beginning in the 1990s, especially for college-educated mothers. 
 
 This review will focus on the ``tidyverse`` package. As a reminder, the first time using a package you need to install it using ``install.packages("packagename")``. You only need to do this once. However, every time you want to use the package in a given R session, you need to load it into memory using the ``library()`` function. For example, to load tidyverse we would type:
 
@@ -708,6 +708,15 @@ collegeprep <- mothers_collegeprep %>%
 ```
 
 Now if we look at our resulting tibble, we can use it to understand trends in time spent on college prep over time:
+
+```{r, echo=TRUE}
+print(collegeprep,n=25)
+```
+
+
+What do we find in this data? In the 60s-70s, on average, mothers spent around 1.5-2 hours on activities that may be related to college preparation. This number of hours increases over time. In the 2000s, it has stabilized to closer to 3 hours on average. Therefore, we find something broadly consistent with Ramey and Ramey (2010). Time spent on childcare has increased over time, and in particular, for activities that may be related to college preparation. In this data, however, we are finding relatively similar increases for both college-educated and less-than college educated individuals.  
+
+Now, one thing to note is that we have done this analysis step-by-step. First we restricted our sample, then we added the variables, and lastly we summarized by group. However, we could have also done this entire analysis in a single block of code by stringing together functions using the pipe operator, as is done below: 
 
 ```{r, echo=TRUE}
 collegeprep <- rr %>%

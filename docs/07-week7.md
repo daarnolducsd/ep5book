@@ -84,7 +84,7 @@ Let's try another example. Say we take a random draw from three numbers: -1, 0, 
 ```r
 x <- sample(-1:1,1)
 x
-[1] -1
+[1] 0
 ```
 
 The part of the code ``-1:1`` controls what numbers will be drawn. If you type ``-1:1`` in R, you will see it prints out the numbers -1,0, and 1. The second part of the code ``,1`` tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.
@@ -96,7 +96,6 @@ So now let's write a conditional statement that depends on the outcome of x. Let
 if (x<0){
   abs(x)
 }
-[1] 1
 ```
 
 Next, let's discuss ``else`` statements. Sometimes, we want to execute certain code if the statement is TRUE, but some other code if it is FALSE. For example, in our first example, imagine if the ``door`` object is not equal to ``locked`` then we want R to print out the message ``Please Come in!``. The way we can do this in R is with an ``else`` statement:
@@ -930,7 +929,7 @@ We could have also accomplished this by looping over values of dataset and colle
 
 ## Conclusion 
 
-In this final section we will put all the various functions we've learned together into one analysis. As a reminder, our goal is to compute the average time spent on childcare for mothers over time, separately by college-education status. In other words, replicate Figure \@ref(fig:rugratrace) from Ramey and Ramey (2010) which shows increased time spent on childcare beginning in the 1990s, especially for college-educated mothers. 
+In this final section we will put all the various functions we've learned together into one analysis. As a reminder, our goal is to compute the average time spent on childcare for mothers over time, separately by college-education status. In other words, replicate Figure \@ref(fig:rugrat) from Ramey and Ramey (2010) which shows increased time spent on childcare beginning in the 1990s, especially for college-educated mothers. 
 
 This review will focus on the ``tidyverse`` package. As a reminder, the first time using a package you need to install it using ``install.packages("packagename")``. You only need to do this once. However, every time you want to use the package in a given R session, you need to load it into memory using the ``library()`` function. For example, to load tidyverse we would type:
 
@@ -980,6 +979,42 @@ override using the `.groups` argument.
 ```
 
 Now if we look at our resulting tibble, we can use it to understand trends in time spent on college prep over time:
+
+
+```r
+print(collegeprep,n=25)
+# A tibble: 22 × 3
+# Groups:   dataset [11]
+   dataset college meancollegeprep
+     <dbl>   <dbl>           <dbl>
+ 1    1965       0            2.14
+ 2    1965       1            1.88
+ 3    1975       0            1.66
+ 4    1975       1            1.69
+ 5    1985       0            2.52
+ 6    1985       1            2.72
+ 7    1993       0            1.49
+ 8    1993       1            1.87
+ 9    1998       0            2.46
+10    1998       1            2.51
+11    2003       0            3.27
+12    2003       1            3.34
+13    2004       0            2.87
+14    2004       1            3.72
+15    2005       0            3.23
+16    2005       1            3.05
+17    2006       0            3.00
+18    2006       1            3.16
+19    2007       0            3.18
+20    2007       1            3.30
+21    2008       0            3.39
+22    2008       1            3.28
+```
+
+
+What do we find in this data? In the 60s-70s, on average, mothers spent around 1.5-2 hours on activities that may be related to college preparation. This number of hours increases over time. In the 2000s, it has stabilized to closer to 3 hours on average. Therefore, we find something broadly consistent with Ramey and Ramey (2010). Time spent on childcare has increased over time, and in particular, for activities that may be related to college preparation. In this data, however, we are finding relatively similar increases for both college-educated and less-than college educated individuals.  
+
+Now, one thing to note is that we have done this analysis step-by-step. First we restricted our sample, then we added the variables, and lastly we summarized by group. However, we could have also done this entire analysis in a single block of code by stringing together functions using the pipe operator, as is done below: 
 
 
 ```r
