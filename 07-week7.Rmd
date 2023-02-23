@@ -531,7 +531,7 @@ mutate(dataframe, newvarname = expression)
 For example, if we want to add ``childprep`` using ``mutate()`` we can type:
 
 ```{r, echo=TRUE}
-rr <- mutate(rr, collegeprep=childtravel+childeduc)
+rr <- mutate(rr, childcollegeprep=childtravel+childeduc)
 ```
 
 Note that the first step was to type ``rr <-``. If you don't overwrite ``rr`` by specifying this step, R will generate a new tibble with the added variable, but it won't be saved anywhere.
@@ -539,18 +539,18 @@ Note that the first step was to type ``rr <-``. If you don't overwrite ``rr`` by
 A nice thing about ``mutate()`` relative to base R is that you can generate a number of variables within the same ``mutate()`` command. For example, imagine we also want to create a variable that captures childcare time not spent on college prep. In other words, we want to add the variable ``childnotcollegeprep = childtot - childcollegeprep`` to the tibble. We can do this using the following:
 
 ```{r, echo=TRUE}
-rr <- mutate(rr, collegeprep=childtravel+childeduc,
+rr <- mutate(rr, childcollegeprep=childtravel+childeduc,
              childnotcollegeprep=childtot-childcollegeprep)
 ```
 
 If you have more variables to add or change, you can simply add a comma to the end of the last line, and add the new variable below. Note, we can even call variables that are created earlier in the function (i.e. ``childnotcollegeprep`` can only be created if ``childcollegeprep`` is created first).
 
-Lastly, let's talk about the ``transmute()`` function. This function also generates new variables, but at the same time, it drops all pre-exisiting variables. For example, if you wanted to create a tibble that only contains ``collegeprep`` and ``childnotcollegeprep``, you could use the ``transmute()`` function:
+Lastly, let's talk about the ``transmute()`` function. This function also generates new variables, but at the same time, it drops all pre-existing variables. For example, if you wanted to create a tibble that only contains ``childcollegeprep`` and ``childnotcollegeprep``, you could use the ``transmute()`` function:
 
 ```{r, echo=TRUE}
 collegeprepdat <- transmute(rr,
-                            collegeprep = childeduc + childtravel,
-                            notcollegeprep = childtot - collegeprep)
+                            childcollegeprep = childeduc + childtravel,
+                            childnotcollegeprep = childtot - collegeprep)
 ```
 ```{r, echo=TRUE}
 collegeprepdat

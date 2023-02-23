@@ -84,7 +84,7 @@ Let's try another example. Say we take a random draw from three numbers: -1, 0, 
 ```r
 x <- sample(-1:1,1)
 x
-[1] 0
+[1] 1
 ```
 
 The part of the code ``-1:1`` controls what numbers will be drawn. If you type ``-1:1`` in R, you will see it prints out the numbers -1,0, and 1. The second part of the code ``,1`` tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.
@@ -690,7 +690,7 @@ For example, if we want to add ``childprep`` using ``mutate()`` we can type:
 
 
 ```r
-rr <- mutate(rr, collegeprep=childtravel+childeduc)
+rr <- mutate(rr, childcollegeprep=childtravel+childeduc)
 ```
 
 Note that the first step was to type ``rr <-``. If you don't overwrite ``rr`` by specifying this step, R will generate a new tibble with the added variable, but it won't be saved anywhere.
@@ -699,41 +699,36 @@ A nice thing about ``mutate()`` relative to base R is that you can generate a nu
 
 
 ```r
-rr <- mutate(rr, collegeprep=childtravel+childeduc,
+rr <- mutate(rr, childcollegeprep=childtravel+childeduc,
              childnotcollegeprep=childtot-childcollegeprep)
-Error in `mutate()`:
-! Problem while computing `childnotcollegeprep =
-  childtot - childcollegeprep`.
-Caused by error in `mask$eval_all_mutate()`:
-! object 'childcollegeprep' not found
 ```
 
 If you have more variables to add or change, you can simply add a comma to the end of the last line, and add the new variable below. Note, we can even call variables that are created earlier in the function (i.e. ``childnotcollegeprep`` can only be created if ``childcollegeprep`` is created first).
 
-Lastly, let's talk about the ``transmute()`` function. This function also generates new variables, but at the same time, it drops all pre-exisiting variables. For example, if you wanted to create a tibble that only contains ``collegeprep`` and ``childnotcollegeprep``, you could use the ``transmute()`` function:
+Lastly, let's talk about the ``transmute()`` function. This function also generates new variables, but at the same time, it drops all pre-existing variables. For example, if you wanted to create a tibble that only contains ``childcollegeprep`` and ``childnotcollegeprep``, you could use the ``transmute()`` function:
 
 
 ```r
 collegeprepdat <- transmute(rr,
-                            collegeprep = childeduc + childtravel,
-                            notcollegeprep = childtot - collegeprep)
+                            childcollegeprep = childeduc + childtravel,
+                            childnotcollegeprep = childtot - collegeprep)
 ```
 
 ```r
 collegeprepdat
 # A tibble: 106,020 × 2
-   collegeprep notcollegeprep
-         <dbl>          <dbl>
- 1       0               7   
- 2       3.5             1.17
- 3       0.583           2.33
- 4       0              42.6 
- 5       0               7.58
- 6       0              27.2 
- 7       1.17            3.03
- 8       0               0   
- 9       0               0   
-10       0               7   
+   childcollegeprep childnotcollegeprep
+              <dbl>               <dbl>
+ 1            0                    7   
+ 2            3.5                  1.17
+ 3            0.583                2.33
+ 4            0                   42.6 
+ 5            0                    7.58
+ 6            0                   27.2 
+ 7            1.17                 3.03
+ 8            0                    0   
+ 9            0                    0   
+10            0                    7   
 # … with 106,010 more rows
 ```
 

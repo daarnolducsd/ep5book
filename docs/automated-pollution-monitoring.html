@@ -392,7 +392,7 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <p>Or even the exact time right now:</p>
 <div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2023-02-22 19:31:40 PST"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2023-02-22 20:45:49 PST"</span></span></code></pre></div>
 <p>But most importantly, <code>lubridate</code> allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example.</p>
 <p>Additionally, <code>lubridate()</code> can interpret dates that come in a variety of formats. For example, we can use the <code><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd()</a></code> function to convert a string of text that holds the date as <code>"year-month-day"</code> into a date object.</p>
 <div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
