@@ -426,7 +426,7 @@ In this section we are going to be going over the pipe operator: ``%>%``. The pi
 
 So far, in R, we have been applying functions to objects. For example, imagine we have a vector ``x`` and we want to take the mean. We would apply the ``mean()`` function to ``x`` by typing ``mean(x)``. The pipe operator gives us an alternative way to write this. We can type: ``x %>% mean()``. In general, when we have a function ``f()``, we can either write ``f(x)`` or ``x %>% f()``.
 
-So what is the benefit of the pipe operator. Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an objects in sequency. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
+So what is the benefit of the pipe operator? Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an objects in sequency. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
 
 ```{r, echo=T, eval=F}
 h(g(f(x)))
@@ -505,7 +505,7 @@ knitr::include_graphics("images/07_ChildCareByType.png")
 
 Let's focus on the top-right panel: mothers with children above the age of 5. College-educated mothers (the darker gray bars) are spending more time on a few categories: education, organizing and attending activities, and chauffeuring. Ramey and Ramey (2010) argue that these may be driven by college competitiveness. To be competitive in college, students need to earn higher scores on tests and participate in more extracurricular activities.
 
-In our data, we are going to create a variable named ``collegeprep`` that is the sum total of time spent on education and time spent on travelling with children. Right now, however, our data set does not have this variable. So in order to add this, we will need to learn how to create variables in R. 
+In our data, we are going to create a variable named ``childcollegeprep`` that is the sum total of time spent on education and time spent on travelling with children. Right now, however, our data set does not have this variable. So in order to add this, we will need to learn how to create variables in R. 
 
 There are two ways to create new variables in R. The first uses base R. The general syntax is:
 
@@ -513,14 +513,14 @@ There are two ways to create new variables in R. The first uses base R. The gene
 df$newvarname <- expression
 ```
 
-For example, let's add the variable ``collegeprep`` which will be the addition of ``childeduc`` and ``childtravel``, which are two variables in our ``rugratrace.csv`` data set. 
+For example, let's add the variable ``childcollegeprep`` which will be the addition of ``childeduc`` and ``childtravel``, which are two variables in our ``rugratrace.csv`` data set. 
 
 ```{r, echo=TRUE}
-rr$collegeprep <- rr$childeduc + rr$childtravel
-summary(rr$collegeprep)
+rr$childcollegeprep <- rr$childeduc + rr$childtravel
+summary(rr$childcollegeprep)
 ```
 
-So the mean amount of time spent on ``collegprep`` is about 1.2 hours. Recall we haven't made any restrictions on ``rr``, so this includes everyone in the data set, including those who don't have children. This explains why the value is so much lower than the values we have been studying for mothers with children in the house. 
+So the mean amount of time spent on ``childcollegprep`` is about 1.2 hours. Recall we haven't made any restrictions on ``rr``, so this includes everyone in the data set, including those who don't have children. This explains why the value is so much lower than the values we have been studying for mothers with children in the house. 
 
 We can also generate new variables using the ``mutate()`` function (from tidyverse). The general syntax is:
 
@@ -567,7 +567,11 @@ To begin our discussion of these functions, we will first illustrate how to use 
 To remind you, the tibble ``rr`` contains the year of the observation in a variable named ``dataset`` and the amount spent on childcare in a variable named ``childtot``.
 
 ```{r, echo=T}
-head(rr$dataset,rr$childtot)
+head(rr$dataset)
+```
+
+```{r, echo=T}
+head(rr$childtot)
 ```
 
 The ``summarize()`` function is used to generate summary statistics. For example, imagine I just want to take the average level of ``childtot`` across the entire sample. We can do this by typing:
@@ -589,7 +593,7 @@ summarize(rr,
 
 The median is actually zero here because we are taking the median for the entire sample. Many individuals will have zero time spent on childcare, as there aren't any children in many households.
 
-Next, we will discuss the real usefulness of the summarize command: summarizing by groups. Many times as part of our analysis, we might want to provide summary statistics over some group variable. At other times, we may actually want to change the unit-of-observation of our dataset. Using the ``group_by()`` function with the ``summarize()`` function is an easy way to accomplish this. 
+Next, we will discuss the real usefulness of the summarize command: summarizing by groups. Many times as part of our analysis, we might want to provide summary statistics over some group variable. At other times, we may actually want to change the unit-of-observation of our dataset. Using the ``group_by()`` function with the ``summarize()`` function is a convenient way to accomplish this. 
 
 The ``group_by()`` function tells R that any subsequent functions should be done separately by the values of the ``group_by()`` variable. For example, in our dataset, we have a list of years:
 
@@ -656,7 +660,7 @@ rr %>%
   summarize(meanchildtot = mean(childtot, na.rm=T))
 ```
 
-To understand this table, let's look at the first row. This first row has ``dataset==1965`` and ``college==0``. In other words, this row corresponds to individuals in 1965 without a college education. The value in the ``meanchildtot`` column is the average amount of time spent on childcare for these individuals. If we move down this table, we will see R has computed the man time spent on childcare for every unique combination of ``dataset`` and ``college``. 
+To understand this table, let's look at the first row of data. This first row has ``dataset==1965`` and ``college==0``. In other words, this row corresponds to individuals in 1965 without a college education. The value in the ``meanchildtot`` column is the average amount of time spent on childcare for these individuals. If we move down this table, we will see R has computed the mean time spent on childcare for every unique combination of ``dataset`` and ``college``. 
 
 Often in practice, we may want to actually save the output of this function. To do so, we just need to assign it a name, as usual:
 
@@ -668,7 +672,7 @@ totchildbyyearcollege <- rr %>%
 
 Now we have created a new tibble ``totchildbyyearcollege`` that contains these averages over time by college education. 
 
-We could have also accomplished this by looping over values of dataset and college and then computing the means and storing them. But doing so would have included (1) writing much more code and (2) actually taken longer to run. Using ``group_by()`` with ``summarize()`` is a much more efficient way to accomplish this. 
+We could have also accomplished this by looping over values of dataset and college and then computing the means and storing them. But doing so would have included (1) writing much more code and (2) would have actually taken longer to run. Using ``group_by()`` with ``summarize()`` is a much more efficient way to accomplish this. 
 
 ## Conclusion 
 
@@ -680,7 +684,7 @@ This review will focus on the ``tidyverse`` package. As a reminder, the first ti
 libary(tidyverse)
 ```
 
-To begin, let's first re-load our data into R as a tibble using the ``read_csv()`` function. The ``read_csv()`` function reads in a dataset as a tibble, while the ``read.csv()`` finction reads the dataset into memory as a data frame. For our purposes, there won't be too much differences between these formats, but tibbles will be more efficient with large datasets. 
+To begin, let's first re-load our data into R as a tibble using the ``read_csv()`` function. The ``read_csv()`` function reads in a dataset as a tibble, while the ``read.csv()`` function reads the dataset into memory as a data frame. For our purposes, there won't be too much differences between these formats, but tibbles will be more efficient with large datasets. 
 
 ```{r, echo=TRUE}
 rr <- read_csv("rugratrace.csv")
@@ -714,7 +718,7 @@ print(collegeprep,n=25)
 ```
 
 
-What do we find in this data? In the 60s-70s, on average, mothers spent around 1.5-2 hours on activities that may be related to college preparation. This number of hours increases over time. In the 2000s, it has stabilized to closer to 3 hours on average. Therefore, we find something broadly consistent with Ramey and Ramey (2010). Time spent on childcare has increased over time, and in particular, for activities that may be related to college preparation. In this data, however, we are finding relatively similar increases for both college-educated and less-than college educated individuals.  
+What do we find in this data? In the 60s-70s, on average, mothers spent around 1.5-2 hours on activities that may be related to college preparation. This increases over time, and by the 2000s, it has stabilized to closer to 3 hours on average. Therefore, we find something broadly consistent with Ramey and Ramey (2010). Time spent on childcare has increased over time, and in particular, for activities that may be related to college preparation. 
 
 Now, one thing to note is that we have done this analysis step-by-step. First we restricted our sample, then we added the variables, and lastly we summarized by group. However, we could have also done this entire analysis in a single block of code by stringing together functions using the pipe operator, as is done below: 
 

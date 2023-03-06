@@ -20,7 +20,7 @@ A classic example is employees at a firm. The employee is putting in some amount
 
 Another classic example is elected officials and the citizenry. The officials make decisions (i.e. the agents) acting on behalf of the citizens (i.e. the principal). However, the goal of the elected officials may be to be re-elected, not necessarily make the optimal decisions for the citizens. Therefore, in this setting as well, it is possible that the incentives are not necessarily aligned between the agent and the principal. 
 
-In this section, we will be discussing an interesting setting in which the principal agent problem is at play. In China, the central government (the principal) has recently made it a priority to reduce air pollution in China. To accomplish this, they provide high-power incentives to local governments (the agent) that achieve pollution targets. However, the local government officials are also the ones collecting the pollution data. While it may be costly to reduce air pollution, one possibility is that they can cheat and report pollution numbers lower than the actual pollution level.
+In this section, we will be discussing an interesting setting in which the principal agent problem is at play. In China, the central government (the principal) has recently made it a priority to reduce air pollution. To accomplish this, they provide high-power incentives to local governments (the agent) that achieve pollution targets. However, the local government officials are also the ones collecting the pollution data. While it may be costly to reduce air pollution, one possibility is that they can cheat and report pollution numbers lower than the actual pollution level.
 
 Greenstone et al. (2022)[@greenstone2022can] studies this question by examining the introduction of automatic air pollution monitoring in China. This automated system was implemented in order to get accurate measures of pollution that cannot be manipulated by local officials. There are basically two potential outcomes of this analysis. First, local officials were reporting accurate numbers. In this case, we wouldn't expect automatic monitoring to change reported pollution numbers. The numbers are accurate both before and after the policy, and therefore, we expect the levels to be similar both before and after the policy. 
 
@@ -91,7 +91,7 @@ pm_bycity <- pm %>%
 
 We have included ``na.rm=T``, because looking through the ``pm10`` variable, it appears there is some missing data. Adding ``na.rm=T`` indicates we are taking the average over the non-missing values.
 
-So now, for each unique value of ``code_city``, we have the average of the PM10 level in that city. This is the dataset that we will use in order to generate our histogram.
+So now, for each unique value of ``code_city``, we have the average of the PM10 level in that city and have saved this information in the tibble ``pm_bycity``. 
 
 To generate histograms in base R, we can use the ``hist()`` function. For example, let's generate a histogram of ``pm10``:
 
@@ -105,7 +105,7 @@ hist(pm_bycity$meanpm10)
 <p class="caption">(\#fig:hist1)Histogram of Average Pollution Levels Across Cities Part 1</p>
 </div>
 
-First, let's review a histogram. On the horizontal axis, we have our numeric variable ``meanpm10``, which is the average level of ``pm10``. The histogram has binned this variable into discrete intervals. R automatically creates these bins when you use the ``hist()`` function. Then, in the vertical axis, the number of cities that fall within that interval is presented. So, for example, if we look at the tallest bin, which is about 80-100, we can see there are about 35 cities with average pollution in that range.
+First, let's review a histogram. On the horizontal axis, we have our numeric variable ``meanpm10``, which is the average level of ``pm10`` in a city. The histogram has binned this variable into discrete intervals. R automatically creates these bins when you use the ``hist()`` function. Then, in the vertical axis, the number of cities that fall within that interval is presented. So, for example, if we look at the tallest bin, which is about 80-100, we can see there are about 35 cities with average pollution in that range.
 
 While this presents our information, there is a lot we can do in order to improve this figure. For example, the title right now is not clear. A reader may not know what ``pm_bycity$meanpm10`` means. As usual, we will want to improve these labels. 
 
@@ -156,11 +156,11 @@ hist(pm_bycity$meanpm10, xlab="Mean PM10",
 
 As you can see, when we specify ``breaks=20``, the histogram function generates many bins. When we specified ``breaks=4``, we retrieve only 4 bins.
 
-So generally there is a trade off in the number of bins you create. In the left plot, we get more fine-grained information about the distribution of ``pm10`` across cities. On the right, the information is more aggregated, but perhaps easier to read. In many cases, the default number of bins is a good choice.
+So generally there is a trade off in the number of bins you create. In the left plot, we get more fine-grained information about the distribution of ``pm10`` across cities. On the right, the information is more aggregated, but perhaps easier to read. In many cases, the default number of bins (i.e. the choice automatically made by R when you do not specify ``breaks``) is a good choice.
 
 ## Comparing Histograms
 
-In this section we will discuss how to compare two histograms. In particular, we will plot this distribution of pollution levels (PM10) both before and after the implementation of automatic monitory. 
+In this section we will discuss how to compare two histograms. In particular, we will plot this distribution of pollution levels (PM10) both before and after the implementation of automatic monitoring 
 
 Before we construct these histograms, we need to compute a data frame that contains average pollution levels by city, both before and after automation. We can accomplish this by first constructing a variable ``T`` that contains days until automation. Then we can filter to days before automation (``T<0``). Similarly, we can create a post-automation data frame by filtering to observations such that ``T>0``. We can accomplish all of this in one step by using the pipe operator:
 
@@ -173,7 +173,7 @@ pm_bycitybefore <- pm %>%
   summarize(meanpm10 = mean(pm10, na.rm=TRUE))
 ```
 
-So let's make sure we understand each line of code. ``pm %>%`` pipes in the data frame ``pm``. ``mutate(T=date-auto_date)`` creates a new variable and its it to the data frame. The name of this new variable is ``T``. If ``T`` is negative, that means ``date`` is less than ``auto_date``. Next ``filter(T<0)`` implies we are restricting to observations before the automation date. Lastly, `` group_by(code_city) %>% summarize(meanpm10=mean(pm10, na.rm=T))`` implies we are taking averages of ``pm10`` by city. In the end, we will have a dataset where each observation is a separate city, and we have the average level of ``pm10`` in that city before automation. We can use analogous code to construct a city-level dataset that has the average level of ``pm10`` after automation.
+So let's make sure we understand each line of code. ``pm %>%`` pipes in the data frame ``pm``. ``mutate(T=date-auto_date)`` creates a new variable and adds it to the data frame. The name of this new variable is ``T``. If ``T`` is negative, that means ``date`` is less than ``auto_date``. Next ``filter(T<0)`` implies we are restricting to observations before the automation date. Lastly, `` group_by(code_city) %>% summarize(meanpm10=mean(pm10, na.rm=T))`` implies we are taking averages of ``pm10`` by city. In the end, we will have a dataset where each observation is a separate city, and we have the average level of ``pm10`` in that city before automation. We can use analogous code to construct a city-level dataset that has the average level of ``pm10`` after automation.
 
 
 ```r
@@ -203,7 +203,7 @@ hist(pm_bycityafter$meanpm10, xlab="MeanPM10",
 
 <img src="08-week8_files/figure-html/unnamed-chunk-10-1.png" width="90%" />
 
-In these plots it is not so easy to compare the two distributions. One reason is that they are not on the same scale. As you can see, the x-axis in the After Automation plot goes up to 200, while in the Before Automation plot it goes up to 150. In order for the two to be directly comparable, we should ensure that both the x-axis and the y-axis have the same scale. We can do this using the ``xlim()`` and ``ylim()`` functions. 
+In these plots it is not so easy to compare the two distributions. One reason is that they are not on the same scale. As you can see, the x-axis in the After Automation plot goes up to 200, while in the Before Automation plot it goes up to 150. In order for the two to be directly comparable, we should ensure that both the x-axis and the y-axis have the same scale. We can do this using the ``xlim()`` and ``ylim()`` functions. In the code below, we specify ``xlim=c(0,250)``. This implies the x-axis will start at 0 and go up to 250. We specify ``ylim=c(0,50)``. This implies the y-axis will start at 0 and go up to 50.
 
 
 ```r
@@ -283,7 +283,7 @@ The dashed lines that extend from the box are referred to as whiskers. The lengt
 
 As you can see, the upper whisker is longer and extends to $112+48=160$. Further, we can see there are dots beyond the whisker. This signifies that there is data beyond the values reached by the whisker. These dots give us a sense of how many outliers there are in the data. 
 
-Just as in other figures, we can also improve the aesthetics of the box plot in various ways. For example, the box plot below adds appropriate labels, changes teh colors of the box plot, as well as changes the orientation of the box plot.
+Just as in other figures, we can also improve the aesthetics of the box plot in various ways. For example, the box plot below adds appropriate labels, changes the colors of the box plot, as well as changes the orientation of the box plot.
 
 
 ```r
@@ -304,6 +304,8 @@ First, we need to add a variable that indicates whether the time is before or af
 pm_byday$after <- pm_byday$T>0
 ```
 
+What is the code above accomplishing? It is creating a binary logical variable that is equal to ``TRUE`` if it is after automation, and equal to ``FALSE`` if it is before automation. Remember, values of ``T`` that are positive are days after automation has occured.
+
 To plot separate box plots by the value of ``after``, we specify ``pm_byday$meanpm10 ~ pm_byday$after`` inside the boxplot function, rather than just ``pm_byday$meanpm10``.
 
 
@@ -321,7 +323,7 @@ What can we tell from this figure? Well, after automation pollution levels seem 
 
 ## Scatterplots
 
-In this section we will analyze how pollution changes day-to-day around automation. In order to do this, we will plot daily pollution levels around the time of automation. Therefore, we will continue to use the data set ``pm_byday`` which includes average pollution levels across cities every day within a year of automated pollution monitoring 
+In this section we will analyze how pollution changes day-to-day around automation. In order to do this, we will plot daily pollution levels around the time of automation. Therefore, we will continue to use the data set ``pm_byday`` which includes for each day relative to automation, the average pollution level.  
 
 The general syntax for a scatterplot is:
 
@@ -369,9 +371,10 @@ text(0,260, "Automation", col="red")
 <img src="08-week8_files/figure-html/unnamed-chunk-21-1.png" width="80%" />
 
 Finally, let's discuss how to actually save our plots. Saving plots consists of three steps:
-  1. Use ``pdf()`` of ``png()`` to create the file where the plot will be created
-  2. Run the code to create the plot 
-  3. Type ``dev.off()`` to tell R you are done creating plots.
+
+  - 1. Use ``pdf()`` of ``png()`` to create the file where the plot will be created.
+  - 2. Run the code to create the plot. 
+  - 3. Type ``dev.off()`` to tell R you are done creating plots.
   
 For example, let's say we want to save a PDF of our plot and we want it named ``Automation.pdf``. Our first step is to execute the code:
 
@@ -423,7 +426,7 @@ library(lubridate)
 
 ```r
 today()
-#> [1] "2023-02-22"
+#> [1] "2023-03-05"
 ```
 
 Or even the exact time right now:
@@ -431,7 +434,7 @@ Or even the exact time right now:
 
 ```r
 now()
-#> [1] "2023-02-22 20:45:49 PST"
+#> [1] "2023-03-05 18:03:25 PST"
 ```
 
 But most importantly, ``lubridate`` allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example. 
@@ -514,9 +517,9 @@ ymd("1960-01-01")+days(18628)
 
 So 18628 days from January 1, 1960 is January 1, 2011. 
 
-Next, we are going to study rainfall over time. Rain may actually reduce the amount of pollution in the air. When rain falls, it attracts particles in the air before hitting the ground., in turn reducing the amount of pollution in the air. Therefore, we may expect to see natural changes in pollution throughout the year due to changes in the amount of rain. To understand seasonality of rainfall in China, we are going to make plots that show how rainfall varies over time. 
+Next, we are going to study rainfall over time. Rain may actually reduce the amount of pollution in the air. When rain falls, it attracts particles in the air before hitting the ground, in turn reducing the amount of pollution in the air. Therefore, we may expect to see natural changes in pollution throughout the year due to changes in the amount of rain. To understand seasonality of rainfall in China, we are going to make plots that show how rainfall varies over time. 
 
-First, let's get a sense of how rainfall varies by the month. Let's create a data frame that has for each month of the year, the average level of rain. The variable ``rain`` in our data frame is the Daily Rain in mm. To create this data frame we are again going to utilize ``group_by()`` and ``summarize()``.
+First, let's get a sense of how rainfall varies by the month. Let's create a data frame that has for each month of the year, the average level of rain. The variable ``rain`` in our data frame records the daily rainfall in mm. To create this data frame we are again going to utilize ``group_by()`` and ``summarize()``.
 
 
 ```r
@@ -567,9 +570,9 @@ Why are we looking at rain again? Well, what if automatic monitoring happened to
 
 ## ggplot2
 
-ggplot2 is a very popular graphics package in R. It has two major strengths. First, you can use ggplot2 to create a variety of figures. Second, the syntax to create different types of figures is very similar. Therefore, once you learn how to generate a few figures, you will be able to quickly learn how to create many different types of figures. The "gg" in ggplot2 stands for the grammar of graphics, and that is the goal of ggplot2: to have a consistent language through which to build figures. 
+The functions we have used to generate figures so far all come from Base R. However, external packages have been written to provide more options when making figures. One of the most popular graphics packages is ggplot2. ggplot2 has two major strengths. First, you can use ggplot2 to create a variety of figures. Second, the syntax to create different types of figures is very similar. Therefore, once you learn how to generate a few figures, you will be able to quickly learn how to create many different types of figures. The "gg" in ggplot2 stands for the grammar of graphics, and that is the goal of ggplot2: to have a consistent language through which to build figures. 
 
-The philosophy to ggplot2 is that you want to build your graph in layers. The first layer is always the data, you always need to specify what data is going to be plotted. Then you will specify the aesthetics, which for our purposes you can think of as the variables that will be on your plot. Which variable will be on the horizontal axis? Which variables will be on the vertical axis. Then, we specify the type of plot. Is this a bar graph? Is it a line plot. In ggplot2, the type of graph is determined by the geometric function that you use. The basic syntax of a ggplot2 command that has all these components is shown below:
+The philosophy to ggplot2 is that you want to build your graph in layers. The first layer is always the data, you always need to specify what data is going to be plotted. Then you will specify the aesthetics, which for our purposes you can think of as the variables that will be on your plot. Which variable will be on the horizontal axis? Which variable will be on the vertical axis? Then, we specify the type of plot. Is this a bar graph? Is it a line plot? In ggplot2, the type of graph is determined by the geometric function that you use. The basic syntax of a ggplot2 command that has all these components is shown below:
 
 
 ```r
@@ -675,13 +678,16 @@ ggplot(data=pm_byday) +
 
 <img src="08-week8_files/figure-html/unnamed-chunk-46-1.png" width="75%" />
 
-This shows us the median level of pollution, the 25th percentile and 75th percentile overall, but our real goal here is to understand how these statistics change after automation. So let's split this graph up by the variable ``after`` which is equal to 1 if automation has already occurred, and zero if it hasn't occurred yet.
+Note that we did not specify an X-variable in the code above. If you add an X-variable to a boxplot, then the plot will be constructed separately for each value of the X-variable. Recall what our primary goal is here. We are interested in understanding how pollution changes following automation. So let's split this graph up by the variable ``after`` which is equal to 1 if automation has already occurred, and zero if it hasn't occurred yet.
 
 
 
 ```r
 ggplot(data=pm_byday) + 
-  geom_boxplot(mapping=aes(x=after,y=meanpm10))
+  geom_boxplot(mapping=aes(x=after,y=meanpm10)) + 
+  xlab("After Automation?") + 
+  ylab("Pollution Levels") + 
+  ggtitle("Boxplot of Pollution Levels Before and After Automation")
 ```
 
 <img src="08-week8_files/figure-html/unnamed-chunk-47-1.png" width="75%" />
@@ -690,7 +696,7 @@ ggplot(data=pm_byday) +
 
 In this section we are going to discuss how to construct bar plots. We are going to focus on one aspect of Greenstone et al. (2022) that we haven't discussed in depth yet. In particular, we are going to study *how* automation was rolled out. 
 
-So far, we have discussed and automation date: the date after which pollution levels are automatically reported to the central government. Different cities, however, had different automated pollution dates. They implemented the policy first for a certain set of cities, and then second for another set of cities. In this section, we are going to try to figure out what the logic of that implementation was. In particular, did they target high-polluting cities as the first place to implement automated pollution monitoring. 
+So far, we have discussed the automation date: the date after which pollution levels are automatically reported to the central government. Different cities, however, had different automated pollution dates. They implemented the policy first for a certain set of cities, and then second for another set of cities. In this section, we are going to try to figure out what the logic of that implementation was. In particular, did they target high-polluting cities as the first place to implement automated pollution monitoring? 
 
 The first thing we will do is again create a city-level dataset. This will be similar to the city-level datasets we have already created, but will also include a variable for the ``phase`` in which the city was included in automation. There are two possible values of ``phase``, 1 for the first automation wave and 2 for the second wave of automation.
 
@@ -772,7 +778,7 @@ ggplot(pm_bycity, aes(x=factor(phase),fill=above80)) +
 
 <img src="08-week8_files/figure-html/coloredbar-1.png" width="75%" />
 
-So there is some slight evidence that the high-polluting cities were more likely to be in wave 1. However, it is reasonably even split. There are a number of high-polluting cities in both waves of automation. 
+How do we interpret this figure. Let's first focus on phase 1. There are slightly fewer than 40 cities which had average pollution levels of above 80 (the turquoise bar reaches to almost 40 in the figure). In total, there were about 60 cities in phase 1. So roughly two-thirds of the cities in phase 1 were high-polluting cities. Turning to phase 2, we can see about 30 cities were high-polluting cities, and the total number of cities is slightly higher than 60. Therefore, roughly half of cities were high-polluting in phase 2. So overall, there is some  evidence that the high-polluting cities were more likely to be in wave 1. However, it is reasonably even split. There are a number of high-polluting cities in both waves of automation. 
 
 Next, we will explore a few more customizations. First, what we have plotted above is referred to as a stacked bar plot. We have divided cities into four groups: (phase 1 + high polluters), (phase 1 + low polluters), (phase 2 + high polluters), (phase 2 + low polluters). For each phase, the high and low polluters are stacked atop each other. We can instead specify to show the counts separately for these four groups. 
 
@@ -915,7 +921,7 @@ grid.arrange(plotbefore, plotafter, ncol=2)
 
 <img src="08-week8_files/figure-html/unnamed-chunk-61-1.png" width="75%" />
 
-As we can see in these graphs, the distribution of pollution seems shifted to the right after automation. It appears that local officials may have been misreporting pollution levels prior to the policy. This specific finding is an important general lesson. In many situations, the one's making decisions (the officials) may not have the same incentives as those trying to implement the policy (the central government). This principal-agent problem is pervasive in many settings, but this paper has shown that their is a solution in some cases: technology. If you are interested in this topic, make sure to check out Greenstone et al. (2022) for more results!
+As we can see in these graphs, the distribution of pollution seems shifted to the right after automation. It appears that local officials may have been misreporting pollution levels prior to the policy. This specific finding is an important general lesson. In many situations, the one's making decisions (the officials) may not have the same incentives as those trying to implement the policy (the central government). This principal-agent problem is pervasive in many settings, but this paper has shown that there is a solution in some cases: technology. If you are interested in this topic, make sure to check out Greenstone et al. (2022) for more results!
 
 
 ## <u>Function Descriptions</u> {-}

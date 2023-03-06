@@ -17,20 +17,19 @@ code {
 
 In this chapter, we will discuss two different voting applications. The first empirical application will study the 2000 U.S. Presidential Election. This election was extremely close. In the end, George W. Bush won the election with 271 electoral votes against Al Gore's 266. 
 
-In Florida, the election was particularly close. In the end, Bush won the Florida by just 537 votes, and thus secured Florida's 25 electoral votes and the election. However, in Florida, there was one county's results that became particularly controversial: Palm Beach County. Many voters in this county complained about a confusing ballot. They claimed that the layout made it so that they accidentally voted for Pat Buchanan (the Reform Party Candidate) rather than Al Gore. 
+In the state of Florida, the election was particularly close. In the end, Bush won Florida by just 537 votes, and thus secured Florida's 25 electoral votes and the election. However, in Florida, there was one county's results that became particularly controversial: Palm Beach County. Many voters in this county complained about a confusing ballot. They claimed that the layout made it so that they accidentally voted for Pat Buchanan (the Reform Party Candidate) rather than Al Gore. 
 
 Figure \@ref(fig:butterfly) shows the Ballot that was used in Palm Beach County:
 
-```{r, butterfly, echo=FALSE, out.width="80%", fig.cap="The Butterfly Ballot",fig.align='center'}
+```{r, butterfly, echo=FALSE, out.width="90%", fig.cap="The Butterfly Ballot",fig.align='center'}
 knitr::include_graphics("images/09_palmballot.png")
 ``` 
 
-In the top left, you can see  the first listed candidates are George W. Bush and Dick Cheney (the Republican Candidates). The next candidates are actually Pat Buchanan and Ezola Foster (the Reform Party Candidates). However, if you are filling this in quickly, you can see how someone might accidentally think the second selection corresponds to Al Gore and Joe Lieberman. 
+In the top left, you can see  the first listed candidates are George W. Bush and Dick Cheney (the Republican Candidates). The next candidates (on the right) are actually Pat Buchanan and Ezola Foster (the Reform Party Candidates). However, if you are filling this in quickly, you can see how someone might accidentally think the second selection corresponds to Al Gore and Joe Lieberman. 
 
-If enough people made this mistake, this could actually have consequences for who wins the election. Remember, only 537 votes separated George W. Bush and Al Gore. 
+If enough people made this mistake, this could actually have consequences for who wins the election. Remember, only 537 votes separated George W. Bush and Al Gore. To understand the scope of the problem, we are going to replicate analysis from Wand et al. (2001)[@wand2001butterfly], with much of the data and code coming from Kosuke Imai's Textbook: Quantitative Social Science: An Introduction.[@imai2018quantitative].  
 
-To understand the scope of the problem, we are going to replicate analysis from Wand et al. (2001)[@wand2001butterfly]. Specifically, if voters are confused by the ballot, we would expect an unusually high number of votes for the Reform party candidates in Palm Beach. 
-But how do we define "an unsually high number of votes". To operationalize this idea we will use the number of votes in a county for the Reform party in 1996 (the prior election) to predict how many votes a county will cast for the Reform party in 2000. If Palm Beach County has many more votes than predicted, then maybe the Butterfly ballot is the reason why.
+Specifically, if voters are confused by the ballot, we would expect an unusually high number of votes for the Reform party candidates in Palm Beach. But how do we define "an unsually high number of votes". To operationalize this idea we will use the number of votes in a county for the Reform party in 1996 (the prior election) to predict how many votes a county will cast for the Reform party in 2000. If Palm Beach County has many more votes than predicted, then maybe the Butterfly ballot is the reason why.
 
 To begin exploring this question, let's load up our data.
 ```{r,echo=FALSE,message=FALSE,error=FALSE,warning=FALSE}
@@ -42,7 +41,7 @@ florida <- read_csv("florida.csv")
 head(florida)
 ```
 
-Each row of the data is a county in Florida. In each row, we have counts for different presidential candidates in both 1996 and 2000. For example, in 1996, 40,144 votes were cast in Alachua county for Bill Clinton. 25,303 were cast for Bob Dole. We should note that this application and data is drawn from Kosuke Imai's Textbook: Quantitative Social Science: An Introduction.[@imai2018quantitative] 
+Each row of the data is a county in Florida. In each row, we have counts for different presidential candidates in both 1996 and 2000. For example, in 1996, 40,144 votes were cast in Alachua county for Bill Clinton. 25,303 were cast for Bob Dole. 
 
 
 Our eventual goal will be to use the votes cast for Ross Perot (the Reform Party Candidate) in 1996, to predict how many votes a county will cast for Pat Buchanan in 2000 (the Reform Party Candidate).
@@ -51,12 +50,25 @@ The logic behind this design is that we might think counties are relatively cons
 
 To begin our exploration, let's visualize the relationship between voting for Ross Perot in 1996 and Pat Buchanan in 2000. To do so we will construct a scatter plot with ``Perot96`` on the horizontal axis and ``Buchanan00`` on the vertical axis.
 
+```{r, echo=T, eval=F}
+ggplot(florida, mapping=aes(x=Perot96, y=Buchanan00)) + 
+  geom_point()
+```
+
+
 ```{r, butter1, echo=F, eval=T, out.width="80%", fig.cap="Relationship Between Buchanan and Perot Votes",fig.align='center'}
 ggplot(florida, mapping=aes(x=Perot96, y=Buchanan00)) + 
   geom_point()
 ```
 
 We can see there is one point in the top right of this graph that seems to be a bit of an outlier. This county has much higher number of votes for Buchanan than any other county. In order to see which county this is, let's add the option ``label=county`` inside ``aes()``. This will label each marker with the county it represents. To adjust the location and size of the marker, we will also specify ``geom_text(vjust=1.5,size=3)``. 
+
+```{r, echo=T, eval=F}
+ggplot(florida, 
+       mapping=aes(x=Perot96, y=Buchanan00, label=county)) + 
+  geom_point() + 
+  geom_text(vjust=1.5, size=3)
+```
 
 ```{r, butter2, echo=F, eval=T, out.width="80%", fig.cap="Relationship Between Buchanan and Perot Votes",fig.align='center'}
 ggplot(florida, 
@@ -67,7 +79,7 @@ ggplot(florida,
 
 We chose ``(vjust=1.5,size=3)`` to make the labels easily readable. You can play around with these parameters to see how it changes the appearance of the figure.
 
-Now with the markers labeled we can see that Palm Beach is indeed the outlier county. But an important next question is how big of an outlier is Palm Beach? Is this enough to potentially change the outcome of the election. To answer this question concretely, we will first learn how to estimate a linear regression in R.
+Now with the markers labeled we can see that Palm Beach is indeed the outlier county. But an important next question is how big of an outlier is Palm Beach? Is this enough to potentially change the outcome of the election? To answer this question concretely, we will first learn how to estimate a linear regression in R.
 
 ## Linear Regression
 
@@ -76,14 +88,14 @@ In this section we are going to review linear regression, and then estimate a li
 To review briefly, we can write a general linear regression equation as:
 
 $$
-Y_i = \beta_0 + \beta_1 cdot X_i + \varepsilon_i
+Y_i = \beta_0 + \beta_1 \cdot X_i + \varepsilon_i
 $$
 
 Where $Y_i$ is our dependent variable of interest, $X_i$ is our independent variable of interest, $\beta_0$ is the intercept, $\beta_1$ is the slope coefficient and $\varepsilon_i$ is the error term. 
 
-In our data, we choose estimates of $\beta_0$ and $\beta_1$, which we denote, $\hat{\beta}_0$ and $\hat{\beta}_1$, that minimize the sum of squared errors $\sum_{i=1}^N(Y_i-\hat{Y_i})^2.
+In our data, we choose estimates of $\beta_0$ and $\beta_1$, which we denote, $\hat{\beta}_0$ and $\hat{\beta}_1$, that minimize the sum of squared errors $\sum_{i=1}^N(Y_i-\hat{Y}_i)^2$.
 
-What do $\hat{\beta}_0$ and $\hat{\beta}_1$ tell us? Let's talk about $\hat{\beta}_1$ first. This tells us how changes in $X$ are associated with changes in $Y$. If this value is positive, then increases in $X$ are associated with increase in $Y$. If it is negative, then increases in $X$ are associated with decreases in $Y$. The interpretation of $\hat{\beta}_1$ is a 1-unit change in $X$ is associated with a $\hat{\beta}_1$-unit change in $Y$.
+What do $\hat{\beta}_0$ and $\hat{\beta}_1$ tell us? Let's talk about $\hat{\beta}_1$ first. This tells us how changes in $X$ are associated with changes in $Y$. If this value is positive, then increases in $X$ are associated with increases in $Y$. If it is negative, then increases in $X$ are associated with decreases in $Y$. The interpretation of $\hat{\beta}_1$ is a 1-unit change in $X$ is associated with a $\hat{\beta}_1$-unit change in $Y$.
 
 Once we have our estimates of the intercept and slope, we can also use them to form predictions. For example, the predicted value of $Y$ for and individual with observable $X_i=5$ is equal to: 
 
@@ -126,9 +138,7 @@ lm.florida
 
 So this displays our estimate of the intercept ($\hat{\beta}_0=1.346$) and slope coefficient ($\hat{\beta}_1=0.036$). The intercept tells us where the best fitted line intersects the vertical axis at $X=0$. In terms of our example, the best fitted line is equal to 1.346 at $Perot96_i=0$. Another way to interpret this is, hypothetically, if we had a county that cast zero votes for Perot in 1996, we would expect this county to cast 1.346 votes for Buchanan in 2000.
 
-To interpret $\hat{\beta}_1$, we say: a 1-unit increase in X predicts a $\hat{\beta}_1$ unit increase in Y. So in terms of our variables, 1 additional vote for Perot in 1996, predicts 0.035 more votes for Buchanan in 2000. 
-
-In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results.
+Now onto interpreting $\hat{\beta}_1$: one additional vote for Perot in 1996 is associated with 0.035 more votes for Buchanan in 2000. You might be a little confused at the moment about why the slope coefficient seems so small. In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results. This will help us understand what our regression results imply in terms of figuring out whether something unsual is occuring in Palm Beach county.
 
 ## Plotting Regression Lines
 
