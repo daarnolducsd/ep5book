@@ -112,7 +112,7 @@ Where $Y_i$ is our dependent variable of interest, $X_i$ is our independent vari
 
 In our data, we choose estimates of $\beta_0$ and $\beta_1$, which we denote, $\hat{\beta}_0$ and $\hat{\beta}_1$, that minimize the sum of squared errors $\sum_{i=1}^N(Y_i-\hat{Y}_i)^2$.
 
-What do $\hat{\beta}_0$ and $\hat{\beta}_1$ tell us? Let's talk about $\hat{\beta}_1$ first. This tells us how changes in $X$ are associated with changes in $Y$. If this value is positive, then increases in $X$ are associated with increase in $Y$. If it is negative, then increases in $X$ are associated with decreases in $Y$. The interpretation of $\hat{\beta}_1$ is a 1-unit change in $X$ is associated with a $\hat{\beta}_1$-unit change in $Y$.
+What do $\hat{\beta}_0$ and $\hat{\beta}_1$ tell us? Let's talk about $\hat{\beta}_1$ first. This tells us how changes in $X$ are associated with changes in $Y$. If this value is positive, then increases in $X$ are associated with increases in $Y$. If it is negative, then increases in $X$ are associated with decreases in $Y$. The interpretation of $\hat{\beta}_1$ is a 1-unit change in $X$ is associated with a $\hat{\beta}_1$-unit change in $Y$.
 
 Once we have our estimates of the intercept and slope, we can also use them to form predictions. For example, the predicted value of $Y$ for and individual with observable $X_i=5$ is equal to: 
 
@@ -165,7 +165,7 @@ lm.florida
 
 So this displays our estimate of the intercept ($\hat{\beta}_0=1.346$) and slope coefficient ($\hat{\beta}_1=0.036$). The intercept tells us where the best fitted line intersects the vertical axis at $X=0$. In terms of our example, the best fitted line is equal to 1.346 at $Perot96_i=0$. Another way to interpret this is, hypothetically, if we had a county that cast zero votes for Perot in 1996, we would expect this county to cast 1.346 votes for Buchanan in 2000.
 
-To interpret $\hat{\beta}_1$, we say: a 1-unit increase in X predicts a $\hat{\beta}_1$ unit increase in Y. So in terms of our variables, 1 additional vote for Perot in 1996, predicts 0.035 more votes for Buchanan in 2000. In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results.
+Now onto interpreting $\hat{\beta}_1$: one additional vote for Perot in 1996 is associated with 0.035 more votes for Buchanan in 2000. You might be a little confused at the moment about why the slope coefficient seems so small. In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results. This will help us understand what our regression results imply in terms of figuring out whether something unsual is occuring in Palm Beach county.
 
 ## Plotting Regression Lines
 
@@ -207,7 +207,7 @@ plot(florida$Perot96, florida$Buchanan00,
 <p class="caption">(\#fig:basescatter2)Relationship Between Buchanan and Perot Votes</p>
 </div>
 
-We can also customize the appearance of the line in a few ways. For example, ``lty=2`` will make the line dashed instead of solid. ``lty`` stands for line type and you can use a variety (see help file for ``plot`` and search for ``lty`` to see the different options). ``col="red"`` will turn the line red. 
+We can also customize the appearance of the line in a few ways. For example, ``lty=2`` will make the line dashed instead of solid. ``lty`` stands for line type and you can use a variety (see the help file for ``plot`` and search for ``lty`` to see the different options). ``col="red"`` will turn the line red. 
 
 
 ```r
@@ -326,7 +326,7 @@ So for Alachua county the number of Buchanan votes in 2000 was 263. The predicte
 
 Now let's order the dataset by the magnitude of the residual. Observations with large residuals will be those in which are predictions is very different than our predicted value. To sort data based on the value of a variable, we can use the ``arrange()`` function.
 
-For our purposes we want to sort based on the absolute value of the residual. Therefore, we will specify ``arrange(abs(residuals))``. However, in addition, we want the largest residuals to be at the top. By default, ``arrange`` sorts the data from lowest to highest. To change this, we can ask for the data to be presented in descending order, by specifying ``arrange(desc(abs(residuals)))``. 
+For our purposes we want to sort based on the absolute value of the residual. Therefore, we will specify ``arrange(abs(residuals))``. The ``abs()`` function takes the absolute value of a number. However, in addition, we want the largest residuals to be at the top. By default, ``arrange`` sorts the data from lowest to highest. To change this, we can ask for the data to be presented in descending order, by specifying ``arrange(desc(abs(residuals)))``. The ``desc()`` function specifies to order the data in descending order (from largest to smallest).
 
 Additionally, we can combine ``arrange`` with other functions using the pipe operator. In this example, we are really only interested in a few variables at the moment. So let's first select those variables, and then display the data from largest residual (in absolute value) to lowest residual. 
 
@@ -364,9 +364,7 @@ If this is true, then Al Gore would have actually received approximately 2,000 m
 
 ## Get Out to Vote Experiments
 
-Next, we are going to shift gears to another voting application. One notorious issue in politics is getting people to vote. In particular, it is notoriously difficult to get voters to turn out to vote in primary elections. Primaries are incredibly important. They select the candidates who will run in the general election. Yet voter turnout for these is pretty low. 
-
-For example, in California, voter turnout in general elections between 2000-2012 was about 65.5 percent among registered voters. In contrast, voter turnout in primary elections during this period was around 40.8 percent. 
+Next, we are going to shift gears to another voting application. One notorious issue in politics is getting people to vote. In particular, it is extremely difficult to get voters to turn out to vote in primary elections, even though primary elections are incredibly important. They select the candidates who will run in the general election. Yet, year after year, voter turnout for these primary elections is pretty low.For example, in California, voter turnout in general elections between 2000-2012 was about 65.5 percent among registered voters. In contrast, voter turnout in primary elections during this period was around 40.8 percent. 
 
 One reason for lack of voting may be due to a lack of mobilization. Maybe some simple information and encouragement to voting in primaries will incentivize individuals to vote. In Hill and Kousser (2016)[@hill2016turning], the authors test this idea by implementing a large-scale experiment in the 2014 congressional primary elections in California. 
 
@@ -407,7 +405,7 @@ In simpler terms, we expect 50 percent of individuals in the control to vote. Re
 $$
 \hat{Y}_i = \beta_0 + \beta_1 \cdot X_i = 0.5 + 0.01 \cdot 1 = 0.51
 $$
-Therefore, we expect 51 percent of individuals to vote in the treatment. Therefore, the impact of going to control to treatment is a 1 percentage point increase in the probability of voting. If you need a review on the difference between percent and percentage point, check out Chapter 1.8. Now that we understand the interpretation of linear regression with binary variables, let's go implement this regression in R to assess how receiving a mailer impacted voter turnout. 
+Therefore, we expect 51 percent of individuals to vote in the treatment. Therefore, the impact of going to control to treatment is a 1 percentage point increase in the probability of voting. If you need a review on the difference between percent and percentage point, check out Chapter 1.8. Specifically, it would **not** be correct here to say that treatment increases voting rates by 1 percent. Now that we understand the interpretation of linear regression with binary variables, let's go implement this regression in R to assess how receiving a mailer impacted voter turnout. 
 
 The data for this application comes from a csv file named ``turnout.csv``. Let's load this into R as a tibble. 
 
@@ -476,7 +474,7 @@ $$
 In simple terms, 9.3 percent of individuals in the control group voted in the election. For individuals in the treatment, we get:
 
 $$
-\hat{Y}_i = 0.093 + 0.005 \cdot 0 = 0.093+ 0.005 = 0.098
+\hat{Y}_i = 0.093 + 0.005 \cdot 1 = 0.093+ 0.005 = 0.098
 $$
 
 Therefore, in the treatment group, about 9.8 percent of individuals turned out to vote. Therefore, our treatment is expected to increase voting rates by 0.5 percentage points.
@@ -484,7 +482,7 @@ Therefore, in the treatment group, about 9.8 percent of individuals turned out t
 ## Conclusion 
 
 In this chapter, we have introduced two voting examples. In the first application, we showed that a poorly designed ballot may have changed the 2000 U.S. Presidential election. In the second, we showed that a massive campaign that sent mailers to over 150,000 Californians increased voter turnout in primary elections. 
-In both of these applications, we used regression to analyze the data. In our first application, regression gave us a way to form predictions. In particular, we need to form a prediction for Palm Beach County regarding how many votes Pat Buchanan (the Reform Party Candidate) would receive. This was important because after the election, individuals claimed that the ballot was confusing, and led people to mistakenly vote for Pat Buchanan rather than Al Gore (check out Figure \ref(fig:butterfly) to see if you agree).
+In both of these applications, we used regression to analyze the data. In our first application, regression gave us a way to form predictions. In particular, we needed to form a prediction for Palm Beach County regarding how many votes Pat Buchanan (the Reform Party Candidate) would receive. This was important because after the election, individuals claimed that the ballot was confusing, and led people to mistakenly vote for Pat Buchanan rather than Al Gore (check out Figure \@ref(fig:butterfly) to see if you agree).
 
 However, we still needed a way in the data to see whether it appears that "too many" individuals voted for Pat Buchanan. To do this, we predicted county-level votes for Pat Buchanan using the number of votes cast for Ross Perot in 1996. This is likely a good predictor because Ross Perot and Pat Buchanan were both from the same party (the Reform Party).
 
