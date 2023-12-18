@@ -603,7 +603,7 @@ Now, there was quite a bit of syntax in the previous code. For better or worse, 
 Let's use the syntax above to create a summary statistics table with our data:
 
 ```{stata, eval=FALSE}
-outreg2 using tab1_basic.doc, word replace \\\
+outreg2 using tab1_basic.doc, word replace ///
 sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) 
 ```
 
@@ -616,9 +616,9 @@ knitr::include_graphics("images/04_tab1_basic.png")
 Now, this isn't exactly what we wanted. We wanted a balance table, that shows the statistics of these variables by treatment status. In order to create this table we are going to combine ``outreg2`` with the ``bys`` command.
 
 ```{stata, eval=FALSE}
-bys treat: outreg2 using balance_tab.doc, word replace \\\
-sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) \\\
-label \\\
+bys treat: outreg2 using balance_tab.doc, word replace ///
+sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) ///
+label ///
 title("Table 2: Characteristics of Treatment and Control Students")
 ```
 

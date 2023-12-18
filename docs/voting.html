@@ -324,7 +324,7 @@ Figure 9.7: Relationship Between Buchanan and Perot Votes
 #&gt;  8 Charlotte        182          281.     -98.9 
 #&gt;  9 Citrus           270          262.       8.49
 #&gt; 10 Clay             186          119.      66.8 
-#&gt; # … with 57 more rows</code></pre>
+#&gt; # ℹ 57 more rows</code></pre>
 <p>So for Alachua county the number of Buchanan votes in 2000 was 263. The predicted Buchanan votes was 291.251 (if you view your data frame you will be able to see more decimal places). Therefore the residual is -28.3. The reason this is slightly different than what we had above is because when we formed this manually we rounded the coefficients in the regression. When R does the computation, it is much more precise than we were, which explains why predicted values and residuals are slightly different than the manual computation.</p>
 <p>Now let's order the dataset by the magnitude of the residual. Observations with large residuals will be those in which are predictions is very different than our predicted value. To sort data based on the value of a variable, we can use the <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> function.</p>
 <p>For our purposes we want to sort based on the absolute value of the residual. Therefore, we will specify <code>arrange(abs(residuals))</code>. The <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code> function takes the absolute value of a number. However, in addition, we want the largest residuals to be at the top. By default, <code>arrange</code> sorts the data from lowest to highest. To change this, we can ask for the data to be presented in descending order, by specifying <code>arrange(desc(abs(residuals)))</code>. The <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> function specifies to order the data in descending order (from largest to smallest).</p>
@@ -346,7 +346,7 @@ Figure 9.7: Relationship Between Buchanan and Perot Votes
 #&gt;  8 Orange            446           655.     -209.
 #&gt;  9 Escambia          502           310.      192.
 #&gt; 10 St.Lucie          124           306.     -182.
-#&gt; # … with 57 more rows</code></pre>
+#&gt; # ℹ 57 more rows</code></pre>
 <p>So Palm Beach county cast 3407 votes for Buchanan. Based on the linear regression, we would have expected 1105 votes for Buchanan. Therefore, there were 2302 more votes than expected.</p>
 <p>Now recall the George Bush won Florida by 537 votes. Now, if the excess votes in Palm Beach were driven by the design of the butterfly ballots, then we are seeing this excess voting for Buchanan because individuals were confused about the design and were accidentally selecting Buchanan instead of Gore.</p>
 <p>If this is true, then Al Gore would have actually received approximately 2,000 more votes. This would have been enough to make him the winner in Florida, and given the closeness of the election, the winner overall. In other words, using some simple data analysis techniques, we've found convincing evidence that a poorly designed ballot in a single Florida county was enough to flip the 2000 presidential election!</p>
@@ -412,7 +412,7 @@ Therefore, we expect 51 percent of individuals to vote in the treatment. Therefo
 #&gt;  8            1 DEM       0 Control               0
 #&gt;  9            1 REP       0 Control               0
 #&gt; 10            1 NPP       0 Control               0
-#&gt; # … with 3,872,258 more rows</code></pre>
+#&gt; # ℹ 3,872,258 more rows</code></pre>
 <p>The first variable <code>LocalityCode</code> indicates the county the individual is voting in. <code>Party</code> is the registered party of the individual. <code>yvar</code> is our main dependent variable. This variable is equal to 1 if the individual voted in the 2014 primary election and zero if the individual did not vote. <code>treatment.assign</code> indicates whether this individual is in the control group (i.e. did not receive a letter) or one of the treatment arms. The last variable <code>mailer</code> is equal to 1 if the individual received any mailer, and zero if the individual is in the control group.</p>
 <p>For our application, we want to test whether receiving a mailer impacts the probability an individual votes. Therefore, we will regress the variable <code>yvar</code> on the variable <code>mailer</code>. Just as before, we need to save our estimates as a new object.</p>
 <div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
@@ -670,7 +670,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-03-05.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

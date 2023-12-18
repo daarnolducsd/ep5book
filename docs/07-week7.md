@@ -432,13 +432,13 @@ rr
  8    23    61     1     -9       0      0       NA       0
  9    23    57     1     -9       0      0       NA       0
 10    23    43     2     -9       2      1       NA       0
-# … with 106,010 more rows, and 46 more variables:
-#   act20 <int>, act21 <int>, act26 <int>, act24 <int>,
-#   act22 <int>, act23 <int>, act27 <int>, act67 <int>,
-#   act25 <int>, act29 <int>, recwght <dbl>, dataset <int>,
-#   fips <int>, married <int>, working <int>,
-#   fulltime <int>, parttime <int>, mother2 <int>,
-#   father2 <int>, dropout <int>, hsonly <int>, …
+# ℹ 106,010 more rows
+# ℹ 46 more variables: act20 <int>, act21 <int>,
+#   act26 <int>, act24 <int>, act22 <int>, act23 <int>,
+#   act27 <int>, act67 <int>, act25 <int>, act29 <int>,
+#   recwght <dbl>, dataset <int>, fips <int>,
+#   married <int>, working <int>, fulltime <int>,
+#   parttime <int>, mother2 <int>, father2 <int>, …
 ```
 
 You get more information printing out a tibble relative to a data frame. For our purposes, it won't matter too much if you load a dataset as a tibble or a data frame. However, it is important to understand these concepts, as you may see various online resources reference a tibble or a data frame. Generally, in this class we will load our datasets as tibbles from now on.  
@@ -484,13 +484,13 @@ filter(mothers2534, dataset%in%2003:2008)
  8    NA    32     2     NA       2     NA        6       0
  9    NA    32     2     NA       2     NA       12       0
 10    NA    32     2     NA       2     NA        3       0
-# … with 6,406 more rows, and 46 more variables:
-#   act20 <int>, act21 <int>, act26 <int>, act24 <int>,
-#   act22 <int>, act23 <int>, act27 <int>, act67 <int>,
-#   act25 <int>, act29 <int>, recwght <dbl>, dataset <int>,
-#   fips <int>, married <int>, working <int>,
-#   fulltime <int>, parttime <int>, mother2 <int>,
-#   father2 <int>, dropout <int>, hsonly <int>, …
+# ℹ 6,406 more rows
+# ℹ 46 more variables: act20 <int>, act21 <int>,
+#   act26 <int>, act24 <int>, act22 <int>, act23 <int>,
+#   act27 <int>, act67 <int>, act25 <int>, act29 <int>,
+#   recwght <dbl>, dataset <int>, fips <int>,
+#   married <int>, working <int>, fulltime <int>,
+#   parttime <int>, mother2 <int>, father2 <int>, …
 ```
 
 This code is saying restrict to ``mothers2534`` only for observations such that dataset is in the range of 2003 through 2008. One important note here is that in the code above we did not overwrite ``mothers2534``. That is why we can see the tibble being printed out. If you want to save the result of the ``filter()`` you need to assign the resulting tibble a name. Otherwise it will simply be printed to the console but not actually saved.
@@ -520,7 +520,7 @@ mothers2534
  8    1965       1    33     8.75
  9    1965       1    30    16.3 
 10    1965       1    29    29.8 
-# … with 8,105 more rows
+# ℹ 8,105 more rows
 ```
 
 Finally, our last function for this section is ``arrange()``. The ``arrange()`` function will sort the data based on the values of a variable. For example, imagine I want the observations in ``mothers2534`` to be arranged from the youngest age to the oldest age. I could type:
@@ -713,9 +713,9 @@ collegeprepdat <- transmute(rr,
                             childcollegeprep = childeduc + childtravel,
                             childnotcollegeprep = childtot - collegeprep)
 Error in `transmute()`:
-! Problem while computing `childnotcollegeprep =
-  childtot - collegeprep`.
-Caused by error in `mask$eval_all_mutate()`:
+ℹ In argument: `childnotcollegeprep = childtot -
+  collegeprep`.
+Caused by error:
 ! object 'collegeprep' not found
 ```
 
@@ -903,7 +903,7 @@ rr %>%
  8    1993       1         1.74
  9    1995       0         4.39
 10    1995       1         3.85
-# … with 17 more rows
+# ℹ 17 more rows
 ```
 
 To understand this table, let's look at the first row of data. This first row has ``dataset==1965`` and ``college==0``. In other words, this row corresponds to individuals in 1965 without a college education. The value in the ``meanchildtot`` column is the average amount of time spent on childcare for these individuals. If we move down this table, we will see R has computed the mean time spent on childcare for every unique combination of ``dataset`` and ``college``. 

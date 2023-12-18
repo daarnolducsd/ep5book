@@ -23,7 +23,6 @@ For example, imagine you are a charity or government that has funds to disburse 
 
 Another way to disburse these funds is to do so unconditionally. This gives individuals the autonomy to decide for themselves what they would like to spend the money on. This week, we will use data from Haushofer and Shapiro (2016)[@haushofer2016short], which studies the impact of unconditional cash transfers in Kenya on the economic and psychological well-being of recipients. This study was made possible due to the charitable organization, Give Directly, a charity co-found by Paul Niehaus, professor of Economics at UC San Diego. 
 
-This study was made possible due to the charitable organization, Give Directly, a charity co-found by Paul Niehaus, professor of Economics at UC San Diego. The main goal of the charity is to alleviate poverty by giving funds directly to individuals. 
 
 In particular, Haushofer and Shapiro randomize a couple of aspects including (1) whether a household receives an unconditional cash transfer and (2) the timing of the transfer (monthly vs. lump sum) and (3) the size of the transfer (small \$400 or large \$1500). A key strength of the study is that they can also study a wide range of outcomes, including assets, expenditures, food security, health, education expenditures, and psychological well being. 
 

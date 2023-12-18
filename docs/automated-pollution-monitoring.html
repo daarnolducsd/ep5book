@@ -121,14 +121,16 @@ code {
 <div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.2 ──</span></span>
-<span><span class="co">#&gt; ✔ ggplot2 3.4.0      ✔ purrr   0.3.5 </span></span>
-<span><span class="co">#&gt; ✔ tibble  3.1.8      ✔ dplyr   1.0.10</span></span>
-<span><span class="co">#&gt; ✔ tidyr   1.2.1      ✔ stringr 1.4.1 </span></span>
-<span><span class="co">#&gt; ✔ readr   2.1.3      ✔ forcats 0.5.2 </span></span>
+<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
+<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
+<span><span class="co">#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1</span></span>
+<span><span class="co">#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
+<span><span class="co">#&gt; ✔ purrr     1.0.1     </span></span>
 <span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
 <span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
-<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
+<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
 <p>The <code>haven</code> package comes with a function <code>read_dta</code>, which will read in a <code>.dta</code> file as a tibble.</p>
 <div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"station_day_1116.dta"</span><span class="op">)</span></span></code></pre></div>
@@ -148,7 +150,7 @@ code {
 <span><span class="co">#&gt;  8     46    440300 18635 114.      19060</span></span>
 <span><span class="co">#&gt;  9     46    440300 18636  62.5     19060</span></span>
 <span><span class="co">#&gt; 10     46    440300 18637  90.8     19060</span></span>
-<span><span class="co">#&gt; # … with 1,433,558 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 1,433,558 more rows</span></span></code></pre></div>
 <p>The first variable, <code>pm10_n</code> is the station number. This is the code of the station that took the pollution reading. The next variable <code>code_city</code> is the code of the city in which the pollution reading was taken. This dataset is a panel dataset, which means there are many observations over time. In this case, we will have readings from the same pollution center over time. The <code>date</code> variable stores information on the date the reading was taken. We will discuss a bit later what the number in this variable means. <code>pm10</code> is our measure of pollution. Lastly, <code>auto_date</code> is the date of automation. After this date, instead of local governments reporting pollution statistics, pollution statistics were directly reported to the central government.</p>
 <p>So for this section our goal is to create a histogram that shows the distribution of <code>pm10</code> across cities. Right now, we have a dataset that is at the station-date level. Each row corresponds to a pollution level at a particular station. We want to transform our data into a dataset that has for every city, the average level of pollution in that city.</p>
 <p>The way we can do this is to use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, as we did in the prior chapter. If you recall, when you want to create a tibble of summary statistics by a group, we use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> in combination with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>. In this example, the group variable is the <code>code_city</code> and the summary statistic is the average level of <code>pm10</code>.</p>
@@ -387,21 +389,15 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 <p>Dates can often be difficult to work when performing data analysis. In this section we are going to study a package called <code>lubridate</code> that can be very helpful when working with dates in R.</p>
 <p>As <code>lubridate()</code> is a new package, you first need to install lubridate via <code>install.packages("lubridate")</code> and then load into memory using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function:</p>
 <div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: timechange</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'lubridate'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     date, intersect, setdiff, union</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span></code></pre></div>
 <p><code>lubridate()</code> comes with a variety of functions. For example, there are functions to tell you what day it is today:</p>
 <div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2023-03-05"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2023-12-18"</span></span></code></pre></div>
 <p>Or even the exact time right now:</p>
 <div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2023-03-05 19:33:36 PST"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2023-12-18 11:47:51 PST"</span></span></code></pre></div>
 <p>But most importantly, <code>lubridate</code> allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example.</p>
 <p>Additionally, <code>lubridate()</code> can interpret dates that come in a variety of formats. For example, we can use the <code><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd()</a></code> function to convert a string of text that holds the date as <code>"year-month-day"</code> into a date object.</p>
 <div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
@@ -480,9 +476,9 @@ Figure 8.3: Histogram of Average Pollution Levels Across Cities Part 3
 </h2>
 <p>The functions we have used to generate figures so far all come from Base R. However, external packages have been written to provide more options when making figures. One of the most popular graphics packages is ggplot2. ggplot2 has two major strengths. First, you can use ggplot2 to create a variety of figures. Second, the syntax to create different types of figures is very similar. Therefore, once you learn how to generate a few figures, you will be able to quickly learn how to create many different types of figures. The "gg" in ggplot2 stands for the grammar of graphics, and that is the goal of ggplot2: to have a consistent language through which to build figures.</p>
 <p>The philosophy to ggplot2 is that you want to build your graph in layers. The first layer is always the data, you always need to specify what data is going to be plotted. Then you will specify the aesthetics, which for our purposes you can think of as the variables that will be on your plot. Which variable will be on the horizontal axis? Which variable will be on the vertical axis? Then, we specify the type of plot. Is this a bar graph? Is it a line plot? In ggplot2, the type of graph is determined by the geometric function that you use. The basic syntax of a ggplot2 command that has all these components is shown below:</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="automated-pollution-monitoring.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
-<span id="cb403-2"><a href="automated-pollution-monitoring.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
-<span id="cb403-3"><a href="automated-pollution-monitoring.html#cb403-3" aria-hidden="true" tabindex="-1"></a> <span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="automated-pollution-monitoring.html#cb403-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>) <span class="sc">+</span> </span>
+<span id="cb403-2"><a href="automated-pollution-monitoring.html#cb403-2" tabindex="-1"></a>  <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>))</span>
+<span id="cb403-3"><a href="automated-pollution-monitoring.html#cb403-3" tabindex="-1"></a> <span class="er">}</span></span></code></pre></div>
 <p>We will replace the section <code>&lt;DATA&gt;</code> with whatever data we are using. In this next example, let's recreate the scatterplot that shows the average daily pollution levels relative to the automation date. If you recall, we already constructed a dataframe named <code>pm_byday</code> which contains for every day relative to automation (within a year), the average levels of pollution, as measured by PM10. However, for an example later in the section, we will also utilize a variable that captures mean rain by day. Therefore, let's construct a day-level dataset that contains for each day relative to automation, the average levels of PM10 and rain:</p>
 <div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pm_byday</span> <span class="op">&lt;-</span> <span class="va">pm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -945,7 +941,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-03-05.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

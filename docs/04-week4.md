@@ -356,12 +356,12 @@ reg life_expectancy average_income
 -------------+----------------------------------   Adj R-squared   =    0.4891
        Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+life_expec~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+average_in~e |   .2363563   .0177087    13.35   0.000      .201418    .2712945
+       _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
+------------------------------------------------------------------------------
 ```
 
 So there are a lot of numbers in the table above. The ones we will focus on are under the column "Coefficient." The first coefficient is in the row that begins with ``average_income``. This is the slope coefficient. This number tells you how a 1-unit change in ``average_income`` is predicted to change the Y-variable. In this case, the regression tells us that a 1-unit change in average income (which is denoted in the 1,000s) is associated with a 0.24 year increase in life expectancy. In simpler terms, a \$1,000 dollar increase in average income is associated with a 0.24 year increase in life expectancy.
@@ -441,12 +441,12 @@ reg life_expectancy average_income
 -------------+----------------------------------   Adj R-squared   =    0.4891
        Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+life_expec~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+average_in~e |   .2363563   .0177087    13.35   0.000      .201418    .2712945
+       _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
+------------------------------------------------------------------------------
 ```
 
 Now that the regression has been estimated, we can form predictions 
@@ -462,6 +462,9 @@ Now a variable ``predicted_life_expectancy`` has been added to our dataset. Let'
 
 ```stata
 list country life_expectancy average_income predicted_life_expectancy if _n<=3
+> =3
+
+     +----------------------------------------------+
      |     country   life_e~y   averag~e   predic~y |
      |----------------------------------------------|
   1. | Afghanistan       63.4       1.92   68.42716 |
@@ -562,12 +565,12 @@ reg life_expectancy average_income
 -------------+----------------------------------   Adj R-squared   =    0.4891
        Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+life_expec~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+average_in~e |   .2363563   .0177087    13.35   0.000      .201418    .2712945
+       _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
+------------------------------------------------------------------------------
 ```
 
 Then we can retrieve the coefficient on ``average_income`` by typing: 
@@ -750,7 +753,7 @@ Let's use the syntax above to create a summary statistics table with our data:
 
 
 ```stata
-outreg2 using tab1_basic.doc, word replace \\\
+outreg2 using tab1_basic.doc, word replace ///
 sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) 
 ```
 
@@ -765,9 +768,9 @@ Now, this isn't exactly what we wanted. We wanted a balance table, that shows th
 
 
 ```stata
-bys treat: outreg2 using balance_tab.doc, word replace \\\
-sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) \\\
-label \\\
+bys treat: outreg2 using balance_tab.doc, word replace ///
+sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) ///
+label ///
 title("Table 2: Characteristics of Treatment and Control Students")
 ```
 

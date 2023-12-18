@@ -141,11 +141,11 @@ Figure 3.2: Trevor Noah Discussing Results from The Stanford Open Policing Proje
 <span class="header-section-number">3.2</span> SOPP Data<a class="anchor" aria-label="anchor" href="#sopp-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now that we have narrowed our focus, let's start exploring the data for San Diego, as always we will need to set our working directory to where the data is located and then use the <code>use</code> command to load the data.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb45-1"><a href="discrimination-in-police-stops.html#cb45-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"</span></span>
-<span id="cb45-2"><a href="discrimination-in-police-stops.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> san_diego_stops.dta, <span class="kw">replace</span> </span>
-<span id="cb45-3"><a href="discrimination-in-police-stops.html#cb45-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb45-1"><a href="discrimination-in-police-stops.html#cb45-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"</span></span>
+<span id="cb45-2"><a href="discrimination-in-police-stops.html#cb45-2" tabindex="-1"></a><span class="kw">use</span> san_diego_stops.dta, <span class="kw">replace</span> </span>
+<span id="cb45-3"><a href="discrimination-in-police-stops.html#cb45-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span></code></pre></div>
 <p>To begin, let's use <code>describe</code> to figure out what variables we have in this dataset</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb46-1"><a href="discrimination-in-police-stops.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb46-1"><a href="discrimination-in-police-stops.html#cb46-1" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:sandiegostops"></span>
 <img src="images/03_describe.png" alt="San Diego Stops Data from Stanford Open Policing Project Data" width="90%"><p class="caption">
@@ -154,7 +154,7 @@ Figure 3.3: San Diego Stops Data from Stanford Open Policing Project Data
 </div>
 <p>Each observation in the dataset is a stop made by an officer somewhere in San Diego. <code>stop_time</code> contains the time of the stop. Remember this variable, we will return to it later. Our goal is to understand if there is discrimination in who is stopped. Therefore, we will be frequently using the <code>subject_race</code> variable in our dataset.</p>
 <p>Subject race is a <strong>categorical variable</strong>. Whenever you have a categorical variable as your variable of interest, it is helpful to understand the frequency of each category. For example, what fraction of stops are for Black drivers, White Drivers, Hispanic Drivers, etc. To do this in Stata, we will use the <code>tab</code> command.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb47-1"><a href="discrimination-in-police-stops.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> subject_race</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb47-1"><a href="discrimination-in-police-stops.html#cb47-1" tabindex="-1"></a><span class="kw">tab</span> subject_race</span></code></pre></div>
 <pre><code>          subject_race |      Freq.     Percent        Cum.
 -----------------------+-----------------------------------
 Asian/Pacific Islander |     32,482        8.52        8.52
@@ -218,8 +218,8 @@ Figure 3.6: Hypothetical Data We Want to Append Together
 </div>
 <p>In this example, we have two classes: A and B, each with two students. In each dataset, we have the same variables. Our goal with <code>append</code> is to create a new dataset with 4 observations, 2 for each school.</p>
 <p>How do we accomplish this in Stata? If class A data is stored in <code>classA.dta</code> and class B data is stored in <code>classB.dta</code> we can combine them by typing:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb49-1"><a href="discrimination-in-police-stops.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> classA.dta, <span class="kw">clear</span> </span>
-<span id="cb49-2"><a href="discrimination-in-police-stops.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> classB.dta </span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb49-1"><a href="discrimination-in-police-stops.html#cb49-1" tabindex="-1"></a><span class="kw">use</span> classA.dta, <span class="kw">clear</span> </span>
+<span id="cb49-2"><a href="discrimination-in-police-stops.html#cb49-2" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> classB.dta </span></code></pre></div>
 <p>What we have done is first load in the class A data by typing <code>use classA.dta, clear</code>. Then we have appended the class B data by typing <code>append using classB.dta</code>. In order for this code to work, both <code>classA.dta</code> and <code>classB.dta</code> need to be in the working directory. Additionally, the variable names in both classA and classB need to be the same. For example, if one of the datasets had the student id variable named <code>sid</code>, then you would need to make the names consistent across datasets before merging. You can rename a variable with the <code>rename</code> command. For example, to rename a variable <code>sid</code> to <code>student</code> you would type <code>rename sid student</code>.</p>
 <p>In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on.You can continue to <code>append</code> more datasets by typing, for example, <code>append using classC.dta</code> followed by <code>append using classD.dta</code> and so on.</p>
 </div>
@@ -254,9 +254,9 @@ Figure 3.9: Merging Student-Level Datasets
 </p>
 </div>
 <p>The first step is to load one of the two datasets.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb50-1"><a href="discrimination-in-police-stops.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> school.dta, <span class="kw">clear</span> </span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb50-1"><a href="discrimination-in-police-stops.html#cb50-1" tabindex="-1"></a><span class="kw">use</span> school.dta, <span class="kw">clear</span> </span></code></pre></div>
 <p>Because we loaded <code>school.dta</code> first, <code>school.dta</code> is the master dataset. We will now merge it to <code>gpa.dta</code>.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb51-1"><a href="discrimination-in-police-stops.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> gpa.dta</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb51-1"><a href="discrimination-in-police-stops.html#cb51-1" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> gpa.dta</span></code></pre></div>
 <p>When using the <code>merge</code> command we always need to make sure of a few components. First, we have specified <code>student</code> is the variable we will merge on. Therefore, each student in <code>school.dta</code> will be matched to the corresponding student in <code>gpa.dta</code>. Second, we have specified <code>1:1</code> because each student is a unique observation in both datasets. Lastly, we have specified that we are merging to <code>gpa.dta</code> by specifying <code>using gpa.dta</code>.</p>
 Now let's try a many-to-one merge. Imagine we have the two datasets below (<code>school.dta</code> and <code>pop.dta</code>) and we want to combine them.
 <div class="figure" style="text-align: center">
@@ -266,11 +266,11 @@ Figure 3.10: Merging Student-Level Dataset to School-level Dataset
 </p>
 </div>
 <p>There are two main differences here. First, we will now be merging on the variable <code>school</code>, as that is the variable that is common between both the datasets. Second, in the <code>school.dta</code>dataset, there are multiple observations for each school. In the <code>pop.dta</code>, there is a single observation per school. Therefore this will be a many-to-one merge instead of a one-to-one merge. Therefore, the code to merge the two datasets is now:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb52-1"><a href="discrimination-in-police-stops.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> school.dta, <span class="kw">clear</span></span>
-<span id="cb52-2"><a href="discrimination-in-police-stops.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 school <span class="kw">using</span> pop.dta</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb52-1"><a href="discrimination-in-police-stops.html#cb52-1" tabindex="-1"></a><span class="kw">use</span> school.dta, <span class="kw">clear</span></span>
+<span id="cb52-2"><a href="discrimination-in-police-stops.html#cb52-2" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 school <span class="kw">using</span> pop.dta</span></code></pre></div>
 <p>We specify <code>m:1</code> because there is are multiple observations per school in the master dataset, and a single in the using. A one-to-many merge (<code>1:m</code>) is conceptually similar. If we had loaded <code>pop.dta</code> first, then <code>pop.dta</code> would be the master dataset. In this case, the code to merge the two datasets is given by</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb53-1"><a href="discrimination-in-police-stops.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> pop.dta, <span class="kw">clear</span></span>
-<span id="cb53-2"><a href="discrimination-in-police-stops.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:<span class="fu">m</span> school <span class="kw">using</span> school.dta</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb53-1"><a href="discrimination-in-police-stops.html#cb53-1" tabindex="-1"></a><span class="kw">use</span> pop.dta, <span class="kw">clear</span></span>
+<span id="cb53-2"><a href="discrimination-in-police-stops.html#cb53-2" tabindex="-1"></a><span class="kw">merge</span> 1:<span class="fu">m</span> school <span class="kw">using</span> school.dta</span></code></pre></div>
 <p>The reason we switched to <code>1:m</code> is because there is a single observation per school in the master dataset and multiple in the using dataset now that <code>pop.dta</code> is the master dataset and <code>school.dta</code> is the using dataset. Therefore, a one-to-many merge vs. a many-to-one merge is entirely dependent on which dataset you load first.</p>
 <div class="rmdcaution">
 <p>There is also an option to perform a many-to-many merge <code>m:m</code>, however, <strong>you should not use this option</strong>. Your data will be transformed in ways that you probably did not intend. The usual solution to this problem is to transform your data in a way so that you can perform a one-to-many or many-to-one merge instead</p>
@@ -288,34 +288,34 @@ Figure 3.11: Example of Merge with Unmatched Observations
 </p>
 </div>
 <p>In this example, student 1 has a test score, but no homework score, while student 6 has a homework score but no test score. Let's see what happens if we merge these two datasets in Stata.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb54-1"><a href="discrimination-in-police-stops.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* change working directory */</span></span>
-<span id="cb54-2"><a href="discrimination-in-police-stops.html#cb54-2" aria-hidden="true" tabindex="-1"></a>cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span>
-<span id="cb54-3"><a href="discrimination-in-police-stops.html#cb54-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span></code></pre></div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb55-1"><a href="discrimination-in-police-stops.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*load test score data*/</span></span>
-<span id="cb55-2"><a href="discrimination-in-police-stops.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score.dta, <span class="kw">clear</span> </span>
-<span id="cb55-3"><a href="discrimination-in-police-stops.html#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="discrimination-in-police-stops.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">/*merge to the hw data*/</span></span>
-<span id="cb55-5"><a href="discrimination-in-police-stops.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
-<span id="cb55-6"><a href="discrimination-in-police-stops.html#cb55-6" aria-hidden="true" tabindex="-1"></a>    Result                      Number <span class="kw">of</span> <span class="kw">obs</span></span>
-<span id="cb55-7"><a href="discrimination-in-police-stops.html#cb55-7" aria-hidden="true" tabindex="-1"></a>    -----------------------------------------</span>
-<span id="cb55-8"><a href="discrimination-in-police-stops.html#cb55-8" aria-hidden="true" tabindex="-1"></a>    Not matched                             2</span>
-<span id="cb55-9"><a href="discrimination-in-police-stops.html#cb55-9" aria-hidden="true" tabindex="-1"></a>        from master                         1  (<span class="dt">_merge</span>==1)</span>
-<span id="cb55-10"><a href="discrimination-in-police-stops.html#cb55-10" aria-hidden="true" tabindex="-1"></a>        from <span class="kw">using</span>                          1  (<span class="dt">_merge</span>==2)</span>
-<span id="cb55-11"><a href="discrimination-in-police-stops.html#cb55-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-12"><a href="discrimination-in-police-stops.html#cb55-12" aria-hidden="true" tabindex="-1"></a>    Matched                                 4  (<span class="dt">_merge</span>==3)</span>
-<span id="cb55-13"><a href="discrimination-in-police-stops.html#cb55-13" aria-hidden="true" tabindex="-1"></a>    -----------------------------------------</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb54-1"><a href="discrimination-in-police-stops.html#cb54-1" tabindex="-1"></a><span class="co">/* change working directory */</span></span>
+<span id="cb54-2"><a href="discrimination-in-police-stops.html#cb54-2" tabindex="-1"></a>cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span>
+<span id="cb54-3"><a href="discrimination-in-police-stops.html#cb54-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb55-1"><a href="discrimination-in-police-stops.html#cb55-1" tabindex="-1"></a><span class="co">/*load test score data*/</span></span>
+<span id="cb55-2"><a href="discrimination-in-police-stops.html#cb55-2" tabindex="-1"></a><span class="kw">use</span> test_score.dta, <span class="kw">clear</span> </span>
+<span id="cb55-3"><a href="discrimination-in-police-stops.html#cb55-3" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="discrimination-in-police-stops.html#cb55-4" tabindex="-1"></a><span class="co">/*merge to the hw data*/</span></span>
+<span id="cb55-5"><a href="discrimination-in-police-stops.html#cb55-5" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
+<span id="cb55-6"><a href="discrimination-in-police-stops.html#cb55-6" tabindex="-1"></a>    Result                      Number <span class="kw">of</span> <span class="kw">obs</span></span>
+<span id="cb55-7"><a href="discrimination-in-police-stops.html#cb55-7" tabindex="-1"></a>    -----------------------------------------</span>
+<span id="cb55-8"><a href="discrimination-in-police-stops.html#cb55-8" tabindex="-1"></a>    Not matched                             2</span>
+<span id="cb55-9"><a href="discrimination-in-police-stops.html#cb55-9" tabindex="-1"></a>        from master                         1  (<span class="dt">_merge</span>==1)</span>
+<span id="cb55-10"><a href="discrimination-in-police-stops.html#cb55-10" tabindex="-1"></a>        from <span class="kw">using</span>                          1  (<span class="dt">_merge</span>==2)</span>
+<span id="cb55-11"><a href="discrimination-in-police-stops.html#cb55-11" tabindex="-1"></a></span>
+<span id="cb55-12"><a href="discrimination-in-police-stops.html#cb55-12" tabindex="-1"></a>    Matched                                 4  (<span class="dt">_merge</span>==3)</span>
+<span id="cb55-13"><a href="discrimination-in-police-stops.html#cb55-13" tabindex="-1"></a>    -----------------------------------------</span></code></pre></div>
 <p>Two observations were not matched. One from the master dataset (<code>test_score.dta</code>) and the other from the using dataset (<code>hw_score.dta</code>). A new variable (named <code>_merge</code>) has been added to the dataset to keep track of matched vs. unmatched observations. It is equal to 1 for observations only in the master dataset, 2 for observations only in the using, and 3 for observations in both the master and the using dataset.</p>
 <p>Whether you keep unmatched observations in your dataset depends a bit on your analysis. If you really need both homework score and test score for all of your analysis, you can probably safely keep only matched observations. To do this in Stata after a <code>merge</code> command, we can type</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb56-1"><a href="discrimination-in-police-stops.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="dt">_merge</span>==3</span>
-<span id="cb56-2"><a href="discrimination-in-police-stops.html#cb56-2" aria-hidden="true" tabindex="-1"></a>(2 observations deleted)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb56-1"><a href="discrimination-in-police-stops.html#cb56-1" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="dt">_merge</span>==3</span>
+<span id="cb56-2"><a href="discrimination-in-police-stops.html#cb56-2" tabindex="-1"></a>(2 observations deleted)</span></code></pre></div>
 <p>You can also specify to only keep matched observations directly in the merge command. If you are only keeping observations that match between the two datasets, you don't need to generate the <code>_merge</code> variable, as it will be equal to 3 for all matched observations. Instead, you can specify the option <code>keep(3)</code> which only keeps matched observations. Then, in order to prevent Stata from adding an uniformative variable <code>_merge</code>, you can also specify <code>nogen</code> so that the variable is not generated. The example below uses both these options in the context of our hypothetical example.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb57-1"><a href="discrimination-in-police-stops.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score.dta, <span class="kw">clear</span> </span>
-<span id="cb57-2"><a href="discrimination-in-police-stops.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta, <span class="kw">keep</span>(3) nogen</span>
-<span id="cb57-3"><a href="discrimination-in-police-stops.html#cb57-3" aria-hidden="true" tabindex="-1"></a>    Result                      Number <span class="kw">of</span> <span class="kw">obs</span></span>
-<span id="cb57-4"><a href="discrimination-in-police-stops.html#cb57-4" aria-hidden="true" tabindex="-1"></a>    -----------------------------------------</span>
-<span id="cb57-5"><a href="discrimination-in-police-stops.html#cb57-5" aria-hidden="true" tabindex="-1"></a>    Not matched                             0</span>
-<span id="cb57-6"><a href="discrimination-in-police-stops.html#cb57-6" aria-hidden="true" tabindex="-1"></a>    Matched                                 4  </span>
-<span id="cb57-7"><a href="discrimination-in-police-stops.html#cb57-7" aria-hidden="true" tabindex="-1"></a>    -----------------------------------------</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb57-1"><a href="discrimination-in-police-stops.html#cb57-1" tabindex="-1"></a><span class="kw">use</span> test_score.dta, <span class="kw">clear</span> </span>
+<span id="cb57-2"><a href="discrimination-in-police-stops.html#cb57-2" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta, <span class="kw">keep</span>(3) nogen</span>
+<span id="cb57-3"><a href="discrimination-in-police-stops.html#cb57-3" tabindex="-1"></a>    Result                      Number <span class="kw">of</span> <span class="kw">obs</span></span>
+<span id="cb57-4"><a href="discrimination-in-police-stops.html#cb57-4" tabindex="-1"></a>    -----------------------------------------</span>
+<span id="cb57-5"><a href="discrimination-in-police-stops.html#cb57-5" tabindex="-1"></a>    Not matched                             0</span>
+<span id="cb57-6"><a href="discrimination-in-police-stops.html#cb57-6" tabindex="-1"></a>    Matched                                 4  </span>
+<span id="cb57-7"><a href="discrimination-in-police-stops.html#cb57-7" tabindex="-1"></a>    -----------------------------------------</span></code></pre></div>
 <p>As you can see, the generated table has only 4 observations now, all of which are in both datasets. This is because we have specified to only keep observations that are in both datasets by specifying <code>keep(3)</code>.</p>
 <p>Now that we understand how to use the <code>merge</code> command, let's go through a few common mistakes. The first has to deal with the matching variable. The matching variables need to be named in the exact same way.</p>
 <p>In the example below (Figure <a href="discrimination-in-police-stops.html#fig:samename">3.12</a>), the two datasets are the same as the previous example, but the student variable is named <code>student_id</code> in one and <code>student</code> in the other</p>
@@ -326,13 +326,13 @@ Figure 3.12: Example of Merge with Different Names for Matching Varaibles
 </p>
 </div>
 <p>Let's see what happens if we try to merge these two together:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb58-1"><a href="discrimination-in-police-stops.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score2.dta, <span class="kw">clear</span> </span>
-<span id="cb58-2"><a href="discrimination-in-police-stops.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student_id <span class="kw">using</span> hw_score.dta</span>
-<span id="cb58-3"><a href="discrimination-in-police-stops.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> student_id <span class="kw">not</span> found</span>
-<span id="cb58-4"><a href="discrimination-in-police-stops.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(111);</span>
-<span id="cb58-5"><a href="discrimination-in-police-stops.html#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="discrimination-in-police-stops.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb58-7"><a href="discrimination-in-police-stops.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb58-1"><a href="discrimination-in-police-stops.html#cb58-1" tabindex="-1"></a><span class="kw">use</span> test_score2.dta, <span class="kw">clear</span> </span>
+<span id="cb58-2"><a href="discrimination-in-police-stops.html#cb58-2" tabindex="-1"></a><span class="kw">merge</span> 1:1 student_id <span class="kw">using</span> hw_score.dta</span>
+<span id="cb58-3"><a href="discrimination-in-police-stops.html#cb58-3" tabindex="-1"></a><span class="kw">variable</span> student_id <span class="kw">not</span> found</span>
+<span id="cb58-4"><a href="discrimination-in-police-stops.html#cb58-4" tabindex="-1"></a><span class="fu">r</span>(111);</span>
+<span id="cb58-5"><a href="discrimination-in-police-stops.html#cb58-5" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="discrimination-in-police-stops.html#cb58-6" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb58-7"><a href="discrimination-in-police-stops.html#cb58-7" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
 <p>The variable <code>student_id</code> was not found because the variable <code>student_id</code> does not exist in the using dataset. In order to merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the <code>rename</code> command to ensure the names are the same.</p>
 <p>Similarly, matching variables must be the same type of variable. For example, in Figure <a href="discrimination-in-police-stops.html#fig:sametype">3.13</a>, the student variable is stored as a string in the first dataset (which is why it is highlighted in red), while it is stored as a numeric variable in the second dataset (which is why it is highlighted in black).</p>
 <div class="figure" style="text-align: center">
@@ -342,16 +342,16 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 </p>
 </div>
 <p>Let's see what happens if we try to merge these two together</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb59-1"><a href="discrimination-in-police-stops.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
-<span id="cb59-2"><a href="discrimination-in-police-stops.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
-<span id="cb59-3"><a href="discrimination-in-police-stops.html#cb59-3" aria-hidden="true" tabindex="-1"></a>key <span class="kw">variable</span> student is str1 <span class="kw">in</span> master but <span class="kw">float</span> <span class="kw">in</span> <span class="kw">using</span> <span class="kw">data</span></span>
-<span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    Each key <span class="kw">variable</span> -- the variables <span class="kw">on</span> which observations are matched -- must <span class="kw">be</span> <span class="kw">of</span> the same</span>
-<span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span> <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both</span>
-<span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">string</span>.</span>
-<span id="cb59-7"><a href="discrimination-in-police-stops.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span>
-<span id="cb59-8"><a href="discrimination-in-police-stops.html#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-9"><a href="discrimination-in-police-stops.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb59-10"><a href="discrimination-in-police-stops.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb59-1"><a href="discrimination-in-police-stops.html#cb59-1" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
+<span id="cb59-2"><a href="discrimination-in-police-stops.html#cb59-2" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
+<span id="cb59-3"><a href="discrimination-in-police-stops.html#cb59-3" tabindex="-1"></a>key <span class="kw">variable</span> student is str1 <span class="kw">in</span> master but <span class="kw">float</span> <span class="kw">in</span> <span class="kw">using</span> <span class="kw">data</span></span>
+<span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" tabindex="-1"></a>    Each key <span class="kw">variable</span> (<span class="kw">on</span> which observations are matched) must <span class="kw">be</span> <span class="kw">of</span> the</span>
+<span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" tabindex="-1"></a>    same generic <span class="dv">type</span> <span class="kw">in</span> the master and <span class="kw">using</span> datasets.  Same generic <span class="dv">type</span></span>
+<span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" tabindex="-1"></a>    <span class="kw">means</span> both <span class="kw">numeric</span> <span class="kw">or</span> both <span class="fu">string</span>.</span>
+<span id="cb59-7"><a href="discrimination-in-police-stops.html#cb59-7" tabindex="-1"></a><span class="fu">r</span>(106);</span>
+<span id="cb59-8"><a href="discrimination-in-police-stops.html#cb59-8" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="discrimination-in-police-stops.html#cb59-9" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb59-10"><a href="discrimination-in-police-stops.html#cb59-10" tabindex="-1"></a><span class="fu">r</span>(106);</span></code></pre></div>
 <p>This error code is describing how the format of the variables is different in our master vs. using dataset. To fix this issue, we need to convert one of the variable formats. For example, we could type <code>destring student, replace</code> to convert the student variable to a numeric variable in the <code>test_score3.dta</code> dataset.</p>
 <p>Lastly, we have discussed one-to-one merges, many-to-one merges and one-to-many merges, but what about many-to-many merges? The reason we have not discussed it is because <strong>you should never do many-to-many merges in Stata</strong>. In most cases, the right way to proceed if you find yourself faced with a many-to-many merge is to restructure your data. Usually you can use some data wrangling (like <code>collapse</code>) to transform your data into a one-to-one, many-to-one or one-to-many merge. There is a command <code>joinby</code> that does accomplish something like a many-to-many merge, but we will not discuss this command in this book.</p>
 </div>
@@ -362,10 +362,10 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 <p>Now that we understand the merge command, let's use it to merge traffic stop data to data on sunset times so that we can implement the veil of darkness test. To begin, we need to choose a period of time in San Diego in which it is sometimes light and sometimes dark, depending on the time of the year. Let's choose the time period 6:30-7:00 PM. Sometimes it is dark out at 6:30-7:00 PM (in winter for example), while sometimes it is light out (in summer for example). We need to identify whether it was light or dark for every stop in our data.</p>
 <p>The problem, however, is that our data for stops currently comes in two separate files, one for the years 2014-2015 and one for the years 2016-2017. Additionally, our sunset data comes in a separate file. Therefore, we have three separate files that we need to combine to create one final dataset.</p>
 <p>To create a dataset of all stops between 2014-2017, we need to <code>append</code> the stop-level data.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb60-1"><a href="discrimination-in-police-stops.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> san_diego_stops_2014_2015.dta, <span class="kw">clear</span></span>
-<span id="cb60-2"><a href="discrimination-in-police-stops.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> san_diego_stops_2016_2017.dta</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb60-1"><a href="discrimination-in-police-stops.html#cb60-1" tabindex="-1"></a><span class="kw">use</span> san_diego_stops_2014_2015.dta, <span class="kw">clear</span></span>
+<span id="cb60-2"><a href="discrimination-in-police-stops.html#cb60-2" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> san_diego_stops_2016_2017.dta</span></code></pre></div>
 <p>So it might look as if nothing happened in Stata. To check that we now have all years of data in a single dataset we can type:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb61-1"><a href="discrimination-in-police-stops.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="fu">year</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb61-1"><a href="discrimination-in-police-stops.html#cb61-1" tabindex="-1"></a><span class="kw">tab</span> <span class="fu">year</span></span></code></pre></div>
 <pre><code>       year |      Freq.     Percent        Cum.
 ------------+-----------------------------------
        2014 |    138,735       36.40       36.40
@@ -377,38 +377,38 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 <p>Now we have verified that the current data in memory has stops between 2014-2017. Our next task is to <code>merge</code> in the data on sunset times. To do this, we need to make sure of two things. First, is there a variable that we can merge on? In general, you would need to load both datasets and check if there are any variables that store the same information. In our case, there is a single variable that meets this criteria: <code>date</code>. Second, is this a one-to-one or many-to-one merge? Third, is the <code>date</code> variable in both datasets stored in the same format?</p>
 <p>To get started, we need to figure out how many observations there are for a given <code>date</code> in each dataset. Intuitively, we expect there are multiple observations per <code>date</code> in the traffic stop data. In other words, officers stop more than one individual per day. In the sunset data, well there is only a single sunset time for every day, so we expect a single observation per <code>date</code>. But data is not always stored how we expect, so it is always good to check this. The way were are going to check is through the <code>unique</code> command.</p>
 <p>The <code>unique</code> command does not come installed in Stata. You need to install it into your version of Stata by typing <code>ssc install unique</code> into the Command window. In general, you might find a command online that will help you perform some data analysis. Many commands can be installed by typing <code>ssc install commandname</code>. Therefore, before running the line of code below, you should type <code>ssc install unique</code> into the Command window and press enter.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb63-1"><a href="discrimination-in-police-stops.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb63-1"><a href="discrimination-in-police-stops.html#cb63-1" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
 <pre><code>Number of unique values of date is  1186
 Number of records is  381149</code></pre>
 <p>How do we interpret this output? Well, the number of unique values of date is 1186. In other words, this is how many different days there are in our dataset on traffic stops. In contrast, there are 381,149 total stops. Therefore, there are multiple stops per day. Whenever you see more records than unique values, you know this is a <code>many-to-BLANK</code> merge. The next job for us is to figure out if the <code>BLANK</code> should be replaced by a <code>one</code>. In order to do this we need to load the <code>sd_sunset.dta</code>.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb65-1"><a href="discrimination-in-police-stops.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> sd_sunset.dta, <span class="kw">clear</span></span></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb66-1"><a href="discrimination-in-police-stops.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb65-1"><a href="discrimination-in-police-stops.html#cb65-1" tabindex="-1"></a><span class="kw">use</span> sd_sunset.dta, <span class="kw">clear</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb66-1"><a href="discrimination-in-police-stops.html#cb66-1" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
 <pre><code>Number of unique values of date is  1186
 Number of records is  1186</code></pre>
 <p>In this dataset, there are 1186 unique values of date and 1186 records. Each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a <code>many-to-one</code> merge. There are many observations per value of <code>date</code> in the stops data, but one observation per value of <code>date</code> in the sunset data.</p>
 <p>The last thing we need to do is to check that the format of the date variable is the same in both datasets. Let's look at the first observation in the <code>sd_sunset.dta</code></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb68-1"><a href="discrimination-in-police-stops.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
-<span id="cb68-2"><a href="discrimination-in-police-stops.html#cb68-2" aria-hidden="true" tabindex="-1"></a>      |      <span class="fu">date</span> |</span>
-<span id="cb68-3"><a href="discrimination-in-police-stops.html#cb68-3" aria-hidden="true" tabindex="-1"></a>      |-----------|</span>
-<span id="cb68-4"><a href="discrimination-in-police-stops.html#cb68-4" aria-hidden="true" tabindex="-1"></a>   1. | 01jan2014 |</span>
-<span id="cb68-5"><a href="discrimination-in-police-stops.html#cb68-5" aria-hidden="true" tabindex="-1"></a>      +-----------+</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb68-1"><a href="discrimination-in-police-stops.html#cb68-1" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
+<span id="cb68-2"><a href="discrimination-in-police-stops.html#cb68-2" tabindex="-1"></a>      |      <span class="fu">date</span> |</span>
+<span id="cb68-3"><a href="discrimination-in-police-stops.html#cb68-3" tabindex="-1"></a>      |-----------|</span>
+<span id="cb68-4"><a href="discrimination-in-police-stops.html#cb68-4" tabindex="-1"></a>   1. | 01jan2014 |</span>
+<span id="cb68-5"><a href="discrimination-in-police-stops.html#cb68-5" tabindex="-1"></a>      +-----------+</span></code></pre></div>
 <p>Now, let's go back to the stop-level data and check if <code>date</code> is held in the same format.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb69-1"><a href="discrimination-in-police-stops.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> san_diego_stops_2014_2015.dta, <span class="kw">clear</span></span>
-<span id="cb69-2"><a href="discrimination-in-police-stops.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> san_diego_stops_2016_2017.dta</span></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb70-1"><a href="discrimination-in-police-stops.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
-<span id="cb70-2"><a href="discrimination-in-police-stops.html#cb70-2" aria-hidden="true" tabindex="-1"></a>        |      <span class="fu">date</span> |</span>
-<span id="cb70-3"><a href="discrimination-in-police-stops.html#cb70-3" aria-hidden="true" tabindex="-1"></a>        |-----------|</span>
-<span id="cb70-4"><a href="discrimination-in-police-stops.html#cb70-4" aria-hidden="true" tabindex="-1"></a>     1. | 01jan2014 |</span>
-<span id="cb70-5"><a href="discrimination-in-police-stops.html#cb70-5" aria-hidden="true" tabindex="-1"></a>        +-----------+</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb69-1"><a href="discrimination-in-police-stops.html#cb69-1" tabindex="-1"></a><span class="kw">use</span> san_diego_stops_2014_2015.dta, <span class="kw">clear</span></span>
+<span id="cb69-2"><a href="discrimination-in-police-stops.html#cb69-2" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> san_diego_stops_2016_2017.dta</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb70-1"><a href="discrimination-in-police-stops.html#cb70-1" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
+<span id="cb70-2"><a href="discrimination-in-police-stops.html#cb70-2" tabindex="-1"></a>        |      <span class="fu">date</span> |</span>
+<span id="cb70-3"><a href="discrimination-in-police-stops.html#cb70-3" tabindex="-1"></a>        |-----------|</span>
+<span id="cb70-4"><a href="discrimination-in-police-stops.html#cb70-4" tabindex="-1"></a>     1. | 01jan2014 |</span>
+<span id="cb70-5"><a href="discrimination-in-police-stops.html#cb70-5" tabindex="-1"></a>        +-----------+</span></code></pre></div>
 <p>It looks like the <code>date</code> variable is in the same format. If it is not, you then will need to do some data wrangling in order to get it into the same format. For us, we can now merge this data to the sunset data:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb71-1"><a href="discrimination-in-police-stops.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 <span class="fu">date</span> <span class="kw">using</span> sd_sunset.dta, <span class="kw">keep</span>(3) nogen</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb71-1"><a href="discrimination-in-police-stops.html#cb71-1" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 <span class="fu">date</span> <span class="kw">using</span> sd_sunset.dta, <span class="kw">keep</span>(3) nogen</span></code></pre></div>
 <pre><code>    Result                      Number of obs
     -----------------------------------------
     Not matched                             0
     Matched                           381,149  
     -----------------------------------------</code></pre>
 <p>Because we specified <code>keep(3) nogen</code>, we are only keeping observations that correspond to dates in both dataset. Now, we are going to want to use this data for our analysis later, so let's save the combined dataset under a new name: <code>sd_analysis_sample.dta</code> by typing:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb73-1"><a href="discrimination-in-police-stops.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> sd_analysis_sample.dta, <span class="kw">replace</span> </span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb73-1"><a href="discrimination-in-police-stops.html#cb73-1" tabindex="-1"></a><span class="kw">save</span> sd_analysis_sample.dta, <span class="kw">replace</span> </span></code></pre></div>
 <p>This code will place a new file in your working directory named <code>sd_analysis_sample.dta</code>. Next time you want to work with your data, you can now load this file directly, and won't need to repeat the steps of appending and merging datasets together.</p>
 </div>
 <div id="date-time" class="section level2" number="3.9">
@@ -420,8 +420,8 @@ Number of records is  1186</code></pre>
 <p>So we need to restrict to all stops that occur in this time period. Doing this will be harder than you think! We need to learn how Stata stores the time of the day.</p>
 <p>In Stata, times of the day are often held in terms of milliseconds from midnight. Why? Well, you could store it as a string variables, but you can't add string variables. For example, while I understand that the string <code>"6:00 PM"</code> is equal to 6:00 PM at night, I need a way to store the information so that I can do things like add or subtract additional time (i.e. if I add an hour to 6:00 PM the result should be 7:00 PM). Strings are interpreted as words in Stata and so cannot be added in this way.</p>
 <p>To see how Stata stores times, we can <code>summarize</code> our variable <code>stop_time</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb74-1"><a href="discrimination-in-police-stops.html#cb74-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">use</span> sd_analysis_sample.dta, <span class="kw">replace</span></span></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb75-1"><a href="discrimination-in-police-stops.html#cb75-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">sum</span> stop_time </span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb74-1"><a href="discrimination-in-police-stops.html#cb74-1" tabindex="-1"></a>  <span class="kw">use</span> sd_analysis_sample.dta, <span class="kw">replace</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb75-1"><a href="discrimination-in-police-stops.html#cb75-1" tabindex="-1"></a>  <span class="kw">sum</span> stop_time </span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
    stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07</code></pre>
@@ -432,23 +432,23 @@ Number of records is  1186</code></pre>
 So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops with values of <code>stop_time</code> between 66,600,000 (6:30 PM) and 68,400,000 (7:00 PM).</p>
 <p>While this procedure will get you the right answer, typing some large numbers can sometimes lead to transcription errors if you are not careful. A better way to do this is to use Stata commands that do this math for you. The <code>clock()</code> command automatically translates time as we usually interpret it (i.e. 9:00 AM) into milliseconds from midnight automatically.</p>
 <p>For example, to see how many milliseconds from midnight 6:00 PM is type:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb77-1"><a href="discrimination-in-police-stops.html#cb77-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">di</span> clock(<span class="st">"18:30:00"</span>,<span class="st">"hms"</span>)</span>
-<span id="cb77-2"><a href="discrimination-in-police-stops.html#cb77-2" aria-hidden="true" tabindex="-1"></a>66600000</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb77-1"><a href="discrimination-in-police-stops.html#cb77-1" tabindex="-1"></a>  <span class="kw">di</span> clock(<span class="st">"18:30:00"</span>,<span class="st">"hms"</span>)</span>
+<span id="cb77-2"><a href="discrimination-in-police-stops.html#cb77-2" tabindex="-1"></a>66600000</span></code></pre></div>
 <p>Where <code>"18:30:00"</code> is 6:30 PM on a 24-hour clock. <code>"hms"</code> tells Stata that time should be interpreted as hours, minutes, seconds. Now that we understand how to use the <code>clock</code> command, we can use it to restrict to stops that occurred between 6:30 PM and 7:00 PM:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb78-1"><a href="discrimination-in-police-stops.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* drop if before 6:30 PM */</span></span>
-<span id="cb78-2"><a href="discrimination-in-police-stops.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> stop_time&lt;clock(<span class="st">"18:30:00"</span>,<span class="st">"hms"</span>)</span>
-<span id="cb78-3"><a href="discrimination-in-police-stops.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co">/* drop if after 7:00 PM */</span></span>
-<span id="cb78-4"><a href="discrimination-in-police-stops.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> stop_time&gt;clock(<span class="st">"19:00:00"</span>,<span class="st">"hms"</span>) </span>
-<span id="cb78-5"><a href="discrimination-in-police-stops.html#cb78-5" aria-hidden="true" tabindex="-1"></a>(296,355 observations deleted)</span>
-<span id="cb78-6"><a href="discrimination-in-police-stops.html#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-7"><a href="discrimination-in-police-stops.html#cb78-7" aria-hidden="true" tabindex="-1"></a>(76,052 observations deleted)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb78-1"><a href="discrimination-in-police-stops.html#cb78-1" tabindex="-1"></a><span class="co">/* drop if before 6:30 PM */</span></span>
+<span id="cb78-2"><a href="discrimination-in-police-stops.html#cb78-2" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> stop_time&lt;clock(<span class="st">"18:30:00"</span>,<span class="st">"hms"</span>)</span>
+<span id="cb78-3"><a href="discrimination-in-police-stops.html#cb78-3" tabindex="-1"></a><span class="co">/* drop if after 7:00 PM */</span></span>
+<span id="cb78-4"><a href="discrimination-in-police-stops.html#cb78-4" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> stop_time&gt;clock(<span class="st">"19:00:00"</span>,<span class="st">"hms"</span>) </span>
+<span id="cb78-5"><a href="discrimination-in-police-stops.html#cb78-5" tabindex="-1"></a>(296,355 observations deleted)</span>
+<span id="cb78-6"><a href="discrimination-in-police-stops.html#cb78-6" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="discrimination-in-police-stops.html#cb78-7" tabindex="-1"></a>(76,052 observations deleted)</span></code></pre></div>
 <p>Next, we need to generate indicators that tell us whether a given stop occurred during sunlight or in the dark. We will define a traffic stop occurring in the sunlight if it occurs before sunset. The variable <code>sunset</code> in the data contains the time of the sunset, which we can compare to the <code>stop_time</code> to generate an indicator for <code>light</code>:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb79-1"><a href="discrimination-in-police-stops.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> light = (stop_time&lt;sunset)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb79-1"><a href="discrimination-in-police-stops.html#cb79-1" tabindex="-1"></a><span class="kw">gen</span> light = (stop_time&lt;sunset)</span></code></pre></div>
 <p>In words, we are creating a variable that is equal to 1 if the time of the stop occured before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable <code>dusk</code> in the data contains the time of dusk, which we can compare to the <code>stop_time</code> to generate an indicator for <code>dark</code>:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb80-1"><a href="discrimination-in-police-stops.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> dark = (stop_time&gt;dusk)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb80-1"><a href="discrimination-in-police-stops.html#cb80-1" tabindex="-1"></a><span class="kw">gen</span> dark = (stop_time&gt;dusk)</span></code></pre></div>
 <p>Now, there are some stops that occur between sunset and dusk. For these stops, we aren't sure if driver race is observed. It is neither fully light nor fully dark at these times (i.e. <code>dark==0 &amp; light==0</code>). We are going to drop these stops from the analysis:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb81-1"><a href="discrimination-in-police-stops.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> light==0 &amp; dark==0 </span>
-<span id="cb81-2"><a href="discrimination-in-police-stops.html#cb81-2" aria-hidden="true" tabindex="-1"></a>(414 observations deleted)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb81-1"><a href="discrimination-in-police-stops.html#cb81-1" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> light==0 &amp; dark==0 </span>
+<span id="cb81-2"><a href="discrimination-in-police-stops.html#cb81-2" tabindex="-1"></a>(414 observations deleted)</span></code></pre></div>
 <p>Now we are ready to start our analysis to implement the veil of darkness.</p>
 </div>
 <div id="implement-vod" class="section level2" number="3.10">
@@ -456,7 +456,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 <span class="header-section-number">3.10</span> Implement VOD<a class="anchor" aria-label="anchor" href="#implement-vod"><i class="fas fa-link"></i></a>
 </h2>
 <p>We need to compare the composition of traffic stops in times of sunlight vs. darkness to implement the veil of darkness test. If stop rates for minorities drop in the dark, that indicates they were being targeted in the sunlight. To retrieve the composition of traffic stops by race, we can use the <code>tab</code> command:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb82-1"><a href="discrimination-in-police-stops.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> subject_race </span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb82-1"><a href="discrimination-in-police-stops.html#cb82-1" tabindex="-1"></a><span class="kw">tab</span> subject_race </span></code></pre></div>
 <pre><code>          subject_race |      Freq.     Percent        Cum.
 -----------------------+-----------------------------------
 Asian/Pacific Islander |        747        8.97        8.97
@@ -467,7 +467,7 @@ Asian/Pacific Islander |        747        8.97        8.97
 -----------------------+-----------------------------------
                  Total |      8,328      100.00</code></pre>
 <p>If we want the composition, but restrict to stops in the sunlight, we can add a conditional statement to our code:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb84-1"><a href="discrimination-in-police-stops.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> subject_race <span class="kw">if</span> dark==0 </span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb84-1"><a href="discrimination-in-police-stops.html#cb84-1" tabindex="-1"></a><span class="kw">tab</span> subject_race <span class="kw">if</span> dark==0 </span></code></pre></div>
 <pre><code>          subject_race |      Freq.     Percent        Cum.
 -----------------------+-----------------------------------
 Asian/Pacific Islander |        375        8.40        8.40
@@ -478,7 +478,7 @@ Asian/Pacific Islander |        375        8.40        8.40
 -----------------------+-----------------------------------
                  Total |      4,463      100.00</code></pre>
 <p>Now let's look at the composition of traffic stops in the dark:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb86-1"><a href="discrimination-in-police-stops.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> subject_race <span class="kw">if</span> dark==1 </span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb86-1"><a href="discrimination-in-police-stops.html#cb86-1" tabindex="-1"></a><span class="kw">tab</span> subject_race <span class="kw">if</span> dark==1 </span></code></pre></div>
 <pre><code>          subject_race |      Freq.     Percent        Cum.
 -----------------------+-----------------------------------
 Asian/Pacific Islander |        372        9.62        9.62
@@ -503,10 +503,10 @@ Figure 3.14: Dataset on Schools and GPA
 </div>
 <p>The command <code>graph bar</code> is used to make bar graphs in Stata. There are lots of ways this command can be altered, so make sure to look at the help file! To start, we are going to create a bar graph that shows average GPA for each school.</p>
 <p>The basic syntax for the <code>graph bar</code> command is</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb88-1"><a href="discrimination-in-police-stops.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (stat) yvar, <span class="bn">over</span>(xvar)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb88-1"><a href="discrimination-in-police-stops.html#cb88-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (stat) yvar, <span class="bn">over</span>(xvar)</span></code></pre></div>
 <p><code>(stat)</code> will be <code>(mean)</code> if you want the average value of the y-variable to be displayed. There are also other options in the help file. For example, you could have the command plot the count, the minimum, maximum, median, among other statistics. <code>over(xvar)</code> will be the variable that defines the groups on the horizontal axis.</p>
 <p>In our example, we want the average of the variable <code>gpa</code>, so we will type <code>(mean) gpa</code>. What do want the average over? The class variable. So we will type <code>over(class)</code>. All together:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb89-1"><a href="discrimination-in-police-stops.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) gpa, <span class="bn">over</span>(school)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb89-1"><a href="discrimination-in-police-stops.html#cb89-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) gpa, <span class="bn">over</span>(school)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:barex"></span>
 <img src="images/03_bar_ex.png" alt="Simple Bar Graph" width="65%"><p class="caption">
@@ -514,9 +514,9 @@ Figure 3.15: Simple Bar Graph
 </p>
 </div>
 <p>As always need descriptive titles and properly labeled axes. We can add these the same way we added them for histograms:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb90-1"><a href="discrimination-in-police-stops.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) gpa, <span class="bn">over</span>(school) <span class="co">///</span></span>
-<span id="cb90-2"><a href="discrimination-in-police-stops.html#cb90-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Average GPA by Classroom"</span>) <span class="co">///</span></span>
-<span id="cb90-3"><a href="discrimination-in-police-stops.html#cb90-3" aria-hidden="true" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Average GPA"</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb90-1"><a href="discrimination-in-police-stops.html#cb90-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) gpa, <span class="bn">over</span>(school) <span class="co">///</span></span>
+<span id="cb90-2"><a href="discrimination-in-police-stops.html#cb90-2" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Average GPA by Classroom"</span>) <span class="co">///</span></span>
+<span id="cb90-3"><a href="discrimination-in-police-stops.html#cb90-3" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Average GPA"</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:barex2"></span>
 <img src="images/03_bar_ex2.png" alt="Simple Bar Graph with Titles/Labels" width="65%"><p class="caption">
@@ -524,13 +524,13 @@ Figure 3.16: Simple Bar Graph with Titles/Labels
 </p>
 </div>
 <p>Sometimes we need to change the aesthetics of our figures to make them more easily readable. One external package I find useful to install is <code>blindschemes</code>, which provides color schemes for Stata graphs that are distinguishable for individuals that are color blind. To install blindschemes type:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb91-1"><a href="discrimination-in-police-stops.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install blindschemes</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb91-1"><a href="discrimination-in-police-stops.html#cb91-1" tabindex="-1"></a><span class="kw">ssc</span> install blindschemes</span></code></pre></div>
 <p><code>blindschemes</code> comes with a number of different <code>schemes</code>. You can think of graphics schemes as capturing the overall theme or aesthetic of your graph. Let's set the <code>scheme</code> to <code>plotplainblind</code>, which is one of the schemes that comes from the <code>blindschemes</code> package.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb92-1"><a href="discrimination-in-police-stops.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">scheme</span> plotplainblind</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb92-1"><a href="discrimination-in-police-stops.html#cb92-1" tabindex="-1"></a><span class="kw">set</span> <span class="dv">scheme</span> plotplainblind</span></code></pre></div>
 <p>Now we can re-run the exact same code as before, but the overall aesthetic will be different. This is because we have changed the scheme of the graph.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb93-1"><a href="discrimination-in-police-stops.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) gpa, <span class="bn">over</span>(school) <span class="co">///</span></span>
-<span id="cb93-2"><a href="discrimination-in-police-stops.html#cb93-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Average GPA by Classroom"</span>) <span class="co">///</span></span>
-<span id="cb93-3"><a href="discrimination-in-police-stops.html#cb93-3" aria-hidden="true" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Average GPA"</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb93-1"><a href="discrimination-in-police-stops.html#cb93-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) gpa, <span class="bn">over</span>(school) <span class="co">///</span></span>
+<span id="cb93-2"><a href="discrimination-in-police-stops.html#cb93-2" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Average GPA by Classroom"</span>) <span class="co">///</span></span>
+<span id="cb93-3"><a href="discrimination-in-police-stops.html#cb93-3" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Average GPA"</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:barex3"></span>
 <img src="images/03_bar_ex3.png" alt="Simple Bar Graph with Titles/Labels" width="65%"><p class="caption">
@@ -545,7 +545,7 @@ Figure 3.17: Simple Bar Graph with Titles/Labels
 </h2>
 <p>The <code>collapse</code> command transforms your data to a different unit of analysis. Why is this useful? Imagine you have individual-level data on income, but you only care about average income by state for your analysis. The <code>collapse</code> command will allow you to quickly transform your data to the state level. Imagine you want to understand averages of a variable over the years. Collapsing the data to the year level can be a quick way to understand how the variable is changing over time. When you have a lot of data, collapsing the data first may make your code much more efficient.</p>
 <p>The basic syntax of the <code>collapse</code> command is</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb94-1"><a href="discrimination-in-police-stops.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> (stat) varlist1, <span class="kw">by</span>(varlist2)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb94-1"><a href="discrimination-in-police-stops.html#cb94-1" tabindex="-1"></a><span class="kw">collapse</span> (stat) varlist1, <span class="kw">by</span>(varlist2)</span></code></pre></div>
 <p><code>(stat)</code> will be some statistic. The default is the mean. We will also use <code>count</code> later in this chapter. <code>varlist1</code> is a variable (or list of variables) that you would like to retrieve the mean for. <code>varlist2</code> is a variable (or list of variables) will define the groups over which the statistic is calculated.</p>
 To practice with this command, consider the (fake) dataset below:
 <div class="figure" style="text-align: center">
@@ -555,7 +555,7 @@ Figure 3.18: Wages for Workers in Different States
 </p>
 </div>
 <p>Our goal now is to transform this dataset into a dataset with just two observations: one for "CA" and one for "AZ". In terms of variables, we want two variables, one that contains the average weekly income and one that contains the average age. In other words, we are taking a dataset that is currently at the worker level and collapsing it to a dataset that is at the state level. To do this in Stata we type:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb95-1"><a href="discrimination-in-police-stops.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> (<span class="kw">mean</span>) weekly_income age, <span class="kw">by</span>(state)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb95-1"><a href="discrimination-in-police-stops.html#cb95-1" tabindex="-1"></a><span class="kw">collapse</span> (<span class="kw">mean</span>) weekly_income age, <span class="kw">by</span>(state)</span></code></pre></div>
 <p>The collapsed dataset is depicted in Figure <a href="discrimination-in-police-stops.html#fig:collapsed">3.19</a></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:collapsed"></span>
@@ -588,9 +588,9 @@ Figure 3.21: Veil of Darkness Test Finds No Evidence of Discriminatory Policy Be
 <p>Starting where we left off, we have now constructed a dataset with (1) traffic stops that occur between 6:30-7:00 PM, and (2) indicators for whether there was sunlight (<code>dark==0</code>) or darkness (<code>dark==1</code>). We can use this data to generate a similar visualization as the graphs above.</p>
 <p>We need to compare the composition of traffic stops in times of sunlight vs. darkness. We can use the <code>collapse</code> command to create a dataset of these statistics. To start, let's create a dataset that has the number of stops by race, in both daylight and darkness.</p>
 <p>To count the number of observations per race for both daylight and darkness, we can use the <code>count</code> option of the collapse command. This option will count the number of observations with non-missing values of a variable. To begin, let's create a variable (that will eventually store our counts) that is non-missing for all observations.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb96-1"><a href="discrimination-in-police-stops.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> obs_count = 1</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb96-1"><a href="discrimination-in-police-stops.html#cb96-1" tabindex="-1"></a><span class="kw">gen</span> obs_count = 1</span></code></pre></div>
 <p>Now it might not be immediately clear why we have created this variable. Right now it is just a variable that is equal to 1 for every observation. However, once we collapse the data, this variable will hold information we need to construct our bar graph. To collapse the data to the subject-race-by-dark condition level:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb97-1"><a href="discrimination-in-police-stops.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> (<span class="fu">count</span>) obs_count, <span class="kw">by</span>(subject_race dark) </span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb97-1"><a href="discrimination-in-police-stops.html#cb97-1" tabindex="-1"></a><span class="kw">collapse</span> (<span class="fu">count</span>) obs_count, <span class="kw">by</span>(subject_race dark) </span></code></pre></div>
 <p>When we specify two variables in <code>by</code>, the resulting dataset includes an observation for every unique combination of the two variables. In our dataset, there are 5 different values of the <code>race</code> variable, while there are 2 different values of our <code>dark</code> variable. The resulting dataset in this case will have 10 observations. Each row will correspond to a given race in a given light condition.</p>
 <p>Figure <a href="discrimination-in-police-stops.html#fig:br1">3.22</a> displays the resulting collapsed dataset. As you can see, for each race and light condition, we now have the total number of stops that occurred for that race, within the given light condition. For example, the first row here indicates that in our dataset, there are 375 stops for Asian/Pacific Islanders when it is between 6:30-7:00 PM and light out (i.e. <code>dark==0</code>).</p>
 <div class="figure" style="text-align: center">
@@ -606,7 +606,7 @@ Figure 3.22: Collapsed Dataset
 But what if we had more observations. Also, we need these values in our dataset. It will be easier if we can add a variable to the dataset that contains this information. We are going to do this in two steps. First, we are going to create a variable that contains the total stops within a given light condition. Then, we are going to generate the variable we want by dividing <code>obs_count</code> by this new variable.</p>
 <p>To create this new variable we are going to use the <code>egen</code> command. <code>egen</code> stands for extensions to generate, and is very useful when trying to create new variables. If you ever want to create a variable, but can't figure out exactly how, type <code>help egen</code> to see if it is possible with the egen command.</p>
 <p>First, let's present the code for calculating total stops by light condition, before explaining how it works:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb98-1"><a href="discrimination-in-police-stops.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> dark: <span class="kw">egen</span> total_obs = <span class="kw">total</span>(obs_count)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb98-1"><a href="discrimination-in-police-stops.html#cb98-1" tabindex="-1"></a><span class="kw">bysort</span> dark: <span class="kw">egen</span> total_obs = <span class="kw">total</span>(obs_count)</span></code></pre></div>
 <p><code>bysort dark:</code> tells Stata that any code that comes after the <code>:</code> should be done separately for values of the <code>dark</code> variable. <code>egen total_obs = total(obs_count)</code> will create a new variable that is equal to the sum total of the variable <code>obs_count</code>. In simple terms, the total number of stops in daylight and darkness. Let's look at the resulting dataset. Make sure you understand what <code>total_obs</code> represents before moving on to the next section.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:br1p5"></span>
@@ -615,9 +615,9 @@ Figure 3.23: Collapsed Dataset with Total Stops by Light Condition
 </p>
 </div>
 <p>Now that we have (1) total stops by race in daylight vs. darkness and (2) total stops overall in daylight vs. darkness we can create our required variables:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb99-1"><a href="discrimination-in-police-stops.html#cb99-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">gen</span> fraction_stops = obs_count/total_obs</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb99-1"><a href="discrimination-in-police-stops.html#cb99-1" tabindex="-1"></a>  <span class="kw">gen</span> fraction_stops = obs_count/total_obs</span></code></pre></div>
 <p>Now we can use this variable to show the composition of traffic stops (by race) both in the daylight and darkness:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb100-1"><a href="discrimination-in-police-stops.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction_stops, <span class="bn">over</span>(dark) <span class="bn">over</span>(subject_race)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb100-1"><a href="discrimination-in-police-stops.html#cb100-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction_stops, <span class="bn">over</span>(dark) <span class="bn">over</span>(subject_race)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bar1"></span>
 <img src="images/03_bar1.png" alt="Fraction of Stops by Race and Light Condition" width="65%"><p class="caption">
@@ -631,9 +631,9 @@ Figure 3.24: Fraction of Stops by Race and Light Condition
 <span class="header-section-number">3.14</span> Improving Aesthetics<a class="anchor" aria-label="anchor" href="#improving-aesthetics"><i class="fas fa-link"></i></a>
 </h2>
 <p>As always, the first task is to add some descriptive titles and labels:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb101-1"><a href="discrimination-in-police-stops.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, <span class="bn">over</span>(dark) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
-<span id="cb101-2"><a href="discrimination-in-police-stops.html#cb101-2" aria-hidden="true" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
-<span id="cb101-3"><a href="discrimination-in-police-stops.html#cb101-3" aria-hidden="true" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb101-1"><a href="discrimination-in-police-stops.html#cb101-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, <span class="bn">over</span>(dark) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
+<span id="cb101-2"><a href="discrimination-in-police-stops.html#cb101-2" tabindex="-1"></a>    <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
+<span id="cb101-3"><a href="discrimination-in-police-stops.html#cb101-3" tabindex="-1"></a>    <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bar2"></span>
 <img src="images/03_bar2.png" alt="Fraction of Stops by Race and Light Condition" width="65%"><p class="caption">
@@ -641,10 +641,10 @@ Figure 3.25: Fraction of Stops by Race and Light Condition
 </p>
 </div>
 <p>Because we generated this data, we know <code>dark==0</code> represents daylight and <code>dark==1</code> represents darkness, but our reader won't. We need to relabel the zero to light and the 1 to dark so that a reader will understand what the graph represents. To do this, we can use the <code>relabel</code> option:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb102-1"><a href="discrimination-in-police-stops.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, <span class="co">///</span></span>
-<span id="cb102-2"><a href="discrimination-in-police-stops.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
-<span id="cb102-3"><a href="discrimination-in-police-stops.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
-<span id="cb102-4"><a href="discrimination-in-police-stops.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb102-1"><a href="discrimination-in-police-stops.html#cb102-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, <span class="co">///</span></span>
+<span id="cb102-2"><a href="discrimination-in-police-stops.html#cb102-2" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
+<span id="cb102-3"><a href="discrimination-in-police-stops.html#cb102-3" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
+<span id="cb102-4"><a href="discrimination-in-police-stops.html#cb102-4" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bar3"></span>
 <img src="images/03_bar3.png" alt="Fraction of Stops by Race and Light Condition" width="65%"><p class="caption">
@@ -652,10 +652,10 @@ Figure 3.26: Fraction of Stops by Race and Light Condition
 </p>
 </div>
 <p>Next, let's try to make our graph even easier to read. In practice, I don't expect you will need this next option too often, but it helps in our case. The option is <code>asyvars</code>, which treats the first <code>over()</code> group as a y-variable. What does this do in our case? Basically, it makes the <code>Light</code> and <code>Dark</code> labels appear in a legend instead of on the x-axis. This will make the graph look a little cleaner and easier to interpret quickly:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb103-1"><a href="discrimination-in-police-stops.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, asyvars <span class="co">///</span></span>
-<span id="cb103-2"><a href="discrimination-in-police-stops.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
-<span id="cb103-3"><a href="discrimination-in-police-stops.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
-<span id="cb103-4"><a href="discrimination-in-police-stops.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb103-1"><a href="discrimination-in-police-stops.html#cb103-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, asyvars <span class="co">///</span></span>
+<span id="cb103-2"><a href="discrimination-in-police-stops.html#cb103-2" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
+<span id="cb103-3"><a href="discrimination-in-police-stops.html#cb103-3" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
+<span id="cb103-4"><a href="discrimination-in-police-stops.html#cb103-4" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bar4"></span>
 <img src="images/03_bar4.png" alt="Fraction of Stops by Race and Light Condition" width="65%"><p class="caption">
@@ -663,12 +663,12 @@ Figure 3.27: Fraction of Stops by Race and Light Condition
 </p>
 </div>
 <p>The last step is we can change the colors of the bars. In the code below, <code>bar(1, fcolor(sky))</code> changes the <code>Light</code> bars to a sky blue. <code>bar(2,color(vermillion))</code> changes the <code>Dark</code> bars to vermillion.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb104-1"><a href="discrimination-in-police-stops.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, asyvars <span class="co">///</span></span>
-<span id="cb104-2"><a href="discrimination-in-police-stops.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
-<span id="cb104-3"><a href="discrimination-in-police-stops.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
-<span id="cb104-4"><a href="discrimination-in-police-stops.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) <span class="co">///</span></span>
-<span id="cb104-5"><a href="discrimination-in-police-stops.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="bn">bar</span>(1, fcolor(sky)) <span class="co">///</span></span>
-<span id="cb104-6"><a href="discrimination-in-police-stops.html#cb104-6" aria-hidden="true" tabindex="-1"></a>  <span class="bn">bar</span>(2, fcolor(vermillion))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb104-1"><a href="discrimination-in-police-stops.html#cb104-1" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> fraction, asyvars <span class="co">///</span></span>
+<span id="cb104-2"><a href="discrimination-in-police-stops.html#cb104-2" tabindex="-1"></a>  <span class="bn">over</span>(dark,relabel(1 <span class="st">"Light"</span> 2 <span class="st">"Dark"</span>)) <span class="bn">over</span>(subject_race) <span class="co">///</span></span>
+<span id="cb104-3"><a href="discrimination-in-police-stops.html#cb104-3" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Composition of Traffic Stops by Light Conditions"</span>) <span class="co">///</span></span>
+<span id="cb104-4"><a href="discrimination-in-police-stops.html#cb104-4" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of All Stops"</span>) <span class="co">///</span></span>
+<span id="cb104-5"><a href="discrimination-in-police-stops.html#cb104-5" tabindex="-1"></a>  <span class="bn">bar</span>(1, fcolor(sky)) <span class="co">///</span></span>
+<span id="cb104-6"><a href="discrimination-in-police-stops.html#cb104-6" tabindex="-1"></a>  <span class="bn">bar</span>(2, fcolor(vermillion))</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:bar5"></span>
 <img src="images/03_bar5.png" alt="Fraction of Stops by Race and Light Condition" width="65%"><p class="caption">
@@ -907,7 +907,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-03-05.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

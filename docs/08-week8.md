@@ -38,14 +38,16 @@ In order to load in a Stata data set we are going to make use of the ``haven`` p
 ```r
 library(haven)
 library(tidyverse)
-#> ── Attaching packages ─────────────────── tidyverse 1.3.2 ──
-#> ✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
-#> ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-#> ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-#> ✔ readr   2.1.3      ✔ forcats 0.5.2 
+#> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
+#> ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#> ✔ forcats   1.0.0     ✔ stringr   1.5.0
+#> ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+#> ✔ purrr     1.0.1     
 #> ── Conflicts ────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
+#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 The ``haven`` package comes with a function ``read_dta``, which will read in a ``.dta`` file as a tibble.
@@ -73,7 +75,7 @@ pm %>% select(pm10_n,code_city,date,pm10,auto_date)
 #>  8     46    440300 18635 114.      19060
 #>  9     46    440300 18636  62.5     19060
 #> 10     46    440300 18637  90.8     19060
-#> # … with 1,433,558 more rows
+#> # ℹ 1,433,558 more rows
 ```
 
 The first variable, ``pm10_n`` is the station number. This is the code of the station that took the pollution reading. The next variable ``code_city`` is the code of the city in which the pollution reading was taken. This dataset is a panel dataset, which means there are many observations over time. In this case, we will have readings from the same pollution center over time. The ``date`` variable stores information on the date the reading was taken. We will discuss a bit later what the number in this variable means. ``pm10`` is our measure of pollution. Lastly, ``auto_date`` is the date of automation. After this date, instead of local governments reporting pollution statistics, pollution statistics were directly reported to the central government.
@@ -413,12 +415,6 @@ As ``lubridate()`` is a new package, you first need to install lubridate via ``i
 
 ```r
 library(lubridate)
-#> Loading required package: timechange
-#> 
-#> Attaching package: 'lubridate'
-#> The following objects are masked from 'package:base':
-#> 
-#>     date, intersect, setdiff, union
 ```
 
 ``lubridate()`` comes with a variety of functions. For example, there are functions to tell you what day it is today:
@@ -426,7 +422,7 @@ library(lubridate)
 
 ```r
 today()
-#> [1] "2023-03-05"
+#> [1] "2023-12-18"
 ```
 
 Or even the exact time right now:
@@ -434,7 +430,7 @@ Or even the exact time right now:
 
 ```r
 now()
-#> [1] "2023-03-05 19:33:36 PST"
+#> [1] "2023-12-18 11:47:51 PST"
 ```
 
 But most importantly, ``lubridate`` allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example. 

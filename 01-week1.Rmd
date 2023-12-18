@@ -22,7 +22,7 @@ knitr::include_graphics("images/01_chocolate.png")
 
 In Figure \@ref(fig:chocolate), the number of Nobel laureates per 10 million of the population (vertical axis) is plotted against the chocolate consumption in kilograms per capita in a given year (horizontal axis). As is clear in this graph, countries with higher rates of chocolate consumption also tend to have higher rates of Nobel laureates. This is an example of a **correlation**. A correlation is any statistical relationship between two variables. 
 
-Correlations can be very interesting. In many cases they can lead to new research questions. But they don't often answer the questions social scientists are actually interested in. We are generally interested in understanding **causal relationships** between variables. 
+Correlations can be very interesting. In many cases, they can lead to new research questions. But they don't often answer the questions social scientists are actually interested in. We are generally interested in understanding **causal relationships** between variables. 
 
 To understand causal relationships, let's again consider the relationship between chocolate consumption and Nobel prizes. Do you think that if the U.S. wanted to increase the number of Nobel laureates, they should invest in chocolate and include chocolate in lunch meals for students? Probably not! It's unlikely that increased chocolate consumption **causes** an individual to win a Nobel prize. In this case, it is more likely that this correlation in the data just arose due to chance. Therefore, we have uncovered a **spurious correlation**, which is defined as a correlation that arose due to chance. There are many interesting spurious correlations (See [spurious-correlations](https://www.tylervigen.com/spurious-correlations)). For example, you probably would not guess that consumption of mozzarella cheese is correlated with civil engineering doctorates awarded, but see Figure \@ref(fig:spurious) for this surprising correlation.
  
@@ -30,23 +30,23 @@ To understand causal relationships, let's again consider the relationship betwee
 knitr::include_graphics("images/01_spurious.png")
 ```
 
-While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with standardized tests. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. In order to try and understand the benefits of such a program program, the school decides to use data to see if those who attended standardized test prep programs outperformed students that did not.
+While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts an individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with standardized tests. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. To try and understand the benefits of such a program program, the school decides to use data to see if those who attended standardized test prep programs outperformed students who did not.
 
 The school finds those who attended the test prep programs score much higher on standardized tests than those who didn't. Does this mean the test prep program works and the school should invest in one? 
 
-Maybe, maybe not. There are two stories that could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on standardized tests. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students that self-select into test prep programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in standardized test scores. 
+Maybe, maybe not. Two stories could potentially rationalize this finding. Story 1 is that the programs are effective ways for students to learn the material they need to perform well on standardized tests. That is, the program has a causal impact on SAT scores. Story 2 is that the programs are not actually effective. However, students who self-select into test prep programs also tend to be more motivated overall. They could, in theory, vary along many dimensions: academic ability, interest in college, parental background. It could be that any of these differences are actually driving the differences in standardized test scores. 
 
-With only **observational data** it is difficult to tell which story is true. However, there is a long-established way to identify causal relationship in medicine: the randomized control trial (RCT). To understand RCTs, imagine we are testing whether a given drug reduces blood pressure. To study the effectiveness we recruit a group of participants. Half of the participants are randomly placed into the **treatment** group and given the drug. The other half are placed into the **control** or **placebo** group and given a placebo drug. Now we can just compare outcomes for the two groups over time to understand the impact of the drug. 
+With only **observational data** it is difficult to tell which story is true. However, there is a long-established way to identify causal relationships in medicine: the randomized control trial (RCT). To understand RCTs, imagine we are testing whether a given drug reduces blood pressure. To study the effectiveness we recruit a group of participants. Half of the participants are randomly placed into the **treatment** group and given the drug. The other half are placed into the **control** or **placebo** group and given a placebo drug. Now we can just compare outcomes for the two groups over time to understand the impact of the drug. 
 
-The key to a well-done experiment is **randomization**. If who receives the treatment is completely random, then on average, the two groups will be very similar. For example, in our test prep example, if we could randomly split students into two groups: test prep vs. no test prep, then we could evaluate the impacts of the program. Since students are no longer self-selecting into the program, there should be little difference in the two groups in terms of academic ability, college interest, parental background. Why would there be? We randomized the students into the program.
+The key to a well-done experiment is **randomization**. If who receives the treatment is completely random, then on average, the two groups will be very similar. For example, in our test prep example, if we could randomly split students into two groups: test prep vs. no test prep, then we could evaluate the impacts of the program. Since students are no longer self-selecting into the program, there should be little difference between the two groups in terms of academic ability, college interest, parental background. Why would there be? We randomized the students into the program.
 
-Not all questions in social science can be answered with an experiment. In certain cases it may be prohibitively expensive or unethical to run an experiment. However, if an experiment can be done, it is hard to find more convincing evidence. Experiments have been widely influential in many social sciences. For example, in the field of development economics, a large number of experiments have been undertaken in order to develop policies aimed at alleviating global povery. In 2019, Abhijit Banerjee, Esther Duflo, and Michael Kremer won the Nobel Prize in Economics "for their experimental approach to alleviating global poverty."
+Not all questions in social science can be answered with an experiment. In certain cases, it may be prohibitively expensive or unethical to run an experiment. However, if an experiment can be done, it is hard to find more convincing evidence. Experiments have been widely influential in many social sciences. For example, in the field of development economics, a large number of experiments have been undertaken to develop policies aimed at alleviating global poverty. In 2019, Abhijit Banerjee, Esther Duflo, and Michael Kremer won the Nobel Prize in Economics "for their experimental approach to alleviating global poverty."
 
 In this course, we will be studying a number of social science experiments. Our first experiment comes from Brownback and Sadoff (2020). The motivation for this experiment is a startling statistic. Only 40 percent of community college students earn a college degree within 6 years (Shapiro et al. 2017). Given these poor outcomes, it is important to consider tools to improve performance. In Brownback and Sadoff (2020) the researchers explore one potential tool that has been previously unexplored: financial incentives to instructors. This is often referred to as a pay-for-performance model. Instructors are paid for how well their students perform. 
 
-To get specific, Brownback and Sadoff (2020) run the following experiment at a community college in Indiana (Ivy Tech):
+To get specific, Brownback and Sadoff (2020) ran the following experiment at a community college in Indiana (Ivy Tech):
 
-  - Some instructors (the treatment group) received \$50 for each student that passes an externally-administered test 
+  - Some instructors (the treatment group) received \$50 for each student that passed an externally-administered test 
   - Other instructors (the control group) did not receive such an incentive. 
   
 The key in their design is that the instructors that are chosen to receive the incentives are randomly selected. Therefore, they are not, on average, better teachers than instructors in the control group. Therefore, if we observe any difference in student performance between the treatment and control, then it must be due to the financial incentives for instructors! 
@@ -60,7 +60,7 @@ The key in their design is that the instructors that are chosen to receive the i
 opts <- c(
    answer = "Ability to randomize individuals across treatment and control",
    "Ability to collect large amounts of data",
-   "Ability to following individuals over time",
+   "Ability to follow individuals over time",
    "Ability to collect information about confounding variables"
 )
 ```
@@ -74,16 +74,16 @@ opts <- c(
 
 In many disciplines, there has been a push toward transparency and replication. Past work has shown that some very influential studies have failed to replicate (see [here](https://en.wikipedia.org/wiki/Replication_crisis#In_economics)). A common way to provide transparency is to have authors make the data from their research publicly available. That means we will get to use the actual data from the experiments we are studying in this class. 
 
-Table \@ref(fig:bsdata) shows a selection of the data from Brownstone and Sadoff (2020). The actual data is much larger, but only a subset of the variables will be relevant for our analysis. This is referred to as a **data table**. Each **row** in a data table is an **observation**, while each **column** is a **variable**. 
+Table \@ref(fig:bsdata) shows a selection of the data from Brownback and Sadoff (2020). The actual data is much larger, but only a subset of the variables will be relevant for our analysis. This is referred to as a **data table**. Each **row** in a data table is an **observation**, while each **column** is a **variable**. 
 
-```{r, bsdata, echo=FALSE, out.width="75%", fig.cap="Data From Brownstone and Sadoff (2020)",fig.align='center'}
+```{r, bsdata, echo=FALSE, out.width="75%", fig.cap="Data From Brownback and Sadoff (2020)",fig.align='center'}
 knitr::include_graphics("images/01_data.png")
 ```
 
-It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the **unit of observation**. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a state, a country? To practice, let's go through a few examples.
+It is always important to understand the structure of your data before proceeding with any data analysis. One of the most important components of understanding the structure is to discern the **unit of observation**. The unit of observation is the level at which the data is reported. To discern it for yourself, just think about what each row of the dataset represents. Is each row an individual, a neighborhood, a state, or a country? To practice, let's go through a few examples.
 
  
-What is the unit of observation in Figure \@ref(fig:student), which displays a data table for just two observations.
+What is the unit of observation in Figure \@ref(fig:student), which displays a data table for just two observations?
 
 ```{r, student, echo=FALSE, out.width="50%", fig.cap="Unit of Observation Example 1",fig.align='center'}
 knitr::include_graphics("images/01_student.png")
@@ -100,7 +100,7 @@ knitr::include_graphics("images/01_student_term.png")
 
 Again, we need to decide what a row represents. In this case, each row corresponds to a particular student in a particular term. Therefore the observation level is a student-term.
 
-Now let's think about what the unit of observation is in the Brownstone and Sadoff (2020) data. The variable **AnonID** is the identifier for a student. The variable **CourseNumber** is the identifier for a course. This dataset seems to be giving us the information for a student in a given course. Therefore the observation level is a student-course. 
+Now let's think about what the unit of observation is in the Brownback and Sadoff (2020) data. The variable **AnonID** is the identifier for a student. The variable **CourseNumber** is the identifier for a course. This dataset seems to be giving us the information for a student in a given course. Therefore the observation level is a student-course. 
 
 Before we get to analyzing the data, let's actually learn about our first feature in Excel. When browsing an excel file, it is often convenient to **freeze** the first row so that it is always visible. In our case, the first row holds variable names. Therefore, if we freeze the first row we can scroll through the data without having to remember what each column corresponds to. 
 
@@ -110,11 +110,11 @@ To freeze the first row go to the **View** and then click **Freeze Top Row**.
 knitr::include_graphics("images/01_freeze.png")
 ```
 
-Let's talk a little bit about our goal with this dataset. Our goal is to determine if providing financial incentives to teachers impacts student performance. The variable **Treatment Arm** details whether a student has an instructor that received incentives or is in the control group. Therefore, we can see if test scores improve based on the Treatment Arm of the student. To perform this analysis, we need to learn how to use **functions** in Excel. 
+Let's talk a little bit about our goal with this dataset. Our goal is to determine if providing financial incentives to teachers impacts student performance. The variable **Treatment Arm** details whether a student has an instructor who received incentives or is in the control group. Therefore, we can see if test scores improve based on the Treatment Arm of the student. To perform this analysis, we need to learn how to use **functions** in Excel. 
 
 ::: {.rmdtip}
 
-**Question: Imagine we have a dataset where each row contains the average unemployment rate for a given state in a given year. The unit-of-observation in this dataset is**
+**Question: Imagine we have a dataset where each row contains the average unemployment rate for a given state in a given year. The unit of observation in this dataset is**
 
 ```{r, echo = FALSE}
 opts <- c(
@@ -135,7 +135,7 @@ opts <- c(
 
 A function is something that takes in an input and produces an output. For example, you can think of taking the average as a function. The input is a list of numbers, and the output is the average of that list of numbers.  When the inputs and outputs of a function are numbers, then it is a **statistical function**. 
 
-In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start out with a list of summary statistics. If you are in a business, it might be important to know some summary statistics about your products. To create these summary statistics we use statistical functions. 
+In Excel, statistical functions are extremely important to understand. If you are doing research, it is common to start with a list of summary statistics. If you are in a business, it might be important to know some summary statistics about your products. To create these summary statistics we use statistical functions. 
 
 In order to illustrate the use of statistical functions, let's consider the following dataset that has information on Gross Domestic Product (GDP) for ten countries
 
@@ -158,7 +158,7 @@ Let's introduce our first statistical function: the ``AVERAGE`` function. This f
   - ``MODE`` -- retrieves the mode of all numbers
 
 
-In order to make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure \@ref(fig:japan), I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4. 
+To make use of statistical functions, we first need to learn how to reference cells. In Excel, every cell is identified by a column letter and a row number. For example, in Figure \@ref(fig:japan), I have clicked on the cell that holds the word "Japan". This entry is in column A of row 4. Therefore, this is cell A4. 
 
 ```{r, japan, echo=FALSE, out.width="100%", fig.cap="How to Reference a Cell",fig.align='center'}
 knitr::include_graphics("images/01_japan.png")
@@ -187,7 +187,7 @@ Figure \@ref(fig:average1) depicts an example where we have set up a Summary Sta
 knitr::include_graphics("images/01_average1.png")
 ```
 
-As soon as we present enter, the function will be evaluated and the average will appear in cell F3 (see Figure \@ref(fig:average2)).
+As soon as we press enter, the function will be evaluated and the average will appear in cell F3 (see Figure \@ref(fig:average2)).
 
 ```{r, average2, echo=FALSE, out.width="80%", fig.cap="Computing Average GDP in 2020 (After Pressing Enter)",fig.align='center'}
 knitr::include_graphics("images/01_average2.png")
@@ -246,7 +246,7 @@ knitr::include_graphics("images/01_tf2.png")
 
 Once we have filled in the formula for one cell, we can also apply it to the remaining observations. In our example, this would mean testing whether each country's GDP is more than 10, not just the U.S. There are a couple of ways to do this efficiently in Excel.
 
-One way to fill in the formula is to click the bottom right corner of cell D2 and then drag down. This allows you to apply to as many observations as you would like. However, we often want to apply the logical statement to all observations. Therefore, continuously dragging will be inefficient if there are thousands of observations in the data. To quickly apply a formula to all cells in a column, we can simply double click the bottom right corner of a cell. In our example, this would mean double clicking the bottom right corner of the D2 cell.  
+One way to fill in the formula is to click the bottom right corner of cell D2 and then drag down. This allows you to apply to as many observations as you would like. However, we often want to apply the logical statement to all observations. Therefore, continuously dragging will be inefficient if there are thousands of observations in the data. To quickly apply a formula to all cells in a column, we can simply double-click the bottom right corner of a cell. In our example, this would mean double-clicking the bottom right corner of the D2 cell.  
 
 ```{r, fill, echo=FALSE, out.width="100%", fig.cap="Filling in the Formula",fig.align='center'}
 knitr::include_graphics("images/01_fill.png")
@@ -281,7 +281,7 @@ To create this variable we need to take three steps:
 - **First Step:** Title the column with the variable name "Passed" 
 
 - **Second Step:** Use the ``IF`` function to fill in this variable for the first observation 
-- **Third Step:** Double click bottom right of cell in step 2 to fill in the variable for all observations
+- **Third Step:** Double click the bottom right of the cell in step 2 to fill in the variable for all observations
 
 Figure \@ref(fig:passed1) presents steps 1 and 2 in Excel.
 
@@ -289,7 +289,7 @@ Figure \@ref(fig:passed1) presents steps 1 and 2 in Excel.
 knitr::include_graphics("images/01_passed1.png")
 ```
 
-We simply can double click the bottom right of G2 to fill in the rest of the observations (as seen in Figure \@ref(fig:passed2)).
+We simply can double-click the bottom right of G2 to fill in the rest of the observations (as seen in Figure \@ref(fig:passed2)).
 
 ```{r, passed2, echo=FALSE, out.width="100%", fig.cap="Generating a Passed Variable (Step 3)",fig.align='center'}
 knitr::include_graphics("images/01_passed2.png")
@@ -301,7 +301,7 @@ Now that we've generated the variables we need let's fill in some summary statis
 knitr::include_graphics("images/01_sumstats1.png")
 ```
 
-To compute average age in the dataset we just need to use the ``AVERAGE`` function and reference column C. 
+To compute the average age in the dataset we just need to use the ``AVERAGE`` function and reference column C. 
 
 ```{r, sumstats2, echo=FALSE, out.width="100%", fig.cap="Average Age",fig.align='center'}
 knitr::include_graphics("images/01_sumstats2.png")
@@ -313,7 +313,7 @@ Average test score is completely analogous to age, but we now reference column F
 knitr::include_graphics("images/01_sumstats3.png")
 ```
 
-In order to compute fraction that passed the test, we are first going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of ``Passed`` and this will be equal to the fraction that passed the test. 
+To compute the fraction that passed the test, we are first going to make a small digression, one that will clarify one reason it was convenient to store the variable Passed with a 1 if the individual passed and a zero otherwise. Because we have stored the variable in this way, we can simply take the average value of ``Passed`` and this will be equal to the fraction that passed the test. 
 
 To see why this is true, let's first write out the equation for the average of a generic variable $X$: 
 
@@ -321,7 +321,7 @@ $$
   \bar{X} = \frac{X_1 + ... + X_N}{N} 
 $$
 
-Where $\bar{X}$ is the average, $N$ is the number of observations, $X_1$ is the first observation and $X_N$ is the $N^{th}$ observation. If $X$ is a binary variable that is equal to 1 or zero, then the average will be the fraction of individual's with a 1
+Where $\bar{X}$ is the average, $N$ is the number of observations, $X_1$ is the first observation and $X_N$ is the $N^{th}$ observation. If $X$ is a binary variable that is equal to 1 or zero, then the average will be the fraction of individuals with a 1
 $$
   \bar{X} = \frac{X_1 + ... + X_N}{N}=\frac{\text{Number of observations =1 }}{\text{Total Observations}} 
 $$
@@ -341,9 +341,9 @@ knitr::include_graphics("images/01_count.png")
 
 ## Pivot Tables {#S:pivottables}
 
-So far, we have learned to retrieve summary statistics using functions. This works very well for retrieving summary statistics for the entire dataset. Sometimes however we want more complicated summary statistics. For example, in our empirical application, we might be interested in passing rates for different departments. While it is possible to retrieve these using functions, an easier way is through a **pivot table**. The name "pivot" comes from "pivoting" the data into a way the provides useful information. 
+So far, we have learned to retrieve summary statistics using functions. This works very well for retrieving summary statistics for the entire dataset. Sometimes however we want more complicated summary statistics. For example, in our empirical application, we might be interested in passing rates for different departments. While it is possible to retrieve these using functions, an easier way is through a **pivot table**. The name "pivot" comes from "pivoting" the data into a format that provides useful information. 
 
-To understand what we are trying to accomplish with our pivot table, let's start by looking at our end goal in Figure \@ref(fig:pivotfinal). In the Pivot Table, each **row** is a separate department. Next to each department, we have the fraction of students that passed the standardized test in that department. The departments give different tests based on the material taught in the course, but a score of 70 or greater counts as a pass in all departments.  
+To understand what we are trying to accomplish with our pivot table, let's start by looking at our end goal in Figure \@ref(fig:pivotfinal). In the Pivot Table, each **row** is a separate department. Next to each department, we have the fraction of students who passed the standardized test in that department. The departments give different tests based on the material taught in the course, but a score of 70 or greater counts as a pass in all departments.  
 
 ```{r, pivotfinal, echo=FALSE, out.width="38%", fig.cap="Pivot Table: Pass Rates by Department",fig.align='center'}
 knitr::include_graphics("images/01_pivot_final.png")
@@ -364,7 +364,7 @@ knitr::include_graphics("images/01_pivot3.png")
 
 You can also choose where you would like your pivot table to appear. By default, the table will be placed in whichever cell you clicked last (in my case this is cell ``I10``). Therefore, before you insert a pivot table, you should click the cell where you would like it to appear.
 
-As can be seen in Figure \@ref(fig:pivot4), Excel has drawn a blank Pivot table. On the right we can see the new panel "PivotTable Fields" which we will use to build our Pivot table.
+As can be seen in Figure \@ref(fig:pivot4), Excel has drawn a blank Pivot table. On the right, we can see the new panel "PivotTable Fields" which we will use to build our Pivot table.
 
 ```{r, pivot4, echo=FALSE, out.width="100%", fig.cap="A Blank Pivot Table",fig.align='center'}
 knitr::include_graphics("images/01_pivot4.png")
@@ -376,7 +376,7 @@ We want each row in our pivot table to be a Department Code. So click the box ne
 knitr::include_graphics("images/01_pivot5.png")
 ```
 
-By default (see Figure \@ref(fig:pivot5)), Excel has placed this variable into the Values panel, but we want it to be in the Rows panel. We can move variables between these windows by clicking and dragging. In this example we want to move ``DepartmentCode`` to the Rows panel.
+By default (see Figure \@ref(fig:pivot5)), Excel has placed this variable into the Values panel, but we want it to be in the Rows panel. We can move variables between these windows by clicking and dragging. In this example, we want to move ``DepartmentCode`` to the Rows panel.
 
 ```{r, pivot6, echo=FALSE, out.width="100%", fig.cap="Adding DepartmentCode to the Pivot Table",fig.align='center'}
 knitr::include_graphics("images/01_pivot6.png")
@@ -414,7 +414,7 @@ As can be seen in Figure \@ref(fig:balance), the average age in the treatment gr
 
 ## Impact of Financial Incentives {#S:impact}
 
-Now that we have checked that randomization was successful, let's estimate our first result. As a reminder, we are studying whether offering financial incentives to instructors (a 50 dollar bonus for a student passing a test) improves performance of the students. Given only 40 percent of community college students earn a college degree within 6 years (Shapiro et al. 2017), it is important to consider tools to improve performance.
+Now that we have checked that randomization was successful, let's estimate our first result. As a reminder, we are studying whether offering financial incentives to instructors (a 50-dollar bonus for a student passing a test) improves the performance of the students. Given only 40 percent of community college students earn a college degree within 6 years (Shapiro et al. 2017), it is important to consider tools to improve performance.
 
 We want to compute the average pass rate for individuals in the treatment vs. individuals in the control. We can again use a pivot table to accomplish this! Our **Rows** will be ``TreatmentArm`` and the **Values** will be ``Passed``. Again, we can follow the steps in Section \@ref(S:pivottables) to construct this table. The pivot table is displayed in Figure \@ref(fig:firstresult).
 
@@ -423,9 +423,9 @@ We want to compute the average pass rate for individuals in the treatment vs. in
 knitr::include_graphics("images/01_result1.png")
 ```
 
-Giving instructors' incentives increases pass rates by 7 percentage points. That is a big impact! Before exploring this result further, now is a good time to discuss how we accurately discuss this result. One common mistake (for both students and journalists) is to mix up the terms percentage point and percent. 
+Giving instructors incentives increases pass rates by 7 percentage points. That is a big impact! Before exploring this result further, now is a good time to discuss how we accurately discuss this result. One common mistake (for both students and journalists) is to mix up the terms percentage point and percent. 
 
-In our example, 40 percent of control students pass the test, while 47 percent of treated students pass the test. Therefore, treatment increased pass rates by 7 **percentage points**. We use the term percentage points when we are comparing two percents or two rates. The terms percentage point and percent are not interchangeable. 
+In our example, 40 percent of control students pass the test, while 47 percent of treated students pass the test. Therefore, treatment increased pass rates by 7 **percentage points**. We use the term percentage points when we are comparing two percents or two rates. **The terms percentage point and percent are not interchangeable**. 
 
 How would we accurately use the term percent here to compare 40 and 47 percent? To calculate the percent increase in pass rates for the treatment relative to the control we can compute:
 
@@ -440,7 +440,7 @@ This is a 1 percentage point decrease in the probability of dying during the pro
 
 So let's take stock of what we have learned. Providing financial incentives to community college instructors seems to increase pass rates on average. This is an important finding. Prior work on "pay-for-performance" in the United States has shown limited effectiveness in K-12 schools (See Neal (2011)). But this is the first study to show financial incentives can be an effective tool in the Community College setting. This is an important general lesson:  the context of the treatment matters. Just because a treatment is effective in one setting doesn't mean it will be effective in another (or vice-versa).
 
-Next, let's talk about what else we can learn from this experiment. Well, this study was done across many different subjects. Maybe the effect of finacnial incentives differs depending on the department. It may be easier to get students over the pass threshold in some disciplines, making the incentives potentially more effective.
+Next, let's talk about what else we can learn from this experiment. Well, this study was done across many different subjects. Maybe the effect of financial incentives differs depending on the department. It may be easier to get students over the pass threshold in some disciplines, making the incentives potentially more effective.
 
 To explore this question we can adjust our pivot table a bit. We will proceed in two steps:
   
@@ -464,13 +464,13 @@ In some departments, the instructor incentives were incredibly effective. For ex
 
 In other departments, however, the instructor incentives don't seem particularly effective. For example, in the math department (``MATH``), pass rates were similar in both the treatment group (41 percent) and the control group (42 percent). Therefore, it does not seem as if these incentives impact all departments in the same way. 
 
-It is often useful to explore heterogeneity in this way. Through this analysis we learned financial incentives are not necessarily a "one-size fits all" solution.  Some departments are able to increase pass rates considerably, while other show modest or even zero/negative impact. If we want to apply these results to other settings we will need to think about how the other setting is similar or different to ours.
+It is often useful to explore heterogeneity in this way. Through this analysis, we learned financial incentives are not necessarily a "one-size fits all" solution.  Some departments can increase pass rates considerably, while others show modest or even zero/negative impact. If we want to apply these results to other settings we will need to think about how the other setting is similar or different to ours.
 
 ## Pivot Charts (Basic) {#S:pivotbasic}
 
-In this section we will learn about something closely related to pivot tables: a pivot chart. Pivot charts and pivot tables contain the same information, but often charts/figures are more effective in presenting information. In popular press articles it's common to see a nicely designed figure to grab readers' attention. 
+In this section, we will learn about something closely related to pivot tables: a pivot chart. Pivot charts and pivot tables contain the same information, but often charts/figures are more effective in presenting information. In popular press articles, it's common to see a nicely designed figure to grab readers' attention. 
 
-Let's walk through how to make a pivot chart in Excel.To insert a pivot chart, go to the Insert tab and click the Pivot Chart icon
+Let's walk through how to make a pivot chart in Excel. To insert a pivot chart, go to the Insert tab and click the Pivot Chart icon
 
 ```{r, pivotchart1, echo=FALSE, out.width="100%", fig.cap="Inserting a Pivot Chart",fig.align='center'}
 knitr::include_graphics("images/01_pivot_chart1.png")
@@ -525,7 +525,7 @@ knitr::include_graphics("images/01_pivot_chart11.png")
 
 ## Pivot Charts (Advanced) {#S:pivotadvanced}
 
-Next we are going to use pivot charts to display the heterogeneity in treatment effects across different departments. Our pivot chart currently displays the average of ``Passed`` by ``TreatmentArm``. We want to to present the average of ``Passed`` by ``TreatmentArm`` separately for every value of ``DepartmentCode``. 
+Next, we are going to use pivot charts to display the heterogeneity in treatment effects across different departments. Our pivot chart currently displays the average of ``Passed`` by ``TreatmentArm``. We want to present the average of ``Passed`` by ``TreatmentArm`` separately for every value of ``DepartmentCode``. 
 
 Therefore, we need to place ``DepartmentCode`` somewhere in our Pivot Chart Fields. But where? Legend(Series) seems like a potentially good choice. Whatever variable you put into Legend(Series), Excel will create a plot similar to the current plot, but with separate bars for every value of the variable in Legend(Series). In our case, separate bar charts for every value of ``DepartmentCode``
 
@@ -535,7 +535,7 @@ Figure \@ref(fig:advpivot2) displays the results if we drag ``DepartmentCode`` t
 knitr::include_graphics("images/01_adv_pivot2.png")
 ```
 
-Here would be a good time to check whether this figure is interpretable for someone that did not create it. Right now, it is unclear what the different bars represent. There is no legend that shows which color bar is associated with which department.
+Here would be a good time to check whether this figure is interpretable for someone who did not create it. Right now, it is unclear what the different bars represent. There is no legend that shows which color bar is associated with which department.
 
 To insert a Legend, go to "Design", press "Add Chart Element" and navigate to "Legend"
 
@@ -549,7 +549,7 @@ Figure \@ref(fig:advpivot3) displays the resulting figure. This is the resulting
 knitr::include_graphics("images/01_adv_pivot4.png")
 ```
 
-This has all the elements of a good figure, but is it possible to improve it in any way? Let's think about our goal for this analysis. What do we want a reader to take away from this figure? Ideally, the reader should be able to look at different departments and see how the treatment effect varies by department. This is possible, but it takes a bit of work. For example, The "Control" bar for the ACCT department is pretty far away from the the "Instructor Incentives" bar for the ACCT department. It would be much easier to quickly understand the treatment effect if the two bars were adjacent.
+This has all the elements of a good figure, but is it possible to improve it in any way? Let's think about our goal for this analysis. What do we want a reader to take away from this figure? Ideally, the reader should be able to look at different departments and see how the treatment effect varies by department. This is possible, but it takes a bit of work. For example, The "Control" bar for the ACCT department is pretty far away from the "Instructor Incentives" bar for the ACCT department. It would be much easier to quickly understand the treatment effect if the two bars were adjacent.
 
 To make the bars adjacent, we can switch "DepartmentCode" to the horizontal Axis, and put "TreatmentArm" in the Legend(Series). In other words, the Pivot Chart fields should look like the fields below 
 
@@ -567,17 +567,17 @@ Now it is easy for a reader to discern the treatment effect for every department
 
 ## Conclusion {#S:Conclusion}
 
-In this module, we studied whether instructor incentives are effective in improving student performance. Using experimental data from Brownback and Sadoff (2020), we found that instructors that receive financial bonuses for each student that passes a course leads to significant increases in passing rates. However, the effects varied dramatically by department, with some departments showing enormous effects and others negligible effects. This is only part of the analysis in Brownstone and Sadoff (2020). In this concluding section, let's talk about a few other results from their work.
+In this module, we studied whether instructor incentives are effective in improving student performance. Using experimental data from Brownback and Sadoff (2020), we found that instructors who receive financial bonuses for each student who passes a course lead to significant increases in passing rates. However, the effects varied dramatically by department, with some departments showing enormous effects and others negligible effects. This is only part of the analysis in Brownback and Sadoff (2020). In this concluding section, let's talk about a few other results from their work.
 
-So far, we have found performance increases in the course that is incentivized by financial incentives. But is there a cost to this increase in performance? For example, maybe instructors respond to the incentives by increasing the workload in their course. This may improve students performance in the course, but it may come at the cost of neglecting other courses. Therefore, it could be that the treatment does not actually increase performance overall, but simply forces students to spend more time in one class relative to another.
+So far, we have found performance increases in the course that is incentivized by financial incentives. But is there a cost to this increase in performance? For example, maybe instructors respond to the incentives by increasing the workload in their course. This may improve students' performance in the course, but it may come at the cost of neglecting other courses. Therefore, it could be that the treatment does not actually increase performance overall, but simply forces students to spend more time in one class relative to another.
 
 However, Brownback and Sadoff (2020) collect grades for all courses a student is enrolled in, not just the courses in the experiment. In contrast to the hypothesis above, the authors find student outcomes in the treatment improve **in all courses**. This suggests positive spillovers of the treatment. Improved performance in one course leads to improved performance in others. If students feel overwhelmed by poor grades in one course they may "give up" on the rest of their courses. Therefore, a treatment that increases performance in a single course has the scope to increase performance in all courses. 
 
-This analysis shows evidence of positive effects, but only in the short-term. Our real goal is to improve graduate rates. Again, the richness of the data in Brownback and Sadoff (2020) will come in handy here. The authors find that students in the treatment are about 2.8 percentage points more likely to transfer to a 4-year university than control students. This represents a 28 percent increase in the probability of transferring. Overall, this suggests financial incentives to instructors may be a particularly cost effective way for community colleges to achieve a number of important goals 
+This analysis shows evidence of positive effects, but only in the short term. Our real goal is to improve graduate rates. Again, the richness of the data in Brownback and Sadoff (2020) will come in handy here. The authors find that students in the treatment are about 2.8 percentage points more likely to transfer to a 4-year university than control students. This represents a 28 percent increase in the probability of transferring. Overall, this suggests financial incentives to instructors may be a particularly cost-effective way for community colleges to achieve a number of important goals 
 
-We have focused on financial incentives for instructors, but maybe providing  bonuses for students is even more effective. During the experiment, the authors  offered free tuition for one summer course (face value of \$400) if they passed the test. Interestingly, the authors find this intervention had no impact on student performance
+We have focused on financial incentives for instructors, but maybe providing bonuses for students is even more effective. During the experiment, the authors offered free tuition for one summer course (face value of \$400) if they passed the test. Interestingly, the authors find this intervention had no impact on student performance
 
-To conclude, this paper asks an important question: how can we improve student performance in community colleges? In particular, are financial incentives for instructors effective? Before this paper, we had no clear answer to this question. Prior work has focused on other settings and had found differing results. By running a carefully designed experiment, the authors can convincingly answer this question. Financial incentives cannot only increase short-run performance, but also increase long-term outcomes, such as overall course completion and transfer rates to 4-year universities.
+To conclude, this paper asks an important question: how can we improve student performance in community colleges? In particular, are financial incentives for instructors effective? Before this paper, we had no clear answer to this question. Prior work focused on other settings and found differing results. By running a carefully designed experiment, the authors can convincingly answer this question. Financial incentives cannot only increase short-run performance but also increase long-term outcomes, such as overall course completion and transfer rates to 4-year universities.
 
 
 

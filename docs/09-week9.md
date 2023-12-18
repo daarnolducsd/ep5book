@@ -319,7 +319,7 @@ Now, let's look at the data to try and understand our process so far.
 #>  8 Charlotte        182          281.     -98.9 
 #>  9 Citrus           270          262.       8.49
 #> 10 Clay             186          119.      66.8 
-#> # … with 57 more rows
+#> # ℹ 57 more rows
 ```
 
 So for Alachua county the number of Buchanan votes in 2000 was 263. The predicted Buchanan votes was 291.251 (if you view your data frame you will be able to see more decimal places). Therefore the residual is -28.3. The reason this is slightly different than what we had above is because when we formed this manually we rounded the coefficients in the regression. When R does the computation, it is much more precise than we were, which explains why predicted values and residuals are slightly different than the manual computation. 
@@ -353,7 +353,7 @@ florida %>%
 #>  8 Orange            446           655.     -209.
 #>  9 Escambia          502           310.      192.
 #> 10 St.Lucie          124           306.     -182.
-#> # … with 57 more rows
+#> # ℹ 57 more rows
 ```
 
 So Palm Beach county cast 3407 votes for Buchanan. Based on the linear regression, we would have expected 1105 votes for Buchanan. Therefore, there were 2302 more votes than expected.
@@ -439,7 +439,7 @@ This is a very large dataset. The data includes information on over 3.8 million 
 #>  8            1 DEM       0 Control               0
 #>  9            1 REP       0 Control               0
 #> 10            1 NPP       0 Control               0
-#> # … with 3,872,258 more rows
+#> # ℹ 3,872,258 more rows
 ```
 
 The first variable ``LocalityCode`` indicates the county the individual is voting in. ``Party`` is the registered party of the individual. ``yvar`` is our main dependent variable. This variable is equal to 1 if the individual voted in the 2014 primary election and zero if the individual did not vote. ``treatment.assign`` indicates whether this individual is in the control group (i.e. did not receive a letter) or one of the treatment arms. The last variable ``mailer`` is equal to 1 if the individual received any mailer, and zero if the individual is in the control group. 

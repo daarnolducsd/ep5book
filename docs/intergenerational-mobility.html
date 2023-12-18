@@ -106,15 +106,15 @@ code {
 </style>
 <p>In this section, we will be discussing the relationship between <strong>intergenerational mobility</strong> and the higher education system in the United Stata. Before we start exploring this relationship, we first need to understand the concept of intergenerational mobility. This concept asks a simple question: if you are born from low-income parents, what is the chance you move up the income distribution?</p>
 <p>Generally, we think of societies with high rates of intergenerational mobility as more equal. If a society has high rates of intergenerational mobility, then that means individuals from low-income backgrounds have opportunities to move up the income distribution. One common path to upward mobility is the higher education system.</p>
-<p>However, there are a few reasons why the higher education system may or may not lead to higher rates of intergenerational mobility. First, some colleges may not be particularly effective in increasing incomes. For example, for-profit colleges are often criticized as costly and low quality (see <a href="https://www.nytimes.com/2020/06/17/business/coronavirus-for-profit-colleges.html">NYT Article</a>). If a college accepts a large fraction of students from low-income backgrounds, it may still not promote intergenerational mobility if its students don't actually benefit from attending. Second, individuals from lower-income backgrounds may have lower access to the higher education system. Rising cost of college may be making this worse over time.</p>
-<p>So how do we go about studying this question? We are going to use a dataset made publicly available by the researchers at <strong>Opportunity Insights</strong>. This data has made a big splash, both in academia and in policy circles. Figure <a href="intergenerational-mobility.html#fig:oi">2.1</a> shows a headline from an Upshot article about the dataset. In this article, the authors discuss how this dataset has led us to new insights about how access varies dramatically at some schools. The headline reads, "Some Colleges Have More Students From the Top 1 Percent Than the Bottom 60. Find Yours". If a school has more students from the top 1 percent than the bottom 60, then it probably does not promote intergenerational mobility. Most of the students are already from relatively well-off backgrounds. This is our first hint that colleges may vary dramatically in the extent that they promote intergenerational mobility.</p>
+<p>However, there are a few reasons why the higher education system may or may not lead to higher rates of intergenerational mobility. First, some colleges may not be particularly effective in increasing incomes. For example, for-profit colleges are often criticized as costly and low quality (see <a href="https://www.nytimes.com/2020/06/17/business/coronavirus-for-profit-colleges.html">NYT Article</a>). If a college accepts a large fraction of students from low-income backgrounds, it may still not promote intergenerational mobility if its students don't actually benefit from attending. Second, individuals from lower-income backgrounds may have lower access to the higher education system. The rising cost of college may be making this worse over time.</p>
+<p>So how do we go about studying this question? We are going to use a dataset made publicly available by the researchers at <strong>Opportunity Insights</strong>. This data has made a big splash, both in academia and in policy circles. Figure <a href="intergenerational-mobility.html#fig:oi">2.1</a> shows a headline from an Upshot article about the dataset. In this article, the authors discuss how this dataset has led us to new insights about how access varies dramatically at some schools. The headline reads, "Some Colleges Have More Students From the Top 1 Percent Than the Bottom 60. Find Yours". If a school has more students from the top 1 percent than the bottom 60, then it probably does not promote intergenerational mobility. Most of the students are already from relatively well-off backgrounds. This is our first hint that colleges may vary dramatically in the extent they promote intergenerational mobility.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:oi"></span>
 <img src="images/02_oi.png" alt="New York Times Graphic on Opportunity Insights" width="100%"><p class="caption">
 Figure 2.1: New York Times Graphic on Opportunity Insights
 </p>
 </div>
-<p>Let's get a little bit more into the details on what data we will be using in this empirical application. The original data comes from federal income tax returns that have been linked to the tax records of universities and data from Pell grants. The result is a dataset with (1) children linked to their parents (children are reported as dependents) (2) income data for both children and parents and (3) children linked to the universities they attended.</p>
+<p>Let's get a little bit more into the details on what data we will be using in this empirical application. The original data comes from federal income tax returns that have been linked to the tax records of universities and data from Pell Grants. The result is a dataset with (1) children linked to their parents (children are reported as dependents) (2) income data for both children and parents and (3) children linked to the universities they attended.</p>
 <p>This will give us everything we need to know to understand how a given college promotes intergenerational mobility. It will allow us to know both the know both the background of students attending a given college as well as their eventual earnings. It is important to emphasize that this was a huge data task that gives us a new way to study an important question.</p>
 <p>We have discussed at a high level the concept of intergenerational mobility. But when we turn to the data, we will need to compute a metric of intergenerational mobility that allows us to compare across colleges. Before introducing this measure, we will introduce a statistical concept that will be important throughout the course, and in particular, in understanding our measure of intergenerational mobility: <strong>quantiles</strong>.</p>
 </div>
@@ -126,18 +126,18 @@ Figure 2.1: New York Times Graphic on Opportunity Insights
 <p><span class="math display">\[          
 \{5,6,20,29,38,42,55,62,80,88\} \nonumber
 \]</span></p>
-<p>We can break up the data into equal-sized groups based on income. Each equal sized group is a <strong>quantile</strong>. For example, imagine we break the 10 individuals into 5 groups (or 5 quantiles).</p>
+<p>We can break up the data into equal-sized groups based on income. Each equal-sized group is a <strong>quantile</strong>. For example, imagine we break the 10 individuals into 5 groups (or 5 quantiles).</p>
 <p><span class="math display">\[
             \{\underbrace{5,6}_{Q1},\underbrace{20,29}_{Q2},\underbrace{38,42}_{Q3},\underbrace{55,62}_{Q4},\underbrace{80,88}_{Q5}\} \nonumber
 \]</span></p>
-<p>When we break up the observations into 5 equal-sized groups, this is referred to as breaking the data into <strong>quintiles</strong>. Q1 is referred to as the first quintile (or lowest quintile). Q5 is referred to as the fifth quintile (or highest quintile). Quintiles will be important for us because we will use them to define intergenerational mobility. In particular, we have conceptualized intergenerational mobility as the movement from a low-income background to high income. But low income and high income do not have any exact definition. The researchers at Opportunity insights use quintiles to define these terms.</p>
-<p>In particular, an individual is defined as coming from low-income parents if the individual's parents are in the bottom quintile (Q1) of the income distribution. The bottom quintile implies the parents are in the bottom 20 percent of the income distribution. An individual is defined as high income individual is in the top quintile (Q5) of the income distribution, or equivalently, the top 20 percent of the income distribution.</p>
+<p>When we break up the observations into 5 equal-sized groups, this is referred to as breaking the data into <strong>quintiles</strong>. Q1 is referred to as the first quintile (or lowest quintile). Q5 is referred to as the fifth quintile (or highest quintile). Quintiles will be important for us because we will use them to define intergenerational mobility. In particular, we have conceptualized intergenerational mobility as the movement from a low-income background to high income. But low income and high income do not have any exact definition. The researchers at Opportunity Insights use quintiles to define these terms.</p>
+<p>In particular, an individual is defined as coming from low-income parents if the individual's parents are in the bottom quintile (Q1) of the income distribution. The bottom quintile implies the parents are in the bottom 20 percent of the income distribution. An individual is defined as a high-income individual if this individual is in the top quintile (Q5) of the income distribution, or equivalently, the top 20 percent of the income distribution.</p>
 <p>Quintiles are just one way to break up the data. If we break the data into four equal-sized groups, then we have broken the data into quartiles. If we break the data into a hundred equal-sized groups, we have broken the data into percentiles. In general, if we break the data into <span class="math inline">\(q\)</span> groups, we have created <span class="math inline">\(q\)</span> quantiles</p>
-<p>Certain percentiles are often reported as descriptive statistics. For example, the median (50<span class="math inline">\(^{th}\)</span> percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was $68,703. This implies 50 percent of households had income less than $68,703, while 50 percent had income more than $68,703.</p>
+<p>Certain percentiles are often reported as descriptive statistics. For example, the median (50<span class="math inline">\(^{th}\)</span> percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was $68,703. This implies that 50 percent of households had income less than $68,703, while 50 percent had income more than $68,703.</p>
 <div class="rmdtip">
 <p><strong>Question: If an individual is at the 33 percentile of earnings, then this individual has...</strong></p>
-<div id="radio_ZSJYLNRVTU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZSJYLNRVTU" value=""><span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_ZSJYLNRVTU" value="answer"><span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_ZSJYLNRVTU" value=""><span>Higher earnings than 67 Percent of individuals</span></label>
+<div id="radio_HPPWJVBXRN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HPPWJVBXRN" value=""><span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_HPPWJVBXRN" value="answer"><span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_HPPWJVBXRN" value=""><span>Higher earnings than 67 Percent of individuals</span></label>
 </div>
 </div>
 </div>
@@ -151,34 +151,34 @@ Figure 2.1: New York Times Graphic on Opportunity Insights
 \text{mobility rate}= \underbrace{\text{(frac. of students from Q1)}}_{\text{Acess}} \; \cdot \; \underbrace{\text{(frac. of Q1 that reach Q5)}}_{\text{Success}} \nonumber
 \]</span></p>
 </div>
-<p>Let's talk about each of these terms independently. "Access" depends on the fraction of students enrolled in a school that come from low-income backgrounds, or Q1. There is potential for schools with high access to have large impacts on intergenerational mobility. But this might not necessarily be true. For example, some work has found while for profit colleges tend to admit disadvantaged individuals, the outcomes for these individuals tend to be poor (see Deming, Goldin and Katz 2013).<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;David Deming, Claudia Goldin, and Lawrence Katz, &lt;span&gt;“For-Profit Colleges,”&lt;/span&gt; &lt;em&gt;The Future of Children&lt;/em&gt;, 2013, 137–63.&lt;/p&gt;"><sup>1</sup></a></span> Therefore, even though the Access rate might be high, these schools will not tend to promote intergenerational mobility. The reason is due to the second term: Success. This measures the fraction of students from low-income backgrounds that reach the top quintile of earnings.</p>
-<p>Intuitively, we can interpret the mobility rate as the fraction of students that are from low-income backgrounds that reach high income at a school. For example, if 10 percent of a school's enrollment comes from a low-income background, and half of these students end up in the top quintile of earnings, then that means 5 percent (overall) of the student body came from low-income backgrounds and achieved high income. This number is equal to the school's mobility rate..</p>
-<p>But now let's get into the specifics of the data. How do we (exactly) determine if a students comes from a low-income background? Here are the steps:</p>
+<p>Let's talk about each of these terms independently. "Access" depends on the fraction of students enrolled in a school that come from low-income backgrounds, or Q1. There is potential for schools with high access to have large impacts on intergenerational mobility. But this might not necessarily be true. For example, some work has found while for-profit colleges tend to admit disadvantaged individuals, the outcomes for these individuals tend to be poor (see Deming, Goldin and Katz 2013).<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;David Deming, Claudia Goldin, and Lawrence Katz, &lt;span&gt;“For-Profit Colleges,”&lt;/span&gt; &lt;em&gt;The Future of Children&lt;/em&gt;, 2013, 137–63.&lt;/p&gt;"><sup>1</sup></a></span> Therefore, even though the Access rate might be high, these schools will not tend to promote intergenerational mobility. The reason is due to the second term: Success. This measures the fraction of students from low-income backgrounds that reach the top quintile of earnings.</p>
+<p>Intuitively, we can interpret the mobility rate as the fraction of students that are from low-income backgrounds that reach high income at a school. For example, if 10 percent of a school's enrollment comes from a low-income background, and half of these students end up in the top quintile of earnings, then that means 5 percent (overall) of the student body came from low-income backgrounds and achieved high income. This number is equal to the school's mobility rate.</p>
+<p>But now let's get into the specifics of the data. How do we (exactly) determine if a student comes from a low-income background? Here are the steps:</p>
 <ul>
 <li><ol style="list-style-type: decimal">
 <li>Take all parents that have a child in the same year (e.g. 1985)</li>
 </ol></li>
 <li><ol start="2" style="list-style-type: decimal">
-<li>Compute average income for these parents when children are 15-19 (i.e. from 2000-2004)</li>
+<li>Compute the average income for these parents when children are 15-19 (i.e. from 2000-2004)</li>
 </ol></li>
 <li><ol start="3" style="list-style-type: decimal">
-<li>If parents' income is in bottom 20 percent over this period (i.e. in Q1), then classify students as coming from low-income background</li>
+<li>If parents' income is in the bottom 20 percent over this period (i.e. in Q1), then classify students as coming from a low-income background</li>
 </ol></li>
 </ul>
-<p>Now that we have low-income background, how (exactly) do we determine if a student becomes a high earner?</p>
+<p>Now that we have a definition for low-income background, how (exactly) do we determine if a student becomes a high earner?</p>
 <ul>
 <li><ol style="list-style-type: decimal">
 <li>Take all individuals that are the same age and calculate earnings in 2014</li>
 </ol></li>
 <li><ol start="2" style="list-style-type: decimal">
-<li>If individual's income is in the top 20 percent relative to individuals the same age (i.e. in Q5), then classify student as a high earner</li>
+<li>If an individual's income is in the top 20 percent relative to individuals the same age (i.e. in Q5), then classify the student as a high earner</li>
 </ol></li>
 </ul>
 <p>A general lesson here is to understand the details before you proceed with the analysis. In this example, low income and high income have very specific definitions. We need to understand our variables and how they are measured before we can dive into our analysis.</p>
 <div class="rmdtip">
-<p><strong>Question: Imagine 10 percent of College A's students come from low-income backgrounds, and 20 percent of these individuals go on to become high earners. In contrast, 5 percent of College B's students com from low-income backgrounds and 50 percent of these individuals go on to become high earners. Which college has the higher mobility rate?</strong></p>
-<div id="radio_CPDJSRESDB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CPDJSRESDB" value=""><span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_CPDJSRESDB" value="answer"><span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_CPDJSRESDB" value=""><span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_CPDJSRESDB" value=""><span>Not possible to tell</span></label>
+<p><strong>Question: Imagine 10 percent of College A's students come from low-income backgrounds, and 20 percent of these individuals go on to become high earners. In contrast, 5 percent of College B's students come from low-income backgrounds and 50 percent of these individuals go on to become high earners. Which college has the higher mobility rate?</strong></p>
+<div id="radio_BHGBKAVSBC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value=""><span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value="answer"><span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value=""><span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value=""><span>Not possible to tell</span></label>
 </div>
 </div>
 </div>
@@ -193,20 +193,20 @@ Figure 2.1: New York Times Graphic on Opportunity Insights
 Figure 2.2: Stata Graphical User Interface
 </p>
 </div>
-<p>There are 4 main panels here. Let's start in the bottom left: the Command window. This is where you can type code. When you press enter, the code will executed. When we learn how to. When we learn how to use Stata as a calculator, this is where we will type the code</p>
+<p>There are 4 main panels here. Let's start in the bottom left: the Command window. This is where you can type code. When you press enter, the code will executed. When we learn how to use Stata as a calculator, this is where we will type the code.</p>
 <p>When we execute code, any resulting output will be displayed in the Results window. When we learn how to use Stata as a calculator, this is where the results will be displayed.</p>
-<p>When we load data, the name of the variables in the dataset will appear in the first column. Many times, datasets come with labels that give us more description about the variable. For example, in the figure below there is one variable named <code>income</code> with the label <code>Total Annual Income</code>.</p>
+<p>When we load data, the names of the variables in the dataset will appear in the first column. Many times, datasets come with labels that give us more description about the variable. For example, in the figure below there is one variable named <code>income</code> with the label <code>Total Annual Income</code>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:main"></span>
 <img src="images/02_example_income.png" alt="Variables Window Example" width="75%"><p class="caption">
 Figure 2.3: Variables Window Example
 </p>
 </div>
-<p>The Properties window gives us more information about the variables and data loaded in memory. For example, in addition to the name and label of a variable, the type (i.e. numeric or string) and format of the variable (i.e. how the variable will be displayed). Additionally there is information about the size of the data (number of variables, observations, etc.)</p>
-<p>Now that we have learned about the various windows, we are going to execute our first line of code. In particular, we are going to use Stata as a calculater by typing <code>display</code> followed by a mathematical expression.</p>
+<p>The Properties window gives us more information about the variables and data loaded in memory. For example, in addition to the name and label of a variable, the type (i.e. numeric or string) and format of the variable (i.e. how the variable will be displayed). Additionally, there is information about the size of the data (number of variables, observations, etc.)</p>
+<p>Now that we have learned about the various windows, we are going to execute our first line of code. In particular, we are going to use Stata as a calculator by typing <code>display</code> followed by a mathematical expression.</p>
 <p>For example, to compute <code>2+2</code> type</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="intergenerational-mobility.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> 2+2</span>
-<span id="cb1-2"><a href="intergenerational-mobility.html#cb1-2" aria-hidden="true" tabindex="-1"></a>4</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="intergenerational-mobility.html#cb1-1" tabindex="-1"></a><span class="kw">display</span> 2+2</span>
+<span id="cb1-2"><a href="intergenerational-mobility.html#cb1-2" tabindex="-1"></a>4</span></code></pre></div>
 <p>The result will be visible in the Results window. <code>display</code> is called a command in Stata. Stata comes with many commands that will be useful to explore and analyze our data. Whenever you learn a new command in Stata it is helpful to look at the help file that comes along with this file. To access the help file for the display command type <code>help display</code> into the command window. This will open up a file that has instructions on how to use the given command</p>
 <p>The first thing you will generally see in any help file is the syntax of the command. Syntax refers to the format of the code. It is similar to the "grammar" of the software language. If you use incorrect grammar in language, you may not be expressing the right meaning. Similarly, if you use the wrong syntax in software language, you may not get the correct output, and more than likely, an error will be reported</p>
 <p>Figure <a href="intergenerational-mobility.html#fig:helpdisplay">2.4</a> shows the Syntax from the help file for the display command.</p>
@@ -218,17 +218,17 @@ Figure 2.4: Variables Window Example
 </div>
 <p>The fact that <code>di</code> is underlined means to use the display command you only need to type <code>di</code> as a shortcut. Many commands in Stata have shortcuts associated with them. To figure out those shortcuts, you just need to open the help file. We will fill in the <code>[display_directive]</code> in a couple of ways</p>
 <p>We can use Stata to perform calculations just like you would in a calculator. For example, for subtraction, type:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="intergenerational-mobility.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 6-4</span>
-<span id="cb2-2"><a href="intergenerational-mobility.html#cb2-2" aria-hidden="true" tabindex="-1"></a>2</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="intergenerational-mobility.html#cb2-1" tabindex="-1"></a><span class="kw">di</span> 6-4</span>
+<span id="cb2-2"><a href="intergenerational-mobility.html#cb2-2" tabindex="-1"></a>2</span></code></pre></div>
 <p>For multiplication type:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="intergenerational-mobility.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 2*4</span>
-<span id="cb3-2"><a href="intergenerational-mobility.html#cb3-2" aria-hidden="true" tabindex="-1"></a>8</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="intergenerational-mobility.html#cb3-1" tabindex="-1"></a><span class="kw">di</span> 2*4</span>
+<span id="cb3-2"><a href="intergenerational-mobility.html#cb3-2" tabindex="-1"></a>8</span></code></pre></div>
 <p>For division type:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="intergenerational-mobility.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 12/2</span>
-<span id="cb4-2"><a href="intergenerational-mobility.html#cb4-2" aria-hidden="true" tabindex="-1"></a>6</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="intergenerational-mobility.html#cb4-1" tabindex="-1"></a><span class="kw">di</span> 12/2</span>
+<span id="cb4-2"><a href="intergenerational-mobility.html#cb4-2" tabindex="-1"></a>6</span></code></pre></div>
 <p>We can also use <code>display</code> to print text. This can be very helpful when writing programs. For example, if something goes wrong in a program, you, might want to display an error code. To display the words in Stata, you just need to put the words you would like to display in quotation marks. For example, to display "Hello World" type:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="intergenerational-mobility.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="st">"Hello World"</span></span>
-<span id="cb5-2"><a href="intergenerational-mobility.html#cb5-2" aria-hidden="true" tabindex="-1"></a>Hello World</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="intergenerational-mobility.html#cb5-1" tabindex="-1"></a><span class="kw">display</span> <span class="st">"Hello World"</span></span>
+<span id="cb5-2"><a href="intergenerational-mobility.html#cb5-2" tabindex="-1"></a>Hello World</span></code></pre></div>
 <p>Words are referred to as strings in Stata (later we will have string variables and numeric variables). When you reference a string, need to put in quotation marks. For example, if we were to type <code>display Hello World</code> into Stata, we would get the error depicted in Figure <a href="intergenerational-mobility.html#fig:helloerror">2.5</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:helloerror"></span>
@@ -298,16 +298,16 @@ Figure 2.11: Executing Lines 2 and 3
 Figure 2.12: Saving A Do-File
 </p>
 </div>
-<p>You should save the do-file somewhere convenient on your computer, so that you can quickly find it next time you need it.</p>
+<p>You should save the do-file somewhere convenient on your computer so that you can quickly find it next time you need it.</p>
 </div>
 <div id="working-directory" class="section level2" number="2.6">
 <h2>
 <span class="header-section-number">2.6</span> Working Directory<a class="anchor" aria-label="anchor" href="#working-directory"><i class="fas fa-link"></i></a>
 </h2>
-<p>Next we are going to discuss the working directory. To understand the working directory, you first need to understand that every file and folder on your computer has an "address" associated with it. Most of us are used to navigating through either Finder in Mac or through File Explorer in a PC to open a file we need.</p>
-<p>But this is not the only way to open files. And in fact, originally, there was no convenient user interface in computers to access files in this way. Instead, you needed to direct your computer to the location of the file by typing in the file's "address". The "address" of a file or folder is know as the <strong>path name</strong>. It is a string of text that tells your computer where the file or folder is located.</p>
+<p>Next, we are going to discuss the working directory. To understand the working directory, you first need to understand that every file and folder on your computer has an "address" associated with it. Most of us are used to navigating through either Finder on a Mac or through File Explorer on a PC to open a file we need.</p>
+<p>But this is not the only way to open files. In fact, originally, there was no convenient user interface in computers to access files in this way. Instead, you needed to direct your computer to the location of the file by typing in the file's "address". The "address" of a file or folder is known as the <strong>path name</strong>. It is a string of text that tells your computer where the file or folder is located.</p>
 <p>The <strong>working directory</strong> is the default path in Stata. This is where Stata looks for files by default. For example, imagine I have a dataset named, "interesting_data.dta" and I want to load it into Stata. The command to load data in Stata is the <code>use</code> command. Therefore, I might want to type:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="intergenerational-mobility.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> interesting_data.dta, <span class="kw">clear</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="intergenerational-mobility.html#cb6-1" tabindex="-1"></a><span class="kw">use</span> interesting_data.dta, <span class="kw">clear</span></span></code></pre></div>
 <p>The <code>, clear</code> tells Stata to clear out any data that is currently loaded into memory. Where will Stata look for the file "interesting_data.dta"? In the working directory!</p>
 <p>Therefore, before you start loading in data, you need to learn what your working directory is currently set to. To check this in Stata, we use the <code>pwd</code> command, which is short for "print working directory". To check your working directory in Stata, just type <code>pwd</code> into the command window. When I typed this into my command window, this is the path name that came out:</p>
 <p><code>/Users/davidarnold/Documents/Stata</code></p>
@@ -321,26 +321,26 @@ Figure 2.12: Saving A Do-File
 Figure 2.13: Example Structure of a Folder Hierarchy for this Course
 </p>
 </div>
-<p>One brief aside before we continue with understanding the working directory. The best time to organize the folders on your computer is now! What does this mean? It means do not place everything you download in one place. Do not have your desktop cluttered with numerous files. Create folders on your computer that neatly divide up your work. For me this means different folders for Research and Teaching. Within Teaching, I need different folders for every course I teach. Within each course, I need different folders for every week of the course. Therefore, if I need to access a dataset or set of notes for a given week of the course, I can do so quickly and easily. Doing this organization now will save you a lot of time in the future, not just in this course, but even more generally.</p>
+<p>One brief aside before we continue with understanding the working directory. The best time to organize the folders on your computer is now! What does this mean? It means do not place everything you download in one place. Do not have your desktop cluttered with numerous files. Create folders on your computer that neatly divide up your work. For me, this means different folders for Research and Teaching. Within Teaching, I need different folders for every course I teach. Within each course, I need different folders for every week of the course. Therefore, if I need to access a dataset or set of notes for a given week of the course, I can do so quickly and easily. Doing this organization now will save you a lot of time in the future, not just in this course, but even more generally.</p>
 <p>Returning to the working directory, now that we know where the data is, we need to change our directory to the location of the data. To do this we can use the <code>cd</code> command which is short for "change directory."</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="intergenerational-mobility.html#cb7-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
-<span id="cb7-2"><a href="intergenerational-mobility.html#cb7-2" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/<span class="kw">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="intergenerational-mobility.html#cb7-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
+<span id="cb7-2"><a href="intergenerational-mobility.html#cb7-2" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/<span class="kw">data</span></span></code></pre></div>
 <p>This is the path for me, but it will be different depending on where you put the downloaded data for this section. One issue that commonly confuses students is that even though they can navigate to a file, they don't actually know the full path to that file.</p>
-<p>In a PC, retrieving the full path is relatively simple. In the file explorer there will be a panel at the top that shows the different subfolders. Clicking on the arrow next to this path will convert it to the full path name. You can simply copy and paste this pathname into Stata to change your working directory.</p>
-<p>On a Mac, it is slightly more complicated. If you right click a folder and then press the "option" key, there will be an option to "copy as pathname". Pressing this option will copy the path name for you (i.e. you can press Cmd+p to paste it, or right click and then select paste.)</p>
+<p>In a PC, retrieving the full path is relatively simple. In the file explorer, there will be a panel at the top that shows the different subfolders. Clicking on the arrow next to this path will convert it to the full path name. You can simply copy and paste this pathname into Stata to change your working directory.</p>
+<p>On a Mac, it is slightly more complicated. If you right-click a folder and then press the "option" key, there will be an option to "copy as pathname". Pressing this option will copy the path name for you (i.e. you can press Cmd+p to paste it, or right-click and then select paste.)</p>
 </div>
 <div id="describe-and-browse" class="section level2" number="2.7">
 <h2>
 <span class="header-section-number">2.7</span> Describe and Browse<a class="anchor" aria-label="anchor" href="#describe-and-browse"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this section we are going to learn a few basics of loading data into Stata. To get started, let's load in the main data for this chapter, which contains data from Opportunity Insights that will allow us how colleges vary in the extent that they promote intergenerational mobility. To load in the data type:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="intergenerational-mobility.html#cb8-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
-<span id="cb8-2"><a href="intergenerational-mobility.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> college_mobility.dta, <span class="kw">clear</span></span>
-<span id="cb8-3"><a href="intergenerational-mobility.html#cb8-3" aria-hidden="true" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/<span class="kw">data</span></span>
-<span id="cb8-4"><a href="intergenerational-mobility.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="intergenerational-mobility.html#cb8-5" aria-hidden="true" tabindex="-1"></a>(Preferred Estimates <span class="kw">of</span> Access and Mobility Rates <span class="kw">by</span> College)</span></code></pre></div>
+<p>In this section, we are going to learn a few basics of loading data into Stata. To get started, let's load in the main data for this chapter, which contains data from Opportunity Insights that will allow us how colleges vary in the extent that they promote intergenerational mobility. To load in the data type:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="intergenerational-mobility.html#cb8-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
+<span id="cb8-2"><a href="intergenerational-mobility.html#cb8-2" tabindex="-1"></a><span class="kw">use</span> college_mobility.dta, <span class="kw">clear</span></span>
+<span id="cb8-3"><a href="intergenerational-mobility.html#cb8-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/<span class="kw">data</span></span>
+<span id="cb8-4"><a href="intergenerational-mobility.html#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="intergenerational-mobility.html#cb8-5" tabindex="-1"></a>(Preferred Estimates <span class="kw">of</span> Access and Mobility Rates <span class="kw">by</span> College)</span></code></pre></div>
 <p>Again, the first part of this code (the part following "cd") will look different for you depending on the path to data in your computer. Now the data has been loaded into memory, but don't yet understand what is actually in the data. The first command that can be used to start exploring the data is the <code>describe</code> command. The <code>describe</code> command allows us to quickly review the variables in a dataset.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="intergenerational-mobility.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="intergenerational-mobility.html#cb9-1" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
 <p>Figure <a href="intergenerational-mobility.html#fig:describe">2.14</a> displays the results of this command, which is a table of variables, as well as the format of the variable and the label associated with the variable.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:describe"></span>
@@ -349,10 +349,10 @@ Figure 2.14: Describe Command
 </p>
 </div>
 <p>Here we can note a few of the more important variables we will be using in this dataset. First, we have the variable <code>name</code> which indicates the institution. This is a dataset of 2,199 institutions in the United States. The variables we will focus on are <code>par_q1</code> and <code>kq5_cond_parq1</code>. The label associated with <code>par_q1</code> is "Fraction of parents in quintile 1 (bottom quintile)". In terms of our definition of mobility rate, this is the access portion. A school that has a large fraction of students from the bottom 20 percent of the income distribution (quintile 1) will have high access.</p>
-<p>The other component of the mobility rate is the success rate, which is captured by the variable <code>kq5_cond_parq1</code>. The label associated with this variable is "Probability of kid in quintile 5 conditional on parent in quintile 1". In other words, what fraction of students from low-income background go on to earn in the top 20 percent of all earners in their age group.</p>
+<p>The other component of the mobility rate is the success rate, which is captured by the variable <code>kq5_cond_parq1</code>. The label associated with this variable is "Probability of kid in quintile 5 conditional on parent in quintile 1". In other words, what fraction of students from low-income backgrounds go on to earn in the top 20 percent of all earners in their age group?</p>
 <p>The mobility rate is the product of the access rate and success rate. As we can see, this variable is not in our dataset, so we will eventually need to create it.</p>
-<p>While the <code>describe</code> command gives us a good sense of what variables are in the data, it is also useful look directly at the data. The <code>browse</code> command opens up a spreadsheet similar to an Excel spreadsheet. This allows you to look through the data to further understand how the values of each variable are stored. To browse the data, simply type into command window:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="intergenerational-mobility.html#cb10-1" aria-hidden="true" tabindex="-1"></a>browse</span></code></pre></div>
+<p>While the <code>describe</code> command gives us a good sense of what variables are in the data, it is also useful look directly at the data. The <code>browse</code> command opens up a spreadsheet similar to an Excel spreadsheet. This allows you to look through the data to further understand how the values of each variable are stored. To browse the data, simply type into the command window:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="intergenerational-mobility.html#cb10-1" tabindex="-1"></a>browse</span></code></pre></div>
 <p>For our dataset, this will open the data table displayed in Figure <a href="intergenerational-mobility.html#fig:browseex">2.15</a></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:browseex"></span>
@@ -373,11 +373,11 @@ Figure 2.15: Browse Command
 <p>The basic syntax for the <code>summarize</code> command is</p>
 <p><code>summarize varlist</code></p>
 <p>where <code>varlist</code> is a list of variables that you would like to see summary statistics for. For example, imagine first we want to understand, on average, how large are institutions in this dataset? Well, the variable <code>count</code> is the average number of students enrolled in the institution. To retrieve summary statistics for this variable we type:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="intergenerational-mobility.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="fu">count</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="intergenerational-mobility.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="fu">count</span></span>
-<span id="cb12-2"><a href="intergenerational-mobility.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
-<span id="cb12-3"><a href="intergenerational-mobility.html#cb12-3" aria-hidden="true" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
-<span id="cb12-4"><a href="intergenerational-mobility.html#cb12-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">count</span> |      2,199    946.5153    1508.825         50   26989.67</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="intergenerational-mobility.html#cb11-1" tabindex="-1"></a><span class="kw">summarize</span> <span class="fu">count</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="intergenerational-mobility.html#cb12-1" tabindex="-1"></a><span class="kw">summarize</span> <span class="fu">count</span></span>
+<span id="cb12-2"><a href="intergenerational-mobility.html#cb12-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
+<span id="cb12-3"><a href="intergenerational-mobility.html#cb12-3" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
+<span id="cb12-4"><a href="intergenerational-mobility.html#cb12-4" tabindex="-1"></a>       <span class="fu">count</span> |      2,199    946.5153    1508.825         50   26989.67</span></code></pre></div>
 <p>This table tells us a few things. First, it tells us that the average size of a cohort of students across all institutions in the dataset is about 946 students. Additionally, we can see the minimum is 50 and the maximum is 26989.67. The minimum being 50 is actually by construction. Institutions with less than 50 students per cohort were dropped from the dataset. Understanding descriptive statistics about your key variables is important before starting any data analysis.</p>
 </div>
 <div id="generate" class="section level2" number="2.9">
@@ -394,7 +394,7 @@ Figure 2.15: Browse Command
 <p>In our dataset, we have variables that capture the access term (<code>par_q1</code>) and
 the success term (<code>kq5_cond_parq1</code>). From these we can construct a college's mobility rate. To do this we will use the <code>generate</code> command</p>
 <p>The most basic syntax of the generate command is</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="intergenerational-mobility.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> newvar = <span class="fu">exp</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="intergenerational-mobility.html#cb13-1" tabindex="-1"></a><span class="kw">gen</span> newvar = <span class="fu">exp</span></span></code></pre></div>
 <p>In this command, <code>newvar</code> is the name of the new variable that you would like to create. You can give the variable any name you like, but generally it is good practice to keep names short, but as descriptive as possible. The term <code>exp</code> is an expression. How you fill in <code>exp</code> depends on what variable you are creating</p>
 <p>Before we get to generating mobility rates, let's take some common examples. Suppose we have two variables <code>x1</code> and <code>x2</code> and we want to create new variables that are functions of these two variables. Here are a few examples of what we might want to accomplish</p>
 <ul>
@@ -404,9 +404,9 @@ the success term (<code>kq5_cond_parq1</code>). From these we can construct a co
 <li><p>Division: <code>gen div = x1/x2</code></p></li>
 </ul>
 <p>For us, we want to create a variable that is the product of <code>par_q1</code> and <code>kq5_cond_parq1</code>. Therefore, we can type:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="intergenerational-mobility.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> mobility_rate = par_q1*kq5_cond_parq1</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="intergenerational-mobility.html#cb14-1" tabindex="-1"></a><span class="kw">gen</span> mobility_rate = par_q1*kq5_cond_parq1</span></code></pre></div>
 <p>When we create a new variable, it won't by default have a label associated with it. If you are working on a project that has many different variables, it is a good idea to label your variables so that you can remember what they represent at a later date. For example, if we want to give the variable <code>mobility_rate</code> a label we type:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="intergenerational-mobility.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> mobility_rate <span class="st">"Mobility rate of institution"</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="intergenerational-mobility.html#cb15-1" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> mobility_rate <span class="st">"Mobility rate of institution"</span></span></code></pre></div>
 </div>
 <div id="binary-variables" class="section level2" number="2.10">
 <h2>
@@ -414,10 +414,10 @@ the success term (<code>kq5_cond_parq1</code>). From these we can construct a co
 </h2>
 <p>Most of the binary variables we create in this class will be the result from evaluating a logical statement. To review, a logical statement is any statement that is either true or false. For example, the statement "College X is in California" is either true or it is false. For "UCSD" this statement is true, while for "ASU" this is false.</p>
 <p>It is often useful to create binary variables (binary meaning two) in our data based on logical statements. For example, in our data on intergenerational mobility, we might be interested in comparing mobility rates across different regions. For example, maybe we want to compare mobility rates in California to mobility rates in other parts of the country. To do this, we might want to create a binary indicator variable that is equal to 1 if the state is in California and zero otherwise. We can create a binary variable that is equal to 1 if a logical statement is true and zero if false we type</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="intergenerational-mobility.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> CA = (state==<span class="st">"CA"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="intergenerational-mobility.html#cb16-1" tabindex="-1"></a><span class="kw">gen</span> CA = (state==<span class="st">"CA"</span>)</span></code></pre></div>
 <p>The logical statement <code>(state=="CA")</code> is true if the state is in California and false if it is not. Note the double-equals sign <code>==</code>. We use double-equals to test the equality of two things. Additionally, note the quotation marks around <code>CA</code>. Reminder: <code>state</code> is a string variable and we always reference string variables with quotation marks.</p>
 <p>This statement mirrors the general syntax of how we can create binary variables in Stata. The general syntax is</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="intergenerational-mobility.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> newvar = (logical statement)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="intergenerational-mobility.html#cb17-1" tabindex="-1"></a><span class="kw">gen</span> newvar = (logical statement)</span></code></pre></div>
 <p>This code will generate a new variable (named <code>newvar</code>) which is equal to 1 if the logical statement in parentheses is true and zero if false.</p>
 <p>To check whether the results conform to our expectations we can type <code>br state CA</code>. Below in Figure <a href="intergenerational-mobility.html#fig:brca">2.16</a> we show a small selection of the data that shows us CA is equal to 1 for colleges in "CA" and zero otherwise.</p>
 <div class="figure" style="text-align: center">
@@ -427,7 +427,7 @@ Figure 2.16: Generating A Binary Indicator for California Colleges
 </p>
 </div>
 <p>There are a few errors that arise enough that it is valuable to go through them now. First, it is common to forgot the "double equals" sign, and instead put one equals sign, as below.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="intergenerational-mobility.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> CA2 = (state=<span class="st">"CA"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="intergenerational-mobility.html#cb18-1" tabindex="-1"></a><span class="kw">gen</span> CA2 = (state=<span class="st">"CA"</span>)</span></code></pre></div>
 <p>If we execute this code, we will get the error in Figure <a href="intergenerational-mobility.html#fig:forgotdoubleequals">2.17</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:forgotdoubleequals"></span>
@@ -437,7 +437,7 @@ Figure 2.17: Forgetting Double Equals When Testing Equality
 </div>
 <p>The error report <code>state="CA"</code> is displayed because the command is looking for a variable with this name, which is not in a valid format. To test equality, we need two equals signs.</p>
 <p>Another common error (not just when generating new variables) is to forget the quotation marks when referencing string variables. For example if we type:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="intergenerational-mobility.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> CA3 = (state==CA)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="intergenerational-mobility.html#cb19-1" tabindex="-1"></a><span class="kw">gen</span> CA3 = (state==CA)</span></code></pre></div>
 <p>We will get the error code displayed in Figure <a href="intergenerational-mobility.html#fig:forgotquotes">2.18</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:forgotquotes"></span>
@@ -447,13 +447,13 @@ Figure 2.18: Forgetting Quotation Marks When Referencing Strings
 </div>
 <p>The error report <code>type mismatch</code> occurs because state is a string variable, yet what comes after the equals sign will NOT be interpreted as a string. To tell Stata the characters <code>CA</code> are strings, put <code>CA</code> in quotation marks!</p>
 <p>There are many <code>binary</code> variables we can create from relations. For example, imagine we have two generic variables, <code>x1</code> and <code>x2</code>. We can create a variable that is equal to one if <code>x1</code> is greater than <code>x2</code> and zero otherwise.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="intergenerational-mobility.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> x1_greater_x2 = (x1&gt;<span class="kw">x2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="intergenerational-mobility.html#cb20-1" tabindex="-1"></a><span class="kw">gen</span> x1_greater_x2 = (x1&gt;<span class="kw">x2</span>)</span></code></pre></div>
 <p>A variable that is equal to 1 if <code>x1</code> is less than <code>x2</code> and zero otherwise.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="intergenerational-mobility.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> x1_less_x2 = (x1&lt;<span class="kw">x2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="intergenerational-mobility.html#cb21-1" tabindex="-1"></a><span class="kw">gen</span> x1_less_x2 = (x1&lt;<span class="kw">x2</span>)</span></code></pre></div>
 <p>A variable that is equal to 1 if <code>x1</code> is greater than or equal to <code>x2</code> and zero otherwise.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="intergenerational-mobility.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> x1_greater_x2 = (x1&gt;=<span class="kw">x2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="intergenerational-mobility.html#cb22-1" tabindex="-1"></a><span class="kw">gen</span> x1_greater_x2 = (x1&gt;=<span class="kw">x2</span>)</span></code></pre></div>
 <p>A variable that is equal to 1 if <code>x1</code> is less than or equal to <code>x2</code> and zero otherwise.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="intergenerational-mobility.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> x1_less_eq_x2 = (x1&lt;=<span class="kw">x2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="intergenerational-mobility.html#cb23-1" tabindex="-1"></a><span class="kw">gen</span> x1_less_eq_x2 = (x1&lt;=<span class="kw">x2</span>)</span></code></pre></div>
 </div>
 <div id="if-statements" class="section level2" number="2.11">
 <h2>
@@ -461,7 +461,7 @@ Figure 2.18: Forgetting Quotation Marks When Referencing Strings
 </h2>
 <p>If statements in Stata are used when you want to execute code, but only if some condition is met. Most of the commands we use in Stata can be combined with an if statement.</p>
 <p>The general syntax for using if statements is</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="intergenerational-mobility.html#cb24-1" aria-hidden="true" tabindex="-1"></a>command <span class="kw">if</span> (logical statement)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="intergenerational-mobility.html#cb24-1" tabindex="-1"></a>command <span class="kw">if</span> (logical statement)</span></code></pre></div>
 <p>The command will only be executed for observations for which the logical statement is true. If you look at the help files for commands, you will often notice a <code>[if]</code> in the syntax. This means you can combine the command with an if statement. For example, in Figure <a href="intergenerational-mobility.html#fig:sumhelp">2.19</a> we can see you can use if statements with the summarize command.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:sumhelp"></span>
@@ -470,37 +470,37 @@ Figure 2.19: Help File for the Summarize Command
 </p>
 </div>
 <p>A general note about how syntax is presented in Stata is useful here. Words that appear brackets can be used when using the command, but don't need to be. The word <code>if</code> is in brackets because we don't need to include it in order to use the summarize command. However, imagine we want to compute average mobility rates, but just restricted to colleges in California. A college is in California <code>if CA==1</code>, which is the binary variable we created before. Therefore we can compute the average mobility rate of California colleges by typing:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="intergenerational-mobility.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> CA==1 </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="intergenerational-mobility.html#cb25-1" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> CA==1 </span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 mobility_r~e |        168    .0275095    .0154819          0   .0991846</code></pre>
 <p>Note that we did not put <code>if</code> in brackets, even though it was in brackets in the syntax. The brackets are there to tell you that you can use an if statement, but the brackets themselves are not actually part of the syntax.</p>
 <p>So mobility rates in California colleges are 0.028. Let's compare this number to mobility rates in non-Californian colleges:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="intergenerational-mobility.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> CA==0 </span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="intergenerational-mobility.html#cb27-1" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> CA==0 </span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 mobility_r~e |      2,031    .0175132     .012647          0   .1635797</code></pre>
-<p>The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be do to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="intergenerational-mobility.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> par_q1 kq5_cond_parq1 <span class="kw">if</span> CA==1 </span></code></pre></div>
+<p>The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be due to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="intergenerational-mobility.html#cb29-1" tabindex="-1"></a><span class="kw">sum</span> par_q1 kq5_cond_parq1 <span class="kw">if</span> CA==1 </span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
       par_q1 |        168    .1443805    .0889914   .0321324   .4606968
 kq5_cond_p~1 |        168    .2481358    .1638556          0   .8497473</code></pre>
 <p>And now for non-Californian colleges:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="intergenerational-mobility.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> par_q1 kq5_cond_parq1 <span class="kw">if</span> CA==0 </span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="intergenerational-mobility.html#cb31-1" tabindex="-1"></a><span class="kw">sum</span> par_q1 kq5_cond_parq1 <span class="kw">if</span> CA==0 </span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
       par_q1 |      2,031    .1232655    .0878519   .0111896   .6097748
 kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .9192932</code></pre>
-<p>So let's first discuss the access results (i.e. the variable <code>par_q1</code>). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fractions of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA.
+<p>So let's first discuss the access results (i.e. the variable <code>par_q1</code>). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fraction of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA.
 Now let's discuss the success results (i.e. the variable <code>kq5_cond_parq1</code>). Across colleges in CA, the average fraction of students from low-income backgrounds that become high earners is around 24.8 percent. Across colleges NOT in CA, the average fraction of students from low-income backgrounds that become high earners is around 19.2 percent. Therefore mobility rates are higher in CA due to both (1) greater access and (2) greater success.</p>
 <p>We can also use <code>if</code> statements to reference string variables. For example, let's imagine we want to see what the mobility rate is for UCSD. In the data, we can use the variable <code>name</code> which contains the institution name to summarize mobility <code>if name == "University Of California, San Diego"</code>. Note again the use of quotation marks here to reference a string value.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="intergenerational-mobility.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> <span class="bn">name</span> == <span class="st">"University Of California, San Diego"</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="intergenerational-mobility.html#cb33-1" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> <span class="bn">name</span> == <span class="st">"University Of California, San Diego"</span></span></code></pre></div>
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 mobility_r~e |          1    .0483275           .   .0483275   .0483275</code></pre>
 <p>Here we have taken the average <code>if name == "University Of California, San Diego"</code>. But only one observation meets this restriction, so the table is just showing us the mobility rate for UCSD, which is equal to 0.048, a bit higher than the average of 0.028 across all Californian institutions.</p>
-<p>In this section we have begun to explore variation across colleges in terms of intergenerational mobility rates. In the next section we will learn about a data visualization technique that is useful in understanding variation in the data more generally.</p>
+<p>In this section, we have begun to explore variation across colleges in terms of intergenerational mobility rates. In the next section, we will learn about a data visualization technique that is useful in understanding variation in the data more generally.</p>
 </div>
 <div id="histogram-theoretical" class="section level2" number="2.12">
 <h2>
@@ -525,8 +525,8 @@ mobility_r~e |          1    .0483275           .   .0483275   .0483275</code></
 Figure 2.20: Histogram of Test Scores
 </p>
 </div>
-<p>So in a histogram, the height of the bar represents what fraction of test scores fall within a given interval. Now that we understand the basic premise, let's go through a few example from some real datasets.</p>
-<p>For example 1 we are going to look at the distribution of Rotten Tomatoes scores for movies released in 2015 in Figure <a href="intergenerational-mobility.html#fig:histmovies">2.21</a>. The rotten tomato score represents what fraction of critics rated a film as positive. So a value of 50 indicates 50 percent of critics rated the movie positively. The score ranges from a minimum of 0 to a maximum of 100.</p>
+<p>So in a histogram, the height of the bar represents what fraction of test scores fall within a given interval. Now that we understand the basic premise, let's go through a few examples from some real datasets.</p>
+<p>For example 1 we are going to look at the distribution of Rotten Tomatoes scores for movies released in 2015 in Figure <a href="intergenerational-mobility.html#fig:histmovies">2.21</a>. The rotten tomato score represents what fraction of critics rated a film as positive. So a value of 50 indicates that 50 percent of critics rated the movie positively. The score ranges from a minimum of 0 to a maximum of 100.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histmovies"></span>
 <img src="images/02_movies1.png" alt="Histogram of Rotten Tomatoes Scores for Movies Released in 2015" width="75%"><p class="caption">
@@ -534,7 +534,7 @@ Figure 2.21: Histogram of Rotten Tomatoes Scores for Movies Released in 2015
 </p>
 </div>
 <p>So what do we learn from this figure? Some movies get very low scores, in the 5-10 range. How can we tell this? The first bin starts around 5 and ends around 15. The height of this bar is a little above 0.10. That means a bit more than 10 percent of all the movies got a score in the 5-15 range. As we move across the range of possible values, we actually find that the height of the bars is relatively stable. Therefore, we can describe this distribution as relatively uniform. That means across the range of movie scores, it does not seem like some scores are especially likely relative to others (for a perfectly uniform distribution the height of the bars would be identical across the entire range of the x-axis.)</p>
-<p>In the next example, we are going to explore the distribution of olympic athlete ages in Figure <a href="intergenerational-mobility.html#fig:athleteages">2.22</a>.</p>
+<p>In the next example, we are going to explore the distribution of Olympic athlete ages in Figure <a href="intergenerational-mobility.html#fig:athleteages">2.22</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:athleteages"></span>
 <img src="images/02_athletes.png" alt="Histogram of Olympic Athlete Ages" width="75%"><p class="caption">
@@ -542,14 +542,14 @@ Figure 2.22: Histogram of Olympic Athlete Ages
 </p>
 </div>
 <p>So what do we learn from this histogram? Well, most Olympic athletes are between the ages of 19 and 32. Between these values the bars are consistently high, indicating a large fraction of the sample. At the lower end, there are some athletes under 19, but they are relatively less common. At the upper end, there are some athletes even above 40 years old, but these are clearly outliers. They are very far away from most of the data, which is in the 20s. We sometimes describe this feature of a distribution as a "long-right tail". Or we say the distribution is skewed right.</p>
-<p>Finally, let's look at the distribution of calories for meals ordered at Chipotle in Figure <a href="intergenerational-mobility.html#fig:Chipotle">2.23</a>, which comes from an article in The Upshot.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Kevin Quealy, Amanda Cox, and Josh Katz, &lt;span&gt;“At Chipotle, How Many Calories Do People Eat,”&lt;/span&gt; &lt;em&gt;New York Times: The Upshot&lt;/em&gt;, February 17, 2015, &lt;a href="https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html" role="doc-biblioref"&gt;https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a></span></p>
+<p>Finally, let's look at the distribution of calories for meals ordered at Chipotle in Figure <a href="intergenerational-mobility.html#fig:Chipotle">2.23</a>, which comes from an article in The Upshot.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Kevin Quealy, Amanda Cox, and Josh Katz, &lt;span&gt;“At Chipotle, How Many Calories Do People Eat,”&lt;/span&gt; &lt;em&gt;New York Times: The Upshot&lt;/em&gt;, February 17, 2015, &lt;a href="https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html"&gt;https://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a></span></p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Chipotle"></span>
 <img src="images/02_chipotle.png" alt="Histogram of Calories of Chipotle Meals" width="100%"><p class="caption">
 Figure 2.23: Histogram of Calories of Chipotle Meals
 </p>
 </div>
-<p>As we can see, most Chipotle meals are in the 1,000 calorie range. This is because many burritos and burrito bowls end up being around 1000 calories. However, if you order chips as well, that adds some calories to your meal, which is why we can see a bump in the histogram at around 1600 calories. At the upper end of the distribution we see some meals have over 2,000 calories, more than the total amount of calories recommended in a day! Overall, about 2 percent of all meals have calorie counts this extreme.</p>
+<p>As we can see, most Chipotle meals are in the 1,000-calorie range. This is because many burritos and burrito bowls end up being around 1000 calories. However, if you order chips as well, that adds some calories to your meal, which is why we can see a bump in the histogram at around 1600 calories. At the upper end of the distribution, we see some meals have over 2,000 calories, more than the total amount of calories recommended in a day! Overall, about 2 percent of all meals have calorie counts this extreme.</p>
 </div>
 <div id="histogram-data" class="section level2" number="2.13">
 <h2>
@@ -557,18 +557,18 @@ Figure 2.23: Histogram of Calories of Chipotle Meals
 </h2>
 <p>In our empirical application, we want to understand the distribution of mobility rates across colleges. What are common values for the mobility rate? Are there outliers? To study this, we are going to create a histogram in Stata.</p>
 <p>To begin, we need to learn about the <code>histogram</code> command, which is used to plot histograms in Stata. The simplest possible syntax is to simply type</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="intergenerational-mobility.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> varname</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="intergenerational-mobility.html#cb35-1" tabindex="-1"></a><span class="kw">histogram</span> varname</span></code></pre></div>
 <p>Where <code>varname</code> is the name of whatever variable you would like to create a histogram for. In our example, we want to plot a histogram of <code>mobility_rate</code>, so we will type:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb36-1"><a href="intergenerational-mobility.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb36-1"><a href="intergenerational-mobility.html#cb36-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:mobilityhist1"></span>
 <img src="images/02_hist1.png" alt="Histogram of College Mobility Rates" width="85%"><p class="caption">
 Figure 2.24: Histogram of College Mobility Rates
 </p>
 </div>
-<p>You will notice that the vertical axis in Figure <a href="intergenerational-mobility.html#fig:mobilityhist1">2.24</a> is density. For our prior examples, we always had the vertical axis labeled as "Fraction of Observations." It is not necessary to understand this for the class, but a density integrates to 1, which is why the vertical axis is sometimes rescaled in this way. For our purposes, it will be more intuitive to display the vertical axis as the fraction of observations. This will not change the appearence of the histogram in any way, just what is displayed on the vertical axis.To plot fraction of observations instead of density, we can use an <strong>option</strong> of the histogram command.</p>
-<p>In Stata, additional options are available for most commands. They give you a way to alter the command in some way. You can read through a list of options for a given command by opening the help file. The options we are looking for is the <code>frac</code> options, which changes the vertical axis to fraction of observations instead of density:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="intergenerational-mobility.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac</span></code></pre></div>
+<p>You will notice that the vertical axis in Figure <a href="intergenerational-mobility.html#fig:mobilityhist1">2.24</a> is density. For our prior examples, we always had the vertical axis labeled as "Fraction of Observations." It is not necessary to understand this for the class, but a density integrates to 1, which is why the vertical axis is sometimes rescaled in this way. For our purposes, it will be more intuitive to display the vertical axis as the fraction of observations. This will not change the appearance of the histogram in any way, just what is displayed on the vertical axis. To plot the fraction of observations instead of density, we can use an <strong>option</strong> of the histogram command.</p>
+<p>In Stata, additional options are available for most commands. They give you a way to alter the command in some way. You can read through a list of options for a given command by opening the help file. The option we are looking for is the <code>frac</code> option, which changes the vertical axis to the fraction of observations instead of the density:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="intergenerational-mobility.html#cb37-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:mobilityhist2"></span>
 <img src="images/02_hist2.png" alt="Histogram of College Mobility Rates (Changing the Vertical Axis)" width="85%"><p class="caption">
@@ -576,11 +576,11 @@ Figure 2.25: Histogram of College Mobility Rates (Changing the Vertical Axis)
 </p>
 </div>
 <p>Now that we have our histogram, let's start interpreting it. First, where is most of the "mass" of the histogram (i.e. where are the bars the highest)? This will be where most colleges fall in terms of mobility rates. Well, it looks like there is a spike near 0.02. For example, the highest bar in this range reaches 0.25, indicating 25 percent of all colleges fall in that interval. What does a value of 0.02 represent? A college with a mobility rate of 0.02 has 2 percent of its students coming from low-income backgrounds and achieving high income.</p>
-<p>Two percent seems like a low number, but there are colleges with even lower rates of mobility. For example, the first interval starts at roughly zero. The height of this bar is around 0.04, indicating about 4 percent of schools have mobility rates near zero. Again, this could due to either (1) not accepting students from low-income backgrounds (access) or (2) having graduates that do not earn enough to be categorized as high income (success).</p>
-<p>On the other end of the distribution, we can see there are some outlier schools that have very high mobility rates relative to others. Although it is difficult to see in the graph, there are a few schools with mobility rates above 0.10, indicating over 10 percent of the students in the school come from low-income backgrounds and achieve high income later in life.</p>
-<p>Overall this is an example of a distribution with a long-right tail. Most schools are cluster in the 0.01 to 0.03 range, but there are some outliers at the upper end of the mobility distribution.</p>
+<p>Two percent seems like a low number, but there are colleges with even lower rates of mobility. For example, the first interval starts at roughly zero. The height of this bar is around 0.04, indicating about 4 percent of schools have mobility rates near zero. Again, this could be due to either (1) not accepting students from low-income backgrounds (access) or (2) having graduates that do not earn enough to be categorized as high income (success).</p>
+<p>On the other end of the distribution, we can see some outlier schools have very high mobility rates relative to others. Although it is difficult to see in the graph, there are a few schools with mobility rates above 0.10, indicating over 10 percent of the students in the school come from low-income backgrounds and achieve high income later in life.</p>
+<p>Overall this is an example of a distribution with a long-right tail. Most schools cluster in the 0.01 to 0.03 range, but there are some outliers at the upper end of the mobility distribution.</p>
 <p>Sometimes it is helpful to tweak your graphs. In some cases, you may not like the default settings, and so generally, you will be able to change them. For example, maybe we do not like how many bins were created. We can directly control the number of bins by specifying the <code>bin()</code> option. For example, in Figure <a href="intergenerational-mobility.html#fig:mobilityhist6">2.26</a> we create a histogram with 20 bins.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="intergenerational-mobility.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="bn">bin</span>(20)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="intergenerational-mobility.html#cb38-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="bn">bin</span>(20)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:mobilityhist6"></span>
 <img src="images/02_hist6.png" alt="Histogram of College Mobility Rates (Changing the Number of Bins)" width="85%"><p class="caption">
@@ -589,7 +589,7 @@ Figure 2.26: Histogram of College Mobility Rates (Changing the Number of Bins)
 </div>
 <p>Because there were more than 20 bins in our original histogram, the width of each bin is larger now (some of the bin heights at the upper end of the distribution are very small and difficult to see in the figure).</p>
 <p>Instead of directly controlling how many bins, we can also control the width of the bins. In our test score example, we chose bins of width 10, but we could have chosen bins of width 5 instead. The choice of 10 was arbitrary. In some cases, you may want to change the width of the bins. To change the width of the bin we can specify the <code>width()</code> option, as we do below.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="intergenerational-mobility.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">width</span>(0.01)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="intergenerational-mobility.html#cb39-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">width</span>(0.01)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:mobilityhist7"></span>
 <img src="images/02_hist7.png" alt="Histogram of College Mobility Rates (Changing the Width of the Bins)" width="85%"><p class="caption">
@@ -604,7 +604,7 @@ Figure 2.27: Histogram of College Mobility Rates (Changing the Width of the Bins
 </h2>
 <p>Although we have created a histogram, it still leaves a lot to be desired. For our figures to be effective, they need to be clearly labeled and titled. To make them more visually appealing, it is also helpful to change colors and add additional elements.</p>
 <p>To change the color of the bars in our graph, we can specify the <code>color()</code> option. What I find to be effective in histograms is to also make the bars slightly translucent. This allows for plotting multiple histograms on the same figure, while still being able to distinguish the different variables. In the code below, we are going to change the color of our bars to blue, but then also make the bars transparent. We will do this by specifying <code>color(blue%40)</code> as one of the command options. The <code>%40</code> will control how translucent the bars appear. You can specify any number between zero and 100 here.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a href="intergenerational-mobility.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a href="intergenerational-mobility.html#cb40-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histae2"></span>
 <img src="images/02_histae2.png" alt="Histogram of College Mobility Rates (Changing the Color of the Bars)" width="85%"><p class="caption">
@@ -612,8 +612,8 @@ Figure 2.28: Histogram of College Mobility Rates (Changing the Color of the Bars
 </p>
 </div>
 <p>Next, let's add a title to our figure. It is always important to include a title that describes what the figure is presenting. We can do this by specifying the <code><a href="https://rdrr.io/r/graphics/title.html">title()</a></code> option:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb41-1"><a href="intergenerational-mobility.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
-<span id="cb41-2"><a href="intergenerational-mobility.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb41-1"><a href="intergenerational-mobility.html#cb41-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
+<span id="cb41-2"><a href="intergenerational-mobility.html#cb41-2" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histae3"></span>
 <img src="images/02_histae3.png" alt="Histogram of College Mobility Rates (Adding a Title)" width="85%"><p class="caption">
@@ -622,10 +622,10 @@ Figure 2.29: Histogram of College Mobility Rates (Adding a Title)
 </div>
 <p>You will notice the three <code>///</code> at the end of the first line of code. Sometimes it is easier to read code if we separate the various elements into different lines. However, in Stata, if you press enter and continue your code on the next line, then Stata will not interpret the two lines as connected. In other words, if we did not include the <code>///</code> it will interpret the second part <code>title("Histogram of Mobility Rates Across U.S. Colleges")</code> as a new block of code. But <code>title</code> is not a command in Stata, it is an option of graphical commands. Therefore, it needs to follow some type of graphing command. By adding the <code>///</code> we are telling Stata that the two lines of code are actually a single block of code that should be executed as a single unit.</p>
 <p>Next, let's work on the axis labels. The horizontal axis is currently labeled by <code>mobility_rate</code>. It is not professional or particularly descriptive to have variable names as the titles of axes. We should change this to "Intergenerational Mobility Rates" by specifying the <code>xtitle()</code> option. While we are at it we can also make the vertical axis title more descriptive.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb42-1"><a href="intergenerational-mobility.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
-<span id="cb42-2"><a href="intergenerational-mobility.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>) <span class="co">///</span></span>
-<span id="cb42-3"><a href="intergenerational-mobility.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">xtitle</span>(<span class="st">"Intergenerational Mobility Rates"</span>) <span class="co">///</span></span>
-<span id="cb42-4"><a href="intergenerational-mobility.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of Observations"</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb42-1"><a href="intergenerational-mobility.html#cb42-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
+<span id="cb42-2"><a href="intergenerational-mobility.html#cb42-2" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>) <span class="co">///</span></span>
+<span id="cb42-3"><a href="intergenerational-mobility.html#cb42-3" tabindex="-1"></a>  <span class="bn">xtitle</span>(<span class="st">"Intergenerational Mobility Rates"</span>) <span class="co">///</span></span>
+<span id="cb42-4"><a href="intergenerational-mobility.html#cb42-4" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of Observations"</span>) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histae4"></span>
 <img src="images/02_histae4.png" alt="Histogram of College Mobility Rates (Changing Axis Labels)" width="85%"><p class="caption">
@@ -633,11 +633,11 @@ Figure 2.30: Histogram of College Mobility Rates (Changing Axis Labels)
 </p>
 </div>
 <p>This next step is not strictly necessary, but I find the graphs more aesthetically pleasing if we also change the background color. We can do this by specifying <code>graphregion(fcolor(white))</code></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb43-1"><a href="intergenerational-mobility.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
-<span id="cb43-2"><a href="intergenerational-mobility.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>) <span class="co">///</span></span>
-<span id="cb43-3"><a href="intergenerational-mobility.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">xtitle</span>(<span class="st">"Intergenerational Mobility Rates"</span>) <span class="co">///</span></span>
-<span id="cb43-4"><a href="intergenerational-mobility.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of Observations"</span>) <span class="co">///</span></span>
-<span id="cb43-5"><a href="intergenerational-mobility.html#cb43-5" aria-hidden="true" tabindex="-1"></a>  graphregion(fcolor(<span class="bn">white</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb43-1"><a href="intergenerational-mobility.html#cb43-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
+<span id="cb43-2"><a href="intergenerational-mobility.html#cb43-2" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>) <span class="co">///</span></span>
+<span id="cb43-3"><a href="intergenerational-mobility.html#cb43-3" tabindex="-1"></a>  <span class="bn">xtitle</span>(<span class="st">"Intergenerational Mobility Rates"</span>) <span class="co">///</span></span>
+<span id="cb43-4"><a href="intergenerational-mobility.html#cb43-4" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of Observations"</span>) <span class="co">///</span></span>
+<span id="cb43-5"><a href="intergenerational-mobility.html#cb43-5" tabindex="-1"></a>  graphregion(fcolor(<span class="bn">white</span>)) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histae5"></span>
 <img src="images/02_histae5.png" alt="Histogram of College Mobility Rates (Changing Background)" width="85%"><p class="caption">
@@ -647,13 +647,13 @@ Figure 2.31: Histogram of College Mobility Rates (Changing Background)
 <p>Sometimes it is helpful to highlight important elements in a graph. Let's add a vertical line at the mobility rate of UCSD, which is about 0.048. To do this we will add the <code>xline()</code> option to our figure. In particular, we will place a black line at 0.048 on the x-axis that is dashed by specifying <code>xline(0.048, lc(black) lp(dash))</code>. The option <code>lc(black)</code> specifies the line color (<code>lc</code>) will be black and <code>lp(dash)</code> indicates the line pattern (<code>lp</code>) will be dashed.</p>
 <p>Further, we can also add text to the graph to label the dashed line. To add text, we use the <code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code> option. In order to use the text option you need to specify the y-coordinate, the x-coordinate, and the text that should appear on the graph. For example, if we want to add the label UCSD, to the line we can add <code>text(0.2 0.055 "UCSD")</code>. This will place the text <code>UCSD</code> at a value of <code>(y=0.2,x=0.055)</code> on the graph.</p>
 <p>Figure <a href="intergenerational-mobility.html#fig:histae7">2.32</a> displays the plot that adds the vertical line and labels UCSD's mobility rate.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb44-1"><a href="intergenerational-mobility.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
-<span id="cb44-2"><a href="intergenerational-mobility.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>) <span class="co">///</span></span>
-<span id="cb44-3"><a href="intergenerational-mobility.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="bn">xtitle</span>(<span class="st">"Intergenerational Mobility Rates"</span>) <span class="co">///</span></span>
-<span id="cb44-4"><a href="intergenerational-mobility.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of Observations"</span>) <span class="co">///</span></span>
-<span id="cb44-5"><a href="intergenerational-mobility.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="bn">xline</span>(0.048, lcolor(<span class="bn">black</span>) lp(<span class="kw">dash</span>)) <span class="co">///</span></span>
-<span id="cb44-6"><a href="intergenerational-mobility.html#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="bn">text</span>(0.2 0.055 <span class="st">"UCSD"</span>) <span class="co">///</span></span>
-<span id="cb44-7"><a href="intergenerational-mobility.html#cb44-7" aria-hidden="true" tabindex="-1"></a>  graphregion(fcolor(<span class="bn">white</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb44-1"><a href="intergenerational-mobility.html#cb44-1" tabindex="-1"></a><span class="kw">histogram</span> mobility_rate, frac <span class="kw">color</span>(<span class="bn">blue</span>%40) <span class="co">///</span></span>
+<span id="cb44-2"><a href="intergenerational-mobility.html#cb44-2" tabindex="-1"></a>  <span class="bn">title</span>(<span class="st">"Histogram of Mobility Rates Across U.S. Colleges"</span>) <span class="co">///</span></span>
+<span id="cb44-3"><a href="intergenerational-mobility.html#cb44-3" tabindex="-1"></a>  <span class="bn">xtitle</span>(<span class="st">"Intergenerational Mobility Rates"</span>) <span class="co">///</span></span>
+<span id="cb44-4"><a href="intergenerational-mobility.html#cb44-4" tabindex="-1"></a>  <span class="bn">ytitle</span>(<span class="st">"Fraction of Observations"</span>) <span class="co">///</span></span>
+<span id="cb44-5"><a href="intergenerational-mobility.html#cb44-5" tabindex="-1"></a>  <span class="bn">xline</span>(0.048, lcolor(<span class="bn">black</span>) lp(<span class="kw">dash</span>)) <span class="co">///</span></span>
+<span id="cb44-6"><a href="intergenerational-mobility.html#cb44-6" tabindex="-1"></a>  <span class="bn">text</span>(0.2 0.055 <span class="st">"UCSD"</span>) <span class="co">///</span></span>
+<span id="cb44-7"><a href="intergenerational-mobility.html#cb44-7" tabindex="-1"></a>  graphregion(fcolor(<span class="bn">white</span>)) </span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:histae7"></span>
 <img src="images/02_histae7.png" alt="Histogram of College Mobility Rates (Adding Vertical Line with Text)" width="85%"><p class="caption">
@@ -673,7 +673,7 @@ Figure 2.32: Histogram of College Mobility Rates (Adding Vertical Line with Text
 Figure 2.33: Access vs. Success Across Colleges
 </p>
 </div>
-<p>In Figure <a href="intergenerational-mobility.html#fig:avss">2.33</a>, rates of college mobility increase in both the vertical and horizontal axes. In other words, higher mobility rates are observed for colleges with both high access and success. As we can see in the figure, UCSD is highlighted. UCSD has a relatively high success rate. There aren't that many colleges with higher levels of success. However, it's access rate is not particularly high. You can see that there are many many markers to the right of UCSD. This means there are many colleges with higher access than UCSD. The reason UCSD's mobility rate is relatively high is primarily due to its high success rate of graduates.</p>
+<p>In Figure <a href="intergenerational-mobility.html#fig:avss">2.33</a>, rates of college mobility increase in both the vertical and horizontal axes. In other words, higher mobility rates are observed for colleges with both high access and success. As we can see in the figure, UCSD is highlighted. UCSD has a relatively high success rate. There aren't that many colleges with higher levels of success. However, its access rate is not particularly high. You can see that there are many many markers to the right of UCSD. This means there are many colleges with higher access than UCSD. The reason UCSD's mobility rate is relatively high is primarily due to its high success rate of graduates.</p>
 <p>Although the data we used was a snapshot of a point in time, Opportunity Insights also has data about how colleges have been changing over time. Figure <a href="intergenerational-mobility.html#fig:ucsdaccess">2.34</a> plots the fraction of students coming from different quantiles of the income distribution over time.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ucsdaccess"></span>
@@ -692,7 +692,7 @@ Figure 2.35: Trends in Success at UCSD by Quintile
 <p>As can be seen in this figure, different quantiles have relatively similar success rates. Researchers at Opportunity Insights study this across many different colleges, and find, on average, success rates are similar across the quintiles of parental background.</p>
 <p>This works against a "mismatch hypothesis" that is sometimes discussed in policy circles. The hypothesis is that increasing access at elite universities to more lower-income students may not actually benefit these low-income students if they are unprepared for the curriculum. In other words, maybe it is better to go to a low-ranked school if there is a chance you will fail out of a higher-ranked school. But Opportunity Insights does not find evidence of this, on average. They find similar success rates for low-income and high-income students.</p>
 <p>You will note in Figure <a href="intergenerational-mobility.html#fig:ucsdsess">2.35</a> success seems to be trending downward over time. This might be slightly misleading. Income in this data is measured in 2014. If UCSD students from recent cohorts are more likely to attend some form of graduate school, then earnings in 2014 might not reflect lifetime earnings. This could explain why there is a dip in these later cohorts.</p>
-<p>UCSD had relatively high mobility rates, but is far from the highest. Next, let's now look at the colleges with the highest mobility rates. Figure <a href="intergenerational-mobility.html#fig:topmobility">2.36</a> shows a list of schools with the highest mobility rates.</p>
+<p>UCSD had relatively high mobility rates but is far from the highest. Next, let's now look at the colleges with the highest mobility rates. Figure <a href="intergenerational-mobility.html#fig:topmobility">2.36</a> shows a list of schools with the highest mobility rates.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:topmobility"></span>
 <img src="images/02_top10.png" alt="Schools with the Highest Mobility Rates" width="85%"><p class="caption">
@@ -737,7 +737,7 @@ Figure 2.37: Trends in Schools with the Highest Mobility Rates
 <p><strong><u>Graphing Commands</u></strong></p>
 <ul>
 <li>
-<code>histogram var, frac</code> -- computes a histogram (an approximation of the distribution of a continuous variable). There are many options to change the format of the graph. In this version of the code <code>, frac</code> is specified so that the vertical axis depicts the fraction of observations that falls within each bin.</li>
+<code>histogram var, frac</code> -- computes a histogram (an approximation of the distribution of a continuous variable). There are many options to change the format of the graph. In this version of the code <code>, frac</code> is specified so that the vertical axis depicts the fraction of observations that fall within each bin.</li>
 </ul>
 </div>
 </div>
@@ -958,7 +958,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-03-05.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
