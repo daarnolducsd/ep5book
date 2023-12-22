@@ -65,7 +65,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_HPPWJVBXRN'><label><input type="radio" autocomplete="off" name="radio_HPPWJVBXRN" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_HPPWJVBXRN" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_HPPWJVBXRN" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_RFRFTLSWND'><label><input type="radio" autocomplete="off" name="radio_RFRFTLSWND" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_RFRFTLSWND" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_RFRFTLSWND" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_BHGBKAVSBC'><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_BHGBKAVSBC" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_PAMTFWPVGO'><label><input type="radio" autocomplete="off" name="radio_PAMTFWPVGO" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_PAMTFWPVGO" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_PAMTFWPVGO" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_PAMTFWPVGO" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::
@@ -897,7 +897,7 @@ At the same time, many schools with very high access rates have been trending to
 ``filepath`` with a file path of your choosing. If you have spaces in your file path, you need to put it into quotation marks.
 
 
-- ``clear all`` -- clears data from Stata
+- ``clear all`` - clears data from Stata
 
 **<u>Data Exploration Commands</u>** 
 
@@ -907,7 +907,7 @@ At the same time, many schools with very high access rates have been trending to
 
 - ``summarize varname`` - retrieves summary statistics such as the mean, min and max for the variable named ``varname``. To summarize all variables just type summarize. Add the option ``, detail`` to retrieve more statistics, such as percentiles.
 
-- ``tab varname`` -- tab retrieves a table of frequencies. This can be used for string variables as well as categorical variables. For example, if you have a categorical named region, then the command ``tab region`` will display the number of observations in each region. 
+- ``tab varname`` - tab retrieves a table of frequencies. This can be used for string variables as well as categorical variables. For example, if you have a categorical named region, then the command ``tab region`` will display the number of observations in each region. 
 
 If you are trying to decide between ``tab`` and ``summarize``, use ``summarize`` if the variable takes on many different values. Use ``tab`` if the variable takes on only a few values.
 
@@ -919,7 +919,7 @@ If you are trying to decide between ``tab`` and ``summarize``, use ``summarize``
 
 **<u>Graphing Commands</u>**
 
-- <code>histogram var, frac</code> -- computes a histogram (an approximation of the distribution of a continuous variable). There are many options to change the format of the graph. In this version of the code ``, frac`` is specified so that the vertical axis depicts the fraction of observations that fall within each bin.
+- <code>histogram var, frac</code> - computes a histogram (an approximation of the distribution of a continuous variable). There are many options to change the format of the graph. In this version of the code ``, frac`` is specified so that the vertical axis depicts the fraction of observations that fall within each bin.
 :::
 
 ## References {-}

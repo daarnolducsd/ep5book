@@ -805,7 +805,7 @@ At the same time, many schools with very high access rates have been trending to
 ``filepath`` with a file path of your choosing. If you have spaces in your file path, you need to put it into quotation marks.
 
 
-- ``clear all`` -- clears data from Stata
+- ``clear all`` - clears data from Stata
 
 **<u>Data Exploration Commands</u>** 
 
@@ -815,7 +815,7 @@ At the same time, many schools with very high access rates have been trending to
 
 - ``summarize varname`` - retrieves summary statistics such as the mean, min and max for the variable named ``varname``. To summarize all variables just type summarize. Add the option ``, detail`` to retrieve more statistics, such as percentiles.
 
-- ``tab varname`` -- tab retrieves a table of frequencies. This can be used for string variables as well as categorical variables. For example, if you have a categorical named region, then the command ``tab region`` will display the number of observations in each region. 
+- ``tab varname`` - tab retrieves a table of frequencies. This can be used for string variables as well as categorical variables. For example, if you have a categorical named region, then the command ``tab region`` will display the number of observations in each region. 
 
 If you are trying to decide between ``tab`` and ``summarize``, use ``summarize`` if the variable takes on many different values. Use ``tab`` if the variable takes on only a few values.
 
@@ -827,7 +827,7 @@ If you are trying to decide between ``tab`` and ``summarize``, use ``summarize``
 
 **<u>Graphing Commands</u>**
 
-- <code>histogram var, frac</code> -- computes a histogram (an approximation of the distribution of a continuous variable). There are many options to change the format of the graph. In this version of the code ``, frac`` is specified so that the vertical axis depicts the fraction of observations that fall within each bin.
+- <code>histogram var, frac</code> - computes a histogram (an approximation of the distribution of a continuous variable). There are many options to change the format of the graph. In this version of the code ``, frac`` is specified so that the vertical axis depicts the fraction of observations that fall within each bin.
 :::
 
 ## References {-}

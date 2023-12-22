@@ -17,15 +17,15 @@ code {
 <body>
 
 
-The most common way civilians interact with police are through traffic stops (there are about 50,000 a day). Given the frequency of encounters, detecting and eliminating racial discrimination in police behavior is an important policy goal. However, it can be difficult to detect without data. In this chapter, we will work with data from the Stanford Open Policing Project (SOPP). The SOPP is aggregating data on police stops across states and cities so that researchers, journalists and policymakers can improve interactions between police and the public. The data so far has information on about 200 million stops.
+The most common way civilians interact with police is through traffic stops (there are about 50,000 a day). Given the frequency of encounters, detecting and eliminating racial discrimination in police behavior is an important policy goal. However, it can be difficult to detect without data. In this chapter, we will work with data from the Stanford Open Policing Project (SOPP). The SOPP is aggregating data on police stops across states and cities so that researchers, journalists and policymakers can improve interactions between police and the public. The data so far has information on about 200 million stops.
 
-This is some big data. Figure \@ref(fig:soppsnap) shows a subset of all the cities in that data has been collected for. 
+This is some big data. Figure \@ref(fig:soppsnap) shows a subset of all the cities for which data has been collected. 
 
 ```{r, soppsnap, echo=FALSE, out.width="90%", fig.cap="The Stanford Open Policing Project Data",fig.align='center'}
 knitr::include_graphics("images/03_data.png")
 ```
 
-The data and research is starting to get notice by many news outlets, including CNN, the Economist, the Huffington Post, NBC News and the Daily Show (see Figure \@ref(fig:dailyshow))
+The data and research is starting to get noticed by many news outlets, including CNN, the Economist, the Huffington Post, NBC News and the Daily Show (see Figure \@ref(fig:dailyshow))
 
 
 ```{r, dailyshow, echo=FALSE, out.width="70%", fig.cap="Trevor Noah Discussing Results from The Stanford Open Policing Project Data",fig.align='center'}
@@ -80,17 +80,17 @@ This gives us the fraction of stops by race in San Diego. To begin to understand
 knitr::include_graphics("images/03_population.png")
 ```
 
-As can  be seen in Figure \@ref(fig:population), Black drivers over-represented in police stops. 11.2 percent of all stops are Black drivers while 6.7 percent of the population is Black. Asian/Pacific Islander are underrepresented in traffic stops (8.5 percent of stops vs. 15.9 percent of population). Hispanic drivers are slightly overrepresented in traffic stops (30.7 percent of stops vs. 28.8 percent of population) while White drivers are slightly underrepresented (42.5 percent of stops vs. 45.1 percent of population). One important caveat is that demographic information is from 2010 Census, while traffic stop data is from 2014-2017. Therefore, these numbers may not be directly comparable if demographics are changing over time in San Diego. 
+As can be seen in Figure \@ref(fig:population), Black drivers are over-represented in police stops. 11.2 percent of all stops are Black drivers while 6.7 percent of the population is Black. Asian/Pacific Islanders are underrepresented in traffic stops (8.5 percent of stops vs. 15.9 percent of the population). Hispanic drivers are slightly overrepresented in traffic stops (30.7 percent of stops vs. 28.8 percent of the population) while White drivers are slightly underrepresented (42.5 percent of stops vs. 45.1 percent of the population). One important caveat is that demographic information is from the 2010 Census, while traffic stop data is from 2014-2017. Therefore, these numbers may not be directly comparable if demographics are changing over time in San Diego. 
 
 However, this analysis does present some striking disparities in traffic stops. These disparities will be the focus of our analysis in this section. In particular, we will learn one test that can be used to understand whether these disparities are driven by racial discrimination on the part of police officers. 
 
 ## Veil of Darkness (VOD)
 
-Racial disparities refer to any differences between groups of different races. Many factors can cause racial disparities, but a common focus is to try to understand if the disparity is driven by racial discrimination. In our example, we are interested in exploring racial discrimination on the part of police officers making traffic stops. There are many methods that have been proposed to prove racial discrimination. Today we focus on one: **the veil of darkness test**, a test developed by Grogger and Ridgeway (2006)[@grogger2006testing].
+Racial disparities refer to any differences between groups of different races. Many factors can cause racial disparities, but a common focus is to try to understand if the disparity is driven by racial discrimination. In our example, we are interested in exploring racial discrimination on the part of police officers making traffic stops. Many methods have been proposed to prove racial discrimination. Today we focus on one: **the veil of darkness test**, a test developed by Grogger and Ridgeway (2006)[@grogger2006testing].
 
 The basic idea behind the veil of darkness test is that it easier to observe the race of an individual driver during the day when there is sunlight relative to the night when it is dark. Therefore, if police officers are targeting minority drivers, then it will be more difficult to perform this targeting at night. We can therefore compare the racial composition of traffic stops during daylight vs. nighttime to try to infer racial discrimination on the part of police officers.
 
-In Figure \@ref(fig:veil1) the basic assumptions behind the veil of darkness test are presented. Before sunset, it is light out, and officers can observe the race of drivers. After sunset (but before dusk), it is unclear whether race is observed or not. After dusk, however, we assume officers can no longer observe race before making the decision to stop a given driver. 
+In Figure \@ref(fig:veil1) the basic assumptions behind the veil of darkness test are presented. Before sunset, it is light out, and officers can observe the race of drivers. After sunset (but before dusk), it is unclear whether race is observed or not. After dusk, however, we assume officers can no longer observe race before deciding to stop a given driver. 
 
 ```{r, veil1, echo=FALSE, out.width="75%", fig.cap="Assumptions Behind Veil of Darkness Test",fig.align='center'}
 knitr::include_graphics("images/03_veil1.png")
@@ -98,26 +98,26 @@ knitr::include_graphics("images/03_veil1.png")
 
 In the data, imagine we see stops for a given type of drive fall dramatically after dusk. This might suggest that officers were targeting these individuals before dusk. But before we make any firm conclusions, we need to think carefully about comparing across different times in the day. 
 
-For example, at 12 noon it is light out. At 12 midnight it is dark out. However, there are many differences between 12 noon and 12 midnight. The drivers on the road are probably completely different. Therefore, if the racial composition of stops is different at these times, maybe it is not due to the officers, but due to the drivers on the road?
+For example, at 12 noon it is light out. At 12 midnight it is dark out. However, there are many differences between 12 noon and 12 midnight. The drivers on the road are probably completely different. Therefore, if the racial composition of stops is different at these times, maybe it is not due to the officers, but due to the drivers on the road.
 
 To get around this issue, Grogger and Ridgeway (2006) focus on the intertwilight period, which are times in which it is sometimes light out and sometimes dark.
 
 For example, at 6:30 PM it is sometimes light out in San Diego (in the summer). However, at different times of year (in the winter) it is dark out at 6:30 PM. Therefore, maybe we can compare the composition of traffic stops around 6:30 PM in the summer and the winter to understand whether police officers are more likely to stop minority drivers when it is light out.
 
-For example, imagine 40 percent of drivers stopped are Black when it is light out (at 6:30 PM), but 35 percent of drivers stopped are Black when it is dark out (still 6:30 PM, but a different part of the year). In this hypothetical example, the decrease in stops for Black drivers must be due to officers inability to racial profile when it is dark.
+For example, imagine 40 percent of drivers stopped are Black when it is light out (at 6:30 PM), but 35 percent of drivers stopped are Black when it is dark out (still 6:30 PM, but a different part of the year). In this hypothetical example, the decrease in stops for Black drivers must be due to officers' inability to racially profile when it is dark.
 
 If you recall, in our data we have information on the time a given traffic stop occurred, as well as the race of the driver. However, we also need to have information on whether it was light or dark at the time of that given stop. To add this to our dataset we will need to **merge** in external data on sunset times. This will introduce us to **data wrangling** in Stata
 
 ## Data Wrangling 
 When you start an empirical research project in the social sciences, you must ask the question: what data can I use to answer this question? Once you have identified the data, it rarely comes in a format that is ready for data analysis. Generally, there are a number of steps that must be taken to prepare the data. These steps are often referred to as **data wrangling**
 
-For example, the Census has confidential income data that is available only to researchers that go through an application process. The data, however, is stored separately for every state. To create a master dataset, you would need to combine all these individual datasets together. This is a form of data wrangling. In Stata, this is accomplished with the **append** command
+For example, the Census has confidential income data that is available only to researchers who go through an application process. The data, however, is stored separately for every state. To create a master dataset, you would need to combine all these individual datasets. This is a form of data wrangling. In Stata, this is accomplished with the **append** command
 
 Next, imagine you are interested in the relationship between economic conditions and the opioid crisis in the United States. The Bureau of Labor Statistics provides county-level information on unemployment. The Centers for Disease Control and Prevention (CDC) provides county-level opioid prescription data. To study this question, we would need to combine these two datasets together at the county level. This is another example of data wrangling, and in Stata, this is accomplished with the **merge** command.
 
 Lastly, imagine you have individual-level data on voting rates, but you are interested in comparing voting rates across counties. In other words, it would be more convenient for your analysis to have a dataset at the county level, rather than at the individual level. This is another example of data wrangling, and in Stata, this can be accomplished with the **collapse** command. 
 
-In this section, we will learn about all three of these commands: append, merge, and collapse, with a particular focus on (1) when each is appropriate and (2) how do we implement them in Stata. 
+In this section, we will learn about all three of these commands: append, merge, and collapse, with a particular focus on (1) when each is appropriate and (2) how we implement them in Stata. 
 
 ## Append 
 
@@ -139,7 +139,7 @@ use classA.dta, clear
 append using classB.dta 
 ```
 
-What we have done is first load in the class A data by typing ``use classA.dta, clear``. Then we have appended the class B data by typing ``append using classB.dta``. In order for this code to work, both ``classA.dta`` and ``classB.dta`` need to be in the working directory. Additionally, the variable names in both classA and classB need to be the same. For example, if one of the datasets had the student id variable named ``sid``, then you would need to make the names consistent across datasets before merging. You can rename a variable with the ``rename`` command. For example, to rename a variable ``sid`` to ``student`` you would type ``rename sid student``.
+What we have done is first load in the class A data by typing ``use classA.dta, clear``. Then we have appended the class B data by typing ``append using classB.dta``. For this code to work, both ``classA.dta`` and ``classB.dta`` need to be in the working directory. Additionally, the variable names in both classA and classB need to be the same. For example, if one of the datasets had the student id variable named ``sid``, then you would need to make the names consistent across datasets before merging. You can rename a variable with the ``rename`` command. For example, to rename a variable ``sid`` to ``student`` you would type ``rename sid student``.
 
 In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on.You can continue to ``append`` more datasets by typing, for example, ``append using classC.dta`` followed by ``append using classD.dta`` and so on.
 
@@ -155,9 +155,9 @@ The second task is to identify the type of merge. There are three types of merge
 knitr::include_graphics("images/03_merge_one.png")
 ```
 
-In each dataset, there is a unique value for ``student`` for every  observation. This is referred to as a one-to-one merge because we are matching each student in the school dataset to a single student in the gpa dataset. 
+In each dataset, there is a unique value for ``student`` for every observation. This is referred to as a one-to-one merge because we are matching each student in the school dataset to a single student in the gpa dataset. 
 
-A many-to-one merge or one-to-many merge is when the variable that is being merged on has multiple observations for some values in one of teh two dataset. For example, in Figure \@ref(fig:mergemto1), we are merging the two datasets based on the variable ``school.`` But in the student-level dataset, there are multiple observations per school. In particular, students 1 and 2 attend school A, while students 3 and 4 attend school B. In the school-level dataset there is a single observation per school. 
+A many-to-one merge or one-to-many merge is when the variable that is being merged on has multiple observations for some values in one of the two datasets. For example, in Figure \@ref(fig:mergemto1), we are merging the two datasets based on the variable ``school.`` But in the student-level dataset, there are multiple observations per school. In particular, students 1 and 2 attend school A, while students 3 and 4 attend school B. In the school-level dataset, there is a single observation per school. 
 
 ```{r, mergemto1, echo=FALSE, out.width="60%", fig.cap="Example of a many-to-one Merge",fig.align='center'}
 knitr::include_graphics("images/03_merge_many.png")
@@ -245,7 +245,7 @@ Whether you keep unmatched observations in your dataset depends a bit on your an
 keep if _merge==3
 ```
 
-You can also specify to only keep matched observations directly in the merge command. If you are only keeping observations that match between the two datasets, you don't need to generate the ``_merge`` variable, as it will be equal to 3 for all matched observations. Instead, you can specify the option ``keep(3)`` which only keeps matched observations. Then, in order to prevent Stata from adding an uniformative variable ``_merge``, you can also specify ``nogen`` so that the variable is not generated. The example below uses both these options in the context of our hypothetical example.
+You can also specify to only keep matched observations directly in the merge command. If you are only keeping observations that match between the two datasets, you don't need to generate the ``_merge`` variable, as it will be equal to 3 for all matched observations. Instead, you can specify the option ``keep(3)`` which only keeps matched observations. Then, to prevent Stata from adding an uniformative variable ``_merge``, you can also specify ``nogen`` so that the variable is not generated. The example below uses both these options in the context of our hypothetical example.
   
 ```{stata}
 use test_score.dta, clear 
@@ -258,7 +258,7 @@ Now that we understand how to use the ``merge`` command, let's go through a few 
 
 In the example below (Figure \@ref(fig:samename)), the two datasets are the same as the previous example, but the student variable is named ``student_id`` in one and ``student`` in the other
 
-```{r, samename, echo=FALSE, out.width="60%", fig.cap="Example of Merge with Different Names for Matching Varaibles",fig.align='center'}
+```{r, samename, echo=FALSE, out.width="60%", fig.cap="Example of Merge with Different Names for Matching Variables",fig.align='center'}
 knitr::include_graphics("images/03_samename.png")
 ```
 
@@ -269,7 +269,7 @@ use test_score2.dta, clear
 merge 1:1 student_id using hw_score.dta
 ```
 
-The variable ``student_id`` was not found because the variable ``student_id`` does not exist in the using dataset. In order to merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the ``rename`` command to ensure the names are the same. 
+The variable ``student_id`` was not found because the variable ``student_id`` does not exist in the using dataset. To merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the ``rename`` command to ensure the names are the same. 
 
 Similarly, matching variables must be the same type of variable. For example, in Figure \@ref(fig:sametype), the student variable is stored as a string in the first dataset (which is why it is highlighted in red), while it is stored as a numeric variable in the second dataset (which is why it is highlighted in black).
 
@@ -326,7 +326,7 @@ unique date
 unique date
 ```
   
-How do we interpret this output? Well, the number of unique values of date is 1186. In other words, this is how many different days there are in our dataset on traffic stops. In contrast, there are 381,149 total stops. Therefore, there are multiple stops per day. Whenever you see more records than unique values, you know this is a ``many-to-BLANK`` merge. The next job for us is to figure out if the ``BLANK`` should be replaced by a ``one``. In order to do this we need to load the ``sd_sunset.dta``.
+How do we interpret this output? Well, the number of unique values of date is 1186. In other words, this is how many different days there are in our dataset on traffic stops. In contrast, there are 381,149 total stops. Therefore, there are multiple stops per day. Whenever you see more records than unique values, you know this is a ``many-to-BLANK`` merge. The next job for us is to figure out if the ``BLANK`` should be replaced by a ``one``. To do this we need to load the ``sd_sunset.dta``.
 
 ```{stata, collectcode=T}
 use sd_sunset.dta, clear
@@ -369,7 +369,7 @@ merge m:1 date using sd_sunset.dta, keep(3) nogen
 merge m:1 date using sd_sunset.dta, keep(3) nogen
 ```
 
-Because we specified ``keep(3) nogen``, we are only keeping observations that correspond to dates in both dataset. Now, we are going to want to use this data for our analysis later, so let's save the combined dataset under a new name: ``sd_analysis_sample.dta`` by typing:
+Because we specified ``keep(3) nogen``, we are only keeping observations that correspond to dates in both datasets. Now, we are going to want to use this data for our analysis later, so let's save the combined dataset under a new name: ``sd_analysis_sample.dta`` by typing:
 
 ```{stata,eval=F}
 save sd_analysis_sample.dta, replace 
@@ -379,13 +379,13 @@ This code will place a new file in your working directory named ``sd_analysis_sa
 
 ## Date-Time
 
-Now that we have all the information to perform the veil of darkness test, we need to restrict to stops for which the test applies. To remind you, we will explore whether the composition of trafic stops by race varies by whether it is light or dark out, controlling for the time of the stop. 
+Now that we have all the information to perform the veil of darkness test, we need to restrict to stops for which the test applies. To remind you, we will explore whether the composition of traffic stops by race varies by whether it is light or dark out, controlling for the time of the stop. 
 
 In order to do this, we will restrict to traffic stops that occur between 6:30-7:00 PM. In San Diego, in parts of the year, it is dark out at 6:30-7:00 PM. At other times it is light out. This is, of course, not the only time slot that will work. In fact, the methods in Grogger and Ridgeway (2006) use all such times that are sometimes light and sometimes dark. Performing this analysis requires statistical techniques beyond the level of this class, so we will instead focus on one particular block of time: 6:30-7:00 PM.
 
 So we need to restrict to all stops that occur in this time period. Doing this will be harder than you think! We need to learn how Stata stores the time of the day. 
 
-In Stata, times of the day are often held in terms of milliseconds from midnight. Why? Well, you could store it as a string variables, but you can't add string variables. For example, while I understand that the string ``"6:00 PM"`` is equal to 6:00 PM at night, I need a way to store the information so that I can do things like add or subtract additional time (i.e. if I add an hour to 6:00 PM the result should be 7:00 PM). Strings are interpreted as words in Stata and so cannot be added in this way.
+In Stata, times of the day are often held in terms of milliseconds from midnight. Why? Well, you could store it as a string variable, but you can't add string variables. For example, while I understand that the string ``"6:00 PM"`` is equal to 6:00 PM at night, I need a way to store the information so that I can do things like add or subtract additional time (i.e. if I add an hour to 6:00 PM the result should be 7:00 PM). Strings are interpreted as words in Stata and so cannot be added in this way.
 
 To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
 
@@ -410,7 +410,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 
 While this procedure will get you the right answer, typing some large numbers can sometimes lead to transcription errors if you are not careful. A better way to do this is to use Stata commands that do this math for you. The ``clock()`` command automatically translates time as we usually interpret it (i.e. 9:00 AM) into milliseconds from midnight automatically.
 
-For example, to see how many milliseconds from midnight 6:00 PM is type:
+For example, to see how many milliseconds there are from midnight to 6:00 PM, we can type:
 
 ```{stata}
   di clock("18:30:00","hms")
@@ -431,7 +431,7 @@ Next, we need to generate indicators that tell us whether a given stop occurred 
 gen light = (stop_time<sunset)
 ```
 
-In words, we are creating a variable that is equal to 1 if the time of the stop occured before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable ``dusk`` in the data contains the time of dusk, which we can compare to the ``stop_time`` to generate an indicator for ``dark``:
+In words, we are creating a variable that is equal to 1 if the time of the stop occurred before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable ``dusk`` in the data contains the time of dusk, which we can compare to the ``stop_time`` to generate an indicator for ``dark``:
 
 ```{stata, collectcode=TRUE}
 gen dark = (stop_time>dusk)
@@ -456,7 +456,7 @@ tab subject_race
 tab subject_race 
 ```
 
-If we want the composition, but restrict to stops in the sunlight, we can add a conditional statement to our code: 
+If we want the composition but restricted to stops in the sunlight, we can add a conditional statement to our code: 
 
 ```{stata, eval=F, echo=T}
 tab subject_race if dark==0 
@@ -481,13 +481,13 @@ In these tables, we are trying to see if certain races are much less likely to b
 
 ## Bar Graphs
 
-Eventually, we are going to use a bar graph to visualize the veil of darkness test for discrimination. In this section, we are going to learn how to construct bar graphs in Stata generally. To begin, we are going to set up a hypothetical example. Imagine we are trying to construct a bar graph that shows average GPA across different schools, based on the data below:
+Eventually, we are going to use a bar graph to visualize the veil of darkness test for discrimination. In this section, we are going to learn how to construct bar graphs in Stata generally. To begin, we are going to set up a hypothetical example. Imagine we are trying to construct a bar graph that shows the average GPA across different schools, based on the data below:
 
 ```{r, schoolgpa, echo=FALSE, out.width="65%", fig.cap="Dataset on Schools and GPA",fig.align='center'}
 knitr::include_graphics("images/03_school_gpa.png")
 ```
 
-The command ``graph bar`` is used to make bar graphs in Stata. There are lots of ways this command can be altered, so make sure to look at the help file! To start, we are going to create a bar graph that shows average GPA for each school.
+The command ``graph bar`` is used to make bar graphs in Stata. There are lots of ways this command can be altered, so make sure to look at the help file! To start, we are going to create a bar graph that shows the average GPA for each school.
 
 The basic syntax for the ``graph bar`` command is 
 
@@ -526,7 +526,7 @@ Sometimes we need to change the aesthetics of our figures to make them more easi
 ssc install blindschemes
 ```
 
-``blindschemes`` comes with a number of different ``schemes``. You can think of graphics schemes as capturing the overall theme or aesthetic of your graph. Let's set the ``scheme`` to ``plotplainblind``, which is one of the schemes that comes from the ``blindschemes`` package.
+``blindschemes`` comes with a number of different ``schemes``. You can think of graphics schemes as capturing the overall theme or aesthetic of your graph. Let's set the ``scheme`` to ``plotplainblind``, which is one of the schemes that come from the ``blindschemes`` package.
 ```{stata, eval=FALSE}
 set scheme plotplainblind
 ```
@@ -543,7 +543,7 @@ graph bar (mean) gpa, over(school) ///
 knitr::include_graphics("images/03_bar_ex3.png")
 ```
 
-There are many further options when constructing bar graphs. Sometimes, the option you are looking for isn't available, but there are still ways to construct the required bar graph. In other words, you may need to use some **data wrangling** to get your data in the right format to construct a bar graph. In the next section we will learn another data wrangling technique that is generally useful, but will be particularly useful for generating the bar graph we need in order to visualize the veil of darkness test.
+There are many further options when constructing bar graphs. Sometimes, the option you are looking for isn't available, but there are still ways to construct the required bar graph. In other words, you may need to use some **data wrangling** to get your data in the right format to construct a bar graph. In the next section, we will learn another data-wrangling technique that is generally useful, but will be particularly useful for generating the bar graph we need in order to visualize the veil of darkness test.
 
 ## Collapse
 
@@ -578,13 +578,13 @@ One important note is that in order to retrieve the original dataset, you would 
 
 ## Visualizing Veil of Darkness
 
-In this section, we want to construct a data visualization that will allow us to see clearly the results of the veil of darkness test. Let's look at some hypothetical examples before we begin so that we know what our end goal should look like. Figure \@ref(fig:veilhyp1) presents a hypothetical example of what our results could look like.
+In this section, we want to construct a data visualization that will allow us clearly see the results of the veil of darkness test. Let's look at some hypothetical examples before we begin so that we know what our end goal should look like. Figure \@ref(fig:veilhyp1) presents a hypothetical example of what our results could look like.
 
 ```{r, veilhyp1, echo=FALSE, out.width="65%", fig.cap="Veil of Darkness Test Finds Discriminatory Policy Behavior",fig.align='center'}
 knitr::include_graphics("images/03_ill_ex1.png")
 ```
 
-Is this evidence of discriminatory behavior or not? In this case, the answer is yes. When it is light out, 60 percent of stopped drivers are Black. When it is dark out, this falls to 50 percent. The fall in fraction of stops for Black drivers in the darkness could be explained by discriminatory officers being unable to observe race in the dark, and thus, unable to target minority drivers for stops. Before continuing, make sure you understand what data is being presented in Figure \@ref(fig:veilhyp1) above.
+Is this evidence of discriminatory behavior or not? In this case, the answer is yes. When it is light out, 60 percent of stopped drivers are Black. When it is dark out, this falls to 50 percent. The fall in the fraction of stops for Black drivers in the darkness could be explained by discriminatory officers being unable to observe race in the dark, and thus, unable to target minority drivers for stops. Before continuing, make sure you understand what data is being presented in Figure \@ref(fig:veilhyp1) above.
 
 Figure \@ref(fig:veilhyp2) presents a different hypothetical example of what the bar graph might look like.
 
@@ -604,7 +604,7 @@ To count the number of observations per race for both daylight and darkness, we 
 gen obs_count = 1
 ```
 
-Now it might not be immediately clear why we have created this variable. Right now it is just a variable that is equal to 1 for every observation. However, once we collapse the data, this variable will hold information we need to construct our bar graph. To collapse the data to the subject-race-by-dark condition level: 
+Now it might not be immediately clear why we have created this variable. Right now it is just a variable that is equal to 1 for every observation. However, once we collapse the data, this variable will hold the information we need to construct our bar graph. To collapse the data to the subject-race-by-dark condition level: 
 
 ```{stata, eval=FALSE}
 collapse (count) obs_count, by(subject_race dark) 
@@ -645,7 +645,7 @@ Now that we have (1) total stops by race in daylight vs. darkness and (2) total 
   gen fraction_stops = obs_count/total_obs
 ```
 
-Now we can use this variable to show the composition of traffic stops (by race) both in the daylight and darkness:
+Now we can use this variable to show the composition of traffic stops (by race) both in the daylight and in the darkness:
 
 ```{stata, eval=FALSE}
 graph bar fraction_stops, over(dark) over(subject_race)
@@ -697,7 +697,7 @@ graph bar fraction, asyvars ///
 knitr::include_graphics("images/03_bar4.png")
 ```
 
-The last step is we can change the colors of the bars. In the code below, ``bar(1, fcolor(sky))`` changes the ``Light`` bars to a sky blue. ``bar(2,color(vermillion))`` changes the ``Dark`` bars to vermillion.
+The last step is to can change the colors of the bars. In the code below, ``bar(1, fcolor(sky))`` changes the ``Light`` bars to a sky blue. ``bar(2,color(vermillion))`` changes the ``Dark`` bars to vermillion.
 
 ```{stata, eval=FALSE}
 graph bar fraction, asyvars ///
@@ -712,9 +712,9 @@ graph bar fraction, asyvars ///
 knitr::include_graphics("images/03_bar5.png")
 ```
 
-So now let's spend a little time interpreting our main result. Overall, it appears that the fraction of stops for a given race does not depend dramatically on the light condition. We can see this is in the graph by the fact that the blue and orange bars tend to be around the same height. If the orange bar (i.e. ``dark==1``) was dramatically lower for some races, then that would be evidence that police were targeting this race in the daylight.
+So now let's spend a little time interpreting our main result. Overall, it appears that the fraction of stops for a given race does not depend dramatically on the light condition. We can see this in the graph by the fact that the blue and orange bars tend to be around the same height. If the orange bar (i.e. ``dark==1``) was dramatically lower for some races, then that would be evidence that police were targeting this race in the daylight.
 
-Like any empirical design, the test has assumptions and limitations. It is not a fatal flaw that a given set of research has limitations. All research has limitations and it is important to think carefully about them. In the next section we will discuss some of these limtations, as well as feature some other factors that could be studied with the Stanford Open Policing Project data. 
+Like any empirical design, the test has assumptions and limitations. It is not a fatal flaw that a given set of research has limitations. All research has limitations and it is important to think carefully about them. In the next section, we will discuss some of these limtations as well as feature some other factors that could be studied with the Stanford Open Policing Project data. 
 
 ## Conclusion
 
@@ -724,7 +724,7 @@ Another assumption is that driving behavior is the same before and after dark. W
   
 This data has a lot of possibilities and we have explored only a small portion of it. In this final section let's think about a few more possible questions to explore.
 
-First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why? What factors predict high levels of discriminatory behavior? Are there policies that could be used to reduce discriminatory behavior?
+First, we have focused on one place: San Diego. But we can look at how this test finds different results across different areas. If we find different results, we can ask why. What factors predict high levels of discriminatory behavior? Are there policies that could be used to reduce discriminatory behavior?
   
 Second, we have focused on the initial decision to stop a driver. There could be discrimination at other stages of the stop. For example, are police officers more likely to search for contraband if the driver is a minority? This is something the researchers at the Stanford Open Policing Project have explored. Below is a figure from the SOPP website that shows search rates by race across different U.S. 
 
