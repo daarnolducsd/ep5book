@@ -422,7 +422,7 @@ library(lubridate)
 
 ```r
 today()
-#> [1] "2023-12-21"
+#> [1] "2023-12-22"
 ```
 
 Or even the exact time right now:
@@ -430,7 +430,7 @@ Or even the exact time right now:
 
 ```r
 now()
-#> [1] "2023-12-21 17:48:40 PST"
+#> [1] "2023-12-22 12:30:04 PST"
 ```
 
 But most importantly, ``lubridate`` allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example. 

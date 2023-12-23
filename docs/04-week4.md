@@ -1276,7 +1276,7 @@ To conclude, using technology to teach-at-the-right-level seems like a promising
 
 - ``outreg2 [reg1 reg2] using reg_table.doc, word replace`` - creates a regression table with ``reg1`` in the first column and ``reg2`` in the second. ``reg1`` and ``reg2`` are the results of two separate ``est store`` commands
 
-
+::: 
 ## <u>Animated Concepts</u> {-}
 
 <iframe src="https://www.youtube.com/embed/MBSsegVVqlk" width="672" height="400px" data-external="1"></iframe>

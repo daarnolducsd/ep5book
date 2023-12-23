@@ -104,8 +104,8 @@ code {
   background-color: #f1f1f1;
 }
 </style>
-<p>Between 1921 and 1956 French colonial governments in Africa organized medical campaigns to treat and prevent sleeping sickness. Sleeping sickness is a lethal parasitic disease transmitted by bite of tsetse fly that occurs regularly in parts of sub-Saharan Africa. During the colonial era, French colonies had military organized campaigns exclusively focused on treating sleeping sickness.</p>
-<p>However, the treatments at the time (atoxyl and Lomidine) both were questionable in their efficacy and
+<p>Between 1921 and 1956 French colonial governments in Africa organized medical campaigns to treat and prevent sleeping sickness. Sleeping sickness is a lethal parasitic disease transmitted by the bite of a tsetse fly, which inhabit certain areas of Africa. During the colonial era, French colonies had military-organized campaigns exclusively focused on treating sleeping sickness.</p>
+<p>However, the treatments at the time (Atoxyl and Lomidine) both were questionable in their efficacy and
 had severe side effects. Historians and anthropologists have linked sleeping sickness campaigns to mistrust in modern medicine.</p>
 <p>In this section, we will use data from Lowes and Montero (2021) to study how colonial medical campaigns undertaken generations ago impact health behaviors today. To do so, we will use measures of exposure to medical campaigns constructed by Lowes and Montero (2021) from newly digitized military records from France.</p>
 <div class="figure" style="text-align: center">
@@ -115,7 +115,7 @@ Figure 5.1: Sleeping Sickness Visits Between 1921-1956
 </p>
 </div>
 <p>Figure <a href="legacy-of-colonial-medicine.html#fig:map">5.1</a> shows the variation in sleeping sickness across areas in Cameroon and French Equatorial Africa (present-day Central African Republic, Chad, Republic of Congo, and Gabon). As can be seen in the figure, there is large variation across areas. Some places (in blue), had no medical campaign visits related to sleeping sickness during this period. Other areas (red), were visited as many as 24 times in the years between 1921-1956. We will study how variation in these visit rates correlates to measures of trust in medicine today.</p>
-<p>In Lowes and Montero (2021), the authors study two key outcomes, both which come from Demographic and Health Surveys (DHS). The first is a vaccination index that captures what fraction of possible vaccines children have received. The second studies whether individuals refuse a free, non-invasive blood test. Consent to the blood test is high in these samples, as the blood test is taken by finger prick and free to the individuals in the survey. Refusal of this blood test might then signal distrust in medicine generally.</p>
+<p>In Lowes and Montero (2021), the authors study two key outcomes, both of which come from Demographic and Health Surveys (DHS). The first is a vaccination index that captures what fraction of possible vaccines children have received. The second studies whether individuals refuse a free, non-invasive blood test. Consent to the blood test is high in these samples, as the blood test is taken by finger prick and is free to the individuals in the survey. Refusal of this blood test might then signal distrust in medicine generally.</p>
 <p>To begin, let's load the dataset <code>colonial_medicine.dta</code></p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb167-1"><a href="legacy-of-colonial-medicine.html#cb167-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"</span></span>
 <span id="cb167-2"><a href="legacy-of-colonial-medicine.html#cb167-2" tabindex="-1"></a><span class="kw">use</span> colonial_medicine.dta, <span class="kw">replace</span></span>
@@ -138,7 +138,7 @@ refused_an~t |     11,993    .1110648    .3142255          0          1</code></
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
 Times_Pros~d |     67,036    .2941624    .1943945          0         .8</code></pre>
-<p>So a value of 0.2 indicates on average, an individuals location was visited 20 percent of the years between 1921-1956 (35 years total). In simpler terms, a value of 0.2 indicates 7 years, because 7 is 20 percent of 35.</p>
+<p>So a value of 0.2 indicates on average, an individual's location was visited 20 percent of the years between 1921-1956 (35 years total). In simpler terms, a value of 0.2 indicates 7 years, because 7 is 20 percent of 35.</p>
 <p>So we now have the data to answer our initial question: are people who live in places in which historical medical campaigns were more prevalent more likely to refuse blood tests today? But first, let's highlight a few new aspects of the data that we will need to understand.</p>
 <p>First, if I browse the data, you will see the variable <code>wealth_index</code> looks like it is a string variable, yet it is highlighted in blue, not red</p>
 <div class="figure" style="text-align: center">
@@ -165,7 +165,7 @@ Figure 5.4: Missing Values
 <h2>
 <span class="header-section-number">5.2</span> Value Labels<a class="anchor" aria-label="anchor" href="#value-labels"><i class="fas fa-link"></i></a>
 </h2>
-<p>A value label associates a description with a particular numeric value of a variable. Sometimes it is convenient to store variables as numeric, for example, if we would like to apply some mathematical operations. However, it might be hard to remember what each value of the data represents. Value labels allow you to store the information as numeric, while still able to quickly reference what each number represents.</p>
+<p>A value label associates a description with a particular numeric value of a variable. Sometimes it is convenient to store variables as numeric, for example, if we would like to apply some mathematical operations. However, it might be hard to remember what each value of the data represents. Value labels allow you to store the information as numeric, while still being able to quickly reference what each number represents.</p>
 <p>In order to discuss value labels, we are going to look at the American National Election Survey. The American National Election Survey (ANES) is a survey on elections in the U.S. It has a large range of questions that come in the survey. To make it easier for users of the dataset, many of the variables have value labels attached.</p>
 <p>We are going to load a very small subset of the dataset which has information on just a few questions:</p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb174-1"><a href="legacy-of-colonial-medicine.html#cb174-1" tabindex="-1"></a>cd /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span>
@@ -195,7 +195,7 @@ Figure 5.6: Browsing the ANES
 <span id="cb175-8"><a href="legacy-of-colonial-medicine.html#cb175-8" tabindex="-1"></a>       2. No, didn't vote |      1,137       26.63      100.00</span>
 <span id="cb175-9"><a href="legacy-of-colonial-medicine.html#cb175-9" tabindex="-1"></a>--------------------------+-----------------------------------</span>
 <span id="cb175-10"><a href="legacy-of-colonial-medicine.html#cb175-10" tabindex="-1"></a>                    Total |      4,270      100.00</span></code></pre></div>
-<p>So there are 4 different value labels. If you need to references values of these variables, you need to use the actual numeric values, not the labels themselves. The labels are just there so we don't forget what the numbers mean. For example, if I wanted to see how many individuals refused the question, I can type:</p>
+<p>So there are 4 different value labels. If you need to reference values of these variables, you need to use the actual numeric values, not the labels themselves. The labels are just there so we don't forget what the numbers mean. For example, if I wanted to see how many individuals refused the question, I can type:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb176-1"><a href="legacy-of-colonial-medicine.html#cb176-1" tabindex="-1"></a><span class="fu">count</span> <span class="kw">if</span> vote==-9</span>
 <span id="cb176-2"><a href="legacy-of-colonial-medicine.html#cb176-2" tabindex="-1"></a>  2</span></code></pre></div>
 <p>If I try to do the same thing, but referencing the value label, I will get an error:</p>
@@ -205,7 +205,7 @@ Figure 5.6: Browsing the ANES
 <span id="cb177-4"><a href="legacy-of-colonial-medicine.html#cb177-4" tabindex="-1"></a></span>
 <span id="cb177-5"><a href="legacy-of-colonial-medicine.html#cb177-5" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
 <span id="cb177-6"><a href="legacy-of-colonial-medicine.html#cb177-6" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
-<p>It states <code>type mismatch</code> because vote is a numeric variable, not a string variable. A quick way to see the numeric values associated with the labels is to type:</p>
+<p>It states <code>type mismatch</code> because <code>vote</code> is a numeric variable, not a string variable. A quick way to see the numeric values associated with the labels is to type:</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb178-1"><a href="legacy-of-colonial-medicine.html#cb178-1" tabindex="-1"></a><span class="kw">tab</span> vote, <span class="kw">sum</span>(vote)</span>
 <span id="cb178-2"><a href="legacy-of-colonial-medicine.html#cb178-2" tabindex="-1"></a> PRE: Did R |</span>
 <span id="cb178-3"><a href="legacy-of-colonial-medicine.html#cb178-3" tabindex="-1"></a>   vote <span class="kw">for</span> |   Summary <span class="kw">of</span> PRE: Did R vote <span class="kw">for</span></span>
@@ -218,12 +218,16 @@ Figure 5.6: Browsing the ANES
 <span id="cb178-10"><a href="legacy-of-colonial-medicine.html#cb178-10" tabindex="-1"></a>  2. No, <span class="kw">di</span> |           2           0       1,137</span>
 <span id="cb178-11"><a href="legacy-of-colonial-medicine.html#cb178-11" tabindex="-1"></a>------------+------------------------------------</span>
 <span id="cb178-12"><a href="legacy-of-colonial-medicine.html#cb178-12" tabindex="-1"></a>      Total |   1.2320843   .72453319       4,270</span></code></pre></div>
+<div class="rmdtip">
+<p><strong>Concept Check</strong></p>
+<p>Make sure you understand why the above code can retrieve the numeric value associated with each label. Remember, <code>tab</code> creates a table of frequencies, while <code>sum</code> generates summary statistics.</p>
+</div>
 </div>
 <div id="missing-values" class="section level2" number="5.3">
 <h2>
 <span class="header-section-number">5.3</span> Missing Values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
 </h2>
-<p>Continuing our exploration of the ANES dataset, we will now discuss missing values. For numeric variables, Stata stores missing values as a period. If your numeric variable does not code missing information as a period, then you should change this before continuing the analysis. To see why, let's consider the variable <code>better_or_worse</code>, which asks the respondent on a scale of 1 to 5 how much worse off are you relative to a year ago?</p>
+<p>Continuing our exploration of the ANES dataset, we will now discuss missing values. For numeric variables, Stata stores missing values as a period. If your numeric variable does not code missing information as a period, then you should change this before continuing the analysis. To see why, let's consider the variable <code>better_or_worse</code>, which asks the respondent on a scale of 1 to 5 how much worse off are you relative to a year ago.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb179-1"><a href="legacy-of-colonial-medicine.html#cb179-1" tabindex="-1"></a><span class="kw">tab</span> better_or_worse</span></code></pre></div>
 <pre><code>   PRE: R how much better |
 worse off than 1 year ago |      Freq.     Percent        Cum.
@@ -251,7 +255,7 @@ better_or_~e |      4,270    2.937002    1.176809         -9          5</code></
 -------------+---------------------------------------------------------
 better_or_~e |      4,257    2.972986    .9814891          1          5</code></pre>
 <p>When you compute summary statistics or run regressions, observations with missing values will be dropped automatically from this calculation. However, you need to be very careful when constructing new variables from observations with missing values. For logical statements in Stata (such as when creating indicator variables), the missing value is interpreted as infinity. The reason why it was chosen to have missing values be interpreted as infinity is a little complicated, but it can lead to some confusing errors!</p>
-<p>To see how, Imagine we want to create an indicator that is equal to 1 if an individual thinks their life has gotten worse relative to 1 year ago. An individual that responded 4 or 5 believes their life has gotten worse relative to 1 year ago. So one potential way to code this new variable would be to type:</p>
+<p>To see how, imagine we want to create an indicator that is equal to 1 if an individual thinks their life has gotten worse relative to 1 year ago. An individual that responded 4 or 5 believes their life has gotten worse relative to 1 year ago. So one potential way to code this new variable would be to type:</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb186-1"><a href="legacy-of-colonial-medicine.html#cb186-1" tabindex="-1"></a><span class="kw">gen</span> worse_off = (better_or_worse&gt;=4)</span></code></pre></div>
 <p>Let's see what <code>worse_off</code> is equal to for individuals that had missing values for <code>better_or_worse</code>.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb187-1"><a href="legacy-of-colonial-medicine.html#cb187-1" tabindex="-1"></a><span class="kw">sum</span> worse_off <span class="kw">if</span> better_or_worse==.</span></code></pre></div>
@@ -259,21 +263,21 @@ better_or_~e |      4,257    2.972986    .9814891          1          5</code></
 -------------+---------------------------------------------------------
    worse_off |         13           1           0          1          1</code></pre>
 <p>It is equal to 1 for all of these individuals, but why? The reason is missing values are interpreted as infinity in logical statements. Because infinity is greater than 4, then everyone with missing values of this is coded as <code>worse_off=1</code>.</p>
-<p>To avoid this problem, we need to change code so that it takes into account possibility of missing values. For example, we might want to replace <code>worse_off</code> equal to missing if <code>better_or_worse</code> is equal to missing.</p>
+<p>To avoid this problem, we need to change the code so that it takes into account the possibility of missing values. For example, we might want to replace <code>worse_off</code> equal to missing if <code>better_or_worse</code> is equal to missing.</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb189-1"><a href="legacy-of-colonial-medicine.html#cb189-1" tabindex="-1"></a><span class="kw">replace</span> worse_off = . <span class="kw">if</span> better_or_worse==.</span></code></pre></div>
 </div>
 <div id="binned-scatterplots-theory" class="section level2" number="5.4">
 <h2>
 <span class="header-section-number">5.4</span> Binned Scatterplots (Theory)<a class="anchor" aria-label="anchor" href="#binned-scatterplots-theory"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this chapter we will discuss a new data visualization technique known as <strong>binned scatterplots</strong>. To understand this technique, let's first take a simple example. Imagine, we have the dataset below in Figure <a href="legacy-of-colonial-medicine.html#fig:barill">5.7</a> which shows Earnings (vertical axis) against test scores (horizontal axis):</p>
+<p>In this chapter, we will discuss a new data visualization technique known as <strong>binned scatterplots</strong>. To understand this technique, let's first take a simple example. Imagine, we have the dataset below in Figure <a href="legacy-of-colonial-medicine.html#fig:barill">5.7</a> which shows Earnings (vertical axis) against test scores (horizontal axis):</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:barill"></span>
 <img src="images/05_bin1.png" alt="Relationship Between Earnings and Test Scores" width="65%"><p class="caption">
 Figure 5.7: Relationship Between Earnings and Test Scores
 </p>
 </div>
-<p>In this example, we have plotted all the data and can clearly see that there is a positive relationship between test scores and earnings. Individuals with higher test scores tend to also have higher earnings. But what if there were 1,000 people in this dataset, or 10,000, or a million? The graph would soon get pretty crowded.Not only would a graph with a million observations be difficult to interpret, it would also likely crash your computer!</p>
+<p>In this example, we have plotted all the data and can clearly see that there is a positive relationship between test scores and earnings. Individuals with higher test scores tend to also have higher earnings. But what if there were 1,000 people in this dataset, or 10,000, or a million? The graph would soon get pretty crowded.Not only would a graph with a million observations be difficult to interpret, but it would also likely crash your computer!</p>
 <p>However, instead of plotting all the data, imagine we bin the data into intervals. For example, in Figure <a href="legacy-of-colonial-medicine.html#fig:barill2">5.8</a> we have binned the data into intervals by dividing the x-axis into three bins. In bin 1 there are observations with scores below 80. Bin 2 has observations with scores between 80 and 90. Bin 3 has scores above 90.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:barill2"></span>
@@ -294,17 +298,17 @@ Figure 5.9: An Example of a Binned Scatterplot
 <h2>
 <span class="header-section-number">5.5</span> Binned Scatterplots (Stata)<a class="anchor" aria-label="anchor" href="#binned-scatterplots-stata"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this section we will use the data from Lowes and Montero (2021) to implement a binned scatterplot to study the legacy of colonial medicine in Africa. In order to construct the binned scatterplot we will make use of the <code>binscatter</code> command.</p>
-<p>As a reminder, between 1921-1956, French colonies in Africa were visited by many medical campaigns often forcing medical care with questionable efficacy and severe side effects. Some places were visited only a small fraction of years. Other places were visited often in these years. Are people who lived in places with many medical campaigns more likely to distrust medicine today?</p>
+<p>In this section, we will use the data from Lowes and Montero (2021) to implement a binned scatterplot to study the legacy of colonial medicine in Africa. In order to construct the binned scatterplot we will make use of the <code>binscatter</code> command.</p>
+<p>As a reminder, between 1921 and 1956, French colonies in Africa were visited by many medical campaigns often forcing medical care with questionable efficacy and severe side effects. Some places were visited only a small fraction of the years. Other places were visited often in these years. Are people who lived in places with many medical campaigns more likely to distrust medicine today?</p>
 <p>To begin let's load the dataset:</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb190-1"><a href="legacy-of-colonial-medicine.html#cb190-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"</span></span>
 <span id="cb190-2"><a href="legacy-of-colonial-medicine.html#cb190-2" tabindex="-1"></a><span class="kw">use</span> colonial_medicine.dta, <span class="kw">replace</span></span>
 <span id="cb190-3"><a href="legacy-of-colonial-medicine.html#cb190-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/<span class="kw">data</span></span></code></pre></div>
-<p>First, we need to drop values that either have missing information for <code>refused_any_blood_test</code> or <code>Times_Prospected</code>. <code>refused_any_blood_test</code> is our key outcome and is equal to 1 if the individual refused the free blood test and zero otherwise. <code>Times_Prospected</code> is our key explanatory variables and captures what fraction of years between 1921-1956 was the individual's region visited for sleeping sickness campaigns. If either of these values are missing for an observation, then they should not be included in the analysis.</p>
+<p>First, we need to drop values that either have missing information for <code>refused_any_blood_test</code> or <code>Times_Prospected</code>. <code>refused_any_blood_test</code> is our key outcome and is equal to 1 if the individual refused the free blood test and zero otherwise. <code>Times_Prospected</code> is our key explanatory variable and captures what fraction of years between 1921-and 1956 was the individual's region visited for sleeping sickness campaigns. If either of these values are missing for an observation, then they should not be included in the analysis.</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb191-1"><a href="legacy-of-colonial-medicine.html#cb191-1" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> refused_any_blood_test==. | Times_Prospected==. </span>
 <span id="cb191-2"><a href="legacy-of-colonial-medicine.html#cb191-2" tabindex="-1"></a>(65,951 observations deleted)</span></code></pre></div>
-<p>The parallel line <code>|</code> indicates "or". So put simply, this line says, drop any observations in which either <code>refused_any_blood_test</code> or <code>Times_Prospected</code> is missing.</p>
-<p>Next, we will use an external command named <code>binscatter</code> can be used to produced binned scatterplots. To install on your version of Stata, you first need to type.</p>
+<p>The parallel line <code>|</code> indicates "or". So put simply, this line says to drop any observations in which either <code>refused_any_blood_test</code> or <code>Times_Prospected</code> is missing.</p>
+<p>Next, we will use an external command named <code>binscatter</code> can be used to produce binned scatterplots. To install on your version of Stata, you first need to type.</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb192-1"><a href="legacy-of-colonial-medicine.html#cb192-1" tabindex="-1"></a><span class="kw">ssc</span> install binscatter</span></code></pre></div>
 <p>Once you execute the code above once, then you will be able to use the <code>binscatter</code> command. The basic syntax of the <code>binscatter</code> command is:</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb193-1"><a href="legacy-of-colonial-medicine.html#cb193-1" tabindex="-1"></a>binscatter yvar xvar, nquantiles(#)</span></code></pre></div>
@@ -320,7 +324,7 @@ Figure 5.9: An Example of a Binned Scatterplot
 Figure 5.10: Binscatter: Refusing Blood Test vs. Share of Years Visited
 </p>
 </div>
-<p>As we can see from the graph, as the share of years visited increases, the fraction of individuals that refuse a blood test also increases. This provides supporting evidence for the initial hypothesis: areas that have a history of colonial medicine still distrust medicine today. The line depicted in the binned scatterplot is a regression line that shows the strength of this relationship.</p>
+<p>As we can see from the graph, as the share of years visited increases, the fraction of individuals who refuse a blood test also increases. This provides supporting evidence for the initial hypothesis: areas that have a history of colonial medicine still distrust medicine today. The line depicted in the binned scatterplot is a regression line that shows the strength of this relationship.</p>
 <p>It is also helpful for interpretation to retrieve the slope of this regression line. We can get this parameter by specifying <code>reportreg</code> as an option for our binscatter command.</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb195-1"><a href="legacy-of-colonial-medicine.html#cb195-1" tabindex="-1"></a>binscatter refused_any_blood_test Times_Prospected, nq(10) reportreg </span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -339,8 +343,8 @@ Figure 5.11: Regression Line: Refusing Blood Test vs. Share of Years Visited
 <h2>
 <span class="header-section-number">5.6</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion-3"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this final section we will summarize what we have learned so far and then present additional results from Lowes and Montero (2021). The goal of Lowes and Montero (2021) is to understand how medical campaigns in Africa between 1921-1956 impact perceptions of medicine today. Colonial medical campaigns undertaken to prevent sleeping sickness often forced medical treatment. The treatments both had questionable efficacy and came with severe side effects. Lowes and Montero (2021) utilize newly digitized French military records in order to measure the exposure of a region to medical campaigns in the past, and combine this information with health surveys to understand the impact of past campaigns on health behaviors today.</p>
-<p>What we have explored is how exposure to these campaigns impacted the choice to refuse a blood test. While this blood test was free to survey participants, and had overall high takeup, some individuals rejected the blood test. This could be one proxy for trust in modern medicine. We found in the prior section that areas with more exposure to medical campaigns were more likely to refuse the blood test.</p>
+<p>In this final section, we will summarize what we have learned so far and then present additional results from Lowes and Montero (2021). The goal of Lowes and Montero (2021) is to understand how medical campaigns in Africa between 1921 and 1956 impact perceptions of medicine today. Colonial medical campaigns undertaken to prevent sleeping sickness often forced medical treatment. The treatments both had questionable efficacy and came with severe side effects. Lowes and Montero (2021) utilize newly digitized French military records in order to measure the exposure of a region to medical campaigns in the past, and combine this information with health surveys to understand the impact of past campaigns on health behaviors today.</p>
+<p>What we have explored is how exposure to these campaigns impacted the choice to refuse a blood test. While this blood test was free to survey participants and had an overall high takeup, some individuals rejected the blood test. This could be one proxy for trust in modern medicine. We found in the prior section that areas with more exposure to medical campaigns were more likely to refuse the blood test.</p>
 <p>One thing you may notice if you read Lowes and Montero (2021), however, is that our results don't appear exactly the same as those in Lowes and Montero (2021). One reason is that Lowes and Montero (2021) also control for other potential factors that could be correlated with historical exposure to medical campaigns as well as health behaviors today. Maybe places with more exposure to colonial medical campaigns vary along a number of dimensions, and these other dimensions could explain the correlation we found. Turns out, you can estimate binned scatterplots that control for other factors. Doing so goes beyond this course, but in Lowes and Montero (2021) the authors control for other factors that impact health decisions, such as age, gender, urban-rural status, among others. Figure <a href="legacy-of-colonial-medicine.html#fig:lm1">5.12</a> displays the binned scatterplot we constructed while also controlling for these factors.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:lm1"></span>
@@ -348,14 +352,31 @@ Figure 5.11: Regression Line: Refusing Blood Test vs. Share of Years Visited
 Figure 5.12: Binscatter: Refusing Blood Test vs. Share of Years Visited
 </p>
 </div>
-<p>Lowes and Montero (2021) also study if colonial medical campaigns impact vaccination rates today. To do so, they construct a vaccination index, which is the share of completed vaccines (out of 9) for children under 5. Again, they find places with more years of colonial medical visits have lower vaccination rates, as shown in Figure <a href="legacy-of-colonial-medicine.html#fig:lm2">5.13</a>.</p>
+<p>Lowes and Montero (2021) also study if colonial medical campaigns impact vaccination rates today. To do so, they construct a vaccination index, which is the share of completed vaccines (out of 9) for children under 5. Again, they found places with more years of colonial medical visits have lower vaccination rates, as shown in Figure <a href="legacy-of-colonial-medicine.html#fig:lm2">5.13</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:lm2"></span>
 <img src="images/05_lm_2.png" alt="Binscatter: Vaccination vs. Share of Years Visited" width="65%"><p class="caption">
 Figure 5.13: Binscatter: Vaccination vs. Share of Years Visited
 </p>
 </div>
-<p>This paper finds that negative experiences in the past transmit across generations. This finding has important implications for trust in institutions generally. It also has very real policy implications. Lowes and Montero (2021) find World Bank projects related to health are less successful in areas with high exposure to colonial medicine.</p>
+<p>This paper finds that negative experiences in the past were transmitted across generations. This finding has important implications for trust in institutions generally. It also has very real policy implications. Lowes and Montero (2021) find World Bank projects related to health are less successful in areas with high exposure to colonial medicine.</p>
+</div>
+<div id="command-descriptions-2" class="section level2 unnumbered">
+<h2>
+<u>Command Descriptions</u><a class="anchor" aria-label="anchor" href="#command-descriptions-2"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p><strong><u>Commands Descriptions</u></strong></p>
+<ul>
+<li>
+<code>binscatter yvar xvar, nquantiles(#)</code> - creates a binned scatter plot with <code>yvar</code> on the vertical axis, <code>xvar</code> on the horizontal axis. <code>nquantiles(#)</code> determines how many bins will be created in the final scatter plot. For example <code>nquantiles(10)</code> specifies 10 bins.</li>
+</ul>
+<p><strong><u>More Concepts</u></strong></p>
+<ul>
+<li><p>value labels - a value label is a string text associated with the particular numeric value of a variable. This is often useful for categorical variables. Having the variable be numeric allows you to perform mathematical operations on the variable, but having a label lets you easily interpret what each numeric value represents.</p></li>
+<li><p>missing values - a missing value for a numeric variable in Stata is stored as a period. Be careful about using relations with respect to missing variables. For example, imagine you want to create a binary indicator that is equal to 1 if an individual is above the age of 40. You might type <code>gen above_40 = (age&gt;40)</code>. If there are individuals with ages that are missing, then <code>above_40</code> will be equal to 1 for these individuals. To replace it back to missing, you can type <code>replace above_40 = . if age==.</code>.</p></li>
+</ul>
+</div>
 
 </div>
 </div>
@@ -545,6 +566,7 @@ window.onload = function() {
 <li><a class="nav-link" href="#binned-scatterplots-theory"><span class="header-section-number">5.4</span> Binned Scatterplots (Theory)</a></li>
 <li><a class="nav-link" href="#binned-scatterplots-stata"><span class="header-section-number">5.5</span> Binned Scatterplots (Stata)</a></li>
 <li><a class="nav-link" href="#conclusion-3"><span class="header-section-number">5.6</span> Conclusion</a></li>
+<li><a class="nav-link" href="#command-descriptions-2">Command Descriptions</a></li>
 </ul>
 
       <div class="book-extra">
@@ -561,7 +583,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-21.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
