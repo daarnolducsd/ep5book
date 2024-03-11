@@ -111,7 +111,8 @@ code {
 <p>To begin, let's load the dataset <code>mindspark_data.dta</code></p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb105-1"><a href="classroom-technology.html#cb105-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"</span></span>
 <span id="cb105-2"><a href="classroom-technology.html#cb105-2" tabindex="-1"></a><span class="kw">use</span> mindspark_data.dta, <span class="kw">replace</span></span>
-<span id="cb105-3"><a href="classroom-technology.html#cb105-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/<span class="kw">data</span></span></code></pre></div>
+<span id="cb105-3"><a href="classroom-technology.html#cb105-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_</span>
+<span id="cb105-4"><a href="classroom-technology.html#cb105-4" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span></code></pre></div>
 <p>As usual, let's begin by describing the dataset</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:msdescribe"></span>
@@ -122,23 +123,35 @@ Figure 4.1: Describing the Mindspark Data
 <p>This is a subset of all variables in Muralidharan, Singh, and Ganimian (2019). We are interested in how being treated impacts learning outcomes. We have information about Math and Hindi tests at both the baseline and endline. Baseline means the test was taken before any student has been offered free Mindspark. Endline means the test was taken after the treated students had received Mindspark and had been using the software for several months. To start, let's summarize these variables to get a sense of average test scores as well as the variation in test scores at baseline.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb106-1"><a href="classroom-technology.html#cb106-1" tabindex="-1"></a><span class="kw">sum</span> per_math1</span>
 <span id="cb106-2"><a href="classroom-technology.html#cb106-2" tabindex="-1"></a><span class="kw">sum</span> per_hindi1</span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   per_math1 |        619    .3177475    .1115478          0   .7428572
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+   per_math1 |        619    .3177475    .1115478 
+&gt;          0   .7428572
 
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-  per_hindi1 |        619    .4278406      .16484          0         .9</code></pre>
+    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+  per_hindi1 |        619    .4278406      .16484 
+&gt;          0         .9</code></pre>
 <p>At the baseline, the average score on the math test was 0.318. This indicates that on average across students, the average score was 31.8 percent on the math test. For the Hindi test, the average was a bit higher at 0.428. Now let's look at endline scores.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb108-1"><a href="classroom-technology.html#cb108-1" tabindex="-1"></a><span class="kw">sum</span> per_math2</span>
 <span id="cb108-2"><a href="classroom-technology.html#cb108-2" tabindex="-1"></a><span class="kw">sum</span> per_hindi2</span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   per_math2 |        539     .503101    .1725604          0   .9411765
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+   per_math2 |        539     .503101    .1725604 
+&gt;          0   .9411765
 
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-  per_hindi2 |        539    .5521954    .1911098          0   .9666666</code></pre>
+    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+  per_hindi2 |        539    .5521954    .1911098 
+&gt;          0   .9666666</code></pre>
 <p>At endline, scores are higher. The average math score has increased to 0.503 and the average Hindi score has increased to 0.552. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether <code>treat==1</code> or <code>treat==0</code>? Before we start analyzing the data, however, we are going to learn a new statistical technique: <strong>regression</strong>.</p>
 </div>
 <div id="linear-regression-theory" class="section level2" number="4.2">
@@ -330,22 +343,41 @@ Y_i = \beta_0 + \beta_1 X_i + \varepsilon
 <div class="sourceCode" id="cb111"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb111-1"><a href="classroom-technology.html#cb111-1" tabindex="-1"></a><span class="co">/*load data*/</span> </span>
 <span id="cb111-2"><a href="classroom-technology.html#cb111-2" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"</span></span>
 <span id="cb111-3"><a href="classroom-technology.html#cb111-3" tabindex="-1"></a><span class="kw">use</span> gapminder.dta, <span class="kw">replace</span> </span>
-<span id="cb111-4"><a href="classroom-technology.html#cb111-4" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/<span class="kw">data</span></span></code></pre></div>
+<span id="cb111-4"><a href="classroom-technology.html#cb111-4" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_</span>
+<span id="cb111-5"><a href="classroom-technology.html#cb111-5" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span></code></pre></div>
 <p>Reminder, we are modeling life expectancy as a function of income per capita (in the thousands). This means our dependent variable (or Y-variable) will be life expectancy and our independent variable (or X-variable) will be income per capita (in the thousands). Now let's estimate the regression:</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb112-1"><a href="classroom-technology.html#cb112-1" tabindex="-1"></a><span class="kw">reg</span> life_expectancy average_income</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       186
--------------+----------------------------------   F(1, 184)       =    178.14
-       Model |  4150.14525         1  4150.14525   Prob &gt; F        =    0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
--------------+----------------------------------   Adj R-squared   =    0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       186
+-------------+----------------------------------  
+&gt;  F(1, 184)       =    178.14
+       Model |  4150.14525         1  4150.14525  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |  4286.67682       184  23.2971567  
+&gt;  R-squared       =    0.4919
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.4891
+       Total |  8436.82208       185  45.6044436  
+&gt;  Root MSE        =    4.8267
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+life_expec~y | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+average_in~e |   .2363563   .0177087    13.35   0.
+&gt; 000                                             
+&gt;          .201418                                
+&gt;                     .2712945
+       _cons |   67.97336   .4874037   139.46   0.
+&gt; 000                                             
+&gt;         67.01174                                
+&gt;                     68.93498
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>So there are a lot of numbers in the table above. The ones we will focus on are under the column "Coefficient." The first coefficient is in the row that begins with <code>average_income</code>. This is the slope coefficient. This number tells you how a 1-unit change in <code>average_income</code> is predicted to change the Y-variable. In this case, the regression tells us that a 1-unit change in average income (which is denoted in the 1,000s) is associated with a 0.24-year increase in life expectancy. In simpler terms, a $1,000 dollar increase in average income is associated with a 0.24-year increase in life expectancy.</p>
 <p>The intercept of the linear regression model appears in the next row, next to the label <code>_cons</code>. The label <code>_cons</code> stands for constant. The terms intercept and constant are often used interchangeably in linear regression models.</p>
 <p>From this output, you should be able to draw the linear regression line. A good exercise is to try and draw this with pen and paper, instead of using Stata. If you can draw it correctly, then that indicates you understand the various components of this output.</p>
@@ -386,48 +418,101 @@ We can manually construct predicted values for every country in our dataset. We 
 <p>You just need to replace the word <code>newvar</code> with whatever you want the variable that holds predictions to be named.</p>
 <p>Our first step when forming predictions is to first to estimate the regression (<code>predict</code> uses the results from the most recently executed regression estimation). In other words, the <code>predict</code> command won't work if you don't estimate a regression first. We are going to estimate the regression from the prior section:</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb118-1"><a href="classroom-technology.html#cb118-1" tabindex="-1"></a><span class="kw">reg</span> life_expectancy average_income</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       186
--------------+----------------------------------   F(1, 184)       =    178.14
-       Model |  4150.14525         1  4150.14525   Prob &gt; F        =    0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
--------------+----------------------------------   Adj R-squared   =    0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       186
+-------------+----------------------------------  
+&gt;  F(1, 184)       =    178.14
+       Model |  4150.14525         1  4150.14525  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |  4286.67682       184  23.2971567  
+&gt;  R-squared       =    0.4919
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.4891
+       Total |  8436.82208       185  45.6044436  
+&gt;  Root MSE        =    4.8267
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+life_expec~y | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+average_in~e |   .2363563   .0177087    13.35   0.
+&gt; 000                                             
+&gt;          .201418                                
+&gt;                     .2712945
+       _cons |   67.97336   .4874037   139.46   0.
+&gt; 000                                             
+&gt;         67.01174                                
+&gt;                     68.93498
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>Now that the regression has been estimated, we can form predictions</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb120-1"><a href="classroom-technology.html#cb120-1" tabindex="-1"></a><span class="kw">predict</span> predicted_life_expectancy</span>
 <span id="cb120-2"><a href="classroom-technology.html#cb120-2" tabindex="-1"></a>(option <span class="kw">xb</span> assumed; <span class="kw">fitted</span> <span class="kw">values</span>)</span></code></pre></div>
 <p>Now a variable <code>predicted_life_expectancy</code> has been added to our dataset. Let's look at the value of predictions for the first three countries in our dataset.</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb121-1"><a href="classroom-technology.html#cb121-1" tabindex="-1"></a><span class="ot">list</span> country life_expectancy average_income predicted_life_expectancy <span class="kw">if</span> <span class="dt">_n</span>&lt;=3</span>
-<span id="cb121-2"><a href="classroom-technology.html#cb121-2" tabindex="-1"></a>     |     country   life_e~<span class="fu">y</span>   averag~<span class="fu">e</span>   predic~<span class="fu">y</span> |</span>
-<span id="cb121-3"><a href="classroom-technology.html#cb121-3" tabindex="-1"></a>     |----------------------------------------------|</span>
-<span id="cb121-4"><a href="classroom-technology.html#cb121-4" tabindex="-1"></a>  1. | Afghanistan       63.4       1.92   68.42716 |</span>
-<span id="cb121-5"><a href="classroom-technology.html#cb121-5" tabindex="-1"></a>  2. |     Albania       77.9       13.3    71.1169 |</span>
-<span id="cb121-6"><a href="classroom-technology.html#cb121-6" tabindex="-1"></a>  3. |     Algeria       76.2       10.6   70.47874 |</span>
-<span id="cb121-7"><a href="classroom-technology.html#cb121-7" tabindex="-1"></a>     +----------------------------------------------+</span></code></pre></div>
+<span id="cb121-2"><a href="classroom-technology.html#cb121-2" tabindex="-1"></a>  1. |     country | life_e~<span class="fu">y</span> | averag~<span class="fu">e</span> |</span>
+<span id="cb121-3"><a href="classroom-technology.html#cb121-3" tabindex="-1"></a>     | Afghanistan |     63.4 |     1.92 |</span>
+<span id="cb121-4"><a href="classroom-technology.html#cb121-4" tabindex="-1"></a>     |-----------------------------------|</span>
+<span id="cb121-5"><a href="classroom-technology.html#cb121-5" tabindex="-1"></a>     |             predic~<span class="fu">y</span>              |</span>
+<span id="cb121-6"><a href="classroom-technology.html#cb121-6" tabindex="-1"></a>     |             68.42716              |</span>
+<span id="cb121-7"><a href="classroom-technology.html#cb121-7" tabindex="-1"></a>     +-----------------------------------+</span>
+<span id="cb121-8"><a href="classroom-technology.html#cb121-8" tabindex="-1"></a></span>
+<span id="cb121-9"><a href="classroom-technology.html#cb121-9" tabindex="-1"></a>     +-----------------------------------+</span>
+<span id="cb121-10"><a href="classroom-technology.html#cb121-10" tabindex="-1"></a>  2. |     country | life_e~<span class="fu">y</span> | averag~<span class="fu">e</span> |</span>
+<span id="cb121-11"><a href="classroom-technology.html#cb121-11" tabindex="-1"></a>     |     Albania |     77.9 |     13.3 |</span>
+<span id="cb121-12"><a href="classroom-technology.html#cb121-12" tabindex="-1"></a>     |-----------------------------------|</span>
+<span id="cb121-13"><a href="classroom-technology.html#cb121-13" tabindex="-1"></a>     |             predic~<span class="fu">y</span>              |</span>
+<span id="cb121-14"><a href="classroom-technology.html#cb121-14" tabindex="-1"></a>     |              71.1169              |</span>
+<span id="cb121-15"><a href="classroom-technology.html#cb121-15" tabindex="-1"></a>     +-----------------------------------+</span>
+<span id="cb121-16"><a href="classroom-technology.html#cb121-16" tabindex="-1"></a></span>
+<span id="cb121-17"><a href="classroom-technology.html#cb121-17" tabindex="-1"></a>     +-----------------------------------+</span>
+<span id="cb121-18"><a href="classroom-technology.html#cb121-18" tabindex="-1"></a>  3. |     country | life_e~<span class="fu">y</span> | averag~<span class="fu">e</span> |</span>
+<span id="cb121-19"><a href="classroom-technology.html#cb121-19" tabindex="-1"></a>     |     Algeria |     76.2 |     10.6 |</span>
+<span id="cb121-20"><a href="classroom-technology.html#cb121-20" tabindex="-1"></a>     |-----------------------------------|</span>
+<span id="cb121-21"><a href="classroom-technology.html#cb121-21" tabindex="-1"></a>     |             predic~<span class="fu">y</span>              |</span>
+<span id="cb121-22"><a href="classroom-technology.html#cb121-22" tabindex="-1"></a>     |             70.47874              |</span>
+<span id="cb121-23"><a href="classroom-technology.html#cb121-23" tabindex="-1"></a>     +-----------------------------------+</span></code></pre></div>
 <p>So the first country is Afghanistan. The life expectancy in Afghanistan is equal to 63.4 years. The average income in Afghanistan is equal to 1,920 U.S. dollars per year. Given this average annual income, the linear model predicts the life expectancy in Afghanistan would be 68.4 years.</p>
 <p>You will notice our predictions are prone to error. In some cases, we may want to generate a new variable that has the error associated with a given observation. Now that we have formed <code>predicted_life_expectancy</code> we can form the <code>error</code> as</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb122-1"><a href="classroom-technology.html#cb122-1" tabindex="-1"></a><span class="kw">gen</span> <span class="kw">error</span> = life_expectancy - predicted_life_expectancy</span></code></pre></div>
 <p>Let's <code>summarize</code> our new <code>error</code> variable</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb123-1"><a href="classroom-technology.html#cb123-1" tabindex="-1"></a><span class="kw">sum</span> <span class="kw">error</span></span>
-<span id="cb123-2"><a href="classroom-technology.html#cb123-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
-<span id="cb123-3"><a href="classroom-technology.html#cb123-3" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
-<span id="cb123-4"><a href="classroom-technology.html#cb123-4" tabindex="-1"></a>       <span class="kw">error</span> |        186   -2.05e-08     4.81365  -16.57843   8.367805</span></code></pre></div>
+<span id="cb123-2"><a href="classroom-technology.html#cb123-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.</span>
+<span id="cb123-3"><a href="classroom-technology.html#cb123-3" tabindex="-1"></a>&gt;        Min        Max</span>
+<span id="cb123-4"><a href="classroom-technology.html#cb123-4" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb123-5"><a href="classroom-technology.html#cb123-5" tabindex="-1"></a>&gt; ---------------------</span>
+<span id="cb123-6"><a href="classroom-technology.html#cb123-6" tabindex="-1"></a>       <span class="kw">error</span> |        186   -2.05e-08     4.81365 </span>
+<span id="cb123-7"><a href="classroom-technology.html#cb123-7" tabindex="-1"></a>&gt;  -16.57843   8.367805</span></code></pre></div>
 <p>The mean is about zero (which is by construction, the regression line is chosen so that on average the predictions are correct). There is a large variance though, for some countries the life expectancy is much lower than expected (negative error), while some it is much higher.</p>
 <p>Let's look at the 3 countries with the most negative errors (implying life expectancy is much lower than predicted from income):</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb124-1"><a href="classroom-technology.html#cb124-1" tabindex="-1"></a><span class="kw">sort</span> <span class="kw">error</span></span>
 <span id="cb124-2"><a href="classroom-technology.html#cb124-2" tabindex="-1"></a><span class="ot">list</span> country life_expectancy predicted_life_expectancy <span class="kw">error</span> <span class="kw">if</span> <span class="dt">_n</span>&lt;=3</span>
-<span id="cb124-3"><a href="classroom-technology.html#cb124-3" tabindex="-1"></a>     |                  country   life_e~<span class="fu">y</span>   predic~<span class="fu">y</span>       <span class="kw">error</span> |</span>
-<span id="cb124-4"><a href="classroom-technology.html#cb124-4" tabindex="-1"></a>     |------------------------------------------------------------|</span>
-<span id="cb124-5"><a href="classroom-technology.html#cb124-5" tabindex="-1"></a>  1. |                  Lesotho         52   68.57843   -16.57843 |</span>
-<span id="cb124-6"><a href="classroom-technology.html#cb124-6" tabindex="-1"></a>  2. | Central African Republic       52.4    68.1927   -15.79269 |</span>
-<span id="cb124-7"><a href="classroom-technology.html#cb124-7" tabindex="-1"></a>  3. |                    Qatar       76.2   88.65453   -12.45454 |</span>
-<span id="cb124-8"><a href="classroom-technology.html#cb124-8" tabindex="-1"></a>     +------------------------------------------------------------+</span></code></pre></div>
+<span id="cb124-3"><a href="classroom-technology.html#cb124-3" tabindex="-1"></a>  1. |                  country | life_e~<span class="fu">y</span> |</span>
+<span id="cb124-4"><a href="classroom-technology.html#cb124-4" tabindex="-1"></a>     |                  Lesotho |       52 |</span>
+<span id="cb124-5"><a href="classroom-technology.html#cb124-5" tabindex="-1"></a>     |-------------------------------------|</span>
+<span id="cb124-6"><a href="classroom-technology.html#cb124-6" tabindex="-1"></a>     |    predic~<span class="fu">y</span>     |         <span class="kw">error</span>     |</span>
+<span id="cb124-7"><a href="classroom-technology.html#cb124-7" tabindex="-1"></a>     |    68.57843     |     -16.57843     |</span>
+<span id="cb124-8"><a href="classroom-technology.html#cb124-8" tabindex="-1"></a>     +-------------------------------------+</span>
+<span id="cb124-9"><a href="classroom-technology.html#cb124-9" tabindex="-1"></a></span>
+<span id="cb124-10"><a href="classroom-technology.html#cb124-10" tabindex="-1"></a>     +-------------------------------------+</span>
+<span id="cb124-11"><a href="classroom-technology.html#cb124-11" tabindex="-1"></a>  2. |                  country | life_e~<span class="fu">y</span> |</span>
+<span id="cb124-12"><a href="classroom-technology.html#cb124-12" tabindex="-1"></a>     | Central African Republic |     52.4 |</span>
+<span id="cb124-13"><a href="classroom-technology.html#cb124-13" tabindex="-1"></a>     |-------------------------------------|</span>
+<span id="cb124-14"><a href="classroom-technology.html#cb124-14" tabindex="-1"></a>     |    predic~<span class="fu">y</span>     |         <span class="kw">error</span>     |</span>
+<span id="cb124-15"><a href="classroom-technology.html#cb124-15" tabindex="-1"></a>     |     68.1927     |     -15.79269     |</span>
+<span id="cb124-16"><a href="classroom-technology.html#cb124-16" tabindex="-1"></a>     +-------------------------------------+</span>
+<span id="cb124-17"><a href="classroom-technology.html#cb124-17" tabindex="-1"></a></span>
+<span id="cb124-18"><a href="classroom-technology.html#cb124-18" tabindex="-1"></a>     +-------------------------------------+</span>
+<span id="cb124-19"><a href="classroom-technology.html#cb124-19" tabindex="-1"></a>  3. |                  country | life_e~<span class="fu">y</span> |</span>
+<span id="cb124-20"><a href="classroom-technology.html#cb124-20" tabindex="-1"></a>     |                    Qatar |     76.2 |</span>
+<span id="cb124-21"><a href="classroom-technology.html#cb124-21" tabindex="-1"></a>     |-------------------------------------|</span>
+<span id="cb124-22"><a href="classroom-technology.html#cb124-22" tabindex="-1"></a>     |    predic~<span class="fu">y</span>     |         <span class="kw">error</span>     |</span>
+<span id="cb124-23"><a href="classroom-technology.html#cb124-23" tabindex="-1"></a>     |    88.65453     |     -12.45454     |</span>
+<span id="cb124-24"><a href="classroom-technology.html#cb124-24" tabindex="-1"></a>     +-------------------------------------+</span></code></pre></div>
 <p>We can also look at the 3 countries with the most positive errors (implying life expectancy is much higher than predicted from income):</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb125-1"><a href="classroom-technology.html#cb125-1" tabindex="-1"></a><span class="kw">sort</span> <span class="kw">error</span></span>
 <span id="cb125-2"><a href="classroom-technology.html#cb125-2" tabindex="-1"></a><span class="ot">list</span> country life_expectancy predicted_life_expectancy <span class="kw">error</span> <span class="co">///</span></span>
@@ -447,9 +532,12 @@ average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
 <p>Before continuing our discussion of regression, we are going to discuss the concept of <strong>macros</strong>. Macros are simply words or characters that store certain output. In Stata, many commands store the results of commands in <strong>macros</strong>. For example, after the <code>sum</code> command, the value of the mean is stored in the macro <code>r(mean)</code>. To see how these work in practice, let's continue with our example that studies the relationship between life expectancy and average income.</p>
 <p>To begin, let's summarize the <code>life_expectancy</code> variable:</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb126-1"><a href="classroom-technology.html#cb126-1" tabindex="-1"></a><span class="kw">sum</span> life_expectancy</span>
-<span id="cb126-2"><a href="classroom-technology.html#cb126-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
-<span id="cb126-3"><a href="classroom-technology.html#cb126-3" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
-<span id="cb126-4"><a href="classroom-technology.html#cb126-4" tabindex="-1"></a>life_expec~<span class="fu">y</span> |        186    72.44624    6.753106         52       84.9</span></code></pre></div>
+<span id="cb126-2"><a href="classroom-technology.html#cb126-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.</span>
+<span id="cb126-3"><a href="classroom-technology.html#cb126-3" tabindex="-1"></a>&gt;        Min        Max</span>
+<span id="cb126-4"><a href="classroom-technology.html#cb126-4" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb126-5"><a href="classroom-technology.html#cb126-5" tabindex="-1"></a>&gt; ---------------------</span>
+<span id="cb126-6"><a href="classroom-technology.html#cb126-6" tabindex="-1"></a>life_expec~<span class="fu">y</span> |        186    72.44624    6.753106 </span>
+<span id="cb126-7"><a href="classroom-technology.html#cb126-7" tabindex="-1"></a>&gt;         52       84.9</span></code></pre></div>
 <p>The mean life expectancy is equal to 72.45. Stata has automatically stored the mean in <code>r(mean)</code>
 To access the value within this macro, type:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb127-1"><a href="classroom-technology.html#cb127-1" tabindex="-1"></a><span class="kw">di</span> <span class="ot">`r(mean)'</span></span>
@@ -458,19 +546,37 @@ To access the value within this macro, type:</p>
 <p>After regressions, Stata also stores several useful results. In particular, Stata stores the value of the intercept and slope coefficient. In general, <code>_b[varname]</code> stores the coefficient estimate for a variable named <code>varname</code>.</p>
 <p>For example, if we estimate:</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb128-1"><a href="classroom-technology.html#cb128-1" tabindex="-1"></a><span class="kw">reg</span> life_expectancy average_income </span>
-<span id="cb128-2"><a href="classroom-technology.html#cb128-2" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       186</span>
-<span id="cb128-3"><a href="classroom-technology.html#cb128-3" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 184)       =    178.14</span>
-<span id="cb128-4"><a href="classroom-technology.html#cb128-4" tabindex="-1"></a>       Model |  4150.14525         1  4150.14525   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb128-5"><a href="classroom-technology.html#cb128-5" tabindex="-1"></a>    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919</span>
-<span id="cb128-6"><a href="classroom-technology.html#cb128-6" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.4891</span>
-<span id="cb128-7"><a href="classroom-technology.html#cb128-7" tabindex="-1"></a>       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267</span>
-<span id="cb128-8"><a href="classroom-technology.html#cb128-8" tabindex="-1"></a></span>
-<span id="cb128-9"><a href="classroom-technology.html#cb128-9" tabindex="-1"></a>--------------------------------------------------------------------------------</span>
-<span id="cb128-10"><a href="classroom-technology.html#cb128-10" tabindex="-1"></a>life_expecta~<span class="fu">y</span> | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]</span>
-<span id="cb128-11"><a href="classroom-technology.html#cb128-11" tabindex="-1"></a>---------------+----------------------------------------------------------------</span>
-<span id="cb128-12"><a href="classroom-technology.html#cb128-12" tabindex="-1"></a>average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945</span>
-<span id="cb128-13"><a href="classroom-technology.html#cb128-13" tabindex="-1"></a>         <span class="dt">_cons</span> |   67.97336   .4874037   139.46   0.000     67.01174    68.93498</span>
-<span id="cb128-14"><a href="classroom-technology.html#cb128-14" tabindex="-1"></a>--------------------------------------------------------------------------------</span></code></pre></div>
+<span id="cb128-2"><a href="classroom-technology.html#cb128-2" tabindex="-1"></a>      Source |       SS           df       MS     </span>
+<span id="cb128-3"><a href="classroom-technology.html#cb128-3" tabindex="-1"></a>&gt;  Number <span class="kw">of</span> <span class="kw">obs</span>   =       186</span>
+<span id="cb128-4"><a href="classroom-technology.html#cb128-4" tabindex="-1"></a>-------------+----------------------------------  </span>
+<span id="cb128-5"><a href="classroom-technology.html#cb128-5" tabindex="-1"></a>&gt;  <span class="fu">F</span>(1, 184)       =    178.14</span>
+<span id="cb128-6"><a href="classroom-technology.html#cb128-6" tabindex="-1"></a>       Model |  4150.14525         1  4150.14525  </span>
+<span id="cb128-7"><a href="classroom-technology.html#cb128-7" tabindex="-1"></a>&gt;  Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb128-8"><a href="classroom-technology.html#cb128-8" tabindex="-1"></a>    Residual |  4286.67682       184  23.2971567  </span>
+<span id="cb128-9"><a href="classroom-technology.html#cb128-9" tabindex="-1"></a>&gt;  R-squared       =    0.4919</span>
+<span id="cb128-10"><a href="classroom-technology.html#cb128-10" tabindex="-1"></a>-------------+----------------------------------  </span>
+<span id="cb128-11"><a href="classroom-technology.html#cb128-11" tabindex="-1"></a>&gt;  Adj R-squared   =    0.4891</span>
+<span id="cb128-12"><a href="classroom-technology.html#cb128-12" tabindex="-1"></a>       Total |  8436.82208       185  45.6044436  </span>
+<span id="cb128-13"><a href="classroom-technology.html#cb128-13" tabindex="-1"></a>&gt;  Root MSE        =    4.8267</span>
+<span id="cb128-14"><a href="classroom-technology.html#cb128-14" tabindex="-1"></a></span>
+<span id="cb128-15"><a href="classroom-technology.html#cb128-15" tabindex="-1"></a>--------------------------------------------------</span>
+<span id="cb128-16"><a href="classroom-technology.html#cb128-16" tabindex="-1"></a>&gt; ----------------------------</span>
+<span id="cb128-17"><a href="classroom-technology.html#cb128-17" tabindex="-1"></a>life_expec~<span class="fu">y</span> | Coefficient  Std. err.      t    P&gt;</span>
+<span id="cb128-18"><a href="classroom-technology.html#cb128-18" tabindex="-1"></a>&gt; |t|                                             </span>
+<span id="cb128-19"><a href="classroom-technology.html#cb128-19" tabindex="-1"></a>&gt;         [95% con                                </span>
+<span id="cb128-20"><a href="classroom-technology.html#cb128-20" tabindex="-1"></a>&gt;                 f. interval]</span>
+<span id="cb128-21"><a href="classroom-technology.html#cb128-21" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb128-22"><a href="classroom-technology.html#cb128-22" tabindex="-1"></a>&gt; ----------------------------</span>
+<span id="cb128-23"><a href="classroom-technology.html#cb128-23" tabindex="-1"></a>average_in~<span class="fu">e</span> |   .2363563   .0177087    13.35   0.</span>
+<span id="cb128-24"><a href="classroom-technology.html#cb128-24" tabindex="-1"></a>&gt; 000                                             </span>
+<span id="cb128-25"><a href="classroom-technology.html#cb128-25" tabindex="-1"></a>&gt;          .201418                                </span>
+<span id="cb128-26"><a href="classroom-technology.html#cb128-26" tabindex="-1"></a>&gt;                     .2712945</span>
+<span id="cb128-27"><a href="classroom-technology.html#cb128-27" tabindex="-1"></a>       <span class="dt">_cons</span> |   67.97336   .4874037   139.46   0.</span>
+<span id="cb128-28"><a href="classroom-technology.html#cb128-28" tabindex="-1"></a>&gt; 000                                             </span>
+<span id="cb128-29"><a href="classroom-technology.html#cb128-29" tabindex="-1"></a>&gt;         67.01174                                </span>
+<span id="cb128-30"><a href="classroom-technology.html#cb128-30" tabindex="-1"></a>&gt;                     68.93498</span>
+<span id="cb128-31"><a href="classroom-technology.html#cb128-31" tabindex="-1"></a>--------------------------------------------------</span>
+<span id="cb128-32"><a href="classroom-technology.html#cb128-32" tabindex="-1"></a>&gt; ----------------------------</span></code></pre></div>
 <p>Then we can retrieve the coefficient on <code>average_income</code> by typing:</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb129-1"><a href="classroom-technology.html#cb129-1" tabindex="-1"></a><span class="kw">di</span> _b[average_income]</span>
 <span id="cb129-2"><a href="classroom-technology.html#cb129-2" tabindex="-1"></a>.23635625</span></code></pre></div>
@@ -484,17 +590,25 @@ To access the value within this macro, type:</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb132-1"><a href="classroom-technology.html#cb132-1" tabindex="-1"></a><span class="kw">global</span> vars = <span class="st">"average_income life_expectancy"</span></span></code></pre></div>
 <p>Now whenever I type <code>\$vars</code> into Stata, Stata will interpret it as "average_income life_expectancy". Let's see what happens if I type:</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb133-1"><a href="classroom-technology.html#cb133-1" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">$vars</span></span>
-<span id="cb133-2"><a href="classroom-technology.html#cb133-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
-<span id="cb133-3"><a href="classroom-technology.html#cb133-3" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
-<span id="cb133-4"><a href="classroom-technology.html#cb133-4" tabindex="-1"></a>average_in~<span class="fu">e</span> |        186    18.92431    20.03912       .673        111</span>
-<span id="cb133-5"><a href="classroom-technology.html#cb133-5" tabindex="-1"></a>life_expec~<span class="fu">y</span> |        186    72.44624    6.753106         52       84.9</span></code></pre></div>
+<span id="cb133-2"><a href="classroom-technology.html#cb133-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.</span>
+<span id="cb133-3"><a href="classroom-technology.html#cb133-3" tabindex="-1"></a>&gt;        Min        Max</span>
+<span id="cb133-4"><a href="classroom-technology.html#cb133-4" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb133-5"><a href="classroom-technology.html#cb133-5" tabindex="-1"></a>&gt; ---------------------</span>
+<span id="cb133-6"><a href="classroom-technology.html#cb133-6" tabindex="-1"></a>average_in~<span class="fu">e</span> |        186    18.92431    20.03912 </span>
+<span id="cb133-7"><a href="classroom-technology.html#cb133-7" tabindex="-1"></a>&gt;       .673        111</span>
+<span id="cb133-8"><a href="classroom-technology.html#cb133-8" tabindex="-1"></a>life_expec~<span class="fu">y</span> |        186    72.44624    6.753106 </span>
+<span id="cb133-9"><a href="classroom-technology.html#cb133-9" tabindex="-1"></a>&gt;         52       84.9</span></code></pre></div>
 <p>One could do the same thing but with a "local" macro.</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb134-1"><a href="classroom-technology.html#cb134-1" tabindex="-1"></a><span class="kw">local</span> vars = <span class="st">"average_income life_expectancy"</span></span>
 <span id="cb134-2"><a href="classroom-technology.html#cb134-2" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">`vars'</span></span>
-<span id="cb134-3"><a href="classroom-technology.html#cb134-3" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
-<span id="cb134-4"><a href="classroom-technology.html#cb134-4" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
-<span id="cb134-5"><a href="classroom-technology.html#cb134-5" tabindex="-1"></a>average_in~<span class="fu">e</span> |        186    18.92431    20.03912       .673        111</span>
-<span id="cb134-6"><a href="classroom-technology.html#cb134-6" tabindex="-1"></a>life_expec~<span class="fu">y</span> |        186    72.44624    6.753106         52       84.9</span></code></pre></div>
+<span id="cb134-3"><a href="classroom-technology.html#cb134-3" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.</span>
+<span id="cb134-4"><a href="classroom-technology.html#cb134-4" tabindex="-1"></a>&gt;        Min        Max</span>
+<span id="cb134-5"><a href="classroom-technology.html#cb134-5" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb134-6"><a href="classroom-technology.html#cb134-6" tabindex="-1"></a>&gt; ---------------------</span>
+<span id="cb134-7"><a href="classroom-technology.html#cb134-7" tabindex="-1"></a>average_in~<span class="fu">e</span> |        186    18.92431    20.03912 </span>
+<span id="cb134-8"><a href="classroom-technology.html#cb134-8" tabindex="-1"></a>&gt;       .673        111</span>
+<span id="cb134-9"><a href="classroom-technology.html#cb134-9" tabindex="-1"></a>life_expec~<span class="fu">y</span> |        186    72.44624    6.753106 </span>
+<span id="cb134-10"><a href="classroom-technology.html#cb134-10" tabindex="-1"></a>&gt;         52       84.9</span></code></pre></div>
 <p>So what is the difference between a local macro and a global macro. In practice, you reference a global macro with a dollar sign <code>$</code>, a local with apostrophes `<code>macro'</code>. Both can store the same information, but locals can only be accessed within a given Stata session. Many advise to only use local macros. Setting globals can conflict with other aspects of Stata. For our purposes, we will rarely need to use macros, let alone global vs. local. This section introduces macros as an important programming tool to understand conceptually, but it is not required to fully understand the nuances between local and global macros in Stata to understand the rest of the course material.</p>
 </div>
 <div id="explore-data" class="section level2" number="4.8">
@@ -506,7 +620,8 @@ To access the value within this macro, type:</p>
 <p>To begin, let's provide a scatter plot of assessed math level on actual grade. Our first step will be to load the data:</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb135-1"><a href="classroom-technology.html#cb135-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"</span></span>
 <span id="cb135-2"><a href="classroom-technology.html#cb135-2" tabindex="-1"></a><span class="kw">use</span> mindspark_levels.dta, <span class="kw">clear</span></span>
-<span id="cb135-3"><a href="classroom-technology.html#cb135-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/<span class="kw">data</span></span></code></pre></div>
+<span id="cb135-3"><a href="classroom-technology.html#cb135-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_</span>
+<span id="cb135-4"><a href="classroom-technology.html#cb135-4" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span></code></pre></div>
 <p>The most basic scatterplot we could create from this data is displayed below</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb136-1"><a href="classroom-technology.html#cb136-1" tabindex="-1"></a><span class="kw">set</span> <span class="dv">scheme</span> plotplainblind</span>
 <span id="cb136-2"><a href="classroom-technology.html#cb136-2" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">scatter</span> mathlevel <span class="kw">class</span></span></code></pre></div>
@@ -537,19 +652,37 @@ Figure 4.11: Assessed Math Grade Level vs. Actual Grade Level
 \]</span></p>
 <p><span class="math inline">\(\beta\)</span> tells us how much we expect the assessed math level to increase for a 1-unit increase in Grade. If this is much lower than 1, then students will fall farther and farther behind each year. Let's estimate this regression in Stata:</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb138-1"><a href="classroom-technology.html#cb138-1" tabindex="-1"></a><span class="kw">reg</span> mathlevel <span class="kw">class</span> </span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       253
--------------+----------------------------------   F(1, 251)       =     19.02
-       Model |  22.8033097         1  22.8033097   Prob &gt; F        =    0.0000
-    Residual |   300.87258       251  1.19869554   R-squared       =    0.0705
--------------+----------------------------------   Adj R-squared   =    0.0667
-       Total |  323.675889       252  1.28442813   Root MSE        =    1.0948
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       253
+-------------+----------------------------------  
+&gt;  F(1, 251)       =     19.02
+       Model |  22.8033097         1  22.8033097  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |   300.87258       251  1.19869554  
+&gt;  R-squared       =    0.0705
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0667
+       Total |  323.675889       252  1.28442813  
+&gt;  Root MSE        =    1.0948
 
-------------------------------------------------------------------------------
-   mathlevel | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       class |   .2926913   .0671066     4.36   0.000     .1605275     .424855
-       _cons |   1.756712   .4928781     3.56   0.000      .786008    2.727416
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   mathlevel | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       class |   .2926913   .0671066     4.36   0.
+&gt; 000                                             
+&gt;         .1605275                                
+&gt;                      .424855
+       _cons |   1.756712   .4928781     3.56   0.
+&gt; 000                                             
+&gt;          .786008                                
+&gt;                     2.727416
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>Reading the table above, we find <span class="math inline">\(\hat{\beta}=0.293\)</span>. This indicates that a 1-year increase in grade is associated with only a 0.293-year increase in assessed math level. In other words, students are learning over time, but at a much lower rate than is envisioned by the curriculum. Ideally, 1 year of schooling should be associated with an additional year of learning.</p>
 <p>All of these results highlight a need for an intervention. We have documented (1) students (on average) are assessed to be performing below grade level, (2) there is large variation in assessed grade level within a given grade, and (3) learning over time is slower than intended. Maybe an intervention that "Teaches at the Right Level" can help alleviate some of these issues.</p>
 </div>
@@ -671,22 +804,41 @@ Endline test score ranges from 0 to 1 and represents the percent of questions th
 <p>To begin, let's load in the dataset <code>mindspark_data.dta</code></p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb143-1"><a href="classroom-technology.html#cb143-1" tabindex="-1"></a>cd <span class="st">"~/Dropbox/Teaching/EP5/online/04_week/data"</span></span>
 <span id="cb143-2"><a href="classroom-technology.html#cb143-2" tabindex="-1"></a><span class="kw">use</span> mindspark_data.dta, <span class="kw">clear</span> </span>
-<span id="cb143-3"><a href="classroom-technology.html#cb143-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/<span class="kw">data</span></span></code></pre></div>
+<span id="cb143-3"><a href="classroom-technology.html#cb143-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/04_</span>
+<span id="cb143-4"><a href="classroom-technology.html#cb143-4" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span></code></pre></div>
 <p>Now, let's see if treatment impacts endline math scores. The endline math scores. Remember, the variable <code>per_math2</code> contains the endline math test scores. Therefore, to estimate the impact of the treatment on this variable, we can type:</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb144-1"><a href="classroom-technology.html#cb144-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       539
--------------+----------------------------------   F(1, 537)       =     28.72
-       Model |  .813404311         1  .813404311   Prob &gt; F        =    0.0000
-    Residual |    15.20668       537   .02831784   R-squared       =    0.0508
--------------+----------------------------------   Adj R-squared   =    0.0490
-       Total |  16.0200843       538  .029777108   Root MSE        =    .16828
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       539
+-------------+----------------------------------  
+&gt;  F(1, 537)       =     28.72
+       Model |  .813404311         1  .813404311  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |    15.20668       537   .02831784  
+&gt;  R-squared       =    0.0508
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0490
+       Total |  16.0200843       538  .029777108  
+&gt;  Root MSE        =    .16828
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0777008   .0144978     5.36   0.000     .0492214    .1061802
-       _cons |   .4647551   .0101847    45.63   0.000     .4447484    .4847619
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0777008   .0144978     5.36   0.
+&gt; 000                                             
+&gt;         .0492214                                
+&gt;                     .1061802
+       _cons |   .4647551   .0101847    45.63   0.
+&gt; 000                                             
+&gt;         .4447484                                
+&gt;                     .4847619
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>We found that the slope coefficient <span class="math inline">\(\hat{\beta}=0.078\)</span>. Remember, our general formula for interpreting slope coefficients is a 1-unit change in <code>treat</code> is expected to increase <code>per_math2</code> by 0.078. However, when we actually report the results, we should make it clear what these units represent. We don't want a reader to have to understand that <code>per_math2</code> is the variable that contains the fraction correct on the math score in order to understand the interpretation. Therefore, in plain (interpretable) English, we find that students who were offered free Mindspark tuition saw a 7.8 percentage point increase in math scores relative to control students who were not offered Mindspark tuition.</p>
 <div class="rmdtip">
 <p><strong>Concept Check</strong></p>
@@ -694,19 +846,37 @@ Endline test score ranges from 0 to 1 and represents the percent of questions th
 </div>
 <p>So overall, Mindspark has a reasonably large impact on test scores. Test scores were quite low to begin with, so a 7.8 percentage point increase is a sizeable gain in learning. Next, let's see how effective Mindspark was for Hindi:</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb146-1"><a href="classroom-technology.html#cb146-1" tabindex="-1"></a><span class="kw">reg</span> per_hindi2 treat</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       539
--------------+----------------------------------   F(1, 537)       =     16.12
-       Model |  .572530953         1  .572530953   Prob &gt; F        =    0.0001
-    Residual |   19.076815       537  .035524795   R-squared       =    0.0291
--------------+----------------------------------   Adj R-squared   =    0.0273
-       Total |  19.6493459       538  .036522948   Root MSE        =    .18848
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       539
+-------------+----------------------------------  
+&gt;  F(1, 537)       =     16.12
+       Model |  .572530953         1  .572530953  
+&gt;  Prob &gt; F        =    0.0001
+    Residual |   19.076815       537  .035524795  
+&gt;  R-squared       =    0.0291
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0273
+       Total |  19.6493459       538  .036522948  
+&gt;  Root MSE        =    .18848
 
-------------------------------------------------------------------------------
-  per_hindi2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0651886   .0162382     4.01   0.000     .0332904    .0970868
-       _cons |   .5200244   .0114073    45.59   0.000     .4976159    .5424329
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+  per_hindi2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0651886   .0162382     4.01   0.
+&gt; 000                                             
+&gt;         .0332904                                
+&gt;                     .0970868
+       _cons |   .5200244   .0114073    45.59   0.
+&gt; 000                                             
+&gt;         .4976159                                
+&gt;                     .5424329
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>This regression tells us that treated students who were offered free Mindspark tuition saw a 6.5 percentage point increase in Hindi test scores relative to control students. Overall, this program seems very effective in increasing both math and Hindi scores.</p>
 </div>
 <div id="regression-tables" class="section level2" number="4.12">
@@ -719,19 +889,37 @@ Endline test score ranges from 0 to 1 and represents the percent of questions th
 <span id="cb148-2"><a href="classroom-technology.html#cb148-2" tabindex="-1"></a><span class="kw">reg</span> per_hindi2 treat</span></code></pre></div>
 <p>To present multiple regressions in a single table, we will take advantage of the <code>est store</code> command. <code>est store</code> stands for estimates store. It allows you to save the results of your regressions. To show how to use the command, let's estimate the impact of treatment on math scores:</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb149-1"><a href="classroom-technology.html#cb149-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat</span>
-<span id="cb149-2"><a href="classroom-technology.html#cb149-2" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       539</span>
-<span id="cb149-3"><a href="classroom-technology.html#cb149-3" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 537)       =     28.72</span>
-<span id="cb149-4"><a href="classroom-technology.html#cb149-4" tabindex="-1"></a>       Model |  .813404311         1  .813404311   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb149-5"><a href="classroom-technology.html#cb149-5" tabindex="-1"></a>    Residual |    15.20668       537   .02831784   R-squared       =    0.0508</span>
-<span id="cb149-6"><a href="classroom-technology.html#cb149-6" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0490</span>
-<span id="cb149-7"><a href="classroom-technology.html#cb149-7" tabindex="-1"></a>       Total |  16.0200843       538  .029777108   Root MSE        =    .16828</span>
-<span id="cb149-8"><a href="classroom-technology.html#cb149-8" tabindex="-1"></a></span>
-<span id="cb149-9"><a href="classroom-technology.html#cb149-9" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb149-10"><a href="classroom-technology.html#cb149-10" tabindex="-1"></a>   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]</span>
-<span id="cb149-11"><a href="classroom-technology.html#cb149-11" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb149-12"><a href="classroom-technology.html#cb149-12" tabindex="-1"></a>       treat |   .0777008   .0144978     5.36   0.000     .0492214    .1061802</span>
-<span id="cb149-13"><a href="classroom-technology.html#cb149-13" tabindex="-1"></a>       <span class="dt">_cons</span> |   .4647551   .0101847    45.63   0.000     .4447484    .4847619</span>
-<span id="cb149-14"><a href="classroom-technology.html#cb149-14" tabindex="-1"></a>------------------------------------------------------------------------------</span></code></pre></div>
+<span id="cb149-2"><a href="classroom-technology.html#cb149-2" tabindex="-1"></a>      Source |       SS           df       MS     </span>
+<span id="cb149-3"><a href="classroom-technology.html#cb149-3" tabindex="-1"></a>&gt;  Number <span class="kw">of</span> <span class="kw">obs</span>   =       539</span>
+<span id="cb149-4"><a href="classroom-technology.html#cb149-4" tabindex="-1"></a>-------------+----------------------------------  </span>
+<span id="cb149-5"><a href="classroom-technology.html#cb149-5" tabindex="-1"></a>&gt;  <span class="fu">F</span>(1, 537)       =     28.72</span>
+<span id="cb149-6"><a href="classroom-technology.html#cb149-6" tabindex="-1"></a>       Model |  .813404311         1  .813404311  </span>
+<span id="cb149-7"><a href="classroom-technology.html#cb149-7" tabindex="-1"></a>&gt;  Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb149-8"><a href="classroom-technology.html#cb149-8" tabindex="-1"></a>    Residual |    15.20668       537   .02831784  </span>
+<span id="cb149-9"><a href="classroom-technology.html#cb149-9" tabindex="-1"></a>&gt;  R-squared       =    0.0508</span>
+<span id="cb149-10"><a href="classroom-technology.html#cb149-10" tabindex="-1"></a>-------------+----------------------------------  </span>
+<span id="cb149-11"><a href="classroom-technology.html#cb149-11" tabindex="-1"></a>&gt;  Adj R-squared   =    0.0490</span>
+<span id="cb149-12"><a href="classroom-technology.html#cb149-12" tabindex="-1"></a>       Total |  16.0200843       538  .029777108  </span>
+<span id="cb149-13"><a href="classroom-technology.html#cb149-13" tabindex="-1"></a>&gt;  Root MSE        =    .16828</span>
+<span id="cb149-14"><a href="classroom-technology.html#cb149-14" tabindex="-1"></a></span>
+<span id="cb149-15"><a href="classroom-technology.html#cb149-15" tabindex="-1"></a>--------------------------------------------------</span>
+<span id="cb149-16"><a href="classroom-technology.html#cb149-16" tabindex="-1"></a>&gt; ----------------------------</span>
+<span id="cb149-17"><a href="classroom-technology.html#cb149-17" tabindex="-1"></a>   per_math2 | Coefficient  Std. err.      t    P&gt;</span>
+<span id="cb149-18"><a href="classroom-technology.html#cb149-18" tabindex="-1"></a>&gt; |t|                                             </span>
+<span id="cb149-19"><a href="classroom-technology.html#cb149-19" tabindex="-1"></a>&gt;         [95% con                                </span>
+<span id="cb149-20"><a href="classroom-technology.html#cb149-20" tabindex="-1"></a>&gt;                 f. interval]</span>
+<span id="cb149-21"><a href="classroom-technology.html#cb149-21" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb149-22"><a href="classroom-technology.html#cb149-22" tabindex="-1"></a>&gt; ----------------------------</span>
+<span id="cb149-23"><a href="classroom-technology.html#cb149-23" tabindex="-1"></a>       treat |   .0777008   .0144978     5.36   0.</span>
+<span id="cb149-24"><a href="classroom-technology.html#cb149-24" tabindex="-1"></a>&gt; 000                                             </span>
+<span id="cb149-25"><a href="classroom-technology.html#cb149-25" tabindex="-1"></a>&gt;         .0492214                                </span>
+<span id="cb149-26"><a href="classroom-technology.html#cb149-26" tabindex="-1"></a>&gt;                     .1061802</span>
+<span id="cb149-27"><a href="classroom-technology.html#cb149-27" tabindex="-1"></a>       <span class="dt">_cons</span> |   .4647551   .0101847    45.63   0.</span>
+<span id="cb149-28"><a href="classroom-technology.html#cb149-28" tabindex="-1"></a>&gt; 000                                             </span>
+<span id="cb149-29"><a href="classroom-technology.html#cb149-29" tabindex="-1"></a>&gt;         .4447484                                </span>
+<span id="cb149-30"><a href="classroom-technology.html#cb149-30" tabindex="-1"></a>&gt;                     .4847619</span>
+<span id="cb149-31"><a href="classroom-technology.html#cb149-31" tabindex="-1"></a>--------------------------------------------------</span>
+<span id="cb149-32"><a href="classroom-technology.html#cb149-32" tabindex="-1"></a>&gt; ----------------------------</span></code></pre></div>
 <p>Now if I want to save these estimates I can type</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb150-1"><a href="classroom-technology.html#cb150-1" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> reg_math</span></code></pre></div>
 <p>The part of the code that reads <code>reg_math</code>gives the estimates a name that you will use later. You can change this name depending on your application. For example, I could have replaced <code>reg_math</code> with <code>reg_math_scores</code> in the code above and the code would have executed without error. Next, let's estimate the impact of treatment on Hindi scores and store the estimates as <code>reg_hindi</code>. To save, space, I will suppress the output of the regression:</p>
@@ -781,66 +969,138 @@ Figure 4.18: Final Regression Table
 <p>The easiest way to implement this idea in Stata is through the use of conditional regressions. In this case, the word conditional implies that individuals who meet some certain condition are included in the estimation.</p>
 <p>For example, if we want to estimate the treatment effect in a linear regression framework, but restricted only to females, we can type:</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb153-1"><a href="classroom-technology.html#cb153-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> st_female1==1</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       414
--------------+----------------------------------   F(1, 412)       =     17.78
-       Model |  .518287614         1  .518287614   Prob &gt; F        =    0.0000
-    Residual |  12.0091958       412  .029148533   R-squared       =    0.0414
--------------+----------------------------------   Adj R-squared   =    0.0390
-       Total |  12.5274834       413   .03033289   Root MSE        =    .17073
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       414
+-------------+----------------------------------  
+&gt;  F(1, 412)       =     17.78
+       Model |  .518287614         1  .518287614  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |  12.0091958       412  .029148533  
+&gt;  R-squared       =    0.0414
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0390
+       Total |  12.5274834       413   .03033289  
+&gt;  Root MSE        =    .17073
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0707653    .016782     4.22   0.000     .0377763    .1037543
-       _cons |   .4636151    .011838    39.16   0.000     .4403447    .4868854
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0707653    .016782     4.22   0.
+&gt; 000                                             
+&gt;         .0377763                                
+&gt;                     .1037543
+       _cons |   .4636151    .011838    39.16   0.
+&gt; 000                                             
+&gt;         .4403447                                
+&gt;                     .4868854
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>The part of the code <code>st_female1==1</code> implies the regression <code>reg per_math2 treat</code> should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate the treatment effect, but restricted only to males:</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb155-1"><a href="classroom-technology.html#cb155-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> st_female1==0</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       125
--------------+----------------------------------   F(1, 123)       =     12.67
-       Model |  .323197879         1  .323197879   Prob &gt; F        =    0.0005
-    Residual |  3.13679016       123  .025502359   R-squared       =    0.0934
--------------+----------------------------------   Adj R-squared   =    0.0860
-       Total |  3.45998804       124  .027903129   Root MSE        =    .15969
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       125
+-------------+----------------------------------  
+&gt;  F(1, 123)       =     12.67
+       Model |  .323197879         1  .323197879  
+&gt;  Prob &gt; F        =    0.0005
+    Residual |  3.13679016       123  .025502359  
+&gt;  R-squared       =    0.0934
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0860
+       Total |  3.45998804       124  .027903129  
+&gt;  Root MSE        =    .15969
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .1017787   .0285899     3.56   0.001     .0451867    .1583707
-       _cons |   .4684034   .0198077    23.65   0.000     .4291953    .5076114
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .1017787   .0285899     3.56   0.
+&gt; 001                                             
+&gt;         .0451867                                
+&gt;                     .1583707
+       _cons |   .4684034   .0198077    23.65   0.
+&gt; 000                                             
+&gt;         .4291953                                
+&gt;                     .5076114
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>Now, in our first regression, we find <span class="math inline">\(\hat{\beta}^{female}\)</span> = 0.071. This implies treatment increases the percent correct by 7.1 percentage points for females. In our second regression, we find <span class="math inline">\(\hat{\beta}^{male}\)</span> = 0.102. Treatment increases the percent correct by 10.2 percentage points for males. Therefore, overall, the treatment effect is slightly larger for males relative to females. However, in both cases, it appears that overall, the treatment is quite effective.</p>
 <p>Next, let's consider if the treatment effects vary by socioeconomic status. In the data, we have a variable named <code>ses_index</code>. An <strong>index</strong> is a variable that aggregates information from many different variables. For example, in our setting, SES index captures different aspects of household wealth. It is constructed from variables that capture ownership of various consumer goods and services. A higher SES index indicates higher wealth. Our SES index is scaled so that it is on average equal to zero in our sample. Therefore, individuals with positive values of SES index are wealthier than the average student in the experiment, and individuals with negative values of SES index are poorer than the average student in the experiment. Let's test whether the treatment effect is different for students with above-average socioeconomic status vs. below-average socioeconomic status.</p>
 <p>Our first regression will be estimated on individuals with below-average SES index.</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb157-1"><a href="classroom-technology.html#cb157-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> ses_index&lt;0</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       268
--------------+----------------------------------   F(1, 266)       =     20.29
-       Model |  .509060251         1  .509060251   Prob &gt; F        =    0.0000
-    Residual |  6.67313366       266  .025086969   R-squared       =    0.0709
--------------+----------------------------------   Adj R-squared   =    0.0674
-       Total |  7.18219391       267  .026899603   Root MSE        =    .15839
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       268
+-------------+----------------------------------  
+&gt;  F(1, 266)       =     20.29
+       Model |  .509060251         1  .509060251  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |  6.67313366       266  .025086969  
+&gt;  R-squared       =    0.0709
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0674
+       Total |  7.18219391       267  .026899603  
+&gt;  Root MSE        =    .15839
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0872535   .0193697     4.50   0.000     .0491161    .1253909
-       _cons |   .4296612   .0139997    30.69   0.000     .4020969    .4572256
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0872535   .0193697     4.50   0.
+&gt; 000                                             
+&gt;         .0491161                                
+&gt;                     .1253909
+       _cons |   .4296612   .0139997    30.69   0.
+&gt; 000                                             
+&gt;         .4020969                                
+&gt;                     .4572256
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>Our second regression will be estimated on individuals with above-average SES index.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb159-1"><a href="classroom-technology.html#cb159-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> ses_index&gt;0</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       271
--------------+----------------------------------   F(1, 269)       =     12.72
-       Model |  .380236782         1  .380236782   Prob &gt; F        =    0.0004
-    Residual |  8.04393779       269  .029903114   R-squared       =    0.0451
--------------+----------------------------------   Adj R-squared   =    0.0416
-       Total |  8.42417457       270  .031200647   Root MSE        =    .17293
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       271
+-------------+----------------------------------  
+&gt;  F(1, 269)       =     12.72
+       Model |  .380236782         1  .380236782  
+&gt;  Prob &gt; F        =    0.0004
+    Residual |  8.04393779       269  .029903114  
+&gt;  R-squared       =    0.0451
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0416
+       Total |  8.42417457       270  .031200647  
+&gt;  Root MSE        =    .17293
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0751004   .0210607     3.57   0.000     .0336356    .1165653
-       _cons |   .4957346   .0143607    34.52   0.000      .467461    .5240081
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0751004   .0210607     3.57   0.
+&gt; 000                                             
+&gt;         .0336356                                
+&gt;                     .1165653
+       _cons |   .4957346   .0143607    34.52   0.
+&gt; 000                                             
+&gt;          .467461                                
+&gt;                     .5240081
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>In regression 1, we find <span class="math inline">\(\hat{\beta}^{lowSES}\)</span> = 0.087. Treatment increases the percent correct by 8.7 percentage points for individuals with below-average SES. In regression 2, we find <span class="math inline">\(\hat{\beta}^{highSES}\)</span> = 0.075. Treatment increases the percent correct by 7.5 percentage points for individuals with above-average SES. Therefore, the treatment effect is slightly larger for low-SES, but quite similar overall.</p>
 <p>Finally, we will explore heterogeneity by baseline achievement. Maybe students that benefit the most are those that have been "left behind". There are many ways one could explore this question. We are going to see if individuals below the median level of baseline test scores (within their grade) have different treatment effects than those above the median level of test scores.</p>
 <p>The first thing we need to do is create a new variable that indicates whether an individual student performed above the median or below the median in the initial baseline assessment, within their grade level. We will do this in two steps:</p>
@@ -854,33 +1114,69 @@ Figure 4.18: Final Regression Table
 <div class="sourceCode" id="cb162"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb162-1"><a href="classroom-technology.html#cb162-1" tabindex="-1"></a><span class="kw">gen</span> above_median = (per_math1 &gt; median_test_score)</span></code></pre></div>
 <p>Now that we have our indicator variable, we can estimate two regressions: (1) a regression restricted to above-median performers and (2) a regression restricted to below-median performers.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb163-1"><a href="classroom-technology.html#cb163-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> above_median==1</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       239
--------------+----------------------------------   F(1, 237)       =     19.25
-       Model |   .52552737         1   .52552737   Prob &gt; F        =    0.0000
-    Residual |   6.4715909       237  .027306291   R-squared       =    0.0751
--------------+----------------------------------   Adj R-squared   =    0.0712
-       Total |  6.99711827       238  .029399657   Root MSE        =    .16525
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       239
+-------------+----------------------------------  
+&gt;  F(1, 237)       =     19.25
+       Model |   .52552737         1   .52552737  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |   6.4715909       237  .027306291  
+&gt;  R-squared       =    0.0751
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0712
+       Total |  6.99711827       238  .029399657  
+&gt;  Root MSE        =    .16525
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0941481   .0214608     4.39   0.000     .0518699    .1364264
-       _cons |   .5290498    .014493    36.50   0.000     .5004981    .5576014
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0941481   .0214608     4.39   0.
+&gt; 000                                             
+&gt;         .0518699                                
+&gt;                     .1364264
+       _cons |   .5290498    .014493    36.50   0.
+&gt; 000                                             
+&gt;         .5004981                                
+&gt;                     .5576014
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <div class="sourceCode" id="cb165"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb165-1"><a href="classroom-technology.html#cb165-1" tabindex="-1"></a><span class="kw">reg</span> per_math2 treat <span class="kw">if</span> above_median==0</span></code></pre></div>
-<pre><code>      Source |       SS           df       MS      Number of obs   =       300
--------------+----------------------------------   F(1, 298)       =     21.99
-       Model |  .480080178         1  .480080178   Prob &gt; F        =    0.0000
-    Residual |  6.50520836       298  .021829558   R-squared       =    0.0687
--------------+----------------------------------   Adj R-squared   =    0.0656
-       Total |  6.98528854       299  .023362169   Root MSE        =    .14775
+<pre><code>      Source |       SS           df       MS     
+&gt;  Number of obs   =       300
+-------------+----------------------------------  
+&gt;  F(1, 298)       =     21.99
+       Model |  .480080178         1  .480080178  
+&gt;  Prob &gt; F        =    0.0000
+    Residual |  6.50520836       298  .021829558  
+&gt;  R-squared       =    0.0687
+-------------+----------------------------------  
+&gt;  Adj R-squared   =    0.0656
+       Total |  6.98528854       299  .023362169  
+&gt;  Root MSE        =    .14775
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0800939   .0170791     4.69   0.000      .046483    .1137049
-       _cons |   .4063055   .0123553    32.89   0.000     .3819907    .4306202
-------------------------------------------------------------------------------</code></pre>
+--------------------------------------------------
+&gt; ----------------------------
+   per_math2 | Coefficient  Std. err.      t    P&gt;
+&gt; |t|                                             
+&gt;         [95% con                                
+&gt;                 f. interval]
+-------------+------------------------------------
+&gt; ----------------------------
+       treat |   .0800939   .0170791     4.69   0.
+&gt; 000                                             
+&gt;          .046483                                
+&gt;                     .1137049
+       _cons |   .4063055   .0123553    32.89   0.
+&gt; 000                                             
+&gt;         .3819907                                
+&gt;                     .4306202
+--------------------------------------------------
+&gt; ----------------------------</code></pre>
 <p>We find that <span class="math inline">\(\hat{\beta}^{above}\)</span> = 0.095. Treatment increases the percent correct by 9.5 percentage points for above-median scoring students. We find <span class="math inline">\(\hat{\beta}^{below}\)</span> = 0.088. Treatment increases the percent correct by 8.8 percentage points for below-median scoring students. The treatment effect is slightly larger for above-median scoring students, but quite similar overall.</p>
 <p>To summarize our results in this chapter, we tested for heterogeneity in treatment effects by (1) gender, (2) SES status and (3) baseline achievement. While we found some evidence of heterogeneity, impacts were large and positive for all groups. This provides evidence on the <strong>external validity</strong> of the treatment. If we expand this program to more students, perhaps with different baseline characteristics, we might predict that it will still be effective given its ability to raise test scores for different types of students.</p>
 </div>
@@ -1148,7 +1444,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-22.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-03-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

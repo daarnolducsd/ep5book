@@ -136,8 +136,8 @@ Figure 2.1: New York Times Graphic on Opportunity Insights
 <p>Certain percentiles are often reported as descriptive statistics. For example, the median (50<span class="math inline">\(^{th}\)</span> percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was $68,703. This implies that 50 percent of households had income less than $68,703, while 50 percent had income more than $68,703.</p>
 <div class="rmdtip">
 <p><strong>Question: If an individual is at the 33 percentile of earnings, then this individual has...</strong></p>
-<div id="radio_MRBMNAQHXM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MRBMNAQHXM" value=""><span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_MRBMNAQHXM" value="answer"><span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_MRBMNAQHXM" value=""><span>Higher earnings than 67 Percent of individuals</span></label>
+<div id="radio_XCJTTCYKTA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XCJTTCYKTA" value=""><span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_XCJTTCYKTA" value="answer"><span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_XCJTTCYKTA" value=""><span>Higher earnings than 67 Percent of individuals</span></label>
 </div>
 </div>
 </div>
@@ -177,8 +177,8 @@ Figure 2.1: New York Times Graphic on Opportunity Insights
 <p>A general lesson here is to understand the details before you proceed with the analysis. In this example, low income and high income have very specific definitions. We need to understand our variables and how they are measured before we can dive into our analysis.</p>
 <div class="rmdtip">
 <p><strong>Question: Imagine 10 percent of College A's students come from low-income backgrounds, and 20 percent of these individuals go on to become high earners. In contrast, 5 percent of College B's students come from low-income backgrounds and 50 percent of these individuals go on to become high earners. Which college has the higher mobility rate?</strong></p>
-<div id="radio_TZOAKKNCWQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value=""><span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value="answer"><span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value=""><span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value=""><span>Not possible to tell</span></label>
+<div id="radio_EETUQEKUPF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value=""><span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value="answer"><span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value=""><span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value=""><span>Not possible to tell</span></label>
 </div>
 </div>
 </div>
@@ -324,7 +324,8 @@ Figure 2.13: Example Structure of a Folder Hierarchy for this Course
 <p>One brief aside before we continue with understanding the working directory. The best time to organize the folders on your computer is now! What does this mean? It means do not place everything you download in one place. Do not have your desktop cluttered with numerous files. Create folders on your computer that neatly divide up your work. For me, this means different folders for Research and Teaching. Within Teaching, I need different folders for every course I teach. Within each course, I need different folders for every week of the course. Therefore, if I need to access a dataset or set of notes for a given week of the course, I can do so quickly and easily. Doing this organization now will save you a lot of time in the future, not just in this course, but even more generally.</p>
 <p>Returning to the working directory, now that we know where the data is, we need to change our directory to the location of the data. To do this we can use the <code>cd</code> command which is short for "change directory."</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="intergenerational-mobility.html#cb7-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
-<span id="cb7-2"><a href="intergenerational-mobility.html#cb7-2" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/<span class="kw">data</span></span></code></pre></div>
+<span id="cb7-2"><a href="intergenerational-mobility.html#cb7-2" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_</span>
+<span id="cb7-3"><a href="intergenerational-mobility.html#cb7-3" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span></code></pre></div>
 <p>This is the path for me, but it will be different depending on where you put the downloaded data for this section. One issue that commonly confuses students is that even though they can navigate to a file, they don't actually know the full path to that file.</p>
 <p>In a PC, retrieving the full path is relatively simple. In the file explorer, there will be a panel at the top that shows the different subfolders. Clicking on the arrow next to this path will convert it to the full path name. You can simply copy and paste this pathname into Stata to change your working directory.</p>
 <p>On a Mac, it is slightly more complicated. If you right-click a folder and then press the "option" key, there will be an option to "copy as pathname". Pressing this option will copy the path name for you (i.e. you can press Cmd+p to paste it, or right-click and then select paste.)</p>
@@ -336,9 +337,11 @@ Figure 2.13: Example Structure of a Folder Hierarchy for this Course
 <p>In this section, we are going to learn a few basics of loading data into Stata. To get started, let's load in the main data for this chapter, which contains data from Opportunity Insights that will allow us how colleges vary in the extent that they promote intergenerational mobility. To load in the data type:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="intergenerational-mobility.html#cb8-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"</span></span>
 <span id="cb8-2"><a href="intergenerational-mobility.html#cb8-2" tabindex="-1"></a><span class="kw">use</span> college_mobility.dta, <span class="kw">clear</span></span>
-<span id="cb8-3"><a href="intergenerational-mobility.html#cb8-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/<span class="kw">data</span></span>
-<span id="cb8-4"><a href="intergenerational-mobility.html#cb8-4" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="intergenerational-mobility.html#cb8-5" tabindex="-1"></a>(Preferred Estimates <span class="kw">of</span> Access and Mobility Rates <span class="kw">by</span> College)</span></code></pre></div>
+<span id="cb8-3"><a href="intergenerational-mobility.html#cb8-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/02_</span>
+<span id="cb8-4"><a href="intergenerational-mobility.html#cb8-4" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span>
+<span id="cb8-5"><a href="intergenerational-mobility.html#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="intergenerational-mobility.html#cb8-6" tabindex="-1"></a>(Preferred Estimates <span class="kw">of</span> Access and Mobility Rates </span>
+<span id="cb8-7"><a href="intergenerational-mobility.html#cb8-7" tabindex="-1"></a>&gt; <span class="kw">by</span> College)</span></code></pre></div>
 <p>Again, the first part of this code (the part following "cd") will look different for you depending on the path to data in your computer. Now the data has been loaded into memory, but don't yet understand what is actually in the data. The first command that can be used to start exploring the data is the <code>describe</code> command. The <code>describe</code> command allows us to quickly review the variables in a dataset.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="intergenerational-mobility.html#cb9-1" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
 <p>Figure <a href="intergenerational-mobility.html#fig:describe">2.14</a> displays the results of this command, which is a table of variables, as well as the format of the variable and the label associated with the variable.</p>
@@ -375,9 +378,12 @@ Figure 2.15: Browse Command
 <p>where <code>varlist</code> is a list of variables that you would like to see summary statistics for. For example, imagine first we want to understand, on average, how large are institutions in this dataset? Well, the variable <code>count</code> is the average number of students enrolled in the institution. To retrieve summary statistics for this variable we type:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="intergenerational-mobility.html#cb11-1" tabindex="-1"></a><span class="kw">summarize</span> <span class="fu">count</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="intergenerational-mobility.html#cb12-1" tabindex="-1"></a><span class="kw">summarize</span> <span class="fu">count</span></span>
-<span id="cb12-2"><a href="intergenerational-mobility.html#cb12-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.       Min        Max</span>
-<span id="cb12-3"><a href="intergenerational-mobility.html#cb12-3" tabindex="-1"></a>-------------+---------------------------------------------------------</span>
-<span id="cb12-4"><a href="intergenerational-mobility.html#cb12-4" tabindex="-1"></a>       <span class="fu">count</span> |      2,199    946.5153    1508.825         50   26989.67</span></code></pre></div>
+<span id="cb12-2"><a href="intergenerational-mobility.html#cb12-2" tabindex="-1"></a>    Variable |        Obs        Mean    Std. <span class="kw">dev</span>.</span>
+<span id="cb12-3"><a href="intergenerational-mobility.html#cb12-3" tabindex="-1"></a>&gt;        Min        Max</span>
+<span id="cb12-4"><a href="intergenerational-mobility.html#cb12-4" tabindex="-1"></a>-------------+------------------------------------</span>
+<span id="cb12-5"><a href="intergenerational-mobility.html#cb12-5" tabindex="-1"></a>&gt; ---------------------</span>
+<span id="cb12-6"><a href="intergenerational-mobility.html#cb12-6" tabindex="-1"></a>       <span class="fu">count</span> |      2,199    946.5153    1508.825 </span>
+<span id="cb12-7"><a href="intergenerational-mobility.html#cb12-7" tabindex="-1"></a>&gt;         50   26989.67</span></code></pre></div>
 <p>This table tells us a few things. First, it tells us that the average size of a cohort of students across all institutions in the dataset is about 946 students. Additionally, we can see the minimum is 50 and the maximum is 26989.67. The minimum being 50 is actually by construction. Institutions with less than 50 students per cohort were dropped from the dataset. Understanding descriptive statistics about your key variables is important before starting any data analysis.</p>
 </div>
 <div id="generate" class="section level2" number="2.9">
@@ -471,34 +477,51 @@ Figure 2.19: Help File for the Summarize Command
 </div>
 <p>A general note about how syntax is presented in Stata is useful here. Words that appear brackets can be used when using the command, but don't need to be. The word <code>if</code> is in brackets because we don't need to include it in order to use the summarize command. However, imagine we want to compute average mobility rates, but just restricted to colleges in California. A college is in California <code>if CA==1</code>, which is the binary variable we created before. Therefore we can compute the average mobility rate of California colleges by typing:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="intergenerational-mobility.html#cb25-1" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> CA==1 </span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |        168    .0275095    .0154819          0   .0991846</code></pre>
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+mobility_r~e |        168    .0275095    .0154819 
+&gt;          0   .0991846</code></pre>
 <p>Note that we did not put <code>if</code> in brackets, even though it was in brackets in the syntax. The brackets are there to tell you that you can use an if statement, but the brackets themselves are not actually part of the syntax.</p>
 <p>So mobility rates in California colleges are 0.028. Let's compare this number to mobility rates in non-Californian colleges:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="intergenerational-mobility.html#cb27-1" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> CA==0 </span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |      2,031    .0175132     .012647          0   .1635797</code></pre>
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+mobility_r~e |      2,031    .0175132     .012647 
+&gt;          0   .1635797</code></pre>
 <p>The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be due to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="intergenerational-mobility.html#cb29-1" tabindex="-1"></a><span class="kw">sum</span> par_q1 kq5_cond_parq1 <span class="kw">if</span> CA==1 </span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-      par_q1 |        168    .1443805    .0889914   .0321324   .4606968
-kq5_cond_p~1 |        168    .2481358    .1638556          0   .8497473</code></pre>
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+      par_q1 |        168    .1443805    .0889914 
+&gt;   .0321324   .4606968
+kq5_cond_p~1 |        168    .2481358    .1638556 
+&gt;          0   .8497473</code></pre>
 <p>And now for non-Californian colleges:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="intergenerational-mobility.html#cb31-1" tabindex="-1"></a><span class="kw">sum</span> par_q1 kq5_cond_parq1 <span class="kw">if</span> CA==0 </span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-      par_q1 |      2,031    .1232655    .0878519   .0111896   .6097748
-kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .9192932</code></pre>
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+      par_q1 |      2,031    .1232655    .0878519 
+&gt;   .0111896   .6097748
+kq5_cond_p~1 |      2,031    .1919684    .1360417 
+&gt;          0   .9192932</code></pre>
 <p>So let's first discuss the access results (i.e. the variable <code>par_q1</code>). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fraction of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA.
 Now let's discuss the success results (i.e. the variable <code>kq5_cond_parq1</code>). Across colleges in CA, the average fraction of students from low-income backgrounds that become high earners is around 24.8 percent. Across colleges NOT in CA, the average fraction of students from low-income backgrounds that become high earners is around 19.2 percent. Therefore mobility rates are higher in CA due to both (1) greater access and (2) greater success.</p>
 <p>We can also use <code>if</code> statements to reference string variables. For example, let's imagine we want to see what the mobility rate is for UCSD. In the data, we can use the variable <code>name</code> which contains the institution name to summarize mobility <code>if name == "University Of California, San Diego"</code>. Note again the use of quotation marks here to reference a string value.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="intergenerational-mobility.html#cb33-1" tabindex="-1"></a><span class="kw">sum</span> mobility_rate <span class="kw">if</span> <span class="bn">name</span> == <span class="st">"University Of California, San Diego"</span></span></code></pre></div>
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |          1    .0483275           .   .0483275   .0483275</code></pre>
+<pre><code>    Variable |        Obs        Mean    Std. dev.
+&gt;        Min        Max
+-------------+------------------------------------
+&gt; ---------------------
+mobility_r~e |          1    .0483275           . 
+&gt;   .0483275   .0483275</code></pre>
 <p>Here we have taken the average <code>if name == "University Of California, San Diego"</code>. But only one observation meets this restriction, so the table is just showing us the mobility rate for UCSD, which is equal to 0.048, a bit higher than the average of 0.028 across all Californian institutions.</p>
 <p>In this section, we have begun to explore variation across colleges in terms of intergenerational mobility rates. In the next section, we will learn about a data visualization technique that is useful in understanding variation in the data more generally.</p>
 </div>
@@ -958,7 +981,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-22.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-03-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -65,7 +65,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_MRBMNAQHXM'><label><input type="radio" autocomplete="off" name="radio_MRBMNAQHXM" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_MRBMNAQHXM" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_MRBMNAQHXM" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_XCJTTCYKTA'><label><input type="radio" autocomplete="off" name="radio_XCJTTCYKTA" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_XCJTTCYKTA" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_XCJTTCYKTA" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_TZOAKKNCWQ'><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_TZOAKKNCWQ" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_EETUQEKUPF'><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_EETUQEKUPF" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::
@@ -301,7 +301,8 @@ Returning to the working directory, now that we know where the data is, we need 
 
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"
-/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data
+/Users/davidarnold/Dropbox/Teaching/EP5/online/02_
+> week/data
 ```
 
 This is the path for me, but it will be different depending on where you put the downloaded data for this section. One issue that commonly confuses students is that even though they can navigate to a file, they don't actually know the full path to that file. 
@@ -318,9 +319,11 @@ In this section, we are going to learn a few basics of loading data into Stata. 
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"
 use college_mobility.dta, clear
-/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data
+/Users/davidarnold/Dropbox/Teaching/EP5/online/02_
+> week/data
 
-(Preferred Estimates of Access and Mobility Rates by College)
+(Preferred Estimates of Access and Mobility Rates 
+> by College)
 ```
 
 Again, the first part of this code (the part following "cd") will look different for you depending on the path to data in your computer. Now the data has been loaded into memory, but don't yet understand what is actually in the data. The first command that can be used to start exploring the data is the ``describe`` command. The ``describe`` command allows us to quickly review the variables in a dataset.
@@ -382,9 +385,12 @@ summarize count
 
 ```stata
 summarize count
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-       count |      2,199    946.5153    1508.825         50   26989.67
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+       count |      2,199    946.5153    1508.825 
+>         50   26989.67
 ```
 
 This table tells us a few things. First, it tells us that the average size of a cohort of students across all institutions in the dataset is about 946 students. Additionally, we can see the minimum is 50 and the maximum is 26989.67. The minimum being 50 is actually by construction. Institutions with less than 50 students per cohort were dropped from the dataset. Understanding descriptive statistics about your key variables is important before starting any data analysis. 
@@ -550,9 +556,12 @@ sum mobility_rate if CA==1
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |        168    .0275095    .0154819          0   .0991846
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+mobility_r~e |        168    .0275095    .0154819 
+>          0   .0991846
 ```
 Note that we did not put ``if`` in brackets, even though it was in brackets in the syntax. The brackets are there to tell you that you can use an if statement, but the brackets themselves are not actually part of the syntax. 
 
@@ -564,9 +573,12 @@ sum mobility_rate if CA==0
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |      2,031    .0175132     .012647          0   .1635797
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+mobility_r~e |      2,031    .0175132     .012647 
+>          0   .1635797
 ```
 The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be due to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately. 
 
@@ -576,10 +588,14 @@ sum par_q1 kq5_cond_parq1 if CA==1
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-      par_q1 |        168    .1443805    .0889914   .0321324   .4606968
-kq5_cond_p~1 |        168    .2481358    .1638556          0   .8497473
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+      par_q1 |        168    .1443805    .0889914 
+>   .0321324   .4606968
+kq5_cond_p~1 |        168    .2481358    .1638556 
+>          0   .8497473
 ```
 And now for non-Californian colleges:
 
@@ -589,10 +605,14 @@ sum par_q1 kq5_cond_parq1 if CA==0
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-      par_q1 |      2,031    .1232655    .0878519   .0111896   .6097748
-kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .9192932
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+      par_q1 |      2,031    .1232655    .0878519 
+>   .0111896   .6097748
+kq5_cond_p~1 |      2,031    .1919684    .1360417 
+>          0   .9192932
 ```
 So let's first discuss the access results (i.e. the variable ``par_q1``). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fraction of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA. 
 Now let's discuss the success results (i.e. the variable ``kq5_cond_parq1``). Across colleges in CA, the average fraction of students from low-income backgrounds that become high earners is around 24.8 percent. Across colleges NOT in CA, the average fraction of students from low-income backgrounds that become high earners is around 19.2 percent. Therefore mobility rates are higher in CA due to both (1) greater access and (2) greater success.
@@ -605,9 +625,12 @@ sum mobility_rate if name == "University Of California, San Diego"
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |          1    .0483275           .   .0483275   .0483275
+    Variable |        Obs        Mean    Std. dev.
+>        Min        Max
+-------------+------------------------------------
+> ---------------------
+mobility_r~e |          1    .0483275           . 
+>   .0483275   .0483275
 ```
 Here we have taken the average ``if name == "University Of California, San Diego"``. But only one observation meets this restriction, so the table is just showing us the mobility rate for UCSD, which is equal to 0.048, a bit higher than the average of 0.028 across all Californian institutions. 
 

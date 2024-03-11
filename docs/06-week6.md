@@ -17,9 +17,9 @@ code {
 </head>
 <body>
 
-The motivation for this week's empirical application is the pervasive evidence of inequality in the labor market. For example, Black workers are about twice as likely as white workers to be unemployed (Council of Economic Advisors, 1998). However, it is often difficult to isolate discrimination from employers as source of a given disparity. For example, some argue researchers do not have all factors that go into an employer's decision to hire a worker, therefore differences in hiring rates across different races could be due to these other factors that are unobserved. 
+The motivation for this week's empirical application is the pervasive evidence of inequality in the labor market. For example, Black workers are about twice as likely as white workers to be unemployed (Council of Economic Advisors, 1998). However, it is often difficult to isolate discrimination from employers as a source of a given disparity. For example, some argue researchers do not have all factors that go into an employer's decision to hire a worker, therefore differences in hiring rates across different races could be due to these other factors that are unobserved. 
 
-This week we will be studying an extremely clever method for identifying discrimination in the labor market: resume audit studies, also known as correspondence studies. The paper we will be studying is Bertrand and Mullainathan (2004)[@bertrand2004emily] send fictitious resumes to help-wanted ads in Boston and Chicago. Their unique angle is that they manipulate the perception of race by altering the name on the resume: 
+This week we will be studying an extremely clever method for identifying discrimination in the labor market: resume audit studies, also known as correspondence studies. The paper we will be studying is Bertrand and Mullainathan (2004)[@bertrand2004emily] sends fictitious resumes to help-wanted ads in Boston and Chicago. Their unique angle is that they manipulate the perception of race by altering the name on the resume: 
 
   - Examples of white-sounding names from the paper: Emily Walsh and Greg Baker 
   
@@ -27,17 +27,17 @@ This week we will be studying an extremely clever method for identifying discrim
   
 All other characteristics of the applicant (experience, education, job history) are randomized. They then compare callback rates (for an interview) between Black and white applicants.
 
-Why is this design so clever? Well, all factors relevant for a job are held fixed by construction. Disparities in callback rates between races can no longer be "explained away" by other factors. The researchers themselves have generated these resumes. All factors are observed and similar between white and Black applicants by construction. Therefore, if you do find a disparity now, then this is very strong evidence for discrimination in the labor market. 
+Why is this design so clever? Well, all factors relevant to a job are held fixed by construction. Disparities in callback rates between races can no longer be "explained away" by other factors. The researchers themselves have generated these resumes. All factors are observed and similar between white and Black applicants by construction. Therefore, if you do find a disparity now, then this is very strong evidence for discrimination in the labor market. 
   
 Before getting to the data though, we need to learn how to use the program we will be studying for the rest of the book: R. At this point, we would also like to credit Kosuke Imai's Textbook: Quantitative Social Science: An Introduction, where this example is drawn from.[@imai2018quantitative] 
 
 ## Installing R/RStudio
 
-In this course we will be using R and Rstudio. R and Rstudio will work together to perform data analysis. But why two programs instead of one?
+In this course, we will be using R and Rstudio. R and Rstudio will work together to perform data analysis. But why two programs instead of one?
 
 R is the software that actually does all the work. It is the software that executes functions and gives you results. Rstudio is a software that provides a nice interface through which to use R. So basically, R is the actual machinery, Rstudio is there to improve your user experience. You don't strictly need Rstudio to use R, but it helps a lot! Whenever we "open R" in this course, we will actually be opening RStudio.
 
-Because RStudio doesn't work without R, the first thing we need to do is download R. To do this you can go to https://cran.r-project.org/ and download the most recent version of the software. R is available for both PC and Mac users. Once you download the package you can install by following the instructions on the installer. One part of the instructions that sometimes trips up students is that you need to decide on a location for a CRAN mirror. The general advice for this is to choose the CRAN mirror in closest physical proximity to you. This is to potentially improve the download speed and to balance resources across different servers. In practice, you really don't have to worry about this decision. Any CRAN mirror will allow you to download an identical version of R. 
+Because RStudio doesn't work without R, the first thing we need to do is download R. To do this you can go to https://cran.r-project.org/ and download the most recent version of the software. R is available for both PC and Mac users. Once you download the package you can install it by following the instructions on the installer. One part of the instructions that sometimes trips up students is that you need to decide on a location for a CRAN mirror. The general advice for this is to choose the CRAN mirror in closest physical proximity to you. This is to potentially improve the download speed and balance resources across different servers. In practice, you really don't have to worry about this decision. Any CRAN mirror will allow you to download an identical version of R. 
 
 ## RStudio Interface
 
@@ -50,11 +50,11 @@ When you open RStudio, you will be greeted by the RStudio Interface depicted bel
 
 Let's discuss these 4 windows in turn. In the top left is the Editor Window. This is where you will write an R script that holds all of your code. You may not see this window initially if you have not yet opened an R script (which is the equivalent to a do-file in Stata). To open up a new R script you can go to ``File > New File > R Script``.
 
-Below the Editor Window is the the Console. This is where all your code will be executed and run. For example, if you write code to take the average of a variable in the Editor Window, when you execute that code, the result will be displayed in the Console. 
+Below the Editor Window is the Console. This is where all your code will be executed and run. For example, if you write code to take the average of a variable in the Editor Window, when you execute that code, the result will be displayed in the Console. 
 
-In the top right we have the Environment, which is going to store objects, variables, and datasets. We will get more into what an object is further into the chapter. 
+In the top right, we have the Environment, which is going to store objects, variables, and datasets. We will get more into what an object is further into the chapter. 
 
-Lastly, the bottom right window has a host of tabs that will be helpful. One that we will use frequently is the Plots tab. This is where figures that we create in R will be displayed. Another important tab is the Packages tab. Further in this chapter we will discuss the importance of packages in R. Lastly, we will also use the Help tab frequently. In this tab you can search for documentation on how to use certain functions in R. This is similar to help files that we often used in the Stata chapters. 
+Lastly, the bottom right window has a host of tabs that will be helpful. One that we will use frequently is the Plots tab. This is where the figures that we create in R will be displayed. Another important tab is the Packages tab. Further in this chapter, we will discuss the importance of packages in R. Lastly, we will also use the Help tab frequently. In this tab, you can search for documentation on how to use certain functions in R. This is similar to the help files that we often used in the Stata chapters. 
 
 So now that we understand the different components of the interface, we are going to get started with coding in R. The first thing to do is open a new R script. As discussed above, to do this, you can navigate to ``File > New File > R Script``. 
 
@@ -66,7 +66,7 @@ Now, in the R script, type:
 5+3
 ```
 
-This line of code computes the sum of 5 and 3. In order to execute it, you have a few options. The first way to do this is to highlight the code, then press the Run button at the top right of the Editor window. 
+This line of code computes the sum of 5 and 3. To execute it, you have a few options. The first way to do this is to highlight the code, then press the Run button at the top right of the Editor window. 
 
 <div class="figure" style="text-align: center">
 <img src="images/06_run.png" alt="Run Button" width="90%" />
@@ -82,8 +82,6 @@ By clicking Run, the code is sent to the Console to be executed:
 ```
 
 The other way to execute code is through using shortcuts. On a Mac, if you click on a line of code, and then press ``Command + Enter``, then that line of code will be sent to the console. On a PC, this is ``Ctrl + Enter``. If you want to run multiple lines, you can simply highlight the lines you want to run, and then press either ``Command + Enter`` or ``Ctrl + Enter`` and then R will execute all of those lines of code in sequential order.
-
-
 
 Just like in Stata, you can do multiplication by using ``*``, division by using ``/`` and exponents by using ``^``. In R, the order of operations is controlled by parentheses:
 
@@ -118,7 +116,7 @@ Reading the help file will inform us that by default, the base of the log functi
 
 As in Stata, it will be helpful to document your code. When doing empirical projects, you want to be able to go back to the code at a later date and quickly understand what the code is doing. Comments are essential for this. Again, comments are lines within a script that are not meant to be run. They are there to describe what the code is doing. 
 
-Any line with a ``#`` at the beginning is commented out. If you don't comment out descriptions of the code, then R will try to execute them, leading to errors in the output. So, for example, imagine I want to calculate the hypotenuse of a particular triangle, with sides of length 5 and 4. The code below does this, while also documenting what the code is doing.
+Any line with a ``#`` at the beginning is commented out. If you don't comment out descriptions of the code, then R will try to execute them, leading to errors in the output. So, for example, imagine I want to calculate the hypotenuse of a particular triangle, with sides of lengths 5 and 4. The code below does this, while also documenting what the code is doing.
 
 
 ```r
@@ -130,7 +128,7 @@ sqrt(5^2 + 4^2)
 [1] 6.403124
 ```
 
-Now imagine I forgot to comment out the first line of description. Let's see what would happen
+Now imagine I forgot to comment out the first line of description. Let's see what happens
 
 
 ```r
@@ -200,7 +198,7 @@ class(school)
 [1] "character"
 ```
 
-So far, every object we have created has a single value associated with it. Next, we will discuss vectors. A *vector* represents a collection of information of the same type stored in a specific order. For example, instead of the graduation date of a single individual, maybe we have information on the graduation date of four individuals. This collection of information constitutes a vector. We can create a vector in R by using the function ``c()``, which stands for "concatenate". For example, let's create a vector fo graduation dates:
+So far, every object we have created has a single value associated with it. Next, we will discuss vectors. A *vector* represents a collection of information of the same type stored in a specific order. For example, instead of the graduation date of a single individual, maybe we have information on the graduation date of four individuals. This collection of information constitutes a vector. We can create a vector in R by using the function ``c()``, which stands for "concatenate". For example, let's create a vector of graduation dates:
 
 
 ```r
@@ -254,7 +252,7 @@ income + raise
 [1]  70  80  23 120
 ```
 
-In terms of data analysis, we can really think of vectors as a variable. Our first variable was graduation date, our second variable was the school. Often, in data analysis, we want to compute some summary statistics of our variables. In R, there are a host of functions that are helpful in summarizing numeric vectors:
+In terms of data analysis, we can really think of vectors as a variable. Our first variable was ``graduationdate``, our second variable was the ``school``. Often, in data analysis, we want to compute some summary statistics of our variables. In R, there are a host of functions that help summarize numeric vectors:
 
   - ```length()```: length of a vector (number of elements)
   - ```min()```: minimum value
@@ -317,7 +315,7 @@ logical: returning NA
 [1] NA
 ```
 
-However, it does make sense to ask, how many elemnents are there in the vector ``school``?
+However, it does make sense to ask, how many elements are there in the vector ``school``?
 
 
 ```r
@@ -344,11 +342,11 @@ To set your working directory, we use the ``setwd()`` function. You should set t
 setwd("/Users/davidarnold/Dropbox/Teaching/EP5Bookdown/data") 
 ```
 
-Because this is the folder that I have placed the data. If you are uncertain how to get this address in R, you can also find the Session tab at the top of the screen. If you click on Session, one of the options will be Set Working Directory. You can then navigate to Choose Directory. This will allow you to navigate through your folders as you usually would. Click the folder in which you have stored the data and press Open. This will then change your working directory to that folder. Even better, the code used to change the directory will be printed in the console. You can just copy and paste that snippet of code into your R script so that next time you open up the script you can just run the line of code instead of manually setting up the directory. 
+Because this is the folder in which I have placed the data. If you are uncertain how to get this address in R, you can also find the Session tab at the top of the screen. If you click on Session, one of the options will be Set Working Directory. You can then navigate to Choose Directory. This will allow you to navigate through your folders as you usually would. Click the folder in which you have stored the data and press Open. This will then change your working directory to that folder. Even better, the code used to change the directory will be printed in the console. You can just copy and paste that snippet of code into your R script so that next time you open up the script you can just run the line of code instead of manually setting up the directory. 
 
 ## Dataframes 
 
-Now that we have set the working directory, we can actually load in our data to start exploring it. To do this, we will use the ``read.csv()`` command. This is the command used to load comma separated values files. 
+Now that we have set the working directory, we can actually load in our data to start exploring it. To do this, we will use the ``read.csv()`` command. This is the command used to load comma-separated values files. 
 
 
 ```r
@@ -430,7 +428,7 @@ head(resume$call)
 
 It is a very common mistake for beginners to forget to specify both the data frame and the variable. This can lead to some confusing errors, so always make sure that you are specifying both the data frame and the variable in R. 
 
-Now that we have our data loaded and we understand how to reference variables, let's begin to explore the data. First, let's get a sense of the callback rates for these fictitious applicants. Remember, our variable ``call`` is equal to 1 if the resume received a callback for an interview. Therefore, if we take the average of this variable, then this value will be equal to the fraction of individuals that received a callback. If you don't follow this logic, make sure to flip back to Chapter 1.5 to review why this is true. 
+Now that we have our data loaded and we understand how to reference variables, let's begin to explore the data. First, let's get a sense of the callback rates for these fictitious applicants. Remember, our variable ``call`` is equal to 1 if the resume received a callback for an interview. Therefore, if we take the average of this variable, then this value will be equal to the fraction of individuals who received a callback. If you don't follow this logic, make sure to flip back to Chapter 1.5 to review why this is true. 
 
 We already know how to take the average of a vector, we use the ``mean()`` function. But a column in a data frame is just a vector. So we can use this function to find the callback rate:
 
@@ -530,7 +528,7 @@ But "6 not equal to 6" is of course ``FALSE``:
 [1] FALSE
 ```
 
-Now let's try to understand the ``&`` operator. We use the ``&`` operator when we want to test if two statements are **both** true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is ``age==18 & state=="CA"``. Now let's do an example in R. Imagine we want to retrieve the answer to "5 is equal to 5 and 5 is equal to 6". In R we would type ``5==5 & 5==6``. This statement is false because 5 is not equal to 6. If one of the statements is fales (``5==6``) then the whole statement is false (``5==5 & 5==6``).
+Now let's try to understand the ``&`` operator. We use the ``&`` operator when we want to test if two statements are **both** true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is ``age==18 & state=="CA"``. Now let's do an example in R. Imagine we want to retrieve the answer to "5 is equal to 5 and 5 is equal to 6". In R we would type ``5==5 & 5==6``. This statement is false because 5 is not equal to 6. If one of the statements is false (``5==6``) then the whole statement is false (``5==5 & 5==6``).
 
 
 ```r
@@ -538,7 +536,7 @@ Now let's try to understand the ``&`` operator. We use the ``&`` operator when w
 [1] FALSE
 ```
 
-In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true because both of the statements indiviudallt are true. 
+In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true because both of the statements individually are true. 
 
 
 ```r
@@ -580,7 +578,7 @@ Next, let's learn how to compare two vectors. For example, imagine we have the v
 birthyears<- c(2016, 1980, 1996, 1990)
 ```
 
-By looking at this vector, it is clear something went wrong for the first individual. The individual is reported as being born in 2016, but graduated in 2010. There must have been some sort of data entry error for this individual. While we can quickly identify this mistake in our small data, imagine we have thousands of individuals. It won't be possible to identify all of the errors by manually going through the data. 
+By looking at this vector, it is clear something went wrong for the first individual. The individual is reported as being born in 2016 but graduated in 2010. There must have been some sort of data entry error for this individual. While we can quickly identify this mistake in our small data, imagine we have thousands of individuals. It won't be possible to identify all of the errors by manually going through the data. 
 
 Instead, we can simply test whether there are ``birthyears`` in the data that are greater than ``graduationdates``
 
@@ -615,7 +613,7 @@ mean(problem)
 [1] 0.25
 ```
 
-Why does this get us the right result. Because the problem vector is equal to ``TRUE FALSE FALSE FALSE``. R will interpret this vector as ``1 0 0 0``. The mean value of this vector is therefore equal to 0.25. In other words, for 25 percent of individuals, there is a problem in the data. If you prefer to have the vector in numeric format instead of logical, you can also change it yourself by using the ``as.numeric()`` function:
+Why does this get us the right result? Because the problem vector is equal to ``TRUE FALSE FALSE FALSE``. R will interpret this vector as ``1 0 0 0``. The mean value of this vector is therefore equal to 0.25. In other words, for 25 percent of individuals, there is a problem in the data. If you prefer to have the vector in numeric format instead of logical, you can also change it yourself by using the ``as.numeric()`` function:
 
 
 ```r
@@ -627,7 +625,7 @@ This just changes how the information is displayed to you in R, not the actual i
 
 ## Subsetting Vectors
 
-Often we want to extract certain elements of a vector, which is know as **subsetting**. In R, to subset a vector we use ``[]``. Inside the ``[]`` we can place a number to extract a certain element. For example, if we type ``graduationdate[3]``, we would extract the third element of the vector ``graduationdate``. This is referred to as **indexing**. In this example, 3 is the index number.
+Often we want to extract certain elements of a vector, which is known as **subsetting**. In R, to subset a vector we use ``[]``. Inside the ``[]`` we can place a number to extract a certain element. For example, if we type ``graduationdate[3]``, we would extract the third element of the vector ``graduationdate``. This is referred to as **indexing**. In this example, 3 is the index number.
 
 We can also use logic to extract certain elements. For example, in general, if we type ``vec[logical statement]``, then only the elements for which the logical statement is true will be extracted. This will be especially useful when using data because it is common we want to extract elements that meet a certain condition, for example, individuals above the age of 18, or counties located in California, etc. 
 
@@ -656,7 +654,7 @@ graduationdates[-3]
 
 The output is another vector, but now only composed of three elements. The new vector has dropped the third element of ``graduationdates``. 
 
-You can also use indexing to subset multiple elements of a vector. For example, imagine we would like to extract the first and third element of the ``graduationdates`` vector. To do this, we create a vector of indices. 
+You can also use indexing to subset multiple elements of a vector. For example, imagine we would like to extract the first and third elements of the ``graduationdates`` vector. To do this, we create a vector of indices. 
 
 
 ```r
@@ -666,7 +664,7 @@ graduationdates[c(1,3)]
 
 If you recall, ``c(1,3)`` is a vector. The ``c()`` function concatenates 1 and 3 into a vector. The way R reads the statement above is "extract from the vector ``graduationdates``, the 1st and 3rd element. 
 
-Now that we understand how to subset vectors using numbers and vectors, let's learn how to index using logic. Instead of entering a vector of numbers as the index, we can directly enter a vector of ``TRUE`` and ``FALSE``. Only the elements for which the entry is ``TRUE`` will be extracted. To see how this work, let's try to understand the example below:
+Now that we understand how to subset vectors using numbers and vectors, let's learn how to index using logic. Instead of entering a vector of numbers as the index, we can directly enter a vector of ``TRUE`` and ``FALSE``. Only the elements for which the entry is ``TRUE`` will be extracted. To see how this works, let's try to understand the example below:
 
 
 ```r
@@ -681,7 +679,7 @@ The vector ``c(TRUE, FALSE, TRUE, FALSE)`` is ``TRUE`` for the 1st and 3rd eleme
 school <- c("UCSD", "UCB", "UCLA", "UCR")
 ```
 
-Imagine we want to retrieve the graduation date for the student that attended UCSD. If we type ``school=="UCSD"``, we will get a vector of 4 elements:
+Imagine we want to retrieve the graduation date for the student who attended UCSD. If we type ``school=="UCSD"``, we will get a vector of 4 elements:
 
 
 ```r
@@ -713,7 +711,7 @@ First, let's talk about how to use logical subsetting on a variable. What happen
 vec <- resume$race=="black"
 ```
 
-And then studying the resulting vector ``vec``. What happens if we then add a function around this vector. For example, if we type ``sum(resume$race=="black")``, then R should add up all the values of the vector ``resume$race=="black"``. Recall, R interprets a value of ``TRUE`` as equal to 1, and a value of ``FALSE`` as equal to 0. So if we type ``sum(resume$race=="black")``, we will just retrieve the total number of applications with Black-sounding names. 
+And then studying the resulting vector ``vec``. What happens if we then add a function around this vector? For example, if we type ``sum(resume$race=="black")``, then R should add up all the values of the vector ``resume$race=="black"``. Recall, R interprets a value of ``TRUE`` as equal to 1, and a value of ``FALSE`` as equal to 0. So if we type ``sum(resume$race=="black")``, we will just retrieve the total number of applications with Black-sounding names. 
 
 
 ```r
@@ -721,7 +719,7 @@ sum(resume$race=="black")
 [1] 2435
 ```
 
-We can subset one variable using a logical statement built from another variable. For example, imagine we want to compute the callback rate for Black applicants. Therefore, we want to compute the average of ``call`` only for individuals such that ``race=="black"``. In R, we can write out this statement as following:
+We can subset one variable using a logical statement built from another variable. For example, imagine we want to compute the callback rate for Black applicants. Therefore, we want to compute the average of ``call`` only for individuals such that ``race=="black"``. In R, we can write out this statement as follows:
 
 
 ```r
@@ -766,9 +764,9 @@ students[3,1]
 [1] "UCSD"
 ```
 
-It output "UCSD", because the the third student in the data frame went to UCSD and the 1st column in the data frame corresponds to the variable ``school``.
+It outputs "UCSD" because the the third student in the data frame went to UCSD and the 1st column in the data frame corresponds to the variable ``school``.
 
-Instead of extracting specific elements of a data frame, you can also extract entire columns and rows. For example, to extract the first row type:
+Instead of extracting specific elements of a data frame, you can also extract entire columns and rows. For example, to extract the first-row type:
 
 
 ```r
@@ -786,7 +784,7 @@ students[,2]
 ```
 
 Now, since the row index is blank, R extracts values from all rows, but just the second column. 
-You can also use a vector to specify what observations or columns you would like to retrieve. For example, imagine we think there was an error with recording the graduation date for second observation in our data frame. To be careful, we would like to drop this individual from the data frame. In other words, we want to extract rows 1 and 3 of the data frame, and leave out row 2. To do this, we can subset by specifying a vector of indices. The vector will contain the indices of every row we want in the final data frame:
+You can also use a vector to specify what observations or columns you would like to retrieve. For example, imagine we think there was an error with recording the graduation date for the second observation in our data frame. To be careful, we would like to drop this individual from the data frame. In other words, we want to extract rows 1 and 3 of the data frame and leave out row 2. To do this, we can subset by specifying a vector of indices. The vector will contain the indices of every row we want in the final data frame:
 
 
 ```r
@@ -814,7 +812,7 @@ students$school=="UCSD"
 [1]  TRUE FALSE  TRUE
 ```
 
-Then, just like with vectors, if we use this logical statement to subset, we will only retrieve observations such that the statement is TRUE. In this case, this statement is TRUE for the first and third observation:
+Then, just like with vectors, if we use this logical statement to subset, we will only retrieve observations such that the statement is TRUE. In this case, this statement is TRUE for the first and third observations:
 
 
 ```r
@@ -824,7 +822,7 @@ students[students$school=="UCSD",]
 3   UCSD           2015
 ```
 
-Indexing data frames and vectors in this way is a useful skill that will be portable to other software programs that you may encounter in your future. However, in R, there is often easier solutions to subsetting data. For example, the function ``subset`` is often used to subset data frames. When we learn about the ``tidyverse`` in a future chapter, there will be a function that is again useful for subsetting. 
+Indexing data frames and vectors in this way is a useful skill that will be portable to other software programs that you may encounter in the future. However, in R, there are often easier solutions to subsetting data. For example, the function ``subset`` is often used to subset data frames. When we learn about the ``tidyverse`` in a future chapter, there will be a function that is again useful for subsetting. 
 
 The general syntax for the subset command is:
 
@@ -895,7 +893,7 @@ black white
 
 There are 2435 resumes with white-sounding names and 2435 resumes with Black-sounding names. Remember, these are fictitious resumes, and the experimenters designed the study so that there would be an equal number of applications for white and Black applicants. 
 
-Note, we could retrieve the same information using logic. When we type a logical statement, R will return a logical object that is composed of ``TRUE`` and ``FALSE``. Whenever R sees ``TRUE`` it interprets a 1, and whenever R sees ``FALSE`` it interprets a 0. For example, if we type:
+Note that we could retrieve the same information using logic. When we type a logical statement, R will return a logical object that is composed of ``TRUE`` and ``FALSE``. Whenever R sees ``TRUE`` it interprets a 1, and whenever R sees ``FALSE`` it interprets a 0. For example, if we type:
 
 
 ```r
@@ -949,7 +947,7 @@ Now that we have performed the main analysis, let's summarize our findings. Arou
 $$
 \text{Percent Increase in Callbacks for White Apps}=\frac{9.7-6.4}{6.4}=0.516
 $$
-This highlights a stark disparity in labor-market outcomes. And given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employers take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race. 
+This highlights a stark disparity in labor-market outcomes. Given the empirical design: randomizing race across applications, these disparities cannot be driven by other factors that employers take into account when making hiring decisions. They are due to the names associated with the applications, and how those names proxy for race. 
 
 This empirical design has become widely popular. It has been used to study discrimination across other demographics, for example, gender, sexual orientation, and disability status. It has also increased in scope, with recent experiments sending out thousands and thousands of fictitious resumes in order to understand discrimination at some of the largest employers in the U.S (see Kline, Rose, and Walters 2022).[@kline2021systemic]
 

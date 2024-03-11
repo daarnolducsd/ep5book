@@ -126,7 +126,7 @@ code {
 <span id="cb449-6"><a href="unconditional-cash-transfers.html#cb449-6" tabindex="-1"></a></span>
 <span id="cb449-7"><a href="unconditional-cash-transfers.html#cb449-7" tabindex="-1"></a>ℹ Use <span class="st">`</span><span class="at">spec()</span><span class="st">`</span> to retrieve the full column specification <span class="cf">for</span> this data.</span>
 <span id="cb449-8"><a href="unconditional-cash-transfers.html#cb449-8" tabindex="-1"></a>ℹ Specify the column types or set <span class="st">`</span><span class="at">show_col_types = FALSE</span><span class="st">`</span> to quiet this message.</span></code></pre></div>
-<p>So we have 940 observations and 19 columns (i.e. variables). The first variable <code>treat</code> in is equal to 1 if the individual is in the treated group (received some cash payment) and zero of the individual is in the control group (did not receive a cash payment). Two variables we will be particularly interested in are <code>asset_before</code> and <code>asset_after</code>. In order to understand the impact of the cash transfer, we will compare the changes in assets for the treated workers relative to the change in assets that the control group experienced.</p>
+<p>So we have 940 observations and 19 columns (i.e. variables). The first variable <code>treat</code> in is equal to 1 if the individual is in the treated group (received some cash payment) and zero of the individual is in the control group (did not receive a cash payment). Two variables we will be particularly interested in are <code>asset_before</code> and <code>asset_after</code>. In order to understand the impact of the cash transfer, we will compare the changes in assets for the treated workers relative to the change in assets for the control group.</p>
 <p>Although we will focus on assets, as mentioned previously, there are a wide range of variables in the data. For each variable, we have a measurement both before and after the cash payments were made. Given the range of variables in the data, this will allow for a comprehensive study of how individuals outcomes are impacted by cash transfers.</p>
 <p>In the last columns, we also have information about the exact treatment. For example, the variable <code>treatXlarge</code> is equal to 1 if the individual is in the treatment group and the individual received a large cash transfer ($1500). The variable <code>treatXmonthlyXsmall</code> is equal to 1 if the individual is in the treatment group which received small monthly payments. Although we will not study the impact by each particular treatment, the design of the experiment also allows the authors understand how the size and timing of payments impacts overall welfare.</p>
 <p>Next, we will start analyzing the data. However, to do so, we will introduce a new concept: user-written functions. So far, every function we have used has either come from base R or from a package we have loaded. In the next section, we will learn how to write our own functions.</p>
@@ -212,7 +212,7 @@ code {
 <h2>
 <span class="header-section-number">10.4</span> Functions (Part 2)<a class="anchor" aria-label="anchor" href="#functions-part-2"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this section we are going to extend our knowledge of functions in R, with a particular focus on using strings as inputs into functions. To focus ideas, let's talk about our goal for this section. We are going to write a function that takes in a single variable name (such as <code>"asset"``` or</code>"total_rev"``) and computes the mean of this variable both before and after the unconditional cash transfer program, for both the treated and control workers. Figure <a href="unconditional-cash-transfers.html#fig:functionfigure">10.1</a> depicts the goal of the function. We can input a single word (e.g. "asset") and retrieve the table depicted as the output.</p>
+<p>In this section we are going to extend our knowledge of functions in R, with a particular focus on using strings as inputs into functions. To focus ideas, let's talk about our goal for this section. We are going to write a function that takes in a single variable name (such as <code>"asset"</code> or <code>"total_rev"</code>) and computes the mean of this variable both before and after the unconditional cash transfer program, for both the treated and control workers. Figure <a href="unconditional-cash-transfers.html#fig:functionfigure">10.1</a> depicts the goal of the function. We can input a single word (e.g. "asset") and retrieve the table depicted as the output.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:functionfigure"></span>
 <img src="images/10_function_ex.png" alt="Goal for our Function" width="75%"><p class="caption">
@@ -610,7 +610,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2023-12-22.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-03-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
