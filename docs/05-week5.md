@@ -36,8 +36,7 @@ To begin, let's load the dataset ``colonial_medicine.dta``
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"
 use colonial_medicine.dta, replace
-/Users/davidarnold/Dropbox/Teaching/EP5/online/05_
-> week/data
+/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
 
 file colonial_medicine.dta not Stata format
 r(610);
@@ -64,7 +63,7 @@ sum refused_any_blood_test
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -85,7 +84,7 @@ sum Times_Prospected
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -117,7 +116,7 @@ sum wealth_index
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -171,7 +170,7 @@ The **value label** is the text highlighted in blue ("2. No, didn't vote"). If w
 
 ```stata
 tab vote 
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -187,7 +186,7 @@ So there are 4 different value labels. If you need to reference values of these 
 
 ```stata
 count if vote==-9
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -203,7 +202,7 @@ If I try to do the same thing, but referencing the value label, I will get an er
 
 ```stata
 count if vote == "-9. Refused"
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -219,7 +218,7 @@ It states ``type mismatch`` because ``vote`` is a numeric variable, not a string
 
 ```stata
 tab vote, sum(vote)
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -248,7 +247,7 @@ tab better_or_worse
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -268,7 +267,7 @@ sum better_or_worse
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -297,7 +296,7 @@ sum better_or_worse
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -328,7 +327,7 @@ sum worse_off if better_or_worse==.
 
 
 ```
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
@@ -388,12 +387,11 @@ To begin let's load the dataset:
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"
 use colonial_medicine.dta, replace
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 
-/Users/davidarnold/Dropbox/Teaching/EP5/online/05_
-> week/data
+/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
 
 file colonial_medicine.dta not Stata format
 r(610);
@@ -407,7 +405,7 @@ First, we need to drop values that either have missing information for ``refused
 
 ```stata
 drop if refused_any_blood_test==. | Times_Prospected==. 
-file colonial_medicine.dta not Stata format
+ file colonial_medicine.dta not Stata format
 r(610);
 
 

@@ -52,8 +52,7 @@ Now that we have narrowed our focus, let's start exploring the data for San Dieg
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"
 use san_diego_stops.dta, replace 
-/Users/davidarnold/Dropbox/Teaching/EP5/online/03_
-> week/data
+/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 
 file san_diego_stops.dta not Stata format
 r(610);
@@ -85,7 +84,7 @@ tab subject_race
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -262,12 +261,11 @@ In this example, student 1 has a test score, but no homework score, while studen
 ```stata
 /* change working directory */
 cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
-/Users/davidarnold/Dropbox/Teaching/EP5/online/03_
-> week/data
+/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 ```
 
 
@@ -277,7 +275,7 @@ use test_score.dta, clear
 
 /*merge to the hw data*/
 merge 1:1 student using hw_score.dta
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -295,7 +293,7 @@ Whether you keep unmatched observations in your dataset depends a bit on your an
 
 ```stata
 keep if _merge==3
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -312,7 +310,7 @@ You can also specify to only keep matched observations directly in the merge com
 ```stata
 use test_score.dta, clear 
 merge 1:1 student using hw_score.dta, keep(3) nogen
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -340,7 +338,7 @@ Let's see what happens if we try to merge these two together:
 ```stata
 use test_score2.dta, clear 
 merge 1:1 student_id using hw_score.dta
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -366,7 +364,7 @@ Let's see what happens if we try to merge these two together
 ```stata
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -393,12 +391,11 @@ To create a dataset of all stops between 2014-2017, we need to ``append`` the st
 ```stata
 use san_diego_stops_2014_2015.dta, clear
 append using san_diego_stops_2016_2017.dta
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
-file san_diego_stops_2014_2015.dta not Stata
-    format
+file san_diego_stops_2014_2015.dta not Stata format
 r(610);
 
 end of do-file
@@ -414,7 +411,7 @@ tab year
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -439,7 +436,7 @@ unique date
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -455,7 +452,7 @@ How do we interpret this output? Well, the number of unique values of date is 11
 
 ```stata
 use sd_sunset.dta, clear
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -473,7 +470,7 @@ unique date
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -491,7 +488,7 @@ The last thing we need to do is to check that the format of the date variable is
 
 ```stata
 list date if _n==1
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -508,12 +505,11 @@ Now, let's go back to the stop-level data and check if ``date`` is held in the s
 ```stata
 use san_diego_stops_2014_2015.dta, clear
 append using san_diego_stops_2016_2017.dta
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
-file san_diego_stops_2014_2015.dta not Stata
-    format
+file san_diego_stops_2014_2015.dta not Stata format
 r(610);
 
 end of do-file
@@ -523,7 +519,7 @@ r(610);
 
 ```stata
 list date if _n==1
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -543,7 +539,7 @@ merge m:1 date using sd_sunset.dta, keep(3) nogen
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -578,7 +574,7 @@ To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
 
 ```stata
   use sd_analysis_sample.dta, replace
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 ```
@@ -590,7 +586,7 @@ r(610);
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -615,7 +611,7 @@ For example, to see how many milliseconds there are from midnight to 6:00 PM, we
 
 ```stata
   di clock("18:30:00","hms")
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -630,7 +626,7 @@ Where ``"18:30:00"`` is 6:30 PM on a 24-hour clock. ``"hms"`` tells Stata that t
 drop if stop_time<clock("18:30:00","hms")
 /* drop if after 7:00 PM */
 drop if stop_time>clock("19:00:00","hms") 
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -646,7 +642,7 @@ Next, we need to generate indicators that tell us whether a given stop occurred 
 
 ```stata
 gen light = (stop_time<sunset)
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -662,7 +658,7 @@ In words, we are creating a variable that is equal to 1 if the time of the stop 
 
 ```stata
 gen dark = (stop_time>dusk)
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -678,7 +674,7 @@ Now, there are some stops that occur between sunset and dusk. For these stops, w
 
 ```stata
 drop if light==0 & dark==0 
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -701,7 +697,7 @@ tab subject_race
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -721,7 +717,7 @@ tab subject_race if dark==0
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -742,7 +738,7 @@ tab subject_race if dark==1
 
 
 ```
-file san_diego_stops.dta not Stata format
+ file san_diego_stops.dta not Stata format
 r(610);
 
 

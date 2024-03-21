@@ -143,14 +143,13 @@ Figure 3.2: Trevor Noah Discussing Results from The Stanford Open Policing Proje
 <p>Now that we have narrowed our focus, let's start exploring the data for San Diego, as always we will need to set our working directory to where the data is located and then use the <code>use</code> command to load the data.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb45-1"><a href="discrimination-in-police-stops.html#cb45-1" tabindex="-1"></a>cd <span class="st">"/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"</span></span>
 <span id="cb45-2"><a href="discrimination-in-police-stops.html#cb45-2" tabindex="-1"></a><span class="kw">use</span> san_diego_stops.dta, <span class="kw">replace</span> </span>
-<span id="cb45-3"><a href="discrimination-in-police-stops.html#cb45-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_</span>
-<span id="cb45-4"><a href="discrimination-in-police-stops.html#cb45-4" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span>
-<span id="cb45-5"><a href="discrimination-in-police-stops.html#cb45-5" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="discrimination-in-police-stops.html#cb45-6" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
-<span id="cb45-7"><a href="discrimination-in-police-stops.html#cb45-7" tabindex="-1"></a><span class="fu">r</span>(610);</span>
-<span id="cb45-8"><a href="discrimination-in-police-stops.html#cb45-8" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="discrimination-in-police-stops.html#cb45-9" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb45-10"><a href="discrimination-in-police-stops.html#cb45-10" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
+<span id="cb45-3"><a href="discrimination-in-police-stops.html#cb45-3" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span>
+<span id="cb45-4"><a href="discrimination-in-police-stops.html#cb45-4" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="discrimination-in-police-stops.html#cb45-5" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb45-6"><a href="discrimination-in-police-stops.html#cb45-6" tabindex="-1"></a><span class="fu">r</span>(610);</span>
+<span id="cb45-7"><a href="discrimination-in-police-stops.html#cb45-7" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="discrimination-in-police-stops.html#cb45-8" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb45-9"><a href="discrimination-in-police-stops.html#cb45-9" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
 <p>To begin, let's use <code>describe</code> to figure out what variables we have in this dataset</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb46-1"><a href="discrimination-in-police-stops.html#cb46-1" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -162,7 +161,7 @@ Figure 3.3: San Diego Stops Data from Stanford Open Policing Project Data
 <p>Each observation in the dataset is a stop made by an officer somewhere in San Diego. <code>stop_time</code> contains the time of the stop. Remember this variable, we will return to it later. Our goal is to understand if there is discrimination in who is stopped. Therefore, we will be frequently using the <code>subject_race</code> variable in our dataset.</p>
 <p>Subject race is a <strong>categorical variable</strong>. Whenever you have a categorical variable as your variable of interest, it is helpful to understand the frequency of each category. For example, what fraction of stops are for Black drivers, White Drivers, Hispanic Drivers, etc. To do this in Stata, we will use the <code>tab</code> command.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb47-1"><a href="discrimination-in-police-stops.html#cb47-1" tabindex="-1"></a><span class="kw">tab</span> subject_race</span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -297,18 +296,17 @@ Figure 3.11: Example of Merge with Unmatched Observations
 <p>In this example, student 1 has a test score, but no homework score, while student 6 has a homework score but no test score. Let's see what happens if we merge these two datasets in Stata.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb54-1"><a href="discrimination-in-police-stops.html#cb54-1" tabindex="-1"></a><span class="co">/* change working directory */</span></span>
 <span id="cb54-2"><a href="discrimination-in-police-stops.html#cb54-2" tabindex="-1"></a>cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span>
-<span id="cb54-3"><a href="discrimination-in-police-stops.html#cb54-3" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb54-3"><a href="discrimination-in-police-stops.html#cb54-3" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb54-4"><a href="discrimination-in-police-stops.html#cb54-4" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb54-5"><a href="discrimination-in-police-stops.html#cb54-5" tabindex="-1"></a></span>
 <span id="cb54-6"><a href="discrimination-in-police-stops.html#cb54-6" tabindex="-1"></a></span>
-<span id="cb54-7"><a href="discrimination-in-police-stops.html#cb54-7" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_</span>
-<span id="cb54-8"><a href="discrimination-in-police-stops.html#cb54-8" tabindex="-1"></a>&gt; <span class="fu">week</span>/<span class="kw">data</span></span></code></pre></div>
+<span id="cb54-7"><a href="discrimination-in-police-stops.html#cb54-7" tabindex="-1"></a>/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/<span class="kw">data</span></span></code></pre></div>
 <div class="sourceCode" id="cb55"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb55-1"><a href="discrimination-in-police-stops.html#cb55-1" tabindex="-1"></a><span class="co">/*load test score data*/</span></span>
 <span id="cb55-2"><a href="discrimination-in-police-stops.html#cb55-2" tabindex="-1"></a><span class="kw">use</span> test_score.dta, <span class="kw">clear</span> </span>
 <span id="cb55-3"><a href="discrimination-in-police-stops.html#cb55-3" tabindex="-1"></a></span>
 <span id="cb55-4"><a href="discrimination-in-police-stops.html#cb55-4" tabindex="-1"></a><span class="co">/*merge to the hw data*/</span></span>
 <span id="cb55-5"><a href="discrimination-in-police-stops.html#cb55-5" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
-<span id="cb55-6"><a href="discrimination-in-police-stops.html#cb55-6" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb55-6"><a href="discrimination-in-police-stops.html#cb55-6" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb55-7"><a href="discrimination-in-police-stops.html#cb55-7" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb55-8"><a href="discrimination-in-police-stops.html#cb55-8" tabindex="-1"></a></span>
 <span id="cb55-9"><a href="discrimination-in-police-stops.html#cb55-9" tabindex="-1"></a></span>
@@ -320,7 +318,7 @@ Figure 3.11: Example of Merge with Unmatched Observations
 <p>Two observations were not matched. One from the master dataset (<code>test_score.dta</code>) and the other from the using dataset (<code>hw_score.dta</code>). A new variable (named <code>_merge</code>) has been added to the dataset to keep track of matched vs. unmatched observations. It is equal to 1 for observations only in the master dataset, 2 for observations only in the using, and 3 for observations in both the master and the using dataset.</p>
 <p>Whether you keep unmatched observations in your dataset depends a bit on your analysis. If you really need both homework score and test score for all of your analysis, you can probably safely keep only matched observations. To do this in Stata after a <code>merge</code> command, we can type</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb56-1"><a href="discrimination-in-police-stops.html#cb56-1" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="dt">_merge</span>==3</span>
-<span id="cb56-2"><a href="discrimination-in-police-stops.html#cb56-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb56-2"><a href="discrimination-in-police-stops.html#cb56-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb56-3"><a href="discrimination-in-police-stops.html#cb56-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb56-4"><a href="discrimination-in-police-stops.html#cb56-4" tabindex="-1"></a></span>
 <span id="cb56-5"><a href="discrimination-in-police-stops.html#cb56-5" tabindex="-1"></a></span>
@@ -332,7 +330,7 @@ Figure 3.11: Example of Merge with Unmatched Observations
 <p>You can also specify to only keep matched observations directly in the merge command. If you are only keeping observations that match between the two datasets, you don't need to generate the <code>_merge</code> variable, as it will be equal to 3 for all matched observations. Instead, you can specify the option <code>keep(3)</code> which only keeps matched observations. Then, to prevent Stata from adding an uniformative variable <code>_merge</code>, you can also specify <code>nogen</code> so that the variable is not generated. The example below uses both these options in the context of our hypothetical example.</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb57-1"><a href="discrimination-in-police-stops.html#cb57-1" tabindex="-1"></a><span class="kw">use</span> test_score.dta, <span class="kw">clear</span> </span>
 <span id="cb57-2"><a href="discrimination-in-police-stops.html#cb57-2" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta, <span class="kw">keep</span>(3) nogen</span>
-<span id="cb57-3"><a href="discrimination-in-police-stops.html#cb57-3" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb57-3"><a href="discrimination-in-police-stops.html#cb57-3" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb57-4"><a href="discrimination-in-police-stops.html#cb57-4" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb57-5"><a href="discrimination-in-police-stops.html#cb57-5" tabindex="-1"></a></span>
 <span id="cb57-6"><a href="discrimination-in-police-stops.html#cb57-6" tabindex="-1"></a></span>
@@ -353,7 +351,7 @@ Figure 3.12: Example of Merge with Different Names for Matching Variables
 <p>Let's see what happens if we try to merge these two together:</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb58-1"><a href="discrimination-in-police-stops.html#cb58-1" tabindex="-1"></a><span class="kw">use</span> test_score2.dta, <span class="kw">clear</span> </span>
 <span id="cb58-2"><a href="discrimination-in-police-stops.html#cb58-2" tabindex="-1"></a><span class="kw">merge</span> 1:1 student_id <span class="kw">using</span> hw_score.dta</span>
-<span id="cb58-3"><a href="discrimination-in-police-stops.html#cb58-3" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb58-3"><a href="discrimination-in-police-stops.html#cb58-3" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb58-4"><a href="discrimination-in-police-stops.html#cb58-4" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb58-5"><a href="discrimination-in-police-stops.html#cb58-5" tabindex="-1"></a></span>
 <span id="cb58-6"><a href="discrimination-in-police-stops.html#cb58-6" tabindex="-1"></a></span>
@@ -373,7 +371,7 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 <p>Let's see what happens if we try to merge these two together</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb59-1"><a href="discrimination-in-police-stops.html#cb59-1" tabindex="-1"></a><span class="kw">use</span> test_score3.dta, <span class="kw">clear</span> </span>
 <span id="cb59-2"><a href="discrimination-in-police-stops.html#cb59-2" tabindex="-1"></a><span class="kw">merge</span> 1:1 student <span class="kw">using</span> hw_score.dta</span>
-<span id="cb59-3"><a href="discrimination-in-police-stops.html#cb59-3" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb59-3"><a href="discrimination-in-police-stops.html#cb59-3" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb59-4"><a href="discrimination-in-police-stops.html#cb59-4" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb59-5"><a href="discrimination-in-police-stops.html#cb59-5" tabindex="-1"></a></span>
 <span id="cb59-6"><a href="discrimination-in-police-stops.html#cb59-6" tabindex="-1"></a></span>
@@ -394,19 +392,18 @@ Figure 3.13: Example of Merge with Different Types for Matching Variable
 <p>To create a dataset of all stops between 2014-2017, we need to <code>append</code> the stop-level data.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb60-1"><a href="discrimination-in-police-stops.html#cb60-1" tabindex="-1"></a><span class="kw">use</span> san_diego_stops_2014_2015.dta, <span class="kw">clear</span></span>
 <span id="cb60-2"><a href="discrimination-in-police-stops.html#cb60-2" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> san_diego_stops_2016_2017.dta</span>
-<span id="cb60-3"><a href="discrimination-in-police-stops.html#cb60-3" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb60-3"><a href="discrimination-in-police-stops.html#cb60-3" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb60-4"><a href="discrimination-in-police-stops.html#cb60-4" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb60-5"><a href="discrimination-in-police-stops.html#cb60-5" tabindex="-1"></a></span>
 <span id="cb60-6"><a href="discrimination-in-police-stops.html#cb60-6" tabindex="-1"></a></span>
-<span id="cb60-7"><a href="discrimination-in-police-stops.html#cb60-7" tabindex="-1"></a>file san_diego_stops_2014_2015.dta <span class="kw">not</span> Stata</span>
-<span id="cb60-8"><a href="discrimination-in-police-stops.html#cb60-8" tabindex="-1"></a>    <span class="kw">format</span></span>
-<span id="cb60-9"><a href="discrimination-in-police-stops.html#cb60-9" tabindex="-1"></a><span class="fu">r</span>(610);</span>
-<span id="cb60-10"><a href="discrimination-in-police-stops.html#cb60-10" tabindex="-1"></a></span>
-<span id="cb60-11"><a href="discrimination-in-police-stops.html#cb60-11" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb60-12"><a href="discrimination-in-police-stops.html#cb60-12" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
+<span id="cb60-7"><a href="discrimination-in-police-stops.html#cb60-7" tabindex="-1"></a>file san_diego_stops_2014_2015.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb60-8"><a href="discrimination-in-police-stops.html#cb60-8" tabindex="-1"></a><span class="fu">r</span>(610);</span>
+<span id="cb60-9"><a href="discrimination-in-police-stops.html#cb60-9" tabindex="-1"></a></span>
+<span id="cb60-10"><a href="discrimination-in-police-stops.html#cb60-10" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb60-11"><a href="discrimination-in-police-stops.html#cb60-11" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
 <p>So it might look as if nothing happened in Stata. To check that we now have all years of data in a single dataset we can type:</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb61-1"><a href="discrimination-in-police-stops.html#cb61-1" tabindex="-1"></a><span class="kw">tab</span> <span class="fu">year</span></span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -419,7 +416,7 @@ r(111);</code></pre>
 <p>To get started, we need to figure out how many observations there are for a given <code>date</code> in each dataset. Intuitively, we expect there are multiple observations per <code>date</code> in the traffic stop data. In other words, officers stop more than one individual per day. In the sunset data, well there is only a single sunset time for every day, so we expect a single observation per <code>date</code>. But data is not always stored how we expect, so it is always good to check this. The way were are going to check is through the <code>unique</code> command.</p>
 <p>The <code>unique</code> command does not come installed in Stata. You need to install it into your version of Stata by typing <code>ssc install unique</code> into the Command window. In general, you might find a command online that will help you perform some data analysis. Many commands can be installed by typing <code>ssc install commandname</code>. Therefore, before running the line of code below, you should type <code>ssc install unique</code> into the Command window and press enter.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb63-1"><a href="discrimination-in-police-stops.html#cb63-1" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -430,7 +427,7 @@ end of do-file
 r(111);</code></pre>
 <p>How do we interpret this output? Well, the number of unique values of date is 1186. In other words, this is how many different days there are in our dataset on traffic stops. In contrast, there are 381,149 total stops. Therefore, there are multiple stops per day. Whenever you see more records than unique values, you know this is a <code>many-to-BLANK</code> merge. The next job for us is to figure out if the <code>BLANK</code> should be replaced by a <code>one</code>. To do this we need to load the <code>sd_sunset.dta</code>.</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb65-1"><a href="discrimination-in-police-stops.html#cb65-1" tabindex="-1"></a><span class="kw">use</span> sd_sunset.dta, <span class="kw">clear</span></span>
-<span id="cb65-2"><a href="discrimination-in-police-stops.html#cb65-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb65-2"><a href="discrimination-in-police-stops.html#cb65-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb65-3"><a href="discrimination-in-police-stops.html#cb65-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb65-4"><a href="discrimination-in-police-stops.html#cb65-4" tabindex="-1"></a></span>
 <span id="cb65-5"><a href="discrimination-in-police-stops.html#cb65-5" tabindex="-1"></a></span>
@@ -440,7 +437,7 @@ r(111);</code></pre>
 <span id="cb65-9"><a href="discrimination-in-police-stops.html#cb65-9" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
 <span id="cb65-10"><a href="discrimination-in-police-stops.html#cb65-10" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
 <div class="sourceCode" id="cb66"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb66-1"><a href="discrimination-in-police-stops.html#cb66-1" tabindex="-1"></a><span class="kw">unique</span> <span class="fu">date</span></span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -452,7 +449,7 @@ r(111);</code></pre>
 <p>In this dataset, there are 1186 unique values of date and 1186 records. Each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a <code>many-to-one</code> merge. There are many observations per value of <code>date</code> in the stops data, but one observation per value of <code>date</code> in the sunset data.</p>
 <p>The last thing we need to do is to check that the format of the date variable is the same in both datasets. Let's look at the first observation in the <code>sd_sunset.dta</code></p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb68-1"><a href="discrimination-in-police-stops.html#cb68-1" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
-<span id="cb68-2"><a href="discrimination-in-police-stops.html#cb68-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb68-2"><a href="discrimination-in-police-stops.html#cb68-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb68-3"><a href="discrimination-in-police-stops.html#cb68-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb68-4"><a href="discrimination-in-police-stops.html#cb68-4" tabindex="-1"></a></span>
 <span id="cb68-5"><a href="discrimination-in-police-stops.html#cb68-5" tabindex="-1"></a></span>
@@ -464,18 +461,17 @@ r(111);</code></pre>
 <p>Now, let's go back to the stop-level data and check if <code>date</code> is held in the same format.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb69-1"><a href="discrimination-in-police-stops.html#cb69-1" tabindex="-1"></a><span class="kw">use</span> san_diego_stops_2014_2015.dta, <span class="kw">clear</span></span>
 <span id="cb69-2"><a href="discrimination-in-police-stops.html#cb69-2" tabindex="-1"></a><span class="kw">append</span> <span class="kw">using</span> san_diego_stops_2016_2017.dta</span>
-<span id="cb69-3"><a href="discrimination-in-police-stops.html#cb69-3" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb69-3"><a href="discrimination-in-police-stops.html#cb69-3" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb69-4"><a href="discrimination-in-police-stops.html#cb69-4" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb69-5"><a href="discrimination-in-police-stops.html#cb69-5" tabindex="-1"></a></span>
 <span id="cb69-6"><a href="discrimination-in-police-stops.html#cb69-6" tabindex="-1"></a></span>
-<span id="cb69-7"><a href="discrimination-in-police-stops.html#cb69-7" tabindex="-1"></a>file san_diego_stops_2014_2015.dta <span class="kw">not</span> Stata</span>
-<span id="cb69-8"><a href="discrimination-in-police-stops.html#cb69-8" tabindex="-1"></a>    <span class="kw">format</span></span>
-<span id="cb69-9"><a href="discrimination-in-police-stops.html#cb69-9" tabindex="-1"></a><span class="fu">r</span>(610);</span>
-<span id="cb69-10"><a href="discrimination-in-police-stops.html#cb69-10" tabindex="-1"></a></span>
-<span id="cb69-11"><a href="discrimination-in-police-stops.html#cb69-11" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
-<span id="cb69-12"><a href="discrimination-in-police-stops.html#cb69-12" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
+<span id="cb69-7"><a href="discrimination-in-police-stops.html#cb69-7" tabindex="-1"></a>file san_diego_stops_2014_2015.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb69-8"><a href="discrimination-in-police-stops.html#cb69-8" tabindex="-1"></a><span class="fu">r</span>(610);</span>
+<span id="cb69-9"><a href="discrimination-in-police-stops.html#cb69-9" tabindex="-1"></a></span>
+<span id="cb69-10"><a href="discrimination-in-police-stops.html#cb69-10" tabindex="-1"></a><span class="kw">end</span> <span class="kw">of</span> <span class="kw">do</span>-file</span>
+<span id="cb69-11"><a href="discrimination-in-police-stops.html#cb69-11" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
 <div class="sourceCode" id="cb70"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb70-1"><a href="discrimination-in-police-stops.html#cb70-1" tabindex="-1"></a><span class="ot">list</span> <span class="fu">date</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span>
-<span id="cb70-2"><a href="discrimination-in-police-stops.html#cb70-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb70-2"><a href="discrimination-in-police-stops.html#cb70-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb70-3"><a href="discrimination-in-police-stops.html#cb70-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb70-4"><a href="discrimination-in-police-stops.html#cb70-4" tabindex="-1"></a></span>
 <span id="cb70-5"><a href="discrimination-in-police-stops.html#cb70-5" tabindex="-1"></a></span>
@@ -486,7 +482,7 @@ r(111);</code></pre>
 <span id="cb70-10"><a href="discrimination-in-police-stops.html#cb70-10" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
 <p>It looks like the <code>date</code> variable is in the same format. If it is not, you then will need to do some data wrangling in order to get it into the same format. For us, we can now merge this data to the sunset data:</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb71-1"><a href="discrimination-in-police-stops.html#cb71-1" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 <span class="fu">date</span> <span class="kw">using</span> sd_sunset.dta, <span class="kw">keep</span>(3) nogen</span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -509,10 +505,10 @@ r(111);</code></pre>
 <p>In Stata, times of the day are often held in terms of milliseconds from midnight. Why? Well, you could store it as a string variable, but you can't add string variables. For example, while I understand that the string <code>"6:00 PM"</code> is equal to 6:00 PM at night, I need a way to store the information so that I can do things like add or subtract additional time (i.e. if I add an hour to 6:00 PM the result should be 7:00 PM). Strings are interpreted as words in Stata and so cannot be added in this way.</p>
 <p>To see how Stata stores times, we can <code>summarize</code> our variable <code>stop_time</code>.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb74-1"><a href="discrimination-in-police-stops.html#cb74-1" tabindex="-1"></a>  <span class="kw">use</span> sd_analysis_sample.dta, <span class="kw">replace</span></span>
-<span id="cb74-2"><a href="discrimination-in-police-stops.html#cb74-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb74-2"><a href="discrimination-in-police-stops.html#cb74-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb74-3"><a href="discrimination-in-police-stops.html#cb74-3" tabindex="-1"></a><span class="fu">r</span>(610);</span></code></pre></div>
 <div class="sourceCode" id="cb75"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb75-1"><a href="discrimination-in-police-stops.html#cb75-1" tabindex="-1"></a>  <span class="kw">sum</span> stop_time </span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -529,7 +525,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 <p>While this procedure will get you the right answer, typing some large numbers can sometimes lead to transcription errors if you are not careful. A better way to do this is to use Stata commands that do this math for you. The <code>clock()</code> command automatically translates time as we usually interpret it (i.e. 9:00 AM) into milliseconds from midnight automatically.</p>
 <p>For example, to see how many milliseconds there are from midnight to 6:00 PM, we can type:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb77-1"><a href="discrimination-in-police-stops.html#cb77-1" tabindex="-1"></a>  <span class="kw">di</span> clock(<span class="st">"18:30:00"</span>,<span class="st">"hms"</span>)</span>
-<span id="cb77-2"><a href="discrimination-in-police-stops.html#cb77-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb77-2"><a href="discrimination-in-police-stops.html#cb77-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb77-3"><a href="discrimination-in-police-stops.html#cb77-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb77-4"><a href="discrimination-in-police-stops.html#cb77-4" tabindex="-1"></a></span>
 <span id="cb77-5"><a href="discrimination-in-police-stops.html#cb77-5" tabindex="-1"></a></span>
@@ -539,7 +535,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 <span id="cb78-2"><a href="discrimination-in-police-stops.html#cb78-2" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> stop_time&lt;clock(<span class="st">"18:30:00"</span>,<span class="st">"hms"</span>)</span>
 <span id="cb78-3"><a href="discrimination-in-police-stops.html#cb78-3" tabindex="-1"></a><span class="co">/* drop if after 7:00 PM */</span></span>
 <span id="cb78-4"><a href="discrimination-in-police-stops.html#cb78-4" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> stop_time&gt;clock(<span class="st">"19:00:00"</span>,<span class="st">"hms"</span>) </span>
-<span id="cb78-5"><a href="discrimination-in-police-stops.html#cb78-5" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb78-5"><a href="discrimination-in-police-stops.html#cb78-5" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb78-6"><a href="discrimination-in-police-stops.html#cb78-6" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb78-7"><a href="discrimination-in-police-stops.html#cb78-7" tabindex="-1"></a></span>
 <span id="cb78-8"><a href="discrimination-in-police-stops.html#cb78-8" tabindex="-1"></a></span>
@@ -550,7 +546,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 <span id="cb78-13"><a href="discrimination-in-police-stops.html#cb78-13" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
 <p>Next, we need to generate indicators that tell us whether a given stop occurred during sunlight or in the dark. We will define a traffic stop occurring in the sunlight if it occurs before sunset. The variable <code>sunset</code> in the data contains the time of the sunset, which we can compare to the <code>stop_time</code> to generate an indicator for <code>light</code>:</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb79-1"><a href="discrimination-in-police-stops.html#cb79-1" tabindex="-1"></a><span class="kw">gen</span> light = (stop_time&lt;sunset)</span>
-<span id="cb79-2"><a href="discrimination-in-police-stops.html#cb79-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb79-2"><a href="discrimination-in-police-stops.html#cb79-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb79-3"><a href="discrimination-in-police-stops.html#cb79-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb79-4"><a href="discrimination-in-police-stops.html#cb79-4" tabindex="-1"></a></span>
 <span id="cb79-5"><a href="discrimination-in-police-stops.html#cb79-5" tabindex="-1"></a></span>
@@ -561,7 +557,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 <span id="cb79-10"><a href="discrimination-in-police-stops.html#cb79-10" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
 <p>In words, we are creating a variable that is equal to 1 if the time of the stop occurred before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable <code>dusk</code> in the data contains the time of dusk, which we can compare to the <code>stop_time</code> to generate an indicator for <code>dark</code>:</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb80-1"><a href="discrimination-in-police-stops.html#cb80-1" tabindex="-1"></a><span class="kw">gen</span> dark = (stop_time&gt;dusk)</span>
-<span id="cb80-2"><a href="discrimination-in-police-stops.html#cb80-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb80-2"><a href="discrimination-in-police-stops.html#cb80-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb80-3"><a href="discrimination-in-police-stops.html#cb80-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb80-4"><a href="discrimination-in-police-stops.html#cb80-4" tabindex="-1"></a></span>
 <span id="cb80-5"><a href="discrimination-in-police-stops.html#cb80-5" tabindex="-1"></a></span>
@@ -572,7 +568,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 <span id="cb80-10"><a href="discrimination-in-police-stops.html#cb80-10" tabindex="-1"></a><span class="fu">r</span>(111);</span></code></pre></div>
 <p>Now, there are some stops that occur between sunset and dusk. For these stops, we aren't sure if driver race is observed. It is neither fully light nor fully dark at these times (i.e. <code>dark==0 &amp; light==0</code>). We are going to drop these stops from the analysis:</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb81-1"><a href="discrimination-in-police-stops.html#cb81-1" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> light==0 &amp; dark==0 </span>
-<span id="cb81-2"><a href="discrimination-in-police-stops.html#cb81-2" tabindex="-1"></a>file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
+<span id="cb81-2"><a href="discrimination-in-police-stops.html#cb81-2" tabindex="-1"></a> file san_diego_stops.dta <span class="kw">not</span> Stata <span class="kw">format</span></span>
 <span id="cb81-3"><a href="discrimination-in-police-stops.html#cb81-3" tabindex="-1"></a><span class="fu">r</span>(610);</span>
 <span id="cb81-4"><a href="discrimination-in-police-stops.html#cb81-4" tabindex="-1"></a></span>
 <span id="cb81-5"><a href="discrimination-in-police-stops.html#cb81-5" tabindex="-1"></a></span>
@@ -589,7 +585,7 @@ So if we are restricting to 6:30 PM to 7:00 PM, we should restrict to all stops 
 </h2>
 <p>We need to compare the composition of traffic stops in times of sunlight vs. darkness to implement the veil of darkness test. If stop rates for minorities drop in the dark, that indicates they were being targeted in the sunlight. To retrieve the composition of traffic stops by race, we can use the <code>tab</code> command:</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb82-1"><a href="discrimination-in-police-stops.html#cb82-1" tabindex="-1"></a><span class="kw">tab</span> subject_race </span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -600,7 +596,7 @@ end of do-file
 r(111);</code></pre>
 <p>If we want the composition but restricted to stops in the sunlight, we can add a conditional statement to our code:</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb84-1"><a href="discrimination-in-police-stops.html#cb84-1" tabindex="-1"></a><span class="kw">tab</span> subject_race <span class="kw">if</span> dark==0 </span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -611,7 +607,7 @@ end of do-file
 r(111);</code></pre>
 <p>Now let's look at the composition of traffic stops in the dark:</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb86-1"><a href="discrimination-in-police-stops.html#cb86-1" tabindex="-1"></a><span class="kw">tab</span> subject_race <span class="kw">if</span> dark==1 </span></code></pre></div>
-<pre><code>file san_diego_stops.dta not Stata format
+<pre><code> file san_diego_stops.dta not Stata format
 r(610);
 
 
@@ -1039,7 +1035,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-03-11.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-03-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
