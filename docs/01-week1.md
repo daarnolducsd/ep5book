@@ -60,7 +60,7 @@ The key in their design is that the instructors that are chosen to receive the i
 
 
 
-<div class='webex-radiogroup' id='radio_UGHBDKTASJ'><label><input type="radio" autocomplete="off" name="radio_UGHBDKTASJ" value="answer"></input> <span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_UGHBDKTASJ" value=""></input> <span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_UGHBDKTASJ" value=""></input> <span>Ability to follow individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_UGHBDKTASJ" value=""></input> <span>Ability to collect information about confounding variables</span></label></div>
+<div class='webex-radiogroup' id='radio_LWKAMLKLEK'><label><input type="radio" autocomplete="off" name="radio_LWKAMLKLEK" value="answer"></input> <span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_LWKAMLKLEK" value=""></input> <span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_LWKAMLKLEK" value=""></input> <span>Ability to follow individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_LWKAMLKLEK" value=""></input> <span>Ability to collect information about confounding variables</span></label></div>
 
 
 :::
@@ -118,7 +118,7 @@ Let's talk a little bit about our goal with this dataset. Our goal is to determi
 
 
 
-<div class='webex-radiogroup' id='radio_SVZXNCQYPT'><label><input type="radio" autocomplete="off" name="radio_SVZXNCQYPT" value=""></input> <span>State</span></label><label><input type="radio" autocomplete="off" name="radio_SVZXNCQYPT" value=""></input> <span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_SVZXNCQYPT" value=""></input> <span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_SVZXNCQYPT" value="answer"></input> <span>State-year</span></label></div>
+<div class='webex-radiogroup' id='radio_MEWVQRPJWW'><label><input type="radio" autocomplete="off" name="radio_MEWVQRPJWW" value=""></input> <span>State</span></label><label><input type="radio" autocomplete="off" name="radio_MEWVQRPJWW" value=""></input> <span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_MEWVQRPJWW" value=""></input> <span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_MEWVQRPJWW" value="answer"></input> <span>State-year</span></label></div>
 
 
 :::
@@ -205,7 +205,7 @@ The rest of the summary statistics are completely analogous, replacing ``AVERAGE
 
 
 
-<div class='webex-radiogroup' id='radio_BIPOGPTTVA'><label><input type="radio" autocomplete="off" name="radio_BIPOGPTTVA" value=""></input> <span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_BIPOGPTTVA" value=""></input> <span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_BIPOGPTTVA" value="answer"></input> <span>Need to specify equals sign ``=`` before the function</span></label></div>
+<div class='webex-radiogroup' id='radio_CPZNCTZTNH'><label><input type="radio" autocomplete="off" name="radio_CPZNCTZTNH" value=""></input> <span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_CPZNCTZTNH" value=""></input> <span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_CPZNCTZTNH" value="answer"></input> <span>Need to specify equals sign ``=`` before the function</span></label></div>
 
 
 :::

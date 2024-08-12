@@ -53,12 +53,6 @@ Now that we have narrowed our focus, let's start exploring the data for San Dieg
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"
 use san_diego_stops.dta, replace 
 /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
-
-file san_diego_stops.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
 ```
 
 To begin, let's use ``describe`` to figure out what variables we have in this dataset 
@@ -84,15 +78,15 @@ tab subject_race
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+          subject_race |      Freq.     Percent        Cum.
+-----------------------+-----------------------------------
+Asian/Pacific Islander |     32,482        8.52        8.52
+                 Black |     42,631       11.18       19.71
+              Hispanic |    116,912       30.67       50.38
+                 Other |     27,170        7.13       57.51
+                 White |    161,954       42.49      100.00
+-----------------------+-----------------------------------
+                 Total |    381,149      100.00
 ```
 This gives us the fraction of stops by race in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented \medskip
 
@@ -261,10 +255,6 @@ In this example, student 1 has a test score, but no homework score, while studen
 ```stata
 /* change working directory */
 cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
- file san_diego_stops.dta not Stata format
-r(610);
-
-
 /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 ```
 
@@ -275,15 +265,14 @@ use test_score.dta, clear
 
 /*merge to the hw data*/
 merge 1:1 student using hw_score.dta
- file san_diego_stops.dta not Stata format
-r(610);
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             2
+        from master                         1  (_merge==1)
+        from using                          1  (_merge==2)
 
-
-file test_score.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
+    Matched                                 4  (_merge==3)
+    -----------------------------------------
 ```
 
 Two observations were not matched. One from the master dataset (``test_score.dta``) and the other from the using dataset (``hw_score.dta``). A new variable (named ``_merge``) has been added to the dataset to keep track of matched vs. unmatched observations. It is equal to 1 for observations only in the master dataset, 2 for observations only in the using, and 3 for observations in both the master and the using dataset.
@@ -293,15 +282,7 @@ Whether you keep unmatched observations in your dataset depends a bit on your an
 
 ```stata
 keep if _merge==3
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-_merge not found
-r(111);
-
-end of do-file
-r(111);
+(2 observations deleted)
 ```
 
 You can also specify to only keep matched observations directly in the merge command. If you are only keeping observations that match between the two datasets, you don't need to generate the ``_merge`` variable, as it will be equal to 3 for all matched observations. Instead, you can specify the option ``keep(3)`` which only keeps matched observations. Then, to prevent Stata from adding an uniformative variable ``_merge``, you can also specify ``nogen`` so that the variable is not generated. The example below uses both these options in the context of our hypothetical example.
@@ -310,15 +291,11 @@ You can also specify to only keep matched observations directly in the merge com
 ```stata
 use test_score.dta, clear 
 merge 1:1 student using hw_score.dta, keep(3) nogen
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-file test_score.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 4  
+    -----------------------------------------
 ```
 
 As you can see, the generated table has only 4 observations now, all of which are in both datasets. This is because we have specified to only keep observations that are in both datasets by specifying ``keep(3)``.
@@ -338,15 +315,11 @@ Let's see what happens if we try to merge these two together:
 ```stata
 use test_score2.dta, clear 
 merge 1:1 student_id using hw_score.dta
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-file test_score2.dta not Stata format
-r(610);
+variable student_id not found
+r(111);
 
 end of do-file
-r(610);
+r(111);
 ```
 
 The variable ``student_id`` was not found because the variable ``student_id`` does not exist in the using dataset. To merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the ``rename`` command to ensure the names are the same. 
@@ -364,15 +337,13 @@ Let's see what happens if we try to merge these two together
 ```stata
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-file test_score3.dta not Stata format
-r(610);
+key variable student is str1 in master but float in using data
+    Each key variable (on which observations are matched) must be of the same generic type in the master and using datasets.  Same
+    generic type means both numeric or both string.
+r(106);
 
 end of do-file
-r(610);
+r(106);
 ```
 
 This error code is describing how the format of the variables is different in our master vs. using dataset. To fix this issue, we need to convert one of the variable formats. For example, we could type ``destring student, replace`` to convert the student variable to a numeric variable in the ``test_score3.dta`` dataset.
@@ -391,15 +362,7 @@ To create a dataset of all stops between 2014-2017, we need to ``append`` the st
 ```stata
 use san_diego_stops_2014_2015.dta, clear
 append using san_diego_stops_2016_2017.dta
- file san_diego_stops.dta not Stata format
-r(610);
 
-
-file san_diego_stops_2014_2015.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
 ```
 
 So it might look as if nothing happened in Stata. To check that we now have all years of data in a single dataset we can type:
@@ -411,15 +374,14 @@ tab year
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+       year |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2014 |    138,735       36.40       36.40
+       2015 |    112,201       29.44       65.84
+       2016 |    102,181       26.81       92.65
+       2017 |     28,032        7.35      100.00
+------------+-----------------------------------
+      Total |    381,149      100.00
 ```
 
 Now we have verified that the current data in memory has stops between 2014-2017. Our next task is to ``merge`` in the data on sunset times. To do this, we need to make sure of two things. First, is there a variable that we can merge on? In general, you would need to load both datasets and check if there are any variables that store the same information. In our case, there is a single variable that meets this criteria: ``date``. Second, is this a one-to-one or many-to-one merge? Third, is the ``date`` variable in both datasets stored in the same format?
@@ -436,15 +398,8 @@ unique date
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-variable date not found
-r(111);
-
-end of do-file
-r(111);
+Number of unique values of date is  1186
+Number of records is  381149
 ```
   
 How do we interpret this output? Well, the number of unique values of date is 1186. In other words, this is how many different days there are in our dataset on traffic stops. In contrast, there are 381,149 total stops. Therefore, there are multiple stops per day. Whenever you see more records than unique values, you know this is a ``many-to-BLANK`` merge. The next job for us is to figure out if the ``BLANK`` should be replaced by a ``one``. To do this we need to load the ``sd_sunset.dta``.
@@ -452,15 +407,7 @@ How do we interpret this output? Well, the number of unique values of date is 11
 
 ```stata
 use sd_sunset.dta, clear
- file san_diego_stops.dta not Stata format
-r(610);
 
-
-file sd_sunset.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
 ```
 
 
@@ -470,15 +417,8 @@ unique date
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-variable date not found
-r(111);
-
-end of do-file
-r(111);
+Number of unique values of date is  1186
+Number of records is  1186
 ```
 
 In this dataset, there are 1186 unique values of date and 1186 records. Each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a ``many-to-one`` merge. There are many observations per value of ``date`` in the stops data, but one observation per value of ``date`` in the sunset data. 
@@ -488,15 +428,10 @@ The last thing we need to do is to check that the format of the date variable is
 
 ```stata
 list date if _n==1
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+      |      date |
+      |-----------|
+   1. | 01jan2014 |
+      +-----------+
 ```
 
 Now, let's go back to the stop-level data and check if ``date`` is held in the same format. 
@@ -505,29 +440,16 @@ Now, let's go back to the stop-level data and check if ``date`` is held in the s
 ```stata
 use san_diego_stops_2014_2015.dta, clear
 append using san_diego_stops_2016_2017.dta
- file san_diego_stops.dta not Stata format
-r(610);
 
-
-file san_diego_stops_2014_2015.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
 ```
 
 
 ```stata
 list date if _n==1
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+        |      date |
+        |-----------|
+     1. | 01jan2014 |
+        +-----------+
 ```
 
 It looks like the ``date`` variable is in the same format. If it is not, you then will need to do some data wrangling in order to get it into the same format. For us, we can now merge this data to the sunset data:
@@ -539,15 +461,11 @@ merge m:1 date using sd_sunset.dta, keep(3) nogen
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           381,149  
+    -----------------------------------------
 ```
 
 Because we specified ``keep(3) nogen``, we are only keeping observations that correspond to dates in both datasets. Now, we are going to want to use this data for our analysis later, so let's save the combined dataset under a new name: ``sd_analysis_sample.dta`` by typing:
@@ -574,8 +492,6 @@ To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
 
 ```stata
   use sd_analysis_sample.dta, replace
- file san_diego_stops.dta not Stata format
-r(610);
 
 ```
 
@@ -586,15 +502,9 @@ r(610);
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07
 ```
 
 It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be $60\cdot 60 \cdot 1000 = 3,600,000$, because there are 60 minutes in an hour, 60 seconds in a minute, and a 1000 milliseconds in a second). So how many milliseconds to 6:30 PM?
@@ -611,10 +521,6 @@ For example, to see how many milliseconds there are from midnight to 6:00 PM, we
 
 ```stata
   di clock("18:30:00","hms")
- file san_diego_stops.dta not Stata format
-r(610);
-
-
 66600000
 ```
 
@@ -626,15 +532,9 @@ Where ``"18:30:00"`` is 6:30 PM on a 24-hour clock. ``"hms"`` tells Stata that t
 drop if stop_time<clock("18:30:00","hms")
 /* drop if after 7:00 PM */
 drop if stop_time>clock("19:00:00","hms") 
- file san_diego_stops.dta not Stata format
-r(610);
+(296,355 observations deleted)
 
-
-stop_time not found
-r(111);
-
-end of do-file
-r(111);
+(76,052 observations deleted)
 ```
 
 Next, we need to generate indicators that tell us whether a given stop occurred during sunlight or in the dark. We will define a traffic stop occurring in the sunlight if it occurs before sunset. The variable ``sunset`` in the data contains the time of the sunset, which we can compare to the ``stop_time`` to generate an indicator for ``light``:
@@ -642,15 +542,7 @@ Next, we need to generate indicators that tell us whether a given stop occurred 
 
 ```stata
 gen light = (stop_time<sunset)
- file san_diego_stops.dta not Stata format
-r(610);
 
-
-stop_time not found
-r(111);
-
-end of do-file
-r(111);
 ```
 
 In words, we are creating a variable that is equal to 1 if the time of the stop occurred before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable ``dusk`` in the data contains the time of dusk, which we can compare to the ``stop_time`` to generate an indicator for ``dark``:
@@ -658,15 +550,7 @@ In words, we are creating a variable that is equal to 1 if the time of the stop 
 
 ```stata
 gen dark = (stop_time>dusk)
- file san_diego_stops.dta not Stata format
-r(610);
 
-
-stop_time not found
-r(111);
-
-end of do-file
-r(111);
 ```
 
 Now, there are some stops that occur between sunset and dusk. For these stops, we aren't sure if driver race is observed. It is neither fully light nor fully dark at these times (i.e. ``dark==0 & light==0``). We are going to drop these stops from the analysis:
@@ -674,15 +558,7 @@ Now, there are some stops that occur between sunset and dusk. For these stops, w
 
 ```stata
 drop if light==0 & dark==0 
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-light not found
-r(111);
-
-end of do-file
-r(111);
+(414 observations deleted)
 ```
 
 Now we are ready to start our analysis to implement the veil of darkness.
@@ -697,15 +573,15 @@ tab subject_race
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+          subject_race |      Freq.     Percent        Cum.
+-----------------------+-----------------------------------
+Asian/Pacific Islander |        747        8.97        8.97
+                 Black |      1,084       13.02       21.99
+              Hispanic |      2,847       34.19       56.17
+                 Other |        561        6.74       62.91
+                 White |      3,089       37.09      100.00
+-----------------------+-----------------------------------
+                 Total |      8,328      100.00
 ```
 
 If we want the composition but restricted to stops in the sunlight, we can add a conditional statement to our code: 
@@ -717,15 +593,15 @@ tab subject_race if dark==0
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+          subject_race |      Freq.     Percent        Cum.
+-----------------------+-----------------------------------
+Asian/Pacific Islander |        375        8.40        8.40
+                 Black |        589       13.20       21.60
+              Hispanic |      1,528       34.24       55.84
+                 Other |        319        7.15       62.98
+                 White |      1,652       37.02      100.00
+-----------------------+-----------------------------------
+                 Total |      4,463      100.00
 ```
 
 
@@ -738,15 +614,15 @@ tab subject_race if dark==1
 
 
 ```
- file san_diego_stops.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+          subject_race |      Freq.     Percent        Cum.
+-----------------------+-----------------------------------
+Asian/Pacific Islander |        372        9.62        9.62
+                 Black |        495       12.81       22.43
+              Hispanic |      1,319       34.13       56.56
+                 Other |        242        6.26       62.82
+                 White |      1,437       37.18      100.00
+-----------------------+-----------------------------------
+                 Total |      3,865      100.00
 ```
 
 In these tables, we are trying to see if certain races are much less likely to be stopped in darkness relative to sunlight. If this is true, then this is good evidence that this race is being targeted during sunlight hours. From the table above, the composition of traffic stops seems relatively similar during sunlight vs. after dark. However, it is a little difficult to absorb all the information from these multiple tables. To really get the information across, it might be useful to put this information into a figure.

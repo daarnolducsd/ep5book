@@ -28,6 +28,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -150,13 +151,13 @@ Figure 7.1: Time Spent on Childcare by Parents, by Educational Attainment, 1965-
 <p>Let's try another example. Say we take a random draw from three numbers: -1, 0, and 1. We can take a random draw from this list of numbers by using the sample function:</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="the-rug-rat-race.html#cb288-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb288-2"><a href="the-rug-rat-race.html#cb288-2" tabindex="-1"></a>x</span>
-<span id="cb288-3"><a href="the-rug-rat-race.html#cb288-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="dv">1</span></span></code></pre></div>
+<span id="cb288-3"><a href="the-rug-rat-race.html#cb288-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
 <p>The part of the code <code>-1:1</code> controls what numbers will be drawn. If you type <code>-1:1</code> in R, you will see it prints out the numbers -1,0, and 1. The second part of the code <code>,1</code> tells R how many random samples to take. In this case, just 1. So overall, this code is simply setting x equal to either -1, 0, or 1 and doing so randomly.</p>
 <p>So now let's write a conditional statement that depends on the outcome of x. Let's write some code that returns the absolute value of x, but only if x is less than zero.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="the-rug-rat-race.html#cb289-1" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&lt;</span><span class="dv">0</span>){</span>
-<span id="cb289-2"><a href="the-rug-rat-race.html#cb289-2" tabindex="-1"></a>  <span class="fu">abs</span>(x)</span>
-<span id="cb289-3"><a href="the-rug-rat-race.html#cb289-3" tabindex="-1"></a>}</span>
-<span id="cb289-4"><a href="the-rug-rat-race.html#cb289-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>Next, let's discuss <code>else</code> statements. Sometimes, we want to execute certain code if the statement is TRUE, but some other code if it is FALSE. For example, in our first example, imagine if the <code>door</code> object is not equal to <code>locked</code> then we want R to print out the message <code>Please Come in!</code>. The way we can do this in R is with an <code>else</code> statement:</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="the-rug-rat-race.html#cb290-1" tabindex="-1"></a>door <span class="ot">&lt;-</span> <span class="st">"locked"</span></span>
 <span id="cb290-2"><a href="the-rug-rat-race.html#cb290-2" tabindex="-1"></a><span class="cf">if</span> (door<span class="sc">==</span><span class="st">"locked"</span>){</span>
@@ -504,7 +505,7 @@ Figure 7.2: Time Spent on Childcare, by Age of Child and Type of Care 2003-2008
 <p>For example, let's add the variable <code>childcollegeprep</code> which will be the addition of <code>childeduc</code> and <code>childtravel</code>, which are two variables in our <code>rugratrace.csv</code> data set.</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="the-rug-rat-race.html#cb336-1" tabindex="-1"></a>rr<span class="sc">$</span>childcollegeprep <span class="ot">&lt;-</span> rr<span class="sc">$</span>childeduc <span class="sc">+</span> rr<span class="sc">$</span>childtravel</span>
 <span id="cb336-2"><a href="the-rug-rat-race.html#cb336-2" tabindex="-1"></a><span class="fu">summary</span>(rr<span class="sc">$</span>childcollegeprep)</span>
-<span id="cb336-3"><a href="the-rug-rat-race.html#cb336-3" tabindex="-1"></a>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA<span class="st">'s </span></span>
+<span id="cb336-3"><a href="the-rug-rat-race.html#cb336-3" tabindex="-1"></a>   Min. <span class="dv">1</span>st Qu.  Median    Mean <span class="dv">3</span>rd Qu.    Max.    NA<span class="st">'s </span></span>
 <span id="cb336-4"><a href="the-rug-rat-race.html#cb336-4" tabindex="-1"></a><span class="st">  0.000   0.000   0.000   1.201   0.000  98.933    1146 </span></span></code></pre></div>
 <p>So the mean amount of time spent on <code>childcollegprep</code> is about 1.2 hours. Recall we haven't made any restrictions on <code>rr</code>, so this includes everyone in the data set, including those who don't have children. This explains why the value is so much lower than the values we have been studying for mothers with children in the house.</p>
 <p>We can also generate new variables using the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function (from tidyverse). The general syntax is:</p>
@@ -962,7 +963,7 @@ window.onload = function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-03-21.</p>
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2024-08-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

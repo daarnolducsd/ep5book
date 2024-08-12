@@ -1,7 +1,7 @@
 --- 
 title: "Econ5/Poli5D"
 author: "David Arnold"
-date: "2024-03-21"
+date: "2024-08-12"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

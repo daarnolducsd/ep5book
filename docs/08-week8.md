@@ -41,7 +41,7 @@ library(tidyverse)
 #> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 #> ✔ dplyr     1.1.2     ✔ readr     2.1.4
 #> ✔ forcats   1.0.0     ✔ stringr   1.5.0
-#> ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#> ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 #> ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 #> ✔ purrr     1.0.1     
 #> ── Conflicts ────────────────────── tidyverse_conflicts() ──
@@ -422,7 +422,7 @@ library(lubridate)
 
 ```r
 today()
-#> [1] "2024-03-21"
+#> [1] "2024-08-12"
 ```
 
 Or even the exact time right now:
@@ -430,7 +430,7 @@ Or even the exact time right now:
 
 ```r
 now()
-#> [1] "2024-03-21 11:14:56 PDT"
+#> [1] "2024-08-12 13:15:26 PDT"
 ```
 
 But most importantly, ``lubridate`` allows R to interpret strings of text as dates. For us, that means when we make a graph R will understand that an observation for January 1, 2012 was taken before an observation that was taken on March 3rd, 2014, for example. 
@@ -911,8 +911,10 @@ Now we can combine these two into a single plot.
 
 ```r
 grid.arrange(plotbefore, plotafter, ncol=2)
-#> Warning: Removed 2 rows containing missing values (`geom_bar()`).
-#> Removed 2 rows containing missing values (`geom_bar()`).
+#> Warning: Removed 2 rows containing missing values or values outside
+#> the scale range (`geom_bar()`).
+#> Removed 2 rows containing missing values or values outside
+#> the scale range (`geom_bar()`).
 ```
 
 <img src="08-week8_files/figure-html/unnamed-chunk-61-1.png" width="75%" />
