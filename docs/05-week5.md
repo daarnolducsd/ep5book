@@ -37,12 +37,6 @@ To begin, let's load the dataset ``colonial_medicine.dta``
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"
 use colonial_medicine.dta, replace
 /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
-
-file colonial_medicine.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
 ```
 
 As usual, let's describe the data to learn more about the variables.
@@ -63,15 +57,9 @@ sum refused_any_blood_test
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+refused_an~t |     11,993    .1110648    .3142255          0          1
 ```
 
 So around 11 percent overall refuse a blood test. Our goal will be to understand if this refusal rate depends on how often an individual's area was visited during sleeping sickness campaigns in the past. The variable that captures this is ``Times_Prospected``:
@@ -84,15 +72,9 @@ sum Times_Prospected
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+Times_Pros~d |     67,036    .2941624    .1943945          0         .8
 ```
 
 
@@ -116,15 +98,9 @@ sum wealth_index
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+wealth_index |     75,881    3.212319     1.43691          1          5
 ```
 
 We will discuss this behavior in a future chapter about **value labels**. Next, If I browse the data, you will see the variable ``refused_any_blood_test`` has some missing values (the period indicates the value is missing).
@@ -170,15 +146,15 @@ The **value label** is the text highlighted in blue ("2. No, didn't vote"). If w
 
 ```stata
 tab vote 
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+      PRE: Did R vote for |
+        President in 2012 |      Freq.     Percent        Cum.
+--------------------------+-----------------------------------
+              -9. Refused |          2        0.05        0.05
+-8. Don't know (FTF only) |         14        0.33        0.37
+            1. Yes, voted |      3,117       73.00       73.37
+       2. No, didn't vote |      1,137       26.63      100.00
+--------------------------+-----------------------------------
+                    Total |      4,270      100.00
 ```
 
 So there are 4 different value labels. If you need to reference values of these variables, you need to use the actual numeric values, not the labels themselves. The labels are just there so we don't forget what the numbers mean. For example, if I wanted to see how many individuals refused the question, I can type:
@@ -186,15 +162,7 @@ So there are 4 different value labels. If you need to reference values of these 
 
 ```stata
 count if vote==-9
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-vote not found
-r(111);
-
-end of do-file
-r(111);
+  2
 ```
 
 If I try to do the same thing, but referencing the value label, I will get an error:
@@ -202,15 +170,11 @@ If I try to do the same thing, but referencing the value label, I will get an er
 
 ```stata
 count if vote == "-9. Refused"
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-vote not found
-r(111);
+type mismatch
+r(109);
 
 end of do-file
-r(111);
+r(109);
 ```
 
 It states ``type mismatch`` because ``vote`` is a numeric variable, not a string variable. A quick way to see the numeric values associated with the labels is to type:
@@ -218,15 +182,17 @@ It states ``type mismatch`` because ``vote`` is a numeric variable, not a string
 
 ```stata
 tab vote, sum(vote)
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+ PRE: Did R |
+   vote for |   Summary of PRE: Did R vote for
+  President |          President in 2012
+    in 2012 |        Mean   Std. dev.       Freq.
+------------+------------------------------------
+  -9. Refus |          -9           0           2
+  -8. Don't |          -8           0          14
+  1. Yes, v |           1           0       3,117
+  2. No, di |           2           0       1,137
+------------+------------------------------------
+      Total |   1.2320843   .72453319       4,270
 ```
 
 ::: {.rmdtip}
@@ -247,15 +213,18 @@ tab better_or_worse
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+   PRE: R how much better |
+worse off than 1 year ago |      Freq.     Percent        Cum.
+--------------------------+-----------------------------------
+              -9. Refused |         11        0.26        0.26
+-8. Don't know (FTF only) |          2        0.05        0.30
+       1. Much better off |        298        6.98        7.28
+   2. Somewhat better off |        904       21.17       28.45
+        3. About the same |      1,981       46.39       74.85
+    4. Somewhat worse off |        763       17.87       92.72
+        5. Much worse off |        311        7.28      100.00
+--------------------------+-----------------------------------
+                    Total |      4,270      100.00
 ```
 
 You can see that -8 and -9 are actually missing values, but right now they are stored as numbers. If I take the average of ``better_or_worse``, I get:
@@ -267,15 +236,9 @@ sum better_or_worse
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+better_or_~e |      4,270    2.937002    1.176809         -9          5
 ```
 
 But this average incorporates those values of -9 and -8. In terms of the scale of the variable, this will lower the overall average, which could lead to some pretty misleading results. For example, imagine instead of storing the missing values as -9, they were stored as -1000. Then, even though there are a few individuals with missing data, our average value of ``better_or_worse`` might be very low, as low as 1. If we naively took this as the average, then we might conclude that on average, people report they are much better off. But this is the wrong conclusion, we need the average response among individuals that actually answered the question.
@@ -296,15 +259,9 @@ sum better_or_worse
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+better_or_~e |      4,257    2.972986    .9814891          1          5
 ```
 
 When you compute summary statistics or run regressions, observations with missing values will be dropped automatically from this calculation. However, you need to be very careful when constructing new variables from observations with missing values. For logical statements in Stata (such as when creating indicator variables), the missing value is interpreted as infinity. The reason why it was chosen to have missing values be interpreted as infinity is a little complicated, but it can lead to some confusing errors!
@@ -327,15 +284,9 @@ sum worse_off if better_or_worse==.
 
 
 ```
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-end of do-file
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   worse_off |         13           1           0          1          1
 ```
 
 It is equal to 1 for all of these individuals, but why? The reason is missing values are interpreted as infinity in logical statements. Because infinity is greater than 4, then everyone with missing values of this is coded as ``worse_off=1``.
@@ -387,17 +338,7 @@ To begin let's load the dataset:
 ```stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"
 use colonial_medicine.dta, replace
- file colonial_medicine.dta not Stata format
-r(610);
-
-
 /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
-
-file colonial_medicine.dta not Stata format
-r(610);
-
-end of do-file
-r(610);
 ```
 
 First, we need to drop values that either have missing information for ``refused_any_blood_test`` or ``Times_Prospected``. ``refused_any_blood_test`` is our key outcome and is equal to 1 if the individual refused the free blood test and zero otherwise. ``Times_Prospected`` is our key explanatory variable and captures what fraction of years between 1921-and 1956 was the individual's region visited for sleeping sickness campaigns. If either of these values are missing for an observation, then they should not be included in the analysis.
@@ -405,15 +346,7 @@ First, we need to drop values that either have missing information for ``refused
 
 ```stata
 drop if refused_any_blood_test==. | Times_Prospected==. 
- file colonial_medicine.dta not Stata format
-r(610);
-
-
-refused_any_blood_test not found
-r(111);
-
-end of do-file
-r(111);
+(65,951 observations deleted)
 ```
 
 The parallel line ``|`` indicates "or". So put simply, this line says to drop any observations in which either ``refused_any_blood_test`` or ``Times_Prospected`` is missing.
