@@ -65,7 +65,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_WLAKYNATKV'><label><input type="radio" autocomplete="off" name="radio_WLAKYNATKV" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_WLAKYNATKV" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_WLAKYNATKV" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_QZKJCFWXLS'><label><input type="radio" autocomplete="off" name="radio_QZKJCFWXLS" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_QZKJCFWXLS" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_QZKJCFWXLS" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_LCMYWIIKGG'><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_VTNMMPGEIA'><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::

@@ -1,380 +1,146 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Unconditional Cash Transfers | Econ5/Poli5D</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 10 Unconditional Cash Transfers | Econ5/Poli5D" />
-  <meta property="og:type" content="book" />
-  <meta property="og:image" content="/images/geisel.jpg" />
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Unconditional Cash Transfers | Econ5/Poli5D" />
-  
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  <meta name="twitter:image" content="/images/geisel.jpg" />
-
-<meta name="author" content="David Arnold" />
-
-
-<meta name="date" content="2026-03-26" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="voting.html"/>
-<link rel="next" href="references-1.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Unconditional Cash Transfers | Econ5/Poli5D</title>
+<meta name="author" content="David Arnold">
+<meta name="description" content="10.1 Motivation   code {  background-color: #f1f1f1; } A central goal of development economics is to understand ways to alleviate global poverty. However, the exact design of policies is often up...">
+<meta name="generator" content="bookdown 0.46 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Unconditional Cash Transfers | Econ5/Poli5D">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/images/geisel.jpg">
+<meta property="og:description" content="10.1 Motivation   code {  background-color: #f1f1f1; } A central goal of development economics is to understand ways to alleviate global poverty. However, the exact design of policies is often up...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Unconditional Cash Transfers | Econ5/Poli5D">
+<meta name="twitter:description" content="10.1 Motivation   code {  background-color: #f1f1f1; } A central goal of development economics is to understand ways to alleviate global poverty. However, the exact design of policies is often up...">
+<meta name="twitter:image" content="/images/geisel.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/webex.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="toc-logo"><a href="./"><img src="images/logo.png"></a></li>
-<li class="divider"></li>
-<li class="part"><span><b>I Excel</b></span></li>
-<li class="chapter" data-level="1" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html"><i class="fa fa-check"></i><b>1</b> College Instruction Experiments</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#experiments"><i class="fa fa-check"></i><b>1.1</b> Experiments</a></li>
-<li class="chapter" data-level="1.2" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#community-college-data"><i class="fa fa-check"></i><b>1.2</b> Community College Data</a></li>
-<li class="chapter" data-level="1.3" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#statistical-functions"><i class="fa fa-check"></i><b>1.3</b> Statistical Functions</a></li>
-<li class="chapter" data-level="1.4" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#logical-functions"><i class="fa fa-check"></i><b>1.4</b> Logical Functions</a></li>
-<li class="chapter" data-level="1.5" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#summary-statistics"><i class="fa fa-check"></i><b>1.5</b> Summary Statistics</a></li>
-<li class="chapter" data-level="1.6" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#S:pivottables"><i class="fa fa-check"></i><b>1.6</b> Pivot Tables</a></li>
-<li class="chapter" data-level="1.7" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#balance-tables"><i class="fa fa-check"></i><b>1.7</b> Balance Tables</a></li>
-<li class="chapter" data-level="1.8" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#S:impact"><i class="fa fa-check"></i><b>1.8</b> Impact of Financial Incentives</a></li>
-<li class="chapter" data-level="1.9" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#S:pivotbasic"><i class="fa fa-check"></i><b>1.9</b> Pivot Charts (Basic)</a></li>
-<li class="chapter" data-level="1.10" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#S:pivotadvanced"><i class="fa fa-check"></i><b>1.10</b> Pivot Charts (Advanced)</a></li>
-<li class="chapter" data-level="1.11" data-path="college-instruction-experiments.html"><a href="college-instruction-experiments.html#S:Conclusion"><i class="fa fa-check"></i><b>1.11</b> Conclusion</a></li>
-</ul></li>
-<li class="part"><span><b>II Stata</b></span></li>
-<li class="chapter" data-level="2" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html"><i class="fa fa-check"></i><b>2</b> Intergenerational Mobility</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#opportunity-insights"><i class="fa fa-check"></i><b>2.1</b> Opportunity Insights</a></li>
-<li class="chapter" data-level="2.2" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#quantiles"><i class="fa fa-check"></i><b>2.2</b> Quantiles</a></li>
-<li class="chapter" data-level="2.3" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#mobility-definition"><i class="fa fa-check"></i><b>2.3</b> Mobility Definition</a></li>
-<li class="chapter" data-level="2.4" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#stata-gui"><i class="fa fa-check"></i><b>2.4</b> Stata GUI</a></li>
-<li class="chapter" data-level="2.5" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#do-files"><i class="fa fa-check"></i><b>2.5</b> Do-files</a></li>
-<li class="chapter" data-level="2.6" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#working-directory"><i class="fa fa-check"></i><b>2.6</b> Working Directory</a></li>
-<li class="chapter" data-level="2.7" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#describe-and-browse"><i class="fa fa-check"></i><b>2.7</b> Describe and Browse</a></li>
-<li class="chapter" data-level="2.8" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#summarize"><i class="fa fa-check"></i><b>2.8</b> Summarize</a></li>
-<li class="chapter" data-level="2.9" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#generate"><i class="fa fa-check"></i><b>2.9</b> Generate</a></li>
-<li class="chapter" data-level="2.10" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#binary-variables"><i class="fa fa-check"></i><b>2.10</b> Binary Variables</a></li>
-<li class="chapter" data-level="2.11" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#if-statements"><i class="fa fa-check"></i><b>2.11</b> If Statements</a></li>
-<li class="chapter" data-level="2.12" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#histogram-theoretical"><i class="fa fa-check"></i><b>2.12</b> Histogram (Theoretical)</a></li>
-<li class="chapter" data-level="2.13" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#histogram-data"><i class="fa fa-check"></i><b>2.13</b> Histogram (Data)</a></li>
-<li class="chapter" data-level="2.14" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#histogram-aesthetics"><i class="fa fa-check"></i><b>2.14</b> Histogram (Aesthetics)</a></li>
-<li class="chapter" data-level="2.15" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#conclusion"><i class="fa fa-check"></i><b>2.15</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#command-descriptions"><i class="fa fa-check"></i><u>Command Descriptions</u></a></li>
-<li class="chapter" data-level="" data-path="intergenerational-mobility.html"><a href="intergenerational-mobility.html#references"><i class="fa fa-check"></i>References</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html"><i class="fa fa-check"></i><b>3</b> Discrimination in Police Stops</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#sopp-intro"><i class="fa fa-check"></i><b>3.1</b> SOPP Intro</a></li>
-<li class="chapter" data-level="3.2" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#sopp-data"><i class="fa fa-check"></i><b>3.2</b> SOPP Data</a></li>
-<li class="chapter" data-level="3.3" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#veil-of-darkness-vod"><i class="fa fa-check"></i><b>3.3</b> Veil of Darkness (VOD)</a></li>
-<li class="chapter" data-level="3.4" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#data-wrangling"><i class="fa fa-check"></i><b>3.4</b> Data Wrangling</a></li>
-<li class="chapter" data-level="3.5" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#append"><i class="fa fa-check"></i><b>3.5</b> Append</a></li>
-<li class="chapter" data-level="3.6" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#merge-basics"><i class="fa fa-check"></i><b>3.6</b> Merge Basics</a></li>
-<li class="chapter" data-level="3.7" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#merge-advanced"><i class="fa fa-check"></i><b>3.7</b> Merge Advanced</a></li>
-<li class="chapter" data-level="3.8" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#build-data"><i class="fa fa-check"></i><b>3.8</b> Build Data</a></li>
-<li class="chapter" data-level="3.9" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#date-time"><i class="fa fa-check"></i><b>3.9</b> Date-Time</a></li>
-<li class="chapter" data-level="3.10" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#implement-vod"><i class="fa fa-check"></i><b>3.10</b> Implement VOD</a></li>
-<li class="chapter" data-level="3.11" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#bar-graphs"><i class="fa fa-check"></i><b>3.11</b> Bar Graphs</a></li>
-<li class="chapter" data-level="3.12" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#collapse"><i class="fa fa-check"></i><b>3.12</b> Collapse</a></li>
-<li class="chapter" data-level="3.13" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#visualizing-veil-of-darkness"><i class="fa fa-check"></i><b>3.13</b> Visualizing Veil of Darkness</a></li>
-<li class="chapter" data-level="3.14" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#improving-aesthetics"><i class="fa fa-check"></i><b>3.14</b> Improving Aesthetics</a></li>
-<li class="chapter" data-level="3.15" data-path="discrimination-in-police-stops.html"><a href="discrimination-in-police-stops.html#conclusion-1"><i class="fa fa-check"></i><b>3.15</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="classroom-technology.html"><a href="classroom-technology.html"><i class="fa fa-check"></i><b>4</b> Classroom Technology</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="classroom-technology.html"><a href="classroom-technology.html#disrupting-education-intro"><i class="fa fa-check"></i><b>4.1</b> Disrupting Education Intro</a></li>
-<li class="chapter" data-level="4.2" data-path="classroom-technology.html"><a href="classroom-technology.html#linear-regression-theory"><i class="fa fa-check"></i><b>4.2</b> Linear Regression (Theory)</a></li>
-<li class="chapter" data-level="4.3" data-path="classroom-technology.html"><a href="classroom-technology.html#predicted-values"><i class="fa fa-check"></i><b>4.3</b> Predicted Values</a></li>
-<li class="chapter" data-level="4.4" data-path="classroom-technology.html"><a href="classroom-technology.html#slope-coefficient"><i class="fa fa-check"></i><b>4.4</b> Slope Coefficient</a></li>
-<li class="chapter" data-level="4.5" data-path="classroom-technology.html"><a href="classroom-technology.html#regression-stata"><i class="fa fa-check"></i><b>4.5</b> Regression (Stata)</a></li>
-<li class="chapter" data-level="4.6" data-path="classroom-technology.html"><a href="classroom-technology.html#predict"><i class="fa fa-check"></i><b>4.6</b> Predict</a></li>
-<li class="chapter" data-level="4.7" data-path="classroom-technology.html"><a href="classroom-technology.html#macros"><i class="fa fa-check"></i><b>4.7</b> Macros</a></li>
-<li class="chapter" data-level="4.8" data-path="classroom-technology.html"><a href="classroom-technology.html#explore-data"><i class="fa fa-check"></i><b>4.8</b> Explore Data</a></li>
-<li class="chapter" data-level="4.9" data-path="classroom-technology.html"><a href="classroom-technology.html#summary-statistics-1"><i class="fa fa-check"></i><b>4.9</b> Summary Statistics</a></li>
-<li class="chapter" data-level="4.10" data-path="classroom-technology.html"><a href="classroom-technology.html#binary-regression"><i class="fa fa-check"></i><b>4.10</b> Binary Regression</a></li>
-<li class="chapter" data-level="4.11" data-path="classroom-technology.html"><a href="classroom-technology.html#mindspark-results"><i class="fa fa-check"></i><b>4.11</b> Mindspark Results</a></li>
-<li class="chapter" data-level="4.12" data-path="classroom-technology.html"><a href="classroom-technology.html#regression-tables"><i class="fa fa-check"></i><b>4.12</b> Regression Tables</a></li>
-<li class="chapter" data-level="4.13" data-path="classroom-technology.html"><a href="classroom-technology.html#conditional-regressions"><i class="fa fa-check"></i><b>4.13</b> Conditional Regressions</a></li>
-<li class="chapter" data-level="4.14" data-path="classroom-technology.html"><a href="classroom-technology.html#conclusion-2"><i class="fa fa-check"></i><b>4.14</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="classroom-technology.html"><a href="classroom-technology.html#command-descriptions-1"><i class="fa fa-check"></i><u>Command Descriptions</u></a></li>
-<li class="chapter" data-level="" data-path="classroom-technology.html"><a href="classroom-technology.html#animated-concepts"><i class="fa fa-check"></i><u>Animated Concepts</u></a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html"><i class="fa fa-check"></i><b>5</b> Legacy of Colonial Medicine</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#colonial-medicine-intro"><i class="fa fa-check"></i><b>5.1</b> Colonial Medicine Intro</a></li>
-<li class="chapter" data-level="5.2" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#value-labels"><i class="fa fa-check"></i><b>5.2</b> Value Labels</a></li>
-<li class="chapter" data-level="5.3" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#missing-values"><i class="fa fa-check"></i><b>5.3</b> Missing Values</a></li>
-<li class="chapter" data-level="5.4" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#binned-scatterplots-theory"><i class="fa fa-check"></i><b>5.4</b> Binned Scatterplots (Theory)</a></li>
-<li class="chapter" data-level="5.5" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#binned-scatterplots-stata"><i class="fa fa-check"></i><b>5.5</b> Binned Scatterplots (Stata)</a></li>
-<li class="chapter" data-level="5.6" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#conclusion-3"><i class="fa fa-check"></i><b>5.6</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="legacy-of-colonial-medicine.html"><a href="legacy-of-colonial-medicine.html#command-descriptions-2"><i class="fa fa-check"></i><u>Command Descriptions</u></a></li>
-</ul></li>
-<li class="part"><span><b>III R</b></span></li>
-<li class="chapter" data-level="6" data-path="resume-experiments.html"><a href="resume-experiments.html"><i class="fa fa-check"></i><b>6</b> Resume Experiments</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="resume-experiments.html"><a href="resume-experiments.html#correspondence-studies"><i class="fa fa-check"></i><b>6.1</b> Correspondence Studies</a></li>
-<li class="chapter" data-level="6.2" data-path="resume-experiments.html"><a href="resume-experiments.html#installing-rrstudio"><i class="fa fa-check"></i><b>6.2</b> Installing R/RStudio</a></li>
-<li class="chapter" data-level="6.3" data-path="resume-experiments.html"><a href="resume-experiments.html#rstudio-interface"><i class="fa fa-check"></i><b>6.3</b> RStudio Interface</a></li>
-<li class="chapter" data-level="6.4" data-path="resume-experiments.html"><a href="resume-experiments.html#objects"><i class="fa fa-check"></i><b>6.4</b> Objects</a></li>
-<li class="chapter" data-level="6.5" data-path="resume-experiments.html"><a href="resume-experiments.html#working-directory-1"><i class="fa fa-check"></i><b>6.5</b> Working Directory</a></li>
-<li class="chapter" data-level="6.6" data-path="resume-experiments.html"><a href="resume-experiments.html#dataframes"><i class="fa fa-check"></i><b>6.6</b> Dataframes</a></li>
-<li class="chapter" data-level="6.7" data-path="resume-experiments.html"><a href="resume-experiments.html#logic"><i class="fa fa-check"></i><b>6.7</b> Logic</a></li>
-<li class="chapter" data-level="6.8" data-path="resume-experiments.html"><a href="resume-experiments.html#subsetting-vectors"><i class="fa fa-check"></i><b>6.8</b> Subsetting Vectors</a></li>
-<li class="chapter" data-level="6.9" data-path="resume-experiments.html"><a href="resume-experiments.html#subsetting-data-frames"><i class="fa fa-check"></i><b>6.9</b> Subsetting Data Frames</a></li>
-<li class="chapter" data-level="6.10" data-path="resume-experiments.html"><a href="resume-experiments.html#conclusion-4"><i class="fa fa-check"></i><b>6.10</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="resume-experiments.html"><a href="resume-experiments.html#function-descriptions"><i class="fa fa-check"></i><u>Function Descriptions</u></a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html"><i class="fa fa-check"></i><b>7</b> The Rug Rat Race</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#time-diaries"><i class="fa fa-check"></i><b>7.1</b> Time Diaries</a></li>
-<li class="chapter" data-level="7.2" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#conditional-statements"><i class="fa fa-check"></i><b>7.2</b> Conditional Statements</a></li>
-<li class="chapter" data-level="7.3" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#for-loops"><i class="fa fa-check"></i><b>7.3</b> For Loops</a></li>
-<li class="chapter" data-level="7.4" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#for-loops-data"><i class="fa fa-check"></i><b>7.4</b> For Loops (Data)</a></li>
-<li class="chapter" data-level="7.5" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#tidyverse"><i class="fa fa-check"></i><b>7.5</b> Tidyverse</a></li>
-<li class="chapter" data-level="7.6" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#the-pipe-operator"><i class="fa fa-check"></i><b>7.6</b> The Pipe Operator</a></li>
-<li class="chapter" data-level="7.7" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#mutate"><i class="fa fa-check"></i><b>7.7</b> Mutate</a></li>
-<li class="chapter" data-level="7.8" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#group-by-and-summarize"><i class="fa fa-check"></i><b>7.8</b> Group By and Summarize</a></li>
-<li class="chapter" data-level="7.9" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#conclusion-5"><i class="fa fa-check"></i><b>7.9</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="the-rug-rat-race.html"><a href="the-rug-rat-race.html#function-descriptions-1"><i class="fa fa-check"></i><u>Function Descriptions</u></a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html"><i class="fa fa-check"></i><b>8</b> Automated Pollution Monitoring</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#principal-agent-problem"><i class="fa fa-check"></i><b>8.1</b> Principal Agent Problem</a></li>
-<li class="chapter" data-level="8.2" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#creating-histograms"><i class="fa fa-check"></i><b>8.2</b> Creating Histograms</a></li>
-<li class="chapter" data-level="8.3" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#comparing-histograms"><i class="fa fa-check"></i><b>8.3</b> Comparing Histograms</a></li>
-<li class="chapter" data-level="8.4" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#boxplots"><i class="fa fa-check"></i><b>8.4</b> Boxplots</a></li>
-<li class="chapter" data-level="8.5" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#scatterplots"><i class="fa fa-check"></i><b>8.5</b> Scatterplots</a></li>
-<li class="chapter" data-level="8.6" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#dates"><i class="fa fa-check"></i><b>8.6</b> Dates</a></li>
-<li class="chapter" data-level="8.7" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#ggplot2"><i class="fa fa-check"></i><b>8.7</b> ggplot2</a></li>
-<li class="chapter" data-level="8.8" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#bar-plots"><i class="fa fa-check"></i><b>8.8</b> Bar Plots</a></li>
-<li class="chapter" data-level="8.9" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#conclusion-6"><i class="fa fa-check"></i><b>8.9</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="automated-pollution-monitoring.html"><a href="automated-pollution-monitoring.html#function-descriptions-2"><i class="fa fa-check"></i><u>Function Descriptions</u></a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="voting.html"><a href="voting.html"><i class="fa fa-check"></i><b>9</b> Voting</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="voting.html"><a href="voting.html#u.s.-presidential-election"><i class="fa fa-check"></i><b>9.1</b> 2000 U.S. Presidential Election</a></li>
-<li class="chapter" data-level="9.2" data-path="voting.html"><a href="voting.html#linear-regression"><i class="fa fa-check"></i><b>9.2</b> Linear Regression</a></li>
-<li class="chapter" data-level="9.3" data-path="voting.html"><a href="voting.html#plotting-regression-lines"><i class="fa fa-check"></i><b>9.3</b> Plotting Regression Lines</a></li>
-<li class="chapter" data-level="9.4" data-path="voting.html"><a href="voting.html#predicted-values-and-residuals"><i class="fa fa-check"></i><b>9.4</b> Predicted Values and Residuals</a></li>
-<li class="chapter" data-level="9.5" data-path="voting.html"><a href="voting.html#get-out-to-vote-experiments"><i class="fa fa-check"></i><b>9.5</b> Get Out to Vote Experiments</a></li>
-<li class="chapter" data-level="9.6" data-path="voting.html"><a href="voting.html#regression-binary-variables"><i class="fa fa-check"></i><b>9.6</b> Regression (Binary Variables)</a></li>
-<li class="chapter" data-level="9.7" data-path="voting.html"><a href="voting.html#conclusion-7"><i class="fa fa-check"></i><b>9.7</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="voting.html"><a href="voting.html#function-descriptions-3"><i class="fa fa-check"></i><u>Function Descriptions</u></a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html"><i class="fa fa-check"></i><b>10</b> Unconditional Cash Transfers</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html#motivation"><i class="fa fa-check"></i><b>10.1</b> Motivation</a></li>
-<li class="chapter" data-level="10.2" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html#the-data"><i class="fa fa-check"></i><b>10.2</b> The Data</a></li>
-<li class="chapter" data-level="10.3" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html#functions-part-1"><i class="fa fa-check"></i><b>10.3</b> Functions (Part 1)</a></li>
-<li class="chapter" data-level="10.4" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html#functions-part-2"><i class="fa fa-check"></i><b>10.4</b> Functions (Part 2)</a></li>
-<li class="chapter" data-level="10.5" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html#conclusion-8"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="unconditional-cash-transfers.html"><a href="unconditional-cash-transfers.html#function-descriptions-4"><i class="fa fa-check"></i><u>Function Descriptions</u></a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Econ5/Poli5D</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5/Poli5D</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li class="book-part">Excel</li>
+<li><a class="" href="college-instruction-experiments.html"><span class="header-section-number">1</span> College Instruction Experiments</a></li>
+<li class="book-part">Stata</li>
+<li><a class="" href="intergenerational-mobility.html"><span class="header-section-number">2</span> Intergenerational Mobility</a></li>
+<li><a class="" href="discrimination-in-police-stops.html"><span class="header-section-number">3</span> Discrimination in Police Stops</a></li>
+<li><a class="" href="classroom-technology.html"><span class="header-section-number">4</span> Classroom Technology</a></li>
+<li><a class="" href="legacy-of-colonial-medicine.html"><span class="header-section-number">5</span> Legacy of Colonial Medicine</a></li>
+<li class="book-part">R</li>
+<li><a class="" href="resume-experiments.html"><span class="header-section-number">6</span> Resume Experiments</a></li>
+<li><a class="" href="the-rug-rat-race.html"><span class="header-section-number">7</span> The Rug Rat Race</a></li>
+<li><a class="" href="automated-pollution-monitoring.html"><span class="header-section-number">8</span> Automated Pollution Monitoring</a></li>
+<li><a class="" href="voting.html"><span class="header-section-number">9</span> Voting</a></li>
+<li><a class="active" href="unconditional-cash-transfers.html"><span class="header-section-number">10</span> Unconditional Cash Transfers</a></li>
+<li><a class="" href="references-1.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="unconditional-cash-transfers" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Unconditional Cash Transfers<a class="anchor" aria-label="anchor" href="#unconditional-cash-transfers"><i class="fas fa-link"></i></a>
+</h1>
+<div id="motivation" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Motivation<a class="anchor" aria-label="anchor" href="#motivation"><i class="fas fa-link"></i></a>
+</h2>
 
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
 
-            <section class="normal" id="section-">
-<div id="unconditional-cash-transfers" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Unconditional Cash Transfers<a href="unconditional-cash-transfers.html#unconditional-cash-transfers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="motivation" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> Motivation<a href="unconditional-cash-transfers.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<html>
-<head>
 <style>
 code {
   background-color: #f1f1f1;
 }
 </style>
-</head>
-<body>
 <p>A central goal of development economics is to understand ways to alleviate global poverty. However, the exact design of policies is often up for debate.</p>
 <p>For example, imagine you are a charity or government that has funds to disburse to individuals in poverty. How would you go about doing this? One response is to make the transfers conditional. In other words, you give individuals cash to purchase particular items. For example, many programs allocate funds to be used for food or education.</p>
-<p>Another way to disburse these funds is to do so unconditionally. This gives individuals the autonomy to decide for themselves what they would like to spend the money on. This week, we will use data from Haushofer and Shapiro (2016)<span class="citation">,<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></span> which studies the impact of unconditional cash transfers in Kenya on the economic and psychological well-being of recipients. This study was made possible due to the charitable organization, Give Directly, a charity co-founded by Paul Niehaus, professor of Economics at UC San Diego.</p>
-<p>In particular, Haushofer and Shapiro randomize a couple of aspects including (1) whether a household receives an unconditional cash transfer and (2) the timing of the transfer (monthly vs. lump sum) and (3) the size of the transfer (small $400 or large $1500). A key strength of the study is that they can also study a wide range of outcomes, including assets, expenditures, food security, health, education expenditures, and psychological well being.</p>
-<p>We will only be able to explore a fraction of all of these outcomes, and for this exercise we will focus on total assets. You can interpret assets as the amount of savings an individual has at a particular point in time. To get started, let’s head over to R to load up the data.</p>
+<p>Another way to disburse these funds is to do so unconditionally. This gives individuals the autonomy to decide for themselves what they would like to spend the money on. This week, we will use data from Haushofer and Shapiro (2016)<span class="citation">,<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Johannes Haushofer and Jeremy Shapiro, &lt;span&gt;“The Short-Term Impact of Unconditional Cash Transfers to the Poor: Experimental Evidence from Kenya,”&lt;/span&gt; &lt;em&gt;The Quarterly Journal of Economics&lt;/em&gt; 131, no. 4 (2016): 1973–2042.&lt;/p&gt;"><sup>15</sup></a></span> which studies the impact of unconditional cash transfers in Kenya on the economic and psychological well-being of recipients. This study was made possible due to the charitable organization, Give Directly, a charity co-founded by Paul Niehaus, professor of Economics at UC San Diego.</p>
+<p>In particular, Haushofer and Shapiro randomize a couple of aspects including (1) whether a household receives an unconditional cash transfer and (2) the timing of the transfer (monthly vs. lump sum) and (3) the size of the transfer (small $400 or large $1500). A key strength of the study is that they can also study a wide range of outcomes, including assets, expenditures, food security, health, education expenditures, and psychological well being.</p>
+<p>We will only be able to explore a fraction of all of these outcomes, and for this exercise we will focus on total assets. You can interpret assets as the amount of savings an individual has at a particular point in time. To get started, let's head over to R to load up the data.</p>
 </div>
-<div id="the-data" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> The Data<a href="unconditional-cash-transfers.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-data" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> The Data<a class="anchor" aria-label="anchor" href="#the-data"><i class="fas fa-link"></i></a>
+</h2>
 <p>The data from this experiment is provided in the <code>uct.csv</code> file. First, we are again going to load <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="unconditional-cash-transfers.html#cb448-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>Now let’s read in the <code>uct.csv</code> file:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="unconditional-cash-transfers.html#cb449-1" tabindex="-1"></a>uct <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;uct.csv&quot;</span>)</span>
+<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<p>Now let's read in the <code>uct.csv</code> file:</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="unconditional-cash-transfers.html#cb449-1" tabindex="-1"></a>uct <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"uct.csv"</span>)</span>
 <span id="cb449-2"><a href="unconditional-cash-transfers.html#cb449-2" tabindex="-1"></a>Rows<span class="sc">:</span> <span class="dv">940</span> Columns<span class="sc">:</span> <span class="dv">19</span></span>
 <span id="cb449-3"><a href="unconditional-cash-transfers.html#cb449-3" tabindex="-1"></a>── Column specification ────────────────────────────────────</span>
-<span id="cb449-4"><a href="unconditional-cash-transfers.html#cb449-4" tabindex="-1"></a>Delimiter<span class="sc">:</span> <span class="st">&quot;,&quot;</span></span>
+<span id="cb449-4"><a href="unconditional-cash-transfers.html#cb449-4" tabindex="-1"></a>Delimiter<span class="sc">:</span> <span class="st">","</span></span>
 <span id="cb449-5"><a href="unconditional-cash-transfers.html#cb449-5" tabindex="-1"></a><span class="fu">dbl</span> (<span class="dv">19</span>)<span class="sc">:</span> treat, village, treatXfemalerec, asset_after, ...</span>
 <span id="cb449-6"><a href="unconditional-cash-transfers.html#cb449-6" tabindex="-1"></a></span>
 <span id="cb449-7"><a href="unconditional-cash-transfers.html#cb449-7" tabindex="-1"></a>ℹ Use <span class="st">`</span><span class="at">spec()</span><span class="st">`</span> to retrieve the full column specification <span class="cf">for</span> this data.</span>
 <span id="cb449-8"><a href="unconditional-cash-transfers.html#cb449-8" tabindex="-1"></a>ℹ Specify the column types or set <span class="st">`</span><span class="at">show_col_types = FALSE</span><span class="st">`</span> to quiet this message.</span></code></pre></div>
-<p>So we have 940 observations and 19 columns (i.e. variables). The first variable <code>treat</code> in is equal to 1 if the individual is in the treated group (received some cash payment) and zero of the individual is in the control group (did not receive a cash payment). Two variables we will be particularly interested in are <code>asset_before</code> and <code>asset_after</code>. In order to understand the impact of the cash transfer, we will compare the changes in assets for the treated workers relative to the change in assets for the control group.</p>
+<p>So we have 940 observations and 19 columns (i.e. variables). The first variable <code>treat</code> in is equal to 1 if the individual is in the treated group (received some cash payment) and zero of the individual is in the control group (did not receive a cash payment). Two variables we will be particularly interested in are <code>asset_before</code> and <code>asset_after</code>. In order to understand the impact of the cash transfer, we will compare the changes in assets for the treated workers relative to the change in assets for the control group.</p>
 <p>Although we will focus on assets, as mentioned previously, there are a wide range of variables in the data. For each variable, we have a measurement both before and after the cash payments were made. Given the range of variables in the data, this will allow for a comprehensive study of how individuals outcomes are impacted by cash transfers.</p>
 <p>In the last columns, we also have information about the exact treatment. For example, the variable <code>treatXlarge</code> is equal to 1 if the individual is in the treatment group and the individual received a large cash transfer ($1500). The variable <code>treatXmonthlyXsmall</code> is equal to 1 if the individual is in the treatment group which received small monthly payments. Although we will not study the impact by each particular treatment, the design of the experiment also allows the authors understand how the size and timing of payments impacts overall welfare.</p>
 <p>Next, we will start analyzing the data. However, to do so, we will introduce a new concept: user-written functions. So far, every function we have used has either come from base R or from a package we have loaded. In the next section, we will learn how to write our own functions.</p>
 </div>
-<div id="functions-part-1" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Functions (Part 1)<a href="unconditional-cash-transfers.html#functions-part-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To clarify how to write your own functions, let’s first review what a function is. A function takes an input, performs some operations on this input, and then provides an output. For example, for the <code>mean()</code> function in R, the input will be a vector of numbers, and the output is the mean of the vector.</p>
+<div id="functions-part-1" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Functions (Part 1)<a class="anchor" aria-label="anchor" href="#functions-part-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>To clarify how to write your own functions, let's first review what a function is. A function takes an input, performs some operations on this input, and then provides an output. For example, for the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function in R, the input will be a vector of numbers, and the output is the mean of the vector.</p>
 <p>In data analysis, we often find ourselves repeating the same process over and over. Functions can help in these situations. If you find yourself repeating the same analysis over and over by copying and pasting code, but just changing small elements, then it might be time to put this analysis into a function.</p>
-<p>This is precisely why R has provided the <code>mean()</code> function. We calculate means all the times. Therefore, it makes sense to have a function that will quickly compute the mean. But what if our analysis is more complicated? What if there is no standard function that performs it? In that case, we can write our own function.</p>
-<p>So how do we go about creating a function in R. There are basically four things we need to decide. First, what will the function name be? Similar to choosing variable names, we want something relatively simple, but also descriptive. Second, what will be the inputs? For the <code>mean()</code> function the input is a list of numbers. But inputs can be anything: a vector, a character, a dataframe. Lastly, we decide on what the function does to the input to create the output.</p>
-<p>Let’s first introduce the general syntax, before writing our own simple function:</p>
+<p>This is precisely why R has provided the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function. We calculate means all the times. Therefore, it makes sense to have a function that will quickly compute the mean. But what if our analysis is more complicated? What if there is no standard function that performs it? In that case, we can write our own function.</p>
+<p>So how do we go about creating a function in R. There are basically four things we need to decide. First, what will the function name be? Similar to choosing variable names, we want something relatively simple, but also descriptive. Second, what will be the inputs? For the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function the input is a list of numbers. But inputs can be anything: a vector, a character, a dataframe. Lastly, we decide on what the function does to the input to create the output.</p>
+<p>Let's first introduce the general syntax, before writing our own simple function:</p>
 <div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="unconditional-cash-transfers.html#cb450-1" tabindex="-1"></a>functionname <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
 <span id="cb450-2"><a href="unconditional-cash-transfers.html#cb450-2" tabindex="-1"></a>  </span>
 <span id="cb450-3"><a href="unconditional-cash-transfers.html#cb450-3" tabindex="-1"></a>  Perform operations to produce output </span>
@@ -382,21 +148,23 @@ code {
 <span id="cb450-5"><a href="unconditional-cash-transfers.html#cb450-5" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
 <span id="cb450-6"><a href="unconditional-cash-transfers.html#cb450-6" tabindex="-1"></a>  </span>
 <span id="cb450-7"><a href="unconditional-cash-transfers.html#cb450-7" tabindex="-1"></a>}</span></code></pre></div>
-<p>This can be a little abstract, so let’s do an example with inputs, operations, and outputs that we understand. Let’s manually create our own mean function.</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="unconditional-cash-transfers.html#cb451-1" tabindex="-1"></a>mymean <span class="ot">&lt;-</span><span class="cf">function</span>(num) {</span>
-<span id="cb451-2"><a href="unconditional-cash-transfers.html#cb451-2" tabindex="-1"></a>  </span>
-<span id="cb451-3"><a href="unconditional-cash-transfers.html#cb451-3" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">sum</span>(num)<span class="sc">/</span><span class="fu">length</span>(num)</span>
-<span id="cb451-4"><a href="unconditional-cash-transfers.html#cb451-4" tabindex="-1"></a>  </span>
-<span id="cb451-5"><a href="unconditional-cash-transfers.html#cb451-5" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb451-6"><a href="unconditional-cash-transfers.html#cb451-6" tabindex="-1"></a>  </span>
-<span id="cb451-7"><a href="unconditional-cash-transfers.html#cb451-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>This can be a little abstract, so let's do an example with inputs, operations, and outputs that we understand. Let's manually create our own mean function.</p>
+<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mymean</span> <span class="op">&lt;-</span><span class="kw">function</span><span class="op">(</span><span class="va">num</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">num</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">num</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>The name of this function is <code>mymean</code>. Therefore, when I want to use it I can specify <code>mymean()</code>. The input is named <code>num</code>. The input is going to be a list of numbers. What does the function do to a list of numbers. It adds them up <code>sum(num)</code> and then divides by the number of elements in the list of numbers. For example, imagine my list of numbers is 3, 5 and 7. Then <code>sum(num)=3+5+7=15</code> and <code>length(num)=3</code>, implying <code>output&lt;-5</code>. The last line tells R to return this number as the output. Note that all of the code that create the output is within curly brackets. The curly brackets tell R when the function starts and when it ends.</p>
 <p>We can actually see how this works by creating this vector in R.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="unconditional-cash-transfers.html#cb452-1" tabindex="-1"></a>myvec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>)</span></code></pre></div>
-<p>Now let’s apply our function <code>mymean()</code> to the vector <code>myvec</code>.</p>
+<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">myvec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">7</span><span class="op">)</span></span></code></pre></div>
+<p>Now let's apply our function <code>mymean()</code> to the vector <code>myvec</code>.</p>
 <div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="unconditional-cash-transfers.html#cb453-1" tabindex="-1"></a><span class="fu">mymean</span>(myvec)</span>
 <span id="cb453-2"><a href="unconditional-cash-transfers.html#cb453-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">5</span></span></code></pre></div>
-<p>Now that we understand the basics of creating our own function, let’s create a function for our empirical application this week which studies the impact of unconditional cash transfers in Kenya.</p>
+<p>Now that we understand the basics of creating our own function, let's create a function for our empirical application this week which studies the impact of unconditional cash transfers in Kenya.</p>
 <p>Our goal is to compare assets between the treated and control households. Of course, we can do this without creating a function, we just need to take the mean of <code>asset_after</code> conditional on <code>treat==1</code> and then compare to the mean of <code>asset_after</code> conditional on <code>treat==0</code>.</p>
 <div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="unconditional-cash-transfers.html#cb454-1" tabindex="-1"></a><span class="fu">mean</span>(uct<span class="sc">$</span>asset_after[uct<span class="sc">$</span>treat<span class="sc">==</span><span class="dv">1</span>])</span>
 <span id="cb454-2"><a href="unconditional-cash-transfers.html#cb454-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">790.9253</span></span></code></pre></div>
@@ -405,14 +173,15 @@ code {
 <span id="cb455-2"><a href="unconditional-cash-transfers.html#cb455-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">494.8041</span></span></code></pre></div>
 <p>So in the control group, on average, individuals have 495 dollars in assets. What this result tells us is that 9 months after the program began, treated individuals still have higher savings than control individuals. This indicates that individuals do not immediately consume the transfer payment, but instead save some of it for the future.</p>
 <p>One thing to notice is that the two lines of code we wrote to perform this analysis vary by a single number. In the first, we set <code>treat==1</code> and the second we set <code>treat==0</code>. If you find yourself writing the same code multiple times, but just changing a single element or two, this might be a good time to write a function.</p>
-<p>We will now write a function that varies this one input: the treatment value. Then, depending on whatever treatment value you pass to the function, the function will compute the mean for individuals with that treatment value. Let’s name our function <code>treatment</code> and have the input be <code>treatvalue</code>.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="unconditional-cash-transfers.html#cb456-1" tabindex="-1"></a>treatmean <span class="ot">&lt;-</span> <span class="cf">function</span>(treatvalue){</span>
-<span id="cb456-2"><a href="unconditional-cash-transfers.html#cb456-2" tabindex="-1"></a>  </span>
-<span id="cb456-3"><a href="unconditional-cash-transfers.html#cb456-3" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">mean</span>(uct<span class="sc">$</span>asset_after[uct<span class="sc">$</span>treat<span class="sc">==</span>treatvalue])</span>
-<span id="cb456-4"><a href="unconditional-cash-transfers.html#cb456-4" tabindex="-1"></a>  </span>
-<span id="cb456-5"><a href="unconditional-cash-transfers.html#cb456-5" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb456-6"><a href="unconditional-cash-transfers.html#cb456-6" tabindex="-1"></a></span>
-<span id="cb456-7"><a href="unconditional-cash-transfers.html#cb456-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>We will now write a function that varies this one input: the treatment value. Then, depending on whatever treatment value you pass to the function, the function will compute the mean for individuals with that treatment value. Let's name our function <code>treatment</code> and have the input be <code>treatvalue</code>.</p>
+<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">treatmean</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">treatvalue</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">uct</span><span class="op">$</span><span class="va">asset_after</span><span class="op">[</span><span class="va">uct</span><span class="op">$</span><span class="va">treat</span><span class="op">==</span><span class="va">treatvalue</span><span class="op">]</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>So this function is allowing the user to pass in a <code>treatvalue</code>, which in this case will be either zero or 1. Then, based on this <code>treatvalue</code> the function will calculate mean assets after for individuals with that <code>treatvalue</code>. For example, if we want to calculate the mean assets after for the treatment group we can type:</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="unconditional-cash-transfers.html#cb457-1" tabindex="-1"></a><span class="fu">treatmean</span>(<span class="dv">1</span>)</span>
 <span id="cb457-2"><a href="unconditional-cash-transfers.html#cb457-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">790.9253</span></span></code></pre></div>
@@ -420,12 +189,13 @@ code {
 <div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="unconditional-cash-transfers.html#cb458-1" tabindex="-1"></a><span class="fu">treatmean</span>(<span class="dv">0</span>)</span>
 <span id="cb458-2"><a href="unconditional-cash-transfers.html#cb458-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">494.8041</span></span></code></pre></div>
 <p>Now, there are often many different ways to code the same function. For example, imagine instead of using base R, we want to calculate this using the tidyverse.</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="unconditional-cash-transfers.html#cb459-1" tabindex="-1"></a>treatmean <span class="ot">&lt;-</span> <span class="cf">function</span>(treatvalue){</span>
-<span id="cb459-2"><a href="unconditional-cash-transfers.html#cb459-2" tabindex="-1"></a>  output <span class="ot">&lt;-</span> uct <span class="sc">%&gt;%</span></span>
-<span id="cb459-3"><a href="unconditional-cash-transfers.html#cb459-3" tabindex="-1"></a>    <span class="fu">filter</span>(treat<span class="sc">==</span>treatvalue) <span class="sc">%&gt;%</span></span>
-<span id="cb459-4"><a href="unconditional-cash-transfers.html#cb459-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">assetmean=</span><span class="fu">mean</span>(asset_after))</span>
-<span id="cb459-5"><a href="unconditional-cash-transfers.html#cb459-5" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb459-6"><a href="unconditional-cash-transfers.html#cb459-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">treatmean</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">treatvalue</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">output</span> <span class="op">&lt;-</span> <span class="va">uct</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">treat</span><span class="op">==</span><span class="va">treatvalue</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>assetmean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">asset_after</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>Now, we can use the function in the same way we did before. Functions allow us not only to flexibly decide on what operations we want performed, but also how we implement these operations.</p>
 <div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="unconditional-cash-transfers.html#cb460-1" tabindex="-1"></a><span class="fu">treatmean</span>(<span class="dv">1</span>)</span>
 <span id="cb460-2"><a href="unconditional-cash-transfers.html#cb460-2" tabindex="-1"></a><span class="co"># A tibble: 1 × 1</span></span>
@@ -439,40 +209,45 @@ code {
 <span id="cb460-10"><a href="unconditional-cash-transfers.html#cb460-10" tabindex="-1"></a><span class="dv">1</span>      <span class="fl">495.</span></span></code></pre></div>
 <p>In this section, we made a relatively simple function, a function to report means given a treatment value. In the next, we are going to expand on this simple example to create a more complicated function. With more complicated analysis, using functions may really save time and improve clarity.</p>
 </div>
-<div id="functions-part-2" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Functions (Part 2)<a href="unconditional-cash-transfers.html#functions-part-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this section we are going to extend our knowledge of functions in R, with a particular focus on using strings as inputs into functions. To focus ideas, let’s talk about our goal for this section. We are going to write a function that takes in a single variable name (such as <code>"asset"</code> or <code>"total_rev"</code>) and computes the mean of this variable both before and after the unconditional cash transfer program, for both the treated and control workers. Figure <a href="unconditional-cash-transfers.html#fig:functionfigure">10.1</a> depicts the goal of the function. We can input a single word (e.g. “asset”) and retrieve the table depicted as the output.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:functionfigure"></span>
-<img src="images/10_function_ex.png" alt="Goal for our Function" width="75%" />
-<p class="caption">
+<div id="functions-part-2" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Functions (Part 2)<a class="anchor" aria-label="anchor" href="#functions-part-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section we are going to extend our knowledge of functions in R, with a particular focus on using strings as inputs into functions. To focus ideas, let's talk about our goal for this section. We are going to write a function that takes in a single variable name (such as <code>"asset"</code> or <code>"total_rev"</code>) and computes the mean of this variable both before and after the unconditional cash transfer program, for both the treated and control workers. Figure <a href="unconditional-cash-transfers.html#fig:functionfigure">10.1</a> depicts the goal of the function. We can input a single word (e.g. "asset") and retrieve the table depicted as the output.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:functionfigure"></span>
+<img src="images/10_function_ex.png" alt="Goal for our Function" width="75%"><p class="caption">
 Figure 10.1: Goal for our Function
 </p>
 </div>
-<p>Instead of blanks in each cell, we will fill in with averages. So, for example, the cell in the top left is identified by treatment individuals after the policy has been implemented. If we supply the word <code>"asset"</code> to our function, then this first cell will be the average of <code>asset_after</code> for individuals with <code>treat==1</code>. We know from the last section, this will be 791. For our function in this section, we want the function to automatically fill in all these numbers. In order to do so, we will need to understand how we can supply a single string (e.g. “asset”) and then have R pull the relevant variables and then calculate the relevant means for both treated and control individuals.</p>
+<p>Instead of blanks in each cell, we will fill in with averages. So, for example, the cell in the top left is identified by treatment individuals after the policy has been implemented. If we supply the word <code>"asset"</code> to our function, then this first cell will be the average of <code>asset_after</code> for individuals with <code>treat==1</code>. We know from the last section, this will be 791. For our function in this section, we want the function to automatically fill in all these numbers. In order to do so, we will need to understand how we can supply a single string (e.g. "asset") and then have R pull the relevant variables and then calculate the relevant means for both treated and control individuals.</p>
 <p>Why might this be useful? Once we write our function, we can simply change the variable name and retrieve comparisons between treated and control individuals. There are a lot of variables in this dataset that cover a wide range of economic and psychological outcomes, so it may be helpful to have a function that can quickly perform this analysis for different variables.</p>
-<p>To understand how this function will work, let’s first write it for one variable: <code>asset</code>. Once we have this code written we can put it into a function to make it more general. To start, let’s create an object named <code>variable</code> that is equal to the string <code>"asset"</code>.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="unconditional-cash-transfers.html#cb461-1" tabindex="-1"></a>variable <span class="ot">&lt;-</span> <span class="st">&quot;asset&quot;</span></span></code></pre></div>
-<p>Next, let’s from our object <code>variable</code>, we want to create the variable names <code>asset_after</code> and <code>asset_before</code>, because these are the names of the variables in our dataset. To do this, we need to learn how to concatenate two strings. Concatenating strings simply means combining them. In other words, if I concatenate “asset” with “_after” I get “asset_after”. The function that allows us to do this in R is called the <code>paste()</code> function. Let’s see how this works:</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="unconditional-cash-transfers.html#cb462-1" tabindex="-1"></a>variableafter <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable,<span class="st">&quot;_after&quot;</span>)</span></code></pre></div>
-<p>Now let’s look at our new object:</p>
+<p>To understand how this function will work, let's first write it for one variable: <code>asset</code>. Once we have this code written we can put it into a function to make it more general. To start, let's create an object named <code>variable</code> that is equal to the string <code>"asset"</code>.</p>
+<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"asset"</span></span></code></pre></div>
+<p>Next, let's from our object <code>variable</code>, we want to create the variable names <code>asset_after</code> and <code>asset_before</code>, because these are the names of the variables in our dataset. To do this, we need to learn how to concatenate two strings. Concatenating strings simply means combining them. In other words, if I concatenate "asset" with "_after" I get "asset_after". The function that allows us to do this in R is called the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function. Let's see how this works:</p>
+<div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">variableafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>,<span class="st">"_after"</span><span class="op">)</span></span></code></pre></div>
+<p>Now let's look at our new object:</p>
 <div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="unconditional-cash-transfers.html#cb463-1" tabindex="-1"></a>variableafter</span>
-<span id="cb463-2"><a href="unconditional-cash-transfers.html#cb463-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;asset _after&quot;</span></span></code></pre></div>
-<p>So if you look closely, you will see we actually have a problem. There is a space between <code>"asset"</code> and <code>"_after"</code>. This is a problem. We will want to use <code>variableafter</code> to reference a particular column in our data frame. But there is no column named <code>"asset _after"</code>. We need to tell <code>paste()</code> not to automatically add a space between our two strings. The way we can do this is by using an option called <code>sep=</code>. The option <code>sep=</code> stands for separator. It allows us to control what is put between two strings. If we want there to be no space between two strings, we can specify <code>sep=""</code>.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="unconditional-cash-transfers.html#cb464-1" tabindex="-1"></a>variableafter <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable,<span class="st">&quot;_after&quot;</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb463-2"><a href="unconditional-cash-transfers.html#cb463-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"asset _after"</span></span></code></pre></div>
+<p>So if you look closely, you will see we actually have a problem. There is a space between <code>"asset"</code> and <code>"_after"</code>. This is a problem. We will want to use <code>variableafter</code> to reference a particular column in our data frame. But there is no column named <code>"asset _after"</code>. We need to tell <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> not to automatically add a space between our two strings. The way we can do this is by using an option called <code>sep=</code>. The option <code>sep=</code> stands for separator. It allows us to control what is put between two strings. If we want there to be no space between two strings, we can specify <code>sep=""</code>.</p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="unconditional-cash-transfers.html#cb464-1" tabindex="-1"></a>variableafter <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable,<span class="st">"_after"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
 <span id="cb464-2"><a href="unconditional-cash-transfers.html#cb464-2" tabindex="-1"></a>variableafter</span>
-<span id="cb464-3"><a href="unconditional-cash-transfers.html#cb464-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;asset_after&quot;</span></span></code></pre></div>
-<p>So similarly, let’s also construct <code>variablebefore</code>:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="unconditional-cash-transfers.html#cb465-1" tabindex="-1"></a>variablebefore <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable,<span class="st">&quot;_before&quot;</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb464-3"><a href="unconditional-cash-transfers.html#cb464-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"asset_after"</span></span></code></pre></div>
+<p>So similarly, let's also construct <code>variablebefore</code>:</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="unconditional-cash-transfers.html#cb465-1" tabindex="-1"></a>variablebefore <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable,<span class="st">"_before"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
 <span id="cb465-2"><a href="unconditional-cash-transfers.html#cb465-2" tabindex="-1"></a>variablebefore</span>
-<span id="cb465-3"><a href="unconditional-cash-transfers.html#cb465-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;asset_before&quot;</span></span></code></pre></div>
+<span id="cb465-3"><a href="unconditional-cash-transfers.html#cb465-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"asset_before"</span></span></code></pre></div>
 <p>Next, we want to get the average of these two variables for both the treated and control individuals. There are many ways we could approach this in R. Today, we are going to first construct two dataframes: one for treated individuals and one for control individuals. Then we are going to pull the relevant variables from the dataframes and take the average of these variables.</p>
-<p>To start, let’s separate out the treated and control data:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="unconditional-cash-transfers.html#cb466-1" tabindex="-1"></a>uct_treat <span class="ot">&lt;-</span> <span class="fu">filter</span>(uct, treat<span class="sc">==</span><span class="dv">1</span>)</span>
-<span id="cb466-2"><a href="unconditional-cash-transfers.html#cb466-2" tabindex="-1"></a>uct_control <span class="ot">&lt;-</span> <span class="fu">filter</span>(uct, treat<span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
-<p>Next, we are going to use the <code>pull()</code> function to grab the relevant columns. So this contrasts to other ways in which we have referenced variables with a dataframe. In the past, we have used either the <code>$</code> operator or in tidyverse we used <code>select()</code> at times. The difference here is that our variable name is now in quotation marks. The value of <code>variablebefore</code> is <code>"asset_before"</code>. If we used the dollar sign to reference this variable, we would type <code>uct$asset_before</code>, not <code>uct$"asset_before"</code>. Instead, we are going to use the <code>pull()</code> function, which allows us to use strings to reference variables. For example, to reference <code>asset_after</code> in the <code>uct_treat</code> data frame we can type <code>pull(uct_treat,variableafter)</code>. If we want to take the mean of this, we can put the entire expression inside the <code>mean()</code> function.</p>
+<p>To start, let's separate out the treated and control data:</p>
+<div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">uct_treat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">treat</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">uct_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">treat</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<p>Next, we are going to use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function to grab the relevant columns. So this contrasts to other ways in which we have referenced variables with a dataframe. In the past, we have used either the <code>$</code> operator or in tidyverse we used <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> at times. The difference here is that our variable name is now in quotation marks. The value of <code>variablebefore</code> is <code>"asset_before"</code>. If we used the dollar sign to reference this variable, we would type <code>uct$asset_before</code>, not <code>uct$"asset_before"</code>. Instead, we are going to use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function, which allows us to use strings to reference variables. For example, to reference <code>asset_after</code> in the <code>uct_treat</code> data frame we can type <code>pull(uct_treat,variableafter)</code>. If we want to take the mean of this, we can put the entire expression inside the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function.</p>
 <div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="unconditional-cash-transfers.html#cb467-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">pull</span>(uct_treat,variableafter))</span>
 <span id="cb467-2"><a href="unconditional-cash-transfers.html#cb467-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">790.9253</span></span></code></pre></div>
-<p>Now, let’s repeat this process for the 3 remaining elements in the table that we want to create.</p>
+<p>Now, let's repeat this process for the 3 remaining elements in the table that we want to create.</p>
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="unconditional-cash-transfers.html#cb468-1" tabindex="-1"></a><span class="co"># mean of variable after for control </span></span>
 <span id="cb468-2"><a href="unconditional-cash-transfers.html#cb468-2" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">pull</span>(uct_control,variableafter))</span>
 <span id="cb468-3"><a href="unconditional-cash-transfers.html#cb468-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">494.8041</span></span>
@@ -487,62 +262,67 @@ Figure 10.1: Goal for our Function
 <p>For treated individuals, assets started at 382 and increased to 791. For control individuals, assets started at 389 and increased to 495. So while both groups saw an increase in assets over this time period, the treated individuals saw a much larger increase. This is evidence that the unconditional cash transfer is having a causal impact on savings.</p>
 <p>We have now, successfully constructed the table, but only for assets. We want to be able to change the input each time and construct this for different variables. We could copy and paste the code above and repeat for different variables, but this will result in a long file of code which basically repeats the same process over and over. It will be much more efficient to put this code into a function.</p>
 <p>Below we will display the function and then discuss the components:</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="unconditional-cash-transfers.html#cb469-1" tabindex="-1"></a>treat.mean.var <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
-<span id="cb469-2"><a href="unconditional-cash-transfers.html#cb469-2" tabindex="-1"></a>  </span>
-<span id="cb469-3"><a href="unconditional-cash-transfers.html#cb469-3" tabindex="-1"></a>  variableafter <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable, <span class="st">&quot;_after&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb469-4"><a href="unconditional-cash-transfers.html#cb469-4" tabindex="-1"></a>  variablebefore <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable, <span class="st">&quot;_before&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb469-5"><a href="unconditional-cash-transfers.html#cb469-5" tabindex="-1"></a>  </span>
-<span id="cb469-6"><a href="unconditional-cash-transfers.html#cb469-6" tabindex="-1"></a>  <span class="co">#Separate out control and treated data</span></span>
-<span id="cb469-7"><a href="unconditional-cash-transfers.html#cb469-7" tabindex="-1"></a>  uct_treat <span class="ot">&lt;-</span> <span class="fu">filter</span>(uct, treat<span class="sc">==</span><span class="dv">1</span>)</span>
-<span id="cb469-8"><a href="unconditional-cash-transfers.html#cb469-8" tabindex="-1"></a>  uct_control <span class="ot">&lt;-</span> <span class="fu">filter</span>(uct, treat<span class="sc">==</span><span class="dv">0</span>)</span>
-<span id="cb469-9"><a href="unconditional-cash-transfers.html#cb469-9" tabindex="-1"></a>  </span>
-<span id="cb469-10"><a href="unconditional-cash-transfers.html#cb469-10" tabindex="-1"></a>  <span class="co">#Use the pull function </span></span>
-<span id="cb469-11"><a href="unconditional-cash-transfers.html#cb469-11" tabindex="-1"></a>  <span class="co">#Mean of variable after for treated</span></span>
-<span id="cb469-12"><a href="unconditional-cash-transfers.html#cb469-12" tabindex="-1"></a>  treatafter <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pull</span>(uct_treat, variableafter))</span>
-<span id="cb469-13"><a href="unconditional-cash-transfers.html#cb469-13" tabindex="-1"></a>  </span>
-<span id="cb469-14"><a href="unconditional-cash-transfers.html#cb469-14" tabindex="-1"></a>  <span class="co">#Mean of variable after for control</span></span>
-<span id="cb469-15"><a href="unconditional-cash-transfers.html#cb469-15" tabindex="-1"></a>  controlafter <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pull</span>(uct_control, variableafter))</span>
-<span id="cb469-16"><a href="unconditional-cash-transfers.html#cb469-16" tabindex="-1"></a>  </span>
-<span id="cb469-17"><a href="unconditional-cash-transfers.html#cb469-17" tabindex="-1"></a>  <span class="co">#Mean of variable before for treated</span></span>
-<span id="cb469-18"><a href="unconditional-cash-transfers.html#cb469-18" tabindex="-1"></a>  treatbefore <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pull</span>(uct_treat, variablebefore))</span>
-<span id="cb469-19"><a href="unconditional-cash-transfers.html#cb469-19" tabindex="-1"></a>  </span>
-<span id="cb469-20"><a href="unconditional-cash-transfers.html#cb469-20" tabindex="-1"></a>  <span class="co">#Mean of variable before for control</span></span>
-<span id="cb469-21"><a href="unconditional-cash-transfers.html#cb469-21" tabindex="-1"></a>  controlbefore <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pull</span>(uct_control, variablebefore))</span>
-<span id="cb469-22"><a href="unconditional-cash-transfers.html#cb469-22" tabindex="-1"></a>  </span>
-<span id="cb469-23"><a href="unconditional-cash-transfers.html#cb469-23" tabindex="-1"></a>  <span class="co">#Create output</span></span>
-<span id="cb469-24"><a href="unconditional-cash-transfers.html#cb469-24" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">c</span>(treatafter, treatbefore, controlafter, </span>
-<span id="cb469-25"><a href="unconditional-cash-transfers.html#cb469-25" tabindex="-1"></a>              controlbefore)</span>
-<span id="cb469-26"><a href="unconditional-cash-transfers.html#cb469-26" tabindex="-1"></a>  <span class="fu">names</span>(output) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Treat After&quot;</span>, <span class="st">&quot;Treat Before&quot;</span>, </span>
-<span id="cb469-27"><a href="unconditional-cash-transfers.html#cb469-27" tabindex="-1"></a>                     <span class="st">&quot;Control After&quot;</span>, <span class="st">&quot;Control Before&quot;</span>)</span>
-<span id="cb469-28"><a href="unconditional-cash-transfers.html#cb469-28" tabindex="-1"></a>  </span>
-<span id="cb469-29"><a href="unconditional-cash-transfers.html#cb469-29" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb469-30"><a href="unconditional-cash-transfers.html#cb469-30" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">treat.mean.var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">variableafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"_after"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span>  <span class="va">variablebefore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"_before"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Separate out control and treated data</span></span>
+<span>  <span class="va">uct_treat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">treat</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">uct_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">treat</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Use the pull function </span></span>
+<span>  <span class="co">#Mean of variable after for treated</span></span>
+<span>  <span class="va">treatafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct_treat</span>, <span class="va">variableafter</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Mean of variable after for control</span></span>
+<span>  <span class="va">controlafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct_control</span>, <span class="va">variableafter</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Mean of variable before for treated</span></span>
+<span>  <span class="va">treatbefore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct_treat</span>, <span class="va">variablebefore</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Mean of variable before for control</span></span>
+<span>  <span class="va">controlbefore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct_control</span>, <span class="va">variablebefore</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Create output</span></span>
+<span>  <span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">treatafter</span>, <span class="va">treatbefore</span>, <span class="va">controlafter</span>, </span>
+<span>              <span class="va">controlbefore</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Treat After"</span>, <span class="st">"Treat Before"</span>, </span>
+<span>                     <span class="st">"Control After"</span>, <span class="st">"Control Before"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>This is a function named <code>treat.mean.var</code> that takes <code>variable</code> as the input. We will pass in a variable from the data frame, for example <code>asset</code> or <code>nondurable_expend</code>. Until we reach the line that starts with <code>output</code>, all of the code is exactly what we did before. The code subsets to two separate dataframes, one for treated individuals and one for control individuals, and then calculates the mean of the variable both before and after the program.</p>
 <p>The remaining code simply puts together the output in a way we will be able to understand. The line <code>output &lt;- c(treatafter,treatbefore, controlafter, controlbefore)</code> takes the four means and puts them into a single vector. The code <code>names(output)&lt;- c("Treat After", "Treat Before", "Control After", "Control Before")</code> is associating each entry in the vector with a name. This will allow us to understand what the function is presenting us without having to look through the function to figure it out everytime we execute it.</p>
-<p>Let’s give this new function a try using <code>"asset"</code> as the input:</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="unconditional-cash-transfers.html#cb470-1" tabindex="-1"></a><span class="fu">treat.mean.var</span>(<span class="st">&quot;asset&quot;</span>)</span>
+<p>Let's give this new function a try using <code>"asset"</code> as the input:</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="unconditional-cash-transfers.html#cb470-1" tabindex="-1"></a><span class="fu">treat.mean.var</span>(<span class="st">"asset"</span>)</span>
 <span id="cb470-2"><a href="unconditional-cash-transfers.html#cb470-2" tabindex="-1"></a>   Treat After   Treat Before  Control After Control Before </span>
 <span id="cb470-3"><a href="unconditional-cash-transfers.html#cb470-3" tabindex="-1"></a>      <span class="fl">790.9253</span>       <span class="fl">382.3934</span>       <span class="fl">494.8041</span>       <span class="fl">389.3710</span> </span></code></pre></div>
-<p>Now that we have our function set up, let’s look at another variable: nondurable expenditure. Nondurable expenditure are goods that are consumed over a short time period. For example, food is a common nondurable good.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="unconditional-cash-transfers.html#cb471-1" tabindex="-1"></a><span class="fu">treat.mean.var</span>(<span class="st">&quot;nondurable_expend&quot;</span>)</span>
+<p>Now that we have our function set up, let's look at another variable: nondurable expenditure. Nondurable expenditure are goods that are consumed over a short time period. For example, food is a common nondurable good.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="unconditional-cash-transfers.html#cb471-1" tabindex="-1"></a><span class="fu">treat.mean.var</span>(<span class="st">"nondurable_expend"</span>)</span>
 <span id="cb471-2"><a href="unconditional-cash-transfers.html#cb471-2" tabindex="-1"></a>   Treat After   Treat Before  Control After Control Before </span>
 <span id="cb471-3"><a href="unconditional-cash-transfers.html#cb471-3" tabindex="-1"></a>      <span class="fl">191.2080</span>       <span class="fl">174.3455</span>       <span class="fl">157.6120</span>       <span class="fl">183.5800</span> </span></code></pre></div>
 <p>In the treatment, nondurable expenditures went up from 174 to 191. In contrast, in the control, nondurable expenditures actually decreased, starting at 184 and then falling to 158. Therefore, it appears unconditional cash transfers also had an impact on the amount individuals were spending on nondurable consumption.</p>
-<p>Haushofer and Shapiro (2016) have a variety of other outcomes they measure. Now that we’ve written a function to do our analysis, we can quickly perform the analysis across these different variables. This is how functions can save you time when performing data analysis, and also improve the clarity of the code you do write, by making it more concise.</p>
+<p>Haushofer and Shapiro (2016) have a variety of other outcomes they measure. Now that we've written a function to do our analysis, we can quickly perform the analysis across these different variables. This is how functions can save you time when performing data analysis, and also improve the clarity of the code you do write, by making it more concise.</p>
 </div>
-<div id="conclusion-8" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Conclusion<a href="unconditional-cash-transfers.html#conclusion-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this section we are going to wrap up functions by reviewing how to construct them in R. We will perform a similar analysis as the previous section, however, in this section we will use linear regression to analyze the data. To set up our analysis, let’s first write out the regression equation we will estimate:</p>
+<div id="conclusion-8" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion-8"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section we are going to wrap up functions by reviewing how to construct them in R. We will perform a similar analysis as the previous section, however, in this section we will use linear regression to analyze the data. To set up our analysis, let's first write out the regression equation we will estimate:</p>
 <p><span class="math display">\[
 Y_i = \beta_0 + \beta_1 \cdot Treat_i + \varepsilon_i
 \]</span></p>
 <p>Our dependent variable will be the change in an outcome. For example, if we are interested in understanding how the treatment has impacted the change in assets for a household, then we will set <span class="math inline">\(Y_i\)</span> to be equal to <code>asset_after-asset_before</code>. We will estimate <span class="math inline">\(\hat{\beta}_1\)</span> which gives us the differential change in assets between treated and control individuals. For example, if <span class="math inline">\(\hat{\beta}_1=100\)</span>, then that indicates treated individuals experienced a larger increase in assets than individuals in the control group. For example, it could be that the control group experienced a 200 increase in assets over the two time periods we are studying, while the treated group experienced a 300 increase in assets over the two time periods. In this case, assets went up by 100 more in the treated group relative to the control group.</p>
-<p>In this study, we have a number of variables that are in the format <code>variable_after</code> and <code>variable_before</code>. Instead of doing the linear regression with different variable names, we are instead going to write in a function that takes as an input “<code>variable''</code>, and then estimates the regression for this variable.</p>
-<p>To understand how we will build the function, let’s first estimate this regression for <code>asset</code>. That will give us an idea how we can do this more generally in a function. First, we need to create our <span class="math inline">\(Y_i\)</span> variable, which is equal to <code>asset_after-asset_before</code>.</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="unconditional-cash-transfers.html#cb472-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> uct<span class="sc">$</span>asset_after<span class="sc">-</span>uct<span class="sc">$</span>asset_before</span></code></pre></div>
-<p>Note, we have not added our new variable <code>y</code> to our dataframe. It is currently a vector in our global environment. In all our previous examples, we have estimated a linear regression on variables within a dataframe. In this section, we will show you can also estimate linear regression on a pair of vectors. To do so, let’s create a vector <code>treat</code> which is the same as the variable <code>treat</code> within the dataframe <code>uct</code>.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="unconditional-cash-transfers.html#cb473-1" tabindex="-1"></a>treat <span class="ot">&lt;-</span> uct<span class="sc">$</span>treat</span></code></pre></div>
-<p>Now we can estimate the linear regression. Unlike most of the prior <code>lm()</code> models we have estimated, we do not need to specify the dataframe, as we are now directly utilizing vectors in our global environment. One could have done this by adding <code>y</code> to our dataframe as usual, but this illustration shows an alternative way to accomplish the same analysis.</p>
+<p>In this study, we have a number of variables that are in the format <code>variable_after</code> and <code>variable_before</code>. Instead of doing the linear regression with different variable names, we are instead going to write in a function that takes as an input "<code>variable''</code>, and then estimates the regression for this variable.</p>
+<p>To understand how we will build the function, let's first estimate this regression for <code>asset</code>. That will give us an idea how we can do this more generally in a function. First, we need to create our <span class="math inline">\(Y_i\)</span> variable, which is equal to <code>asset_after-asset_before</code>.</p>
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">uct</span><span class="op">$</span><span class="va">asset_after</span><span class="op">-</span><span class="va">uct</span><span class="op">$</span><span class="va">asset_before</span></span></code></pre></div>
+<p>Note, we have not added our new variable <code>y</code> to our dataframe. It is currently a vector in our global environment. In all our previous examples, we have estimated a linear regression on variables within a dataframe. In this section, we will show you can also estimate linear regression on a pair of vectors. To do so, let's create a vector <code>treat</code> which is the same as the variable <code>treat</code> within the dataframe <code>uct</code>.</p>
+<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">treat</span> <span class="op">&lt;-</span> <span class="va">uct</span><span class="op">$</span><span class="va">treat</span></span></code></pre></div>
+<p>Now we can estimate the linear regression. Unlike most of the prior <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> models we have estimated, we do not need to specify the dataframe, as we are now directly utilizing vectors in our global environment. One could have done this by adding <code>y</code> to our dataframe as usual, but this illustration shows an alternative way to accomplish the same analysis.</p>
 <div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="unconditional-cash-transfers.html#cb474-1" tabindex="-1"></a>lm<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> treat)</span>
 <span id="cb474-2"><a href="unconditional-cash-transfers.html#cb474-2" tabindex="-1"></a>lm<span class="fl">.1</span></span>
 <span id="cb474-3"><a href="unconditional-cash-transfers.html#cb474-3" tabindex="-1"></a></span>
@@ -553,14 +333,17 @@ Y_i = \beta_0 + \beta_1 \cdot Treat_i + \varepsilon_i
 <span id="cb474-8"><a href="unconditional-cash-transfers.html#cb474-8" tabindex="-1"></a>(Intercept)        treat  </span>
 <span id="cb474-9"><a href="unconditional-cash-transfers.html#cb474-9" tabindex="-1"></a>      <span class="fl">105.4</span>        <span class="fl">303.1</span>  </span></code></pre></div>
 <p>We see that the slope coefficient <span class="math inline">\(\hat{\beta}_1 = 303.10\)</span>. This tells us that the treated group experienced an additional 303 dollar gain relative to the control group. If we look at the intercept, we know in this case this is the expected gain for individuals in the control group. In other words, individuals in the control group experienced a 105 dollar increase in assets. However, the slope coefficient tells us that the treated individuals experienced an additional 303 dollar gain, for a total gain of (105+303=408).</p>
-<p>Now let’s do this more generally using strings. Again, let’s start by creating a string object called <code>variable</code> that is equal to <code>"asset"</code>.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="unconditional-cash-transfers.html#cb475-1" tabindex="-1"></a>variable  <span class="ot">&lt;-</span> <span class="st">&quot;asset&quot;</span></span></code></pre></div>
-<p>Next, let’s use <code>paste</code> to create <code>"asset_before"</code> and <code>"asset_after"</code>.</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="unconditional-cash-transfers.html#cb476-1" tabindex="-1"></a>variableafter <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable, <span class="st">&quot;_after&quot;</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb476-2"><a href="unconditional-cash-transfers.html#cb476-2" tabindex="-1"></a>variablebefore <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable, <span class="st">&quot;_before&quot;</span>,<span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p>Now we can create our <span class="math inline">\(Y_i\)</span> which is equal to <code>asset_after-asset_before</code>. Again we can use the <code>pull()</code> function to grab the columns of the dataframe with the corresponding variable names:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="unconditional-cash-transfers.html#cb477-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">pull</span>(uct,variableafter) <span class="sc">-</span> <span class="fu">pull</span>(uct,variablebefore)</span>
-<span id="cb477-2"><a href="unconditional-cash-transfers.html#cb477-2" tabindex="-1"></a>treat <span class="ot">&lt;-</span> <span class="fu">pull</span>(uct,treat)</span></code></pre></div>
+<p>Now let's do this more generally using strings. Again, let's start by creating a string object called <code>variable</code> that is equal to <code>"asset"</code>.</p>
+<div class="sourceCode" id="cb475"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">variable</span>  <span class="op">&lt;-</span> <span class="st">"asset"</span></span></code></pre></div>
+<p>Next, let's use <code>paste</code> to create <code>"asset_before"</code> and <code>"asset_after"</code>.</p>
+<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">variableafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"_after"</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span><span class="va">variablebefore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"_before"</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
+<p>Now we can create our <span class="math inline">\(Y_i\)</span> which is equal to <code>asset_after-asset_before</code>. Again we can use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function to grab the columns of the dataframe with the corresponding variable names:</p>
+<div class="sourceCode" id="cb477"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct</span>,<span class="va">variableafter</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct</span>,<span class="va">variablebefore</span><span class="op">)</span></span>
+<span><span class="va">treat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct</span>,<span class="va">treat</span><span class="op">)</span></span></code></pre></div>
 <p>Now we can run our linear regression just as before:</p>
 <div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="unconditional-cash-transfers.html#cb478-1" tabindex="-1"></a>lm<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> treat)</span>
 <span id="cb478-2"><a href="unconditional-cash-transfers.html#cb478-2" tabindex="-1"></a>lm<span class="fl">.1</span></span>
@@ -572,22 +355,23 @@ Y_i = \beta_0 + \beta_1 \cdot Treat_i + \varepsilon_i
 <span id="cb478-8"><a href="unconditional-cash-transfers.html#cb478-8" tabindex="-1"></a>(Intercept)        treat  </span>
 <span id="cb478-9"><a href="unconditional-cash-transfers.html#cb478-9" tabindex="-1"></a>      <span class="fl">105.4</span>        <span class="fl">303.1</span>  </span></code></pre></div>
 <p>We have now figured out how to pass a string <code>"asset"</code> to an object named <code>variable</code> and perform the analysis. Therefore, we need to make only a few small changes to put this code into a function. We will name our function <code>lm.var</code> because it will perform a linear regression on an input variable.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="unconditional-cash-transfers.html#cb479-1" tabindex="-1"></a>lm.var <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
-<span id="cb479-2"><a href="unconditional-cash-transfers.html#cb479-2" tabindex="-1"></a>  </span>
-<span id="cb479-3"><a href="unconditional-cash-transfers.html#cb479-3" tabindex="-1"></a>  <span class="co">#Create a before and after variable</span></span>
-<span id="cb479-4"><a href="unconditional-cash-transfers.html#cb479-4" tabindex="-1"></a>  variableafter <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable, <span class="st">&quot;_after&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb479-5"><a href="unconditional-cash-transfers.html#cb479-5" tabindex="-1"></a>  variablebefore <span class="ot">&lt;-</span> <span class="fu">paste</span>(variable, <span class="st">&quot;_before&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb479-6"><a href="unconditional-cash-transfers.html#cb479-6" tabindex="-1"></a>  </span>
-<span id="cb479-7"><a href="unconditional-cash-transfers.html#cb479-7" tabindex="-1"></a>  <span class="co">#Create a y variable</span></span>
-<span id="cb479-8"><a href="unconditional-cash-transfers.html#cb479-8" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">pull</span>(uct, variableafter) <span class="sc">-</span> <span class="fu">pull</span>(uct, variablebefore)</span>
-<span id="cb479-9"><a href="unconditional-cash-transfers.html#cb479-9" tabindex="-1"></a>  treat <span class="ot">&lt;-</span> <span class="fu">pull</span>(uct, treat)</span>
-<span id="cb479-10"><a href="unconditional-cash-transfers.html#cb479-10" tabindex="-1"></a>  </span>
-<span id="cb479-11"><a href="unconditional-cash-transfers.html#cb479-11" tabindex="-1"></a>  <span class="co">#Run the linear regression</span></span>
-<span id="cb479-12"><a href="unconditional-cash-transfers.html#cb479-12" tabindex="-1"></a>  lm<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> treat)</span>
-<span id="cb479-13"><a href="unconditional-cash-transfers.html#cb479-13" tabindex="-1"></a>  <span class="fu">return</span>(lm<span class="fl">.1</span>)</span>
-<span id="cb479-14"><a href="unconditional-cash-transfers.html#cb479-14" tabindex="-1"></a>}</span></code></pre></div>
-<p>To review, the first line <code>lm.var &lt;- function(variable) {</code> specifies a few things. First, the name of the function is <code>lm.var</code>. Second, the <code>function</code> tells R that we are creating a new function. <code>variable</code> will be the name of the input. This is what we will change each time we execute the function. To make sure this works, let’s use this on <code>"asset"</code>. We have already performed this analysis so we know what it should return.</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="unconditional-cash-transfers.html#cb480-1" tabindex="-1"></a><span class="fu">lm.var</span>(<span class="st">&quot;asset&quot;</span>)</span>
+<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lm.var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="co">#Create a before and after variable</span></span>
+<span>  <span class="va">variableafter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"_after"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span>  <span class="va">variablebefore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"_before"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Create a y variable</span></span>
+<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">variableafter</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">variablebefore</span><span class="op">)</span></span>
+<span>  <span class="va">treat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">uct</span>, <span class="va">treat</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#Run the linear regression</span></span>
+<span>  <span class="va">lm.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">treat</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">lm.1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>To review, the first line <code>lm.var &lt;- function(variable) {</code> specifies a few things. First, the name of the function is <code>lm.var</code>. Second, the <code>function</code> tells R that we are creating a new function. <code>variable</code> will be the name of the input. This is what we will change each time we execute the function. To make sure this works, let's use this on <code>"asset"</code>. We have already performed this analysis so we know what it should return.</p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="unconditional-cash-transfers.html#cb480-1" tabindex="-1"></a><span class="fu">lm.var</span>(<span class="st">"asset"</span>)</span>
 <span id="cb480-2"><a href="unconditional-cash-transfers.html#cb480-2" tabindex="-1"></a></span>
 <span id="cb480-3"><a href="unconditional-cash-transfers.html#cb480-3" tabindex="-1"></a>Call<span class="sc">:</span></span>
 <span id="cb480-4"><a href="unconditional-cash-transfers.html#cb480-4" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> treat)</span>
@@ -595,8 +379,8 @@ Y_i = \beta_0 + \beta_1 \cdot Treat_i + \varepsilon_i
 <span id="cb480-6"><a href="unconditional-cash-transfers.html#cb480-6" tabindex="-1"></a>Coefficients<span class="sc">:</span></span>
 <span id="cb480-7"><a href="unconditional-cash-transfers.html#cb480-7" tabindex="-1"></a>(Intercept)        treat  </span>
 <span id="cb480-8"><a href="unconditional-cash-transfers.html#cb480-8" tabindex="-1"></a>      <span class="fl">105.4</span>        <span class="fl">303.1</span>  </span></code></pre></div>
-<p>It appears our function is working properly. Now, we can repeat this analysis on many different variables. For example, let’s see what this looks like for <code>total_rev</code>.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="unconditional-cash-transfers.html#cb481-1" tabindex="-1"></a><span class="fu">lm.var</span>(<span class="st">&quot;total_rev&quot;</span>)</span>
+<p>It appears our function is working properly. Now, we can repeat this analysis on many different variables. For example, let's see what this looks like for <code>total_rev</code>.</p>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="unconditional-cash-transfers.html#cb481-1" tabindex="-1"></a><span class="fu">lm.var</span>(<span class="st">"total_rev"</span>)</span>
 <span id="cb481-2"><a href="unconditional-cash-transfers.html#cb481-2" tabindex="-1"></a></span>
 <span id="cb481-3"><a href="unconditional-cash-transfers.html#cb481-3" tabindex="-1"></a>Call<span class="sc">:</span></span>
 <span id="cb481-4"><a href="unconditional-cash-transfers.html#cb481-4" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> treat)</span>
@@ -610,89 +394,232 @@ Y_i = \beta_0 + \beta_1 \cdot Treat_i + \varepsilon_i
 </div>
 <p>In this section, we studied the effect of unconditional cash transfers on households in Kenya using data from Haushofer and Shapiro (2016). A key strength of Haushofer and Shapiro is the ability to collect a wide variety of outcomes. Their paper allows us to understand how unconditional cash transfers impact not only economic well being, but also psychological well being.
 This paper relates to a broader and burgeoning literature on universal basic income (UBI). The merits of UBI have been debated intensely, in politics, the popular press, and in academia. The basic concept of UBI is that individuals receive a guaranteed cash payment. This will guarantee individuals a certain level of income, but some fear will lead to worse economic outcomes if individuals choose to reduce work.</p>
-<p>To date, there are very few examples of UBI payments that occur at a large scale for an extended time. For example, in Haushofer and Shapiro (2016), the authors give payments to a few hundred households over the course of about a year. However, through the same charity, GiveDirectly, researchers are currently implementing a large-scale UBI program in rural Kenya (see Banerjee et al. 2020). In this program, researchers are providing entire villages in rural Kenya with a universal basic income experiment for 12 years. The results of such a large-scale experiment will be tremendously informative regarding the pros and cons of UBI.</p>
+<p>To date, there are very few examples of UBI payments that occur at a large scale for an extended time. For example, in Haushofer and Shapiro (2016), the authors give payments to a few hundred households over the course of about a year. However, through the same charity, GiveDirectly, researchers are currently implementing a large-scale UBI program in rural Kenya (see Banerjee et al. 2020). In this program, researchers are providing entire villages in rural Kenya with a universal basic income experiment for 12 years. The results of such a large-scale experiment will be tremendously informative regarding the pros and cons of UBI.</p>
 </div>
-<div id="function-descriptions-4" class="section level2 unnumbered hasAnchor">
-<h2><u>Function Descriptions</u><a href="unconditional-cash-transfers.html#function-descriptions-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="function-descriptions-4" class="section level2 unnumbered">
+<h2>
+<u>Function Descriptions</u><a class="anchor" aria-label="anchor" href="#function-descriptions-4"><i class="fas fa-link"></i></a>
+</h2>
 <div class="rmdnote">
 <p><strong><u>Functions Used</u></strong></p>
 <ul>
-<li><p><code>paste()</code> – Concatenates strings together. For example, <code>paste("Hello","World")</code> results in the text “Hello World”.</p></li>
-<li><p><code>pull()</code> – Extracts columns from a dataframe. For example, given a dataframe <code>df</code> and a variable <code>varname</code>, we can extract the variable by specifying, <code>pull(df,"varname")</code>.</p></li>
-<li><p><code>function()</code> – Function to specify a new function in R.</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> -- Concatenates strings together. For example, <code>paste("Hello","World")</code> results in the text "Hello World".</p></li>
+<li><p><code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> -- Extracts columns from a dataframe. For example, given a dataframe <code>df</code> and a variable <code>varname</code>, we can extract the variable by specifying, <code>pull(df,"varname")</code>.</p></li>
+<li><p><code>function()</code> -- Function to specify a new function in R.</p></li>
 </ul>
 </div>
 
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="15">
-<li id="fn15"><p>Johannes Haushofer and Jeremy Shapiro, <span>“The Short-Term Impact of Unconditional Cash Transfers to the Poor: Experimental Evidence from Kenya,”</span> <em>The Quarterly Journal of Economics</em> 131, no. 4 (2016): 1973–2042.<a href="unconditional-cash-transfers.html#fnref15" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
-            </section>
 
-          </div>
-        </div>
-      </div>
-<a href="voting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": null,
-    "text": null
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": null,
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
-});
-});
-</script>
+}
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script><div class="chapter-nav">
+<div class="prev"><a href="voting.html"><span class="header-section-number">9</span> Voting</a></div>
+<div class="next"><a href="references-1.html">References</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#unconditional-cash-transfers"><span class="header-section-number">10</span> Unconditional Cash Transfers</a></li>
+<li><a class="nav-link" href="#motivation"><span class="header-section-number">10.1</span> Motivation</a></li>
+<li><a class="nav-link" href="#the-data"><span class="header-section-number">10.2</span> The Data</a></li>
+<li><a class="nav-link" href="#functions-part-1"><span class="header-section-number">10.3</span> Functions (Part 1)</a></li>
+<li><a class="nav-link" href="#functions-part-2"><span class="header-section-number">10.4</span> Functions (Part 2)</a></li>
+<li><a class="nav-link" href="#conclusion-8"><span class="header-section-number">10.5</span> Conclusion</a></li>
+<li><a class="nav-link" href="#function-descriptions-4">Function Descriptions</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Econ5/Poli5D</strong>" was written by David Arnold. It was last built on 2026-03-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -704,7 +631,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
