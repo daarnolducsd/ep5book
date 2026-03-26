@@ -1,7 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(grep -n \"^\\\\`\\\\`\\\\`\" /Users/davidarnold/Dropbox/Teaching/EP5Bookdown/04-week4.Rmd)",
+      "Bash(grep -E '```\\\\{r' -A 100)",
+      "Bash(grep -v '```')",
+      "Bash(sed 's/\\($//')",
+      "Bash(grep \"^\\\\`\\\\`\\\\`{stata\" /Users/davidarnold/Dropbox/Teaching/EP5Bookdown/04-week4.Rmd)",
+      "Bash(grep -v \"^\\\\`\\\\`\\\\`\")",
+      "Bash(grep -v \"^$\")",
+      "Bash(grep -E '^[a-z_]+\\(\\\\s|$\\)')",
+      "Bash(/tmp/extract_commands.txt:*)",
+      "Read(//tmp/**)",
+      "Bash(grep '``' /Users/davidarnold/Dropbox/Teaching/EP5Bookdown/03-week3.Rmd)",
+      "Bash(grep \"The \\\\`\\\\`.*\\\\`\\\\` command\" /Users/davidarnold/Dropbox/Teaching/EP5Bookdown/03-week3.Rmd)",
+      "Bash(grep -E \"\\\\`\\\\`[a-z_]+\\\\`\\\\` \\(is used|will |command|to \\)\" /Users/davidarnold/Dropbox/Teaching/EP5Bookdown/03-week3.Rmd)",
+      "Bash(grep -oE \"\\\\`\\\\`[a-z_]+\\\\`\\\\`\" /Users/davidarnold/Dropbox/Teaching/EP5Bookdown/03-week3.Rmd)",
+      "Bash(cat:*)",
+      "Bash(grep -v '^/\\\\|^$')"
     ]
   }
 }

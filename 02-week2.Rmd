@@ -807,6 +807,10 @@ At the same time, many schools with very high access rates have been trending to
 
 - ``clear all`` - clears data from Stata
 
+- ``use filename`` - loads a Stata dataset (.dta file) into memory. For example, ``use college_mobility.dta`` loads the college mobility dataset. The file needs to be in your working directory for this to work
+
+- ``display expression`` - displays the result of an expression. This can be used as a calculator (e.g. ``display 2+2``) or to display text (e.g. ``display "Hello"``). Can be abbreviated as ``di``.
+
 **<u>Data Exploration Commands</u>** 
 
 - ``describe`` -  describes the dataset and gives you information on the variables, types of variables, variable labels and number of observations.

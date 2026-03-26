@@ -694,6 +694,37 @@ Figure 3.29: Disparities in Search Rates Across U.S. Cities
 </div>
 <p>As can be seen in Figure <a href="discrimination-in-police-stops.html#fig:searchrates">3.29</a>, the search rates tend to be higher for Black and Hispanic drivers across most cities in the U.S.</p>
 <p>This still just scratches the surface of what can be done with this data! The main takeaway from this chapter: data can be a powerful tool that informs policy. The Stanford Open Policing Project is one effort to improve transparency in policing by making data publicly available to researchers and journalists.</p>
+</div>
+<div id="command-descriptions-1" class="section level2 unnumbered">
+<h2>
+<u>Command Descriptions</u><a class="anchor" aria-label="anchor" href="#command-descriptions-1"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p><strong><u>Data Wrangling Commands</u></strong></p>
+<ul>
+<li><p><code>append using filename</code> - appends the dataset in <code>filename</code> onto the dataset currently in memory. Both datasets should have the same variable names. This is useful when combining datasets that contain different observations but the same variables. For example, if you have separate datasets for different years, you can append them to create one combined dataset.</p></li>
+<li><p><code>merge 1:1 varname using filename</code> - merges the dataset in <code>filename</code> with the dataset currently in memory, matching observations based on the variable <code>varname</code>. A 1:1 merge means each observation in the master dataset matches to exactly one observation in the using dataset. After merging, Stata creates a variable called <code>_merge</code> which indicates whether each observation was found in both datasets (<code>_merge==3</code>), only in the master (<code>_merge==1</code>), or only in the using data (<code>_merge==2</code>).</p></li>
+<li><p><code>merge m:1 varname using filename</code> - similar to a 1:1 merge, but allows many observations in the master dataset to match to a single observation in the using dataset. For example, if you have a dataset of individual police stops and want to merge in city-level characteristics, many stops can match to the same city.</p></li>
+<li><p><code>keep if expression</code> - keeps only the observations for which <code>expression</code> is true and drops all others. For example, <code>keep if _merge==3</code> keeps only observations that were successfully matched during a merge.</p></li>
+<li><p><code>drop if expression</code> - drops observations for which <code>expression</code> is true. For example, <code>drop if time==.</code> removes observations with missing values of <code>time</code>. You can also use <code>drop varname</code> to remove a variable from the dataset.</p></li>
+<li><p><code>save filename, replace</code> - saves the current dataset as a Stata file (.dta). The <code>replace</code> option overwrites the file if it already exists.</p></li>
+</ul>
+<p><strong><u>Data Exploration Commands</u></strong></p>
+<ul>
+<li><p><code>unique varname</code> - reports the number of unique values taken on by the variable <code>varname</code>. This is useful for understanding the structure of your data. For example, if your data is at the stop level, <code>unique date</code> tells you how many unique dates are in the data. Requires the <code>unique</code> package (installed via <code>ssc install unique</code>).</p></li>
+<li><p><code>bysort varname: command</code> - executes <code>command</code> separately for each value of <code>varname</code>. For example, <code>bysort subject_race: sum stop_rate</code> computes summary statistics of stop rates separately by race.</p></li>
+</ul>
+<p><strong><u>Data Transformation Commands</u></strong></p>
+<ul>
+<li>
+<code>collapse (stat) varname, by(groupvar)</code> - collapses the dataset so that there is one observation per value of <code>groupvar</code>. <code>stat</code> specifies the statistic to compute (e.g. <code>mean</code>, <code>sum</code>, <code>count</code>). For example, <code>collapse (mean) stop_rate, by(subject_race dark)</code> creates a dataset with one observation per race-light condition combination, containing the mean stop rate for each group.</li>
+</ul>
+<p><strong><u>Graphing Commands</u></strong></p>
+<ul>
+<li>
+<code>graph bar varname, over(groupvar)</code> - creates a bar graph of the variable <code>varname</code> with separate bars for each value of <code>groupvar</code>. Options such as <code>ytitle()</code>, <code><a href="https://rdrr.io/r/graphics/title.html">title()</a></code>, and <code>bar()</code> can be used to customize the appearance. For example, <code>graph bar frac, over(subject_race) over(dark)</code> creates a grouped bar graph showing fractions by race and light condition.</li>
+</ul>
+</div>
 
 </div>
 </div>
@@ -890,6 +921,7 @@ window.onload = function() {
 <li><a class="nav-link" href="#visualizing-veil-of-darkness"><span class="header-section-number">3.13</span> Visualizing Veil of Darkness</a></li>
 <li><a class="nav-link" href="#improving-aesthetics"><span class="header-section-number">3.14</span> Improving Aesthetics</a></li>
 <li><a class="nav-link" href="#conclusion-1"><span class="header-section-number">3.15</span> Conclusion</a></li>
+<li><a class="nav-link" href="#command-descriptions-1">Command Descriptions</a></li>
 </ul>
 
       <div class="book-extra">

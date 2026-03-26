@@ -65,7 +65,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_OAPPSJDNIF'><label><input type="radio" autocomplete="off" name="radio_OAPPSJDNIF" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_OAPPSJDNIF" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_OAPPSJDNIF" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_PFQRMSPATQ'><label><input type="radio" autocomplete="off" name="radio_PFQRMSPATQ" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_PFQRMSPATQ" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_PFQRMSPATQ" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_HXLNAITYZE'><label><input type="radio" autocomplete="off" name="radio_HXLNAITYZE" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_HXLNAITYZE" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_HXLNAITYZE" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_HXLNAITYZE" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_CORCPYBFRE'><label><input type="radio" autocomplete="off" name="radio_CORCPYBFRE" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_CORCPYBFRE" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_CORCPYBFRE" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_CORCPYBFRE" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::
@@ -897,6 +897,10 @@ At the same time, many schools with very high access rates have been trending to
 
 
 - ``clear all`` - clears data from Stata
+
+- ``use filename`` - loads a Stata dataset (.dta file) into memory. For example, ``use college_mobility.dta`` loads the college mobility dataset. The file needs to be in your working directory for this to work
+
+- ``display expression`` - displays the result of an expression. This can be used as a calculator (e.g. ``display 2+2``) or to display text (e.g. ``display "Hello"``). Can be abbreviated as ``di``.
 
 **<u>Data Exploration Commands</u>** 
 

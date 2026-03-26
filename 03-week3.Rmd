@@ -735,3 +735,39 @@ knitr::include_graphics("images/03_search_rates.png")
 As can be seen in Figure \@ref(fig:searchrates), the search rates tend to be higher for Black and Hispanic drivers across most cities in the U.S. 
 
 This still just scratches the surface of what can be done with this data! The main takeaway from this chapter: data can be a powerful tool that informs policy. The Stanford Open Policing Project is one effort to improve transparency in policing by making data publicly available to researchers and journalists.
+
+## <u>Command Descriptions</u> {-}
+
+
+
+::: {.rmdnote}
+
+**<u>Data Wrangling Commands</u>**
+
+- ``append using filename`` - appends the dataset in ``filename`` onto the dataset currently in memory. Both datasets should have the same variable names. This is useful when combining datasets that contain different observations but the same variables. For example, if you have separate datasets for different years, you can append them to create one combined dataset.
+
+- ``merge 1:1 varname using filename`` - merges the dataset in ``filename`` with the dataset currently in memory, matching observations based on the variable ``varname``. A 1:1 merge means each observation in the master dataset matches to exactly one observation in the using dataset. After merging, Stata creates a variable called ``_merge`` which indicates whether each observation was found in both datasets (``_merge==3``), only in the master (``_merge==1``), or only in the using data (``_merge==2``).
+
+- ``merge m:1 varname using filename`` - similar to a 1:1 merge, but allows many observations in the master dataset to match to a single observation in the using dataset. For example, if you have a dataset of individual police stops and want to merge in city-level characteristics, many stops can match to the same city.
+
+- ``keep if expression`` - keeps only the observations for which ``expression`` is true and drops all others. For example, ``keep if _merge==3`` keeps only observations that were successfully matched during a merge.
+
+- ``drop if expression`` - drops observations for which ``expression`` is true. For example, ``drop if time==.`` removes observations with missing values of ``time``. You can also use ``drop varname`` to remove a variable from the dataset.
+
+- ``save filename, replace`` - saves the current dataset as a Stata file (.dta). The ``replace`` option overwrites the file if it already exists.
+
+**<u>Data Exploration Commands</u>**
+
+- ``unique varname`` - reports the number of unique values taken on by the variable ``varname``. This is useful for understanding the structure of your data. For example, if your data is at the stop level, ``unique date`` tells you how many unique dates are in the data. Requires the ``unique`` package (installed via ``ssc install unique``).
+
+- ``bysort varname: command`` - executes ``command`` separately for each value of ``varname``. For example, ``bysort subject_race: sum stop_rate`` computes summary statistics of stop rates separately by race.
+
+**<u>Data Transformation Commands</u>**
+
+- ``collapse (stat) varname, by(groupvar)`` - collapses the dataset so that there is one observation per value of ``groupvar``. ``stat`` specifies the statistic to compute (e.g. ``mean``, ``sum``, ``count``). For example, ``collapse (mean) stop_rate, by(subject_race dark)`` creates a dataset with one observation per race-light condition combination, containing the mean stop rate for each group.
+
+**<u>Graphing Commands</u>**
+
+- ``graph bar varname, over(groupvar)`` - creates a bar graph of the variable ``varname`` with separate bars for each value of ``groupvar``. Options such as ``ytitle()``, ``title()``, and ``bar()`` can be used to customize the appearance. For example, ``graph bar frac, over(subject_race) over(dark)`` creates a grouped bar graph showing fractions by race and light condition.
+
+:::
