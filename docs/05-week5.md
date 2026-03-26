@@ -33,9 +33,13 @@ In Lowes and Montero (2021), the authors study two key outcomes, both of which c
 To begin, let's load the dataset ``colonial_medicine.dta``
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"
 use colonial_medicine.dta, replace
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
 ```
 
@@ -51,30 +55,40 @@ So we have 75,881 survey participants, some demographics of the individual, a ke
 This data is at the individual level and includes some basic demographics (age, sex, etc.) as well as our key outcome: ``refused_any_blood_test``
 
 
-```stata
+``` stata
 sum refused_any_blood_test
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-refused_an~t |     11,993    .1110648    .3142255          0          1
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 So around 11 percent overall refuse a blood test. Our goal will be to understand if this refusal rate depends on how often an individual's area was visited during sleeping sickness campaigns in the past. The variable that captures this is ``Times_Prospected``:
 
 
 
-```stata
+``` stata
 sum Times_Prospected
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-Times_Pros~d |     67,036    .2941624    .1943945          0         .8
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 
@@ -92,15 +106,20 @@ First, if I browse the data, you will see the variable ``wealth_index`` looks li
 If we take the average of ``wealth_index``, we do get a number out
 
 
-```stata
+``` stata
 sum wealth_index
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-wealth_index |     75,881    3.212319     1.43691          1          5
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 We will discuss this behavior in a future chapter about **value labels**. Next, If I browse the data, you will see the variable ``refused_any_blood_test`` has some missing values (the period indicates the value is missing).
@@ -121,7 +140,7 @@ In order to discuss value labels, we are going to look at the American National 
  We are going to load a very small subset of the dataset which has information on just a few questions: 
 
 
-```stata
+``` stata
 cd /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
 use anes_subset.dta, clear
 ```
@@ -144,55 +163,61 @@ For ``vote`` and ``better_or_worse`` the values look like characters, but they a
 The **value label** is the text highlighted in blue ("2. No, didn't vote"). If we use ``tab`` we can see the different values labels for a given variable. Let's try this for ``vote``:
 
 
-```stata
+``` stata
 tab vote 
-      PRE: Did R vote for |
-        President in 2012 |      Freq.     Percent        Cum.
---------------------------+-----------------------------------
-              -9. Refused |          2        0.05        0.05
--8. Don't know (FTF only) |         14        0.33        0.37
-            1. Yes, voted |      3,117       73.00       73.37
-       2. No, didn't vote |      1,137       26.63      100.00
---------------------------+-----------------------------------
-                    Total |      4,270      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 So there are 4 different value labels. If you need to reference values of these variables, you need to use the actual numeric values, not the labels themselves. The labels are just there so we don't forget what the numbers mean. For example, if I wanted to see how many individuals refused the question, I can type:
 
 
-```stata
+``` stata
 count if vote==-9
-  2
+file gapminder.dta not Stata format
+r(610);
+
+
+vote not found
+r(111);
+
+r(111);
 ```
 
 If I try to do the same thing, but referencing the value label, I will get an error:
 
 
-```stata
+``` stata
 count if vote == "-9. Refused"
-type mismatch
-r(109);
+file gapminder.dta not Stata format
+r(610);
 
-end of do-file
-r(109);
+
+vote not found
+r(111);
+
+r(111);
 ```
 
 It states ``type mismatch`` because ``vote`` is a numeric variable, not a string variable. A quick way to see the numeric values associated with the labels is to type:
 
 
-```stata
+``` stata
 tab vote, sum(vote)
- PRE: Did R |
-   vote for |   Summary of PRE: Did R vote for
-  President |          President in 2012
-    in 2012 |        Mean   Std. dev.       Freq.
-------------+------------------------------------
-  -9. Refus |          -9           0           2
-  -8. Don't |          -8           0          14
-  1. Yes, v |           1           0       3,117
-  2. No, di |           2           0       1,137
-------------+------------------------------------
-      Total |   1.2320843   .72453319       4,270
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 ::: {.rmdtip}
@@ -207,38 +232,39 @@ Make sure you understand why the above code can retrieve the numeric value assoc
 Continuing our exploration of the ANES dataset, we will now discuss missing values. For numeric variables, Stata stores missing values as a period. If your numeric variable does not code missing information as a period, then you should change this before continuing the analysis. To see why, let's consider the variable ``better_or_worse``, which asks the respondent on a scale of 1 to 5 how much worse off are you relative to a year ago.  
 
 
-```stata
+``` stata
 tab better_or_worse
 ```
 
 
 ```
-   PRE: R how much better |
-worse off than 1 year ago |      Freq.     Percent        Cum.
---------------------------+-----------------------------------
-              -9. Refused |         11        0.26        0.26
--8. Don't know (FTF only) |          2        0.05        0.30
-       1. Much better off |        298        6.98        7.28
-   2. Somewhat better off |        904       21.17       28.45
-        3. About the same |      1,981       46.39       74.85
-    4. Somewhat worse off |        763       17.87       92.72
-        5. Much worse off |        311        7.28      100.00
---------------------------+-----------------------------------
-                    Total |      4,270      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 You can see that -8 and -9 are actually missing values, but right now they are stored as numbers. If I take the average of ``better_or_worse``, I get:
 
 
-```stata
+``` stata
 sum better_or_worse
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-better_or_~e |      4,270    2.937002    1.176809         -9          5
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 But this average incorporates those values of -9 and -8. In terms of the scale of the variable, this will lower the overall average, which could lead to some pretty misleading results. For example, imagine instead of storing the missing values as -9, they were stored as -1000. Then, even though there are a few individuals with missing data, our average value of ``better_or_worse`` might be very low, as low as 1. If we naively took this as the average, then we might conclude that on average, people report they are much better off. But this is the wrong conclusion, we need the average response among individuals that actually answered the question.
@@ -246,22 +272,27 @@ But this average incorporates those values of -9 and -8. In terms of the scale o
 What we need to do is replace individuals that have either a value of -8 or -9 to missing. To do this we can make use of the or operator, which is given by the symbol ``|``. The code below will replace the value of ``better_or_worse`` to missing if the current value is either -8 **or** -9. 
 
 
-```stata
+``` stata
 replace better_or_worse=. if better_or_worse==-8 | better_or_worse==-9
 ```
 
 Now when we take the average, the missing values are not incorporated
 
 
-```stata
+``` stata
 sum better_or_worse
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-better_or_~e |      4,257    2.972986    .9814891          1          5
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 When you compute summary statistics or run regressions, observations with missing values will be dropped automatically from this calculation. However, you need to be very careful when constructing new variables from observations with missing values. For logical statements in Stata (such as when creating indicator variables), the missing value is interpreted as infinity. The reason why it was chosen to have missing values be interpreted as infinity is a little complicated, but it can lead to some confusing errors!
@@ -270,7 +301,7 @@ When you compute summary statistics or run regressions, observations with missin
 To see how, imagine we want to create an indicator that is equal to 1 if an individual thinks their life has gotten worse relative to 1 year ago. An individual that responded 4 or 5 believes their life has gotten worse relative to 1 year ago. So one potential way to code this new variable would be to type:
 
 
-```stata
+``` stata
 gen worse_off = (better_or_worse>=4)
 ```
 
@@ -278,15 +309,20 @@ Let's see what ``worse_off`` is equal to for individuals that had missing values
 
 
 
-```stata
+``` stata
 sum worse_off if better_or_worse==.
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   worse_off |         13           1           0          1          1
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 It is equal to 1 for all of these individuals, but why? The reason is missing values are interpreted as infinity in logical statements. Because infinity is greater than 4, then everyone with missing values of this is coded as ``worse_off=1``.
@@ -294,7 +330,7 @@ It is equal to 1 for all of these individuals, but why? The reason is missing va
 To avoid this problem, we need to change the code so that it takes into account the possibility of missing values. For example, we might want to replace ``worse_off`` equal to missing if ``better_or_worse`` is equal to missing.
 
 
-```stata
+``` stata
 replace worse_off = . if better_or_worse==.
 ```
 
@@ -307,7 +343,7 @@ In this chapter, we will discuss a new data visualization technique known as **b
 <p class="caption">(\#fig:barill)Relationship Between Earnings and Test Scores</p>
 </div>
 
-In this example, we have plotted all the data and can clearly see that there is a positive relationship between test scores and earnings. Individuals with higher test scores tend to also have higher earnings. But what if there were 1,000 people in this dataset, or 10,000, or a million? The graph would soon get pretty crowded.Not only would a graph with a million observations be difficult to interpret, but it would also likely crash your computer! 
+In this example, we have plotted all the data and can clearly see that there is a positive relationship between test scores and earnings. Individuals with higher test scores tend to also have higher earnings. But what if there were 1,000 people in this dataset, or 10,000, or a million? The graph would soon get pretty crowded. Not only would a graph with a million observations be difficult to interpret, but it would also likely crash your computer! 
 
 However, instead of plotting all the data, imagine we bin the data into intervals. For example, in Figure \@ref(fig:barill2) we have binned the data into intervals by dividing the x-axis into three bins. In bin 1 there are observations with scores below 80. Bin 2 has observations with scores between 80 and 90. Bin 3 has scores above 90. 
 
@@ -335,18 +371,29 @@ As a reminder, between 1921 and 1956, French colonies in Africa were visited by 
 To begin let's load the dataset: 
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data"
 use colonial_medicine.dta, replace
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/05_week/data
 ```
 
 First, we need to drop values that either have missing information for ``refused_any_blood_test`` or ``Times_Prospected``. ``refused_any_blood_test`` is our key outcome and is equal to 1 if the individual refused the free blood test and zero otherwise. ``Times_Prospected`` is our key explanatory variable and captures what fraction of years between 1921-and 1956 was the individual's region visited for sleeping sickness campaigns. If either of these values are missing for an observation, then they should not be included in the analysis.
 
 
-```stata
+``` stata
 drop if refused_any_blood_test==. | Times_Prospected==. 
-(65,951 observations deleted)
+file gapminder.dta not Stata format
+r(610);
+
+
+refused_any_blood_test not found
+r(111);
+
+r(111);
 ```
 
 The parallel line ``|`` indicates "or". So put simply, this line says to drop any observations in which either ``refused_any_blood_test`` or ``Times_Prospected`` is missing.
@@ -354,14 +401,14 @@ The parallel line ``|`` indicates "or". So put simply, this line says to drop an
 Next, we will use an external command named ``binscatter`` can be used to produce binned scatterplots. To install on your version of Stata, you first need to type. 
 
 
-```stata
+``` stata
 ssc install binscatter
 ```
 
 Once you execute the code above once, then you will be able to use the ``binscatter`` command. The basic syntax of the ``binscatter`` command is:
 
 
-```stata
+``` stata
 binscatter yvar xvar, nquantiles(#)
 ```
 
@@ -370,7 +417,7 @@ In this syntax, you will replace ``yvar`` with whatever variable you want to plo
 In our example, we want to understand the relationship between refusing to take a blood test (y-axis) and share of years visited by medical campaigns between 1921-1956 (x-axis). For illustrative purposes, let's specify ``nquantiles(10)`` which implies we will have 10 bins in our scatterplot. One nice thing about the ``binscatter`` command is that we can utilize everything that we've learned from creating graphs generally. In other words, let's make sure our graph has appropriate titles and axes labels.
 
 
-```stata
+``` stata
 binscatter refused_any_blood_test Times_Prospected, nq(10)  ///
 	title("Binscatter: Refusing Blood Test vs. Share of Years Visited") ///
 	xtitle("Share of years visited, 1921-1956") ///
@@ -387,7 +434,7 @@ As we can see from the graph, as the share of years visited increases, the fract
 It is also helpful for interpretation to retrieve the slope of this regression line. We can get this parameter by specifying ``reportreg`` as an option for our binscatter command.
 
 
-```stata
+``` stata
 binscatter refused_any_blood_test Times_Prospected, nq(10) reportreg 
 ```
 

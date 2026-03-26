@@ -167,7 +167,7 @@ One way to interpret this line is that this is our best (linear) prediction of l
 
 
 $$
-\text{Predicted Life Expectancy}_i = 60.97 + 0.24 \cdot 50 = 79.97
+\text{Predicted Life Expectancy}_i = 67.97 + 0.24 \cdot 50 = 79.97
 $$
 
 In general, if you want to form the predicted value for an observation with a value of $X_i$, you can form 

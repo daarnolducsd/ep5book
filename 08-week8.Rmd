@@ -197,7 +197,7 @@ hist(pm_bycityafter$meanpm10, xlab="MeanPM10",
   xlim=c(0,250), ylim=c(0,50))
 ```
 
-Now we can more clearly compare the two plots. Before automation, many of the pm10 averages seem to be clustered just below 100. After automation, the distribution is more sspread out, with many observations above 100, and even some above 200. Before automation, no city had an average level of pm10 above 200. Therefore, it appears as if the distribution of **reported** pm10 has shifted to the right after automation.
+Now we can more clearly compare the two plots. Before automation, many of the pm10 averages seem to be clustered just below 100. After automation, the distribution is more spread out, with many observations above 100, and even some above 200. Before automation, no city had an average level of pm10 above 200. Therefore, it appears as if the distribution of **reported** pm10 has shifted to the right after automation.
 
 Lastly, we can also add additional information to the plot. For example, it might be helpful to quickly be able to understand how the average level of pm10 varies before and after automation. We can add these numbers to the plots by using the ``lines()`` function. The way the lines function works is that you specify $(x_1, x_2)$ and $(y_1,y_2)$. The line starts at the point $(x_1,y_1)$ and ends at $(x_2,y_2)$. Therefore, if we want to have a vertical line at the mean we can specify ``lines(c(mean,mean),c(-10,100))``. We have specified ``c(-10,100)`` because these numbers are beyond the limits of the graph. Therefore, the vertical line will appear along the entire graph output. To understand how to build lines on graphs, it is helpful to change the numbers in the code below and see how the results change.
 
@@ -224,7 +224,7 @@ lines(c(meanafter, meanafter), c(-10, 100),
 
 ## Boxplots
 
-A box plot is a figure we have not yet seen in this course. Like a histogram, it is informative about the distribution of a variable. In particular, a box plot shows a few key statistics of interest, including the median, the 25th precentile and 75th percentile. It is often helpful when you want to show how the distribution of a variable varies across different groups. For example, maybe you are interested in variation in test scores across different classes in a school. Maybe you are interested in how the distribution of wages across different regions of the U.S. In these types of instances, box plots might be an effective way to present your information. 
+A box plot is a figure we have not yet seen in this course. Like a histogram, it is informative about the distribution of a variable. In particular, a box plot shows a few key statistics of interest, including the median, the 25th percentile and 75th percentile. It is often helpful when you want to show how the distribution of a variable varies across different groups. For example, maybe you are interested in variation in test scores across different classes in a school. Maybe you are interested in how the distribution of wages across different regions of the U.S. In these types of instances, box plots might be an effective way to present your information. 
 
 In our example, we are going to construct a box plot that shows the average daily pm10 levels both before and after automation. To begin, we are again going to use ``group_by()`` and ``summarize()`` to construct a relevant dataset. 
 
@@ -267,7 +267,7 @@ First, we need to add a variable that indicates whether the time is before or af
 pm_byday$after <- pm_byday$T>0
 ```
 
-What is the code above accomplishing? It is creating a binary logical variable that is equal to ``TRUE`` if it is after automation, and equal to ``FALSE`` if it is before automation. Remember, values of ``T`` that are positive are days after automation has occured.
+What is the code above accomplishing? It is creating a binary logical variable that is equal to ``TRUE`` if it is after automation, and equal to ``FALSE`` if it is before automation. Remember, values of ``T`` that are positive are days after automation has occurred.
 
 To plot separate box plots by the value of ``after``, we specify ``pm_byday$meanpm10 ~ pm_byday$after`` inside the boxplot function, rather than just ``pm_byday$meanpm10``.
 

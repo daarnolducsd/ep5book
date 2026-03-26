@@ -20,7 +20,7 @@ code {
 </head>
 <body>
 
-In this section, we will be discussing the relationship between **intergenerational mobility** and the higher education system in the United Stata. Before we start exploring this relationship, we first need to understand the concept of intergenerational mobility. This concept asks a simple question: if you are born from low-income parents, what is the chance you move up the income distribution?
+In this section, we will be discussing the relationship between **intergenerational mobility** and the higher education system in the United States. Before we start exploring this relationship, we first need to understand the concept of intergenerational mobility. This concept asks a simple question: if you are born from low-income parents, what is the chance you move up the income distribution?
 
 Generally, we think of societies with high rates of intergenerational mobility as more equal. If a society has high rates of intergenerational mobility, then that means individuals from low-income backgrounds have opportunities to move up the income distribution. One common path to upward mobility is the higher education system. 
 
@@ -34,7 +34,7 @@ knitr::include_graphics("images/02_oi.png")
 
 Let's get a little bit more into the details on what data we will be using in this empirical application. The original data comes from federal income tax returns that have been linked to the tax records of universities and data from Pell Grants. The result is a dataset with (1) children linked to their parents (children are reported as dependents) (2) income data for both children and parents and (3) children linked to the universities they attended. 
 
-This will give us everything we need to know to understand how a given college promotes intergenerational mobility. It will allow us to know both the know both the background of students attending a given college as well as their eventual earnings. It is important to emphasize that this was a huge data task that gives us a new way to study an important question.  
+This will give us everything we need to know to understand how a given college promotes intergenerational mobility. It will allow us to know both the background of students attending a given college as well as their eventual earnings. It is important to emphasize that this was a huge data task that gives us a new way to study an important question.  
 
 We have discussed at a high level the concept of intergenerational mobility. But when we turn to the data, we will need to compute a metric of intergenerational mobility that allows us to compare across colleges. Before introducing this measure, we will introduce a statistical concept that will be important throughout the course, and in particular, in understanding our measure of intergenerational mobility: **quantiles**.
 
@@ -56,14 +56,14 @@ When we break up the observations into 5 equal-sized groups, this is referred to
 
 In particular, an individual is defined as coming from low-income parents if the individual's parents are in the bottom quintile (Q1) of the income distribution. The bottom quintile implies the parents are in the bottom 20 percent of the income distribution. An individual is defined as a high-income individual if this individual is in the top quintile (Q5) of the income distribution, or equivalently, the top 20 percent of the income distribution.
 
-Quintiles are just one way to break up the data. If we break the data into four equal-sized groups, then we have broken the data into quartiles. If we break the data into a hundred equal-sized groups, we have broken the data into percentiles. In general, if we break the data into $q$ groups, we have created $q$ quantiles
+Quintiles are just one way to break up the data. If we break the data into four equal-sized groups, then we have broken the data into quartiles. If we break the data into a hundred equal-sized groups, we have broken the data into percentiles. In general, if we break the data into $q$ groups, we have created $q$ quantiles.
 
 Certain percentiles are often reported as descriptive statistics. For example, the median (50$^{th}$ percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was \$68,703. This implies that 50 percent of households had income less than \$68,703, while 50 percent had income more than \$68,703.
 
 
 ::: {.rmdtip}
 
-**Question: If an individual is at the 33 percentile of earnings, then this individual has...**
+**Question: If an individual is at the 33rd percentile of earnings, then this individual has...**
 
 ```{r, echo = FALSE}
 opts_p <- c(
@@ -151,7 +151,7 @@ For example, to compute ``2+2`` type
 display 2+2
 ```
 
-The result will be visible in the Results window. ``display`` is called a command in Stata. Stata comes with many commands that will be useful to explore and analyze our data. Whenever you learn a new command in Stata it is helpful to look at the help file that comes along with this file. To access the help file for the display command type ``help display`` into the command window. This will open up a file that has instructions on how to use the given command
+The result will be visible in the Results window. ``display`` is called a command in Stata. Stata comes with many commands that will be useful to explore and analyze our data. Whenever you learn a new command in Stata it is helpful to look at the help file that comes along with this command. To access the help file for the display command type ``help display`` into the command window. This will open up a file that has instructions on how to use the given command
 
 The first thing you will generally see in any help file is the syntax of the command. Syntax refers to the format of the code. It is similar to the "grammar" of the software language. If you use incorrect grammar in language, you may not be expressing the right meaning. Similarly, if you use the wrong syntax in software language, you may not get the correct output, and more than likely, an error will be reported
 

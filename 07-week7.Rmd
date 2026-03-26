@@ -16,7 +16,7 @@ code {
 </head>
 <body>
 
-Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey (2010). The figure shows the amount of hours per week mothers spend on childcare over time. For both college-educated and less-than-college-educated mothers, time spent on childcare rose dramatically in the early 1990s?
+Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey (2010). The figure shows the amount of hours per week mothers spend on childcare over time. For both college-educated and less-than-college-educated mothers, time spent on childcare rose dramatically in the early 1990s.
 
 ```{r, rugrat, echo=FALSE, out.width="90%", fig.cap="Time Spent on Childcare by Parents, by Educational Attainment, 1965-2008",fig.align='center'}
 knitr::include_graphics("images/07_RugRatMothers.png")
@@ -24,7 +24,7 @@ knitr::include_graphics("images/07_RugRatMothers.png")
 
 This rise occurs for both college-educated and less-educated mothers, but the rise is especially dramatic for college-educated mothers. Why is this puzzling? Well, this is a time period in which the returns to education were increasing a lot. In other words, these college-educated mothers had a lot to gain from working in the labor market, but in the data, we find they are spending more time on childcare. In this section of the course, we will explore why. 
 
-In order to explore this question we will use data from the American Time Use Survey (ATUS). This is a survey administered by the Bureau of Labor Statistics, and agency that collects many important statistics concerning the U.S. economy. 
+In order to explore this question we will use data from the American Time Use Survey (ATUS). This is a survey administered by the Bureau of Labor Statistics, an agency that collects many important statistics concerning the U.S. economy. 
 
 The data is based on "time diaries" which are detailed descriptions of the activities in a given day. For example, if the interview was held on a Tuesday, the individual would report everything they did on Monday (from 4 AM Monday to 4 AM Tuesday). This is a useful survey technique to get an accurate representation of how much time people spend on various activities.
 
@@ -32,7 +32,7 @@ Before digging into the data, however, we are going to learn a bit more about th
 
 ## Conditional Statements
 
-The basic idea behind conditional statements is that sometimes in R we want to execute some code, but only if a certain condition is true. Conditional statements are incredibly important in all programming languages. For example, when you type something on a computer and get and error statement, that is a conditional statement at work. A certain condition was met (some error in this case), so the computer output an error message. 
+The basic idea behind conditional statements is that sometimes in R we want to execute some code, but only if a certain condition is true. Conditional statements are incredibly important in all programming languages. For example, when you type something on a computer and get an error statement, that is a conditional statement at work. A certain condition was met (some error in this case), so the computer output an error message. 
 
 The way we will implement this idea in R is to use ``if`` statements. The general syntax for ``if`` statements is:
 
@@ -208,7 +208,7 @@ for (i in homework) {
 
 We introduced a few new things here, so let's go through the code slowly. First, instead of looping over numbers here, we are looping over words. In the first iteration ``i`` is equal to the first entry of the vector ``homework``. Therefore, ``i`` is equal to ``math`` in the first iteration. 
 
-Next, we have used a knew function ``cat()``. This function concatenates and prints. Therefore, if we type ``cat("Do",i)`` what you should interpret (in the first) iteration is that we are forming the sentence ``Do Math``. The last part ``,"\n"`` is telling R to display the next text  a line down.. When you want to skip a line in a word document, you just press Enter. In R, you can type ``"\n"``. If you are still unsure what ``"\n"`` is doing, you should try to take it out of the code and see how the result looks. 
+Next, we have used a knew function ``cat()``. This function concatenates and prints. Therefore, if we type ``cat("Do",i)`` what you should interpret (in the first) iteration is that we are forming the sentence ``Do Math``. The last part ``,"\n"`` is telling R to display the next text a line down. When you want to skip a line in a word document, you just press Enter. In R, you can type ``"\n"``. If you are still unsure what ``"\n"`` is doing, you should try to take it out of the code and see how the result looks. 
 
 In this example, we are looping over the words in ``homework``. An alternative way to write this loop out will take advantage of indexing. The following code performs the exact same process as above, it is just coded in a slightly different way.
 
@@ -426,7 +426,7 @@ In this section we are going to be going over the pipe operator: ``%>%``. The pi
 
 So far, in R, we have been applying functions to objects. For example, imagine we have a vector ``x`` and we want to take the mean. We would apply the ``mean()`` function to ``x`` by typing ``mean(x)``. The pipe operator gives us an alternative way to write this. We can type: ``x %>% mean()``. In general, when we have a function ``f()``, we can either write ``f(x)`` or ``x %>% f()``.
 
-So what is the benefit of the pipe operator? Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an objects in sequency. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
+So what is the benefit of the pipe operator? Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an object in sequence. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
 
 ```{r, echo=T, eval=F}
 h(g(f(x)))
@@ -550,7 +550,7 @@ Lastly, let's talk about the ``transmute()`` function. This function also genera
 ```{r, echo=TRUE}
 collegeprepdat <- transmute(rr,
                             childcollegeprep = childeduc + childtravel,
-                            childnotcollegeprep = childtot - collegeprep)
+                            childnotcollegeprep = childtot - childcollegeprep)
 ```
 ```{r, echo=TRUE}
 collegeprepdat
@@ -681,7 +681,7 @@ In this final section we will put all the various functions we've learned togeth
 This review will focus on the ``tidyverse`` package. As a reminder, the first time using a package you need to install it using ``install.packages("packagename")``. You only need to do this once. However, every time you want to use the package in a given R session, you need to load it into memory using the ``library()`` function. For example, to load tidyverse we would type:
 
 ```{r, echo=TRUE, eval=F}
-libary(tidyverse)
+library(tidyverse)
 ```
 
 To begin, let's first re-load our data into R as a tibble using the ``read_csv()`` function. The ``read_csv()`` function reads in a dataset as a tibble, while the ``read.csv()`` function reads the dataset into memory as a data frame. For our purposes, there won't be too much differences between these formats, but tibbles will be more efficient with large datasets. 
@@ -759,7 +759,7 @@ Going forward in the book, the tools we have learned in this section will be ver
 
 - 
 
-**<u>Other Functions<u>**
+**<u>Other Functions</u>**
 
 - ``sample()`` -- Draws a random number from a list of numbers. For example, ``sample(-1:1,1)`` draws a single number from the list of numbers ``-1:1``. In other words, it will draw a random number from -1 to 1. ``sample(c(0,1,2),4)`` would draw 4 random numbers from the list of numbers 0,1, or 2.
 
@@ -767,7 +767,7 @@ Going forward in the book, the tools we have learned in this section will be ver
 
 - ``unique()`` -- Retrieves a list of the unique values a variable takes on. 
 
-**<u>Installing/Loading Functions<u>**
+**<u>Installing/Loading Functions</u>**
 
 - ``install.packages()`` -- Installs a package onto your version of R. For example, ``install.packages("tidyverse")`` will install the tidyverse into R. You need to install a package once.
 

@@ -26,9 +26,13 @@ To answer this question, the authors recruited participants from low-income neig
 To begin, let's load the dataset ``mindspark_data.dta``
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"
 use mindspark_data.dta, replace
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data
 ```
 
@@ -42,39 +46,41 @@ As usual, let's begin by describing the dataset
 This is a subset of all variables in Muralidharan, Singh, and Ganimian (2019). We are interested in how being treated impacts learning outcomes. We have information about Math and Hindi tests at both the baseline and endline. Baseline means the test was taken before any student has been offered free Mindspark. Endline means the test was taken after the treated students had received Mindspark and had been using the software for several months. To start, let's summarize these variables to get a sense of average test scores as well as the variation in test scores at baseline.
 
 
-```stata
+``` stata
 sum per_math1
 sum per_hindi1
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   per_math1 |        619    .3177475    .1115478          0   .7428572
+file gapminder.dta not Stata format
+r(610);
 
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-  per_hindi1 |        619    .4278406      .16484          0         .9
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 At the baseline, the average score on the math test was 0.318. This indicates that on average across students, the average score was 31.8 percent on the math test. For the Hindi test, the average was a bit higher at 0.428. Now let's look at endline scores.
 
 
-```stata
+``` stata
 sum per_math2
 sum per_hindi2
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   per_math2 |        539     .503101    .1725604          0   .9411765
+file gapminder.dta not Stata format
+r(610);
 
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-  per_hindi2 |        539    .5521954    .1911098          0   .9666666
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 At endline, scores are higher. The average math score has increased to 0.503 and the average Hindi score has increased to 0.552. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``? Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
@@ -188,7 +194,7 @@ One way to interpret this line is that this is our best (linear) prediction of l
 
 
 $$
-\text{Predicted Life Expectancy}_i = 60.97 + 0.24 \cdot 50 = 79.97
+\text{Predicted Life Expectancy}_i = 67.97 + 0.24 \cdot 50 = 79.97
 $$
 
 In general, if you want to form the predicted value for an observation with a value of $X_i$, you can form 
@@ -326,42 +332,46 @@ $$
 The basic syntax for the ``reg`` command is:
 
 
-```stata
+``` stata
 reg yvar xvar
 ```
   
 This will produce a table with many statistics. For now we will focus on the intercept $\hat{\beta_0}$ and slope $\hat{\beta_1}$. To see how this works in practice, let's load up the data on life expectancy and average incomes across different countries, which is named ``gapminder.dta``. 
 
 
-```stata
+``` stata
 /*load data*/ 
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"
 use gapminder.dta, replace 
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data
+
+file gapminder.dta not Stata format
+r(610);
+
+r(610);
 ```
 
 Reminder, we are modeling life expectancy as a function of income per capita (in the thousands). This means our dependent variable (or Y-variable) will be life expectancy and our independent variable (or X-variable) will be income per capita (in the thousands). Now let's estimate the regression:
 
 
-```stata
+``` stata
 reg life_expectancy average_income
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       186
--------------+----------------------------------   F(1, 184)       =    178.14
-       Model |  4150.14525         1  4150.14525   Prob > F        =    0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
--------------+----------------------------------   Adj R-squared   =    0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
+file gapminder.dta not Stata format
+r(610);
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 So there are a lot of numbers in the table above. The ones we will focus on are under the column "Coefficient." The first coefficient is in the row that begins with ``average_income``. This is the slope coefficient. This number tells you how a 1-unit change in ``average_income`` is predicted to change the Y-variable. In this case, the regression tells us that a 1-unit change in average income (which is denoted in the 1,000s) is associated with a 0.24-year increase in life expectancy. In simpler terms, a \$1,000 dollar increase in average income is associated with a 0.24-year increase in life expectancy.
@@ -373,21 +383,21 @@ From this output, you should be able to draw the linear regression line. A good 
 It is easy to check your work using built-in functions in Stata. Stata can plot the regression line for you through the ``twoway lfit`` command. ``lfit`` stands for linear fit. The basic syntax of the command is to type:
 
 
-```stata
+``` stata
 twoway lfit yvar xvar
 ```
 
 This will plot the linear regression line from the output of:
 
 
-```stata
+``` stata
 reg yvar xvar
 ```
 
 In our example, to plot the linear regression line, along with the scatter plot, we can type:
 
 
-```stata
+``` stata
 twoway scatter life_expectancy average_income, ///
 	msymbol(circle_hollow) msize(small) ///
 	|| lfit life_expectancy average_income, lw(0.4) lc(red) ///
@@ -419,7 +429,7 @@ $$
 We can manually construct predicted values for every country in our dataset. We just need to take the value of average income and form predicted value using the linear regression output. However, we can also do this quickly and efficiently using the ``predict`` command. The most basic syntax of the ``predict`` command is 
 
 
-```stata
+``` stata
 predict newvar
 ```
 
@@ -428,46 +438,50 @@ You just need to replace the word ``newvar`` with whatever you want the variable
 Our first step when forming predictions is to first to estimate the regression (``predict`` uses the results from the most recently executed regression estimation). In other words, the ``predict`` command won't work if you don't estimate a regression first. We are going to estimate the regression from the prior section:
 
 
-```stata
+``` stata
 reg life_expectancy average_income
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       186
--------------+----------------------------------   F(1, 184)       =    178.14
-       Model |  4150.14525         1  4150.14525   Prob > F        =    0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
--------------+----------------------------------   Adj R-squared   =    0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
+file gapminder.dta not Stata format
+r(610);
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Now that the regression has been estimated, we can form predictions 
 
 
-```stata
+``` stata
 predict predicted_life_expectancy
-(option xb assumed; fitted values)
+file gapminder.dta not Stata format
+r(610);
+
+
+last estimates not found
+r(301);
+
+r(301);
 ```
 
 Now a variable ``predicted_life_expectancy`` has been added to our dataset. Let's look at the value of predictions for the first three countries in our dataset. 
 
 
-```stata
+``` stata
 list country life_expectancy average_income predicted_life_expectancy if _n<=3
-     |     country   life_e~y   averag~e   predic~y |
-     |----------------------------------------------|
-  1. | Afghanistan       63.4       1.92   68.42716 |
-  2. |     Albania       77.9       13.3    71.1169 |
-  3. |     Algeria       76.2       10.6   70.47874 |
-     +----------------------------------------------+
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 So the first country is Afghanistan. The life expectancy in Afghanistan is equal to 63.4 years. The average income in Afghanistan is equal to 1,920 U.S. dollars per year. Given this average annual income, the linear model predicts the life expectancy in Afghanistan would be 68.4 years.
@@ -475,19 +489,31 @@ So the first country is Afghanistan. The life expectancy in Afghanistan is equal
 You will notice our predictions are prone to error. In some cases, we may want to generate a new variable that has the error associated with a given observation. Now that we have formed ``predicted_life_expectancy`` we can form the ``error`` as 
 
 
-```stata
+``` stata
 gen error = life_expectancy - predicted_life_expectancy
+file gapminder.dta not Stata format
+r(610);
 
+
+life_expectancy not found
+r(111);
+
+r(111);
 ```
 
 Let's ``summarize`` our new ``error`` variable 
 
 
-```stata
+``` stata
 sum error
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-       error |        186   -2.05e-08     4.81365  -16.57843   8.367805
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 The mean is about zero (which is by construction, the regression line is chosen so that on average the predictions are correct). There is a large variance though, for some countries the life expectancy is much lower than expected (negative error), while some it is much higher. 
@@ -495,30 +521,34 @@ The mean is about zero (which is by construction, the regression line is chosen 
 Let's look at the 3 countries with the most negative errors (implying life expectancy is much lower than predicted from income):
 
 
-```stata
+``` stata
 sort error
 list country life_expectancy predicted_life_expectancy error if _n<=3
-     |                  country   life_e~y   predic~y       error |
-     |------------------------------------------------------------|
-  1. |                  Lesotho         52   68.57843   -16.57843 |
-  2. | Central African Republic       52.4    68.1927   -15.79269 |
-  3. |                    Qatar       76.2   88.65453   -12.45454 |
-     +------------------------------------------------------------+
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 We can also look at the 3 countries with the most positive errors (implying life expectancy is much higher than predicted from income):
 
 
-```stata
+``` stata
 sort error
 list country life_expectancy predicted_life_expectancy error ///
 if _n>=184
-     |  country   life_e~y   predic~y      error |
-     |-------------------------------------------|
-184. |    Japan       84.7   77.38034   7.319656 |
-185. | Maldives       79.1   71.04599   8.054008 |
-186. |     Cuba       78.7   70.33219   8.367805 |
-     +-------------------------------------------+
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 It is sometimes interesting to explore what observations are hard to predict for our model. In these countries with very negative or very positive errors, there are likely many other factors that are impacting life expectancy, besides average income. This could be why we have a hard time predicting life expectancy for these countries.
@@ -530,20 +560,26 @@ Before continuing our discussion of regression, we are going to discuss the conc
 To begin, let's summarize the ``life_expectancy`` variable:
 
 
-```stata
+``` stata
 sum life_expectancy
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-life_expec~y |        186    72.44624    6.753106         52       84.9
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 The mean life expectancy is equal to 72.45. Stata has automatically stored the mean in ``r(mean)``
 To access the value within this macro, type:
 
 
-```stata
+``` stata
 di `r(mean)'
-72.446237
+file gapminder.dta not Stata format
+r(610);
 ```
 
 This is often useful when you want to reference a value later in your code. Copying the value from the results window can be prone to transcription errors. Using macros that store the information will lead to fewer errors. 
@@ -553,43 +589,52 @@ After regressions, Stata also stores several useful results. In particular, Stat
 For example, if we estimate:
 
 
-```stata
+``` stata
 reg life_expectancy average_income 
-      Source |       SS           df       MS      Number of obs   =       186
--------------+----------------------------------   F(1, 184)       =    178.14
-       Model |  4150.14525         1  4150.14525   Prob > F        =    0.0000
-    Residual |  4286.67682       184  23.2971567   R-squared       =    0.4919
--------------+----------------------------------   Adj R-squared   =    0.4891
-       Total |  8436.82208       185  45.6044436   Root MSE        =    4.8267
+file gapminder.dta not Stata format
+r(610);
 
---------------------------------------------------------------------------------
-life_expecta~y | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------+----------------------------------------------------------------
-average_income |   .2363563   .0177087    13.35   0.000      .201418    .2712945
-         _cons |   67.97336   .4874037   139.46   0.000     67.01174    68.93498
---------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Then we can retrieve the coefficient on ``average_income`` by typing: 
 
 
-```stata
+``` stata
 di _b[average_income]
-.23635625
+file gapminder.dta not Stata format
+r(610);
+
+
+_b not allowed when e(b) is not present
+r(111);
+
+r(111);
 ```
 
 You can retrieve the intercept by typing:
 
 
-```stata
+``` stata
 di _b[_cons]
-67.973358
+file gapminder.dta not Stata format
+r(610);
+
+
+_b not allowed when e(b) is not present
+r(111);
+
+r(111);
 ```
 
 Using macros can be helpful when generating new variables. For example, we can form the predicted value of each observation by forming: 
 
 
-```stata
+``` stata
 gen predicted_value = _b[_cons] + _b[average_income]*average_income 
 ```
 
@@ -598,32 +643,36 @@ We could also do this "manually" by copying the values of the intercept and slop
 Not only does Stata store useful macros for you, but you can also construct your own macros in Stata. This can be useful when you are typing something over and over that is very long. Instead of repeatedly typing, you can store the information in a macro. For example, one common way to use macros is to store a list of variables. In the next example, we will create a **global macro** that stores a list of variables. 
 
 
-```stata
+``` stata
 global vars = "average_income life_expectancy"
-
+file gapminder.dta not Stata format
+r(610);
 ```
 
 Now whenever I type ``\$vars`` into Stata, Stata will interpret it as "average_income life_expectancy". Let's see what happens if I type: 
 
 
-```stata
+``` stata
 sum $vars
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-average_in~e |        186    18.92431    20.03912       .673        111
-life_expec~y |        186    72.44624    6.753106         52       84.9
+file gapminder.dta not Stata format
+r(610);
 ```
 
 One could do the same thing but with a "local" macro. 
 
 
-```stata
+``` stata
 local vars = "average_income life_expectancy"
 sum `vars'
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-average_in~e |        186    18.92431    20.03912       .673        111
-life_expec~y |        186    72.44624    6.753106         52       84.9
+file gapminder.dta not Stata format
+r(610);
+
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 So what is the difference between a local macro and a global macro. In practice, you reference a global macro with a dollar sign ``$``, a local with apostrophes ```macro'``. Both can store the same information, but locals can only be accessed within a given Stata session. Many advise to only use local macros. Setting globals can conflict with other aspects of Stata. For our purposes, we will rarely need to use macros, let alone global vs. local. This section introduces macros as an important programming tool to understand conceptually, but it is not required to fully understand the nuances between local and global macros in Stata to understand the rest of the course material.
@@ -637,16 +686,20 @@ The variables we will be exploring are in the dataset ``mindspark_levels.dta``. 
 To begin, let's provide a scatter plot of assessed math level on actual grade. Our first step will be to load the data:
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"
 use mindspark_levels.dta, clear
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data
 ```
 
 The most basic scatterplot we could create from this data is displayed below 
 
 
-```stata
+``` stata
 set scheme plotplainblind
 twoway scatter mathlevel class
 ```
@@ -663,7 +716,7 @@ Scatter plots give us a transparent way to view our data, but when variables are
 To understand what ``jitter()`` does, let's try it out on our scatter plot. 
 
 
-```stata
+``` stata
 twoway scatter mathlevel class, jitter(5) ///
 	xlabel(5(1)10) ///
 	xtitle("Grade enrolled in") ///
@@ -688,25 +741,20 @@ $$
 $\beta$ tells us how much we expect the assessed math level to increase for a 1-unit increase in Grade. If this is much lower than 1, then students will fall farther and farther behind each year. Let's estimate this regression in Stata:
 
 
-```stata
+``` stata
 reg mathlevel class 
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       253
--------------+----------------------------------   F(1, 251)       =     19.02
-       Model |  22.8033097         1  22.8033097   Prob > F        =    0.0000
-    Residual |   300.87258       251  1.19869554   R-squared       =    0.0705
--------------+----------------------------------   Adj R-squared   =    0.0667
-       Total |  323.675889       252  1.28442813   Root MSE        =    1.0948
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   mathlevel | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       class |   .2926913   .0671066     4.36   0.000     .1605275     .424855
-       _cons |   1.756712   .4928781     3.56   0.000      .786008    2.727416
-------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Reading the table above, we find $\hat{\beta}=0.293$. This indicates that a 1-year increase in grade is associated with only a 0.293-year increase in assessed math level. In other words, students are learning over time, but at a much lower rate than is envisioned by the curriculum. Ideally, 1 year of schooling should be associated with an additional year of learning. 
@@ -729,7 +777,7 @@ One type of summary statistic table we have already discussed is a balance table
 The basic syntax of ``outreg2`` that will be appropriate for our goals is:
 
 
-```stata
+``` stata
 outreg2 using table.doc, word replace ///
 sum(log) eqkeep(N mean) keep(varlist)
 ```
@@ -749,7 +797,7 @@ Now, there was quite a bit of syntax in the previous code. For better or worse, 
 Let's use the syntax above to create a summary statistics table with our data:
 
 
-```stata
+``` stata
 outreg2 using tab1_basic.doc, word replace ///
 sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) 
 ```
@@ -764,7 +812,7 @@ Figure \@ref(fig:tab1basic) presents the basic summary statistics table. You can
 Now, this isn't exactly what we wanted. We wanted a balance table, that shows the statistics of these variables by treatment status. To create this table we are going to combine ``outreg2`` with the ``bys`` command.
 
 
-```stata
+``` stata
 bys treat: outreg2 using balance_tab.doc, word replace ///
 sum(log) eqkeep(N mean) keep(st_age1 st_female1 ses_index) ///
 label ///
@@ -874,34 +922,33 @@ To begin, let's load in the dataset ``mindspark_data.dta``
 
 
 
-```stata
+``` stata
 cd "~/Dropbox/Teaching/EP5/online/04_week/data"
 use mindspark_data.dta, clear 
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data
 ```
 
 Now, let's see if treatment impacts endline math scores. The endline math scores. Remember, the variable ``per_math2`` contains the endline math test scores. Therefore, to estimate the impact of the treatment on this variable, we can type:
 
 
-```stata
+``` stata
 reg per_math2 treat
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       539
--------------+----------------------------------   F(1, 537)       =     28.72
-       Model |  .813404311         1  .813404311   Prob > F        =    0.0000
-    Residual |    15.20668       537   .02831784   R-squared       =    0.0508
--------------+----------------------------------   Adj R-squared   =    0.0490
-       Total |  16.0200843       538  .029777108   Root MSE        =    .16828
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0777008   .0144978     5.36   0.000     .0492214    .1061802
-       _cons |   .4647551   .0101847    45.63   0.000     .4447484    .4847619
-------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 We found that the slope coefficient $\hat{\beta}=0.078$. Remember, our general formula for interpreting slope coefficients is a 1-unit change in ``treat`` is expected to increase ``per_math2`` by 0.078. However, when we actually report the results, we should make it clear what these units represent. We don't want a reader to have to understand that ``per_math2`` is the variable that contains the fraction correct on the math score in order to understand the interpretation. Therefore, in plain (interpretable) English, we find that students who were offered free Mindspark tuition saw a 7.8 percentage point increase in math scores relative to control students who were not offered Mindspark tuition.
@@ -917,25 +964,20 @@ What is the average score for control individuals given the regression output? W
 So overall, Mindspark has a reasonably large impact on test scores. Test scores were quite low to begin with, so a 7.8 percentage point increase is a sizeable gain in learning. Next, let's see how effective Mindspark was for Hindi:
 
 
-```stata
+``` stata
 reg per_hindi2 treat
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       539
--------------+----------------------------------   F(1, 537)       =     16.12
-       Model |  .572530953         1  .572530953   Prob > F        =    0.0001
-    Residual |   19.076815       537  .035524795   R-squared       =    0.0291
--------------+----------------------------------   Adj R-squared   =    0.0273
-       Total |  19.6493459       538  .036522948   Root MSE        =    .18848
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-  per_hindi2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0651886   .0162382     4.01   0.000     .0332904    .0970868
-       _cons |   .5200244   .0114073    45.59   0.000     .4976159    .5424329
-------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 This regression tells us that treated students who were offered free Mindspark tuition saw a 6.5 percentage point increase in Hindi test scores relative to control students. Overall, this program seems very effective in increasing both math and Hindi scores. 
@@ -947,7 +989,7 @@ In this section, we are going to learn how to take those results in the prior se
 Our goal is to present the two regressions below in a nice, neatly formatted table:
 
 
-```stata
+``` stata
 reg per_math2 treat 
 reg per_hindi2 treat
 ```
@@ -955,34 +997,29 @@ reg per_hindi2 treat
 To present multiple regressions in a single table, we will take advantage of the ``est store`` command. ``est store`` stands for estimates store. It allows you to save the results of your regressions. To show how to use the command, let's estimate the impact of treatment on math scores:
 
 
-```stata
+``` stata
 reg per_math2 treat
-      Source |       SS           df       MS      Number of obs   =       539
--------------+----------------------------------   F(1, 537)       =     28.72
-       Model |  .813404311         1  .813404311   Prob > F        =    0.0000
-    Residual |    15.20668       537   .02831784   R-squared       =    0.0508
--------------+----------------------------------   Adj R-squared   =    0.0490
-       Total |  16.0200843       538  .029777108   Root MSE        =    .16828
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0777008   .0144978     5.36   0.000     .0492214    .1061802
-       _cons |   .4647551   .0101847    45.63   0.000     .4447484    .4847619
-------------------------------------------------------------------------------
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Now if I want to save these estimates I can type
 
 
-```stata
+``` stata
 est store reg_math
 ```
 
 The part of the code that reads ``reg_math``gives the estimates a name that you will use later. You can change this name depending on your application. For example, I could have replaced ``reg_math`` with ``reg_math_scores`` in the code above and the code would have executed without error. Next, let's estimate the impact of treatment on Hindi scores and store the estimates as ``reg_hindi``. To save, space, I will suppress the output of the regression:
 
 
-```stata
+``` stata
 reg per_hindi2 treat
 est store reg_hindi
 ```
@@ -990,7 +1027,7 @@ est store reg_hindi
 Now that we have our regression estimates stored, we can construct the regression table using the ``outreg2`` command:
 
 
-```stata
+``` stata
 outreg2 [reg_math reg_hindi] using reg_table.doc, word replace
 ```
 
@@ -1044,49 +1081,39 @@ The easiest way to implement this idea in Stata is through the use of conditiona
 For example, if we want to estimate the treatment effect in a linear regression framework, but restricted only to females, we can type:
 
 
-```stata
+``` stata
 reg per_math2 treat if st_female1==1
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       414
--------------+----------------------------------   F(1, 412)       =     17.78
-       Model |  .518287614         1  .518287614   Prob > F        =    0.0000
-    Residual |  12.0091958       412  .029148533   R-squared       =    0.0414
--------------+----------------------------------   Adj R-squared   =    0.0390
-       Total |  12.5274834       413   .03033289   Root MSE        =    .17073
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0707653    .016782     4.22   0.000     .0377763    .1037543
-       _cons |   .4636151    .011838    39.16   0.000     .4403447    .4868854
-------------------------------------------------------------------------------
+
+st_female1 not found
+r(111);
+
+r(111);
 ```
 
 The part of the code ``st_female1==1`` implies the regression ``reg per_math2 treat`` should only be estimated for females. As a result, in the regression table, you can see the Number of obs is equal to 414. These are the number of females in the experiment that have endline test scores. For comparision, let's estimate the treatment effect, but restricted only to males:
 
 
-```stata
+``` stata
 reg per_math2 treat if st_female1==0
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       125
--------------+----------------------------------   F(1, 123)       =     12.67
-       Model |  .323197879         1  .323197879   Prob > F        =    0.0005
-    Residual |  3.13679016       123  .025502359   R-squared       =    0.0934
--------------+----------------------------------   Adj R-squared   =    0.0860
-       Total |  3.45998804       124  .027903129   Root MSE        =    .15969
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .1017787   .0285899     3.56   0.001     .0451867    .1583707
-       _cons |   .4684034   .0198077    23.65   0.000     .4291953    .5076114
-------------------------------------------------------------------------------
+
+st_female1 not found
+r(111);
+
+r(111);
 ```
 
 Now, in our first regression, we find $\hat{\beta}^{female}$ = 0.071. This implies treatment increases the percent correct by 7.1 percentage points for females. In our second regression, we find $\hat{\beta}^{male}$ = 0.102. Treatment increases the percent correct by 10.2 percentage points for males. Therefore, overall, the treatment effect is slightly larger for males relative to females. However, in both cases, it appears that overall, the treatment is quite effective. 
@@ -1096,50 +1123,40 @@ Next, let's consider if the treatment effects vary by socioeconomic status. In t
 Our first regression will be estimated on individuals with below-average SES index. 
 
 
-```stata
+``` stata
 reg per_math2 treat if ses_index<0
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       268
--------------+----------------------------------   F(1, 266)       =     20.29
-       Model |  .509060251         1  .509060251   Prob > F        =    0.0000
-    Residual |  6.67313366       266  .025086969   R-squared       =    0.0709
--------------+----------------------------------   Adj R-squared   =    0.0674
-       Total |  7.18219391       267  .026899603   Root MSE        =    .15839
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0872535   .0193697     4.50   0.000     .0491161    .1253909
-       _cons |   .4296612   .0139997    30.69   0.000     .4020969    .4572256
-------------------------------------------------------------------------------
+
+ses_index not found
+r(111);
+
+r(111);
 ```
 
 Our second regression will be estimated on individuals with above-average SES index. 
 
 
 
-```stata
+``` stata
 reg per_math2 treat if ses_index>0
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       271
--------------+----------------------------------   F(1, 269)       =     12.72
-       Model |  .380236782         1  .380236782   Prob > F        =    0.0004
-    Residual |  8.04393779       269  .029903114   R-squared       =    0.0451
--------------+----------------------------------   Adj R-squared   =    0.0416
-       Total |  8.42417457       270  .031200647   Root MSE        =    .17293
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0751004   .0210607     3.57   0.000     .0336356    .1165653
-       _cons |   .4957346   .0143607    34.52   0.000      .467461    .5240081
-------------------------------------------------------------------------------
+
+ses_index not found
+r(111);
+
+r(111);
 ```
 
 In regression 1, we find $\hat{\beta}^{lowSES}$ = 0.087. Treatment increases the percent correct by 8.7 percentage points for individuals with below-average SES. In regression 2, we find $\hat{\beta}^{highSES}$ = 0.075. Treatment increases the percent correct by 7.5 percentage points for individuals with above-average SES. Therefore, the treatment effect is slightly larger for low-SES, but quite similar overall.
@@ -1155,64 +1172,68 @@ The first thing we need to do is create a new variable that indicates whether an
 For Step 1: we are again going to combine ``bys`` with ``egen``. We used these commands to compute the total number of stops by race and light condition in a previous chapter. To generate median test score within a grade, we can type:
 
 
-```stata
+``` stata
 bys st_grade1: egen median_test_score=median(per_math1)
+file gapminder.dta not Stata format
+r(610);
 
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Now let's generate a new variable that indicates whether a given student's test score is above or equal to the median test score within their grade
 
 
-```stata
+``` stata
 gen above_median = (per_math1 > median_test_score)
+file gapminder.dta not Stata format
+r(610);
 
+
+per_math1 not found
+r(111);
+
+r(111);
 ```
 
 Now that we have our indicator variable, we can estimate two regressions: (1) a regression restricted to above-median performers and (2) a regression restricted to below-median performers.
 
 
-```stata
+``` stata
 reg per_math2 treat if above_median==1
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       239
--------------+----------------------------------   F(1, 237)       =     19.25
-       Model |   .52552737         1   .52552737   Prob > F        =    0.0000
-    Residual |   6.4715909       237  .027306291   R-squared       =    0.0751
--------------+----------------------------------   Adj R-squared   =    0.0712
-       Total |  6.99711827       238  .029399657   Root MSE        =    .16525
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0941481   .0214608     4.39   0.000     .0518699    .1364264
-       _cons |   .5290498    .014493    36.50   0.000     .5004981    .5576014
-------------------------------------------------------------------------------
+
+above_median not found
+r(111);
+
+r(111);
 ```
 
 
 
-```stata
+``` stata
 reg per_math2 treat if above_median==0
 ```
 
 
 ```
-      Source |       SS           df       MS      Number of obs   =       300
--------------+----------------------------------   F(1, 298)       =     21.99
-       Model |  .480080178         1  .480080178   Prob > F        =    0.0000
-    Residual |  6.50520836       298  .021829558   R-squared       =    0.0687
--------------+----------------------------------   Adj R-squared   =    0.0656
-       Total |  6.98528854       299  .023362169   Root MSE        =    .14775
+file gapminder.dta not Stata format
+r(610);
 
-------------------------------------------------------------------------------
-   per_math2 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-       treat |   .0800939   .0170791     4.69   0.000      .046483    .1137049
-       _cons |   .4063055   .0123553    32.89   0.000     .3819907    .4306202
-------------------------------------------------------------------------------
+
+above_median not found
+r(111);
+
+r(111);
 ```
 
 

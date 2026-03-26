@@ -32,7 +32,7 @@ To understand causal relationships, let's again consider the relationship betwee
 <p class="caption">(\#fig:spurious)Example of a Spurious Correlation from tylervigen.com</p>
 </div>
 
-While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts an individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with standardized tests. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. To try and understand the benefits of such a program program, the school decides to use data to see if those who attended standardized test prep programs outperformed students who did not.
+While spurious correlations can be interesting and fun, if we need to decide whether a given policy should be implemented, we need to understand how it causally impacts an individual's outcomes. To see why, let's imagine a high school is trying to decide whether to invest in a new after-school program designed to help students with standardized tests. Currently, they do not have such a program on campus, but they know some of their students attend programs offered outside the school. To try and understand the benefits of such a program, the school decides to use data to see if those who attended standardized test prep programs outperformed students who did not.
 
 The school finds those who attended the test prep programs score much higher on standardized tests than those who didn't. Does this mean the test prep program works and the school should invest in one? 
 
@@ -60,7 +60,7 @@ The key in their design is that the instructors that are chosen to receive the i
 
 
 
-<div class='webex-radiogroup' id='radio_CPRTSGWHVD'><label><input type="radio" autocomplete="off" name="radio_CPRTSGWHVD" value="answer"></input> <span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_CPRTSGWHVD" value=""></input> <span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_CPRTSGWHVD" value=""></input> <span>Ability to follow individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_CPRTSGWHVD" value=""></input> <span>Ability to collect information about confounding variables</span></label></div>
+<div class='webex-radiogroup' id='radio_XIBQFNJJZP'><label><input type="radio" autocomplete="off" name="radio_XIBQFNJJZP" value="answer"></input> <span>Ability to randomize individuals across treatment and control</span></label><label><input type="radio" autocomplete="off" name="radio_XIBQFNJJZP" value=""></input> <span>Ability to collect large amounts of data</span></label><label><input type="radio" autocomplete="off" name="radio_XIBQFNJJZP" value=""></input> <span>Ability to follow individuals over time</span></label><label><input type="radio" autocomplete="off" name="radio_XIBQFNJJZP" value=""></input> <span>Ability to collect information about confounding variables</span></label></div>
 
 
 :::
@@ -118,7 +118,7 @@ Let's talk a little bit about our goal with this dataset. Our goal is to determi
 
 
 
-<div class='webex-radiogroup' id='radio_NXPYDVNGTN'><label><input type="radio" autocomplete="off" name="radio_NXPYDVNGTN" value=""></input> <span>State</span></label><label><input type="radio" autocomplete="off" name="radio_NXPYDVNGTN" value=""></input> <span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_NXPYDVNGTN" value=""></input> <span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_NXPYDVNGTN" value="answer"></input> <span>State-year</span></label></div>
+<div class='webex-radiogroup' id='radio_EJJOGSCNNG'><label><input type="radio" autocomplete="off" name="radio_EJJOGSCNNG" value=""></input> <span>State</span></label><label><input type="radio" autocomplete="off" name="radio_EJJOGSCNNG" value=""></input> <span>Year</span></label><label><input type="radio" autocomplete="off" name="radio_EJJOGSCNNG" value=""></input> <span>Individual-year</span></label><label><input type="radio" autocomplete="off" name="radio_EJJOGSCNNG" value="answer"></input> <span>State-year</span></label></div>
 
 
 :::
@@ -205,7 +205,7 @@ The rest of the summary statistics are completely analogous, replacing ``AVERAGE
 
 
 
-<div class='webex-radiogroup' id='radio_XOMZZJLVZE'><label><input type="radio" autocomplete="off" name="radio_XOMZZJLVZE" value=""></input> <span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_XOMZZJLVZE" value=""></input> <span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_XOMZZJLVZE" value="answer"></input> <span>Need to specify equals sign ``=`` before the function</span></label></div>
+<div class='webex-radiogroup' id='radio_HBXHQTQKST'><label><input type="radio" autocomplete="off" name="radio_HBXHQTQKST" value=""></input> <span>AVERAGE is the wrong function to use</span></label><label><input type="radio" autocomplete="off" name="radio_HBXHQTQKST" value=""></input> <span>Column C must not be numeric</span></label><label><input type="radio" autocomplete="off" name="radio_HBXHQTQKST" value="answer"></input> <span>Need to specify equals sign ``=`` before the function</span></label></div>
 
 
 :::
@@ -605,9 +605,9 @@ So far, we have found performance increases in the course that is incentivized b
 
 However, Brownback and Sadoff (2020) collect grades for all courses a student is enrolled in, not just the courses in the experiment. In contrast to the hypothesis above, the authors find student outcomes in the treatment improve **in all courses**. This suggests positive spillovers of the treatment. Improved performance in one course leads to improved performance in others. If students feel overwhelmed by poor grades in one course they may "give up" on the rest of their courses. Therefore, a treatment that increases performance in a single course has the scope to increase performance in all courses. 
 
-This analysis shows evidence of positive effects, but only in the short term. Our real goal is to improve graduate rates. Again, the richness of the data in Brownback and Sadoff (2020) will come in handy here. The authors find that students in the treatment are about 2.8 percentage points more likely to transfer to a 4-year university than control students. This represents a 28 percent increase in the probability of transferring. Overall, this suggests financial incentives to instructors may be a particularly cost-effective way for community colleges to achieve a number of important goals 
+This analysis shows evidence of positive effects, but only in the short term. Our real goal is to improve graduate rates. Again, the richness of the data in Brownback and Sadoff (2020) will come in handy here. The authors find that students in the treatment are about 2.8 percentage points more likely to transfer to a 4-year university than control students. This represents a 28 percent increase in the probability of transferring. Overall, this suggests financial incentives to instructors may be a particularly cost-effective way for community colleges to achieve a number of important goals.
 
-We have focused on financial incentives for instructors, but maybe providing bonuses for students is even more effective. During the experiment, the authors offered free tuition for one summer course (face value of \$400) if they passed the test. Interestingly, the authors find this intervention had no impact on student performance
+We have focused on financial incentives for instructors, but maybe providing bonuses for students is even more effective. During the experiment, the authors offered free tuition for one summer course (face value of \$400) if they passed the test. Interestingly, the authors find this intervention had no impact on student performance.
 
 To conclude, this paper asks an important question: how can we improve student performance in community colleges? In particular, are financial incentives for instructors effective? Before this paper, we had no clear answer to this question. Prior work focused on other settings and found differing results. By running a carefully designed experiment, the authors can convincingly answer this question. Financial incentives cannot only increase short-run performance but also increase long-term outcomes, such as overall course completion and transfer rates to 4-year universities.
 

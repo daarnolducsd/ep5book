@@ -30,13 +30,13 @@ In the top left, you can see  the first listed candidates are George W. Bush and
 
 If enough people made this mistake, this could actually have consequences for who wins the election. Remember, only 537 votes separated George W. Bush and Al Gore. To understand the scope of the problem, we are going to replicate analysis from Wand et al. (2001)[@wand2001butterfly], with much of the data and code coming from Kosuke Imai's Textbook: Quantitative Social Science: An Introduction.[@imai2018quantitative].  
 
-Specifically, if voters are confused by the ballot, we would expect an unusually high number of votes for the Reform party candidates in Palm Beach. But how do we define "an unsually high number of votes". To operationalize this idea we will use the number of votes in a county for the Reform party in 1996 (the prior election) to predict how many votes a county will cast for the Reform party in 2000. If Palm Beach County has many more votes than predicted, then maybe the Butterfly ballot is the reason why.
+Specifically, if voters are confused by the ballot, we would expect an unusually high number of votes for the Reform party candidates in Palm Beach. But how do we define "an unusually high number of votes". To operationalize this idea we will use the number of votes in a county for the Reform party in 1996 (the prior election) to predict how many votes a county will cast for the Reform party in 2000. If Palm Beach County has many more votes than predicted, then maybe the Butterfly ballot is the reason why.
 
 To begin exploring this question, let's load up our data.
 
 
 
-```r
+``` r
 florida <- read_csv("florida.csv")
 #> Rows: 67 Columns: 7
 #> ── Column specification ────────────────────────────────────
@@ -68,7 +68,7 @@ The logic behind this design is that we might think counties are relatively cons
 To begin our exploration, let's visualize the relationship between voting for Ross Perot in 1996 and Pat Buchanan in 2000. To do so we will construct a scatter plot with ``Perot96`` on the horizontal axis and ``Buchanan00`` on the vertical axis.
 
 
-```r
+``` r
 ggplot(florida, mapping=aes(x=Perot96, y=Buchanan00)) + 
   geom_point()
 ```
@@ -82,7 +82,7 @@ ggplot(florida, mapping=aes(x=Perot96, y=Buchanan00)) +
 We can see there is one point in the top right of this graph that seems to be a bit of an outlier. This county has much higher number of votes for Buchanan than any other county. In order to see which county this is, let's add the option ``label=county`` inside ``aes()``. This will label each marker with the county it represents. To adjust the location and size of the marker, we will also specify ``geom_text(vjust=1.5,size=3)``. 
 
 
-```r
+``` r
 ggplot(florida, 
        mapping=aes(x=Perot96, y=Buchanan00, label=county)) + 
   geom_point() + 
@@ -114,7 +114,7 @@ In our data, we choose estimates of $\beta_0$ and $\beta_1$, which we denote, $\
 
 What do $\hat{\beta}_0$ and $\hat{\beta}_1$ tell us? Let's talk about $\hat{\beta}_1$ first. This tells us how changes in $X$ are associated with changes in $Y$. If this value is positive, then increases in $X$ are associated with increases in $Y$. If it is negative, then increases in $X$ are associated with decreases in $Y$. The interpretation of $\hat{\beta}_1$ is a 1-unit change in $X$ is associated with a $\hat{\beta}_1$-unit change in $Y$.
 
-Once we have our estimates of the intercept and slope, we can also use them to form predictions. For example, the predicted value of $Y$ for and individual with observable $X_i=5$ is equal to: 
+Once we have our estimates of the intercept and slope, we can also use them to form predictions. For example, the predicted value of $Y$ for an individual with observable $X_i=5$ is equal to: 
 
 $$
 \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 \cdot 5 
@@ -130,7 +130,7 @@ Once we estimate this regression equation, we can use the estimates to predict t
 In R, the function we use to estimate linear regressions is the ``lm()`` function. The basic syntax of the command is:
 
 
-```r
+``` r
 lm.fit <- lm(yvar ~ xvar, data=df)
 ```
 
@@ -145,14 +145,14 @@ lm.fit <- lm(yvar ~ xvar, data=df)
 In our empirical application, the code below estimates a linear regression with ``Buchanan00`` as the dependent variable and ``Perot96`` as the independent variable:
 
 
-```r
+``` r
 lm.florida <- lm(Buchanan00 ~ Perot96, data=florida)
 ```
 
 To view the basic estimates of the regression, we can type:
 
 
-```r
+``` r
 lm.florida
 #> 
 #> Call:
@@ -165,7 +165,7 @@ lm.florida
 
 So this displays our estimate of the intercept ($\hat{\beta}_0=1.346$) and slope coefficient ($\hat{\beta}_1=0.036$). The intercept tells us where the best fitted line intersects the vertical axis at $X=0$. In terms of our example, the best fitted line is equal to 1.346 at $Perot96_i=0$. Another way to interpret this is, hypothetically, if we had a county that cast zero votes for Perot in 1996, we would expect this county to cast 1.346 votes for Buchanan in 2000.
 
-Now onto interpreting $\hat{\beta}_1$: one additional vote for Perot in 1996 is associated with 0.035 more votes for Buchanan in 2000. You might be a little confused at the moment about why the slope coefficient seems so small. In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results. This will help us understand what our regression results imply in terms of figuring out whether something unsual is occuring in Palm Beach county.
+Now onto interpreting $\hat{\beta}_1$: one additional vote for Perot in 1996 is associated with 0.035 more votes for Buchanan in 2000. You might be a little confused at the moment about why the slope coefficient seems so small. In the next section, we will discuss further how to interpret this regression, and in particular, how we can visualize its results. This will help us understand what our regression results imply in terms of figuring out whether something unusual is occurring in Palm Beach county.
 
 ## Plotting Regression Lines
 
@@ -179,7 +179,7 @@ And found $\hat{\beta}_0=1.346$ and $\hat{\beta}_1=0.036$. These coefficients te
 To begin, let's create a scatter plot with ``Buchanan00`` on the vertical axis and ``Perot96`` on the horizontal axis. We are also going to specify ``pch=16`` in this code to change the style of the markers. ``pch`` stands for plot character in R and can be used to change the shape or appearance of the points in a scatterplot.
 
 
-```r
+``` r
 plot(florida$Perot96, florida$Buchanan00, 
      pch=16,
      xlab="Votes for Perot in 1996", 
@@ -194,7 +194,7 @@ plot(florida$Perot96, florida$Buchanan00,
 Now our goal is to add the linear regression line to this plot. To do so, we will use the ``abline()`` function. ``abline()`` can be used to add lines to plots. If you pass the outcome of a linear regression to ``abline()``, then the fitted line from that regression will be added to the plot. In other words, if we add ``abline(lm.florida)``, then the best-fitted line from this regression will be added to the plot:
 
 
-```r
+``` r
 plot(florida$Perot96, florida$Buchanan00, 
      pch=16,
      xlab="Votes for Perot in 1996", 
@@ -210,7 +210,7 @@ plot(florida$Perot96, florida$Buchanan00,
 We can also customize the appearance of the line in a few ways. For example, ``lty=2`` will make the line dashed instead of solid. ``lty`` stands for line type and you can use a variety (see the help file for ``plot`` and search for ``lty`` to see the different options). ``col="red"`` will turn the line red. 
 
 
-```r
+``` r
 plot(florida$Perot96, florida$Buchanan00, 
      pch=16,
      xlab="Votes for Perot in 1996", 
@@ -228,7 +228,7 @@ Now let's learn how to plot the regression line in ggplot. In ggplot, the plot c
 Further, we will want to specify ``se=FALSE``. By default ``geom_smooth()`` adds measures of uncertainty to our regression line, which we won't cover in this book. Lastly, we will use additional options to change the type and color of the line, as we did before. The full code to generate our scatter plot with a linear regression line appears below:
 
 
-```r
+``` r
 ggplot(florida, mapping=aes(x=Perot96, y=Buchanan00)) + 
   geom_point() + 
   xlab("Votes for Perot in 1996") + 
@@ -271,14 +271,14 @@ Now, we could do this manually for every single observation, but it will be much
 To do so we will again estimate a linear regression with ``Buchanan00`` as the dependent variable and ``Perot96`` as the independent variable.
 
 
-```r
+``` r
 lm.florida <- lm(Buchanan00 ~ Perot96, data=florida)
 ```
 
 ``lm.florida`` is known as a list object. It contains a lot of information from our linear regression. We can use the ``names()`` function to figure out what ``lm.florida`` contains:
 
 
-```r
+``` r
 names(lm.florida)
 #>  [1] "coefficients"  "residuals"     "effects"      
 #>  [4] "rank"          "fitted.values" "assign"       
@@ -286,19 +286,19 @@ names(lm.florida)
 #> [10] "call"          "terms"         "model"
 ```
 
-So many of the information stored here we won't use in this course.\footnote{If you are interested in understanding what the other names refer to, you can } But there are two elements that will be useful for us. You can see one of the names is ``fitted.values`` and another is ``residual``. Fitted values is another name for predicted values.
+So many of the information stored here we won't use in this course. But there are two elements that will be useful for us. You can see one of the names is ``fitted.values`` and another is ``residual``. Fitted values is another name for predicted values.
 
 We can extract the information from ``lm.florida`` by using the dollar sign operator. For example, if we want to add a new variable to the dataset that is the fitted value for each observation, we type:
 
 
-```r
+``` r
 florida$predBuchanan00 <- lm.florida$fitted.values
 ```
 
 ``predBuchanan00`` is the name of the new variable and it is equal to the fitted values from the regression estimation. We can similarly extract the residual from our ``lm.florida`` object and add to the data frame ``florida``.
 
 
-```r
+``` r
 florida$residuals <- lm.florida$residuals
 ```
 
@@ -324,7 +324,7 @@ Now, let's look at the data to try and understand our process so far.
 
 So for Alachua county the number of Buchanan votes in 2000 was 263. The predicted Buchanan votes was 291.251 (if you view your data frame you will be able to see more decimal places). Therefore the residual is -28.3. The reason this is slightly different than what we had above is because when we formed this manually we rounded the coefficients in the regression. When R does the computation, it is much more precise than we were, which explains why predicted values and residuals are slightly different than the manual computation. 
 
-Now let's order the dataset by the magnitude of the residual. Observations with large residuals will be those in which are predictions is very different than our predicted value. To sort data based on the value of a variable, we can use the ``arrange()`` function.
+Now let's order the dataset by the magnitude of the residual. Observations with large residuals will be those in which our predictions are very different than our predicted value. To sort data based on the value of a variable, we can use the ``arrange()`` function.
 
 For our purposes we want to sort based on the absolute value of the residual. Therefore, we will specify ``arrange(abs(residuals))``. The ``abs()`` function takes the absolute value of a number. However, in addition, we want the largest residuals to be at the top. By default, ``arrange`` sorts the data from lowest to highest. To change this, we can ask for the data to be presented in descending order, by specifying ``arrange(desc(abs(residuals)))``. The ``desc()`` function specifies to order the data in descending order (from largest to smallest).
 
@@ -332,7 +332,7 @@ Additionally, we can combine ``arrange`` with other functions using the pipe ope
 
 
 
-```r
+``` r
 florida %>% 
   select(county,Buchanan00,predBuchanan00,residuals) %>%
   arrange(desc(abs(residuals)))
@@ -364,11 +364,11 @@ If this is true, then Al Gore would have actually received approximately 2,000 m
 
 ## Get Out to Vote Experiments
 
-Next, we are going to shift gears to another voting application. One notorious issue in politics is getting people to vote. In particular, it is extremely difficult to get voters to turn out to vote in primary elections, even though primary elections are incredibly important. They select the candidates who will run in the general election. Yet, year after year, voter turnout for these primary elections is pretty low.For example, in California, voter turnout in general elections between 2000-2012 was about 65.5 percent among registered voters. In contrast, voter turnout in primary elections during this period was around 40.8 percent. 
+Next, we are going to shift gears to another voting application. One notorious issue in politics is getting people to vote. In particular, it is extremely difficult to get voters to turn out to vote in primary elections, even though primary elections are incredibly important. They select the candidates who will run in the general election. Yet, year after year, voter turnout for these primary elections is pretty low. For example, in California, voter turnout in general elections between 2000-2012 was about 65.5 percent among registered voters. In contrast, voter turnout in primary elections during this period was around 40.8 percent. 
 
 One reason for lack of voting may be due to a lack of mobilization. Maybe some simple information and encouragement to voting in primaries will incentivize individuals to vote. In Hill and Kousser (2016)[@hill2016turning], the authors test this idea by implementing a large-scale experiment in the 2014 congressional primary elections in California. 
 
-In their study, Hill and Koussser were particularly interested in targeting those individuals who vote in general elections, but not in primaries. These are perhaps the individuals for which a treatment will be most successful. They are engaged in politics on big occasions (general elections), but not engaged in other occasions (primary elections).
+In their study, Hill and Kousser were particularly interested in targeting those individuals who vote in general elections, but not in primaries. These are perhaps the individuals for which a treatment will be most successful. They are engaged in politics on big occasions (general elections), but not engaged in other occasions (primary elections).
 
 To be specific, Hill and Kousser sent three types of letters to individuals in advance of the 2014 primary election
     
@@ -410,7 +410,7 @@ Therefore, we expect 51 percent of individuals to vote in the treatment. Therefo
 The data for this application comes from a csv file named ``turnout.csv``. Let's load this into R as a tibble. 
 
 
-```r
+``` r
 turnout <- read_csv("turnout.csv")
 #> Rows: 3872268 Columns: 5
 #> ── Column specification ────────────────────────────────────
@@ -447,14 +447,14 @@ The first variable ``LocalityCode`` indicates the county the individual is votin
 For our application, we want to test whether receiving a mailer impacts the probability an individual votes. Therefore, we will regress the variable ``yvar`` on the variable ``mailer``. Just as before, we need to save our estimates as a new object.
 
 
-```r
+``` r
 lm.turnout <- lm(yvar ~ mailer, data=turnout)
 ```
 
 Now let's look at the results:
 
 
-```r
+``` r
 lm.turnout
 #> 
 #> Call:

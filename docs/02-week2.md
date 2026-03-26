@@ -17,7 +17,7 @@ code {
 </head>
 <body>
 
-In this section, we will be discussing the relationship between **intergenerational mobility** and the higher education system in the United Stata. Before we start exploring this relationship, we first need to understand the concept of intergenerational mobility. This concept asks a simple question: if you are born from low-income parents, what is the chance you move up the income distribution?
+In this section, we will be discussing the relationship between **intergenerational mobility** and the higher education system in the United States. Before we start exploring this relationship, we first need to understand the concept of intergenerational mobility. This concept asks a simple question: if you are born from low-income parents, what is the chance you move up the income distribution?
 
 Generally, we think of societies with high rates of intergenerational mobility as more equal. If a society has high rates of intergenerational mobility, then that means individuals from low-income backgrounds have opportunities to move up the income distribution. One common path to upward mobility is the higher education system. 
 
@@ -32,7 +32,7 @@ So how do we go about studying this question? We are going to use a dataset made
 
 Let's get a little bit more into the details on what data we will be using in this empirical application. The original data comes from federal income tax returns that have been linked to the tax records of universities and data from Pell Grants. The result is a dataset with (1) children linked to their parents (children are reported as dependents) (2) income data for both children and parents and (3) children linked to the universities they attended. 
 
-This will give us everything we need to know to understand how a given college promotes intergenerational mobility. It will allow us to know both the know both the background of students attending a given college as well as their eventual earnings. It is important to emphasize that this was a huge data task that gives us a new way to study an important question.  
+This will give us everything we need to know to understand how a given college promotes intergenerational mobility. It will allow us to know both the background of students attending a given college as well as their eventual earnings. It is important to emphasize that this was a huge data task that gives us a new way to study an important question.  
 
 We have discussed at a high level the concept of intergenerational mobility. But when we turn to the data, we will need to compute a metric of intergenerational mobility that allows us to compare across colleges. Before introducing this measure, we will introduce a statistical concept that will be important throughout the course, and in particular, in understanding our measure of intergenerational mobility: **quantiles**.
 
@@ -54,18 +54,18 @@ When we break up the observations into 5 equal-sized groups, this is referred to
 
 In particular, an individual is defined as coming from low-income parents if the individual's parents are in the bottom quintile (Q1) of the income distribution. The bottom quintile implies the parents are in the bottom 20 percent of the income distribution. An individual is defined as a high-income individual if this individual is in the top quintile (Q5) of the income distribution, or equivalently, the top 20 percent of the income distribution.
 
-Quintiles are just one way to break up the data. If we break the data into four equal-sized groups, then we have broken the data into quartiles. If we break the data into a hundred equal-sized groups, we have broken the data into percentiles. In general, if we break the data into $q$ groups, we have created $q$ quantiles
+Quintiles are just one way to break up the data. If we break the data into four equal-sized groups, then we have broken the data into quartiles. If we break the data into a hundred equal-sized groups, we have broken the data into percentiles. In general, if we break the data into $q$ groups, we have created $q$ quantiles.
 
 Certain percentiles are often reported as descriptive statistics. For example, the median (50$^{th}$ percentile) is often reported as a summary statistic. In 2019, according to the U.S. Census, the median household income was \$68,703. This implies that 50 percent of households had income less than \$68,703, while 50 percent had income more than \$68,703.
 
 
 ::: {.rmdtip}
 
-**Question: If an individual is at the 33 percentile of earnings, then this individual has...**
+**Question: If an individual is at the 33rd percentile of earnings, then this individual has...**
 
 
 
-<div class='webex-radiogroup' id='radio_DHEOGSTUOF'><label><input type="radio" autocomplete="off" name="radio_DHEOGSTUOF" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_DHEOGSTUOF" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_DHEOGSTUOF" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_WLAKYNATKV'><label><input type="radio" autocomplete="off" name="radio_WLAKYNATKV" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_WLAKYNATKV" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_WLAKYNATKV" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_PXWBKNDFCC'><label><input type="radio" autocomplete="off" name="radio_PXWBKNDFCC" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_PXWBKNDFCC" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_PXWBKNDFCC" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_PXWBKNDFCC" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_LCMYWIIKGG'><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_LCMYWIIKGG" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::
@@ -137,12 +137,16 @@ Now that we have learned about the various windows, we are going to execute our 
 
 For example, to compute ``2+2`` type
 
-```stata
+``` stata
 display 2+2
+file gapminder.dta not Stata format
+r(610);
+
+
 4
 ```
 
-The result will be visible in the Results window. ``display`` is called a command in Stata. Stata comes with many commands that will be useful to explore and analyze our data. Whenever you learn a new command in Stata it is helpful to look at the help file that comes along with this file. To access the help file for the display command type ``help display`` into the command window. This will open up a file that has instructions on how to use the given command
+The result will be visible in the Results window. ``display`` is called a command in Stata. Stata comes with many commands that will be useful to explore and analyze our data. Whenever you learn a new command in Stata it is helpful to look at the help file that comes along with this command. To access the help file for the display command type ``help display`` into the command window. This will open up a file that has instructions on how to use the given command
 
 The first thing you will generally see in any help file is the syntax of the command. Syntax refers to the format of the code. It is similar to the "grammar" of the software language. If you use incorrect grammar in language, you may not be expressing the right meaning. Similarly, if you use the wrong syntax in software language, you may not get the correct output, and more than likely, an error will be reported
 
@@ -158,32 +162,48 @@ The fact that ``di`` is underlined means to use the display command you only nee
 We can use Stata to perform calculations just like you would in a calculator. For example, for subtraction, type:
 
 
-```stata
+``` stata
 di 6-4
+file gapminder.dta not Stata format
+r(610);
+
+
 2
 ```
 
 For multiplication type:
 
 
-```stata
+``` stata
 di 2*4
+file gapminder.dta not Stata format
+r(610);
+
+
 8
 ```
 
 For division type:
 
 
-```stata
+``` stata
 di 12/2
+file gapminder.dta not Stata format
+r(610);
+
+
 6
 ```
 
 We can also use ``display`` to print text. This can be very helpful when writing programs. For example, if something goes wrong in a program, you, might want to display an error code. To display the words in Stata, you just need to put the words you would like to display in quotation marks. For example, to display "Hello World" type: 
 
 
-```stata
+``` stata
 display "Hello World"
+file gapminder.dta not Stata format
+r(610);
+
+
 Hello World
 ```
 
@@ -271,7 +291,7 @@ But this is not the only way to open files. In fact, originally, there was no co
 The **working directory** is the default path in Stata. This is where Stata looks for files by default. For example, imagine I have a dataset named, "interesting_data.dta" and I want to load it into Stata. The command to load data in Stata is the ``use`` command. Therefore, I might want to type:
 
 
-```stata
+``` stata
 use interesting_data.dta, clear
 ```
 
@@ -299,8 +319,12 @@ One brief aside before we continue with understanding the working directory. The
 Returning to the working directory, now that we know where the data is, we need to change our directory to the location of the data. To do this we can use the ``cd`` command which is short for "change directory."
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data
 ```
 
@@ -315,9 +339,13 @@ On a Mac, it is slightly more complicated. If you right-click a folder and then 
 In this section, we are going to learn a few basics of loading data into Stata. To get started, let's load in the main data for this chapter, which contains data from Opportunity Insights that will allow us how colleges vary in the extent that they promote intergenerational mobility. To load in the data type:
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"
 use college_mobility.dta, clear
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data
 
 (Preferred Estimates of Access and Mobility Rates by College)
@@ -327,7 +355,7 @@ Again, the first part of this code (the part following "cd") will look different
 
 
 
-```stata
+``` stata
 describe
 ```
 
@@ -347,7 +375,7 @@ The mobility rate is the product of the access rate and success rate. As we can 
 While the ``describe`` command gives us a good sense of what variables are in the data, it is also useful look directly at the data. The ``browse`` command opens up a spreadsheet similar to an Excel spreadsheet. This allows you to look through the data to further understand how the values of each variable are stored. To browse the data, simply type into the command window:
 
 
-```stata
+``` stata
 browse
 ```
 
@@ -375,16 +403,21 @@ The basic syntax for the ``summarize`` command is
 where ``varlist`` is a list of variables that you would like to see summary statistics for. For example, imagine first we want to understand, on average, how large are institutions in this dataset? Well, the variable ``count`` is the average number of students enrolled in the institution. To retrieve summary statistics for this variable we type: 
 
 
-```stata
+``` stata
 summarize count
 ```
 
 
-```stata
+``` stata
 summarize count
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-       count |      2,199    946.5153    1508.825         50   26989.67
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 This table tells us a few things. First, it tells us that the average size of a cohort of students across all institutions in the dataset is about 946 students. Additionally, we can see the minimum is 50 and the maximum is 26989.67. The minimum being 50 is actually by construction. Institutions with less than 50 students per cohort were dropped from the dataset. Understanding descriptive statistics about your key variables is important before starting any data analysis. 
@@ -407,7 +440,7 @@ the success term (``kq5_cond_parq1``). From these we can construct a college's m
 The most basic syntax of the generate command is 
 
 
-```stata
+``` stata
 gen newvar = exp
 ```
 
@@ -426,15 +459,22 @@ Before we get to generating mobility rates, let's take some common examples. Sup
 For us, we want to create a variable that is the product of ``par_q1`` and ``kq5_cond_parq1``. Therefore, we can type: 
 
 
-```stata
+``` stata
 gen mobility_rate = par_q1*kq5_cond_parq1
+file gapminder.dta not Stata format
+r(610);
 
+
+par_q1 not found
+r(111);
+
+r(111);
 ```
 
 When we create a new variable, it won't by default have a label associated with it. If you are working on a project that has many different variables, it is a good idea to label your variables so that you can remember what they represent at a later date. For example, if we want to give the variable ``mobility_rate`` a label we type:
 
 
-```stata
+``` stata
 label var mobility_rate "Mobility rate of institution"
 ```
 
@@ -445,7 +485,7 @@ Most of the binary variables we create in this class will be the result from eva
 It is often useful to create binary variables (binary meaning two) in our data based on logical statements. For example, in our data on intergenerational mobility, we might be interested in comparing mobility rates across different regions. For example, maybe we want to compare mobility rates in California to mobility rates in other parts of the country. To do this, we might want to create a binary indicator variable that is equal to 1 if the state is in California and zero otherwise.   We can create a binary variable that is equal to 1 if a logical statement is true and zero if false we type 
 
 
-```stata
+``` stata
 gen CA = (state=="CA")
 ```
 
@@ -454,7 +494,7 @@ The logical statement ``(state=="CA")`` is true if the state is in California an
 This statement mirrors the general syntax of how we can create binary variables in Stata. The general syntax is 
 
 
-```stata
+``` stata
 gen newvar = (logical statement)
 ```
 
@@ -470,7 +510,7 @@ To check whether the results conform to our expectations we can type ``br state 
 There are a few errors that arise enough that it is valuable to go through them now. First, it is common to forgot the "double equals" sign, and instead put one equals sign, as below. 
 
 
-```stata
+``` stata
 gen CA2 = (state="CA")
 ```
 
@@ -486,7 +526,7 @@ The error report ``state="CA"`` is displayed because the command is looking for 
 Another common error (not just when generating new variables) is to forget the quotation marks when referencing string variables. For example if we type:
 
 
-```stata
+``` stata
 gen CA3 = (state==CA)
 ```
 
@@ -502,25 +542,25 @@ The error report ``type mismatch`` occurs because state is a string variable, ye
 There are many ``binary`` variables we can create from relations. For example, imagine we have two generic variables, ``x1`` and ``x2``. We can create a variable that is equal to one if ``x1`` is greater than ``x2`` and zero otherwise.
 
 
-```stata
+``` stata
 gen x1_greater_x2 = (x1>x2)
 ```
 
 A variable that is equal to 1 if ``x1`` is less than ``x2`` and zero otherwise.
 
-```stata
+``` stata
 gen x1_less_x2 = (x1<x2)
 ```
 
 A variable that is equal to 1 if ``x1`` is greater than or equal to ``x2`` and zero otherwise.
 
-```stata
+``` stata
 gen x1_greater_x2 = (x1>=x2)
 ```
 
 A variable that is equal to 1 if ``x1`` is less than or equal to ``x2`` and zero otherwise.
 
-```stata
+``` stata
 gen x1_less_eq_x2 = (x1<=x2)
 ```
 
@@ -531,7 +571,7 @@ If statements in Stata are used when you want to execute code, but only if some 
 The general syntax for using if statements is 
 
 
-```stata
+``` stata
 command if (logical statement)
 ```
 
@@ -545,54 +585,72 @@ The command will only be executed for observations for which the logical stateme
 A general note about how syntax is presented in Stata is useful here. Words that appear brackets can be used when using the command, but don't need to be. The word ``if`` is in brackets because we don't need to include it in order to use the summarize command. However, imagine we want to compute average mobility rates, but just restricted to colleges in California. A college is in California ``if CA==1``, which is the binary variable we created before. Therefore we can compute the average mobility rate of California colleges by typing:
 
 
-```stata
+``` stata
 sum mobility_rate if CA==1 
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |        168    .0275095    .0154819          0   .0991846
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 Note that we did not put ``if`` in brackets, even though it was in brackets in the syntax. The brackets are there to tell you that you can use an if statement, but the brackets themselves are not actually part of the syntax. 
 
 So mobility rates in California colleges are 0.028. Let's compare this number to mobility rates in non-Californian colleges:
 
 
-```stata
+``` stata
 sum mobility_rate if CA==0 
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |      2,031    .0175132     .012647          0   .1635797
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be due to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately. 
 
 
-```stata
+``` stata
 sum par_q1 kq5_cond_parq1 if CA==1 
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-      par_q1 |        168    .1443805    .0889914   .0321324   .4606968
-kq5_cond_p~1 |        168    .2481358    .1638556          0   .8497473
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 And now for non-Californian colleges:
 
 
-```stata
+``` stata
 sum par_q1 kq5_cond_parq1 if CA==0 
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-      par_q1 |      2,031    .1232655    .0878519   .0111896   .6097748
-kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .9192932
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 So let's first discuss the access results (i.e. the variable ``par_q1``). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fraction of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA. 
 Now let's discuss the success results (i.e. the variable ``kq5_cond_parq1``). Across colleges in CA, the average fraction of students from low-income backgrounds that become high earners is around 24.8 percent. Across colleges NOT in CA, the average fraction of students from low-income backgrounds that become high earners is around 19.2 percent. Therefore mobility rates are higher in CA due to both (1) greater access and (2) greater success.
@@ -600,14 +658,19 @@ Now let's discuss the success results (i.e. the variable ``kq5_cond_parq1``). Ac
 We can also use ``if`` statements to reference string variables. For example, let's imagine we want to see what the mobility rate is for UCSD. In the data, we can use the variable ``name`` which contains the institution name to summarize mobility ``if name == "University Of California, San Diego"``. Note again the use of quotation marks here to reference a string value. 
 
 
-```stata
+``` stata
 sum mobility_rate if name == "University Of California, San Diego"
 ```
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-mobility_r~e |          1    .0483275           .   .0483275   .0483275
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 Here we have taken the average ``if name == "University Of California, San Diego"``. But only one observation meets this restriction, so the table is just showing us the mobility rate for UCSD, which is equal to 0.048, a bit higher than the average of 0.028 across all Californian institutions. 
 
@@ -675,14 +738,14 @@ In our empirical application, we want to understand the distribution of mobility
 To begin, we need to learn about the ``histogram`` command, which is used to plot histograms in Stata. The simplest possible syntax is to simply type
 
 
-```stata
+``` stata
 histogram varname
 ```
 
 Where ``varname`` is the name of whatever variable you would like to create a histogram for. In our example, we want to plot a histogram of ``mobility_rate``, so we will type:
 
 
-```stata
+``` stata
 histogram mobility_rate
 ```
 
@@ -696,7 +759,7 @@ You will notice that the vertical axis in Figure \@ref(fig:mobilityhist1) is den
 In Stata, additional options are available for most commands. They give you a way to alter the command in some way. You can read through a list of options for a given command by opening the help file. The option we are looking for is the ``frac`` option, which changes the vertical axis to the fraction of observations instead of the density:
 
 
-```stata
+``` stata
 histogram mobility_rate, frac
 ```
 
@@ -716,7 +779,7 @@ Overall this is an example of a distribution with a long-right tail. Most school
 Sometimes it is helpful to tweak your graphs. In some cases, you may not like the default settings, and so generally, you will be able to change them. For example, maybe we do not like how many bins were created. We can directly control the number of bins by specifying the ``bin()`` option. For example, in Figure \@ref(fig:mobilityhist6) we create a histogram with 20 bins.
 
 
-```stata
+``` stata
 histogram mobility_rate, frac bin(20)
 ```
 
@@ -730,7 +793,7 @@ Because there were more than 20 bins in our original histogram, the width of eac
 Instead of directly controlling how many bins, we can also control the width of the bins. In our test score example, we chose bins of width 10, but we could have chosen bins of width 5 instead. The choice of 10 was arbitrary. In some cases, you may want to change the width of the bins. To change the width of the bin we can specify the ``width()`` option, as we do below. 
 
 
-```stata
+``` stata
 histogram mobility_rate, frac width(0.01)
 ```
 
@@ -748,7 +811,7 @@ Although we have created a histogram, it still leaves a lot to be desired. For o
 To change the color of the bars in our graph, we can specify the ``color()`` option. What I find to be effective in histograms is to also make the bars slightly translucent. This allows for plotting multiple histograms on the same figure, while still being able to distinguish the different variables. In the code below, we are going to change the color of our bars to blue, but then also make the bars transparent. We will do this by specifying `` color(blue%40)`` as one of the command options. The ``%40`` will control how translucent the bars appear. You can specify any number between zero and 100 here.
 
 
-```stata
+``` stata
 histogram mobility_rate, frac color(blue%40)
 ```
 
@@ -760,7 +823,7 @@ histogram mobility_rate, frac color(blue%40)
 Next, let's add a title to our figure. It is always important to include a title that describes what the figure is presenting. We can do this by specifying the ``title()`` option:
 
 
-```stata
+``` stata
 histogram mobility_rate, frac color(blue%40) ///
   title("Histogram of Mobility Rates Across U.S. Colleges")
 ```
@@ -775,7 +838,7 @@ You will notice the three ``///`` at the end of the first line of code. Sometime
 Next, let's work on the axis labels. The horizontal axis is currently labeled by ``mobility_rate``. It is not professional or particularly descriptive to have variable names as the titles of axes. We should change this to "Intergenerational Mobility Rates" by specifying the ``xtitle()`` option. While we are at it we can also make the vertical axis title more descriptive.
 
 
-```stata
+``` stata
 histogram mobility_rate, frac color(blue%40) ///
   title("Histogram of Mobility Rates Across U.S. Colleges") ///
   xtitle("Intergenerational Mobility Rates") ///
@@ -790,7 +853,7 @@ histogram mobility_rate, frac color(blue%40) ///
 This next step is not strictly necessary, but I find the graphs more aesthetically pleasing if we also change the background color. We can do this by specifying ``graphregion(fcolor(white))``
 
 
-```stata
+``` stata
 histogram mobility_rate, frac color(blue%40) ///
   title("Histogram of Mobility Rates Across U.S. Colleges") ///
   xtitle("Intergenerational Mobility Rates") ///
@@ -811,7 +874,7 @@ Further, we can also add text to the graph to label the dashed line. To add text
 Figure \@ref(fig:histae7) displays the plot that adds the vertical line and labels UCSD's mobility rate. 
 
 
-```stata
+``` stata
 histogram mobility_rate, frac color(blue%40) ///
   title("Histogram of Mobility Rates Across U.S. Colleges") ///
   xtitle("Intergenerational Mobility Rates") ///

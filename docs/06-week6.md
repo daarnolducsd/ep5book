@@ -44,8 +44,8 @@ Because RStudio doesn't work without R, the first thing we need to do is downloa
 When you open RStudio, you will be greeted by the RStudio Interface depicted below in Figure \@ref(fig:rstudio)
 
 <div class="figure" style="text-align: center">
-<img src="images/06_rstudio.png" alt="R Studio Interfacte" width="90%" />
-<p class="caption">(\#fig:rstudio)R Studio Interfacte</p>
+<img src="images/06_rstudio.png" alt="R Studio Interface" width="90%" />
+<p class="caption">(\#fig:rstudio)R Studio Interface</p>
 </div>
 
 Let's discuss these 4 windows in turn. In the top left is the Editor Window. This is where you will write an R script that holds all of your code. You may not see this window initially if you have not yet opened an R script (which is the equivalent to a do-file in Stata). To open up a new R script you can go to ``File > New File > R Script``.
@@ -62,7 +62,7 @@ So now that we understand the different components of the interface, we are goin
 Now, in the R script, type:
 
 
-```r
+``` r
 5+3
 ```
 
@@ -76,7 +76,7 @@ This line of code computes the sum of 5 and 3. To execute it, you have a few opt
 By clicking Run, the code is sent to the Console to be executed:
 
 
-```r
+``` r
 5+3
 [1] 8
 ```
@@ -86,7 +86,7 @@ The other way to execute code is through using shortcuts. On a Mac, if you click
 Just like in Stata, you can do multiplication by using ``*``, division by using ``/`` and exponents by using ``^``. In R, the order of operations is controlled by parentheses:
 
 
-```r
+``` r
 (5+3)/3
 [1] 2.666667
 5 + 3/2
@@ -96,7 +96,7 @@ Just like in Stata, you can do multiplication by using ``*``, division by using 
 We can also utilize more complicated mathematical functions, like the log function, square root, or absolute value:
 
 
-```r
+``` r
 log(5)
 [1] 1.609438
 sqrt(2)
@@ -108,7 +108,7 @@ abs(-1)
 If we are ever unsure what a function does, we can utilize the help files. For example, for the log function, we may not be sure what the base is. To bring up the help file for the log function we can type:
 
 
-```r
+``` r
 ?log
 ```
 
@@ -119,7 +119,7 @@ As in Stata, it will be helpful to document your code. When doing empirical proj
 Any line with a ``#`` at the beginning is commented out. If you don't comment out descriptions of the code, then R will try to execute them, leading to errors in the output. So, for example, imagine I want to calculate the hypotenuse of a particular triangle, with sides of lengths 5 and 4. The code below does this, while also documenting what the code is doing.
 
 
-```r
+``` r
 #Calculate the hypotenuse of a triangle
 #One side = 5
 #The other side = 4
@@ -131,13 +131,13 @@ sqrt(5^2 + 4^2)
 Now imagine I forgot to comment out the first line of description. Let's see what happens
 
 
-```r
+``` r
 Calculate the hypotenuse of a triangle
 #One side = 5
 #The other side = 4
 #The hypotenuse is:
 sqrt(5^2 + 4^2)
-Error: <text>:1:11: unexpected symbol
+Error in parse(text = input): <text>:1:11: unexpected symbol
 1: Calculate the
               ^
 ```
@@ -156,21 +156,21 @@ It reports an error because ``Calculate`` is not executable code in R. By placin
 R can store objects with a name of our choice. In order to create an object, you can use the assignment operator ```<-```. For example, if I want to create an object named ``graduationdate``, which is equal to 2010, I would type 
 
 
-```r
+``` r
 graduationdate <- 2010
 ```
 
-This will add to the Environment (top right window) a new object called graduation date, which is equal to 2010. Instead of the assignment operator ``<-``, we can also use ``=``. While it is generally suggested to use the assignment operator in R when creating objects, the equals sign will also work, as below/ 
+This will add to the Environment (top right window) a new object called graduation date, which is equal to 2010. Instead of the assignment operator ``<-``, we can also use ``=``. While it is generally suggested to use the assignment operator in R when creating objects, the equals sign will also work, as below. 
 
 
-```r
+``` r
 graduationdate = 2010
 ```
 
 Now that we have this object stored in memory, every time we type the word ``graduationdate``, R interprets the value of 2010. This means we can use our object in calculations. For example, to calculate the number of years between 2022 and the graduation date, we can type:
 
 
-```r
+``` r
 2022-graduationdate
 [1] 12
 ```
@@ -178,7 +178,7 @@ Now that we have this object stored in memory, every time we type the word ``gra
 If we assign a new value to the same object name, then we will overwrite this object (so be careful when doing so).
 
 
-```r
+``` r
 graduationdate <- 2014
 graduationdate
 [1] 2014
@@ -186,12 +186,12 @@ graduationdate
 
 ```R``` can also represent other types of values as objects, such as strings of characters:
 
-```r
+``` r
 school <- "UCSD"
 ```
 We can use the class function to retrieve the type of object
 
-```r
+``` r
 class(graduationdate)
 [1] "numeric"
 class(school)
@@ -201,7 +201,7 @@ class(school)
 So far, every object we have created has a single value associated with it. Next, we will discuss vectors. A *vector* represents a collection of information of the same type stored in a specific order. For example, instead of the graduation date of a single individual, maybe we have information on the graduation date of four individuals. This collection of information constitutes a vector. We can create a vector in R by using the function ``c()``, which stands for "concatenate". For example, let's create a vector of graduation dates:
 
 
-```r
+``` r
 #Create a vector of graduation dates
 graduationdate <- c(2010, 2009, 2015, 2001)
 graduationdate
@@ -211,7 +211,7 @@ graduationdate
 We can perform calculations on a vector as well. For example, for each student, let's compute the number of years between graduation and the year 2022. 
 
 
-```r
+``` r
 #Calculate years since graduation
 2022 - graduationdate
 [1] 12 13  7 21
@@ -220,7 +220,7 @@ We can perform calculations on a vector as well. For example, for each student, 
 ``graduationdate`` is a numeric vector, because each element is a number. We can also create character vectors, where each element is a word. For example, imagine next we want to create a vector that contains information on the school of each of our four individual students. We could type:
 
 
-```r
+``` r
 #Create a vector of schools
 school <- c("UCSD", "UCB", "UCLA", "UCR")
 ```
@@ -230,7 +230,7 @@ As in Stata, whenever you reference character values (also known as string value
 One important note is that a vector cannot hold information of different types. In other words, you can't have a vector that holds both numeric and character values. For example, imagine we try to combine our two vectors using the ``c()`` function:
 
 
-```r
+``` r
 c(graduationdate, school)
 [1] "2010" "2009" "2015" "2001" "UCSD" "UCB"  "UCLA" "UCR" 
 ```
@@ -240,7 +240,7 @@ Now it may look like we have succeeded, but look carefully at the first few entr
 Lastly, one helpful note is that we can use arithmetic operations between vectors. For example, imagine we have a vector of individual incomes and a vector of planned raises for each individual. To get to the total income after the raise, we can add these two vectors together.
 
 
-```r
+``` r
 #Create a vector of income
 income <- c(65, 70, 20, 100)
 
@@ -264,42 +264,42 @@ In terms of data analysis, we can really think of vectors as a variable. Our fir
 Let's try some of these out so that we can get a good sense of what these functions are doing:
 
 
-```r
+``` r
 #Maximum income
 max(income)
 [1] 100
 ```
 
 
-```r
+``` r
 #Minimum graduate date
 min(graduationdate)
 [1] 2001
 ```
 
 
-```r
+``` r
 #Length of the vector income
 length(income)
 [1] 4
 ```
 
 
-```r
+``` r
 #Range of graduation dates
 range(graduationdate)
 [1] 2001 2015
 ```
 
 
-```r
+``` r
 #Mean years since graduation
 mean(2022 - graduationdate)
 [1] 13.25
 ```
 
 
-```r
+``` r
 #Sum of income
 sum(income)
 [1] 255
@@ -308,7 +308,7 @@ sum(income)
 Notice that many of these functions require a numeric input. For example, it does not make sense to take the average of ``school``:
 
 
-```r
+``` r
 mean(school)
 Warning in mean.default(school): argument is not numeric or
 logical: returning NA
@@ -318,7 +318,7 @@ logical: returning NA
 However, it does make sense to ask, how many elements are there in the vector ``school``?
 
 
-```r
+``` r
 length(school)
 [1] 4
 ```
@@ -330,7 +330,7 @@ In this section, we are going to discuss how to load data. First, we will introd
 To remind you from the Stata chapters, the **working directory** is the "address" on your computer where R looks for data. It is also the address where it outputs results, such as datasets, figures or tables. In order to work with data in R, you need a good understanding of the working directory. To retrieve the current working directory in R, you can type:
 
 
-```r
+``` r
 getwd()
 [1] "/Users/davidarnold/Dropbox/Teaching/EP5Bookdown"
 ```
@@ -338,7 +338,7 @@ getwd()
 To set your working directory, we use the ``setwd()`` function. You should set the working directory to wherever the data is located. For this chapter, you want to set your directory wherever you have placed the data file ``resume.csv``. For example, on my computer, I would type:
 
 
-```r
+``` r
 setwd("/Users/davidarnold/Dropbox/Teaching/EP5Bookdown/data") 
 ```
 
@@ -349,7 +349,7 @@ Because this is the folder in which I have placed the data. If you are uncertain
 Now that we have set the working directory, we can actually load in our data to start exploring it. To do this, we will use the ``read.csv()`` command. This is the command used to load comma-separated values files. 
 
 
-```r
+``` r
 resume <- read.csv("resume.csv")
 ```
 
@@ -366,7 +366,7 @@ If you click on the name of the data frame, RStudio will open up a spreadsheet o
 There are also a few ways to summarize information about the data frame. For example ``ncol()``, retrieves the number of columns. ``nrow()`` retrieves the number of rows In this example, there are 5 variables, so there will be 5 columns. There are 4,870 observations, so there are 4,870 rows. One thing we can do to quickly get a sense of the data is to type ``summary(resume)``. This provides some simple summary statistics for each variable in the data frame. 
 
 
-```r
+``` r
 summary(resume)
 ```
 
@@ -388,12 +388,12 @@ summary(resume)
                     Max.   :1.00000  
 ```
 
-For numeric variables, this command provides the min, max, 25th percentile (called 1st Quartile), median, mean, 75th percentile (called 3rd Quantile) and max. For character variables, R just reports the length (i.e. the number of observations). In this dataset, the variable ``X`` is just a variable that records the observation number, which goes frmo 1 to 4870. ``firstname`` is the name on the application. ``sex`` is either female or male. ``race`` is either white or Black. ``call`` is our main outcome of interest. It is equal to 1 if the fictitious application received a callback for an interview. It is equal to 0 if the fictitious application did not receive a callback.
+For numeric variables, this command provides the min, max, 25th percentile (called 1st Quartile), median, mean, 75th percentile (called 3rd Quantile) and max. For character variables, R just reports the length (i.e. the number of observations). In this dataset, the variable ``X`` is just a variable that records the observation number, which goes from 1 to 4870. ``firstname`` is the name on the application. ``sex`` is either female or male. ``race`` is either white or Black. ``call`` is our main outcome of interest. It is equal to 1 if the fictitious application received a callback for an interview. It is equal to 0 if the fictitious application did not receive a callback.
 
 Although we have already shown how to browse the raw data, it is sometimes inconvenient to look at the entire data frame, particularly when you have a very large dataset. However, it is often helpful to get a small snippet of the data. To do this, we can use the ``head()`` function. This shows you the first six observations in the data frame:
 
 
-```r
+``` r
 head(resume)
 ```
 
@@ -417,7 +417,7 @@ In R, however, you can load multiple data frames at a time. This is actually a r
 For example, if we wanted to look at the first six observations, but only for ``call``, we would type:
 
 
-```r
+``` r
 head(resume$call)
 ```
 
@@ -433,7 +433,7 @@ Now that we have our data loaded and we understand how to reference variables, l
 We already know how to take the average of a vector, we use the ``mean()`` function. But a column in a data frame is just a vector. So we can use this function to find the callback rate:
 
 
-```r
+``` r
 mean(resume$call)
 [1] 0.08049281
 ```
@@ -441,7 +441,7 @@ mean(resume$call)
 So around 8 percent of all applicants received a callback for an interview. Low callback rates are pretty common in these settings. Next, let's look at our other main variable of interest. To get the distribution of race we can use the ``table()`` function, which prints out a table of frequencies:
 
 
-```r
+``` r
 table(resume$race)
 
 black white 
@@ -455,7 +455,7 @@ Lastly, let's talk about how to save a data frame. In most empirical projects, w
 To save a csv file in R, you can use the ``write.csv`` function:
 
 
-```r
+``` r
 write.csv(resume, file="resume1.csv")
 ```
 
@@ -464,7 +464,7 @@ This will save the data frame ``resume`` which is currently in memory as a csv f
 There is also another format for data that is common in R: "RData". You can save your file as and RData file by using the ``save()`` function.
 
 
-```r
+``` r
 save(resume, file="resume1.RData")
 ```
 
@@ -499,7 +499,7 @@ So how do we create these objects that are either true or false? We use logical 
 Now that we've written out the different logical operators, let's see how to use these in R. To begin, let's start with a simple logical statement: "5 is equal to 6". The way we type this in R is we type ``5==6``. This statement is of course false, so if we type this into R it should yield ``FALSE``.
 
 
-```r
+``` r
 5==6
 [1] FALSE
 ```
@@ -507,7 +507,7 @@ Now that we've written out the different logical operators, let's see how to use
 If instead, our logical statement is "5 is equal to 5", then this statement should yield ``TRUE``. 
 
 
-```r
+``` r
 5==5
 [1] TRUE
 ```
@@ -515,7 +515,7 @@ If instead, our logical statement is "5 is equal to 5", then this statement shou
 Now let's write out "5 is not equal to 6", by using the ``!`` operator.
 
 
-```r
+``` r
 5!=6
 [1] TRUE
 ```
@@ -523,7 +523,7 @@ Now let's write out "5 is not equal to 6", by using the ``!`` operator.
 But "6 not equal to 6" is of course ``FALSE``:
 
 
-```r
+``` r
 6!=6
 [1] FALSE
 ```
@@ -531,7 +531,7 @@ But "6 not equal to 6" is of course ``FALSE``:
 Now let's try to understand the ``&`` operator. We use the ``&`` operator when we want to test if two statements are **both** true. For example, let's imagine we have an individual who is 18 and lives in California. Then the statement "This individual is 18 and lives in California" is true. The way we might type this in R is ``age==18 & state=="CA"``. Now let's do an example in R. Imagine we want to retrieve the answer to "5 is equal to 5 and 5 is equal to 6". In R we would type ``5==5 & 5==6``. This statement is false because 5 is not equal to 6. If one of the statements is false (``5==6``) then the whole statement is false (``5==5 & 5==6``).
 
 
-```r
+``` r
 5==5 & 5==6
 [1] FALSE
 ```
@@ -539,7 +539,7 @@ Now let's try to understand the ``&`` operator. We use the ``&`` operator when w
 In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true because both of the statements individually are true. 
 
 
-```r
+``` r
 5==5 & 5>4
 [1] TRUE
 ```
@@ -547,7 +547,7 @@ In contrast, the statement "5 is equal to 5 and 5 is greater than 4" is true bec
 Now let's discuss or statements. For an or statement, we are instead testing whether either statement is true. For example, if our statement is "5 is equal to 5 or 5 is equal to 6", then this is true if either ``5==5 | 5==6``.
 
 
-```r
+``` r
 5==5 | 5==6
 [1] TRUE
 ```
@@ -557,14 +557,14 @@ So far we have only applied logic to numbers in R. However, we can also apply th
 As a simple example, let's create a vector of graduation dates that has four entries:
 
 
-```r
+``` r
 graduationdates <- c(2010,2001,2019,2003)
 ```
 
 We can apply logical statements to the entire vector as well. For example, imagine we want to know which graduation dates are after 2010. We can type:
 
 
-```r
+``` r
 graduationdates>2010
 [1] FALSE FALSE  TRUE FALSE
 ```
@@ -574,7 +574,7 @@ This outputs another vector of four entries. Each entry tells us whether the cor
 Next, let's learn how to compare two vectors. For example, imagine we have the vector of birth years that are supposed to be for the same individuals as in the graduation data:
 
 
-```r
+``` r
 birthyears<- c(2016, 1980, 1996, 1990)
 ```
 
@@ -583,7 +583,7 @@ By looking at this vector, it is clear something went wrong for the first indivi
 Instead, we can simply test whether there are ``birthyears`` in the data that are greater than ``graduationdates``
 
 
-```r
+``` r
 birthyears > graduationdates
 [1]  TRUE FALSE FALSE FALSE
 ```
@@ -593,14 +593,14 @@ For this logical statement, the first element of ``birthyears`` is compared to t
 So far, we have just observed the output of these logical statements (i.e. the output is displayed in the console). But imagine we want to save the output because we are using it in future analyses. For example, imagine we want to drop observations in which the birth year is greater than the graduation date. Well, we can simply store the output in a new vector by assigning it a name:
 
 
-```r
+``` r
 problem <- birthyears > graduationdates
 ```
 
 Now we have a vector ``problem`` that has been added to our environment. If we check the class of this vector we will see that it is a logical vector.
 
 
-```r
+``` r
 class(problem)
 [1] "logical"
 ```
@@ -608,7 +608,7 @@ class(problem)
 Now, the way logic functions in R is that it can function as a numeric variable. Specifically, the value ``TRUE`` is equal to the number 1. The value ``FALSE`` is equal to the number 0. Therefore, we can treat logical statements in the same way we've treated binary indicator variables in the past. For example, imagine I would like to compute the fraction of individuals for which there is a problem in the data, which is defined as a birth year greater than a graduation year. All I have to do is take the average of the ``problem`` vector. 
 
 
-```r
+``` r
 mean(problem)
 [1] 0.25
 ```
@@ -616,7 +616,7 @@ mean(problem)
 Why does this get us the right result? Because the problem vector is equal to ``TRUE FALSE FALSE FALSE``. R will interpret this vector as ``1 0 0 0``. The mean value of this vector is therefore equal to 0.25. In other words, for 25 percent of individuals, there is a problem in the data. If you prefer to have the vector in numeric format instead of logical, you can also change it yourself by using the ``as.numeric()`` function:
 
 
-```r
+``` r
 as.numeric(problem)
 [1] 1 0 0 0
 ```
@@ -632,14 +632,14 @@ We can also use logic to extract certain elements. For example, in general, if w
 To understand how to subset vectors in R, let's run through a few examples. First, let's re-create our ``graduationdates`` vector. 
 
 
-```r
+``` r
 graduationdates <- c(2010,2001,2019,2003)
 ```
 
 The third entry of ``graduationdates`` is 2019. If we want to extract this entry, we can just type 
 
 
-```r
+``` r
 graduationdates[3]
 [1] 2019
 ```
@@ -647,7 +647,7 @@ graduationdates[3]
 Instead of extracting an element, you can also use what is referred to as negative indexing. If you put a negative in front of the index number, then you get all elements of the vector, except that element. For example, let's see what happens when we type ``graduationdates[-3]``
 
 
-```r
+``` r
 graduationdates[-3]
 [1] 2010 2001 2003
 ```
@@ -657,7 +657,7 @@ The output is another vector, but now only composed of three elements. The new v
 You can also use indexing to subset multiple elements of a vector. For example, imagine we would like to extract the first and third elements of the ``graduationdates`` vector. To do this, we create a vector of indices. 
 
 
-```r
+``` r
 graduationdates[c(1,3)]
 [1] 2010 2019
 ```
@@ -667,7 +667,7 @@ If you recall, ``c(1,3)`` is a vector. The ``c()`` function concatenates 1 and 3
 Now that we understand how to subset vectors using numbers and vectors, let's learn how to index using logic. Instead of entering a vector of numbers as the index, we can directly enter a vector of ``TRUE`` and ``FALSE``. Only the elements for which the entry is ``TRUE`` will be extracted. To see how this works, let's try to understand the example below:
 
 
-```r
+``` r
 graduationdates[c(TRUE, FALSE, TRUE, FALSE)]
 [1] 2010 2019
 ```
@@ -675,14 +675,14 @@ graduationdates[c(TRUE, FALSE, TRUE, FALSE)]
 The vector ``c(TRUE, FALSE, TRUE, FALSE)`` is ``TRUE`` for the 1st and 3rd element. Therefore, only the first and third elements have been extracted. A more common way you might see this used is through another vector or variable. For example, imagine we also have a vector that contains the school that the student attended. 
 
 
-```r
+``` r
 school <- c("UCSD", "UCB", "UCLA", "UCR")
 ```
 
 Imagine we want to retrieve the graduation date for the student who attended UCSD. If we type ``school=="UCSD"``, we will get a vector of 4 elements:
 
 
-```r
+``` r
 school=="UCSD"
 [1]  TRUE FALSE FALSE FALSE
 ```
@@ -690,7 +690,7 @@ school=="UCSD"
 Only the first element is ``TRUE``. Therefore, if we use this vector to subset the ``graduationdate`` vector, we will retrieve the graduation date of the student who attended UCSD.
 
 
-```r
+``` r
 graduationdates[school=="UCSD"]
 [1] 2010
 ```
@@ -698,7 +698,7 @@ graduationdates[school=="UCSD"]
 Next, let's turn from our simple examples to our empirical application for this section: correspondence studies. First, let's re-load the data on fictitious applications from Bertrand and Mullainathan (2004).
 
 
-```r
+``` r
 resume <- read.csv("resume.csv")
 ```
 
@@ -707,14 +707,14 @@ Remember, we can really think of each variable in a dataframe as a vector. There
 First, let's talk about how to use logical subsetting on a variable. What happens if we type ``resume$race=="black"``. Well, ``resume$race`` is a vector with 4,870 elements. It takes on values "white" or "black". Therefore, ``resume$race=="black"`` is also a vector with 4,870 elements. The first element is ``TRUE`` if the first individual in the dataset had a Black-sounding name. The first element is ``FALSE`` if the first element had a white-sounding name. You can convince yourself of this by typing:
 
 
-```r
+``` r
 vec <- resume$race=="black"
 ```
 
 And then studying the resulting vector ``vec``. What happens if we then add a function around this vector? For example, if we type ``sum(resume$race=="black")``, then R should add up all the values of the vector ``resume$race=="black"``. Recall, R interprets a value of ``TRUE`` as equal to 1, and a value of ``FALSE`` as equal to 0. So if we type ``sum(resume$race=="black")``, we will just retrieve the total number of applications with Black-sounding names. 
 
 
-```r
+``` r
 sum(resume$race=="black")
 [1] 2435
 ```
@@ -722,7 +722,7 @@ sum(resume$race=="black")
 We can subset one variable using a logical statement built from another variable. For example, imagine we want to compute the callback rate for Black applicants. Therefore, we want to compute the average of ``call`` only for individuals such that ``race=="black"``. In R, we can write out this statement as follows:
 
 
-```r
+``` r
 mean(resume$call[resume$race=="black"])
 [1] 0.06447639
 ```
@@ -730,7 +730,7 @@ mean(resume$call[resume$race=="black"])
 It is easiest to interpret this line of code by starting at the indexing step. ``[resume$race=="black"]`` restricts to observations for which the applicant is Black. ``resume$call[resume$race=="black"]`` is the vector ``call``, but only restricted to the observations for which the applicant is Black. Finally, by placing the entire block inside the ``mean()`` function, we are computing the average of ``resume$call`` for applicants such that ``resume$race=="black"``. If we want to compare to white applicants, we can simply type:
 
 
-```r
+``` r
 mean(resume$call[resume$race=="white"])
 [1] 0.09650924
 ```
@@ -740,7 +740,7 @@ mean(resume$call[resume$race=="white"])
 Next, we will discuss how to subset data frames. To illustrate this concept, we are first going to generate a small data frame in R:
 
 
-```r
+``` r
 students <- data.frame(school=c("UCSD", "UCB", "UCSD"),
                        graduationdate=c(2010, 2019, 2015))
 ```
@@ -748,7 +748,7 @@ students <- data.frame(school=c("UCSD", "UCB", "UCSD"),
 To understand what the code above produced, let's look at the dataframe ``student``:
 
 
-```r
+``` r
 students
   school graduationdate
 1   UCSD           2010
@@ -759,7 +759,7 @@ students
 This data frame has two variables: ``school`` and ``graduationdate``. The first column of the data frame corresponds to ``school`` and the second corresponds to ``graduationdate``. The data frame has three total observations. To extract a specific value of the data frame, we can again use indexing. When using indexing with a vector, we could specify a single number, and that would pluck out that element. Now, with a data frame, we need to specify two numbers. First, we will specify the row we would like to extract and then we will specify the column. For example, to extract the value in the 3rd row, 1st column, we would type:
 
 
-```r
+``` r
 students[3,1]
 [1] "UCSD"
 ```
@@ -769,7 +769,7 @@ It outputs "UCSD" because the the third student in the data frame went to UCSD a
 Instead of extracting specific elements of a data frame, you can also extract entire columns and rows. For example, to extract the first-row type:
 
 
-```r
+``` r
 students[1,]
   school graduationdate
 1   UCSD           2010
@@ -778,7 +778,7 @@ students[1,]
 The second entry in the ``[,]`` always corresponds to the column. Since it is blank, R extracted all columns for the first observation. Similarly, you can extract a single column by leaving the rows portion of the index blank. For example, to extract the second column, type:
 
 
-```r
+``` r
 students[,2]
 [1] 2010 2019 2015
 ```
@@ -787,7 +787,7 @@ Now, since the row index is blank, R extracts values from all rows, but just the
 You can also use a vector to specify what observations or columns you would like to retrieve. For example, imagine we think there was an error with recording the graduation date for the second observation in our data frame. To be careful, we would like to drop this individual from the data frame. In other words, we want to extract rows 1 and 3 of the data frame and leave out row 2. To do this, we can subset by specifying a vector of indices. The vector will contain the indices of every row we want in the final data frame:
 
 
-```r
+``` r
 students[c(1,3),]
   school graduationdate
 1   UCSD           2010
@@ -797,7 +797,7 @@ students[c(1,3),]
 We can do the same thing with negative indexing, as seen below:
 
 
-```r
+``` r
 students[-2,]
   school graduationdate
 1   UCSD           2010
@@ -807,7 +807,7 @@ students[-2,]
 Next, let's discuss how to use logic to subset data frames. For example, imagine we want to extract all individuals that went to UCSD. In other words, we only want individuals such that ``students$school=="UCSD"`` is TRUE. Remember, if we type this into R we will get a vector of TRUE and FALSE statements:
 
 
-```r
+``` r
 students$school=="UCSD"
 [1]  TRUE FALSE  TRUE
 ```
@@ -815,7 +815,7 @@ students$school=="UCSD"
 Then, just like with vectors, if we use this logical statement to subset, we will only retrieve observations such that the statement is TRUE. In this case, this statement is TRUE for the first and third observations:
 
 
-```r
+``` r
 students[students$school=="UCSD",]
   school graduationdate
 1   UCSD           2010
@@ -827,14 +827,14 @@ Indexing data frames and vectors in this way is a useful skill that will be port
 The general syntax for the subset command is:
 
 
-```r
+``` r
 subset(df, logical statement)
 ```
 
 The resulting data frame will be a subset of the data frame named ``df`` restricted only to the observations for which the logical statement after the comma is TRUE. For example, to create a data frame of UCSD students, we could type:
 
 
-```r
+``` r
 subset(students,students$school=="UCSD")
   school graduationdate
 1   UCSD           2010
@@ -844,7 +844,7 @@ subset(students,students$school=="UCSD")
 Remember, to save this data frame as a new object in R, you will need to assign it a name.
 
 
-```r
+``` r
 ucsd_students <- subset(students,students$school=="UCSD")
 ```
 
@@ -853,14 +853,14 @@ ucsd_students <- subset(students,students$school=="UCSD")
 Now, let's put everything that we've learned in this chapter together to study discrimination in hiring practices. To get started, let's load in the resume data. 
 
 
-```r
+``` r
 resume <- read.csv("resume.csv")
 ```
 
 When we are exploring a new data frame, it is often helpful to get a sense of the variables and the values they take. Let's look at the first few observations in the data in order to remind ourselves what is in the data:
 
 
-```r
+``` r
 head(resume)
   X firstname    sex  race call
 1 1   Allison female white    0
@@ -874,17 +874,17 @@ head(resume)
 Our main outcome of interest is whether an individual received a callback for an interview. In the data frame, a 0 represents the resume did not get a callback. A 1 represents the resume did get a callback. Because the data is stored in this way, we can simply take the average of the variable call in order to retrieve the overall callback rate:
 
 
-```r
+``` r
 mean(resume$call)
 [1] 0.08049281
 ```
 
-Remember, whenever we specify a variable, we need to specify both the data frame as well as the variable name. As well will see later, it is often helpful to have multiple data frames loaded into memory in R. 
+Remember, whenever we specify a variable, we need to specify both the data frame as well as the variable name. As we will see later, it is often helpful to have multiple data frames loaded into memory in R. 
 
 In this experiment, we want to understand whether the callback rate varies by race. Before proceeding, let's look at the distribution of race across applications:
 
 
-```r
+``` r
 table(resume$race)
 
 black white 
@@ -896,7 +896,7 @@ There are 2435 resumes with white-sounding names and 2435 resumes with Black-sou
 Note that we could retrieve the same information using logic. When we type a logical statement, R will return a logical object that is composed of ``TRUE`` and ``FALSE``. Whenever R sees ``TRUE`` it interprets a 1, and whenever R sees ``FALSE`` it interprets a 0. For example, if we type:
 
 
-```r
+``` r
 sum(resume$race=="black")
 [1] 2435
 ```
@@ -906,17 +906,17 @@ We get a value of 2435. Why? Well, ``resume$race=="black`` is a vector of length
 Now, let's get to the main analysis, which studies whether callback rates vary by race. To do so, let's first find the callback rate for applicants with Black-sounding names. To do this, we will again utilize logic:
 
 
-```r
+``` r
 mean(resume$call[resume$race=="black"])
 [1] 0.06447639
 ```
 
-Here we are using indexing. ``[resume$race="black"]`` subsets to Black applicants. Because we have put this inside ``mean(resume$call[])``, then R will retrieve the average of the ``resume$call`` vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback. 
+Here we are using indexing. ``[resume$race=="black"]`` subsets to Black applicants. Because we have put this inside ``mean(resume$call[])``, then R will retrieve the average of the ``resume$call`` vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback. 
 
 Let's now compare this to white applicants:
 
 
-```r
+``` r
 mean(resume$call[resume$race=="white"])
 [1] 0.09650924
 ```
@@ -926,7 +926,7 @@ Before interpreting these findings, it is helpful to point out that there are a 
 For example, to create a data frame restricted to Black applicants we could type:
 
 
-```r
+``` r
 resume_blacknames <- resume[resume$race=="black",]
 resume_whitenames <- resume[resume$race=="white",]
 ```
@@ -934,7 +934,7 @@ resume_whitenames <- resume[resume$race=="white",]
 Then, to calculate the callback rate for Black applicants, we should just reference this data frame:
 
 
-```r
+``` r
 mean(resume_blacknames$call)
 [1] 0.06447639
 mean(resume_whitenames$call)

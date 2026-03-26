@@ -49,16 +49,25 @@ This data allows researchers to study all these potential margins for discrimina
 Now that we have narrowed our focus, let's start exploring the data for San Diego, as always we will need to set our working directory to where the data is located and then use the ``use`` command to load the data.
 
 
-```stata
+``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data"
 use san_diego_stops.dta, replace 
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
+
+file san_diego_stops.dta not Stata format
+r(610);
+
+r(610);
 ```
 
 To begin, let's use ``describe`` to figure out what variables we have in this dataset 
 
 
-```stata
+``` stata
 describe
 ```
 
@@ -72,21 +81,20 @@ Each observation in the dataset is a stop made by an officer somewhere in San Di
 Subject race is a **categorical variable**. Whenever you have a categorical variable as your variable of interest, it is helpful to understand the frequency of each category. For example, what fraction of stops are for Black drivers, White Drivers, Hispanic Drivers, etc. To do this in Stata, we will use the ``tab`` command.
 
 
-```stata
+``` stata
 tab subject_race
 ```
 
 
 ```
-          subject_race |      Freq.     Percent        Cum.
------------------------+-----------------------------------
-Asian/Pacific Islander |     32,482        8.52        8.52
-                 Black |     42,631       11.18       19.71
-              Hispanic |    116,912       30.67       50.38
-                 Other |     27,170        7.13       57.51
-                 White |    161,954       42.49      100.00
------------------------+-----------------------------------
-                 Total |    381,149      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 This gives us the fraction of stops by race in San Diego. To begin to understand whether there is a disparity in traffic stops by race, we can compare the composition of traffic stops to the overall population to see if certain groups are over/underrepresented \medskip
 
@@ -152,14 +160,14 @@ In this example, we have two classes: A and B, each with two students. In each d
 How do we accomplish this in Stata? If class A data is stored in ``classA.dta`` and class B data is stored in ``classB.dta`` we can combine them by typing:
 
 
-```stata
+``` stata
 use classA.dta, clear 
 append using classB.dta 
 ```
 
 What we have done is first load in the class A data by typing ``use classA.dta, clear``. Then we have appended the class B data by typing ``append using classB.dta``. For this code to work, both ``classA.dta`` and ``classB.dta`` need to be in the working directory. Additionally, the variable names in both classA and classB need to be the same. For example, if one of the datasets had the student id variable named ``sid``, then you would need to make the names consistent across datasets before merging. You can rename a variable with the ``rename`` command. For example, to rename a variable ``sid`` to ``student`` you would type ``rename sid student``.
 
-In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on.You can continue to ``append`` more datasets by typing, for example, ``append using classC.dta`` followed by ``append using classD.dta`` and so on.
+In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on. You can continue to ``append`` more datasets by typing, for example, ``append using classC.dta`` followed by ``append using classD.dta`` and so on.
 
 ## Merge Basics 
 
@@ -197,14 +205,14 @@ Let's try this out on a few simple datasets. Imagine we have the two datasets be
 The first step is to load one of the two datasets. 
 
 
-```stata
+``` stata
 use school.dta, clear 
 ```
 
 Because we loaded ``school.dta`` first, ``school.dta`` is the master dataset. We will now merge it to ``gpa.dta``.
 
 
-```stata
+``` stata
 merge 1:1 student using gpa.dta
 ```
 
@@ -219,15 +227,15 @@ Now let's try a many-to-one merge. Imagine we have the two datasets below (``sch
 There are two main differences here. First, we will now be merging on the variable ``school``, as that is the variable that is common between both the datasets. Second, in the ``school.dta``dataset, there are multiple observations for each school. In the ``pop.dta``, there is a single observation per school. Therefore this will be a many-to-one merge instead of a one-to-one merge. Therefore, the code to merge the two datasets is now:
 
 
-```stata
+``` stata
 use school.dta, clear
 merge m:1 school using pop.dta
 ```
 
-We specify ``m:1`` because there is are multiple observations per school in the master dataset, and a single in the using. A one-to-many merge (``1:m``) is conceptually similar. If we had loaded ``pop.dta`` first, then ``pop.dta`` would be the master dataset. In this case, the code to merge the two datasets is given by
+We specify ``m:1`` because there are multiple observations per school in the master dataset, and a single in the using. A one-to-many merge (``1:m``) is conceptually similar. If we had loaded ``pop.dta`` first, then ``pop.dta`` would be the master dataset. In this case, the code to merge the two datasets is given by
 
 
-```stata
+``` stata
 use pop.dta, clear
 merge 1:m school using school.dta
 ```
@@ -252,27 +260,31 @@ Sometimes, two datasets won't merge completely. For example, consider the two da
 In this example, student 1 has a test score, but no homework score, while student 6 has a homework score but no test score. Let's see what happens if we merge these two datasets in Stata.
 
 
-```stata
+``` stata
 /* change working directory */
 cd /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
+file gapminder.dta not Stata format
+r(610);
+
+
 /Users/davidarnold/Dropbox/Teaching/EP5/online/03_week/data
 ```
 
 
-```stata
+``` stata
 /*load test score data*/
 use test_score.dta, clear 
 
 /*merge to the hw data*/
 merge 1:1 student using hw_score.dta
-    Result                      Number of obs
-    -----------------------------------------
-    Not matched                             2
-        from master                         1  (_merge==1)
-        from using                          1  (_merge==2)
+file gapminder.dta not Stata format
+r(610);
 
-    Matched                                 4  (_merge==3)
-    -----------------------------------------
+
+file test_score.dta not found
+r(601);
+
+r(601);
 ```
 
 Two observations were not matched. One from the master dataset (``test_score.dta``) and the other from the using dataset (``hw_score.dta``). A new variable (named ``_merge``) has been added to the dataset to keep track of matched vs. unmatched observations. It is equal to 1 for observations only in the master dataset, 2 for observations only in the using, and 3 for observations in both the master and the using dataset.
@@ -280,22 +292,32 @@ Two observations were not matched. One from the master dataset (``test_score.dta
 Whether you keep unmatched observations in your dataset depends a bit on your analysis. If you really need both homework score and test score for all of your analysis, you can probably safely keep only matched observations. To do this in Stata after a ``merge`` command, we can type
 
 
-```stata
+``` stata
 keep if _merge==3
-(2 observations deleted)
+file gapminder.dta not Stata format
+r(610);
+
+
+_merge not found
+r(111);
+
+r(111);
 ```
 
 You can also specify to only keep matched observations directly in the merge command. If you are only keeping observations that match between the two datasets, you don't need to generate the ``_merge`` variable, as it will be equal to 3 for all matched observations. Instead, you can specify the option ``keep(3)`` which only keeps matched observations. Then, to prevent Stata from adding an uniformative variable ``_merge``, you can also specify ``nogen`` so that the variable is not generated. The example below uses both these options in the context of our hypothetical example.
   
 
-```stata
+``` stata
 use test_score.dta, clear 
 merge 1:1 student using hw_score.dta, keep(3) nogen
-    Result                      Number of obs
-    -----------------------------------------
-    Not matched                             0
-    Matched                                 4  
-    -----------------------------------------
+file gapminder.dta not Stata format
+r(610);
+
+
+file test_score.dta not found
+r(601);
+
+r(601);
 ```
 
 As you can see, the generated table has only 4 observations now, all of which are in both datasets. This is because we have specified to only keep observations that are in both datasets by specifying ``keep(3)``.
@@ -312,14 +334,17 @@ In the example below (Figure \@ref(fig:samename)), the two datasets are the same
 Let's see what happens if we try to merge these two together:
 
 
-```stata
+``` stata
 use test_score2.dta, clear 
 merge 1:1 student_id using hw_score.dta
-variable student_id not found
-r(111);
+file gapminder.dta not Stata format
+r(610);
 
-end of do-file
-r(111);
+
+file test_score2.dta not found
+r(601);
+
+r(601);
 ```
 
 The variable ``student_id`` was not found because the variable ``student_id`` does not exist in the using dataset. To merge these two datasets together properly, we need to make sure the names of the variables are the same. If they are not, you can use the ``rename`` command to ensure the names are the same. 
@@ -334,16 +359,17 @@ Similarly, matching variables must be the same type of variable. For example, in
 Let's see what happens if we try to merge these two together
 
 
-```stata
+``` stata
 use test_score3.dta, clear 
 merge 1:1 student using hw_score.dta
-key variable student is str1 in master but float in using data
-    Each key variable (on which observations are matched) must be of the same generic type in the master and using datasets.  Same
-    generic type means both numeric or both string.
-r(106);
+file gapminder.dta not Stata format
+r(610);
 
-end of do-file
-r(106);
+
+file test_score3.dta not found
+r(601);
+
+r(601);
 ```
 
 This error code is describing how the format of the variables is different in our master vs. using dataset. To fix this issue, we need to convert one of the variable formats. For example, we could type ``destring student, replace`` to convert the student variable to a numeric variable in the ``test_score3.dta`` dataset.
@@ -359,29 +385,36 @@ The problem, however, is that our data for stops currently comes in two separate
 To create a dataset of all stops between 2014-2017, we need to ``append`` the stop-level data.
 
 
-```stata
+``` stata
 use san_diego_stops_2014_2015.dta, clear
 append using san_diego_stops_2016_2017.dta
+file gapminder.dta not Stata format
+r(610);
 
+
+file san_diego_stops_2014_2015.dta not found
+r(601);
+
+r(601);
 ```
 
 So it might look as if nothing happened in Stata. To check that we now have all years of data in a single dataset we can type:
 
 
-```stata
+``` stata
 tab year
 ```
 
 
 ```
-       year |      Freq.     Percent        Cum.
-------------+-----------------------------------
-       2014 |    138,735       36.40       36.40
-       2015 |    112,201       29.44       65.84
-       2016 |    102,181       26.81       92.65
-       2017 |     28,032        7.35      100.00
-------------+-----------------------------------
-      Total |    381,149      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Now we have verified that the current data in memory has stops between 2014-2017. Our next task is to ``merge`` in the data on sunset times. To do this, we need to make sure of two things. First, is there a variable that we can merge on? In general, you would need to load both datasets and check if there are any variables that store the same information. In our case, there is a single variable that meets this criteria: ``date``. Second, is this a one-to-one or many-to-one merge? Third, is the ``date`` variable in both datasets stored in the same format?
@@ -391,34 +424,53 @@ To get started, we need to figure out how many observations there are for a give
 The ``unique`` command does not come installed in Stata. You need to install it into your version of Stata by typing ``ssc install unique`` into the Command window. In general, you might find a command online that will help you perform some data analysis. Many commands can be installed by typing ``ssc install commandname``. Therefore, before running the line of code below, you should type ``ssc install unique`` into the Command window and press enter.
 
 
-```stata
+``` stata
 unique date
 ```
 
 
 
 ```
-Number of unique values of date is  1186
-Number of records is  381149
+file gapminder.dta not Stata format
+r(610);
+
+
+variable date not found
+r(111);
+
+r(111);
 ```
   
 How do we interpret this output? Well, the number of unique values of date is 1186. In other words, this is how many different days there are in our dataset on traffic stops. In contrast, there are 381,149 total stops. Therefore, there are multiple stops per day. Whenever you see more records than unique values, you know this is a ``many-to-BLANK`` merge. The next job for us is to figure out if the ``BLANK`` should be replaced by a ``one``. To do this we need to load the ``sd_sunset.dta``.
 
 
-```stata
+``` stata
 use sd_sunset.dta, clear
+file gapminder.dta not Stata format
+r(610);
 
+
+file sd_sunset.dta not found
+r(601);
+
+r(601);
 ```
 
 
-```stata
+``` stata
 unique date
 ```
 
 
 ```
-Number of unique values of date is  1186
-Number of records is  1186
+file gapminder.dta not Stata format
+r(610);
+
+
+variable date not found
+r(111);
+
+r(111);
 ```
 
 In this dataset, there are 1186 unique values of date and 1186 records. Each value of date is a unique observation in the dataset. Therefore, we can conclude that this is a ``many-to-one`` merge. There are many observations per value of ``date`` in the stops data, but one observation per value of ``date`` in the sunset data. 
@@ -426,52 +478,70 @@ In this dataset, there are 1186 unique values of date and 1186 records. Each val
 The last thing we need to do is to check that the format of the date variable is the same in both datasets. Let's look at the first observation in the ``sd_sunset.dta``
 
 
-```stata
+``` stata
 list date if _n==1
-      |      date |
-      |-----------|
-   1. | 01jan2014 |
-      +-----------+
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Now, let's go back to the stop-level data and check if ``date`` is held in the same format. 
 
 
-```stata
+``` stata
 use san_diego_stops_2014_2015.dta, clear
 append using san_diego_stops_2016_2017.dta
+file gapminder.dta not Stata format
+r(610);
 
+
+file san_diego_stops_2014_2015.dta not found
+r(601);
+
+r(601);
 ```
 
 
-```stata
+``` stata
 list date if _n==1
-        |      date |
-        |-----------|
-     1. | 01jan2014 |
-        +-----------+
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 It looks like the ``date`` variable is in the same format. If it is not, you then will need to do some data wrangling in order to get it into the same format. For us, we can now merge this data to the sunset data:
 
 
-```stata
+``` stata
 merge m:1 date using sd_sunset.dta, keep(3) nogen
 ```
 
 
 ```
-    Result                      Number of obs
-    -----------------------------------------
-    Not matched                             0
-    Matched                           381,149  
-    -----------------------------------------
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 Because we specified ``keep(3) nogen``, we are only keeping observations that correspond to dates in both datasets. Now, we are going to want to use this data for our analysis later, so let's save the combined dataset under a new name: ``sd_analysis_sample.dta`` by typing:
 
 
-```stata
+``` stata
 save sd_analysis_sample.dta, replace 
 ```
 
@@ -490,21 +560,33 @@ In Stata, times of the day are often held in terms of milliseconds from midnight
 To see how Stata stores times, we can ``summarize`` our variable ``stop_time``.
 
 
-```stata
+``` stata
   use sd_analysis_sample.dta, replace
+file gapminder.dta not Stata format
+r(610);
 
+
+file sd_analysis_sample.dta not found
+r(601);
+
+r(601);
 ```
 
 
-```stata
+``` stata
   sum stop_time 
 ```
 
 
 ```
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   stop_time |    381,149    4.70e+07    2.26e+07          0   8.63e+07
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 It is stored in terms of milliseconds from midnight (so 0 is midnight exactly and 1 hour later (1:00 AM) would be $60\cdot 60 \cdot 1000 = 3,600,000$, because there are 60 minutes in an hour, 60 seconds in a minute, and a 1000 milliseconds in a second). So how many milliseconds to 6:30 PM?
@@ -519,46 +601,76 @@ While this procedure will get you the right answer, typing some large numbers ca
 For example, to see how many milliseconds there are from midnight to 6:00 PM, we can type:
 
 
-```stata
+``` stata
   di clock("18:30:00","hms")
+file gapminder.dta not Stata format
+r(610);
+
+
 66600000
 ```
 
 Where ``"18:30:00"`` is 6:30 PM on a 24-hour clock. ``"hms"`` tells Stata that time should be interpreted as hours, minutes, seconds. Now that we understand how to use the ``clock`` command, we can use it to restrict to stops that occurred between 6:30 PM and 7:00 PM:
 
 
-```stata
+``` stata
 /* drop if before 6:30 PM */
 drop if stop_time<clock("18:30:00","hms")
 /* drop if after 7:00 PM */
 drop if stop_time>clock("19:00:00","hms") 
-(296,355 observations deleted)
+file gapminder.dta not Stata format
+r(610);
 
-(76,052 observations deleted)
+
+stop_time not found
+r(111);
+
+r(111);
 ```
 
 Next, we need to generate indicators that tell us whether a given stop occurred during sunlight or in the dark. We will define a traffic stop occurring in the sunlight if it occurs before sunset. The variable ``sunset`` in the data contains the time of the sunset, which we can compare to the ``stop_time`` to generate an indicator for ``light``:
 
 
-```stata
+``` stata
 gen light = (stop_time<sunset)
+file gapminder.dta not Stata format
+r(610);
 
+
+stop_time not found
+r(111);
+
+r(111);
 ```
 
 In words, we are creating a variable that is equal to 1 if the time of the stop occurred before sunset, and zero otherwise. We will define a traffic stop occurring in the dark if it occurs after dusk (dusk is about 30 minutes after sunset). The variable ``dusk`` in the data contains the time of dusk, which we can compare to the ``stop_time`` to generate an indicator for ``dark``:
 
 
-```stata
+``` stata
 gen dark = (stop_time>dusk)
+file gapminder.dta not Stata format
+r(610);
 
+
+stop_time not found
+r(111);
+
+r(111);
 ```
 
 Now, there are some stops that occur between sunset and dusk. For these stops, we aren't sure if driver race is observed. It is neither fully light nor fully dark at these times (i.e. ``dark==0 & light==0``). We are going to drop these stops from the analysis:
 
 
-```stata
+``` stata
 drop if light==0 & dark==0 
-(414 observations deleted)
+file gapminder.dta not Stata format
+r(610);
+
+
+light not found
+r(111);
+
+r(111);
 ```
 
 Now we are ready to start our analysis to implement the veil of darkness.
@@ -567,62 +679,59 @@ Now we are ready to start our analysis to implement the veil of darkness.
 
 We need to compare the composition of traffic stops in times of sunlight vs. darkness to implement the veil of darkness test. If stop rates for minorities drop in the dark, that indicates they were being targeted in the sunlight. To retrieve the composition of traffic stops by race, we can use the ``tab`` command:
 
-```stata
+``` stata
 tab subject_race 
 ```
 
 
 ```
-          subject_race |      Freq.     Percent        Cum.
------------------------+-----------------------------------
-Asian/Pacific Islander |        747        8.97        8.97
-                 Black |      1,084       13.02       21.99
-              Hispanic |      2,847       34.19       56.17
-                 Other |        561        6.74       62.91
-                 White |      3,089       37.09      100.00
------------------------+-----------------------------------
-                 Total |      8,328      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 If we want the composition but restricted to stops in the sunlight, we can add a conditional statement to our code: 
 
 
-```stata
+``` stata
 tab subject_race if dark==0 
 ```
 
 
 ```
-          subject_race |      Freq.     Percent        Cum.
------------------------+-----------------------------------
-Asian/Pacific Islander |        375        8.40        8.40
-                 Black |        589       13.20       21.60
-              Hispanic |      1,528       34.24       55.84
-                 Other |        319        7.15       62.98
-                 White |      1,652       37.02      100.00
------------------------+-----------------------------------
-                 Total |      4,463      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 
 Now let's look at the composition of traffic stops in the dark:
 
 
-```stata
+``` stata
 tab subject_race if dark==1 
 ```
 
 
 ```
-          subject_race |      Freq.     Percent        Cum.
------------------------+-----------------------------------
-Asian/Pacific Islander |        372        9.62        9.62
-                 Black |        495       12.81       22.43
-              Hispanic |      1,319       34.13       56.56
-                 Other |        242        6.26       62.82
-                 White |      1,437       37.18      100.00
------------------------+-----------------------------------
-                 Total |      3,865      100.00
+file gapminder.dta not Stata format
+r(610);
+
+
+no variables defined
+r(111);
+
+r(111);
 ```
 
 In these tables, we are trying to see if certain races are much less likely to be stopped in darkness relative to sunlight. If this is true, then this is good evidence that this race is being targeted during sunlight hours. From the table above, the composition of traffic stops seems relatively similar during sunlight vs. after dark. However, it is a little difficult to absorb all the information from these multiple tables. To really get the information across, it might be useful to put this information into a figure.
@@ -641,7 +750,7 @@ The command ``graph bar`` is used to make bar graphs in Stata. There are lots of
 The basic syntax for the ``graph bar`` command is 
 
 
-```stata
+``` stata
 graph bar (stat) yvar, over(xvar)
 ```
 
@@ -650,7 +759,7 @@ graph bar (stat) yvar, over(xvar)
 In our example, we want the average of the variable ``gpa``, so we will type ``(mean) gpa``. What do want the average over? The class variable. So we will type ``over(class)``. All together:
 
 
-```stata
+``` stata
 graph bar (mean) gpa, over(school)
 ```
 
@@ -663,7 +772,7 @@ graph bar (mean) gpa, over(school)
 As always need descriptive titles and properly labeled axes. We can add these the same way we added them for histograms:
 
 
-```stata
+``` stata
 graph bar (mean) gpa, over(school) ///
 	title("Average GPA by Classroom") ///
 	ytitle("Average GPA") 
@@ -677,20 +786,20 @@ graph bar (mean) gpa, over(school) ///
 Sometimes we need to change the aesthetics of our figures to make them more easily readable. One external package I find useful to install is ``blindschemes``, which provides color schemes for Stata graphs that are distinguishable for individuals that are color blind. To install blindschemes type:
 
 
-```stata
+``` stata
 ssc install blindschemes
 ```
 
 ``blindschemes`` comes with a number of different ``schemes``. You can think of graphics schemes as capturing the overall theme or aesthetic of your graph. Let's set the ``scheme`` to ``plotplainblind``, which is one of the schemes that come from the ``blindschemes`` package.
 
-```stata
+``` stata
 set scheme plotplainblind
 ```
 
 Now we can re-run the exact same code as before, but the overall aesthetic will be different. This is because we have changed the scheme of the graph.
 
 
-```stata
+``` stata
 graph bar (mean) gpa, over(school) ///
 	title("Average GPA by Classroom") ///
 	ytitle("Average GPA") 
@@ -710,7 +819,7 @@ The ``collapse`` command transforms your data to a different unit of analysis. W
 The basic syntax of the ``collapse`` command is 
 
 
-```stata
+``` stata
 collapse (stat) varlist1, by(varlist2)
 ```
 
@@ -725,7 +834,7 @@ To practice with this command, consider the (fake) dataset below:
 Our goal now is to transform this dataset into a dataset with just two observations: one for "CA" and one for "AZ". In terms of variables, we want two variables, one that contains the average weekly income and one that contains the average age. In other words, we are taking a dataset that is currently at the worker level and collapsing it to a dataset that is at the state level. To do this in Stata we type:
 
 
-```stata
+``` stata
 collapse (mean) weekly_income age, by(state)
 ```
 
@@ -765,14 +874,14 @@ We need to compare the composition of traffic stops in times of sunlight vs. dar
 To count the number of observations per race for both daylight and darkness, we can use the ``count`` option of the collapse command. This option will count the number of observations with non-missing values of a variable. To begin, let's create a variable (that will eventually store our counts) that is non-missing for all observations. 
 
 
-```stata
+``` stata
 gen obs_count = 1
 ```
 
 Now it might not be immediately clear why we have created this variable. Right now it is just a variable that is equal to 1 for every observation. However, once we collapse the data, this variable will hold the information we need to construct our bar graph. To collapse the data to the subject-race-by-dark condition level: 
 
 
-```stata
+``` stata
 collapse (count) obs_count, by(subject_race dark) 
 ```
 
@@ -797,7 +906,7 @@ To create this new variable we are going to use the ``egen`` command. ``egen`` s
 First, let's present the code for calculating total stops by light condition, before explaining how it works:
 
 
-```stata
+``` stata
 bysort dark: egen total_obs = total(obs_count)
 ```
 
@@ -811,14 +920,14 @@ bysort dark: egen total_obs = total(obs_count)
 Now that we have (1) total stops by race in daylight vs. darkness and (2) total stops overall in daylight vs. darkness we can create our required variables:
 
 
-```stata
+``` stata
   gen fraction_stops = obs_count/total_obs
 ```
 
 Now we can use this variable to show the composition of traffic stops (by race) both in the daylight and in the darkness:
 
 
-```stata
+``` stata
 graph bar fraction_stops, over(dark) over(subject_race)
 ```
 
@@ -834,7 +943,7 @@ This is a good start. It has all the information we need. However, it would be n
 As always, the first task is to add some descriptive titles and labels:
 
 
-```stata
+``` stata
 graph bar fraction, over(dark) over(subject_race) ///
 	title("Composition of Traffic Stops by Light Conditions") ///
 	ytitle("Fraction of All Stops") 
@@ -848,7 +957,7 @@ graph bar fraction, over(dark) over(subject_race) ///
 Because we generated this data, we know ``dark==0`` represents daylight and ``dark==1`` represents darkness, but our reader won't. We need to relabel the zero to light and the 1 to dark so that a reader will understand what the graph represents. To do this, we can use the ``relabel`` option:
 
 
-```stata
+``` stata
 graph bar fraction, ///
   over(dark,relabel(1 "Light" 2 "Dark")) over(subject_race) ///
   title("Composition of Traffic Stops by Light Conditions") ///
@@ -863,7 +972,7 @@ graph bar fraction, ///
 Next, let's try to make our graph even easier to read. In practice, I don't expect you will need this next option too often, but it helps in our case. The option is ``asyvars``, which treats the first ``over()`` group as a y-variable. What does this do in our case? Basically, it makes the ``Light`` and ``Dark`` labels appear in a legend instead of on the x-axis. This will make the graph look a little cleaner and easier to interpret quickly:
 
 
-```stata
+``` stata
 graph bar fraction, asyvars ///
   over(dark,relabel(1 "Light" 2 "Dark")) over(subject_race) ///
   title("Composition of Traffic Stops by Light Conditions") ///
@@ -878,7 +987,7 @@ graph bar fraction, asyvars ///
 The last step is to can change the colors of the bars. In the code below, ``bar(1, fcolor(sky))`` changes the ``Light`` bars to a sky blue. ``bar(2,color(vermillion))`` changes the ``Dark`` bars to vermillion.
 
 
-```stata
+``` stata
 graph bar fraction, asyvars ///
   over(dark,relabel(1 "Light" 2 "Dark")) over(subject_race) ///
   title("Composition of Traffic Stops by Light Conditions") ///
@@ -894,7 +1003,7 @@ graph bar fraction, asyvars ///
 
 So now let's spend a little time interpreting our main result. Overall, it appears that the fraction of stops for a given race does not depend dramatically on the light condition. We can see this in the graph by the fact that the blue and orange bars tend to be around the same height. If the orange bar (i.e. ``dark==1``) was dramatically lower for some races, then that would be evidence that police were targeting this race in the daylight.
 
-Like any empirical design, the test has assumptions and limitations. It is not a fatal flaw that a given set of research has limitations. All research has limitations and it is important to think carefully about them. In the next section, we will discuss some of these limtations as well as feature some other factors that could be studied with the Stanford Open Policing Project data. 
+Like any empirical design, the test has assumptions and limitations. It is not a fatal flaw that a given set of research has limitations. All research has limitations and it is important to think carefully about them. In the next section, we will discuss some of these limitations as well as feature some other factors that could be studied with the Stanford Open Policing Project data. 
 
 ## Conclusion
 

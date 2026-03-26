@@ -45,7 +45,7 @@ Because RStudio doesn't work without R, the first thing we need to do is downloa
 
 When you open RStudio, you will be greeted by the RStudio Interface depicted below in Figure \@ref(fig:rstudio)
 
-```{r, rstudio, echo=FALSE, out.width="90%", fig.cap="R Studio Interfacte",fig.align='center'}
+```{r, rstudio, echo=FALSE, out.width="90%", fig.cap="R Studio Interface",fig.align='center'}
 knitr::include_graphics("images/06_rstudio.png")
 ``` 
 
@@ -142,7 +142,7 @@ R can store objects with a name of our choice. In order to create an object, you
 graduationdate <- 2010
 ```
 
-This will add to the Environment (top right window) a new object called graduation date, which is equal to 2010. Instead of the assignment operator ``<-``, we can also use ``=``. While it is generally suggested to use the assignment operator in R when creating objects, the equals sign will also work, as below/ 
+This will add to the Environment (top right window) a new object called graduation date, which is equal to 2010. Instead of the assignment operator ``<-``, we can also use ``=``. While it is generally suggested to use the assignment operator in R when creating objects, the equals sign will also work, as below. 
 
 ```{r, echo = TRUE}
 graduationdate = 2010
@@ -314,7 +314,7 @@ summary(resume)
 summary(resume)
 ```
 
-For numeric variables, this command provides the min, max, 25th percentile (called 1st Quartile), median, mean, 75th percentile (called 3rd Quantile) and max. For character variables, R just reports the length (i.e. the number of observations). In this dataset, the variable ``X`` is just a variable that records the observation number, which goes frmo 1 to 4870. ``firstname`` is the name on the application. ``sex`` is either female or male. ``race`` is either white or Black. ``call`` is our main outcome of interest. It is equal to 1 if the fictitious application received a callback for an interview. It is equal to 0 if the fictitious application did not receive a callback.
+For numeric variables, this command provides the min, max, 25th percentile (called 1st Quartile), median, mean, 75th percentile (called 3rd Quantile) and max. For character variables, R just reports the length (i.e. the number of observations). In this dataset, the variable ``X`` is just a variable that records the observation number, which goes from 1 to 4870. ``firstname`` is the name on the application. ``sex`` is either female or male. ``race`` is either white or Black. ``call`` is our main outcome of interest. It is equal to 1 if the fictitious application received a callback for an interview. It is equal to 0 if the fictitious application did not receive a callback.
 
 Although we have already shown how to browse the raw data, it is sometimes inconvenient to look at the entire data frame, particularly when you have a very large dataset. However, it is often helpful to get a small snippet of the data. To do this, we can use the ``head()`` function. This shows you the first six observations in the data frame:
 
@@ -694,7 +694,7 @@ Our main outcome of interest is whether an individual received a callback for an
 mean(resume$call)
 ```
 
-Remember, whenever we specify a variable, we need to specify both the data frame as well as the variable name. As well will see later, it is often helpful to have multiple data frames loaded into memory in R. 
+Remember, whenever we specify a variable, we need to specify both the data frame as well as the variable name. As we will see later, it is often helpful to have multiple data frames loaded into memory in R. 
 
 In this experiment, we want to understand whether the callback rate varies by race. Before proceeding, let's look at the distribution of race across applications:
 
@@ -718,7 +718,7 @@ Now, let's get to the main analysis, which studies whether callback rates vary b
 mean(resume$call[resume$race=="black"])
 ```
 
-Here we are using indexing. ``[resume$race="black"]`` subsets to Black applicants. Because we have put this inside ``mean(resume$call[])``, then R will retrieve the average of the ``resume$call`` vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback. 
+Here we are using indexing. ``[resume$race=="black"]`` subsets to Black applicants. Because we have put this inside ``mean(resume$call[])``, then R will retrieve the average of the ``resume$call`` vector, but restrict to Black applicants. As we can see, about 6.4 percent of Black applicants receive a callback. 
 
 Let's now compare this to white applicants:
 

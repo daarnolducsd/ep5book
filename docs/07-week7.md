@@ -14,7 +14,7 @@ code {
 </head>
 <body>
 
-Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey (2010). The figure shows the amount of hours per week mothers spend on childcare over time. For both college-educated and less-than-college-educated mothers, time spent on childcare rose dramatically in the early 1990s?
+Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey (2010). The figure shows the amount of hours per week mothers spend on childcare over time. For both college-educated and less-than-college-educated mothers, time spent on childcare rose dramatically in the early 1990s.
 
 <div class="figure" style="text-align: center">
 <img src="images/07_RugRatMothers.png" alt="Time Spent on Childcare by Parents, by Educational Attainment, 1965-2008" width="90%" />
@@ -23,7 +23,7 @@ Figure \@ref(fig:rugrat) plots a somewhat puzzling finding from Ramey and Ramey 
 
 This rise occurs for both college-educated and less-educated mothers, but the rise is especially dramatic for college-educated mothers. Why is this puzzling? Well, this is a time period in which the returns to education were increasing a lot. In other words, these college-educated mothers had a lot to gain from working in the labor market, but in the data, we find they are spending more time on childcare. In this section of the course, we will explore why. 
 
-In order to explore this question we will use data from the American Time Use Survey (ATUS). This is a survey administered by the Bureau of Labor Statistics, and agency that collects many important statistics concerning the U.S. economy. 
+In order to explore this question we will use data from the American Time Use Survey (ATUS). This is a survey administered by the Bureau of Labor Statistics, an agency that collects many important statistics concerning the U.S. economy. 
 
 The data is based on "time diaries" which are detailed descriptions of the activities in a given day. For example, if the interview was held on a Tuesday, the individual would report everything they did on Monday (from 4 AM Monday to 4 AM Tuesday). This is a useful survey technique to get an accurate representation of how much time people spend on various activities.
 
@@ -31,12 +31,12 @@ Before digging into the data, however, we are going to learn a bit more about th
 
 ## Conditional Statements
 
-The basic idea behind conditional statements is that sometimes in R we want to execute some code, but only if a certain condition is true. Conditional statements are incredibly important in all programming languages. For example, when you type something on a computer and get and error statement, that is a conditional statement at work. A certain condition was met (some error in this case), so the computer output an error message. 
+The basic idea behind conditional statements is that sometimes in R we want to execute some code, but only if a certain condition is true. Conditional statements are incredibly important in all programming languages. For example, when you type something on a computer and get an error statement, that is a conditional statement at work. A certain condition was met (some error in this case), so the computer output an error message. 
 
 The way we will implement this idea in R is to use ``if`` statements. The general syntax for ``if`` statements is:
 
 
-```r
+``` r
 if (logical statement) {
   
   code to be executed if logical statement is TRUE
@@ -47,14 +47,14 @@ if (logical statement) {
 It might be a bit easier to understand this syntax with a simple example. To begin, we are going to create an object in R called ``door`` which is equal to ``locked``.
 
 
-```r
+``` r
 door <- "locked"
 ```
 
 Now, we are going to write some code to return a message if the object ``door`` is indeed locked. 
 
 
-```r
+``` r
 if (door=="locked") {
   
   print("sorry, you need a key to enter")
@@ -68,7 +68,7 @@ What is R doing here? Well, because we have assigned the value ``locked`` to the
 What happens if we change the value of door to ``unlocked``. Well, in that case ``door=="locked"`` is no longer TRUE. Therefore, the code inside the brackets will **not** be executed.
 
 
-```r
+``` r
 door <- "unlocked"
 
 if (door=="locked") {
@@ -81,7 +81,7 @@ if (door=="locked") {
 Let's try another example. Say we take a random draw from three numbers: -1, 0, and 1. We can take a random draw from this list of numbers by using the sample function:
 
 
-```r
+``` r
 x <- sample(-1:1,1)
 x
 [1] 0
@@ -92,7 +92,7 @@ The part of the code ``-1:1`` controls what numbers will be drawn. If you type `
 So now let's write a conditional statement that depends on the outcome of x. Let's write some code that returns the absolute value of x, but only if x is less than zero.
 
 
-```r
+``` r
 if (x<0){
   abs(x)
 }
@@ -101,7 +101,7 @@ if (x<0){
 Next, let's discuss ``else`` statements. Sometimes, we want to execute certain code if the statement is TRUE, but some other code if it is FALSE. For example, in our first example, imagine if the ``door`` object is not equal to ``locked`` then we want R to print out the message ``Please Come in!``. The way we can do this in R is with an ``else`` statement:
 
 
-```r
+``` r
 door <- "locked"
 if (door=="locked"){
   print("Sorry, you need a key to enter")
@@ -115,7 +115,7 @@ Since we set ``door<-"locked"``, the first statement ``door=="locked"`` is TRUE.
 
 
 
-```r
+``` r
 door <- "unlocked"
 if (door=="locked"){
   print("Sorry, you need a key to enter")
@@ -140,7 +140,7 @@ One way to perform this analysis is through writing scripts with many, many line
 The general form for a loop in R is given below:
 
 
-```r
+``` r
 for (some set of things) {
   do some stuff
 }
@@ -153,7 +153,7 @@ To understand these concepts more concretely. We are going to go through a simpl
 First, let's print out ``2*1``
 
 
-```r
+``` r
 i <-1
 print(2*i)
 [1] 2
@@ -162,7 +162,7 @@ print(2*i)
 So why did we code this in such a roundabout way? Why not directly type ``2*1``. Well, once we go through the loop it will become clear why we are coding this in a somewhat roundabout way. What you need to understand now is exactly what the code is doing. First, it is creating an object named ``i`` that is equal to ``1``. Then, it is multiplying that object by 2 and printing out the result. Now, we have to do this for the number 2. 
 
 
-```r
+``` r
 i <- 2 
 print(2*i)
 [1] 4
@@ -171,21 +171,21 @@ print(2*i)
 Note that the second part of the code ``print(2*i)`` is exactly the same as before. That will be key when we are writing our loop. We can continue to do this for the rest of the numbers
 
 
-```r
+``` r
 i <- 3 
 print(2*i)
 [1] 6
 ```
 
 
-```r
+``` r
 i <- 4 
 print(2*i)
 [1] 8
 ```
 
 
-```r
+``` r
 i <- 5 
 print(2*i)
 [1] 10
@@ -194,7 +194,7 @@ print(2*i)
 In each block of code, the only thing changing is what ``i`` is equal to. Well, this is exactly what a loop does.
 
 
-```r
+``` r
 for (i in 1:5){
   
   print(2*i)
@@ -214,7 +214,7 @@ The great thing about this is that it can greatly increase the efficiency of our
 In this example we are **iterating** over a list of numbers from 1 to 5. You can also iterate over other objects in R. For example, instead of iterating over a sequence of numbers, you can iterate over a vector. 
 
 
-```r
+``` r
 for (i in c(3,10,99)){
   print(2*i)
 }
@@ -227,14 +227,14 @@ In this loop, in the first iteration, ``i`` is equal to 3. In the second iterati
 Next, we are going to go through an example that loops over words instead of numbers. In this example, we are going to print out a to do list. Let's say we need to do three sets of homework assignments: math, reading, and writing. To start this example, let's create a vector of the assignments we need to do:
 
 
-```r
+``` r
 homework <- c("math", "reading", "writing")
 ```
 
 We can loop over the contents of this vector in order to print out a to-do list. 
 
 
-```r
+``` r
 for (i in homework) {
   cat("Do", i, "\n")
 }
@@ -245,12 +245,12 @@ Do writing
 
 We introduced a few new things here, so let's go through the code slowly. First, instead of looping over numbers here, we are looping over words. In the first iteration ``i`` is equal to the first entry of the vector ``homework``. Therefore, ``i`` is equal to ``math`` in the first iteration. 
 
-Next, we have used a knew function ``cat()``. This function concatenates and prints. Therefore, if we type ``cat("Do",i)`` what you should interpret (in the first) iteration is that we are forming the sentence ``Do Math``. The last part ``,"\n"`` is telling R to display the next text  a line down.. When you want to skip a line in a word document, you just press Enter. In R, you can type ``"\n"``. If you are still unsure what ``"\n"`` is doing, you should try to take it out of the code and see how the result looks. 
+Next, we have used a knew function ``cat()``. This function concatenates and prints. Therefore, if we type ``cat("Do",i)`` what you should interpret (in the first) iteration is that we are forming the sentence ``Do Math``. The last part ``,"\n"`` is telling R to display the next text a line down. When you want to skip a line in a word document, you just press Enter. In R, you can type ``"\n"``. If you are still unsure what ``"\n"`` is doing, you should try to take it out of the code and see how the result looks. 
 
 In this example, we are looping over the words in ``homework``. An alternative way to write this loop out will take advantage of indexing. The following code performs the exact same process as above, it is just coded in a slightly different way.
 
 
-```r
+``` r
 for (i in 1:length(homework)) {
   cat("Do", homework[i], "\n")
 }
@@ -268,7 +268,7 @@ So why would we want to code this loop in this way? Well, in this setting, it do
 Next, we are going to use for loops to make calculations in our data. To remind you, our empirical application is going to study how time spent on childcare, particularly for mothers, has changed over time. To begin, we are going to load in data from the American Time Use Survey.
 
 
-```r
+``` r
 rr <- read.csv("rugratrace.csv")
 dim(rr)
 [1] 106020     54
@@ -281,7 +281,7 @@ Our goal is to follow the Ramey and Ramey (2010) analysis as closely as possible
 The way we can subset to these individuals is through the ``subset`` command.
 
 
-```r
+``` r
 mothers2534 <- subset(rr, mother2==1 & age>=25 & age<=34)
 ```
 
@@ -290,7 +290,7 @@ Now we have a data frame restricted to the sample we are analyzing. Our goal is 
 Luckily, there is a function ``unique()`` that will come in handy here. ``unique()`` retrieves  list of the unique values of a variable. In other words, if we type ``unique(rr$dataset)`` we will get a list of all the years in the data frame. 
 
 
-```r
+``` r
 years <- unique(mothers2534$dataset)
 years
  [1] 1965 1975 1985 1993 1998 2003 2004 2005 2006 2007 2008
@@ -299,21 +299,21 @@ years
 So we are going to write a loop and iterate over the years. Before writing the full loop, let's make sure we understand how to code this for the first iteration. First, let's set ``i`` equal to one.
 
 
-```r
+``` r
 i <- 1 
 ```
 
 Next, let's subset the data so that we create a dataframe that only contains observations such that ``dataset==years[i]``. Since ``i`` is currently equal to 1, this will subset the data to observations from 1965. 
 
 
-```r
+``` r
 sub <- subset(mothers2534, dataset==years[i])
 ```
 
 Since the data frame ``sub`` only contains observations from 1965, we can simply take the average of ``childtot`` within this data frame to retrieve the average amount of hours spent on childcare per week in 1965. 
 
 
-```r
+``` r
 mean(sub$childtot)
 [1] 13.82249
 ```
@@ -321,7 +321,7 @@ mean(sub$childtot)
 When we actually go to iterating over a loop, we will want to keep track of what each number printed out corresponds to. Therefore, let's use the ``cat()`` function to clarify exactly what is being printed out. We are actually going to print out two things. First, we are going to print out the year we are studying. Then, we are going to print out the average childcare in that year.
 
 
-```r
+``` r
 # prints out year
 cat("Year", years[i],"\n")
 Year 1965 
@@ -333,7 +333,7 @@ Average childcare per week: 13.82249
 Now that we have written all the code for ``i<-1``, we just need to put this code inside a loop that loops over from 1 to the total number of years. The total number of years is given by ``length(years)``:
 
 
-```r
+``` r
 for (i in 1:length(years)) {
   
   # subset to year i
@@ -385,7 +385,7 @@ One of the most useful collection of packages for data analysis is the tidyverse
 But before using the tidyverse, we actually have to install it into our version of R. In order to install a package, you can use the ``install.packages()`` function. For example, to install tidyverse, type:
 
 
-```r
+``` r
 install.packages("tidyverse")
 ```
 
@@ -393,7 +393,7 @@ This will download all the necessary components of the tidyverse package onto yo
 
 Next, in order to use a package in a given R session, you need to load it into memory using the ``library()`` function:
 
-```r
+``` r
 library(tidyverse)
 ```
 
@@ -404,20 +404,20 @@ The first concept we will learn from tidyverse is the concept of a tibble. A tib
 To start, let's load ``rugratrace.csv`` as a data frame.
 
 
-```r
+``` r
 rr <- read.csv("rugratrace.csv")
 ```
 To convert a data frame to a tibble, you can use the function ``as_tibble()``. 
 
 
-```r
+``` r
 rr <- as_tibble(rr)
 ```
 
 If you are following along, you may think the code above did not actually do anything. However, you can tell the difference if you print out the data set. 
 
 
-```r
+``` r
 rr
 # A tibble: 106,020 × 54
    state   age   sex ethnic under18 under5 ageyngst student
@@ -446,7 +446,7 @@ You get more information printing out a tibble relative to a data frame. For our
 To load a dataset as a tibble directly, you can use the ``read_csv`` function, the only difference being now an underscore separates the words in the function, rather than a period. 
 
 
-```r
+``` r
 rr <- read_csv("rugratrace.csv")
 ```
 
@@ -455,21 +455,21 @@ So now let's discuss some functions that come with tidyverse. The first function
 The ``filter()`` function retrieves observations (rows) in the data that meet a certain condition. For example, maybe you want to restrict the analysis to a certain demographic. You can use the ``filter()`` function to do this. In our example, we want to restrict to mothers between ages 25 and 34. We can use ``filter()`` to accomplish this. The general syntax for ``filter()`` is:
 
 
-```r
+``` r
 filter(dataframe, some logical statement)
 ```
 
 In our example, we can create the subset of the dataset we want by typing:
 
 
-```r
+``` r
 mothers2534 <- filter(rr, age<=34 & age>=25 & mother2==1)
 ```
 
 You can use other logical operators in combination with filter as well. For example, imagine for a subset of our analysis we only want years between 2003 and 2008. We can use the operator ``%in%`` to accomplish this. 
 
 
-```r
+``` r
 filter(mothers2534, dataset%in%2003:2008)
 # A tibble: 6,416 × 54
    state   age   sex ethnic under18 under5 ageyngst student
@@ -498,14 +498,14 @@ This code is saying restrict to ``mothers2534`` only for observations such that 
 Next, let's discuss ``select()``. This function chooses which variables you want to remain in your tibble. For example, in our current tibble we have many variables, but we really only need a subset of them for our analysis. So we can select the variables we really need:
 
 
-```r
+``` r
 mothers2534 <- select(mothers2534, dataset, mother2, age, childtot)
 ```
 
 Now if we print out ``mothers2534``, it has only four variables now.
 
 
-```r
+``` r
 mothers2534
 # A tibble: 8,115 × 4
    dataset mother2   age childtot
@@ -526,14 +526,14 @@ mothers2534
 Finally, our last function for this section is ``arrange()``. The ``arrange()`` function will sort the data based on the values of a variable. For example, imagine I want the observations in ``mothers2534`` to be arranged from the youngest age to the oldest age. I could type:
 
 
-```r
+``` r
 mothers2534 <- arrange(mothers2534,age)
 ```
 
 Now, we can verify that the youngest individuals are first:
 
 
-```r
+``` r
 head(mothers2534$age)
 [1] 25 25 25 25 25 25
 ```
@@ -541,7 +541,7 @@ head(mothers2534$age)
 And the oldest are last.
 
 
-```r
+``` r
 tail(mothers2534$age)
 [1] 34 34 34 34 34 34
 ```
@@ -549,7 +549,7 @@ tail(mothers2534$age)
 If you instead want to sort from the oldest to youngest, you can use the function ``desc()``, which stands for descending. In other words, the dataset will be sorted from the highest value to the lowest value. 
 
 
-```r
+``` r
 mothers2534 <- arrange(mothers2534,desc(age))
 head(mothers2534$age)
 [1] 34 34 34 34 34 34
@@ -563,17 +563,17 @@ In this section we are going to be going over the pipe operator: ``%>%``. The pi
 
 So far, in R, we have been applying functions to objects. For example, imagine we have a vector ``x`` and we want to take the mean. We would apply the ``mean()`` function to ``x`` by typing ``mean(x)``. The pipe operator gives us an alternative way to write this. We can type: ``x %>% mean()``. In general, when we have a function ``f()``, we can either write ``f(x)`` or ``x %>% f()``.
 
-So what is the benefit of the pipe operator? Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an objects in sequency. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
+So what is the benefit of the pipe operator? Well, often in data analysis, we will want to apply many functions. For example, we may want to restrict to certain observations, select certain variables, and so on. We can think of this as applying many functions to an object in sequence. For example, if we first apply ``f()``, then ``g()`` and then ``h()`` we can represent this as:
 
 
-```r
+``` r
 h(g(f(x)))
 ```
 
 Using pipe operators, we can equivalently write this out as:
 
 
-```r
+``` r
 x %>% 
   f %>%
     g %>%
@@ -585,7 +585,7 @@ What are we doing here? We are taking in an object x, and then applying f, and t
 So far, this has been a relatively abstract discussion of pipe operators. Let's load some real data so we can see how this works in practice. 
 
 
-```r
+``` r
 rr <- read_csv("rugratrace.csv")
 Rows: 106020 Columns: 54
 ── Column specification ────────────────────────────────────
@@ -601,14 +601,14 @@ In a previous chapter, we generated a new data set that (1) filters to mothers b
 To remind you, the code to filter from the previous section is:
 
 
-```r
+``` r
 mothers2534 <- filter(rr, age<=34 & age>=25 & mother2==1)
 ```
 
 Instead, when we use a pipe operator, we first supply the data frame ``rr`` and then call the function (with the relevant logical statement):
 
 
-```r
+``` r
 mothers2534 <- rr %>% filter(age<=34 & age>=25 & mother2==1)
 ```
 
@@ -617,7 +617,7 @@ This is a useful way to think about the pipe operators when using it with data. 
 So far, we can't really see the benefit of the pipe operator with this example. It looks as if we have just rewritten the code. The main benefit for the pipe operator for us, however, will be that we can string along multiple commands. For example, imagine we want to (1) filter the data as above, and then (2) select only the variables we need. Before, we did this in two steps:
 
 
-```r
+``` r
 # filter to mothers 25-34
 mothers2534 <- filter(rr, age<=34 & age>=25 & mother2==1)
 # select certain variables
@@ -627,7 +627,7 @@ mothers2534 <- select(mothers2534, dataset, mother2, age, childtot)
 These steps are not very efficient. In the first step we create ``mothers2534``. In the next step, we overwrite it with a new ``mothers2534``. In total, we needed to type ``mothers2534`` three different times to get the final tibble. Now, let's see how pipe operators will clean up this code:
 
 
-```r
+``` r
 mothers2534 <- rr %>%
   filter(age<=34 & age>=25 & mother2==1) %>%
   select(dataset, mother2, age, childtot)
@@ -636,7 +636,7 @@ mothers2534 <- rr %>%
 Now the code is a bit easier to digest. What are we doing? First we are specifying the tibble ``rr``, and then we are filtering it, and then we are selecting the variables we want. Now in this example, there are only two steps. But now imagine we want to also sort the dataset from oldest to youngest. No problem, we can just add a pipe operator that calls the ``arrange()`` function to the previous code:
 
 
-```r
+``` r
 mothers2534 <- rr %>%
   filter(age<=34 & age>=25 & mother2==1) %>%
   select(dataset, mother2, age, childtot) %>%
@@ -663,14 +663,14 @@ In our data, we are going to create a variable named ``childcollegeprep`` that i
 There are two ways to create new variables in R. The first uses base R. The general syntax is:
 
 
-```r
+``` r
 df$newvarname <- expression
 ```
 
 For example, let's add the variable ``childcollegeprep`` which will be the addition of ``childeduc`` and ``childtravel``, which are two variables in our ``rugratrace.csv`` data set. 
 
 
-```r
+``` r
 rr$childcollegeprep <- rr$childeduc + rr$childtravel
 summary(rr$childcollegeprep)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
@@ -682,14 +682,14 @@ So the mean amount of time spent on ``childcollegprep`` is about 1.2 hours. Reca
 We can also generate new variables using the ``mutate()`` function (from tidyverse). The general syntax is:
 
 
-```r
+``` r
 mutate(dataframe, newvarname = expression)
 ```
 
 For example, if we want to add ``childprep`` using ``mutate()`` we can type:
 
 
-```r
+``` r
 rr <- mutate(rr, childcollegeprep=childtravel+childeduc)
 ```
 
@@ -698,7 +698,7 @@ Note that the first step was to type ``rr <-``. If you don't overwrite ``rr`` by
 A nice thing about ``mutate()`` relative to base R is that you can generate a number of variables within the same ``mutate()`` command. For example, imagine we also want to create a variable that captures childcare time not spent on college prep. In other words, we want to add the variable ``childnotcollegeprep = childtot - childcollegeprep`` to the tibble. We can do this using the following:
 
 
-```r
+``` r
 rr <- mutate(rr, childcollegeprep=childtravel+childeduc,
              childnotcollegeprep=childtot-childcollegeprep)
 ```
@@ -708,20 +708,28 @@ If you have more variables to add or change, you can simply add a comma to the e
 Lastly, let's talk about the ``transmute()`` function. This function also generates new variables, but at the same time, it drops all pre-existing variables. For example, if you wanted to create a tibble that only contains ``childcollegeprep`` and ``childnotcollegeprep``, you could use the ``transmute()`` function:
 
 
-```r
+``` r
 collegeprepdat <- transmute(rr,
                             childcollegeprep = childeduc + childtravel,
-                            childnotcollegeprep = childtot - collegeprep)
-Error in `transmute()`:
-ℹ In argument: `childnotcollegeprep = childtot -
-  collegeprep`.
-Caused by error:
-! object 'collegeprep' not found
+                            childnotcollegeprep = childtot - childcollegeprep)
 ```
 
-```r
+``` r
 collegeprepdat
-Error in eval(expr, envir, enclos): object 'collegeprepdat' not found
+# A tibble: 106,020 × 2
+   childcollegeprep childnotcollegeprep
+              <dbl>               <dbl>
+ 1            0                    7   
+ 2            3.5                  1.17
+ 3            0.583                2.33
+ 4            0                   42.6 
+ 5            0                    7.58
+ 6            0                   27.2 
+ 7            1.17                 3.03
+ 8            0                    0   
+ 9            0                    0   
+10            0                    7   
+# ℹ 106,010 more rows
 ```
 
 As you can see, this is a data set that only contains the two variables we created using ``transmute()``. 
@@ -735,13 +743,13 @@ To begin our discussion of these functions, we will first illustrate how to use 
 To remind you, the tibble ``rr`` contains the year of the observation in a variable named ``dataset`` and the amount spent on childcare in a variable named ``childtot``.
 
 
-```r
+``` r
 head(rr$dataset)
 [1] 1965 1965 1965 1965 1965 1965
 ```
 
 
-```r
+``` r
 head(rr$childtot)
 [1]  7.000000  4.666667  2.916667 42.583332  7.583333
 [6] 27.183332
@@ -750,7 +758,7 @@ head(rr$childtot)
 The ``summarize()`` function is used to generate summary statistics. For example, imagine I just want to take the average level of ``childtot`` across the entire sample. We can do this by typing:
 
 
-```r
+``` r
 summarize(rr, meanchildtot = mean(childtot, na.rm=T))
 # A tibble: 1 × 1
   meanchildtot
@@ -764,7 +772,7 @@ A nice feature of the ``summarize`` function is that we can generate multiple st
 
 
 
-```r
+``` r
 summarize(rr, 
           meanchildtot = mean(childtot, na.rm=T),
           medianchildtot=median(childtot, na.rm = T))
@@ -781,7 +789,7 @@ Next, we will discuss the real usefulness of the summarize command: summarizing 
 The ``group_by()`` function tells R that any subsequent functions should be done separately by the values of the ``group_by()`` variable. For example, in our dataset, we have a list of years:
 
 
-```r
+``` r
 unique(rr$dataset)
  [1] 1965 1975 1985 1993   NA 1995 1998 2000 2003 2004 2005
 [12] 2006 2007 2008
@@ -790,7 +798,7 @@ unique(rr$dataset)
 Therefore, if we specify ``group_by(dataset)``, then subsequent functions will be applied separately by each value of ``dataset``. In particular, if we next ``summarize(meanchildtot = mean(childtot, na.rm=T))``, then the mean of ``childtot`` will be taken separately for each value of ``dataset``. Let's try this all together now.
 
 
-```r
+``` r
 rr %>%
   group_by(dataset) %>%
   summarize(meanchildtot=mean(childtot,na.rm=T))
@@ -822,14 +830,14 @@ The way we can read the code above is: first read in ``rr`` tibble, and then gro
 We can also make this even more complicated by summarizing by two variables. If you type ``group_by(var1,var2)``, then R will group by the unique combination of variables. Before proceeding to the main example, let's generate a small data frame through which we can understand grouping by two variables. 
 
 
-```r
+``` r
 student.df <- data.frame(school=c("A", "A", "A", "B", "B", "B"),
                         graduationdate=c(2010,2010,2015,2010,2010,2015),
                         gpa = c(3.2,3.7,2.9,4.0,3.2,1.8))
 ```
 
 
-```r
+``` r
 student.df
   school graduationdate gpa
 1      A           2010 3.2
@@ -843,12 +851,18 @@ student.df
 If I type ``group_by(school,graduationdate)``, then any subsequent ``summarize()`` command will be done completely separately by unique combinations of ``school`` and ``graduationdate``. In this data frame, there are 4 unique combinations -- "A 2010", "A 2015", "B 2010", "B 2015". So let's see what we get when we summarize by groups of two variables:
 
 
-```r
+``` r
 student.df %>% 
   group_by(school,graduationdate) %>%
   summarize(mean.gpa=mean(gpa))
-`summarise()` has grouped output by 'school'. You can
-override using the `.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by school and
+  graduationdate.
+ℹ Output is grouped by school.
+ℹ Use `summarise(.groups = "drop_last")` to silence this
+  message.
+ℹ Use `summarise(.by = c(school, graduationdate))` for
+  per-operation grouping (`?dplyr::dplyr_by`) instead.
 # A tibble: 4 × 3
 # Groups:   school [2]
   school graduationdate mean.gpa
@@ -861,7 +875,7 @@ override using the `.groups` argument.
 
 To understand how the unique combinations are generated, let's change the dataset slightly. 
 
-```r
+``` r
 student.df <- data.frame(school=c("A", "A", "A", "B", "B", "B"),
                         graduationdate=c(2010,2010,2010,2015,2015,2015),
                         gpa = c(3.2,3.7,2.9,4.0,3.2,1.8))
@@ -870,7 +884,7 @@ student.df <- data.frame(school=c("A", "A", "A", "B", "B", "B"),
 Now there are only two unique combinations in the data of school and graduation date: "A 2010" and "B 2015". Therefore, when we summarize by groups, there will be only two averages taken:
 
 
-```r
+``` r
 student.df %>% 
   group_by(school,graduationdate) %>%
   summarize(mean.gpa=mean(gpa))
@@ -885,7 +899,7 @@ student.df %>%
 Now, let's return to the ``rr`` tibble. In Ramey and Ramey (2010), the authors compared time spent on childcare over time separately for college-educated and less-than-college educated individuals. We can achieve a similar analysis by grouping over ``dataset`` and ``college``. The variable ``college`` is a variable that takes on a value of 1 if the individual graduated from college, and zero otherwise. 
 
 
-```r
+``` r
 rr %>%
   group_by(dataset,college) %>%
   summarize(meanchildtot = mean(childtot, na.rm=T))
@@ -911,7 +925,7 @@ To understand this table, let's look at the first row of data. This first row ha
 Often in practice, we may want to actually save the output of this function. To do so, we just need to assign it a name, as usual:
 
 
-```r
+``` r
 totchildbyyearcollege <- rr %>%
   group_by(dataset, college) %>%
   summarize(meanchildtot = mean(childtot, na.rm=T))
@@ -928,14 +942,14 @@ In this final section we will put all the various functions we've learned togeth
 This review will focus on the ``tidyverse`` package. As a reminder, the first time using a package you need to install it using ``install.packages("packagename")``. You only need to do this once. However, every time you want to use the package in a given R session, you need to load it into memory using the ``library()`` function. For example, to load tidyverse we would type:
 
 
-```r
-libary(tidyverse)
+``` r
+library(tidyverse)
 ```
 
 To begin, let's first re-load our data into R as a tibble using the ``read_csv()`` function. The ``read_csv()`` function reads in a dataset as a tibble, while the ``read.csv()`` function reads the dataset into memory as a data frame. For our purposes, there won't be too much differences between these formats, but tibbles will be more efficient with large datasets. 
 
 
-```r
+``` r
 rr <- read_csv("rugratrace.csv")
 Rows: 106020 Columns: 54
 ── Column specification ────────────────────────────────────
@@ -949,14 +963,14 @@ dbl (54): state, age, sex, ethnic, under18, under5, agey...
 Our first issue is that the Ramey and Ramey (2010) analysis was for a particular group of individuals: mothers aged 25-34. Therefore, we first need to create a dataset restricted to these individuals. We can achieve this by using the ``filter()`` function.
 
 
-```r
+``` r
 mothers2534 <- filter(rr, mother2==1, age>24, age<35)
 ```
 
 Now, a focus of our analysis will be what is driving the increase in time spent on childcare. One potential driver is increased time spent on college prep activities, given an increase in the competitiveness of college during this time. We are going to add a variable named ``collegeprep`` to this dataset which is the time spent either on traveling with children or time spent educating children. 
 
 
-```r
+``` r
 mothers_collegeprep <- mutate(mothers2534, 
                               collegeprep = childeduc + childtravel)
 ```
@@ -964,18 +978,23 @@ mothers_collegeprep <- mutate(mothers2534,
 Our goal is to compute the amount of time spent on ``collegeprep`` over time, by college education status. We can accomplish this by using ``group_by()`` and ``summarize()`` functions together. 
 
 
-```r
+``` r
 collegeprep <- mothers_collegeprep %>%
   group_by(dataset, college) %>%
   summarize(meancollegeprep=mean(collegeprep, na.rm=T))
-`summarise()` has grouped output by 'dataset'. You can
-override using the `.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by dataset and college.
+ℹ Output is grouped by dataset.
+ℹ Use `summarise(.groups = "drop_last")` to silence this
+  message.
+ℹ Use `summarise(.by = c(dataset, college))` for
+  per-operation grouping (`?dplyr::dplyr_by`) instead.
 ```
 
 Now if we look at our resulting tibble, we can use it to understand trends in time spent on college prep over time:
 
 
-```r
+``` r
 print(collegeprep,n=25)
 # A tibble: 22 × 3
 # Groups:   dataset [11]
@@ -1011,14 +1030,19 @@ What do we find in this data? In the 60s-70s, on average, mothers spent around 1
 Now, one thing to note is that we have done this analysis step-by-step. First we restricted our sample, then we added the variables, and lastly we summarized by group. However, we could have also done this entire analysis in a single block of code by stringing together functions using the pipe operator, as is done below: 
 
 
-```r
+``` r
 collegeprep <- rr %>%
   filter(mother2==1, age>24, age<35) %>%
   mutate(collegeprep = childeduc + childtravel) %>%
   group_by(dataset, college) %>%
   summarize(meancollegeprep=mean(collegeprep, na.rm=T))
-`summarise()` has grouped output by 'dataset'. You can
-override using the `.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by dataset and college.
+ℹ Output is grouped by dataset.
+ℹ Use `summarise(.groups = "drop_last")` to silence this
+  message.
+ℹ Use `summarise(.by = c(dataset, college))` for
+  per-operation grouping (`?dplyr::dplyr_by`) instead.
 ```
 
 Going forward in the book, the tools we have learned in this section will be very important. It is extremely common to need to perform some data wrangling steps before proceeding to your actual analysis. The tidyverse package has given us a convenient set of functions in order to perform this analysis. 
@@ -1050,7 +1074,7 @@ Going forward in the book, the tools we have learned in this section will be ver
 
 - 
 
-**<u>Other Functions<u>**
+**<u>Other Functions</u>**
 
 - ``sample()`` -- Draws a random number from a list of numbers. For example, ``sample(-1:1,1)`` draws a single number from the list of numbers ``-1:1``. In other words, it will draw a random number from -1 to 1. ``sample(c(0,1,2),4)`` would draw 4 random numbers from the list of numbers 0,1, or 2.
 
@@ -1058,7 +1082,7 @@ Going forward in the book, the tools we have learned in this section will be ver
 
 - ``unique()`` -- Retrieves a list of the unique values a variable takes on. 
 
-**<u>Installing/Loading Functions<u>**
+**<u>Installing/Loading Functions</u>**
 
 - ``install.packages()`` -- Installs a package onto your version of R. For example, ``install.packages("tidyverse")`` will install the tidyverse into R. You need to install a package once.
 

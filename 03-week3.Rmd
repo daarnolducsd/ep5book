@@ -141,7 +141,7 @@ append using classB.dta
 
 What we have done is first load in the class A data by typing ``use classA.dta, clear``. Then we have appended the class B data by typing ``append using classB.dta``. For this code to work, both ``classA.dta`` and ``classB.dta`` need to be in the working directory. Additionally, the variable names in both classA and classB need to be the same. For example, if one of the datasets had the student id variable named ``sid``, then you would need to make the names consistent across datasets before merging. You can rename a variable with the ``rename`` command. For example, to rename a variable ``sid`` to ``student`` you would type ``rename sid student``.
 
-In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on.You can continue to ``append`` more datasets by typing, for example, ``append using classC.dta`` followed by ``append using classD.dta`` and so on.
+In this example, we had two datasets to combine. Imagine we had more, for example, class C, class D and so on. You can continue to ``append`` more datasets by typing, for example, ``append using classC.dta`` followed by ``append using classD.dta`` and so on.
 
 ## Merge Basics 
 
@@ -199,7 +199,7 @@ use school.dta, clear
 merge m:1 school using pop.dta
 ```
 
-We specify ``m:1`` because there is are multiple observations per school in the master dataset, and a single in the using. A one-to-many merge (``1:m``) is conceptually similar. If we had loaded ``pop.dta`` first, then ``pop.dta`` would be the master dataset. In this case, the code to merge the two datasets is given by
+We specify ``m:1`` because there are multiple observations per school in the master dataset, and a single in the using. A one-to-many merge (``1:m``) is conceptually similar. If we had loaded ``pop.dta`` first, then ``pop.dta`` would be the master dataset. In this case, the code to merge the two datasets is given by
 
 ```{stata, eval=FALSE}
 use pop.dta, clear
@@ -714,7 +714,7 @@ knitr::include_graphics("images/03_bar5.png")
 
 So now let's spend a little time interpreting our main result. Overall, it appears that the fraction of stops for a given race does not depend dramatically on the light condition. We can see this in the graph by the fact that the blue and orange bars tend to be around the same height. If the orange bar (i.e. ``dark==1``) was dramatically lower for some races, then that would be evidence that police were targeting this race in the daylight.
 
-Like any empirical design, the test has assumptions and limitations. It is not a fatal flaw that a given set of research has limitations. All research has limitations and it is important to think carefully about them. In the next section, we will discuss some of these limtations as well as feature some other factors that could be studied with the Stanford Open Policing Project data. 
+Like any empirical design, the test has assumptions and limitations. It is not a fatal flaw that a given set of research has limitations. All research has limitations and it is important to think carefully about them. In the next section, we will discuss some of these limitations as well as feature some other factors that could be studied with the Stanford Open Policing Project data. 
 
 ## Conclusion
 
