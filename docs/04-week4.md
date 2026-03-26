@@ -29,10 +29,6 @@ To begin, let's load the dataset ``mindspark_data.dta``
 ``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"
 use mindspark_data.dta, replace
-file gapminder.dta not Stata format
-r(610);
-
-
 /Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data
 ```
 
@@ -53,14 +49,13 @@ sum per_hindi1
 
 
 ```
-file gapminder.dta not Stata format
-r(610);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   per_math1 |        619    .3177475    .1115478          0   .7428572
 
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  per_hindi1 |        619    .4278406      .16484          0         .9
 ```
 
 At the baseline, the average score on the math test was 0.318. This indicates that on average across students, the average score was 31.8 percent on the math test. For the Hindi test, the average was a bit higher at 0.428. Now let's look at endline scores.
@@ -73,14 +68,13 @@ sum per_hindi2
 
 
 ```
-file gapminder.dta not Stata format
-r(610);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+   per_math2 |        539     .503101    .1725604          0   .9411765
 
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+  per_hindi2 |        539    .5521954    .1911098          0   .9666666
 ```
 
 At endline, scores are higher. The average math score has increased to 0.503 and the average Hindi score has increased to 0.552. Our ultimate goal, however, is to understand how test scores change depending on whether you are given access to Mindspark. In other words, do test scores at endline depend on whether ``treat==1`` or ``treat==0``? Before we start analyzing the data, however, we are going to learn a new statistical technique: **regression**.
@@ -343,10 +337,6 @@ This will produce a table with many statistics. For now we will focus on the int
 /*load data*/ 
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data"
 use gapminder.dta, replace 
-file gapminder.dta not Stata format
-r(610);
-
-
 /Users/davidarnold/Dropbox/Teaching/EP5/online/04_week/data
 
 file gapminder.dta not Stata format

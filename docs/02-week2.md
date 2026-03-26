@@ -65,7 +65,7 @@ Certain percentiles are often reported as descriptive statistics. For example, t
 
 
 
-<div class='webex-radiogroup' id='radio_QZKJCFWXLS'><label><input type="radio" autocomplete="off" name="radio_QZKJCFWXLS" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_QZKJCFWXLS" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_QZKJCFWXLS" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
+<div class='webex-radiogroup' id='radio_NDWNKOJRKB'><label><input type="radio" autocomplete="off" name="radio_NDWNKOJRKB" value=""></input> <span>Lower earnings than 33 percent of individuals</span></label><label><input type="radio" autocomplete="off" name="radio_NDWNKOJRKB" value="answer"></input> <span>Lower earnings than 67 percent of individuals </span></label><label><input type="radio" autocomplete="off" name="radio_NDWNKOJRKB" value=""></input> <span>Higher earnings than 67 Percent of individuals</span></label></div>
 
 
 :::
@@ -106,7 +106,7 @@ A general lesson here is to understand the details before you proceed with the a
 
 
 
-<div class='webex-radiogroup' id='radio_VTNMMPGEIA'><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_VTNMMPGEIA" value=""></input> <span>Not possible to tell</span></label></div>
+<div class='webex-radiogroup' id='radio_FZJUOESNOJ'><label><input type="radio" autocomplete="off" name="radio_FZJUOESNOJ" value=""></input> <span>College A</span></label><label><input type="radio" autocomplete="off" name="radio_FZJUOESNOJ" value="answer"></input> <span>College B</span></label><label><input type="radio" autocomplete="off" name="radio_FZJUOESNOJ" value=""></input> <span>They have the same</span></label><label><input type="radio" autocomplete="off" name="radio_FZJUOESNOJ" value=""></input> <span>Not possible to tell</span></label></div>
 
 
 :::
@@ -139,10 +139,6 @@ For example, to compute ``2+2`` type
 
 ``` stata
 display 2+2
-file gapminder.dta not Stata format
-r(610);
-
-
 4
 ```
 
@@ -164,10 +160,6 @@ We can use Stata to perform calculations just like you would in a calculator. Fo
 
 ``` stata
 di 6-4
-file gapminder.dta not Stata format
-r(610);
-
-
 2
 ```
 
@@ -176,10 +168,6 @@ For multiplication type:
 
 ``` stata
 di 2*4
-file gapminder.dta not Stata format
-r(610);
-
-
 8
 ```
 
@@ -188,10 +176,6 @@ For division type:
 
 ``` stata
 di 12/2
-file gapminder.dta not Stata format
-r(610);
-
-
 6
 ```
 
@@ -200,10 +184,6 @@ We can also use ``display`` to print text. This can be very helpful when writing
 
 ``` stata
 display "Hello World"
-file gapminder.dta not Stata format
-r(610);
-
-
 Hello World
 ```
 
@@ -321,10 +301,6 @@ Returning to the working directory, now that we know where the data is, we need 
 
 ``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"
-file gapminder.dta not Stata format
-r(610);
-
-
 /Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data
 ```
 
@@ -342,10 +318,6 @@ In this section, we are going to learn a few basics of loading data into Stata. 
 ``` stata
 cd "/Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data"
 use college_mobility.dta, clear
-file gapminder.dta not Stata format
-r(610);
-
-
 /Users/davidarnold/Dropbox/Teaching/EP5/online/02_week/data
 
 (Preferred Estimates of Access and Mobility Rates by College)
@@ -410,14 +382,9 @@ summarize count
 
 ``` stata
 summarize count
-file gapminder.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       count |      2,199    946.5153    1508.825         50   26989.67
 ```
 
 This table tells us a few things. First, it tells us that the average size of a cohort of students across all institutions in the dataset is about 946 students. Additionally, we can see the minimum is 50 and the maximum is 26989.67. The minimum being 50 is actually by construction. Institutions with less than 50 students per cohort were dropped from the dataset. Understanding descriptive statistics about your key variables is important before starting any data analysis. 
@@ -461,14 +428,6 @@ For us, we want to create a variable that is the product of ``par_q1`` and ``kq5
 
 ``` stata
 gen mobility_rate = par_q1*kq5_cond_parq1
-file gapminder.dta not Stata format
-r(610);
-
-
-par_q1 not found
-r(111);
-
-r(111);
 ```
 
 When we create a new variable, it won't by default have a label associated with it. If you are working on a project that has many different variables, it is a good idea to label your variables so that you can remember what they represent at a later date. For example, if we want to give the variable ``mobility_rate`` a label we type:
@@ -590,14 +549,9 @@ sum mobility_rate if CA==1
 ```
 
 ```
-file gapminder.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+mobility_r~e |        168    .0275095    .0154819          0   .0991846
 ```
 Note that we did not put ``if`` in brackets, even though it was in brackets in the syntax. The brackets are there to tell you that you can use an if statement, but the brackets themselves are not actually part of the syntax. 
 
@@ -609,14 +563,9 @@ sum mobility_rate if CA==0
 ```
 
 ```
-file gapminder.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+mobility_r~e |      2,031    .0175132     .012647          0   .1635797
 ```
 The mobility rates in non-Californian colleges are 0.018, so mobility rates, on average, are higher at Californian schools. Why is this? Well, it could be due to either 2 factors: higher access or higher success. We can check if one vs. the other is driving this result by summarizing both access and success separately. 
 
@@ -626,14 +575,10 @@ sum par_q1 kq5_cond_parq1 if CA==1
 ```
 
 ```
-file gapminder.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      par_q1 |        168    .1443805    .0889914   .0321324   .4606968
+kq5_cond_p~1 |        168    .2481358    .1638556          0   .8497473
 ```
 And now for non-Californian colleges:
 
@@ -643,14 +588,10 @@ sum par_q1 kq5_cond_parq1 if CA==0
 ```
 
 ```
-file gapminder.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+      par_q1 |      2,031    .1232655    .0878519   .0111896   .6097748
+kq5_cond_p~1 |      2,031    .1919684    .1360417          0   .9192932
 ```
 So let's first discuss the access results (i.e. the variable ``par_q1``). Across colleges in CA, the average fraction of students that are from low-income backgrounds is around 14.4 percent. In contrast, in non-California colleges, the average fraction of students that are from low-income backgrounds is around 12.3 percent. Therefore, on average across schools, access is higher in CA. 
 Now let's discuss the success results (i.e. the variable ``kq5_cond_parq1``). Across colleges in CA, the average fraction of students from low-income backgrounds that become high earners is around 24.8 percent. Across colleges NOT in CA, the average fraction of students from low-income backgrounds that become high earners is around 19.2 percent. Therefore mobility rates are higher in CA due to both (1) greater access and (2) greater success.
@@ -663,14 +604,9 @@ sum mobility_rate if name == "University Of California, San Diego"
 ```
 
 ```
-file gapminder.dta not Stata format
-r(610);
-
-
-no variables defined
-r(111);
-
-r(111);
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+mobility_r~e |          1    .0483275           .   .0483275   .0483275
 ```
 Here we have taken the average ``if name == "University Of California, San Diego"``. But only one observation meets this restriction, so the table is just showing us the mobility rate for UCSD, which is equal to 0.048, a bit higher than the average of 0.028 across all Californian institutions. 
 
